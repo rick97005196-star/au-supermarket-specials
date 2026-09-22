@@ -1,0 +1,17 @@
+{
+  "name": "澳洲超市特價優惠 (Woolworths · Coles · ALDI)",
+  "short_name": "澳洲超市特價優惠",
+  "description": "Woolworths · Coles · ALDI 每週省錢比價助手，澳洲打工度假與生活必備",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#09090b",
+  "theme_color": "#15803d",
+  "icons": [
+    {
+      "src": "/og_image.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg"
+    }
+  ]
+}

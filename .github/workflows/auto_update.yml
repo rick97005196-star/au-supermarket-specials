@@ -1,0 +1,52 @@
+name: Weekly Specials Auto Update & Deploy
+
+on:
+  schedule:
+    # 澳洲東部時間週二下午 13:00 (UTC 03:00) 抓取下週特價預告 (Next Week Preview)
+    - cron: '0 3 * * 2'
+    # 澳洲東部時間週三上午 10:00 (UTC 00:00) 換檔更新本週特價 (Current Week Specials)
+    - cron: '0 0 * * 3'
+  workflow_dispatch: # 支援在 GitHub 網頁上手動點擊立即執行
+
+jobs:
+  update-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Python Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+          pip install requests beautifulsoup4
+
+      - name: Run Supermarket Scrapers
+        run: |
+          python -c "from scrapers.updater import update_all_stores; update_all_stores(max_catalogue_pages=15)"
+
+      - name: Generate Multilingual Translations
+        run: |
+          python scripts/build_translations.py
+
+      - name: Export Static Data for Cloudflare Pages
+        run: |
+          python export_static_data.py
+
+      - name: Deploy to Cloudflare Pages
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: |
+          npx wrangler pages deploy static --project-name=au-supermarket-specials
