@@ -141,7 +141,16 @@ def scrape_woolies_catalogue_items(base_list_url: str, initial_soup: BeautifulSo
 
                 desc_elem = item.select_one('.item-description')
                 discount_desc = desc_elem.get_text(strip=True) if desc_elem else ""
-                if not discount_desc and save_amount > 0:
+
+                if was_price > price > 0 and save_amount == 0.0:
+                    save_amount = round(was_price - price, 2)
+                elif save_amount > 0 and was_price == 0.0 and price > 0:
+                    was_price = round(price + save_amount, 2)
+
+                lower_desc = discount_desc.lower()
+                if lower_desc.startswith('offers apply') or 'while stocks last' in lower_desc or 'specials not available' in lower_desc:
+                    discount_desc = f"Save ${save_amount:.2f}" if save_amount > 0 else ""
+                elif not discount_desc and save_amount > 0:
                     discount_desc = f"Save ${save_amount:.2f}"
 
                 if was_price == 0 and ('1/2' in discount_desc or 'half' in discount_desc.lower()) and price > 0:

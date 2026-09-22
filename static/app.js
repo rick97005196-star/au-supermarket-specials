@@ -781,6 +781,24 @@ function createProductCardElement(item) {
     const isHalfPrice = isItemHalfPrice(item);
     const fallbackImg = "https://images.unsplash.com/photo-1542838132-92c53300491e?w=300&auto=format&fit=crop&q=60";
 
+    const effectivePrice = (typeof item.price === 'number') ? item.price : (parseFloat(item.price) || 0);
+    let effectiveSave = (typeof item.save_amount === 'number') ? item.save_amount : (parseFloat(item.save_amount) || 0);
+    let effectiveWas = (typeof item.was_price === 'number') ? item.was_price : (parseFloat(item.was_price) || 0);
+
+    if (effectiveSave <= 0 && effectiveWas > effectivePrice && effectivePrice > 0) {
+        effectiveSave = Math.round((effectiveWas - effectivePrice) * 100) / 100;
+    } else if (effectiveWas <= 0 && effectiveSave > 0 && effectivePrice > 0) {
+        effectiveWas = Math.round((effectivePrice + effectiveSave) * 100) / 100;
+    }
+
+    let cleanDiscountDesc = item.discount_desc || '';
+    const lowerDesc = cleanDiscountDesc.toLowerCase();
+    if (lowerDesc.startsWith('offers apply') || lowerDesc.includes('while stocks last') || lowerDesc.includes('specials not available')) {
+        cleanDiscountDesc = effectiveSave > 0 ? `Save $${effectiveSave.toFixed(2)}` : '';
+    } else if (!cleanDiscountDesc && effectiveSave > 0) {
+        cleanDiscountDesc = `Save $${effectiveSave.toFixed(2)}`;
+    }
+
     const p = parseSupermarketPrice(item.price_display, item.price);
     const unitPriceClean = formatSupermarketUnitPrice(item.unit_price);
     const translated = getProductTranslation(item, currentLang);
@@ -801,9 +819,9 @@ function createProductCardElement(item) {
                     <span class="px-1.5 sm:px-2 py-0.5 rounded-md text-[10px] sm:text-[11px] font-black bg-rose-500 text-white shadow-2xs">
                         1/2
                     </span>
-                ` : (item.discount_desc ? `
-                    <span class="px-1.5 py-0.5 rounded-md text-[9px] sm:text-[10px] font-semibold bg-amber-50 dark:bg-amber-950/60 text-amber-800 dark:text-amber-300 border border-amber-200/60 dark:border-amber-800/60 truncate max-w-[90px] sm:max-w-[110px]">
-                        ${item.discount_desc}
+                ` : (cleanDiscountDesc ? `
+                    <span class="px-1.5 py-0.5 rounded-md text-[9px] sm:text-[10px] font-semibold bg-amber-50 dark:bg-amber-950/60 text-amber-800 dark:text-amber-300 border border-amber-200/60 dark:border-amber-800/60 truncate max-w-[90px] sm:max-w-[110px]" title="${cleanDiscountDesc}">
+                        ${cleanDiscountDesc}
                     </span>
                 ` : '')}
             </div>
@@ -861,14 +879,14 @@ function createProductCardElement(item) {
 
                 <!-- Was & Save Badges Row -->
                 <div class="flex items-center gap-1.5 flex-wrap min-h-[1.2rem]">
-                    ${item.save_amount > 0 ? `
+                    ${effectiveSave > 0 ? `
                         <span class="px-1.5 py-0.5 rounded text-[10px] sm:text-[11px] font-black bg-amber-400 text-slate-950 dark:bg-amber-400 dark:text-slate-950 shadow-2xs leading-none">
-                            Save $${item.save_amount.toFixed(2)}
+                            Save $${effectiveSave.toFixed(2)}
                         </span>
                     ` : ''}
-                    ${item.was_price > 0 ? `
+                    ${effectiveWas > 0 ? `
                         <span class="text-[10px] sm:text-[11px] text-slate-400 line-through font-medium">
-                            Was $${item.was_price.toFixed(2)}
+                            Was $${effectiveWas.toFixed(2)}
                         </span>
                     ` : ''}
                 </div>
@@ -1049,17 +1067,27 @@ function openProductModal(item) {
     document.getElementById('modalCents').textContent = p.cents;
     document.getElementById('modalUnit').textContent = p.unit;
     
+    const effectivePrice = (typeof item.price === 'number') ? item.price : (parseFloat(item.price) || 0);
+    let effectiveSave = (typeof item.save_amount === 'number') ? item.save_amount : (parseFloat(item.save_amount) || 0);
+    let effectiveWas = (typeof item.was_price === 'number') ? item.was_price : (parseFloat(item.was_price) || 0);
+
+    if (effectiveSave <= 0 && effectiveWas > effectivePrice && effectivePrice > 0) {
+        effectiveSave = Math.round((effectiveWas - effectivePrice) * 100) / 100;
+    } else if (effectiveWas <= 0 && effectiveSave > 0 && effectivePrice > 0) {
+        effectiveWas = Math.round((effectivePrice + effectiveSave) * 100) / 100;
+    }
+
     const wasElem = document.getElementById('modalWasPrice');
-    if (item.was_price > 0) {
-        wasElem.textContent = `Was $${item.was_price.toFixed(2)}`;
+    if (effectiveWas > 0) {
+        wasElem.textContent = `Was $${effectiveWas.toFixed(2)}`;
         wasElem.classList.remove('hidden');
     } else {
         wasElem.classList.add('hidden');
     }
 
     const saveBadge = document.getElementById('modalSaveBadge');
-    if (item.save_amount > 0) {
-        saveBadge.textContent = `Save $${item.save_amount.toFixed(2)}`;
+    if (effectiveSave > 0) {
+        saveBadge.textContent = `Save $${effectiveSave.toFixed(2)}`;
         saveBadge.classList.remove('hidden');
     } else {
         saveBadge.classList.add('hidden');
@@ -1221,6 +1249,61 @@ function saveLocalShoppingList(items) {
     localStorage.setItem('whv_shopping_items', JSON.stringify(items));
 }
 
+function repairLocalShoppingItems() {
+    try {
+        const items = getLocalShoppingList();
+        if (!items || items.length === 0) return;
+        let changed = false;
+        const pool = window.staticSpecials || allSpecials || [];
+        items.forEach(it => {
+            const price = (typeof it.price === 'number') ? it.price : (parseFloat(it.price) || 0);
+            let was = (typeof it.was_price === 'number') ? it.was_price : (parseFloat(it.was_price) || 0);
+            let save = (typeof it.save_amount === 'number') ? it.save_amount : (parseFloat(it.save_amount) || 0);
+
+            // Match against staticSpecials pool if available
+            if ((save <= 0 || was <= 0) && pool.length > 0) {
+                const match = pool.find(s => (it.product_id && s.id === it.product_id) || (s.title === it.title && s.store === it.store));
+                if (match) {
+                    const matchPrice = (typeof match.price === 'number') ? match.price : (parseFloat(match.price) || 0);
+                    const matchWas = (typeof match.was_price === 'number') ? match.was_price : (parseFloat(match.was_price) || 0);
+                    let matchSave = (typeof match.save_amount === 'number') ? match.save_amount : (parseFloat(match.save_amount) || 0);
+                    if (matchSave <= 0 && matchWas > matchPrice && matchPrice > 0) {
+                        matchSave = Math.round((matchWas - matchPrice) * 100) / 100;
+                    }
+                    if (matchSave > 0 && save <= 0) {
+                        save = matchSave;
+                        it.save_amount = save;
+                        changed = true;
+                    }
+                    if (matchWas > 0 && was <= 0) {
+                        was = matchWas;
+                        it.was_price = was;
+                        changed = true;
+                    }
+                }
+            }
+
+            // Derive save from was - price
+            if (save <= 0 && was > price && price > 0) {
+                save = Math.round((was - price) * 100) / 100;
+                it.save_amount = save;
+                changed = true;
+            }
+            // Derive was from price + save
+            if (was <= 0 && save > 0 && price > 0) {
+                was = Math.round((price + save) * 100) / 100;
+                it.was_price = was;
+                changed = true;
+            }
+        });
+        if (changed) {
+            saveLocalShoppingList(items);
+        }
+    } catch (e) {
+        console.error('Error repairing shopping list items:', e);
+    }
+}
+
 function getLocalShoppingData() {
     const items = getLocalShoppingList();
     const grouped = {'Woolworths': [], 'Coles': [], 'ALDI': [], 'Other': []};
@@ -1230,8 +1313,16 @@ function getLocalShoppingData() {
         const st = it.store || 'Other';
         if (!grouped[st]) grouped[st] = [];
         grouped[st].push(it);
-        total_cost += (it.price || 0) * (it.quantity || 1);
-        total_saved += (it.save_amount || 0) * (it.quantity || 1);
+        const price = (typeof it.price === 'number') ? it.price : (parseFloat(it.price) || 0);
+        const qty = it.quantity || 1;
+        total_cost += price * qty;
+
+        let save = (typeof it.save_amount === 'number') ? it.save_amount : (parseFloat(it.save_amount) || 0);
+        const was = (typeof it.was_price === 'number') ? it.was_price : (parseFloat(it.was_price) || 0);
+        if (save <= 0 && was > price && price > 0) {
+            save = Math.round((was - price) * 100) / 100;
+        }
+        total_saved += save * qty;
     });
     return {
         items,
@@ -1243,6 +1334,7 @@ function getLocalShoppingData() {
 }
 
 async function loadShoppingList() {
+    repairLocalShoppingItems();
     let data = null;
     try {
         const res = await fetch('/api/shopping-list');
@@ -1299,6 +1391,14 @@ async function loadShoppingList() {
                 <div class="space-y-1.5">
                     ${items.map(it => {
                         const itPrice = parseSupermarketPrice(it.price_display, it.price);
+                        const itPriceNum = (typeof it.price === 'number') ? it.price : (parseFloat(it.price) || 0);
+                        let itSave = (typeof it.save_amount === 'number') ? it.save_amount : (parseFloat(it.save_amount) || 0);
+                        let itWas = (typeof it.was_price === 'number') ? it.was_price : (parseFloat(it.was_price) || 0);
+                        if (itSave <= 0 && itWas > itPriceNum && itPriceNum > 0) {
+                            itSave = Math.round((itWas - itPriceNum) * 100) / 100;
+                        } else if (itWas <= 0 && itSave > 0 && itPriceNum > 0) {
+                            itWas = Math.round((itPriceNum + itSave) * 100) / 100;
+                        }
                         const fallbackImg = "https://images.unsplash.com/photo-1542838132-92c53300491e?w=300&auto=format&fit=crop&q=60";
                         return `
                         <div class="flex items-center justify-between gap-2.5 p-2.5 rounded-xl bg-white dark:bg-zinc-800 border border-slate-200/80 dark:border-zinc-700/70 shadow-2xs ${it.is_bought ? 'opacity-40' : ''}">
@@ -1322,7 +1422,7 @@ async function loadShoppingList() {
                                 <div class="min-w-0 flex-1">
                                     <div class="flex items-center gap-1.5">
                                         <h4 class="text-xs font-semibold text-slate-900 dark:text-zinc-100 truncate ${it.is_bought ? 'line-through text-slate-400' : ''}" title="${it.title}">
-                                            ${it.title}
+                                             ${it.title}
                                         </h4>
                                         <span class="text-[9px] sm:text-[10px] px-1 py-0.2 rounded font-medium shrink-0 ${it.period === 'next' ? 'bg-amber-100 text-amber-800 dark:bg-amber-950/70 dark:text-amber-300' : 'bg-slate-100 dark:bg-zinc-700 text-slate-600 dark:text-zinc-300'}">
                                             ${it.period === 'next' ? t('next_cycle') : t('current_cycle')}
@@ -1334,8 +1434,8 @@ async function loadShoppingList() {
                                     })()}
                                     <div class="text-[11px] text-slate-500 dark:text-zinc-400 flex items-center gap-2 mt-0.5 font-medium flex-wrap">
                                         <span class="font-bold text-slate-900 dark:text-white">${itPrice.displayWithUnit}</span>
-                                        ${it.save_amount > 0 ? `<span class="px-1 py-0.2 rounded text-[10px] font-black bg-amber-400 text-slate-950">Save $${it.save_amount.toFixed(2)}</span>` : ''}
-                                        ${it.was_price > 0 ? `<span class="text-slate-400 line-through text-[10px]">Was $${it.was_price.toFixed(2)}</span>` : ''}
+                                        ${itSave > 0 ? `<span class="px-1 py-0.2 rounded text-[10px] font-black bg-amber-400 text-slate-950">Save $${itSave.toFixed(2)}</span>` : ''}
+                                        ${itWas > 0 ? `<span class="text-slate-400 line-through text-[10px]">Was $${itWas.toFixed(2)}</span>` : ''}
                                     </div>
                                 </div>
                             </div>
@@ -1355,17 +1455,28 @@ async function loadShoppingList() {
 }
 
 async function addToShoppingList(item) {
+    const price = (typeof item.price === 'number') ? item.price : (parseFloat(item.price) || 0);
+    let save = (typeof item.save_amount === 'number') ? item.save_amount : (parseFloat(item.save_amount) || 0);
+    let was = (typeof item.was_price === 'number') ? item.was_price : (parseFloat(item.was_price) || 0);
+
+    if (save <= 0 && was > price && price > 0) {
+        save = Math.round((was - price) * 100) / 100;
+    } else if (was <= 0 && save > 0 && price > 0) {
+        was = Math.round((price + save) * 100) / 100;
+    }
+
     const payload = {
         product_id: item.id,
         store: item.store,
         period: item.period || currentPeriod,
         date_range: item.date_range || '',
         title: item.title,
-        price: item.price,
+        price: price,
         price_display: item.price_display,
         quantity: 1,
         image_url: item.image_url,
-        save_amount: item.save_amount
+        save_amount: save,
+        was_price: was
     };
 
     try {

@@ -49,6 +49,8 @@ def init_db():
             cursor.execute("ALTER TABLE shopping_list ADD COLUMN period TEXT DEFAULT 'current'")
         if 'date_range' not in sl_columns:
             cursor.execute("ALTER TABLE shopping_list ADD COLUMN date_range TEXT")
+        if 'was_price' not in sl_columns:
+            cursor.execute("ALTER TABLE shopping_list ADD COLUMN was_price REAL DEFAULT 0.0")
 
         cursor.execute('''
             CREATE INDEX IF NOT EXISTS idx_specials_store_period ON specials (store, period)
@@ -71,6 +73,7 @@ def init_db():
                 is_bought INTEGER DEFAULT 0,
                 image_url TEXT,
                 save_amount REAL DEFAULT 0.0,
+                was_price REAL DEFAULT 0.0,
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             )
         ''')
@@ -98,25 +101,43 @@ def save_specials(store: str, items: List[Dict[str, Any]], period: str = 'curren
             ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         '''
         now = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-        rows = [
-            (
+        rows = []
+        for item in items:
+            if not item.get('title'):
+                continue
+            title = html.unescape(item.get('title', '')).strip()
+            price = float(item.get('price', 0.0) or 0.0)
+            was_price = float(item.get('was_price', 0.0) or 0.0)
+            save_amount = float(item.get('save_amount', 0.0) or 0.0)
+            discount_desc = html.unescape(item.get('discount_desc', '') or '').strip()
+
+            if was_price > price > 0 and save_amount <= 0:
+                save_amount = round(was_price - price, 2)
+            elif save_amount > 0 and was_price <= 0 and price > 0:
+                was_price = round(price + save_amount, 2)
+
+            lower_desc = discount_desc.lower()
+            if lower_desc.startswith('offers apply') or 'while stocks last' in lower_desc or 'specials not available' in lower_desc:
+                discount_desc = f"Save ${save_amount:.2f}" if save_amount > 0 else ""
+            elif not discount_desc and save_amount > 0:
+                discount_desc = f"Save ${save_amount:.2f}"
+
+            rows.append((
                 store,
                 period,
                 date_range or item.get('date_range', ''),
-                html.unescape(item.get('title', '')).strip(),
-                item.get('price', 0.0),
+                title,
+                price,
                 html.unescape(item.get('price_display', '')).strip(),
-                item.get('was_price', 0.0),
-                item.get('save_amount', 0.0),
-                html.unescape(item.get('discount_desc', '')).strip(),
+                was_price,
+                save_amount,
+                discount_desc,
                 html.unescape(item.get('unit_price', '')).strip(),
                 item.get('image_url', ''),
-                classify_product(item.get('title', ''), item.get('category', ''), item.get('product_url', '')),
+                classify_product(title, item.get('category', ''), item.get('product_url', '')),
                 item.get('product_url', ''),
                 now
-            )
-            for item in items if item.get('title')
-        ]
+            ))
         cursor.executemany(insert_sql, rows)
         
         # Update metadata timestamp and date range
@@ -280,23 +301,32 @@ def get_shopping_list() -> List[Dict[str, Any]]:
 def add_to_shopping_list(item: Dict[str, Any]) -> int:
     with get_db() as conn:
         cursor = conn.cursor()
+        price = float(item.get('price', 0.0) or 0.0)
+        was_price = float(item.get('was_price', 0.0) or 0.0)
+        save_amount = float(item.get('save_amount', 0.0) or 0.0)
+        if was_price > price > 0 and save_amount <= 0:
+            save_amount = round(was_price - price, 2)
+        elif save_amount > 0 and was_price <= 0 and price > 0:
+            was_price = round(price + save_amount, 2)
+
         cursor.execute('''
             INSERT INTO shopping_list (
                 product_id, store, period, date_range, title, price, price_display,
-                quantity, is_bought, image_url, save_amount
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                quantity, is_bought, image_url, save_amount, was_price
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         ''', (
             item.get('product_id'),
             item.get('store', 'Other'),
             item.get('period', 'current'),
             item.get('date_range', ''),
             item.get('title', ''),
-            item.get('price', 0.0),
+            price,
             item.get('price_display', ''),
             item.get('quantity', 1),
             0,
             item.get('image_url', ''),
-            item.get('save_amount', 0.0)
+            save_amount,
+            was_price
         ))
         conn.commit()
         return cursor.lastrowid
