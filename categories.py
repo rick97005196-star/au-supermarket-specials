@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import re
 import json
 
@@ -9,41 +10,22 @@ CATEGORIES = [
     'seafood',
     'dairy_eggs',
     'bakery',
+    'frozen',
     'pantry',
     'snacks',
     'drinks',
-    'frozen',
     'health_vitamins',
-    'household'
+    'household',
+    'pet',
+    'other'
 ]
 
-INTERNAL_CATEGORY_KEYS = {
-    'all', 'produce', 'meat', 'seafood', 'dairy_eggs', 'bakery',
-    'pantry', 'snacks', 'drinks', 'frozen', 'health_vitamins', 'household', 'groceries'
-}
-
-HOUSEHOLD_BRANDS = [
-    r"l'or[eé]al", r"nivea", r"neutrogena", r"olay", r"mixa", r"sukin", r"garnier",
-    r"mcobeauty", r"essano", r"vaseline", r"dove", r"palmolive", r"schwarzkopf",
-    r"tresemm[eé]", r"pantene", r"head\s*&\s*shoulders", r"herbal\s*essences",
-    r"mitchum", r"rexona", r"brut", r"colgate", r"oral[- ]b", r"sensodyne",
-    r"white\s*glo", r"gillette", r"schick", r"dettol", r"\bbref\b", r"harpic",
-    r"\bfinish\b", r"\bfairy\b", r"morning\s*fresh", r"omo\b", r"cold\s*power", r"radiant",
-    r"dynamo", r"comfort", r"\bvanish\b", r"pine\s*o\s*cleen", r"glen\s*20", r"\bajax\b",
-    r"\bchux\b", r"vileda", r"quilton", r"kleenex", r"sorbent", r"viva\b", r"huggies",
-    r"babylove", r"little\s*one['\u2019]?s", r"curash", r"libra\b", r"tom\s*organic",
-    r"carefree", r"stayfree", r"kotex", r"dine\b", r"whiskas", r"fancy\s*feast",
-    r"purina", r"supercoat", r"fussy\s*cat", r"pedigree", r"schmackos", r"temptations",
-    r"open\s*paddock", r"ultimates\b", r"my\s*dog", r"nature['\u2019]?s\s*gift",
-    r"energizer", r"eveready", r"duracell", r"brunnings", r"aerogard", r"raid\b",
-    r"mortein", r"easy-off", r"armor\s*all", r"air\s*wick", r"ambipur", r"febreze",
-    r"\bglade\b", r"biozet", r"pears\b"
-]
+INTERNAL_CATEGORY_KEYS = set(CATEGORIES) | {'groceries'}
 
 def classify_product(title: str, raw_cat: str = "", product_url: str = "") -> str:
     """
-    Classifies a product into one of the 11 standard Australian grocery categories:
-    produce, meat, seafood, dairy_eggs, bakery, pantry, snacks, drinks, frozen, health_vitamins, household.
+    Classifies an Australian supermarket product into one of the standard categories:
+    produce, meat, seafood, dairy_eggs, bakery, frozen, pantry, snacks, drinks, health_vitamins, household, pet, other.
     """
     title_l = title.lower().strip()
     url_l = product_url.lower().strip()
@@ -56,201 +38,159 @@ def classify_product(title: str, raw_cat: str = "", product_url: str = "") -> st
         return 'snacks'
 
     # -------------------------------------------------------------
-    # 1. HOUSEHOLD BRANDS (100% Household / Personal Care / Pets)
+    # 1. PET CARE & FOOD (寵物專區)
     # -------------------------------------------------------------
-    for b in HOUSEHOLD_BRANDS:
-        if re.search(b, title_l):
-            return 'household'
-
-    # Household general patterns
     if any(re.search(pat, title_l) for pat in [
-        r'\b(?:soap|soap\s*bar|handwash|hand\s*wash|body\s*wash|body\s*scrub|exfoliating|shower\s*gel|body\s*lotion|body\s*milk)\b',
-        r'\b(?:day\s*cream|night\s*cream|eye\s*cream|face\s*cream|facial|cleanser|micellar|toner|serum)\b',
-        r'\b(?:sunscreen|banana\s*boat|cancer\s*council|lip\s*balm|chapstick|lip\s*gloss|lipstick|mascara|beauty)\b',
-        r'\bspf\s*\d+',
-        r'\b(?:shampoo|conditioner|hair\s*colour|hair\s*dye|hair\s*spray|hair\s*mask)\b',
-        r'\b(?:deodorant|antiperspirant|roll\s*on|toothpaste|toothbrush|mouthwash|dental\s*floss|razor|shaving)\b',
-        r'\b(?:tampons?|pads\s*with\s*wings|incontinence|liners?|nappies|nappy|diapers?|baby\s*wipes?)\b',
-        r'\b(?:toilet\s*paper|facial\s*tissue|paper\s*towel|dishwashing|dishwasher|laundry|detergent|fabric\s*softener)\b',
-        r'\b(?:bin\s*liners?|garbage\s*bags?|cleaner|disinfectant|bleach)\b',
-        r'\b(?:baking\s*paper|foil|cling\s*wrap|albal|multix|glad\s*wrap)\b',
-        r'\b(?:weed\s*kill|weedkiller|roundup|pest\s*control|insect\s*spray|batteries|battery)\b',
-        r'\b(?:cat\s*food|dog\s*food|cat\s*treats?|dog\s*treats?|pet\s*food)\b'
+        r'\b(?:cat\s*food|dog\s*food|pet\s*food|cat\s*treats?|dog\s*treats?|cat\s*litter)\b',
+        r'\b(?:whiskas|pedigree|schmackos|purina|supercoat|fancy\s*feast|fussy\s*cat|dine\b|temptations|open\s*paddock|nature[\'’]?s\s*gift|my\s*dog|optimum\s*dog|optimum\s*cat|vip\s*petfoods|hartz)\b'
     ]):
-        return 'household'
+        return 'pet'
 
     # -------------------------------------------------------------
-    # 2. SOUP (Pantry) - Check before Meat! (Prevents chicken soup -> meat)
+    # 2. OTHER SPECIALS (其他專區: 電池、殺蟲除草、五金園藝、雜項)
     # -------------------------------------------------------------
     if any(re.search(pat, title_l) for pat in [
-        r'\b(?:soup|cup\s*a\s*soup|continental\s*classics)\b'
+        r'\b(?:energizer|eveready|duracell|batteries|battery)\b',
+        r'\b(?:mortein|raid\b|aerogard|insect\s*spray|pest\s*control|fly\s*spray)\b',
+        r'\b(?:brunnings|roundup|weed\s*kill|weedkiller|fertiliser|fertilizer|potting\s*mix)\b',
+        r'\b(?:armor\s*all|car\s*wash)\b'
     ]):
-        return 'pantry'
+        return 'other'
 
     # -------------------------------------------------------------
-    # 3. FROZEN FOOD (Ice Cream, Gelato, Frozen Desserts, Frozen Meals, Frozen Chips/Pies/Veg)
-    # Check before Snacks & Pantry so "From the Freezer", "Frozen dessert", "Ice cream", "Frozen chips" -> frozen
+    # 3. FROZEN FOOD (冷凍食品: 冰淇淋、冷凍點心、薯條、冷凍微波餐)
     # -------------------------------------------------------------
     if any(re.search(pat, title_l) for pat in [
-        r'\b(?:ice\s*cream|gelato|sorbet|magnum|connoisseur|ben\s*&\s*jerry|peters|bulla|cornetto|paddle\s*pop|weis\s*bars?|ice\s*bars?|crunch\s*pops)\b',
-        r'\b(?:frozen\s*dessert|frozen\s*yogurt|frozen\s*yoghurt|yo-chi)\b',
-        r'\b(?:party\s*pies|meat\s*pies|four\'n\s*twenty|pastizzis?|party\s*pack)\b',
-        r'\b(?:from the freezer|freezer)\b',
+        r'\b(?:ice\s*cream|gelato|sorbet|magnum|connoisseur|ben\s*&\s*jerry|peters|bulla|cornetto|paddle\s*pop|weis\s*bars?|crunch\s*pops)\b',
+        r'\b(?:frozen|freezer|from the freezer)\b',
         r'\b(?:hash\s*browns?|potato\s*gems|wedges|shoestring\s*chips|steakhouse.*chips|french\s*fries)\b',
-        r'\b(?:dumplings?|gyoza|samosas?|spring\s*rolls?|dim\s*sims?)\b',
-        r'\b(?:frozen\s*(?:meals?|pizza|chips|peas|berries|vegetables?|fruit|veg|pastry|churros|pancakes?))\b',
-        r'\b(?:dr\s*oetker|ristorante|mccain|birds\s*eye|superfries|fropro|della\s*rosa)\b',
-        r'\b(?:pizza|pizzas|dino\s*nuggets?)\b'
+        r'\b(?:dumplings?|gyoza|samosas?|spring\s*rolls?|dim\s*sims?)\b'
     ]):
-        if not any(k in title_l for k in ['pizza base', 'pizza shapes', 'pizza roll', 'pizza sauce', 'shapes', 'bakery fridge', 'from the bakery']):
-            # Don't steal seafood if it contains clear fish/prawn/calamari/salmon
-            if not any(re.search(s_pat, title_l) for s_pat in [
-                r'\b(?:salmon|tuna|trout|barramundi|basa|cod|snapper|prawns?|shrimps?|calamari|squid|octopus|mussels?|crabs?|lobster|seafood)\b',
-                r'\bfish\b'
-            ]):
-                if not any(k in title_l for k in ['dog food', 'cat food', 'pet food']):
-                    return 'frozen'
+        if not any(k in title_l for k in ['chocolate block', 'biscuit']):
+            return 'frozen'
 
     # -------------------------------------------------------------
-    # 4. SNACKS & CONFECTIONERY - Check before Meat!
-    # Prevents "chicken crimpy biscuits", "bacon shapes", "burger rings", "red rock deli chips" -> meat
-    # -------------------------------------------------------------
-    if not any(k in title_l for k in ['crumbed chicken', 'chicken chips 1kg', 'chicken tenders', 'mud cake', 'mudcake', 'cake slice', 'sponge cake']):
-        if any(re.search(pat, title_l) for pat in [
-            r'\b(?:red\s*rock\s*deli|doritos|smith\'s|smiths|cheezels|twisties|pringles|kettle|popcorn)\b',
-            r'\b(?:chips?|crisps?|puffs|onion\s*rings|burger\s*rings|cheetos)\b',
-            r'\b(?:chocolate|pralines?|toblerone|cadbury|lindt|kit\s*kat|kitkat|m&m|maltesers|mars|snickers|twix|kinder|pods|darrell\s*lea|bullets)\b',
-            r'\b(?:biscuits?|cookies?|tim\s*tams?|crackers?|ritz|oreo|arnott\'s|arnotts|shapes|belvita|digestives|koala\'s\s*march|lotte)\b',
-            r'\b(?:lollies|lolly|candy|gummies|haribo|mentos|chupa\s*chups|allen\'s|skittles|pretzels?|sour\s*patch|jelly|jellies|konjac|confectionery)\b',
-            r'\b(?:nuts?|peanuts?|almonds?|cashews?|walnuts?|macadamias?|nut\s*bars?|muesli\s*bars?|protein\s*bars?|oaty\s*slices?|harvest\s*snaps|rocklea\s*road)\b',
-            r'\b(?:temole|nongshim)\b'
-        ]):
-            return 'snacks'
-
-    # -------------------------------------------------------------
-    # 5. DRINKS (Water, Soft Drinks, Tea, Coffee, Sports Drinks, Juice, Alcohol)
+    # 4. DRINKS (飲料沖調: 咖啡、茶、汽水、果汁、水、能量飲)
     # -------------------------------------------------------------
     if any(re.search(pat, title_l) for pat in [
-        r'-196\b|\b(?:hard\s*rated|alcoholic|nomikai)\b',
-        r'\b(?:sparkling|mineral\s*water|spring\s*water|soda\s*water|tonic\s*water|water\s*bottle)\b',
-        r'\b(?:mount\s*franklin|pump\s*water|san\s*pellegrino|perrier)\b',
-        r'\b(?:soft\s*drink|carbonated|coca[- ]cola|coke|pepsi|sprite|fanta|schweppes|solo|kirks)\b',
-        r'\b(?:gatorade|powerade|sports?\s*drink|energy\s*drink|red\s*bull|monster\s*energy|v\s*energy|ghost\s*energy)\b',
-        r'\b(?:kombucha|cordial|cocobella|coconut\s*water|poppers?\b|fruit\s*drink|juice|nudie|daily\s*juice)\b',
-        r'\b(?:tea|tea\s*bags?|twinings|dilmah|lipton|tetley|coffee|espresso|moccona|nescafe|lavazza|vittoria)\b',
-        r'\b(?:beer|wine|cider|lager|ale|bourbon|whisky|vodka|gin|rum)\b',
-        r'\b(?:up&go|up\s*&\s*go|ready\s*to\s*drink|protein\s*water)\b'
+        r'\b(?:coffee|coffee\s*beans|coffee\s*pods|nespresso|lavazza|moccona|nescafe|starbucks|vittoria|grinders)\b',
+        r'\b(?:tea|tea\s*bags|twinings|lipton|dilmah|tetley)\b',
+        r'\b(?:coca-cola|coke|pepsi|sprite|fanta|kirks|schweppes|bundle\s*drink)\b',
+        r'\b(?:juice|fruit\s*drink|daily\s*juice|nudie|golden\s*circle)\b',
+        r'\b(?:water|spring\s*water|sparkling\s*water|mount\s*franklin|pump\s*water)\b',
+        r'\b(?:energy\s*drink|red\s*bull|monster\s*energy|v\s*energy|mother\s*energy|gatorade|powerade)\b',
+        r'\b(?:kombucha|cordial)\b'
     ]):
-        if not any(k in title_l for k in ['biscuit', 'cookie', 'cracker', 'chips', 'chocolate block', 'ice cream']):
+        if not any(k in title_l for k in ['coffee cake', 'tea towel', 'shampoo', 'body wash', 'biscuit', 'chocolate block', 'ice cream']):
             return 'drinks'
 
     # -------------------------------------------------------------
-    # 6. HEALTH & VITAMINS (Vitamins, Supplements, Pain Relief, Protein Powder)
+    # 5. HEALTH & BEAUTY (保健美妝: 維他命、護膚洗沐、牙膏、防曬、衛生棉)
     # -------------------------------------------------------------
     if any(re.search(pat, title_l) for pat in [
-        r'\b(?:berocca|cenovis|voost|swisse|blackmores|nature\'s\s*(?:way|own)|bioglan|hydralyte)\b',
-        r'\b(?:panadol|nurofen|paracetamol)\b',
-        r'\b(?:multivitamins?|multi-vitamins?|vitamin\s*[a-z0-9]+)\b',
-        r'\b(?:fish\s*oil|krill\s*oil|magnesium|caltrate|centrum|iron\s*tablets?|zinc|calcium|biotin|melatonin)\b',
-        r'\b(?:protein\s*powder|whey\s*protein|creatine|collagen\s*powder|effervescent\s*tablets?|metamucil)\b'
+        r'\b(?:vitamins?|supplements?|blackmores|swisse|nature[\'’]?s\s*own|cenovis|ostelin|bioglan|berocca)\b',
+        r'\b(?:shampoo|conditioner|hair\s*treatment|hair\s*oil|hair\s*colour|hair\s*dye|hair\s*spray|hair\s*mask)\b',
+        r'\b(?:pantene|head\s*&\s*shoulders|herbal\s*essences|tresemm[eé]|schwarzkopf|l\'or[eé]al|garnier|ogx|sukin|mixa|essano)\b',
+        r'\b(?:body\s*wash|shower\s*gel|soap\s*bar|hand\s*wash|hand\s*sanitiser|palmolive|dove|lux\b|pears\b|vaseline)\b',
+        r'\b(?:skincare|moisturiser|moisturizer|serum|facial|cleanser|micellar|eye\s*cream|face\s*mask|face\s*cream|olay|nivea|neutrogena)\b',
+        r'\b(?:sunscreen|banana\s*boat|cancer\s*council|bondi\s*sands|dermaveen|spf\s*\d+)\b',
+        r'\b(?:deodorant|antiperspirant|roll\s*on|body\s*spray|rexona|mitchum|lynx\b|brut\b|nivea\s*men)\b',
+        r'\b(?:toothpaste|toothbrush|mouthwash|dental|colgate|oral[- ]b|sensodyne|white\s*glo)\b',
+        r'\b(?:razor|shaving|gillette|schick|bic\b)\b',
+        r'\b(?:tampons?|pads\s*with\s*wings|incontinence|liners?|u\s*by\s*kotex|libra|tom\s*organic|carefree|stayfree)\b',
+        r'\b(?:nappies|nappy|babylove|huggies|baby\s*wipes|curash|little\s*one[\'’]?s)\b',
+        r'\b(?:lip\s*balm|cosmetics?|mascara|lipstick|mcobeauty|maybelline)\b'
     ]):
         return 'health_vitamins'
 
     # -------------------------------------------------------------
-    # 7. SEAFOOD (Fresh, Canned, Frozen Fish, Prawns, Salmon, Tuna)
+    # 6. HOUSEHOLD (日用清潔: 洗衣精、洗碗錠、衛生紙、清潔劑、垃圾袋、保鮮膜)
     # -------------------------------------------------------------
     if any(re.search(pat, title_l) for pat in [
-        r'\b(?:salmon|tuna|trout|barramundi|basa|cod|snapper|prawns?|shrimps?|calamari|squid|octopus|mussels?|crabs?|lobster|seafood)\b',
-        r'\boysters?(?!\s*blade)\b',
-        r'\bfish\b'
+        r'\b(?:laundry|detergent|washing\s*powder|fabric\s*softener|omo\b|cold\s*power|dynamo|radiant|comfort|fluffy|biozet|earthwise|cuddly)\b',
+        r'\b(?:dishwashing|dishwasher|finish\b|fairy\b|morning\s*fresh)\b',
+        r'\b(?:toilet\s*paper|facial\s*tissues?|paper\s*towels?|quilton|kleenex|sorbent|viva\b)\b',
+        r'\b(?:cleaner|disinfectant|bleach|pine\s*o\s*cleen|dettol|glen\s*20|ajax|harpic|bref|easy-off|chux|vileda)\b',
+        r'\b(?:garbage\s*bags?|bin\s*liners?|multix|glad|albal|baking\s*paper|foil|cling\s*wrap)\b',
+        r'\b(?:air\s*wick|ambipur|febreze|glade)\b'
     ]):
-        if not any(k in title_l for k in ['cat food', 'dog food', 'cat treat', 'dog treat', 'dine']):
+        return 'household'
+
+    # -------------------------------------------------------------
+    # 7. SEAFOOD (水產海鮮)
+    # -------------------------------------------------------------
+    if any(re.search(pat, title_l) for pat in [
+        r'\b(?:salmon|prawns?|shrimp|calamari|squid|octopus|tuna\s*fillet|tuna\s*steak|barramundi|snapper|flathead|basa|fish\s*fillets?|mussels|oysters?|lobster|crab)\b'
+    ]):
+        if not any(k in title_l for k in ['canned', 'can ', 'tin ', 'cat food', 'dog food', 'oyster blade', 'oyster sauce']):
             return 'seafood'
 
     # -------------------------------------------------------------
-    # 8. MEAT & DELI (Beef, Pork, Lamb, Chicken, Sausages, Ham, Bacon, Salami)
+    # 8. MEAT & POULTRY (生鮮肉品)
     # -------------------------------------------------------------
     if any(re.search(pat, title_l) for pat in [
-        r'\b(?:beef|steak|rump|ribeye|sirloin|porterhouse|mince|meatballs?|burgers?|oyster\s*blade)\b',
-        r'\b(?:chicken|drumsticks?|wings?|breast|thigh|tenderloins?|schnitzel)\b',
-        r'\b(?:pork|pork\s*chops?|pork\s*belly|lamb|lamb\s*chops?|lamb\s*cutlets?|lamb\s*shanks?)\b',
-        r'\b(?:sausages?|chipolatas?|chorizo|bacon|ham|prosciutto|salami|sopressa|frankfurts?|twiggy\s*sticks?)\b',
-        r'\b(?:from the deli|deli\s*(?:meat|counter|service|range|sliced|shaved))\b',
-        r'\b(?:grazing\s*platter|snackers\s*delight|symphony\s*platter|artisan\s*grazing|luv-a-duck|luv\s*a\s*duck|duck\s*breast|duck\s*leg|whole\s*duck)\b'
+        r'\b(?:beef|pork|lamb|chicken|steak|mince|sausages?|roast|chops?|cutlets?|veal|bacon|ham|prosciutto|salami|meatballs?|chicken\s*breast|chicken\s*thigh|drumsticks?|tenderloins?)\b'
     ]):
-        return 'meat'
+        if not any(k in title_l for k in ['soup', 'cat food', 'dog food', 'chips', 'flavoured', 'noodle', 'sauce', 'stock', 'pie', 'pizza', 'cracker', 'crisps']):
+            return 'meat'
 
     # -------------------------------------------------------------
-    # 9. BAKERY (Bread, Rolls, Wraps, Croissants, Cakes, Cake Mixes)
+    # 9. FRESH PRODUCE (生鮮蔬果)
     # -------------------------------------------------------------
     if any(re.search(pat, title_l) for pat in [
-        r'\bgarlic\s*(?:slices?|bread|baguette|toast)\b',
-        r'\b(?:bread|toast|wraps?|croissants?|bagels?|muffins?|crumpets?|rolls?|loaf|loaves|buns?|brioche|pita|naan|sourdough|flatbread|baguettes?)\b',
-        r'\b(?:pastr(?:y|ies)|scones?|donuts?|doughnuts?|profiteroles?|puddings?|cupcakes?|mud\s*cakes?|mudcakes?|cheesecakes?|cake\s*mix|cheesecake\s*mix|from the bakery)\b'
+        r'\b(?:apples?|bananas?|oranges?|mandarins?|grapes?|strawberries|blueberries|raspberries|avocados?|lemons?|limes?|mangoes?|peaches|plums|pears?)\b',
+        r'\b(?:potatoes?|sweet\s*potatoes?|carrots?|onions?|broccoli|cauliflower|lettuce|salad|cabbage|zucchini|mushrooms?|capsicums?|cucumbers?|spinach|tomatoes?)\b'
     ]):
-        return 'bakery'
-
-    # -------------------------------------------------------------
-    # 10. DAIRY & EGGS (Milk, Butter, Cheese, Yogurt, Dips, Eggs)
-    # -------------------------------------------------------------
-    if any(re.search(pat, title_l) for pat in [
-        r'\b(?:milk|eggs?|butter|margarine|cheeses?|cheddar|parmesan|mozzarella|feta|ricotta|brie|camembert|halloumi|haloumi|paneer)\b',
-        r'\b(?:yogurts?|yoghurts?|chobani|custard|sour\s*cream|thickened\s*cream|whipping\s*cream|cream\s*cheese|hommus|hummus|dips?|falafel)\b'
-    ]):
-        return 'dairy_eggs'
-
-    # -------------------------------------------------------------
-    # 11. FRESH PRODUCE (Raw Fresh Fruit, Fresh Veg, Salads, Herbs)
-    # -------------------------------------------------------------
-    if any(re.search(pat, title_l) for pat in [
-        r'\b(?:apples?|bananas?|oranges?|mandarins?|avocados?|tomatoes?|potatoes?|onions?|garlic|ginger|mushrooms?|beetroot)\b',
-        r'\b(?:strawberr(?:y|ies)|blueberr(?:y|ies)|raspberr(?:y|ies)|grapes?|lemons?|limes?|berries)\b',
-        r'\b(?:lettuces?|salad\s*kit|slaw\s*kit|spinach|kale|carrots?|broccolis?|broccolini|cabbage|wombok|cauliflowers?|cucumbers?|capsicums?|zucchinis?|pumpkins?|sweet\s*potatoes?|watermelon|rockmelon|pears?|mangos?|peaches?|nectarines?|plums?|cherries|kiwifruits?|celery|asparagus|corn)\b',
-        r'\b(?:herbs?|coriander|parsley|basil|mint|rosemary|thyme|chillies?|chili|chilis)\b'
-    ]):
-        if not any(w in title_l for w in [
-            'sauce', 'canned', 'polpa', 'diced', 'paste', 'soup', 'chips', 'crisps', 'drink',
-            'juice', 'sparkling', 'water', 'soap', 'scrub', 'handwash', 'body wash', 'face wash', 'puffs', 'rings',
-            'biscuit', 'biscuits', 'cookie', 'cookies', 'crackers', 'mix', 'lollies', 'candy',
-            'jelly', 'jellies', 'confectionery',
-            'beans', 'quinoa', 'chia', 'sopressa', 'salami', 'pastizzis', 'lip balm', 'sunscreen',
-            'garlic slices', 'garlic bread', 'pesto', 'semi dried', 'sun dried', 'pickled', 'always fresh', 'dips?'
-        ]):
+        if any(k in title_l for k in ['fresh', 'per kg', 'kg', 'punnet', 'bunch', 'bag', 'pack', 'truss']) and not any(k in title_l for k in ['chips', 'canned', 'sauce', 'paste', 'frozen', 'juice', 'soup', 'lotion', 'shampoo']):
             return 'produce'
 
     # -------------------------------------------------------------
-    # 12. PANTRY (Grains, Pasta, Rice, Canned, Sauces, Spices, Oils)
+    # 10. BAKERY (烘焙麵包)
     # -------------------------------------------------------------
     if any(re.search(pat, title_l) for pat in [
-        r'\balways\s*fresh\b',
-        r'\b(?:pasta|spaghetti|penne|noodles?|ramen|rice|jasmine\s*rice|basmati)\b',
-        r'\b(?:sauces?|pasta\s*sauce|tomato\s*sauce|curry\s*paste|mayo|mayonnaise|mustard)\b',
-        r'\b(?:oils?|olive\s*oil|canola\s*oil|vegetable\s*oil)\b',
-        r'\b(?:canned|polpa|peeled\s*tomatoes|semi\s*dried|beans|quinoa|chia\s*seeds|lentils|chickpeas)\b',
-        r'\b(?:cereals?|weet-bix|cornflakes|oats|porridge|muesli|milo|flour|sugar|salt|pepper|honey|jam|spreads?|vegemite|peanut\s*butter)\b'
+        r'\b(?:bread|toast|loaf|sourdough|buns?|rolls?|bagels?|croissants?|crumpets?|muffins?|scones?|wraps?|pita|flatbread|tortillas?|tip\s*top|helga|abbott|wonder\s*white)\b'
+    ]):
+        if not any(k in title_l for k in ['baking paper', 'baking powder', 'dog', 'cat']):
+            return 'bakery'
+
+    # -------------------------------------------------------------
+    # 11. DAIRY & EGGS (乳品蛋類)
+    # -------------------------------------------------------------
+    if any(re.search(pat, title_l) for pat in [
+        r'\b(?:milk|fresh\s*milk|almond\s*milk|oat\s*milk|soy\s*milk)\b',
+        r'\b(?:eggs?|free\s*range\s*eggs?)\b',
+        r'\b(?:butter|margarine|western\s*star|lurpak|nuttelex)\b',
+        r'\b(?:cheese|cheddar|mozzarella|parmesan|feta|brie|camembert|cream\s*cheese|ricotta|bega\s*cheese|tasty\s*cheese)\b',
+        r'\b(?:yogurt|yoghurt|chobani|goplain|jalna|gippsland|danone|yoplait)\b',
+        r'\b(?:cream|sour\s*cream|custard)\b'
+    ]):
+        if not any(k in title_l for k in ['chocolate', 'biscuit', 'chips', 'shampoo', 'body wash', 'coconut milk', 'canned', 'condensed milk']):
+            return 'dairy_eggs'
+
+    # -------------------------------------------------------------
+    # 12. SNACKS & CONFECTIONERY (休閒零食)
+    # -------------------------------------------------------------
+    if any(re.search(pat, title_l) for pat in [
+        r'\b(?:chocolate|cadbury|lindt|kit\s*kat|m&m|maltesers|mars|snickers|twix|kinder|toblerone|ferrero)\b',
+        r'\b(?:chips|crisps|doritos|smith[\'’]?s|red\s*rock\s*deli|kettle|pringles|thins|cheezels|twisties|grainwaves|sunbites)\b',
+        r'\b(?:biscuits?|cookies?|tim\s*tam|arnott[\'’]?s|oreo|shapes|ritz|cruskit|water\s*crackers?)\b',
+        r'\b(?:lollies|gummies|candy|mints|mentos|allens?|skittles|chupa\s*chups|gum)\b',
+        r'\b(?:nuts?|peanuts?|almonds?|cashews?|pistachios?|popcorn)\b'
+    ]):
+        if not any(k in title_l for k in ['frozen', 'ice cream', 'shampoo', 'body wash']):
+            return 'snacks'
+
+    # -------------------------------------------------------------
+    # 13. PANTRY (米麵調味 & 糧油罐頭)
+    # -------------------------------------------------------------
+    if any(re.search(pat, title_l) for pat in [
+        r'\b(?:sauce|pasta|spaghetti|rice|noodles?|oil|olive\s*oil|canned|tin|beans?|spread|jam|cereal|oats|honey|mayonnaise|mustard|tuna\s*\d+g)\b'
     ]):
         return 'pantry'
 
-    # Fallback department hints
-    if any(k in raw_l or ('/' + k + '/') in url_l for k in ['cleaning & maintenance', 'cleaning goods', 'household-cleaning', 'papergoods', 'beauty', 'pet care', 'pet food']):
-        return 'household'
-    if 'baby-care' in raw_l or '/baby-care/' in url_l or '/baby/' in url_l or 'baby-formula' in raw_l:
-        return 'household'
-    if any(k in raw_l or k in url_l for k in ['drinks', 'soft drinks', 'tea & coffee', 'tea and coffee', 'carbonated soft drinks', 'beverages']):
-        return 'drinks'
-    if any(k in raw_l or k in url_l for k in ['snacks & confectionery', 'confectionery', 'biscuits & crackers', 'biscuits-and-snacks', 'chips']):
-        return 'snacks'
-    if any(k in raw_l or k in url_l for k in ['health & wellness', 'health-and-wellbeing']):
-        return 'health_vitamins'
-    if any(k in raw_l or k in url_l for k in ['packaged bread & bakery', 'proprietary bakery', 'bakery']):
-        return 'bakery'
-    if any(k in raw_l or k in url_l for k in ['freezer', 'frozen meals', 'frozen pies']):
-        return 'frozen'
-    if any(k in raw_l or k in url_l for k in ['fruit & veg', 'fruit-and-vegetables', 'produce']):
-        return 'produce'
-    if any(k in raw_l or k in url_l for k in ['poultry, meat & seafood', 'meat', 'deli meats', 'deli service']):
-        return 'meat'
-    if any(k in raw_l or k in url_l for k in ['dairy, eggs & fridge', 'dairy - yoghurt', 'dairy']):
-        return 'dairy_eggs'
+    # 14. Fallback checking
+    if 'soup' in title_l:
+        return 'pantry'
 
+    # Default fallback to pantry for foods, or other
     return 'pantry'

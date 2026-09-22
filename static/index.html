@@ -226,23 +226,23 @@
         <!-- Period Toggle Bar (Modern Segmented Pill Switch & Stats) -->
         <div class="bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 p-2 sm:p-2.5 rounded-2xl shadow-2xs space-y-2">
             <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2">
-                <!-- Segmented Switcher -->
-                <div class="grid grid-cols-2 gap-1 p-1 bg-slate-100 dark:bg-zinc-800 rounded-xl text-xs sm:text-sm font-bold">
+                <!-- Segmented Switcher (High Contrast Active States) -->
+                <div class="grid grid-cols-2 gap-1.5 p-1.5 bg-slate-100 dark:bg-zinc-800/90 rounded-2xl text-xs sm:text-sm border border-slate-200/80 dark:border-zinc-700/80 shadow-2xs">
                     <button 
                         id="tabPeriodCurrent" 
                         onclick="selectPeriod('current')" 
-                        class="flex items-center justify-center gap-1.5 py-1.5 sm:py-2 px-3 rounded-lg text-xs sm:text-sm font-bold bg-white dark:bg-zinc-700 text-slate-900 dark:text-white shadow-2xs transition"
+                        class="flex items-center justify-center gap-2 py-2 sm:py-2.5 px-3 sm:px-5 rounded-xl text-xs sm:text-sm font-black bg-emerald-600 dark:bg-emerald-600 text-white shadow-md ring-2 ring-emerald-400/50 border border-emerald-500 scale-[1.02] transition-all"
                     >
-                        <i class="fa-regular fa-calendar-check text-emerald-600 dark:text-emerald-400"></i>
+                        <i class="fa-regular fa-calendar-check text-white text-sm"></i>
                         <span data-i18n="current_cycle">本週特價</span>
-                        <span id="periodDateCurrentBadge" class="hidden xs:inline text-[10px] sm:text-xs font-normal opacity-80"></span>
+                        <span id="periodDateCurrentBadge" class="hidden xs:inline text-[10px] sm:text-xs font-bold opacity-90"></span>
                     </button>
                     <button 
                         id="tabPeriodNext" 
                         onclick="selectPeriod('next')" 
-                        class="flex items-center justify-center gap-1.5 py-1.5 sm:py-2 px-3 rounded-lg text-xs sm:text-sm font-semibold text-slate-600 dark:text-zinc-400 hover:text-slate-900 dark:hover:text-white transition"
+                        class="flex items-center justify-center gap-2 py-2 sm:py-2.5 px-3 sm:px-5 rounded-xl text-xs sm:text-sm font-semibold text-slate-600 dark:text-zinc-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200/70 dark:hover:bg-zinc-700/70 transition-all opacity-80 hover:opacity-100"
                     >
-                        <i class="fa-solid fa-wand-magic-sparkles text-amber-500"></i>
+                        <i class="fa-solid fa-wand-magic-sparkles text-amber-500 text-sm"></i>
                         <span data-i18n="next_cycle">下週預告</span>
                         <span class="px-1.5 py-0.2 bg-amber-100 dark:bg-amber-950 text-amber-700 dark:text-amber-400 text-[9px] sm:text-[10px] font-bold rounded-md" data-i18n="cycle_preview">搶先看</span>
                         <span id="periodDateNextBadge" class="hidden xs:inline text-[10px] sm:text-xs font-normal opacity-80"></span>
@@ -347,10 +347,18 @@
         </div>
 
         <!-- Empty State -->
-        <div id="emptyState" class="hidden py-16 text-center text-slate-500 dark:text-zinc-400 bg-white dark:bg-zinc-900 rounded-3xl border border-slate-200 dark:border-zinc-800">
-            <i class="fa-solid fa-basket-shopping text-4xl text-slate-300 dark:text-zinc-700 mb-3"></i>
-            <h3 class="text-sm font-bold text-slate-700 dark:text-zinc-300" data-i18n="empty_manifest">沒有找到符合的特價商品</h3>
-            <p class="text-xs text-slate-400 dark:text-zinc-500 mt-1">試試切換「本週 / 下週預告」或更改類別</p>
+        <div id="emptyState" class="hidden py-14 px-4 text-center bg-white dark:bg-zinc-900 rounded-3xl border border-slate-200 dark:border-zinc-800 shadow-2xs space-y-3">
+            <div class="w-12 h-12 mx-auto rounded-2xl bg-slate-100 dark:bg-zinc-800/80 flex items-center justify-center text-xl text-slate-400 dark:text-zinc-500">
+                <i class="fa-solid fa-basket-shopping"></i>
+            </div>
+            <h3 id="emptyStateTitle" class="text-sm sm:text-base font-bold text-slate-800 dark:text-zinc-200" data-i18n="empty_manifest">沒有找到符合的特價商品</h3>
+            <p id="emptyStateSub" class="text-xs text-slate-400 dark:text-zinc-500 max-w-md mx-auto leading-relaxed">試試切換「本週 / 下週預告」或更改類別</p>
+            <div id="emptyStateAction" class="pt-1">
+                <button onclick="selectPeriod('current')" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-bold bg-emerald-600 hover:bg-emerald-700 text-white shadow-xs transition active:scale-95">
+                    <i class="fa-regular fa-calendar-check"></i>
+                    <span>返回查看「本週特價」</span>
+                </button>
+            </div>
         </div>
 
         <!-- Relocated Feedback & Wishlist Banner (Non-intrusive at bottom of page) -->

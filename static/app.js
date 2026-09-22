@@ -15,12 +15,14 @@ const CATEGORY_KEYS = [
     'seafood',
     'dairy_eggs',
     'bakery',
+    'frozen',
     'pantry',
     'snacks',
     'drinks',
-    'frozen',
     'health_vitamins',
-    'household'
+    'household',
+    'pet',
+    'other'
 ];
 
 // Initialization
@@ -108,19 +110,20 @@ function applyLanguage(lang) {
     }
 }
 
-// Render Categories Bar (2 Rows: Row 1 Fresh/Daily, Row 2 Pantry/Snacks/Home)
+// Render Categories Bar (2 Rows: Row 1 Fresh & Perishables, Row 2 Pantry, Home, Pet & Other)
 function renderCategoryBar() {
     const bar = document.getElementById('categoryBar');
     if (!bar) return;
 
+    const activeClasses = "px-3 sm:px-3.5 py-1.5 rounded-xl text-[11px] sm:text-xs font-black bg-emerald-600 dark:bg-emerald-600 text-white shadow-md ring-2 ring-emerald-400/50 border border-emerald-500 shrink-0 transition-all active:scale-95 whitespace-nowrap text-center scale-[1.04]";
+    const inactiveClasses = "px-3 sm:px-3.5 py-1.5 rounded-xl text-[11px] sm:text-xs font-semibold bg-slate-100 dark:bg-zinc-800/80 hover:bg-slate-200 dark:hover:bg-zinc-700 text-slate-700 dark:text-zinc-300 border border-slate-200/60 dark:border-zinc-700/60 shrink-0 transition-all active:scale-95 whitespace-nowrap text-center";
+
     const existingBtns = bar.querySelectorAll('button');
-    if (existingBtns.length === 12) {
+    if (existingBtns.length === 14) {
         existingBtns.forEach(btn => {
             const catKey = btn.dataset.cat;
             const isActive = currentCategory === catKey;
-            btn.className = isActive
-                ? "px-2.5 sm:px-3 py-1 rounded-lg sm:rounded-xl text-[11px] sm:text-xs font-bold bg-emerald-600 text-white shadow-xs shrink-0 transition active:scale-95 whitespace-nowrap text-center scale-[1.02]"
-                : "px-2.5 sm:px-3 py-1 rounded-lg sm:rounded-xl text-[11px] sm:text-xs font-semibold bg-slate-100 dark:bg-zinc-800/80 hover:bg-slate-200 dark:hover:bg-zinc-700 text-slate-700 dark:text-zinc-300 shrink-0 transition active:scale-95 whitespace-nowrap text-center";
+            btn.className = isActive ? activeClasses : inactiveClasses;
             btn.textContent = getCategoryName(catKey);
         });
         return;
@@ -128,11 +131,11 @@ function renderCategoryBar() {
 
     bar.innerHTML = '';
     
-    // Arrange into 2 rows: 6 columns with 2 items per column for grid-flow-col
-    // Row 1: Fresh & Perishables (Produce -> Meat -> Seafood -> Dairy & Eggs -> Bakery)
-    // Row 2: Grocery, Drinks & Home (Pantry -> Snacks -> Drinks -> Freezer -> Health & Beauty -> Household)
-    const row1Keys = ['all', 'produce', 'meat', 'seafood', 'dairy_eggs', 'bakery'];
-    const row2Keys = ['pantry', 'snacks', 'drinks', 'frozen', 'health_vitamins', 'household'];
+    // Arrange into 2 rows: 7 columns with 2 items per column for grid-flow-col
+    // Row 1: Fresh & Perishables (All -> Produce -> Meat -> Seafood -> Dairy & Eggs -> Bakery -> Freezer)
+    // Row 2: Pantry, Drinks, Health, Home, Pet & Other (Pantry -> Snacks -> Drinks -> Health & Beauty -> Household -> Pet -> Other)
+    const row1Keys = ['all', 'produce', 'meat', 'seafood', 'dairy_eggs', 'bakery', 'frozen'];
+    const row2Keys = ['pantry', 'snacks', 'drinks', 'health_vitamins', 'household', 'pet', 'other'];
     
     const orderedKeys = [];
     for (let i = 0; i < row1Keys.length; i++) {
@@ -148,10 +151,7 @@ function renderCategoryBar() {
         const name = getCategoryName(catKey);
 
         btn.dataset.cat = catKey;
-        btn.className = isActive
-            ? "px-2.5 sm:px-3 py-1 rounded-lg sm:rounded-xl text-[11px] sm:text-xs font-bold bg-emerald-600 text-white shadow-xs shrink-0 transition active:scale-95 whitespace-nowrap text-center scale-[1.02]"
-            : "px-2.5 sm:px-3 py-1 rounded-lg sm:rounded-xl text-[11px] sm:text-xs font-semibold bg-slate-100 dark:bg-zinc-800/80 hover:bg-slate-200 dark:hover:bg-zinc-700 text-slate-700 dark:text-zinc-300 shrink-0 transition active:scale-95 whitespace-nowrap text-center";
-
+        btn.className = isActive ? activeClasses : inactiveClasses;
         btn.textContent = name;
         btn.onclick = () => selectCategory(catKey);
         bar.appendChild(btn);
@@ -371,11 +371,21 @@ function selectPeriod(period) {
     const btnNext = document.getElementById('tabPeriodNext');
 
     if (period === 'current') {
-        btnCurr.className = "flex items-center justify-center gap-1.5 py-1.5 sm:py-2 px-3 rounded-lg text-xs sm:text-sm font-bold bg-white dark:bg-zinc-700 text-slate-900 dark:text-white shadow-2xs transition";
-        btnNext.className = "flex items-center justify-center gap-1.5 py-1.5 sm:py-2 px-3 rounded-lg text-xs sm:text-sm font-semibold text-slate-600 dark:text-zinc-400 hover:text-slate-900 dark:hover:text-white transition";
+        btnCurr.className = "flex items-center justify-center gap-2 py-2 sm:py-2.5 px-3 sm:px-5 rounded-xl text-xs sm:text-sm font-black bg-emerald-600 dark:bg-emerald-600 text-white shadow-md ring-2 ring-emerald-400/50 border border-emerald-500 scale-[1.02] transition-all";
+        const iconC = btnCurr.querySelector('i');
+        if (iconC) iconC.className = "fa-regular fa-calendar-check text-white text-sm";
+
+        btnNext.className = "flex items-center justify-center gap-2 py-2 sm:py-2.5 px-3 sm:px-5 rounded-xl text-xs sm:text-sm font-semibold text-slate-600 dark:text-zinc-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200/70 dark:hover:bg-zinc-700/70 transition-all opacity-80 hover:opacity-100";
+        const iconN = btnNext.querySelector('i');
+        if (iconN) iconN.className = "fa-solid fa-wand-magic-sparkles text-amber-500 text-sm";
     } else {
-        btnNext.className = "flex items-center justify-center gap-1.5 py-1.5 sm:py-2 px-3 rounded-lg text-xs sm:text-sm font-bold bg-white dark:bg-zinc-700 text-slate-900 dark:text-white shadow-2xs transition";
-        btnCurr.className = "flex items-center justify-center gap-1.5 py-1.5 sm:py-2 px-3 rounded-lg text-xs sm:text-sm font-semibold text-slate-600 dark:text-zinc-400 hover:text-slate-900 dark:hover:text-white transition";
+        btnNext.className = "flex items-center justify-center gap-2 py-2 sm:py-2.5 px-3 sm:px-5 rounded-xl text-xs sm:text-sm font-black bg-amber-500 dark:bg-amber-500 text-slate-950 shadow-md ring-2 ring-amber-300 border border-amber-400 scale-[1.02] transition-all";
+        const iconN = btnNext.querySelector('i');
+        if (iconN) iconN.className = "fa-solid fa-wand-magic-sparkles text-slate-950 text-sm";
+
+        btnCurr.className = "flex items-center justify-center gap-2 py-2 sm:py-2.5 px-3 sm:px-5 rounded-xl text-xs sm:text-sm font-semibold text-slate-600 dark:text-zinc-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200/70 dark:hover:bg-zinc-700/70 transition-all opacity-80 hover:opacity-100";
+        const iconC = btnCurr.querySelector('i');
+        if (iconC) iconC.className = "fa-regular fa-calendar-check text-emerald-600 dark:text-emerald-400 text-sm";
     }
 
     updateStatsDisplay();
@@ -582,6 +592,26 @@ async function loadSpecials() {
         resultsCountText.textContent = t('found_targets', { n: filtered.length });
 
         if (filtered.length === 0) {
+            const emptyTitle = document.getElementById('emptyStateTitle');
+            const emptySub = document.getElementById('emptyStateSub');
+            const emptyAction = document.getElementById('emptyStateAction');
+            if (currentPeriod === 'next') {
+                if (emptyTitle) {
+                    emptyTitle.textContent = currentLang === 'zh' ? '下週特價型錄尚未公佈' : (currentLang === 'ja' ? '来週のチラシはまだ公開されていません' : (currentLang === 'ko' ? '다음 주 세일 카탈로그가 아직 공개되지 않았습니다' : 'Next Week Specials Not Released Yet'));
+                }
+                if (emptySub) {
+                    emptySub.textContent = currentLang === 'zh' ? '澳洲超商（Coles / Woolies）每週三換檔，通常於週一或週二提前釋出下週預告，目前請先查看「本週特價」！' : (currentLang === 'ja' ? '豪州スーパーは通常月曜・火曜に来週のチラシを先行公開します。まずは今週の特売をご覧ください！' : (currentLang === 'ko' ? '호주 대형마트는 보통 월/화요일에 다음 주 카탈로그를 선공개합니다. 이번 주 특가를 먼저 확인하세요!' : 'Supermarkets typically preview next week specials on Mon/Tue. Please check This Week specials for now!'));
+                }
+                if (emptyAction) emptyAction.classList.remove('hidden');
+            } else {
+                if (emptyTitle) {
+                    emptyTitle.textContent = currentLang === 'zh' ? '沒有找到符合的特價商品' : (currentLang === 'ja' ? '該当する商品が見つかりませんでした' : (currentLang === 'ko' ? '조건에 맞는 특가 상품이 없습니다' : 'No matching specials found'));
+                }
+                if (emptySub) {
+                    emptySub.textContent = currentLang === 'zh' ? '試試切換其他分類或調整搜尋關鍵字' : (currentLang === 'ja' ? '他のカテゴリーを選択するか検索条件を変更してください' : (currentLang === 'ko' ? '다른 카테고리를 선택하거나 검색어를 변경해보세요' : 'Try selecting another category or adjusting your search filters'));
+                }
+                if (emptyAction) emptyAction.classList.add('hidden');
+            }
             empty.classList.remove('hidden');
             return;
         }

@@ -72,8 +72,10 @@ const I18N = {
             'snacks': '🍫 休閒零食',
             'drinks': '☕ 飲料沖調',
             'frozen': '🧊 冷凍食品',
-            'health_vitamins': '💊 保健食品',
-            'household': '🧺 日用清潔'
+            'health_vitamins': '💊 保健美妝',
+            'household': '🧺 日用清潔',
+            'pet': '🐾 寵物專區',
+            'other': '📦 其他專區'
         }
     },
     'en': {
@@ -150,7 +152,9 @@ const I18N = {
             'drinks': '☕ Drinks',
             'frozen': '🧊 Freezer',
             'health_vitamins': '💊 Health & Beauty',
-            'household': '🧺 Cleaning & Household'
+            'household': '🧺 Cleaning & Household',
+            'pet': '🐾 Pet Care',
+            'other': '📦 Other'
         }
     },
     'ja': {
@@ -227,16 +231,18 @@ const I18N = {
             'drinks': '☕ 飲料・ドリンク',
             'frozen': '🧊 冷凍食品',
             'health_vitamins': '💊 ヘルス＆ビューティー',
-            'household': '🧺 日用品・洗剤'
+            'household': '🧺 日用品・洗剤',
+            'pet': '🐾 ペット用品',
+            'other': '📦 その他'
         }
     },
     'ko': {
         name: '한국어',
         app_title: '호주 대형마트 주간 특가',
-        app_subtitle: 'Woolworths · Coles · ALDI 주간 세일 및 최저가 비교',
-        whv_badge: '워홀러 장보기 필수',
+        app_subtitle: 'Woolworths · Coles · ALDI 주간 알뜰 쇼핑 비교',
+        whv_badge: '워홀러 필수 절약앱',
         current_cycle: '이번 주 특가',
-        next_cycle: '다음 주 세일 예고',
+        next_cycle: '다음 주 예고',
         cycle_preview: '미리보기',
         cycle_info: '매주 수요일 세일 시작! 월/화요일에 다음 주 카탈로그가 선공개됩니다',
         search_placeholder: '상품 검색 (예: 소고기, 연어, 비타민, 우유, 계란, 커피...)',
@@ -303,8 +309,10 @@ const I18N = {
             'snacks': '🍫 스낵·과자',
             'drinks': '☕ 음료·커피·생수',
             'frozen': '🧊 냉동식품',
-            'health_vitamins': '💊 건강식품·뷰티',
-            'household': '🧺 생활용품·세제'
+            'health_vitamins': '💊 헬스＆뷰티',
+            'household': '🧺 생활용품·세제',
+            'pet': '🐾 반려동물',
+            'other': '📦 기타'
         }
     }
 };
