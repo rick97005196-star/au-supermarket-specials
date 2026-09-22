@@ -16,9 +16,9 @@ def scrape_aldi_specials() -> Dict[str, Any]:
     seen_titles = set()
 
     urls_to_scrape = [
-        ("https://www.aldi.com.au/groceries/super-savers/", "Super Savers (本週特價)", "Super Savers"),
-        ("https://www.aldi.com.au/special-buys/special-buys-wednesday/", "Special Buys (週三特選)", "Special Buys (Wed)"),
-        ("https://www.aldi.com.au/special-buys/special-buys-saturday/", "Special Buys (週六特選)", "Special Buys (Sat)")
+        ("https://www.aldi.com.au/groceries/super-savers/", "Super Savers", "Super Savers"),
+        ("https://www.aldi.com.au/special-buys/special-buys-wednesday/", "Special Buys (Wed)", "Special Buys"),
+        ("https://www.aldi.com.au/special-buys/special-buys-saturday/", "Special Buys (Sat)", "Special Buys")
     ]
 
     try:

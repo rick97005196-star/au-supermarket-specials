@@ -599,8 +599,8 @@ async function loadSpecials() {
             if (it.period !== currentPeriod) return false;
             if (currentStore !== 'All' && it.store !== currentStore) return false;
             if (currentCategory !== 'all' && it.category !== currentCategory) return false;
-            // Strictly only show items with genuine discounts
-            if (!it.save_amount || it.save_amount <= 0) return false;
+            // Strictly only show items with genuine discounts (or ALDI Super Savers & Special Buys)
+            if (it.store !== 'ALDI' && (!it.save_amount || it.save_amount <= 0)) return false;
             if (discountOnly) {
                 if (!isItemHalfPrice(it)) return false;
             }

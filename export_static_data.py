@@ -12,7 +12,7 @@ c.execute("""
     SELECT id, store, period, date_range, category, title, price, price_display,
            unit_price, was_price, save_amount, discount_desc, image_url, product_url
     FROM specials
-    WHERE save_amount > 0 OR (was_price > price AND price > 0)
+    WHERE (save_amount > 0 OR (was_price > price AND price > 0)) OR store = 'ALDI'
     ORDER BY id ASC
 """)
 rows = c.fetchall()
