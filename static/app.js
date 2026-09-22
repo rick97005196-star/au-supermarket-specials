@@ -118,13 +118,92 @@ function applyLanguage(lang) {
     }
 }
 
+const CATEGORY_STYLES = {
+    'all': {
+        emoji: '✨',
+        iconBg: 'bg-emerald-50 dark:bg-emerald-950/80 border-emerald-200/80 dark:border-emerald-800/80 text-emerald-700 dark:text-emerald-300'
+    },
+    'produce': {
+        emoji: '🥦',
+        iconBg: 'bg-emerald-50 dark:bg-emerald-950/80 border-emerald-200/80 dark:border-emerald-800/80 text-emerald-700 dark:text-emerald-300'
+    },
+    'meat': {
+        emoji: '🥩',
+        iconBg: 'bg-rose-50 dark:bg-rose-950/80 border-rose-200/80 dark:border-rose-800/80 text-rose-700 dark:text-rose-300'
+    },
+    'seafood': {
+        emoji: '🦐',
+        iconBg: 'bg-cyan-50 dark:bg-cyan-950/80 border-cyan-200/80 dark:border-cyan-800/80 text-cyan-700 dark:text-cyan-300'
+    },
+    'dairy_eggs': {
+        emoji: '🥛',
+        iconBg: 'bg-amber-50 dark:bg-amber-950/80 border-amber-200/80 dark:border-amber-800/80 text-amber-700 dark:text-amber-300'
+    },
+    'bakery': {
+        emoji: '🥖',
+        iconBg: 'bg-amber-50 dark:bg-amber-950/80 border-amber-200/80 dark:border-amber-800/80 text-amber-800 dark:text-amber-300'
+    },
+    'frozen': {
+        emoji: '🧊',
+        iconBg: 'bg-blue-50 dark:bg-blue-950/80 border-blue-200/80 dark:border-blue-800/80 text-blue-700 dark:text-blue-300'
+    },
+    'pantry': {
+        emoji: '🍚',
+        iconBg: 'bg-orange-50 dark:bg-orange-950/80 border-orange-200/80 dark:border-orange-800/80 text-orange-700 dark:text-orange-300'
+    },
+    'snacks': {
+        emoji: '🍫',
+        iconBg: 'bg-purple-50 dark:bg-purple-950/80 border-purple-200/80 dark:border-purple-800/80 text-purple-700 dark:text-purple-300'
+    },
+    'drinks': {
+        emoji: '🥤',
+        iconBg: 'bg-teal-50 dark:bg-teal-950/80 border-teal-200/80 dark:border-teal-800/80 text-teal-700 dark:text-teal-300'
+    },
+    'liquor': {
+        emoji: '🍺',
+        iconBg: 'bg-yellow-50 dark:bg-yellow-950/80 border-yellow-200/80 dark:border-yellow-800/80 text-yellow-800 dark:text-yellow-300'
+    },
+    'health_vitamins': {
+        emoji: '💊',
+        iconBg: 'bg-pink-50 dark:bg-pink-950/80 border-pink-200/80 dark:border-pink-800/80 text-pink-700 dark:text-pink-300'
+    },
+    'household': {
+        emoji: '🧺',
+        iconBg: 'bg-indigo-50 dark:bg-indigo-950/80 border-indigo-200/80 dark:border-indigo-800/80 text-indigo-700 dark:text-indigo-300'
+    },
+    'pet': {
+        emoji: '🐾',
+        iconBg: 'bg-lime-50 dark:bg-lime-950/80 border-lime-200/80 dark:border-lime-800/80 text-lime-800 dark:text-lime-300'
+    }
+};
+
+function getCleanCategoryLabel(catKey) {
+    const raw = getCategoryName(catKey);
+    return raw.replace(/^[\p{Emoji}\p{Extended_Pictographic}\u200d\uFE0F\s]+/u, '').trim() || raw;
+}
+
 // Render Categories Bar (2 Rows: Row 1 Fresh & Perishables, Row 2 Pantry, Drinks, Liquor, Home & Pet)
 function renderCategoryBar() {
     const bar = document.getElementById('categoryBar');
     if (!bar) return;
 
-    const activeClasses = "px-3 sm:px-3.5 py-1.5 rounded-xl text-[11px] sm:text-xs font-black bg-emerald-600 dark:bg-emerald-600 text-white shadow-md ring-2 ring-emerald-400/50 border border-emerald-500 shrink-0 transition-all active:scale-95 whitespace-nowrap text-center scale-[1.04]";
-    const inactiveClasses = "px-3 sm:px-3.5 py-1.5 rounded-xl text-[11px] sm:text-xs font-semibold bg-slate-100 dark:bg-zinc-800/80 hover:bg-slate-200 dark:hover:bg-zinc-700 text-slate-700 dark:text-zinc-300 border border-slate-200/60 dark:border-zinc-700/60 shrink-0 transition-all active:scale-95 whitespace-nowrap text-center";
+    const activeClasses = "flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3.5 py-1.5 rounded-xl text-[11px] sm:text-xs font-black bg-gradient-to-r from-emerald-600 to-teal-600 text-white shadow-md ring-2 ring-emerald-400/50 border border-emerald-500 shrink-0 transition-all active:scale-95 whitespace-nowrap scale-[1.03]";
+    const inactiveClasses = "flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1.5 rounded-xl text-[11px] sm:text-xs font-semibold bg-white dark:bg-zinc-800/90 hover:bg-slate-50 dark:hover:bg-zinc-700/80 text-slate-700 dark:text-zinc-200 border border-slate-200/80 dark:border-zinc-700/80 hover:border-slate-300 dark:hover:border-zinc-600 shrink-0 transition-all active:scale-95 whitespace-nowrap shadow-2xs";
+
+    const renderBtnContent = (btn, catKey, isActive) => {
+        const style = CATEGORY_STYLES[catKey] || { emoji: '🏷️', iconBg: 'bg-slate-50 border-slate-200 text-slate-700' };
+        const label = getCleanCategoryLabel(catKey);
+        const iconClasses = isActive
+            ? 'w-5 h-5 sm:w-6 sm:h-6 rounded-lg bg-white/20 border border-white/30 text-white flex items-center justify-center text-xs sm:text-sm shrink-0 shadow-2xs'
+            : `w-5 h-5 sm:w-6 sm:h-6 rounded-lg border flex items-center justify-center text-xs sm:text-sm shrink-0 shadow-2xs ${style.iconBg}`;
+
+        btn.innerHTML = `
+            <span class="${iconClasses}">
+                ${style.emoji}
+            </span>
+            <span class="truncate tracking-tight">${label}</span>
+        `;
+    };
 
     const existingBtns = bar.querySelectorAll('button');
     if (existingBtns.length === 14) {
@@ -132,7 +211,7 @@ function renderCategoryBar() {
             const catKey = btn.dataset.cat;
             const isActive = currentCategory === catKey;
             btn.className = isActive ? activeClasses : inactiveClasses;
-            btn.textContent = getCategoryName(catKey);
+            renderBtnContent(btn, catKey, isActive);
         });
         return;
     }
@@ -156,11 +235,10 @@ function renderCategoryBar() {
     orderedKeys.forEach(catKey => {
         const btn = document.createElement('button');
         const isActive = currentCategory === catKey;
-        const name = getCategoryName(catKey);
 
         btn.dataset.cat = catKey;
         btn.className = isActive ? activeClasses : inactiveClasses;
-        btn.textContent = name;
+        renderBtnContent(btn, catKey, isActive);
         btn.onclick = () => selectCategory(catKey);
         bar.appendChild(btn);
     });
@@ -851,8 +929,9 @@ function createProductCardElement(item) {
                     <span class="px-1.5 sm:px-2 py-0.5 rounded-md text-[10px] sm:text-[11px] font-bold ${storeColor}">
                         ${item.store}
                     </span>
-                    <span class="px-1 sm:px-1.5 py-0.5 rounded-md text-[9px] sm:text-[10px] font-medium bg-slate-100 dark:bg-zinc-800 text-slate-600 dark:text-zinc-400">
-                        ${getCategoryName(item.category)}
+                    <span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-md text-[9px] sm:text-[10px] font-medium bg-slate-100 dark:bg-zinc-800 text-slate-600 dark:text-zinc-400 border border-slate-200/50 dark:border-zinc-700/50">
+                        <span>${(CATEGORY_STYLES[item.category] || {}).emoji || ''}</span>
+                        <span>${getCleanCategoryLabel(item.category)}</span>
                     </span>
                 </div>
                 ${isHalfPrice ? `
