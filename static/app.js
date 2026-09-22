@@ -580,6 +580,8 @@ async function loadSpecials() {
             if (it.period !== currentPeriod) return false;
             if (currentStore !== 'All' && it.store !== currentStore) return false;
             if (currentCategory !== 'all' && it.category !== currentCategory) return false;
+            // Strictly only show items with genuine discounts
+            if (!it.save_amount || it.save_amount <= 0) return false;
             if (discountOnly) {
                 if (!isItemHalfPrice(it)) return false;
             }

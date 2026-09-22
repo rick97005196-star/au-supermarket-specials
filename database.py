@@ -122,6 +122,10 @@ def save_specials(store: str, items: List[Dict[str, Any]], period: str = 'curren
             elif not discount_desc and save_amount > 0:
                 discount_desc = f"Save ${save_amount:.2f}"
 
+            # Only keep products that have a real discount
+            if save_amount <= 0 and (was_price <= price or was_price == 0):
+                continue
+
             rows.append((
                 store,
                 period,
@@ -175,7 +179,7 @@ def get_specials(
 ) -> Dict[str, Any]:
     with get_db() as conn:
         cursor = conn.cursor()
-        where_clauses = ['period = ?']
+        where_clauses = ['period = ?', '(save_amount > 0 OR was_price > price)']
         params = [period]
 
         if store and store.lower() != 'all':
@@ -246,29 +250,29 @@ def get_stats() -> Dict[str, Any]:
         cursor = conn.cursor()
         
         # Current stats
-        cursor.execute("SELECT store, COUNT(*) as count FROM specials WHERE period = 'current' GROUP BY store")
+        cursor.execute("SELECT store, COUNT(*) as count FROM specials WHERE period = 'current' AND (save_amount > 0 OR was_price > price) GROUP BY store")
         counts_current = {row['store']: row['count'] for row in cursor.fetchall()}
 
-        cursor.execute("SELECT category, COUNT(*) as count FROM specials WHERE period = 'current' GROUP BY category")
+        cursor.execute("SELECT category, COUNT(*) as count FROM specials WHERE period = 'current' AND (save_amount > 0 OR was_price > price) GROUP BY category")
         cats_current = {row['category']: row['count'] for row in cursor.fetchall()}
         
         # Next week stats
-        cursor.execute("SELECT store, COUNT(*) as count FROM specials WHERE period = 'next' GROUP BY store")
+        cursor.execute("SELECT store, COUNT(*) as count FROM specials WHERE period = 'next' AND (save_amount > 0 OR was_price > price) GROUP BY store")
         counts_next = {row['store']: row['count'] for row in cursor.fetchall()}
 
-        cursor.execute("SELECT category, COUNT(*) as count FROM specials WHERE period = 'next' GROUP BY category")
+        cursor.execute("SELECT category, COUNT(*) as count FROM specials WHERE period = 'next' AND (save_amount > 0 OR was_price > price) GROUP BY category")
         cats_next = {row['category']: row['count'] for row in cursor.fetchall()}
 
-        cursor.execute("SELECT COUNT(*) FROM specials WHERE period = 'current' AND (discount_desc LIKE '%1/2%' OR discount_desc LIKE '%half%')")
+        cursor.execute("SELECT COUNT(*) FROM specials WHERE period = 'current' AND (save_amount > 0 OR was_price > price) AND (discount_desc LIKE '%1/2%' OR discount_desc LIKE '%half%')")
         half_price_current = cursor.fetchone()[0]
 
-        cursor.execute("SELECT COUNT(*) FROM specials WHERE period = 'next' AND (discount_desc LIKE '%1/2%' OR discount_desc LIKE '%half%')")
+        cursor.execute("SELECT COUNT(*) FROM specials WHERE period = 'next' AND (save_amount > 0 OR was_price > price) AND (discount_desc LIKE '%1/2%' OR discount_desc LIKE '%half%')")
         half_price_next = cursor.fetchone()[0]
 
-        cursor.execute("SELECT COUNT(*) FROM specials WHERE period = 'current'")
+        cursor.execute("SELECT COUNT(*) FROM specials WHERE period = 'current' AND (save_amount > 0 OR was_price > price)")
         total_current = cursor.fetchone()[0]
 
-        cursor.execute("SELECT COUNT(*) FROM specials WHERE period = 'next'")
+        cursor.execute("SELECT COUNT(*) FROM specials WHERE period = 'next' AND (save_amount > 0 OR was_price > price)")
         total_next = cursor.fetchone()[0]
 
         cursor.execute('SELECT key, value FROM metadata')

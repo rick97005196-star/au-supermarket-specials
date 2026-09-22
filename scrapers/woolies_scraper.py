@@ -157,6 +157,10 @@ def scrape_woolies_catalogue_items(base_list_url: str, initial_soup: BeautifulSo
                     was_price = round(price * 2, 2)
                     save_amount = price
 
+                # Only include products with real discounts (exclude non-discounted catalogue items)
+                if save_amount <= 0 and (was_price <= price or was_price == 0):
+                    continue
+
                 products.append({
                     'store': 'Woolworths',
                     'title': html.unescape(title),
