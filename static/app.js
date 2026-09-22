@@ -27,16 +27,23 @@ const CATEGORY_KEYS = [
 
 // Initialization
 document.addEventListener('DOMContentLoaded', () => {
+    // Early Static Mode detection for instantaneous Cloudflare Pages & CDN loading
+    isStaticMode = window.location.hostname.includes('pages.dev') ||
+                   window.location.hostname.includes('github.io') ||
+                   window.location.protocol === 'file:' ||
+                   !window.location.port;
+
     initTheme();
     initLanguage();
     renderCategoryBar();
     initScrollListeners();
-    loadTranslations();
     loadStats();
     loadAnnouncement();
     loadSpecials();
     loadShoppingList();
     checkUpdateStatus();
+    // Non-blocking lazy background check for external dictionary
+    setTimeout(loadTranslations, 4000);
 });
 
 // Scroll & Back to Top Management
@@ -248,8 +255,14 @@ function translateQueryClient(q) {
 let isStaticMode = false;
 let staticSpecials = [];
 
+// In-memory high-speed cache for static JSON files
+const staticJsonCache = new Map();
+
 // Helper to fetch static JSON that works seamlessly on both local server and Cloudflare Pages
 async function fetchStaticJson(filename) {
+    if (staticJsonCache.has(filename)) {
+        return staticJsonCache.get(filename);
+    }
     const candidates = [
         `/data/${filename}`,
         `/static/data/${filename}`,
@@ -261,7 +274,9 @@ async function fetchStaticJson(filename) {
             const contentType = res.headers.get('content-type') || '';
             // Prevent parsing HTML 404 fallback as JSON
             if (res.ok && !contentType.includes('text/html')) {
-                return await res.json();
+                const data = await res.json();
+                staticJsonCache.set(filename, data);
+                return data;
             }
         } catch (e) {}
     }
@@ -670,134 +685,214 @@ function formatSupermarketUnitPrice(unitPrice) {
     return unitPrice.replace(/A\$/gi, '$').trim();
 }
 
-// Render Products Grid (Authentic Australian Supermarket Design)
+// High-Performance Batch Rendering & Infinite Scrolling State
+let currentDisplayItems = [];
+let renderedCount = 0;
+const BATCH_SIZE = 40;
+let infiniteScrollObserver = null;
+
+// Render Products Grid with Instant 40-Card First Paint & Infinite Scroll
 function renderProducts(items) {
     const grid = document.getElementById('productsGrid');
+    const sentinel = document.getElementById('infiniteScrollSentinel');
+    
+    // Disconnect any active observer
+    if (infiniteScrollObserver) {
+        infiniteScrollObserver.disconnect();
+        infiniteScrollObserver = null;
+    }
+    
     grid.innerHTML = '';
+    currentDisplayItems = items || [];
+    renderedCount = 0;
 
-    items.forEach(item => {
-        const card = document.createElement('div');
-        card.className = 'bg-white dark:bg-zinc-900 rounded-2xl border border-slate-200/90 dark:border-zinc-800 overflow-hidden shadow-2xs hover:shadow-md hover:border-slate-300 dark:hover:border-zinc-700 transition duration-200 flex flex-col justify-between group cursor-pointer active:scale-[0.98]';
-        card.onclick = () => openProductModal(item);
+    if (currentDisplayItems.length === 0) {
+        if (sentinel) sentinel.classList.add('hidden');
+        return;
+    }
 
-        let storeColor = 'bg-emerald-600 text-white';
-        if (item.store === 'Coles') storeColor = 'bg-rose-600 text-white';
-        if (item.store === 'ALDI') storeColor = 'bg-blue-600 text-white';
+    // Render the initial 40 items instantly (<15ms)
+    renderNextBatch();
 
-        const isHalfPrice = isItemHalfPrice(item);
-        const fallbackImg = "https://images.unsplash.com/photo-1542838132-92c53300491e?w=300&auto=format&fit=crop&q=60";
+    // Set up IntersectionObserver to automatically load more on scroll
+    if (sentinel && renderedCount < currentDisplayItems.length) {
+        sentinel.classList.remove('hidden');
+        infiniteScrollObserver = new IntersectionObserver((entries) => {
+            if (entries[0] && entries[0].isIntersecting) {
+                renderNextBatch();
+            }
+        }, {
+            root: null,
+            rootMargin: '500px', // Pre-load 500px before user reaches bottom for zero perceived wait
+            threshold: 0.05
+        });
+        infiniteScrollObserver.observe(sentinel);
+    } else if (sentinel) {
+        sentinel.classList.add('hidden');
+    }
+}
 
-        const p = parseSupermarketPrice(item.price_display, item.price);
-        const unitPriceClean = formatSupermarketUnitPrice(item.unit_price);
-        const translated = getProductTranslation(item, currentLang);
+function renderNextBatch() {
+    if (renderedCount >= currentDisplayItems.length) {
+        const sentinel = document.getElementById('infiniteScrollSentinel');
+        if (sentinel) sentinel.classList.add('hidden');
+        if (infiniteScrollObserver) {
+            infiniteScrollObserver.disconnect();
+            infiniteScrollObserver = null;
+        }
+        return;
+    }
 
-        card.innerHTML = `
-            <div class="p-2.5 sm:p-3.5 space-y-2 sm:space-y-2.5">
-                <!-- Top Tags: Store, Category & 1/2 Price Badge -->
-                <div class="flex items-center justify-between gap-1 flex-wrap">
-                    <div class="flex items-center gap-1">
-                        <span class="px-1.5 sm:px-2 py-0.5 rounded-md text-[10px] sm:text-[11px] font-bold ${storeColor}">
-                            ${item.store}
-                        </span>
-                        <span class="px-1 sm:px-1.5 py-0.5 rounded-md text-[9px] sm:text-[10px] font-medium bg-slate-100 dark:bg-zinc-800 text-slate-600 dark:text-zinc-400">
-                            ${getCategoryName(item.category)}
-                        </span>
-                    </div>
-                    ${isHalfPrice ? `
-                        <span class="px-1.5 sm:px-2 py-0.5 rounded-md text-[10px] sm:text-[11px] font-black bg-rose-500 text-white shadow-2xs">
-                            1/2
-                        </span>
-                    ` : (item.discount_desc ? `
-                        <span class="px-1.5 py-0.5 rounded-md text-[9px] sm:text-[10px] font-semibold bg-amber-50 dark:bg-amber-950/60 text-amber-800 dark:text-amber-300 border border-amber-200/60 dark:border-amber-800/60 truncate max-w-[90px] sm:max-w-[110px]">
-                            ${item.discount_desc}
-                        </span>
-                    ` : '')}
+    const grid = document.getElementById('productsGrid');
+    const nextSlice = currentDisplayItems.slice(renderedCount, renderedCount + BATCH_SIZE);
+    const fragment = document.createDocumentFragment();
+
+    nextSlice.forEach(item => {
+        const card = createProductCardElement(item);
+        fragment.appendChild(card);
+    });
+
+    grid.appendChild(fragment);
+    renderedCount += nextSlice.length;
+
+    const sentinel = document.getElementById('infiniteScrollSentinel');
+    if (sentinel) {
+        if (renderedCount >= currentDisplayItems.length) {
+            sentinel.classList.add('hidden');
+            if (infiniteScrollObserver) {
+                infiniteScrollObserver.disconnect();
+                infiniteScrollObserver = null;
+            }
+        } else {
+            sentinel.classList.remove('hidden');
+        }
+    }
+}
+
+function createProductCardElement(item) {
+    const card = document.createElement('div');
+    card.className = 'bg-white dark:bg-zinc-900 rounded-2xl border border-slate-200/90 dark:border-zinc-800 overflow-hidden shadow-2xs hover:shadow-md hover:border-slate-300 dark:hover:border-zinc-700 transition duration-200 flex flex-col justify-between group cursor-pointer active:scale-[0.98]';
+    card.onclick = () => openProductModal(item);
+
+    let storeColor = 'bg-emerald-600 text-white';
+    if (item.store === 'Coles') storeColor = 'bg-rose-600 text-white';
+    if (item.store === 'ALDI') storeColor = 'bg-blue-600 text-white';
+
+    const isHalfPrice = isItemHalfPrice(item);
+    const fallbackImg = "https://images.unsplash.com/photo-1542838132-92c53300491e?w=300&auto=format&fit=crop&q=60";
+
+    const p = parseSupermarketPrice(item.price_display, item.price);
+    const unitPriceClean = formatSupermarketUnitPrice(item.unit_price);
+    const translated = getProductTranslation(item, currentLang);
+
+    card.innerHTML = `
+        <div class="p-2.5 sm:p-3.5 space-y-2 sm:space-y-2.5">
+            <!-- Top Tags: Store, Category & 1/2 Price Badge -->
+            <div class="flex items-center justify-between gap-1 flex-wrap">
+                <div class="flex items-center gap-1">
+                    <span class="px-1.5 sm:px-2 py-0.5 rounded-md text-[10px] sm:text-[11px] font-bold ${storeColor}">
+                        ${item.store}
+                    </span>
+                    <span class="px-1 sm:px-1.5 py-0.5 rounded-md text-[9px] sm:text-[10px] font-medium bg-slate-100 dark:bg-zinc-800 text-slate-600 dark:text-zinc-400">
+                        ${getCategoryName(item.category)}
+                    </span>
                 </div>
+                ${isHalfPrice ? `
+                    <span class="px-1.5 sm:px-2 py-0.5 rounded-md text-[10px] sm:text-[11px] font-black bg-rose-500 text-white shadow-2xs">
+                        1/2
+                    </span>
+                ` : (item.discount_desc ? `
+                    <span class="px-1.5 py-0.5 rounded-md text-[9px] sm:text-[10px] font-semibold bg-amber-50 dark:bg-amber-950/60 text-amber-800 dark:text-amber-300 border border-amber-200/60 dark:border-amber-800/60 truncate max-w-[90px] sm:max-w-[110px]">
+                        ${item.discount_desc}
+                    </span>
+                ` : '')}
+            </div>
 
-                <!-- Product Image -->
-                <div class="w-full h-28 sm:h-36 rounded-xl bg-slate-50 dark:bg-zinc-800/50 flex items-center justify-center p-2 sm:p-2.5 relative overflow-hidden group-hover:bg-slate-100/70 dark:group-hover:bg-zinc-800 transition">
-                    <img 
-                        src="${item.image_url || fallbackImg}" 
-                        alt="${item.title}" 
-                        loading="lazy" 
-                        class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-200"
-                        onerror="this.src='${fallbackImg}'"
-                    />
+            <!-- Product Image -->
+            <div class="w-full h-28 sm:h-36 rounded-xl bg-slate-50 dark:bg-zinc-800/50 flex items-center justify-center p-2 sm:p-2.5 relative overflow-hidden group-hover:bg-slate-100/70 dark:group-hover:bg-zinc-800 transition">
+                <img 
+                    src="${item.image_url || fallbackImg}" 
+                    alt="${item.title}" 
+                    loading="lazy" 
+                    decoding="async"
+                    class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-200"
+                    onerror="this.src='${fallbackImg}'"
+                />
+            </div>
+
+            <!-- Date Range Tag -->
+            ${item.date_range ? `
+                <div class="text-[9px] sm:text-[10px] text-slate-400 dark:text-zinc-500 flex items-center gap-1 font-medium truncate" title="${item.date_range}">
+                    <i class="fa-regular fa-calendar text-[8px] sm:text-[9px]"></i>
+                    <span class="truncate">${item.date_range}</span>
                 </div>
+            ` : ''}
 
-                <!-- Date Range Tag -->
-                ${item.date_range ? `
-                    <div class="text-[9px] sm:text-[10px] text-slate-400 dark:text-zinc-500 flex items-center gap-1 font-medium truncate" title="${item.date_range}">
-                        <i class="fa-regular fa-calendar text-[8px] sm:text-[9px]"></i>
-                        <span class="truncate">${item.date_range}</span>
+            <!-- Product Title & Translation -->
+            <div class="space-y-1">
+                <h3 class="text-xs sm:text-sm font-semibold text-slate-900 dark:text-zinc-100 line-clamp-2 leading-snug" title="${item.title}">
+                    ${item.title}
+                </h3>
+                ${translated ? `
+                    <div class="text-[11px] sm:text-xs font-medium text-emerald-700 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/70 border border-emerald-200/60 dark:border-emerald-800/60 px-2 py-0.5 rounded-lg line-clamp-2 leading-tight" title="${translated}">
+                        ${translated}
                     </div>
                 ` : ''}
+                <!-- Supermarket Unit Price (e.g. $1.25 / 100g) -->
+                ${unitPriceClean ? `
+                    <div class="inline-flex items-center gap-1 text-[10px] sm:text-[11px] font-mono font-semibold text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200/60 dark:border-emerald-800/60 px-1.5 py-0.5 rounded">
+                        <span class="text-[9px]">⚖️</span>
+                        <span>${unitPriceClean}</span>
+                    </div>
+                ` : ''}
+            </div>
+        </div>
 
-                <!-- Product Title & Translation -->
-                <div class="space-y-1">
-                    <h3 class="text-xs sm:text-sm font-semibold text-slate-900 dark:text-zinc-100 line-clamp-2 leading-snug" title="${item.title}">
-                        ${item.title}
-                    </h3>
-                    ${translated ? `
-                        <div class="text-[11px] sm:text-xs font-medium text-emerald-700 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/70 border border-emerald-200/60 dark:border-emerald-800/60 px-2 py-0.5 rounded-lg line-clamp-2 leading-tight" title="${translated}">
-                            ${translated}
-                        </div>
+        <!-- Price & Add Button Footer (Australian Supermarket Lockup: $ 4 25 ea | Save $4.25 | Was $8.50) -->
+        <div class="p-2.5 sm:p-3.5 pt-0 space-y-2 sm:space-y-2.5">
+            <div class="space-y-1">
+                <!-- Coles / Woolies Big Price Lockup -->
+                <div class="flex items-baseline gap-0.5 leading-none">
+                    <span class="text-xs sm:text-sm font-extrabold text-slate-900 dark:text-white self-start mt-0.5">$</span>
+                    <span class="text-xl sm:text-3xl font-black tracking-tight text-slate-900 dark:text-white">${p.dollars}</span>
+                    <span class="text-xs sm:text-sm font-extrabold text-slate-900 dark:text-white self-start mt-0.5">${p.cents}</span>
+                    <span class="text-[10px] sm:text-xs font-semibold text-slate-500 dark:text-zinc-400 ml-1 self-baseline">${p.unit}</span>
+                </div>
+
+                <!-- Was & Save Badges Row -->
+                <div class="flex items-center gap-1.5 flex-wrap min-h-[1.2rem]">
+                    ${item.save_amount > 0 ? `
+                        <span class="px-1.5 py-0.5 rounded text-[10px] sm:text-[11px] font-black bg-amber-400 text-slate-950 dark:bg-amber-400 dark:text-slate-950 shadow-2xs leading-none">
+                            Save $${item.save_amount.toFixed(2)}
+                        </span>
                     ` : ''}
-                    <!-- Supermarket Unit Price (e.g. $1.25 / 100g) -->
-                    ${unitPriceClean ? `
-                        <div class="inline-flex items-center gap-1 text-[10px] sm:text-[11px] font-mono font-semibold text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200/60 dark:border-emerald-800/60 px-1.5 py-0.5 rounded">
-                            <span class="text-[9px]">⚖️</span>
-                            <span>${unitPriceClean}</span>
-                        </div>
+                    ${item.was_price > 0 ? `
+                        <span class="text-[10px] sm:text-[11px] text-slate-400 line-through font-medium">
+                            Was $${item.was_price.toFixed(2)}
+                        </span>
                     ` : ''}
                 </div>
             </div>
 
-            <!-- Price & Add Button Footer (Australian Supermarket Lockup: $ 4 25 ea | Save $4.25 | Was $8.50) -->
-            <div class="p-2.5 sm:p-3.5 pt-0 space-y-2 sm:space-y-2.5">
-                <div class="space-y-1">
-                    <!-- Coles / Woolies Big Price Lockup -->
-                    <div class="flex items-baseline gap-0.5 leading-none">
-                        <span class="text-xs sm:text-sm font-extrabold text-slate-900 dark:text-white self-start mt-0.5">$</span>
-                        <span class="text-xl sm:text-3xl font-black tracking-tight text-slate-900 dark:text-white">${p.dollars}</span>
-                        <span class="text-xs sm:text-sm font-extrabold text-slate-900 dark:text-white self-start mt-0.5">${p.cents}</span>
-                        <span class="text-[10px] sm:text-xs font-semibold text-slate-500 dark:text-zinc-400 ml-1 self-baseline">${p.unit}</span>
-                    </div>
-
-                    <!-- Was & Save Badges Row -->
-                    <div class="flex items-center gap-1.5 flex-wrap min-h-[1.2rem]">
-                        ${item.save_amount > 0 ? `
-                            <span class="px-1.5 py-0.5 rounded text-[10px] sm:text-[11px] font-black bg-amber-400 text-slate-950 dark:bg-amber-400 dark:text-slate-950 shadow-2xs leading-none">
-                                Save $${item.save_amount.toFixed(2)}
-                            </span>
-                        ` : ''}
-                        ${item.was_price > 0 ? `
-                            <span class="text-[10px] sm:text-[11px] text-slate-400 line-through font-medium">
-                                Was $${item.was_price.toFixed(2)}
-                            </span>
-                        ` : ''}
-                    </div>
-                </div>
-
-                <div class="flex items-center justify-between text-[9px] sm:text-[10px] text-slate-400 dark:text-zinc-500 pt-1 border-t border-slate-100 dark:border-zinc-800/60">
-                    <span class="group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition flex items-center gap-1">
-                        <i class="fa-solid fa-circle-info text-[8px] sm:text-[9px]"></i>
-                        <span>${t('view_details')}</span>
-                    </span>
-                    <span class="text-slate-300 dark:text-zinc-600">→</span>
-                </div>
-
-                <button 
-                    onclick='event.stopPropagation(); addToShoppingList(${JSON.stringify(item).replace(/'/g, "&#39;")})'
-                    class="w-full py-1.5 sm:py-2 px-2 sm:px-3 rounded-xl text-[11px] sm:text-xs font-bold bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 hover:bg-emerald-600 hover:text-white dark:hover:bg-emerald-600 dark:hover:text-white border border-emerald-200/80 dark:border-emerald-800/80 transition flex items-center justify-center gap-1 active:scale-95 shadow-2xs"
-                >
-                    <i class="fa-solid fa-plus text-[10px] sm:text-xs"></i>
-                    <span>${t('add_to_list')}</span>
-                </button>
+            <div class="flex items-center justify-between text-[9px] sm:text-[10px] text-slate-400 dark:text-zinc-500 pt-1 border-t border-slate-100 dark:border-zinc-800/60">
+                <span class="group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition flex items-center gap-1">
+                    <i class="fa-solid fa-circle-info text-[8px] sm:text-[9px]"></i>
+                    <span>${t('view_details')}</span>
+                </span>
+                <span class="text-slate-300 dark:text-zinc-600">→</span>
             </div>
-        `;
-        grid.appendChild(card);
-    });
+
+            <button 
+                onclick='event.stopPropagation(); addToShoppingList(${JSON.stringify(item).replace(/'/g, "&#39;")})'
+                class="w-full py-1.5 sm:py-2 px-2 sm:px-3 rounded-xl text-[11px] sm:text-xs font-bold bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 hover:bg-emerald-600 hover:text-white dark:hover:bg-emerald-600 dark:hover:text-white border border-emerald-200/80 dark:border-emerald-800/80 transition flex items-center justify-center gap-1 active:scale-95 shadow-2xs"
+            >
+                <i class="fa-solid fa-plus text-[10px] sm:text-xs"></i>
+                <span data-i18n="add_to_list">${t('add_to_list')}</span>
+            </button>
+        </div>
+    `;
+
+    return card;
 }
 
 // Product Details Modal

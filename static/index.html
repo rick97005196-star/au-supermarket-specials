@@ -29,7 +29,16 @@
     <link rel="apple-touch-icon" href="/logo.jpg">
     <link rel="manifest" href="./manifest.json">
 
-    <!-- Tailwind CSS CDN -->
+    <!-- Preconnect CDNs for Ultra-Fast Resource Fetching -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+
+    <!-- Google Fonts with display=swap for zero-blocking text render -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS CDN & FontAwesome -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <script>
@@ -63,8 +72,6 @@
         }
     </script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&family=Noto+Sans+TC:wght@400;500;700;900&display=swap');
-        
         body {
             font-family: 'Inter', 'Noto Sans TC', sans-serif;
             transition: background-color 0.2s ease, color 0.2s ease;
@@ -338,6 +345,14 @@
         <!-- Product Cards Grid (Clean Minimalist Cards - 2 Columns on Mobile, 3-5 on Desktop) -->
         <div id="productsGrid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2.5 sm:gap-4">
             <!-- Dynamic Content loaded via app.js -->
+        </div>
+
+        <!-- Infinite Scroll Sentinel & Batch Loading Indicator -->
+        <div id="infiniteScrollSentinel" class="py-6 text-center hidden">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-100 dark:bg-zinc-800 text-slate-500 dark:text-zinc-400 text-xs font-semibold shadow-2xs">
+                <i class="fa-solid fa-circle-notch fa-spin text-emerald-600 dark:text-emerald-400 text-xs"></i>
+                <span id="infiniteScrollText">載入更多商品中...</span>
+            </div>
         </div>
 
         <!-- Loading State -->
