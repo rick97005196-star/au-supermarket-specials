@@ -58,7 +58,7 @@ jobs:
           git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-update weekly specials & translations [skip ci]" && git push)
 
       - name: Deploy to Cloudflare Pages
-        if: env.CLOUDFLARE_API_TOKEN != ''
+        if: ${{ secrets.CLOUDFLARE_API_TOKEN != '' }}
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
         run: |
