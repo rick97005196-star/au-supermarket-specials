@@ -2,11 +2,16 @@ name: Weekly Specials Auto Update & Deploy
 
 on:
   schedule:
-    # 澳洲東部時間週二下午 13:00 (UTC 03:00) 抓取下週特價預告 (Next Week Preview)
-    - cron: '0 3 * * 2'
-    # 澳洲東部時間週三上午 10:00 (UTC 00:00) 換檔更新本週特價 (Current Week Specials)
-    - cron: '0 0 * * 3'
-  workflow_dispatch: # 支援在 GitHub 網頁上手動點擊立即執行
+    # 澳洲東部時間週二晚上 20:00 (UTC 10:00) 抓取下週特價預告
+    - cron: '0 10 * * 2'
+    # 澳洲東部時間週三清晨 08:00 (UTC 22:00 週二) 換檔更新本週特價
+    - cron: '0 22 * * 2'
+    # 澳洲東部時間週三上午 11:00 (UTC 01:00 週三) 補充更新與確認
+    - cron: '0 1 * * 3'
+  workflow_dispatch: # 支援在 GitHub 網頁 Actions 標籤上一鍵手動立即執行
+
+permissions:
+  contents: write
 
 jobs:
   update-and-deploy:
@@ -35,18 +40,26 @@ jobs:
 
       - name: Run Supermarket Scrapers
         run: |
-          python -c "from scrapers.updater import update_all_stores; update_all_stores(max_catalogue_pages=15)"
+          python -c "from scrapers.updater import update_all_stores; update_all_stores(max_catalogue_pages=50)"
 
       - name: Generate Multilingual Translations
         run: |
-          python scripts/build_translations.py
+          python scripts/auto_translate.py
 
       - name: Export Static Data for Cloudflare Pages
         run: |
           python export_static_data.py
 
+      - name: Commit and Push Updated Data
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action Bot"
+          git add data/specials.db static/data/specials.json static/data/stats.json static/data/translations.json
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-update weekly specials & translations [skip ci]" && git push)
+
       - name: Deploy to Cloudflare Pages
+        if: env.CLOUDFLARE_API_TOKEN != ''
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
         run: |
-          npx wrangler pages deploy static --project-name=au-supermarket-specials
+          npx wrangler pages deploy static --project-name=au-supermarket-specials --branch=main

@@ -2,7 +2,13 @@ import requests
 from bs4 import BeautifulSoup
 import re
 import html
+import os
+import sys
 from typing import List, Dict, Any
+
+# Ensure project root is in sys.path
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from categories import classify_product
 
 HEADERS = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
@@ -105,9 +111,8 @@ def scrape_woolies_catalogue_items(base_list_url: str, initial_soup: BeautifulSo
                 product_url = f"{BASE_URL}{href}" if href.startswith('/') else href
                 category = "Groceries"
                 if href:
-                    parts = [p for p in href.split('/') if p]
-                    if len(parts) >= 4:
-                        category = parts[3].replace('-', ' ').title()
+                    parts = [p.replace('-', ' ') for p in href.split('/') if p]
+                    category = " ".join(parts[1:4])
 
                 img = item.select_one('.item-image img')
                 image_url = img.get('src', '') if img else ''
@@ -163,7 +168,98 @@ def scrape_woolies_catalogue_items(base_list_url: str, initial_soup: BeautifulSo
 
     return products
 
-def scrape_woolies_all_weeks(max_pages: int = 10) -> Dict[str, Dict[str, Any]]:
+def scrape_woolies_online_half_price(max_pages: int = 100) -> List[Dict[str, Any]]:
+    """Fetches ALL real online Half Price specials from Woolworths official search/specials API until the last page."""
+    import time
+    products = []
+    seen_names = set()
+    url = 'https://www.woolworths.com.au/apis/ui/Search/products'
+    page = 1
+    
+    while page <= max_pages:
+        try:
+            params = {
+                'SearchTerm': 'half price',
+                'PageSize': 36,
+                'PageNumber': page
+            }
+            r = requests.get(url, params=params, headers=HEADERS, timeout=15)
+            if r.status_code != 200:
+                print(f"Woolies API status {r.status_code} at page {page}, stopping.")
+                break
+            data = r.json()
+            bundles = data.get('Products') or []
+            if not bundles:
+                print(f"Woolies reached end of Half Price specials at page {page - 1}.")
+                break
+                
+            page_added = 0
+            for b in bundles:
+                for pr in b.get('Products', []):
+                    code = str(pr.get('Stockcode', ''))
+                    name = (pr.get('Name') or '').strip()
+                    if not name or name.lower() in seen_names:
+                        continue
+                    seen_names.add(name.lower())
+                    
+                    price = float(pr.get('Price') or 0)
+                    was_price = float(pr.get('WasPrice') or 0)
+                    is_on_special = pr.get('IsOnSpecial', False)
+                    
+                    # Strictly half price: price <= was_price * 0.55
+                    if not (is_on_special and was_price > 0 and price <= was_price * 0.55):
+                        continue
+                        
+                    pkg = (pr.get('PackageSize') or '').strip()
+                    full_title = f"{name} {pkg}".strip() if pkg and pkg not in name else name
+                    
+                    save_amt = round(was_price - price, 2)
+                    img = pr.get('LargeImageFile') or pr.get('MediumImageFile') or ''
+                    
+                    # Product link
+                    slug = re.sub(r'[^a-zA-Z0-9]+', '-', name).strip('-').lower()
+                    prod_url = f"https://www.woolworths.com.au/shop/productdetails/{code}/{slug}" if code else f"https://www.woolworths.com.au/shop/search/products?searchTerm={requests.utils.quote(name)}"
+
+                    # Determine category with full department metadata
+                    attrs = pr.get('AdditionalAttributes', {})
+                    dept = attrs.get('piesdepartmentnamesjson', '')
+                    cat_json = attrs.get('piescategorynamesjson', '')
+                    sap = attrs.get('sapcategoryname', '')
+                    raw_cat = f"{dept} {cat_json} {sap}".strip()
+                    cat = classify_product(full_title, raw_cat, prod_url)
+                    
+                    # Unit price
+                    unit_p = pr.get('CupPrice')
+                    unit_m = pr.get('CupMeasure')
+                    unit_str = f"${unit_p} / {unit_m}" if unit_p and unit_m else ""
+                    
+                    products.append({
+                        'store': 'Woolworths',
+                        'category': cat,
+                        'title': full_title,
+                        'price': price,
+                        'price_display': f"${price:.2f} ea",
+                        'unit_price': unit_str,
+                        'was_price': was_price,
+                        'save_amount': save_amt,
+                        'discount_desc': '1/2 PRICE',
+                        'image_url': img,
+                        'product_url': prod_url
+                    })
+                    page_added += 1
+            
+            if page % 5 == 0 or page_added == 0:
+                print(f"Woolies Half Price page {page}: added {page_added} items (Total: {len(products)})")
+            page += 1
+            time.sleep(0.15)
+        except Exception as e:
+            print(f"Error fetching Woolies online half price page {page}: {e}")
+            break
+            
+    print(f"Scraped {len(products)} online Half Price specials from Woolworths API across {page - 1} pages.")
+    return products
+
+def scrape_woolies_all_weeks(max_pages: int = 50) -> Dict[str, Dict[str, Any]]:
     """Scrapes Woolworths specials for both current week and next week (if available)."""
     print("Scraping Woolworths (Current & Next Week)...")
     catalogues = discover_woolies_catalogues()
@@ -176,18 +272,31 @@ def scrape_woolies_all_weeks(max_pages: int = 10) -> Dict[str, Dict[str, Any]]:
         print("No sub-catalogues found, using default Woolworths catalogue...")
         items = scrape_woolies_catalogue_items(f"{BASE_URL}/Woolworths-catalogue", None, max_pages=max_pages)
         res['current']['items'] = items
-        return res
+    else:
+        current_cat = catalogues[0]
+        print(f"Woolworths Current Week ({current_cat['date_range']}) - ID {current_cat['id']}")
+        res['current']['date_range'] = current_cat['date_range']
+        res['current']['items'] = scrape_woolies_catalogue_items(current_cat['url'], current_cat['soup'], max_pages=max_pages)
 
-    current_cat = catalogues[0]
-    print(f"Woolworths Current Week ({current_cat['date_range']}) - ID {current_cat['id']}")
-    res['current']['date_range'] = current_cat['date_range']
-    res['current']['items'] = scrape_woolies_catalogue_items(current_cat['url'], current_cat['soup'], max_pages=max_pages)
+        if len(catalogues) > 1:
+            next_cat = catalogues[1]
+            print(f"Woolworths Next Week ({next_cat['date_range']}) - ID {next_cat['id']}")
+            res['next']['date_range'] = next_cat['date_range']
+            res['next']['items'] = scrape_woolies_catalogue_items(next_cat['url'], next_cat['soup'], max_pages=max_pages)
 
-    if len(catalogues) > 1:
-        next_cat = catalogues[1]
-        print(f"Woolworths Next Week ({next_cat['date_range']}) - ID {next_cat['id']}")
-        res['next']['date_range'] = next_cat['date_range']
-        res['next']['items'] = scrape_woolies_catalogue_items(next_cat['url'], next_cat['soup'], max_pages=max_pages)
+    # Merge online Half Price specials (Kinder Bueno, snacks, confectionery, etc.)
+    try:
+        online_half = scrape_woolies_online_half_price(max_pages=100)
+        existing_titles = {it['title'].lower() for it in res['current']['items']}
+        added = 0
+        for oh in online_half:
+            if oh['title'].lower() not in existing_titles:
+                res['current']['items'].append(oh)
+                existing_titles.add(oh['title'].lower())
+                added += 1
+        print(f"Merged {added} online Half Price specials into Woolworths current week specials.")
+    except Exception as e:
+        print(f"Error merging online half price specials: {e}")
 
     return res
 

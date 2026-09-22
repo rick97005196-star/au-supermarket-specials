@@ -113,6 +113,19 @@ function renderCategoryBar() {
     const bar = document.getElementById('categoryBar');
     if (!bar) return;
 
+    const existingBtns = bar.querySelectorAll('button');
+    if (existingBtns.length === 12) {
+        existingBtns.forEach(btn => {
+            const catKey = btn.dataset.cat;
+            const isActive = currentCategory === catKey;
+            btn.className = isActive
+                ? "px-2.5 sm:px-3 py-1 rounded-lg sm:rounded-xl text-[11px] sm:text-xs font-bold bg-emerald-600 text-white shadow-xs shrink-0 transition active:scale-95 whitespace-nowrap text-center scale-[1.02]"
+                : "px-2.5 sm:px-3 py-1 rounded-lg sm:rounded-xl text-[11px] sm:text-xs font-semibold bg-slate-100 dark:bg-zinc-800/80 hover:bg-slate-200 dark:hover:bg-zinc-700 text-slate-700 dark:text-zinc-300 shrink-0 transition active:scale-95 whitespace-nowrap text-center";
+            btn.textContent = getCategoryName(catKey);
+        });
+        return;
+    }
+
     bar.innerHTML = '';
     
     // Arrange into 2 rows: 6 columns with 2 items per column for grid-flow-col
@@ -136,7 +149,7 @@ function renderCategoryBar() {
 
         btn.dataset.cat = catKey;
         btn.className = isActive
-            ? "px-2.5 sm:px-3 py-1 rounded-lg sm:rounded-xl text-[11px] sm:text-xs font-bold bg-slate-900 dark:bg-emerald-600 text-white shadow-xs shrink-0 transition active:scale-95 whitespace-nowrap text-center"
+            ? "px-2.5 sm:px-3 py-1 rounded-lg sm:rounded-xl text-[11px] sm:text-xs font-bold bg-emerald-600 text-white shadow-xs shrink-0 transition active:scale-95 whitespace-nowrap text-center scale-[1.02]"
             : "px-2.5 sm:px-3 py-1 rounded-lg sm:rounded-xl text-[11px] sm:text-xs font-semibold bg-slate-100 dark:bg-zinc-800/80 hover:bg-slate-200 dark:hover:bg-zinc-700 text-slate-700 dark:text-zinc-300 shrink-0 transition active:scale-95 whitespace-nowrap text-center";
 
         btn.textContent = name;
@@ -149,12 +162,13 @@ function selectCategory(catKey) {
     currentCategory = catKey;
     renderCategoryBar();
 
-    // Auto smooth scroll the active button into center view horizontally
+    // Smooth scroll the categoryBar HORIZONTALLY only - NEVER scroll the page window!
     const bar = document.getElementById('categoryBar');
     if (bar) {
         const activeBtn = bar.querySelector(`[data-cat="${catKey}"]`);
         if (activeBtn) {
-            activeBtn.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+            const scrollLeft = activeBtn.offsetLeft - (bar.clientWidth / 2) + (activeBtn.clientWidth / 2);
+            bar.scrollTo({ left: scrollLeft, behavior: 'smooth' });
         }
     }
 
@@ -445,14 +459,36 @@ function clearSearch() {
 function selectStore(store) {
     currentStore = store;
     document.querySelectorAll('.store-tab').forEach(tab => {
-        if (tab.dataset.store === store) {
-            tab.className = 'store-tab active px-3 py-1.5 rounded-lg transition bg-white dark:bg-zinc-700 text-slate-900 dark:text-white shadow-2xs font-bold';
+        const s = tab.dataset.store;
+        const dot = tab.querySelector('.store-dot');
+        const isActive = (s === store);
+
+        if (isActive) {
+            if (s === 'All') {
+                tab.className = 'store-tab active px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg transition bg-slate-900 dark:bg-zinc-100 text-white dark:text-slate-900 shadow-xs font-bold scale-[1.02] shrink-0';
+            } else if (s === 'Woolworths') {
+                tab.className = 'store-tab active px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg transition bg-emerald-600 text-white shadow-xs font-bold scale-[1.02] shrink-0';
+                if (dot) dot.className = 'store-dot inline-block w-2 h-2 rounded-full bg-white mr-1 shadow-2xs';
+            } else if (s === 'Coles') {
+                tab.className = 'store-tab active px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg transition bg-rose-600 text-white shadow-xs font-bold scale-[1.02] shrink-0';
+                if (dot) dot.className = 'store-dot inline-block w-2 h-2 rounded-full bg-white mr-1 shadow-2xs';
+            } else if (s === 'ALDI') {
+                tab.className = 'store-tab active px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg transition bg-blue-600 text-white shadow-xs font-bold scale-[1.02] shrink-0';
+                if (dot) dot.className = 'store-dot inline-block w-2 h-2 rounded-full bg-white mr-1 shadow-2xs';
+            }
         } else {
-            let textColor = 'text-slate-600 dark:text-zinc-400 hover:text-slate-900 dark:hover:text-white';
-            if (tab.dataset.store === 'Woolworths') textColor = 'text-slate-600 dark:text-zinc-400 hover:text-emerald-600 dark:hover:text-emerald-400';
-            if (tab.dataset.store === 'Coles') textColor = 'text-slate-600 dark:text-zinc-400 hover:text-rose-600 dark:hover:text-rose-400';
-            if (tab.dataset.store === 'ALDI') textColor = 'text-slate-600 dark:text-zinc-400 hover:text-blue-600 dark:hover:text-blue-400';
-            tab.className = `store-tab px-3 py-1.5 rounded-lg transition font-semibold ${textColor}`;
+            if (s === 'All') {
+                tab.className = 'store-tab px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg transition font-semibold text-slate-600 dark:text-zinc-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200/60 dark:hover:bg-zinc-700/60 shrink-0';
+            } else if (s === 'Woolworths') {
+                tab.className = 'store-tab px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg transition font-semibold text-emerald-700 dark:text-emerald-400 hover:bg-emerald-50 dark:hover:bg-emerald-950/40 shrink-0';
+                if (dot) dot.className = 'store-dot inline-block w-2 h-2 rounded-full bg-emerald-600 mr-1';
+            } else if (s === 'Coles') {
+                tab.className = 'store-tab px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg transition font-semibold text-rose-700 dark:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-950/40 shrink-0';
+                if (dot) dot.className = 'store-dot inline-block w-2 h-2 rounded-full bg-rose-600 mr-1';
+            } else if (s === 'ALDI') {
+                tab.className = 'store-tab px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg transition font-semibold text-blue-700 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-950/40 shrink-0';
+                if (dot) dot.className = 'store-dot inline-block w-2 h-2 rounded-full bg-blue-600 mr-1';
+            }
         }
     });
     loadSpecials();

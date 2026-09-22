@@ -202,6 +202,26 @@ SNACKS_TRANSLATIONS = {
         "ja": "ケトル リッジカット（波型）/ ファイヤーマスターズ 150-165g",
         "ko": "케틀 크링클컷 / 파이어마스터 직화맛 감자칩 150-165g"
     },
+    "Kinder Bueno Milk Chocolate Bar 43g": {
+        "zh": "健達 繽紛樂牛奶巧克力威化棒 (43克裝)",
+        "ja": "キンダー ブエノ ミルクチョコレート ウエハース 43g",
+        "ko": "킨더 부에노 밀크 초콜릿 바 43g"
+    },
+    "Kinder Bueno Milk Chocolate Bar": {
+        "zh": "健達 繽紛樂牛奶巧克力威化棒",
+        "ja": "キンダー ブエノ ミルクチョコレート ウエハース",
+        "ko": "킨더 부에노 밀克 초콜릿 바"
+    },
+    "Kinder Bueno White": {
+        "zh": "健達 繽紛樂白巧克力威化棒",
+        "ja": "キンダー ブエノ ホワイトチョコレート ウエハース",
+        "ko": "킨더 부에노 화이트 초콜릿 바"
+    },
+    "Kinder Bueno Frozen Dessert Cones 360ml Pk 4": {
+        "zh": "健達 繽紛樂經典甜筒冰淇淋 (4入裝/360毫升)",
+        "ja": "キンダー ブエノ チョコレートコーンアイス 4個入",
+        "ko": "킨더 부에노 콘 아이스크림 4개입"
+    },
     "LAMBERTZ Pfeffernusse Soft Gingerbread Cookies 200g": {
         "zh": "LAMBERTZ 德式糖霜香料軟薑餅 (200克裝)",
         "ja": "ランベルツ プフェッファープリンセン（ドイツ風スパイスクッキー）200g",

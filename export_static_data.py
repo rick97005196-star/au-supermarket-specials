@@ -17,10 +17,25 @@ c.execute("""
 rows = c.fetchall()
 items = [dict(r) for r in rows]
 
+# Load translations if available
+trans_path = 'static/data/translations.json'
+translations = {}
+if os.path.exists(trans_path):
+    with open(trans_path, 'r', encoding='utf-8') as f:
+        try:
+            translations = json.load(f)
+        except Exception:
+            translations = {}
+
+for it in items:
+    t = it.get('title', '')
+    if t in translations:
+        it['translations'] = translations[t]
+
 with open('static/data/specials.json', 'w', encoding='utf-8') as f:
     json.dump(items, f, ensure_ascii=False, indent=2)
 
-print(f"Exported {len(items)} specials to static/data/specials.json")
+print(f"Exported {len(items)} specials to static/data/specials.json (with translations)")
 
 # Also generate stats.json
 import database

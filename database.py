@@ -111,7 +111,7 @@ def save_specials(store: str, items: List[Dict[str, Any]], period: str = 'curren
                 html.unescape(item.get('discount_desc', '')).strip(),
                 html.unescape(item.get('unit_price', '')).strip(),
                 item.get('image_url', ''),
-                classify_product(item.get('title', ''), item.get('category', '')),
+                classify_product(item.get('title', ''), item.get('category', ''), item.get('product_url', '')),
                 item.get('product_url', ''),
                 now
             )

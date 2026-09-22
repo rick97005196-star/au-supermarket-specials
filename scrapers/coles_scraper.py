@@ -108,9 +108,8 @@ def scrape_coles_catalogue_items(base_list_url: str, initial_soup: BeautifulSoup
                 product_url = f"{BASE_URL}{href}" if href.startswith('/') else href
                 category = "Groceries"
                 if href:
-                    parts = [p for p in href.split('/') if p]
-                    if len(parts) >= 4:
-                        category = parts[3].replace('-', ' ').title()
+                    parts = [p.replace('-', ' ') for p in href.split('/') if p]
+                    category = " ".join(parts[1:4])
 
                 img = item.select_one('.item-image img')
                 image_url = img.get('src', '') if img else ''

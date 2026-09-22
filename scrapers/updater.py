@@ -95,13 +95,27 @@ def update_all_stores(max_catalogue_pages: int = 10) -> Dict[str, Any]:
     print("下週 (Next):", stats['next'])
     print("=" * 65)
 
+    # Auto-export static JSON and update translations
+    try:
+        from scripts.auto_translate import run_auto_translate
+        run_auto_translate()
+    except Exception as e:
+        print(f"Notice: Auto translate skipped or failed: {e}")
+
+    try:
+        import subprocess
+        exp_script = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'export_static_data.py')
+        subprocess.run([sys.executable, exp_script], check=False)
+    except Exception as e:
+        print(f"Notice: Static export skipped or failed: {e}")
+
     return {
         'results': results,
         'stats': stats
     }
 
 if __name__ == '__main__':
-    pages = 5
+    pages = 50
     if len(sys.argv) > 1 and sys.argv[1].isdigit():
         pages = int(sys.argv[1])
     update_all_stores(max_catalogue_pages=pages)
