@@ -764,7 +764,10 @@ function renderProducts(items) {
     }
 }
 
+let isRenderingBatch = false;
+
 function renderNextBatch() {
+    if (isRenderingBatch) return;
     if (renderedCount >= currentDisplayItems.length) {
         const sentinel = document.getElementById('infiniteScrollSentinel');
         if (sentinel) sentinel.classList.add('hidden');
@@ -775,29 +778,34 @@ function renderNextBatch() {
         return;
     }
 
-    const grid = document.getElementById('productsGrid');
-    const nextSlice = currentDisplayItems.slice(renderedCount, renderedCount + BATCH_SIZE);
-    const fragment = document.createDocumentFragment();
+    isRenderingBatch = true;
+    try {
+        const grid = document.getElementById('productsGrid');
+        const nextSlice = currentDisplayItems.slice(renderedCount, renderedCount + BATCH_SIZE);
+        const fragment = document.createDocumentFragment();
 
-    nextSlice.forEach(item => {
-        const card = createProductCardElement(item);
-        fragment.appendChild(card);
-    });
+        nextSlice.forEach(item => {
+            const card = createProductCardElement(item);
+            fragment.appendChild(card);
+        });
 
-    grid.appendChild(fragment);
-    renderedCount += nextSlice.length;
+        grid.appendChild(fragment);
+        renderedCount += nextSlice.length;
 
-    const sentinel = document.getElementById('infiniteScrollSentinel');
-    if (sentinel) {
-        if (renderedCount >= currentDisplayItems.length) {
-            sentinel.classList.add('hidden');
-            if (infiniteScrollObserver) {
-                infiniteScrollObserver.disconnect();
-                infiniteScrollObserver = null;
+        const sentinel = document.getElementById('infiniteScrollSentinel');
+        if (sentinel) {
+            if (renderedCount >= currentDisplayItems.length) {
+                sentinel.classList.add('hidden');
+                if (infiniteScrollObserver) {
+                    infiniteScrollObserver.disconnect();
+                    infiniteScrollObserver = null;
+                }
+            } else {
+                sentinel.classList.remove('hidden');
             }
-        } else {
-            sentinel.classList.remove('hidden');
         }
+    } finally {
+        isRenderingBatch = false;
     }
 }
 

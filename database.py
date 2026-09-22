@@ -102,10 +102,17 @@ def save_specials(store: str, items: List[Dict[str, Any]], period: str = 'curren
         '''
         now = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
         rows = []
+        seen_keys = set()
         for item in items:
             if not item.get('title'):
                 continue
             title = html.unescape(item.get('title', '')).strip()
+            p_url = item.get('product_url', '')
+            dedup_key = (title.lower(), p_url) if p_url else title.lower()
+            if dedup_key in seen_keys:
+                continue
+            seen_keys.add(dedup_key)
+
             price = float(item.get('price', 0.0) or 0.0)
             was_price = float(item.get('was_price', 0.0) or 0.0)
             save_amount = float(item.get('save_amount', 0.0) or 0.0)
