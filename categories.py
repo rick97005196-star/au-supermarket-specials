@@ -14,6 +14,7 @@ CATEGORIES = [
     'pantry',
     'snacks',
     'drinks',
+    'liquor',
     'health_vitamins',
     'household',
     'pet'
@@ -23,8 +24,8 @@ INTERNAL_CATEGORY_KEYS = set(CATEGORIES) | {'groceries', 'other'}
 
 def classify_product(title: str, raw_cat: str = "", product_url: str = "") -> str:
     """
-    Classifies an Australian supermarket product strictly into one of the 12 standard categories:
-    produce, meat, seafood, dairy_eggs, bakery, frozen, pantry, snacks, drinks, health_vitamins, household, pet.
+    Classifies an Australian supermarket product strictly into one of the 13 standard categories:
+    produce, meat, seafood, dairy_eggs, bakery, frozen, pantry, snacks, drinks, liquor, health_vitamins, household, pet.
     """
     title_l = title.lower().strip()
     url_l = product_url.lower().strip()
@@ -52,7 +53,9 @@ def classify_product(title: str, raw_cat: str = "", product_url: str = "") -> st
                 return 'pantry'
             if dept in ['biscuits-and-snacks', 'confectionery']:
                 return 'snacks'
-            if dept in ['drinks', 'beer-wine-and-spirit']:
+            if dept in ['beer-wine-and-spirit']:
+                return 'liquor'
+            if dept in ['drinks']:
                 return 'drinks'
             if dept in ['beauty', 'toiletries', 'health-and-wellbeing', 'health-foods', 'baby']:
                 return 'health_vitamins'
@@ -111,11 +114,17 @@ def classify_product(title: str, raw_cat: str = "", product_url: str = "") -> st
     ]):
         return 'health_vitamins'
 
-    # 4. DRINKS (Must evaluate before fruit words like orange juice, lemon soda, apple cider!)
+    # 4. LIQUOR & ALCOHOL (酒類專區 - 啤酒/紅白酒/烈酒/調酒)
     if any(re.search(pat, title_l) for pat in [
         r'\b(?:beer|lager|ale\b|pale\s*ale|hazy\s*pale|ipa\b|xpa\b|draught|stout|cider|seltzer|vodka|whisky|whiskey|gin\b|rum\b|bourbon|tequila|wine|shiraz|sauvignon|chardonnay|pinot|prosecco|champagne|liqueur|brandy|scotch|mid\s*strength|alcoholic|cask\b|tempranillo|merlot|semillon|riesling|cabernet|sauv\s*blanc)\b',
         r'(?:-196|\b196\b)',
-        r'\b(?:hard\s*rated|vodka\s*cruiser|smirnoff|heineken|corona|peroni|carlton|great\s*northern|coopers|asahi|guinness|stella\s*artois|somersby|balter|smithy[\'’]?s|4\s*pines|bentspoke|stone\s*&\s*wood|lorry\s*boys|james\s*squire|canadian\s*club|jack\s*daniel|jim\s*beam|woodstock|wild\s*turkey|xxxx|de\s*bortoli|story\s*bay|bundaberg\s*rum|gordon[\'’]?s|tanqueray|baileys|kahlua|aperol|campari|jameson|moretti)\b',
+        r'\b(?:hard\s*rated|vodka\s*cruiser|smirnoff|heineken|corona|peroni|carlton|great\s*northern|coopers|asahi|guinness|stella\s*artois|somersby|balter|smithy[\'’]?s|4\s*pines|bentspoke|stone\s*&\s*wood|lorry\s*boys|james\s*squire|canadian\s*club|jack\s*daniel|jim\s*beam|woodstock|wild\s*turkey|xxxx|de\s*bortoli|story\s*bay|bundaberg\s*rum|gordon[\'’]?s|tanqueray|baileys|kahlua|aperol|campari|jameson|moretti)\b'
+    ]):
+        if not any(k in title_l for k in ['coffee cake', 'tea towel', 'biscuit', 'chocolate block', 'ice cream', 'sauce', 'stand mixer']):
+            return 'liquor'
+
+    # 5. DRINKS (無酒精飲料、咖啡、茶、果汁、汽水、氣泡水)
+    if any(re.search(pat, title_l) for pat in [
         r'\b(?:coffee|coffee\s*beans|coffee\s*pods?|coffee\s*capsules?|nespresso|lavazza|moccona|nescafe|starbucks|vittoria|grinders|l\'or\s*espresso|l’or\s*espresso|espresso)\b',
         r'\b(?:tea|tea\s*bags|twinings|lipton|dilmah|tetley)\b',
         r'\b(?:coca-cola|coke|pepsi|sprite|fanta|kirks|schweppes|bundle\s*drink|soft\s*drink|sodaly|tonic\s*water|mineral\s*water)\b',

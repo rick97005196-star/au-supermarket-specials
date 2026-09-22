@@ -22,6 +22,7 @@ const CATEGORY_KEYS = [
     'pantry',
     'snacks',
     'drinks',
+    'liquor',
     'health_vitamins',
     'household',
     'pet'
@@ -119,7 +120,7 @@ function applyLanguage(lang) {
     }
 }
 
-// Render Categories Bar (2 Rows: Row 1 Fresh & Perishables, Row 2 Pantry, Home, Pet & Other)
+// Render Categories Bar (2 Rows: Row 1 Fresh & Perishables, Row 2 Pantry, Drinks, Liquor, Home & Pet)
 function renderCategoryBar() {
     const bar = document.getElementById('categoryBar');
     if (!bar) return;
@@ -128,7 +129,7 @@ function renderCategoryBar() {
     const inactiveClasses = "px-3 sm:px-3.5 py-1.5 rounded-xl text-[11px] sm:text-xs font-semibold bg-slate-100 dark:bg-zinc-800/80 hover:bg-slate-200 dark:hover:bg-zinc-700 text-slate-700 dark:text-zinc-300 border border-slate-200/60 dark:border-zinc-700/60 shrink-0 transition-all active:scale-95 whitespace-nowrap text-center";
 
     const existingBtns = bar.querySelectorAll('button');
-    if (existingBtns.length === 13) {
+    if (existingBtns.length === 14) {
         existingBtns.forEach(btn => {
             const catKey = btn.dataset.cat;
             const isActive = currentCategory === catKey;
@@ -140,11 +141,11 @@ function renderCategoryBar() {
 
     bar.innerHTML = '';
     
-    // Arrange into 2 rows: 7 columns (Row 1: 7 items, Row 2: 6 items)
+    // Arrange into 2 rows: 7 columns (Row 1: 7 items, Row 2: 7 items)
     // Row 1: All -> 蔬菜水果 -> 肉品 -> 海鮮水產 -> 蛋奶製品 -> 麵包烘焙 -> 冷凍食品
-    // Row 2: 糧油調味 -> 休閒零食 -> 飲料 -> 美妝保健 -> 日用清潔 -> 寵物用品
+    // Row 2: 糧油調味 -> 休閒零食 -> 飲料 -> 酒類 -> 美妝保健 -> 日用清潔 -> 寵物用品
     const row1Keys = ['all', 'produce', 'meat', 'seafood', 'dairy_eggs', 'bakery', 'frozen'];
-    const row2Keys = ['pantry', 'snacks', 'drinks', 'health_vitamins', 'household', 'pet'];
+    const row2Keys = ['pantry', 'snacks', 'drinks', 'liquor', 'health_vitamins', 'household', 'pet'];
     
     const orderedKeys = [];
     for (let i = 0; i < row1Keys.length; i++) {

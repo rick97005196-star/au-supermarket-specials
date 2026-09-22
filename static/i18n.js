@@ -75,6 +75,7 @@ const I18N = {
             'pantry': '🍚 糧油調味',
             'snacks': '🍫 休閒零食',
             'drinks': '🥤 飲料',
+            'liquor': '🍺 酒類',
             'health_vitamins': '💊 美妝保健',
             'household': '🧺 日用清潔',
             'pet': '🐾 寵物用品'
@@ -155,7 +156,8 @@ const I18N = {
             'frozen': '🧊 Frozen Foods',
             'pantry': '🍚 Pantry & Seasoning',
             'snacks': '🍫 Snacks & Treats',
-            'drinks': '🥤 Drinks & Liquor',
+            'drinks': '🥤 Drinks & Beverages',
+            'liquor': '🍺 Beer, Wine & Spirits',
             'health_vitamins': '💊 Health & Beauty',
             'household': '🧺 Household & Cleaning',
             'pet': '🐾 Pet Supplies'
@@ -237,6 +239,7 @@ const I18N = {
             'pantry': '🍚 調味料・乾物',
             'snacks': '🍫 お菓子・スナック',
             'drinks': '🥤 飲料・ドリンク',
+            'liquor': '🍺 お酒・アルコール',
             'health_vitamins': '💊 ヘルス＆ビューティー',
             'household': '🧺 日用品・洗剤',
             'pet': '🐾 ペット用品'
@@ -317,7 +320,8 @@ const I18N = {
             'frozen': '🧊 냉동식품',
             'pantry': '🍚 식료품·양념',
             'snacks': '🍫 스낵·과자',
-            'drinks': '🥤 음료·주류',
+            'drinks': '🥤 음료·커피·차',
+            'liquor': '🍺 주류·맥주·와인',
             'health_vitamins': '💊 뷰티·건강',
             'household': '🧺 생활·주방용품',
             'pet': '🐾 반려동물 용품'
