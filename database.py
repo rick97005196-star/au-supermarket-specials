@@ -291,7 +291,7 @@ def get_stats() -> Dict[str, Any]:
                 'by_store': counts_next,
                 'by_category': cats_next,
                 'half_price_count': half_price_next,
-                'date_range': meta.get('date_range_next', '下週特價檔期')
+                'date_range': meta.get('date_range_next', '下週特價預告') if total_next > 0 else '下週型錄尚未公佈'
             },
             'last_updated': meta.get('last_updated_all', '尚未更新')
         }

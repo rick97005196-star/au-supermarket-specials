@@ -346,12 +346,20 @@ function updateStatsDisplay() {
     if (currDateStr) {
         document.getElementById('periodDateCurrentBadge').textContent = `(${currDateStr.replace(' 2026', '')})`;
     }
-    if (nextDateStr) {
-        document.getElementById('periodDateNextBadge').textContent = `(${nextDateStr.replace(' 2026', '')})`;
+    const nextBadgeEl = document.getElementById('periodDateNextBadge');
+    if (nextBadgeEl) {
+        if (nextData.total > 0 && nextDateStr && !nextDateStr.includes('尚未') && !nextDateStr.includes('公佈')) {
+            nextBadgeEl.textContent = `(${nextDateStr.replace(' 2026', '')})`;
+        } else {
+            nextBadgeEl.textContent = '(尚未釋出)';
+        }
     }
 
     const activeInfo = currentPeriod === 'current' ? currentData : nextData;
-    const activeRangeText = activeInfo.date_range || (currentPeriod === 'current' ? t('current_cycle') : t('next_cycle'));
+    let activeRangeText = activeInfo.date_range || (currentPeriod === 'current' ? t('current_cycle') : t('next_cycle'));
+    if (currentPeriod === 'next' && (!activeInfo.total || activeInfo.total === 0)) {
+        activeRangeText = currentLang === 'zh' ? '尚未公佈（預計週二釋出）' : (currentLang === 'ja' ? '未公開（火曜公開予定）' : (currentLang === 'ko' ? '미공개 (화요일 공개 예정)' : 'Not Released Yet'));
+    }
     document.getElementById('activeDateRange').textContent = activeRangeText;
 
     const headerBadge = document.getElementById('headerPeriodBadge');
@@ -527,6 +535,16 @@ async function loadSpecials() {
     const loading = document.getElementById('loadingState');
     const empty = document.getElementById('emptyState');
     const resultsCountText = document.getElementById('resultsCountText');
+    const sentinel = document.getElementById('infiniteScrollSentinel');
+
+    // Immediately stop and disconnect any active infinite scroll observer
+    if (infiniteScrollObserver) {
+        infiniteScrollObserver.disconnect();
+        infiniteScrollObserver = null;
+    }
+    currentDisplayItems = [];
+    renderedCount = 0;
+    if (sentinel) sentinel.classList.add('hidden');
 
     grid.innerHTML = '';
     loading.classList.remove('hidden');
@@ -609,6 +627,17 @@ async function loadSpecials() {
         resultsCountText.textContent = t('found_targets', { n: filtered.length });
 
         if (filtered.length === 0) {
+            loading.classList.add('hidden');
+            grid.innerHTML = '';
+            currentLoadedItems = [];
+            currentDisplayItems = [];
+            renderedCount = 0;
+            if (sentinel) sentinel.classList.add('hidden');
+            if (infiniteScrollObserver) {
+                infiniteScrollObserver.disconnect();
+                infiniteScrollObserver = null;
+            }
+
             const emptyTitle = document.getElementById('emptyStateTitle');
             const emptySub = document.getElementById('emptyStateSub');
             const emptyAction = document.getElementById('emptyStateAction');
