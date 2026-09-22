@@ -6,6 +6,7 @@ let currentSearch = '';
 let searchTimeout = null;
 let isUpdating = false;
 let globalStats = null;
+const DEFAULT_FALLBACK_IMG = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300' width='300' height='300'%3E%3Crect width='300' height='300' fill='%23f8fafc'/%3E%3Cpath d='M100 110 h100 v12 h-100 z M90 135 h120 v90 c0 10 -8 18 -18 18 h-84 c-10 0 -18 -8 -18 -18 z' fill='%23e2e8f0'/%3E%3Cpath d='M130 110 v-20 c0 -11 9 -20 20 -20 s20 9 20 20 v20' fill='none' stroke='%2394a3b8' stroke-width='8' stroke-linecap='round'/%3E%3Ctext x='150' y='270' font-family='system-ui, -apple-system, sans-serif' font-size='13' font-weight='600' fill='%2394a3b8' text-anchor='middle'%3EAU Specials%3C/text%3E%3C/svg%3E";
 
 // Categories definition (Aligned with Australian Supermarket Departments)
 const CATEGORY_KEYS = [
@@ -21,8 +22,7 @@ const CATEGORY_KEYS = [
     'drinks',
     'health_vitamins',
     'household',
-    'pet',
-    'other'
+    'pet'
 ];
 
 // Initialization
@@ -126,7 +126,7 @@ function renderCategoryBar() {
     const inactiveClasses = "px-3 sm:px-3.5 py-1.5 rounded-xl text-[11px] sm:text-xs font-semibold bg-slate-100 dark:bg-zinc-800/80 hover:bg-slate-200 dark:hover:bg-zinc-700 text-slate-700 dark:text-zinc-300 border border-slate-200/60 dark:border-zinc-700/60 shrink-0 transition-all active:scale-95 whitespace-nowrap text-center";
 
     const existingBtns = bar.querySelectorAll('button');
-    if (existingBtns.length === 14) {
+    if (existingBtns.length === 13) {
         existingBtns.forEach(btn => {
             const catKey = btn.dataset.cat;
             const isActive = currentCategory === catKey;
@@ -138,11 +138,11 @@ function renderCategoryBar() {
 
     bar.innerHTML = '';
     
-    // Arrange into 2 rows: 7 columns with 2 items per column for grid-flow-col
-    // Row 1: Fresh & Perishables (All -> Produce -> Meat -> Seafood -> Dairy & Eggs -> Bakery -> Freezer)
-    // Row 2: Pantry, Drinks, Health, Home, Pet & Other (Pantry -> Snacks -> Drinks -> Health & Beauty -> Household -> Pet -> Other)
+    // Arrange into 2 rows: 7 columns (Row 1: 7 items, Row 2: 6 items)
+    // Row 1: All -> 蔬菜水果 -> 肉品 -> 海鮮水產 -> 蛋奶製品 -> 麵包烘焙 -> 冷凍食品
+    // Row 2: 糧油調味 -> 休閒零食 -> 飲料 -> 美妝保健 -> 日用清潔 -> 寵物用品
     const row1Keys = ['all', 'produce', 'meat', 'seafood', 'dairy_eggs', 'bakery', 'frozen'];
-    const row2Keys = ['pantry', 'snacks', 'drinks', 'health_vitamins', 'household', 'pet', 'other'];
+    const row2Keys = ['pantry', 'snacks', 'drinks', 'health_vitamins', 'household', 'pet'];
     
     const orderedKeys = [];
     for (let i = 0; i < row1Keys.length; i++) {
@@ -781,7 +781,7 @@ function createProductCardElement(item) {
     if (item.store === 'ALDI') storeColor = 'bg-blue-600 text-white';
 
     const isHalfPrice = isItemHalfPrice(item);
-    const fallbackImg = "https://images.unsplash.com/photo-1542838132-92c53300491e?w=300&auto=format&fit=crop&q=60";
+    const fallbackImg = DEFAULT_FALLBACK_IMG;
 
     const effectivePrice = (typeof item.price === 'number') ? item.price : (parseFloat(item.price) || 0);
     let effectiveSave = (typeof item.save_amount === 'number') ? item.save_amount : (parseFloat(item.save_amount) || 0);
@@ -1025,7 +1025,7 @@ function openProductModal(item) {
     if (item.store === 'ALDI') storeColor = 'bg-blue-600 text-white';
 
     const isHalfPrice = isItemHalfPrice(item);
-    const fallbackImg = "https://images.unsplash.com/photo-1542838132-92c53300491e?w=300&auto=format&fit=crop&q=60";
+    const fallbackImg = DEFAULT_FALLBACK_IMG;
 
     // Badges
     const storeBadge = document.getElementById('modalStoreBadge');
@@ -1428,7 +1428,7 @@ async function loadShoppingList() {
                         } else if (itWas <= 0 && itSave > 0 && itPriceNum > 0) {
                             itWas = Math.round((itPriceNum + itSave) * 100) / 100;
                         }
-                        const fallbackImg = "https://images.unsplash.com/photo-1542838132-92c53300491e?w=300&auto=format&fit=crop&q=60";
+                        const fallbackImg = DEFAULT_FALLBACK_IMG;
                         return `
                         <div class="flex items-center justify-between gap-2.5 p-2.5 rounded-xl bg-white dark:bg-zinc-800 border border-slate-200/80 dark:border-zinc-700/70 shadow-2xs ${it.is_bought ? 'opacity-40' : ''}">
                             <div class="flex items-center gap-2.5 flex-1 min-w-0">

@@ -66,19 +66,18 @@ const I18N = {
         disclaimer_short: '特價僅供參考，實際狀況依照現場為主',
         categories: {
             'all': '全部特價',
-            'produce': '🥦 生鮮蔬果',
-            'meat': '🥩 生鮮肉品',
-            'seafood': '🦐 水產海鮮',
-            'dairy_eggs': '🥛 乳品蛋類',
-            'bakery': '🥖 烘焙麵包',
-            'pantry': '🍚 米麵調味',
-            'snacks': '🍫 休閒零食',
-            'drinks': '🥤 飲料酒水',
+            'produce': '🥦 蔬菜水果',
+            'meat': '🥩 肉品',
+            'seafood': '🦐 海鮮水產',
+            'dairy_eggs': '🥛 蛋奶製品',
+            'bakery': '🥖 麵包烘焙',
             'frozen': '🧊 冷凍食品',
-            'health_vitamins': '💊 保健美妝',
+            'pantry': '🍚 糧油調味',
+            'snacks': '🍫 休閒零食',
+            'drinks': '🥤 飲料',
+            'health_vitamins': '💊 美妝保健',
             'household': '🧺 日用清潔',
-            'pet': '🐾 寵物專區',
-            'other': '📦 其他專區'
+            'pet': '🐾 寵物用品'
         }
     },
     'en': {
@@ -148,19 +147,18 @@ const I18N = {
         disclaimer_short: 'Specials for reference only. Actual prices subject to in-store conditions.',
         categories: {
             'all': 'All Specials',
-            'produce': '🥦 Fruit & Veg',
+            'produce': '🥦 Fresh Produce',
             'meat': '🥩 Meat & Poultry',
             'seafood': '🦐 Seafood',
             'dairy_eggs': '🥛 Dairy & Eggs',
             'bakery': '🥖 Bakery',
-            'pantry': '🍚 Pantry',
-            'snacks': '🍫 Snacks & Confectionery',
+            'frozen': '🧊 Frozen Foods',
+            'pantry': '🍚 Pantry & Seasoning',
+            'snacks': '🍫 Snacks & Treats',
             'drinks': '🥤 Drinks & Liquor',
-            'frozen': '🧊 Freezer',
             'health_vitamins': '💊 Health & Beauty',
-            'household': '🧺 Cleaning & Household',
-            'pet': '🐾 Pet Care',
-            'other': '📦 Other'
+            'household': '🧺 Household & Cleaning',
+            'pet': '🐾 Pet Supplies'
         }
     },
     'ja': {
@@ -230,19 +228,18 @@ const I18N = {
         disclaimer_short: '特売情報は参考用です。実際の価格・在庫は店頭にてご確認ください。',
         categories: {
             'all': 'すべての特売',
-            'produce': '🥦 野菜・果物',
-            'meat': '🥩 精肉・肉加工品',
+            'produce': '🥦 青果・野菜・果物',
+            'meat': '🥩 精肉',
             'seafood': '🦐 鮮魚・水産',
             'dairy_eggs': '🥛 乳製品・卵',
             'bakery': '🥖 パン・ベーカリー',
-            'pantry': '🍚 食品・調味料',
-            'snacks': '🍫 お菓子・スナック',
-            'drinks': '🥤 飲料・お酒',
             'frozen': '🧊 冷凍食品',
+            'pantry': '🍚 調味料・乾物',
+            'snacks': '🍫 お菓子・スナック',
+            'drinks': '🥤 飲料・ドリンク',
             'health_vitamins': '💊 ヘルス＆ビューティー',
             'household': '🧺 日用品・洗剤',
-            'pet': '🐾 ペット用品',
-            'other': '📦 その他'
+            'pet': '🐾 ペット用品'
         }
     },
     'ko': {
@@ -313,18 +310,17 @@ const I18N = {
         categories: {
             'all': '전체 특가',
             'produce': '🥦 과일·채소',
-            'meat': '🥩 정육·축산',
-            'seafood': '🦐 수산·해산물',
+            'meat': '🥩 정육',
+            'seafood': '🦐 수산물',
             'dairy_eggs': '🥛 유제품·계란',
             'bakery': '🥖 베이커리',
-            'pantry': '🍚 가공식품·조미료',
+            'frozen': '🧊 냉동식품',
+            'pantry': '🍚 식료품·양념',
             'snacks': '🍫 스낵·과자',
             'drinks': '🥤 음료·주류',
-            'frozen': '🧊 냉동식품',
-            'health_vitamins': '💊 헬스＆뷰티',
-            'household': '🧺 생활용품·세제',
-            'pet': '🐾 반려동물',
-            'other': '📦 기타'
+            'health_vitamins': '💊 뷰티·건강',
+            'household': '🧺 생활·주방용품',
+            'pet': '🐾 반려동물 용품'
         }
     }
 };
