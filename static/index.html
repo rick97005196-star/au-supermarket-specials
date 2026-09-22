@@ -439,44 +439,26 @@
         <div id="shoppingListContainer" class="flex-1 overflow-y-auto p-4 sm:p-5 space-y-4"></div>
 
         <div class="p-4 sm:p-5 border-t border-slate-200 dark:border-zinc-800 bg-slate-50 dark:bg-zinc-800/50 space-y-3">
-            <div class="space-y-1 text-xs sm:text-sm">
-                <div class="flex justify-between text-slate-600 dark:text-zinc-400">
-                    <span data-i18n="total_budget">預估總金額：</span>
-                    <span id="drawerTotalCost" class="font-bold text-slate-900 dark:text-white text-base">A$0.00 AUD</span>
+            <!-- Cart Price Breakdown (Original, Discount, Final Checkout Total) -->
+            <div class="space-y-1.5 p-3 sm:p-3.5 rounded-2xl bg-white dark:bg-zinc-900 border border-slate-200/80 dark:border-zinc-700/70 shadow-2xs text-xs sm:text-sm">
+                <div class="flex justify-between items-center text-slate-500 dark:text-zinc-400">
+                    <span data-i18n="original_total">商品原價：</span>
+                    <span id="drawerOriginalTotal" class="font-semibold text-slate-600 dark:text-zinc-300 line-through">$0.00</span>
                 </div>
-                <div class="flex justify-between text-rose-600 dark:text-rose-400 font-bold">
-                    <span data-i18n="total_saved">本週預計節省：</span>
-                    <span id="drawerTotalSaved" class="text-base font-bold">A$0.00 AUD</span>
+                <div class="flex justify-between items-center text-rose-600 dark:text-rose-400 font-bold">
+                    <span data-i18n="discount_total">優惠折抵：</span>
+                    <span id="drawerDiscountTotal">- $0.00</span>
                 </div>
-            </div>
-
-            <!-- Email Shopping List Section -->
-            <div class="pt-2.5 border-t border-slate-200/80 dark:border-zinc-700/70 space-y-2">
-                <div class="flex items-center justify-between">
-                    <span class="text-[11px] font-bold text-slate-700 dark:text-zinc-300 flex items-center gap-1.5" data-i18n="email_list_title">
-                        📧 寄送採買清單至信箱
-                    </span>
-                    <span class="text-[10px] text-slate-400 dark:text-zinc-500 font-medium">免註冊 · 一鍵直寄</span>
-                </div>
-                <div class="flex items-center gap-1.5">
-                    <div class="relative flex-1">
-                        <i class="fa-solid fa-envelope absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs pointer-events-none"></i>
-                        <input 
-                            type="email" 
-                            id="shoppingEmailInput" 
-                            placeholder="輸入您的 Email (例: name@gmail.com)" 
-                            class="w-full pl-8 pr-2.5 py-2 text-xs rounded-xl bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-700 text-slate-800 dark:text-zinc-200 placeholder-slate-400 dark:placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 transition"
-                        />
+                <div class="pt-2 border-t border-slate-100 dark:border-zinc-800 flex justify-between items-baseline">
+                    <span data-i18n="checkout_total" class="font-bold text-slate-900 dark:text-white text-sm sm:text-base">結帳總金額：</span>
+                    <div class="flex items-baseline gap-1">
+                        <span id="drawerCheckoutTotal" class="font-black text-emerald-600 dark:text-emerald-400 text-lg sm:text-2xl">$0.00</span>
+                        <span class="text-[10px] sm:text-xs font-semibold text-slate-400 dark:text-zinc-500">AUD</span>
                     </div>
-                    <button 
-                        id="sendEmailBtn" 
-                        onclick="sendShoppingListEmail()" 
-                        class="px-3.5 py-2 rounded-xl text-xs font-bold bg-amber-400 hover:bg-amber-500 text-slate-950 flex items-center gap-1.5 shadow-xs transition active:scale-95 shrink-0"
-                    >
-                        <i id="sendEmailIcon" class="fa-solid fa-paper-plane text-xs"></i>
-                        <span id="sendEmailBtnText" data-i18n="email_send_btn">寄出</span>
-                    </button>
                 </div>
+                <!-- Hidden elements for backward compatibility -->
+                <span id="drawerTotalCost" class="hidden">$0.00</span>
+                <span id="drawerTotalSaved" class="hidden">$0.00</span>
             </div>
 
             <div class="flex items-center gap-2 pt-1">

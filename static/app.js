@@ -1309,6 +1309,7 @@ function getLocalShoppingData() {
     const grouped = {'Woolworths': [], 'Coles': [], 'ALDI': [], 'Other': []};
     let total_cost = 0;
     let total_saved = 0;
+    let total_original = 0;
     items.forEach(it => {
         const st = it.store || 'Other';
         if (!grouped[st]) grouped[st] = [];
@@ -1323,13 +1324,21 @@ function getLocalShoppingData() {
             save = Math.round((was - price) * 100) / 100;
         }
         total_saved += save * qty;
+
+        const origPrice = (was > price) ? was : (save > 0 ? (price + save) : price);
+        total_original += origPrice * qty;
     });
+
+    const calculatedOriginal = Math.round((total_cost + total_saved) * 100) / 100;
+    const finalOriginal = Math.max(Math.round(total_original * 100) / 100, calculatedOriginal);
+
     return {
         items,
         grouped,
         total_items: items.length,
-        total_cost: Math.round(total_cost * 100) / 100,
-        total_saved: Math.round(total_saved * 100) / 100
+        total_original: finalOriginal,
+        total_saved: Math.round(total_saved * 100) / 100,
+        total_cost: Math.round(total_cost * 100) / 100
     };
 }
 
@@ -1348,9 +1357,27 @@ async function loadShoppingList() {
     }
 
     try {
-        document.getElementById('cartCountBadge').textContent = data.total_items || 0;
-        document.getElementById('drawerTotalCost').textContent = `$${data.total_cost.toFixed(2)}`;
-        document.getElementById('drawerTotalSaved').textContent = `$${data.total_saved.toFixed(2)}`;
+        const originalTotal = data.total_original !== undefined ? data.total_original : (data.total_cost + (data.total_saved || 0));
+        const discountTotal = data.total_saved || 0;
+        const checkoutTotal = data.total_cost || 0;
+
+        const elCartBadge = document.getElementById('cartCountBadge');
+        if (elCartBadge) elCartBadge.textContent = data.total_items || 0;
+
+        const elOriginal = document.getElementById('drawerOriginalTotal');
+        if (elOriginal) elOriginal.textContent = `$${originalTotal.toFixed(2)}`;
+
+        const elDiscount = document.getElementById('drawerDiscountTotal');
+        if (elDiscount) elDiscount.textContent = `- $${discountTotal.toFixed(2)}`;
+
+        const elCheckout = document.getElementById('drawerCheckoutTotal');
+        if (elCheckout) elCheckout.textContent = `$${checkoutTotal.toFixed(2)}`;
+
+        const elTotalCost = document.getElementById('drawerTotalCost');
+        if (elTotalCost) elTotalCost.textContent = `$${checkoutTotal.toFixed(2)}`;
+
+        const elTotalSaved = document.getElementById('drawerTotalSaved');
+        if (elTotalSaved) elTotalSaved.textContent = `$${discountTotal.toFixed(2)}`;
 
         const container = document.getElementById('shoppingListContainer');
         container.innerHTML = '';
@@ -1586,7 +1613,11 @@ async function copyShoppingList() {
                 text += `\n`;
             }
         });
-        text += `💰 ${t('total_budget')} $${data.total_cost.toFixed(2)} (${t('total_saved')} $${data.total_saved.toFixed(2)})`;
+
+        const origTotal = data.total_original !== undefined ? data.total_original : (data.total_cost + (data.total_saved || 0));
+        text += `💰 ${t('original_total')} $${origTotal.toFixed(2)}\n`;
+        text += `🏷️ ${t('discount_total')} - $${data.total_saved.toFixed(2)}\n`;
+        text += `🧾 ${t('checkout_total')} $${data.total_cost.toFixed(2)}`;
 
         await navigator.clipboard.writeText(text);
         showToast(t('copied'));
