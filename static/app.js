@@ -388,6 +388,29 @@ function updateHalfPricePillStyle() {
     }
 }
 
+// Robust Australian Supermarket 1/2 Price (Half Price) Detection
+function isItemHalfPrice(it) {
+    if (!it) return false;
+    const desc = (it.discount_desc || '').toLowerCase();
+    if (desc.includes('1/2') || desc.includes('half')) return true;
+
+    const price = typeof it.price === 'number' ? it.price : parseFloat(it.price) || 0;
+    const was = typeof it.was_price === 'number' ? it.was_price : parseFloat(it.was_price) || 0;
+    const save = typeof it.save_amount === 'number' ? it.save_amount : parseFloat(it.save_amount) || 0;
+
+    // 1. Explicit was_price: discounted by >= 45%
+    if (was > 0 && price > 0 && price <= was * 0.55) return true;
+
+    // 2. Exact match: save_amount >= price (e.g. price $1.50, save $1.50 -> 50% half price)
+    if (save > 0 && price > 0 && save >= price * 0.95) return true;
+
+    // 3. Implied was_price = price + save: discount ratio >= 45%
+    const effectiveWas = was > 0 ? was : (save > 0 ? price + save : 0);
+    if (effectiveWas > 0 && price > 0 && price <= effectiveWas * 0.55) return true;
+
+    return false;
+}
+
 // Search & Filtering
 function debounceSearch() {
     clearTimeout(searchTimeout);
@@ -497,9 +520,7 @@ async function loadSpecials() {
             if (currentStore !== 'All' && it.store !== currentStore) return false;
             if (currentCategory !== 'all' && it.category !== currentCategory) return false;
             if (discountOnly) {
-                const desc = (it.discount_desc || '').toLowerCase();
-                const isHalf = desc.includes('1/2') || desc.includes('half') || (it.was_price > 0 && it.price <= it.was_price * 0.55);
-                if (!isHalf) return false;
+                if (!isItemHalfPrice(it)) return false;
             }
             if (currentSearch) {
                 const translated = translateQueryClient(currentSearch);
@@ -597,7 +618,7 @@ function renderProducts(items) {
         if (item.store === 'Coles') storeColor = 'bg-rose-600 text-white';
         if (item.store === 'ALDI') storeColor = 'bg-blue-600 text-white';
 
-        const isHalfPrice = item.discount_desc && (item.discount_desc.includes('1/2') || item.discount_desc.toLowerCase().includes('half'));
+        const isHalfPrice = isItemHalfPrice(item);
         const fallbackImg = "https://images.unsplash.com/photo-1542838132-92c53300491e?w=300&auto=format&fit=crop&q=60";
 
         const p = parseSupermarketPrice(item.price_display, item.price);
@@ -822,7 +843,7 @@ function openProductModal(item) {
     if (item.store === 'Coles') storeColor = 'bg-rose-600 text-white';
     if (item.store === 'ALDI') storeColor = 'bg-blue-600 text-white';
 
-    const isHalfPrice = item.discount_desc && (item.discount_desc.includes('1/2') || item.discount_desc.toLowerCase().includes('half'));
+    const isHalfPrice = isItemHalfPrice(item);
     const fallbackImg = "https://images.unsplash.com/photo-1542838132-92c53300491e?w=300&auto=format&fit=crop&q=60";
 
     // Badges
