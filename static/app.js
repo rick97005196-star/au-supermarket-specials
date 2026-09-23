@@ -32,6 +32,8 @@ document.addEventListener('DOMContentLoaded', () => {
     isStaticMode = window.location.hostname.includes('pages.dev') ||
                    window.location.hostname.includes('github.io') ||
                    window.location.protocol === 'file:' ||
+                   window.location.hostname === 'localhost' ||
+                   window.location.hostname === '127.0.0.1' ||
                    !window.location.port;
 
     initTheme();
@@ -187,21 +189,21 @@ function renderCategoryBar() {
     const bar = document.getElementById('categoryBar');
     if (!bar) return;
 
-    const activeClasses = "flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3.5 py-1.5 rounded-xl text-[11px] sm:text-xs font-black bg-gradient-to-r from-emerald-600 to-teal-600 text-white shadow-md ring-2 ring-emerald-400/50 border border-emerald-500 shrink-0 transition-all active:scale-95 whitespace-nowrap scale-[1.03]";
-    const inactiveClasses = "flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1.5 rounded-xl text-[11px] sm:text-xs font-semibold bg-white dark:bg-zinc-800/90 hover:bg-slate-50 dark:hover:bg-zinc-700/80 text-slate-700 dark:text-zinc-200 border border-slate-200/80 dark:border-zinc-700/80 hover:border-slate-300 dark:hover:border-zinc-600 shrink-0 transition-all active:scale-95 whitespace-nowrap shadow-2xs";
+    const activeClasses = "flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 rounded-2xl text-[11px] sm:text-xs font-bold bg-gradient-to-r from-emerald-600 via-emerald-600 to-teal-600 text-white shadow-[0_4px_16px_-2px_rgba(16,185,129,0.35)] ring-2 ring-emerald-400/50 border border-emerald-500/80 shrink-0 transition-all duration-200 active:scale-95 whitespace-nowrap scale-[1.03]";
+    const inactiveClasses = "flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 rounded-2xl text-[11px] sm:text-xs font-semibold bg-white/90 dark:bg-[#15171a] hover:bg-slate-50 dark:hover:bg-zinc-800/90 text-slate-700 dark:text-zinc-200 border border-slate-200/80 dark:border-white/[0.08] hover:border-slate-300 dark:hover:border-zinc-700 shrink-0 transition-all duration-200 active:scale-95 whitespace-nowrap shadow-[0_1px_3px_rgba(0,0,0,0.03)]";
 
     const renderBtnContent = (btn, catKey, isActive) => {
         const style = CATEGORY_STYLES[catKey] || { emoji: '🏷️', iconBg: 'bg-slate-50 border-slate-200 text-slate-700' };
         const label = getCleanCategoryLabel(catKey);
         const iconClasses = isActive
-            ? 'w-5 h-5 sm:w-6 sm:h-6 rounded-lg bg-white/20 border border-white/30 text-white flex items-center justify-center text-xs sm:text-sm shrink-0 shadow-2xs'
-            : `w-5 h-5 sm:w-6 sm:h-6 rounded-lg border flex items-center justify-center text-xs sm:text-sm shrink-0 shadow-2xs ${style.iconBg}`;
+            ? 'w-5 h-5 sm:w-6 sm:h-6 rounded-xl bg-white/20 border border-white/30 text-white flex items-center justify-center text-xs sm:text-sm shrink-0 shadow-2xs backdrop-blur-xs'
+            : `w-5 h-5 sm:w-6 sm:h-6 rounded-xl border flex items-center justify-center text-xs sm:text-sm shrink-0 shadow-2xs ${style.iconBg}`;
 
         btn.innerHTML = `
             <span class="${iconClasses}">
                 ${style.emoji}
             </span>
-            <span class="truncate tracking-tight">${label}</span>
+            <span class="truncate tracking-tight font-medium">${label}</span>
         `;
     };
 
@@ -577,28 +579,28 @@ function selectStore(store) {
 
         if (isActive) {
             if (s === 'All') {
-                tab.className = 'store-tab active px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg transition bg-slate-900 dark:bg-zinc-100 text-white dark:text-slate-900 shadow-xs font-bold scale-[1.02] shrink-0';
+                tab.className = 'store-tab active px-3 py-1.5 rounded-xl transition bg-slate-900 dark:bg-zinc-100 text-white dark:text-slate-900 shadow-xs font-bold scale-[1.02] shrink-0';
             } else if (s === 'Woolworths') {
-                tab.className = 'store-tab active px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg transition bg-emerald-600 text-white shadow-xs font-bold scale-[1.02] shrink-0';
+                tab.className = 'store-tab active px-3 py-1.5 rounded-xl transition bg-[#007a3d] text-white shadow-xs font-bold scale-[1.02] shrink-0';
                 if (dot) dot.className = 'store-dot inline-block w-2 h-2 rounded-full bg-white mr-1 shadow-2xs';
             } else if (s === 'Coles') {
-                tab.className = 'store-tab active px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg transition bg-rose-600 text-white shadow-xs font-bold scale-[1.02] shrink-0';
+                tab.className = 'store-tab active px-3 py-1.5 rounded-xl transition bg-[#e01a22] text-white shadow-xs font-bold scale-[1.02] shrink-0';
                 if (dot) dot.className = 'store-dot inline-block w-2 h-2 rounded-full bg-white mr-1 shadow-2xs';
             } else if (s === 'ALDI') {
-                tab.className = 'store-tab active px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg transition bg-blue-600 text-white shadow-xs font-bold scale-[1.02] shrink-0';
+                tab.className = 'store-tab active px-3 py-1.5 rounded-xl transition bg-[#00205b] text-white shadow-xs font-bold scale-[1.02] shrink-0';
                 if (dot) dot.className = 'store-dot inline-block w-2 h-2 rounded-full bg-white mr-1 shadow-2xs';
             }
         } else {
             if (s === 'All') {
-                tab.className = 'store-tab px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg transition font-semibold text-slate-600 dark:text-zinc-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200/60 dark:hover:bg-zinc-700/60 shrink-0';
+                tab.className = 'store-tab px-3 py-1.5 rounded-xl transition font-semibold text-slate-600 dark:text-zinc-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200/60 dark:hover:bg-zinc-700/60 shrink-0';
             } else if (s === 'Woolworths') {
-                tab.className = 'store-tab px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg transition font-semibold text-emerald-700 dark:text-emerald-400 hover:bg-emerald-50 dark:hover:bg-emerald-950/40 shrink-0';
+                tab.className = 'store-tab px-3 py-1.5 rounded-xl transition font-semibold text-emerald-700 dark:text-emerald-400 hover:bg-emerald-50 dark:hover:bg-emerald-950/40 shrink-0';
                 if (dot) dot.className = 'store-dot inline-block w-2 h-2 rounded-full bg-emerald-600 mr-1';
             } else if (s === 'Coles') {
-                tab.className = 'store-tab px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg transition font-semibold text-rose-700 dark:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-950/40 shrink-0';
+                tab.className = 'store-tab px-3 py-1.5 rounded-xl transition font-semibold text-rose-700 dark:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-950/40 shrink-0';
                 if (dot) dot.className = 'store-dot inline-block w-2 h-2 rounded-full bg-rose-600 mr-1';
             } else if (s === 'ALDI') {
-                tab.className = 'store-tab px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg transition font-semibold text-blue-700 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-950/40 shrink-0';
+                tab.className = 'store-tab px-3 py-1.5 rounded-xl transition font-semibold text-blue-700 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-950/40 shrink-0';
                 if (dot) dot.className = 'store-dot inline-block w-2 h-2 rounded-full bg-blue-600 mr-1';
             }
         }
@@ -889,12 +891,12 @@ function renderNextBatch() {
 
 function createProductCardElement(item) {
     const card = document.createElement('div');
-    card.className = 'bg-white dark:bg-zinc-900 rounded-2xl border border-slate-200/90 dark:border-zinc-800 overflow-hidden shadow-2xs hover:shadow-md hover:border-slate-300 dark:hover:border-zinc-700 transition duration-200 flex flex-col justify-between group cursor-pointer active:scale-[0.98]';
+    card.className = 'bg-white dark:bg-[#121316] rounded-2xl sm:rounded-3xl border border-slate-200/80 dark:border-white/[0.07] overflow-hidden shadow-[0_2px_10px_-2px_rgba(0,0,0,0.04)] hover:shadow-[0_16px_36px_-6px_rgba(0,0,0,0.12)] dark:hover:shadow-[0_16px_36px_-6px_rgba(0,0,0,0.5)] hover:-translate-y-1 hover:border-emerald-500/40 dark:hover:border-emerald-500/40 transition-all duration-300 flex flex-col justify-between group cursor-pointer relative';
     card.onclick = () => openProductModal(item);
 
-    let storeColor = 'bg-emerald-600 text-white';
-    if (item.store === 'Coles') storeColor = 'bg-rose-600 text-white';
-    if (item.store === 'ALDI') storeColor = 'bg-blue-600 text-white';
+    let storeBadgeClass = 'bg-[#007a3d] text-white';
+    if (item.store === 'Coles') storeBadgeClass = 'bg-[#e01a22] text-white';
+    if (item.store === 'ALDI') storeBadgeClass = 'bg-[#00205b] text-white';
 
     const isHalfPrice = isItemHalfPrice(item);
     const fallbackImg = DEFAULT_FALLBACK_IMG;
@@ -920,110 +922,106 @@ function createProductCardElement(item) {
     const p = parseSupermarketPrice(item.price_display, item.price);
     const unitPriceClean = formatSupermarketUnitPrice(item.unit_price);
     const translated = getProductTranslation(item, currentLang);
+    const catStyle = CATEGORY_STYLES[item.category] || { emoji: '🏷️' };
 
     card.innerHTML = `
-        <div class="p-2.5 sm:p-3.5 space-y-2 sm:space-y-2.5">
-            <!-- Top Tags: Store, Category & 1/2 Price Badge -->
-            <div class="flex items-center justify-between gap-1 flex-wrap">
-                <div class="flex items-center gap-1">
-                    <span class="px-1.5 sm:px-2 py-0.5 rounded-md text-[10px] sm:text-[11px] font-bold ${storeColor}">
+        <div class="p-3 sm:p-3.5 space-y-2.5">
+            <!-- Product Image Stage with Floating Badges -->
+            <div class="relative w-full aspect-square rounded-xl sm:rounded-2xl bg-gradient-to-b from-slate-50/90 to-slate-100/50 dark:from-zinc-800/40 dark:to-zinc-850/60 p-2.5 sm:p-3 flex items-center justify-center overflow-hidden ring-1 ring-black/[0.04] dark:ring-white/[0.05]">
+                <!-- Top-Left Store Tag -->
+                <div class="absolute top-2 left-2 z-10">
+                    <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-lg text-[10px] sm:text-[11px] font-bold ${storeBadgeClass} shadow-xs">
+                        <span class="w-1.5 h-1.5 rounded-full bg-white"></span>
                         ${item.store}
                     </span>
-                    <span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-md text-[9px] sm:text-[10px] font-medium bg-slate-100 dark:bg-zinc-800 text-slate-600 dark:text-zinc-400 border border-slate-200/50 dark:border-zinc-700/50">
-                        <span>${(CATEGORY_STYLES[item.category] || {}).emoji || ''}</span>
-                        <span>${getCleanCategoryLabel(item.category)}</span>
-                    </span>
                 </div>
-                ${isHalfPrice ? `
-                    <span class="px-1.5 sm:px-2 py-0.5 rounded-md text-[10px] sm:text-[11px] font-black bg-rose-500 text-white shadow-2xs">
-                        1/2
-                    </span>
-                ` : (cleanDiscountDesc ? `
-                    <span class="px-1.5 py-0.5 rounded-md text-[9px] sm:text-[10px] font-semibold bg-amber-50 dark:bg-amber-950/60 text-amber-800 dark:text-amber-300 border border-amber-200/60 dark:border-amber-800/60 truncate max-w-[90px] sm:max-w-[110px]" title="${cleanDiscountDesc}">
-                        ${cleanDiscountDesc}
-                    </span>
-                ` : '')}
-            </div>
 
-            <!-- Product Image -->
-            <div class="w-full h-28 sm:h-36 rounded-xl bg-slate-50 dark:bg-zinc-800/50 flex items-center justify-center p-2 sm:p-2.5 relative overflow-hidden group-hover:bg-slate-100/70 dark:group-hover:bg-zinc-800 transition">
+                <!-- Top-Right Discount Badge -->
+                <div class="absolute top-2 right-2 z-10">
+                    ${isHalfPrice ? `
+                        <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-lg text-[10px] sm:text-[11px] font-black bg-gradient-to-r from-rose-500 via-rose-600 to-red-600 text-white shadow-md shadow-rose-500/25 tracking-tight">
+                            <i class="fa-solid fa-fire text-[9px] text-amber-200"></i>
+                            <span>半價 50%</span>
+                        </span>
+                    ` : (effectiveSave > 0 ? `
+                        <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-lg text-[10px] sm:text-[11px] font-black bg-emerald-600 text-white shadow-xs tracking-tight">
+                            省 $${effectiveSave.toFixed(2)}
+                        </span>
+                    ` : (cleanDiscountDesc ? `
+                        <span class="inline-flex items-center px-2 py-0.5 rounded-lg text-[9px] sm:text-[10px] font-bold bg-amber-100 dark:bg-amber-950/80 text-amber-900 dark:text-amber-300 border border-amber-300/50 truncate max-w-[90px]" title="${cleanDiscountDesc}">
+                            ${cleanDiscountDesc}
+                        </span>
+                    ` : ''))}
+                </div>
+
+                <!-- Product Image with Zoom -->
                 <img 
                     src="${item.image_url || fallbackImg}" 
                     alt="${item.title}" 
                     loading="lazy" 
                     decoding="async"
-                    class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-200"
+                    class="max-h-full max-w-full object-contain group-hover:scale-108 transition-transform duration-500 ease-out"
                     onerror="this.src='${fallbackImg}'"
                 />
             </div>
 
-            <!-- Date Range Tag -->
-            ${item.date_range ? `
-                <div class="text-[9px] sm:text-[10px] text-slate-400 dark:text-zinc-500 flex items-center gap-1 font-medium truncate" title="${item.date_range}">
-                    <i class="fa-regular fa-calendar text-[8px] sm:text-[9px]"></i>
-                    <span class="truncate">${item.date_range}</span>
-                </div>
-            ` : ''}
+            <!-- Category & Unit Price Meta Row -->
+            <div class="flex items-center justify-between gap-1 text-[10px] text-slate-500 dark:text-zinc-400">
+                <span class="inline-flex items-center gap-1 font-medium bg-slate-100/90 dark:bg-zinc-800/70 px-1.5 py-0.5 rounded-md text-[9px] sm:text-[10px]">
+                    <span>${catStyle.emoji}</span>
+                    <span>${getCleanCategoryLabel(item.category)}</span>
+                </span>
+                ${unitPriceClean ? `
+                    <span class="font-mono text-slate-500 dark:text-zinc-400 text-[10px] font-medium truncate max-w-[110px]" title="${unitPriceClean}">
+                        ${unitPriceClean}
+                    </span>
+                ` : ''}
+            </div>
 
-            <!-- Product Title & Translation -->
+            <!-- Product Title & Multilingual Subtitle -->
             <div class="space-y-1">
-                <h3 class="text-xs sm:text-sm font-semibold text-slate-900 dark:text-zinc-100 line-clamp-2 leading-snug" title="${item.title}">
+                <h3 class="text-xs sm:text-sm font-bold text-slate-900 dark:text-zinc-100 line-clamp-2 leading-snug group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors" title="${item.title}">
                     ${item.title}
                 </h3>
                 ${translated ? `
-                    <div class="text-[11px] sm:text-xs font-medium text-emerald-700 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/70 border border-emerald-200/60 dark:border-emerald-800/60 px-2 py-0.5 rounded-lg line-clamp-2 leading-tight" title="${translated}">
+                    <div class="text-[11px] sm:text-xs font-semibold text-emerald-800 dark:text-emerald-300 bg-emerald-50/80 dark:bg-emerald-950/50 border border-emerald-200/50 dark:border-emerald-800/50 px-2 py-0.5 rounded-lg line-clamp-1 leading-normal" title="${translated}">
                         ${translated}
-                    </div>
-                ` : ''}
-                <!-- Supermarket Unit Price (e.g. $1.25 / 100g) -->
-                ${unitPriceClean ? `
-                    <div class="inline-flex items-center gap-1 text-[10px] sm:text-[11px] font-mono font-semibold text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200/60 dark:border-emerald-800/60 px-1.5 py-0.5 rounded">
-                        <span class="text-[9px]">⚖️</span>
-                        <span>${unitPriceClean}</span>
                     </div>
                 ` : ''}
             </div>
         </div>
 
-        <!-- Price & Add Button Footer (Australian Supermarket Lockup: $ 4 25 ea | Save $4.25 | Was $8.50) -->
-        <div class="p-2.5 sm:p-3.5 pt-0 space-y-2 sm:space-y-2.5">
-            <div class="space-y-1">
-                <!-- Coles / Woolies Big Price Lockup -->
+        <!-- Price & Action Footer -->
+        <div class="p-3 sm:p-3.5 pt-0 space-y-2 sm:space-y-2.5">
+            <!-- Price Display Row -->
+            <div class="pt-2 border-t border-slate-100 dark:border-zinc-800/80 flex items-baseline justify-between gap-1">
                 <div class="flex items-baseline gap-0.5 leading-none">
-                    <span class="text-xs sm:text-sm font-extrabold text-slate-900 dark:text-white self-start mt-0.5">$</span>
-                    <span class="text-xl sm:text-3xl font-black tracking-tight text-slate-900 dark:text-white">${p.dollars}</span>
-                    <span class="text-xs sm:text-sm font-extrabold text-slate-900 dark:text-white self-start mt-0.5">${p.cents}</span>
-                    <span class="text-[10px] sm:text-xs font-semibold text-slate-500 dark:text-zinc-400 ml-1 self-baseline">${p.unit}</span>
+                    <span class="text-xs sm:text-sm font-extrabold text-slate-900 dark:text-white self-start mt-0.5 font-mono">$</span>
+                    <span class="text-xl sm:text-3xl font-black tracking-tight text-slate-900 dark:text-white font-mono">${p.dollars}</span>
+                    <span class="text-xs sm:text-sm font-extrabold text-slate-900 dark:text-white self-start mt-0.5 font-mono">${p.cents}</span>
+                    <span class="text-[10px] sm:text-xs font-semibold text-slate-500 dark:text-zinc-400 ml-0.5 self-baseline">${p.unit}</span>
                 </div>
 
-                <!-- Was & Save Badges Row -->
-                <div class="flex items-center gap-1.5 flex-wrap min-h-[1.2rem]">
+                <div class="text-right leading-none space-y-0.5">
+                    ${effectiveWas > 0 ? `
+                        <div class="text-[10px] sm:text-[11px] text-slate-400 line-through font-medium">
+                            Was $${effectiveWas.toFixed(2)}
+                        </div>
+                    ` : ''}
                     ${effectiveSave > 0 ? `
-                        <span class="px-1.5 py-0.5 rounded text-[10px] sm:text-[11px] font-black bg-amber-400 text-slate-950 dark:bg-amber-400 dark:text-slate-950 shadow-2xs leading-none">
+                        <span class="inline-block px-1.5 py-0.2 rounded text-[9px] sm:text-[10px] font-black bg-amber-400 text-slate-950">
                             Save $${effectiveSave.toFixed(2)}
                         </span>
                     ` : ''}
-                    ${effectiveWas > 0 ? `
-                        <span class="text-[10px] sm:text-[11px] text-slate-400 line-through font-medium">
-                            Was $${effectiveWas.toFixed(2)}
-                        </span>
-                    ` : ''}
                 </div>
             </div>
 
-            <div class="flex items-center justify-between text-[9px] sm:text-[10px] text-slate-400 dark:text-zinc-500 pt-1 border-t border-slate-100 dark:border-zinc-800/60">
-                <span class="group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition flex items-center gap-1">
-                    <i class="fa-solid fa-circle-info text-[8px] sm:text-[9px]"></i>
-                    <span>${t('view_details')}</span>
-                </span>
-                <span class="text-slate-300 dark:text-zinc-600">→</span>
-            </div>
-
+            <!-- Add to Shopping List Button -->
             <button 
                 onclick='event.stopPropagation(); addToShoppingList(${JSON.stringify(item).replace(/'/g, "&#39;")})'
-                class="w-full py-1.5 sm:py-2 px-2 sm:px-3 rounded-xl text-[11px] sm:text-xs font-bold bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 hover:bg-emerald-600 hover:text-white dark:hover:bg-emerald-600 dark:hover:text-white border border-emerald-200/80 dark:border-emerald-800/80 transition flex items-center justify-center gap-1 active:scale-95 shadow-2xs"
+                class="w-full py-2 px-3 rounded-xl sm:rounded-2xl text-[11px] sm:text-xs font-bold bg-slate-100 hover:bg-emerald-600 text-slate-700 hover:text-white dark:bg-zinc-800 dark:hover:bg-emerald-600 dark:text-zinc-200 dark:hover:text-white border border-slate-200/60 dark:border-zinc-700/60 hover:border-emerald-600 dark:hover:border-emerald-600 transition-all duration-200 flex items-center justify-center gap-1.5 active:scale-95 shadow-2xs group/btn"
             >
-                <i class="fa-solid fa-plus text-[10px] sm:text-xs"></i>
+                <i class="fa-solid fa-plus text-[10px] sm:text-xs transition-transform duration-200 group-hover/btn:rotate-90"></i>
                 <span data-i18n="add_to_list">${t('add_to_list')}</span>
             </button>
         </div>
