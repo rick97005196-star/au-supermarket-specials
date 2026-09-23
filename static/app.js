@@ -532,18 +532,19 @@ function updateHalfPricePillStyle() {
 }
 
 // Hardware / Kitchenware Appliance Guard (Strictly exclude from grocery bestsellers)
-const APPLIANCE_HARDWARE_REGEX = /\b(kettle\s*\d|electric\s*toothbrush|toothbrush\s*handle|saucepan|frypan|cookware|knife\s*block|toaster|air\s*fryer|steam\s*iron|vacuum|pillow|quilt|bedsheet|blanket|storage\s*box|clothes\s*airer|pressure\s*cooker|slow\s*cooker|blender|mixer)\b/i;
+const APPLIANCE_HARDWARE_REGEX = /\b(kettle\s*\d|electric\s*toothbrush|toothbrush\s*handle|saucepan|frypan|cookware|knife\s*block|toaster|air\s*fryer|steam\s*iron|vacuum|pillow|quilt|bedsheet|blanket|storage\s*box|clothes\s*airer|pressure\s*cooker|slow\s*cooker|blender|mixer|armor\s*all|car\s*wash|motor\s*oil|windscreen|protectant\s*spray|tyre\s*shine)\b/i;
 
 // Tier 1: Australia's #1 National Consumer Superstars (Highest weekly supermarket grocery unit volume)
-const SUPERSTAR_REGEX = /\b(shapes|red\s*rock\s*deli|coca-cola|coke|doritos|smith'?s|tim\s*tam|cadbury|magnum|drumstick|connoisseur|moccona|finish|fairy|omo|cold\s*power|weet-bix|milo|vegemite|chobani|bega|western\s*star|dare|up\s*&\s*go|quilton|sorbent|morning\s*fresh|primo\s*rindless|primo\s*bacon|heinz\s*ketchup|heinz\s*baked|natural\s*confectionery|sour\s*patch|birds\s*eye|mccain)\b/i;
+const SUPERSTAR_REGEX = /\b(shapes|red\s*rock\s*deli|coca-cola|coke|doritos|smith'?s|tim\s*tam|cadbury|magnum|drumstick|connoisseur|moccona|omo|cold\s*power|weet-bix|milo|vegemite|chobani|bega|western\s*star|dare|up\s*&\s*go|quilton|sorbent|morning\s*fresh|primo\s*(?:rindless|bacon|ham)|heinz\s*(?:ketchup|baked|beans|soup)|natural\s*confectionery|sour\s*patch|birds\s*eye|mccain|twinings|la\s*famiglia|helga'?s|tip\s*top|barilla|cobram\s*estate)\b|\bfinish\s*(?:quantum|powerball|ultimate|all\s*in\s*1|dishwasher|rinse\s*aid|tablets?|capsules?)\b|\bfairy\s*(?:platinum|dish|clean|laundry|capsules?|tablets?|wash)\b/i;
 
 // Comprehensive Australian Supermarket Best-Sellers & Consumer Favorites Index
-const POPULAR_REGEX = /\b(tim\s*tam|arnott'?s|shapes|jatz|clix|teevee|wagon\s*wheels?|cadbury|favourites|roses|twirl|flake|marvellous|red\s*rock(\s*deli)?|smith'?s|doritos|kettle\s*(?:chips?|potato|brand|sea\s*salt|honey)|cheezels|grain\s*waves|twisties|burger\s*rings|pods|maltesers|m&m'?s|skittles|allen'?s|lindt|ferrero|kinder|nutella|biscoff|oreo|kit\s*kat|mars|snickers|twix|pringles|weet-bix|sanitarium|corn\s*flakes|nutri-grain|coco\s*pops|special\s*k|sultana\s*bran|froot\s*loops|milo|nesquik|vegemite|promite|moccona|nescafe|vittoria|lavazza|grinders|l'or|starbucks|twinings|lipton|dilmah|tetley|bushells|carman'?s|uncle\s*tobys|barilla|san\s*remo|leggo'?s|dolmio|heinz|masterfoods|praise|hellmann'?s|sirena|john\s*west|greenseas|cobram\s*estate|moro|bertolli|crisco|campbell'?s|spam|old\s*el\s*paso|coca-cola|coke|pepsi|solo|sunkist|mountain\s*dew|7up|sprite|fanta|schweppes|bundaberg|mount\s*franklin|pump|cool\s*ridge|san\s*pellegrino|kirks|golden\s*circle|daily\s*juice|v\s*energy|red\s*bull|monster|dare|farmers\s*union\s*iced\s*coffee|oak\s*milk|ice\s*break|up\s*&\s*go|bega|mainland|cheer|cracker\s*barrel|mersey\s*valley|chobani|gippsland|dairy\s*farmers|jalna|western\s*star|lurpak|devondale|flora|nuttelex|philadelphia|perfect\s*italiano|d'orsogna|primo|don|magnum|cornetto|golden\s*gaytime|paddle\s*pop|blue\s*ribbon|connoisseur|peters|drumstick|maxibon|ben\s*&\s*jerry'?s|h[aä]agen-dazs|bulla|weis|birds\s*eye|ingham'?s|steggles|four'?n\s*twenty|patties|sara\s*lee|mccain|finish|fairy|omo|dynamo|cold\s*power|radiant|biozet|comfort|fluffy|cuddly|morning\s*fresh|dawn|palmolive|pine\s*o\s*cleen|dettol|domestos|harpic|duck|bref|ajax|glen\s*20|quilton|sorbent|kleenex|viva|handee|glad|swisse|blackmores|nature'?s\s*own|cenovis|centrum|berocca|colgate|oral-b|sensodyne|listerine|rexona|nivea|dove|lynx|gillette|schick|head\s*&\s*shoulders|pantene|l'or[eé]al|garnier|sunsilk|tresemme|radox|aveeno|cetaphil|qv|cancer\s*council|banana\s*boat|huggies|babylove|curash|bananas?|hass\s*avocados?|pink\s*lady\s*apples?|strawberries|blueberries|carrots?|potatoes?|broccoli|chicken\s*breast|beef\s*mince|rump\s*steak|rib\s*eye|atlantic\s*salmon|tiger\s*prawns?)\b/i;
+const POPULAR_REGEX = /\b(tim\s*tam|arnott'?s|shapes|jatz|clix|teevee|wagon\s*wheels?|cadbury|favourites|roses|twirl|flake|marvellous|red\s*rock(\s*deli)?|smith'?s|doritos|kettle\s*(?:chips?|potato|brand|sea\s*salt|honey)|cheezels|grain\s*waves|twisties|burger\s*rings|pods|maltesers|m&m'?s|skittles|allen'?s|lindt|ferrero|kinder|nutella|biscoff|oreo|kit\s*kat|mars|snickers|twix|pringles|weet-bix|sanitarium|corn\s*flakes|nutri-grain|coco\s*pops|special\s*k|sultana\s*bran|froot\s*loops|milo|nesquik|vegemite|promite|moccona|nescafe|vittoria|lavazza|grinders|l'or|starbucks|twinings|lipton|dilmah|tetley|bushells|carman'?s|uncle\s*tobys|barilla|san\s*remo|leggo'?s|dolmio|heinz|masterfoods|praise|hellmann'?s|sirena|john\s*west|greenseas|cobram\s*estate|moro|bertolli|crisco|campbell'?s|spam|old\s*el\s*paso|coca-cola|coke|pepsi|solo|sunkist|mountain\s*dew|7up|sprite|fanta|schweppes|bundaberg|mount\s*franklin|pump|cool\s*ridge|san\s*pellegrino|kirks|golden\s*circle|daily\s*juice|v\s*energy|red\s*bull|monster|dare|farmers\s*union\s*iced\s*coffee|oak\s*milk|ice\s*break|up\s*&\s*go|bega|mainland|cheer|cracker\s*barrel|mersey\s*valley|chobani|gippsland|dairy\s*farmers|jalna|western\s*star|lurpak|devondale|flora|nuttelex|philadelphia|perfect\s*italiano|d'orsogna|primo|don|magnum|cornetto|golden\s*gaytime|paddle\s*pop|blue\s*ribbon|connoisseur|peters|drumstick|maxibon|ben\s*&\s*jerry'?s|h[aä]agen-dazs|bulla|weis|birds\s*eye|ingham'?s|steggles|four'?n\s*twenty|patties|sara\s*lee|mccain|tip\s*top|helga|abbott|la\s*famiglia|wonder\s*white|mighty\s*soft|mr\s*kipling|finish\s*(?:quantum|powerball|ultimate|all\s*in\s*1|dishwasher|rinse)|fairy\s*(?:platinum|dish|clean|laundry|capsules?|tablets?)|omo|dynamo|cold\s*power|radiant|biozet|comfort|fluffy|cuddly|morning\s*fresh|dawn|palmolive|pine\s*o\s*cleen|dettol|domestos|harpic|duck|bref|ajax|glen\s*20|quilton|sorbent|kleenex|viva|handee|glad|swisse|blackmores|nature'?s\s*own|cenovis|centrum|berocca|colgate|oral-b|sensodyne|listerine|rexona|nivea|dove|lynx|gillette|schick|head\s*&\s*shoulders|pantene|l'or[eé]al|garnier|sunsilk|tresemme|radox|aveeno|cetaphil|qv|cancer\s*council|banana\s*boat|huggies|babylove|curash|bananas?|hass\s*avocados?|pink\s*lady\s*apples?|strawberries|blueberries|carrots?|potatoes?|broccoli|chicken\s*breast|beef\s*mince|rump\s*steak|rib\s*eye|atlantic\s*salmon|tiger\s*prawns?)\b/i;
 
 function isItemPopular(it) {
     if (!it) return false;
     const title = it.title || '';
     if (APPLIANCE_HARDWARE_REGEX.test(title)) return false;
+    if (/fairy\s*floss/i.test(title)) return false;
     if (it.is_popular === true) return true;
     return POPULAR_REGEX.test(title);
 }
@@ -555,13 +556,14 @@ function calculatePopularityScore(it) {
     }
     const title = it.title || '';
     if (APPLIANCE_HARDWARE_REGEX.test(title)) return -999;
+    const isFairyFloss = /fairy\s*floss/i.test(title);
     
     let score = 0;
-    if (SUPERSTAR_REGEX.test(title)) {
+    if (SUPERSTAR_REGEX.test(title) && !isFairyFloss) {
         score += 200;
-    } else if (POPULAR_REGEX.test(title)) {
+    } else if (POPULAR_REGEX.test(title) && !isFairyFloss) {
         score += 120;
-    } else if (it.is_popular) {
+    } else if (it.is_popular && !isFairyFloss) {
         score += 60;
     } else {
         return 0;
@@ -592,57 +594,127 @@ function calculatePopularityScore(it) {
         score += Math.round((save / was) * 10);
     }
 
+    // Category weighting for balanced supermarket popularity
+    const cat = it.category || '';
+    if (['bakery', 'produce', 'meat', 'dairy_eggs', 'seafood'].includes(cat)) {
+        score += 25;
+    } else if (['snacks', 'drinks', 'frozen', 'pantry'].includes(cat)) {
+        score += 15;
+    } else if (['household', 'health_vitamins'].includes(cat)) {
+        score -= 10;
+    }
+
     return score;
 }
 
+const KNOWN_SUPERMARKET_BRANDS = [
+    'cadbury', 'arnott', 'shapes', 'tim tam', 'smith', 'red rock deli', 'doritos', 'kettle',
+    'coca-cola', 'coke', 'pepsi', 'up&go', 'dare', 'chobani', 'bega', 'western star',
+    'connoisseur', 'magnum', 'drumstick', 'peters', 'bulla', 'weis', 'ben & jerry',
+    'birds eye', 'mccain', 'lavazza', 'moccona', 'nescafe', 'starbucks', 'vittoria', "l'or",
+    'twinings', 'dilmah', 'tetley', 'omo', 'cold power', 'finish', 'fairy', 'morning fresh',
+    'quilton', 'sorbent', 'kleenex', 'viva', 'ajax', 'harpic', 'bref', 'duck', 'cuddly', 'fluffy',
+    'comfort', 'radiant', 'palmolive', 'colgate', 'oral-b', 'sensodyne', 'gillette', 'schick',
+    'dettol', 'rexona', 'lynx', 'nivea', 'dove', 'garnier', 'mcobeauty', 'swisse', 'blackmores',
+    "nature's own", 'cenovis', 'berocca', 'primo', 'don', "d'orsogna", 'weet-bix', 'sanitarium',
+    'milo', 'vegemite', 'barilla', 'san remo', 'leggo', 'dolmio', 'cobram estate', 'moro',
+    'la famiglia', 'helga', 'tip top', 'abbott', 'wonder white', 'sirena', 'john west',
+    'greenseas', "four'n twenty", 'patties', 'carman', 'uncle tobys', 'kellogg',
+    'kraft', 'philadelphia', 'lurpak', 'devondale', 'mainland', 'meredith dairy',
+    'jalna', 'gippsland', 'danone', 'yoplait', 'nudie', 'daily juice', 'bundaberg',
+    'red bull', 'monster', 'v energy', 'gatorade', 'powerade', 'schweppes', 'kirks',
+    'mount franklin', 'pump', 'armor all', 'pine o cleen', 'bushman', 'aerogard'
+];
+
 function getProductFamilyKey(title) {
     const t = (title || '').toLowerCase();
-    if (t.includes('shapes')) return 'shapes';
-    if (t.includes('red rock deli')) return 'red_rock_deli';
-    if (t.includes('coca-cola') || t.includes('coke')) return 'coca_cola';
-    if (t.includes('doritos')) return 'doritos';
-    if (t.includes('smith')) return 'smiths';
-    if (t.includes('tim tam')) return 'tim_tam';
-    if (t.includes('cadbury')) return 'cadbury';
-    if (t.includes('magnum')) return 'magnum';
-    if (t.includes('drumstick')) return 'drumstick';
-    if (t.includes('connoisseur')) return 'connoisseur';
-    if (t.includes('moccona')) return 'moccona';
-    if (t.includes('finish')) return 'finish';
-    if (t.includes('fairy')) return 'fairy';
-    if (t.includes('omo')) return 'omo';
-    if (t.includes('cold power')) return 'cold_power';
-    if (t.includes('morning fresh')) return 'morning_fresh';
-    if (t.includes('birds eye')) return 'birds_eye';
-    if (t.includes('milo')) return 'milo';
-    if (t.includes('heinz')) return 'heinz';
-    if (t.includes('sour patch') || t.includes('natural confectionery')) return 'lollies';
-    if (t.includes('primo')) return 'primo';
-    if (t.includes('quilton')) return 'quilton';
-    if (t.includes('sorbent')) return 'sorbent';
-    if (t.includes('bega')) return 'bega';
-    if (t.includes('twinings')) return 'twinings';
-    if (t.includes('colgate')) return 'colgate';
-    return t.split(' ').slice(0, 2).join('_');
+    for (const b of KNOWN_SUPERMARKET_BRANDS) {
+        if (t.includes(b)) return b;
+    }
+    const words = t.replace(/[^a-z0-9\s]/g, ' ').split(/\s+/).filter(Boolean);
+    return words[0] || 'generic';
 }
 
 function createDiverseBestSellers(items) {
-    const primaryRound = [];
-    const secondaryRound = [];
-    const seenFamilies = new Map();
+    if (!items || items.length <= 1) return items;
 
-    for (const item of items) {
-        const familyKey = getProductFamilyKey(item.title);
-        const count = seenFamilies.get(familyKey) || 0;
-        if (count < 2) {
-            primaryRound.push(item);
-            seenFamilies.set(familyKey, count + 1);
-        } else {
-            secondaryRound.push(item);
+    const brandCounts = new Map();
+    const result = [];
+    const isMultiCategory = new Set(items.map(x => x.category)).size > 2;
+
+    if (isMultiCategory) {
+        const CATEGORY_TARGETS = {
+            'snacks': 16,
+            'drinks': 16,
+            'pantry': 12,
+            'dairy_eggs': 10,
+            'frozen': 10,
+            'household': 8,
+            'meat': 8,
+            'bakery': 6,
+            'health_vitamins': 6,
+            'produce': 5,
+            'seafood': 3
+        };
+
+        const byCat = {};
+        for (const it of items) {
+            const cat = it.category || 'other';
+            if (!byCat[cat]) byCat[cat] = [];
+            byCat[cat].push(it);
         }
-    }
 
-    return [...primaryRound, ...secondaryRound];
+        // Pass 1: Select up to category targets with max 2 per brand
+        for (const [cat, target] of Object.entries(CATEGORY_TARGETS)) {
+            const catList = byCat[cat] || [];
+            let picked = 0;
+            for (const it of catList) {
+                if (picked >= target) break;
+                const fam = getProductFamilyKey(it.title);
+                const count = brandCounts.get(fam) || 0;
+                if (count < 2) {
+                    result.push(it);
+                    brandCounts.set(fam, count + 1);
+                    picked++;
+                }
+            }
+        }
+
+        // Pass 2: Fill remaining slots up to 100 with highest score items (strictly max 2 per brand!)
+        const pickedSet = new Set(result);
+        for (const it of items) {
+            if (result.length >= 100) break;
+            if (pickedSet.has(it)) continue;
+            const fam = getProductFamilyKey(it.title);
+            const count = brandCounts.get(fam) || 0;
+            if (count < 2) {
+                result.push(it);
+                brandCounts.set(fam, count + 1);
+                pickedSet.add(it);
+            }
+        }
+
+        // Sort resulting top 100 by popularity score descending
+        result.sort((a, b) => {
+            const scoreA = calculatePopularityScore(a);
+            const scoreB = calculatePopularityScore(b);
+            if (scoreB !== scoreA) return scoreB - scoreA;
+            return (b.save_amount || 0) - (a.save_amount || 0);
+        });
+
+        return result;
+    } else {
+        // Single category view: max 2 per brand family
+        for (const it of items) {
+            const fam = getProductFamilyKey(it.title);
+            const count = brandCounts.get(fam) || 0;
+            if (count < 2) {
+                result.push(it);
+                brandCounts.set(fam, count + 1);
+            }
+        }
+        return result;
+    }
 }
 
 // Product Series Clustering (Groups identical product lines with different flavors/variants together)

@@ -145,8 +145,8 @@ def classify_product(title: str, raw_cat: str = "", product_url: str = "") -> st
     # 7. BAKERY (Bread, Buns, Rolls, Bagels, Muffins, Croissants, Pastries, Cakes, Garlic Bread)
     # -------------------------------------------------------------
     if re.search(r'\b(?:bread|toast|loaf|sourdough|buns?|rolls?|bagels?|croissants?|crumpets?|muffins?|scones?|wraps?|pita|flatbread|tip\s*top|helga|abbott|wonder\s*white|pane\s*di\s*casa|baguette|hot\s*dog\s*rolls?|pizza\s*base|mighty\s*soft)\b', tl) or \
-       re.search(r'\b(?:cakes?|slices?|mr\s*kipling|pavlova|lamington|donuts?|doughnuts?|crust|pastry|danish|tart|pains?\s*au\s*chocolat|pudding|steamy\s*puds|brownie|profiteroles|la\s*famiglia|garlic\s*bread|sausage\s*rolls?)\b', tl):
-        if not is_packet_chips and not is_chocolate_bar and not re.search(r'\b(?:chips|tortilla\s*chips|baking\s*paper|baking\s*powder|cake\s*mix|rice\s*cake|shampoo|dog|cat)\b', tl):
+       re.search(r'\b(?:cakes?|vanilla\s*slice|caramel\s*slice|bakery\s*slice|garlic\s*slices?|pastry\s*slice|mr\s*kipling|pavlova|lamington|donuts?|doughnuts?|crust|pastry|danish|tart|pains?\s*au\s*chocolat|pudding|steamy\s*puds|brownie|profiteroles|la\s*famiglia|garlic\s*bread|sausage\s*rolls?)\b', tl):
+        if not is_packet_chips and not is_chocolate_bar and not re.search(r'\b(?:cheese|cheddar|chips|tortilla\s*chips|baking\s*paper|baking\s*powder|cake\s*mix|rice\s*cake|shampoo|dog|cat|in\s*syrup|syrup)\b', tl):
             return 'bakery'
 
     # -------------------------------------------------------------
@@ -239,12 +239,14 @@ def classify_product(title: str, raw_cat: str = "", product_url: str = "") -> st
     return 'household'
 
 APPLIANCE_HARDWARE_REGEX = re.compile(
-    r'\b(?:kettle\s*\d|electric\s*toothbrush|toothbrush\s*handle|saucepan|frypan|cookware|knife\s*block|toaster|air\s*fryer|steam\s*iron|vacuum|pillow|quilt|bedsheet|blanket|storage\s*box|clothes\s*airer|pressure\s*cooker|slow\s*cooker|blender|mixer)\b',
+    r'\b(?:kettle\s*\d|electric\s*toothbrush|toothbrush\s*handle|saucepan|frypan|cookware|knife\s*block|toaster|air\s*fryer|steam\s*iron|vacuum|pillow|quilt|bedsheet|blanket|storage\s*box|clothes\s*airer|pressure\s*cooker|slow\s*cooker|blender|mixer|armor\s*all|car\s*wash|motor\s*oil|windscreen|protectant\s*spray|tyre\s*shine)\b',
     re.IGNORECASE
 )
 
 SUPERSTAR_REGEX = re.compile(
-    r'\b(?:shapes|red\s*rock\s*deli|coca-cola|coke|doritos|smith[\'’]?s|tim\s*tam|cadbury|magnum|drumstick|connoisseur|moccona|finish|fairy|omo|cold\s*power|weet-bix|milo|vegemite|chobani|bega|western\s*star|dare|up\s*&\s*go|quilton|sorbent|morning\s*fresh|primo\s*rindless|primo\s*bacon|heinz\s*ketchup|heinz\s*baked|natural\s*confectionery|sour\s*patch|birds\s*eye|mccain)\b',
+    r'\b(?:shapes|red\s*rock\s*deli|coca-cola|coke|doritos|smith[\'’]?s|tim\s*tam|cadbury|magnum|drumstick|connoisseur|moccona|omo|cold\s*power|weet-bix|milo|vegemite|chobani|bega|western\s*star|dare|up\s*&\s*go|quilton|sorbent|morning\s*fresh|primo\s*(?:rindless|bacon|ham)|heinz\s*(?:ketchup|baked|beans|soup)|natural\s*confectionery|sour\s*patch|birds\s*eye|mccain|twinings|la\s*famiglia|helga[\'’]?s|tip\s*top|barilla|cobram\s*estate)\b|'
+    r'\bfinish\s*(?:quantum|powerball|ultimate|all\s*in\s*1|dishwasher|rinse\s*aid|tablets?|capsules?)\b|'
+    r'\bfairy\s*(?:platinum|dish|clean|laundry|capsules?|tablets?|wash)\b',
     re.IGNORECASE
 )
 
@@ -259,8 +261,10 @@ POPULAR_PATTERNS = [
     r'\b(bega|mainland|cheer|cracker\s*barrel|mersey\s*valley|chobani|gippsland|dairy\s*farmers|jalna|western\s*star|lurpak|devondale|flora|nuttelex|philadelphia|perfect\s*italiano|d[\'’]orsogna|primo|don)\b',
     # Frozen
     r'\b(magnum|cornetto|golden\s*gaytime|paddle\s*pop|blue\s*ribbon|connoisseur|peters|drumstick|maxibon|ben\s*&\s*jerry[\'’]?s|h[aä]agen-dazs|bulla|weis|birds\s*eye|ingham[\'’]?s|steggles|four[\'’]?n\s*twenty|patties|sara\s*lee|mccain)\b',
+    # Bakery
+    r'\b(tip\s*top|helga|abbott|la\s*famiglia|wonder\s*white|mighty\s*soft|mr\s*kipling)\b',
     # Household, Laundry & Cleaning
-    r'\b(finish|fairy|omo|dynamo|cold\s*power|radiant|biozet|comfort|fluffy|cuddly|morning\s*fresh|dawn|palmolive|pine\s*o\s*cleen|dettol|domestos|harpic|duck|bref|ajax|glen\s*20|quilton|sorbent|kleenex|viva|handee|glad)\b',
+    r'\b(finish\s*(?:quantum|powerball|ultimate|all\s*in\s*1|dishwasher|rinse)|fairy\s*(?:platinum|dish|clean|laundry|capsules?|tablets?)|omo|dynamo|cold\s*power|radiant|biozet|comfort|fluffy|cuddly|morning\s*fresh|dawn|palmolive|pine\s*o\s*cleen|dettol|domestos|harpic|duck|bref|ajax|glen\s*20|quilton|sorbent|kleenex|viva|handee|glad)\b',
     # Personal Care, Health & Vitamins
     r'\b(swisse|blackmores|nature[\'’]?s\s*own|cenovis|centrum|berocca|colgate|oral-b|sensodyne|listerine|rexona|nivea|dove|lynx|gillette|schick|head\s*&\s*shoulders|pantene|l[\'’]or[eé]al|garnier|sunsilk|tresemme|radox|aveeno|cetaphil|qv|cancer\s*council|banana\s*boat|huggies|babylove|curash)\b',
     # Fresh Produce & Meat staples
@@ -273,6 +277,8 @@ def is_popular_product(title: str) -> bool:
         return False
     if APPLIANCE_HARDWARE_REGEX.search(title):
         return False
+    if re.search(r'fairy\s*floss', title, re.IGNORECASE):
+        return False
     return bool(POPULAR_REGEX.search(title))
 
 def calculate_popularity_score(item: dict) -> int:
@@ -280,11 +286,15 @@ def calculate_popularity_score(item: dict) -> int:
     if not title or APPLIANCE_HARDWARE_REGEX.search(title):
         return -999
 
+    is_fairy_floss = bool(re.search(r'fairy\s*floss', title, re.IGNORECASE))
+
     score = 0
-    if SUPERSTAR_REGEX.search(title):
+    if SUPERSTAR_REGEX.search(title) and not is_fairy_floss:
         score += 200
-    elif POPULAR_REGEX.search(title):
+    elif POPULAR_REGEX.search(title) and not is_fairy_floss:
         score += 120
+    elif item.get('is_popular') and not is_fairy_floss:
+        score += 60
     else:
         return 0
 
@@ -312,5 +322,14 @@ def calculate_popularity_score(item: dict) -> int:
 
     if was_price > 0 and save_amount > 0:
         score += int((save_amount / was_price) * 10)
+
+    # Category weighting for balanced supermarket popularity
+    cat = item.get('category')
+    if cat in ['bakery', 'produce', 'meat', 'dairy_eggs', 'seafood']:
+        score += 25  # Fresh food staple boost
+    elif cat in ['snacks', 'drinks', 'frozen', 'pantry']:
+        score += 15  # Packaged grocery staple boost
+    elif cat in ['household', 'health_vitamins']:
+        score -= 10  # Mild dampener so chemical bottles do not choke out food staples
 
     return score
