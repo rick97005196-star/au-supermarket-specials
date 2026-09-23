@@ -69,7 +69,7 @@ def discover_woolies_catalogues() -> List[Dict[str, Any]]:
 
     return catalogues
 
-def scrape_woolies_catalogue_items(base_list_url: str, initial_soup: BeautifulSoup, max_pages: int = 10) -> List[Dict[str, Any]]:
+def scrape_woolies_catalogue_items(base_list_url: str, initial_soup: BeautifulSoup, max_pages: int = 50) -> List[Dict[str, Any]]:
     """Scrapes products from a specific Woolworths catalogue list URL across pages."""
     products = []
     seen_ids = set()
@@ -107,6 +107,13 @@ def scrape_woolies_catalogue_items(base_list_url: str, initial_soup: BeautifulSo
                 if not title:
                     continue
 
+                desc_elem = item.select_one('.item-description')
+                discount_desc = desc_elem.get_text(strip=True) if desc_elem else ""
+
+                # Strictly exclude online only items
+                if 'online only' in title.lower() or 'online only' in discount_desc.lower() or 'everyday market' in title.lower():
+                    continue
+
                 href = name_elem.get('href', '') if name_elem else ''
                 product_url = f"{BASE_URL}{href}" if href.startswith('/') else href
                 category = "Groceries"
@@ -138,9 +145,6 @@ def scrape_woolies_catalogue_items(base_list_url: str, initial_soup: BeautifulSo
                     save_match = re.search(r'Save\s+\$(\d+(?:\.\d{2})?)', full_text, re.IGNORECASE)
                     if save_match:
                         save_amount = float(save_match.group(1))
-
-                desc_elem = item.select_one('.item-description')
-                discount_desc = desc_elem.get_text(strip=True) if desc_elem else ""
 
                 if was_price > price > 0 and save_amount == 0.0:
                     save_amount = round(was_price - price, 2)
@@ -182,12 +186,13 @@ def scrape_woolies_catalogue_items(base_list_url: str, initial_soup: BeautifulSo
     return products
 
 def scrape_woolies_online_half_price(max_pages: int = 100) -> List[Dict[str, Any]]:
-    """Fetches ALL real online Half Price specials from Woolworths official search/specials API until the last page."""
+    """Fetches ALL real in-store Half Price specials from Woolworths official API, strictly excluding online-only/marketplace."""
     import time
     products = []
     seen_names = set()
     url = 'https://www.woolworths.com.au/apis/ui/Search/products'
     page = 1
+    excluded_online_count = 0
     
     while page <= max_pages:
         try:
@@ -209,15 +214,26 @@ def scrape_woolies_online_half_price(max_pages: int = 100) -> List[Dict[str, Any
             page_added = 0
             for b in bundles:
                 for pr in b.get('Products', []):
+                    # STRICT IN-STORE ONLY CHECK: Exclude online-only and marketplace products
+                    if pr.get('IsOnlineOnly') is True or pr.get('IsMarketProduct') is True or pr.get('ThirdPartyProductInfo'):
+                        excluded_online_count += 1
+                        continue
+
                     code = str(pr.get('Stockcode', ''))
                     name = (pr.get('Name') or '').strip()
                     if not name or name.lower() in seen_names:
                         continue
+
+                    # Check title for online-only indicators
+                    if 'online only' in name.lower() or 'everyday market' in name.lower():
+                        excluded_online_count += 1
+                        continue
+
                     seen_names.add(name.lower())
                     
-                    price = float(pr.get('Price') or 0)
-                    was_price = float(pr.get('WasPrice') or 0)
-                    is_on_special = pr.get('IsOnSpecial', False)
+                    price = float(pr.get('InstorePrice') or pr.get('Price') or 0)
+                    was_price = float(pr.get('InstoreWasPrice') or pr.get('WasPrice') or 0)
+                    is_on_special = pr.get('InstoreIsOnSpecial', False) or pr.get('IsOnSpecial', False)
                     
                     # Strictly half price: price <= was_price * 0.55
                     if not (is_on_special and was_price > 0 and price <= was_price * 0.55):

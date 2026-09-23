@@ -13,6 +13,7 @@ const I18N = {
         all_markets: '全部超市',
         half_price_only: '只要半價 (1/2 Price)',
         sort_relevance: '推薦關聯',
+        sort_popular: '最多人買（熱門暢銷）',
         sort_save_desc: '折扣省最多',
         sort_price_asc: '價格：低至高',
         sort_price_desc: '價格：高至低',
@@ -77,6 +78,16 @@ const I18N = {
         not_released_yet: '(尚未釋出)',
         loading: '載入中...',
         back_to_top: '回到頂部',
+        popular_filter: '最多人買 (熱門)',
+        popular_badge: '熱門暢銷',
+        popular_modal_tag: '澳洲熱門暢銷款',
+        cross_store_title: '各大超市同款現場比價',
+        cross_store_badge_both: '雙超市特價 ${price}',
+        cross_store_badge_cheaper: '🔥 比 {store} 平 ${amount}',
+        cross_store_badge_other: '🏷️ {store} ${price}',
+        cross_store_same_price: '兩家超市現場特價相同',
+        cross_store_save_more: '在此購買比 {store} 現省 ${diff}',
+        cross_store_view_other: '查看 {store} 特價商品',
         categories: {
             'all': '全部特價',
             'produce': '🥦 蔬菜水果',
@@ -108,6 +119,7 @@ const I18N = {
         all_markets: 'All Stores',
         half_price_only: '1/2 Price Only',
         sort_relevance: 'Relevance',
+        sort_popular: 'Best Sellers (Popular)',
         sort_save_desc: 'Biggest Savings',
         sort_price_asc: 'Price: Low to High',
         sort_price_desc: 'Price: High to Low',
@@ -172,6 +184,16 @@ const I18N = {
         not_released_yet: '(Not released yet)',
         loading: 'Loading...',
         back_to_top: 'Back to Top',
+        popular_filter: 'Best Sellers',
+        popular_badge: 'Best Seller',
+        popular_modal_tag: 'Top Consumer Pick',
+        cross_store_title: 'Supermarket Price Comparison',
+        cross_store_badge_both: 'Both Stores ${price}',
+        cross_store_badge_cheaper: '🔥 ${amount} cheaper than {store}',
+        cross_store_badge_other: '🏷️ {store} ${price}',
+        cross_store_same_price: 'Identical promotional price at both stores',
+        cross_store_save_more: 'Save an extra ${diff} compared to {store}',
+        cross_store_view_other: 'View {store} Item',
         categories: {
             'all': 'All Specials',
             'produce': '🥦 Fresh Produce',
@@ -203,6 +225,7 @@ const I18N = {
         all_markets: '全スーパー',
         half_price_only: '半額（50% OFF）のみ',
         sort_relevance: 'おすすめ順',
+        sort_popular: '売れ筋順（人気商品）',
         sort_save_desc: '割引額が大きい順',
         sort_price_asc: '価格が安い順',
         sort_price_desc: '価格が高い順',
@@ -267,6 +290,16 @@ const I18N = {
         not_released_yet: '(未公開)',
         loading: '読み込み中...',
         back_to_top: 'トップへ戻る',
+        popular_filter: '売れ筋人気',
+        popular_badge: '人気売れ筋',
+        popular_modal_tag: '豪州定番人気',
+        cross_store_title: 'スーパー同商品価格比較',
+        cross_store_badge_both: '両スーパー特売 ${price}',
+        cross_store_badge_cheaper: '🔥 {store}より${amount}お得',
+        cross_store_badge_other: '🏷️ {store} ${price}',
+        cross_store_same_price: '両店ともに同額で特売中',
+        cross_store_save_more: 'ここで買うと{store}より${diff}お得',
+        cross_store_view_other: '{store}の特売を見る',
         categories: {
             'all': 'すべての特売',
             'produce': '🥦 青果・野菜・果物',
@@ -298,6 +331,7 @@ const I18N = {
         all_markets: '전체 마트',
         half_price_only: '반값(50% OFF)만 보기',
         sort_relevance: '추천순',
+        sort_popular: '인기순 (소비자 베스트)',
         sort_save_desc: '할인액 높은순',
         sort_price_asc: '가격 낮은순',
         sort_price_desc: '가격 높은순',
@@ -362,6 +396,16 @@ const I18N = {
         not_released_yet: '(미공개)',
         loading: '로딩 중...',
         back_to_top: '맨 위로 가기',
+        popular_filter: '소비자 인기',
+        popular_badge: '인기 베스트',
+        popular_modal_tag: '호주 국민 인기템',
+        cross_store_title: '대형마트 동일 상품 가격 비교',
+        cross_store_badge_both: '두 마트 동시 특가 ${price}',
+        cross_store_badge_cheaper: '🔥 {store}보다 ${amount} 저렴',
+        cross_store_badge_other: '🏷️ {store} ${price}',
+        cross_store_same_price: '두 마트 현장 특가 동일',
+        cross_store_save_more: '여기서 구매 시 {store}보다 ${diff} 절약',
+        cross_store_view_other: '{store} 특가 보기',
         categories: {
             'all': '전체 특가',
             'produce': '🥦 과일·채소',
@@ -381,7 +425,10 @@ const I18N = {
     }
 };
 
-let currentLang = localStorage.getItem('lang') || 'zh';
+var currentLang = (typeof localStorage !== 'undefined' && localStorage.getItem('lang')) || 'zh';
+if (typeof window !== 'undefined') {
+    window.currentLang = currentLang;
+}
 
 function t(key, params = {}) {
     const dict = I18N[currentLang] || I18N['zh'];

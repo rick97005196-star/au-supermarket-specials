@@ -11,7 +11,7 @@ from scrapers.coles_scraper import scrape_coles_all_weeks
 from scrapers.woolies_scraper import scrape_woolies_all_weeks
 from scrapers.aldi_scraper import scrape_aldi_specials
 
-def update_all_stores(max_catalogue_pages: int = 10) -> Dict[str, Any]:
+def update_all_stores(max_catalogue_pages: int = 50) -> Dict[str, Any]:
     """Runs all supermarket scrapers for both current week and next week preview."""
     print("=" * 65)
     print(f"Starting Full Supermarket Specials Update at {time.strftime('%Y-%m-%d %H:%M:%S')}")

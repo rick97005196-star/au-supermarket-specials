@@ -336,6 +336,7 @@
 
                     <select id="sortSelect" onchange="loadSpecials()" class="text-xs font-semibold border border-slate-200 dark:border-zinc-700 rounded-xl px-3 py-1.5 bg-white dark:bg-zinc-800 text-slate-800 dark:text-zinc-200 focus:outline-none focus:ring-2 focus:ring-emerald-500/30 shadow-xs">
                         <option value="relevance" data-i18n="sort_relevance">推薦關聯</option>
+                        <option value="popular" data-i18n="sort_popular">最多人買（熱門暢銷）</option>
                         <option value="save_desc" data-i18n="sort_save_desc">折扣省最多</option>
                         <option value="price_asc" data-i18n="sort_price_asc">價格：低至高</option>
                         <option value="price_desc" data-i18n="sort_price_desc">價格：高至低</option>
@@ -513,6 +514,10 @@
                     <span id="modalHalfPriceBadge" class="hidden px-2 py-0.5 rounded-lg text-xs font-black bg-rose-500 text-white">
                         ½ 50% OFF
                     </span>
+                    <span id="modalPopularBadge" class="hidden px-2 py-0.5 rounded-lg text-xs font-black bg-amber-400 text-slate-950 flex items-center gap-1 shadow-2xs">
+                        <i class="fa-solid fa-star text-[10px]"></i>
+                        <span data-i18n="popular_badge">熱門暢銷</span>
+                    </span>
                 </div>
                 <button onclick="closeProductModal()" class="w-8 h-8 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-600 dark:hover:text-zinc-200 hover:bg-slate-100 dark:hover:bg-zinc-800 transition">
                     <i class="fa-solid fa-xmark text-sm"></i>
@@ -569,6 +574,22 @@
                                 --
                             </span>
                         </div>
+                    </div>
+                </div>
+
+                <!-- Supermarket Price Comparison Box (各大超市同款現場比價) -->
+                <div id="modalCrossStoreBox" class="hidden rounded-2xl p-3.5 sm:p-4 bg-gradient-to-br from-blue-50/90 via-indigo-50/60 to-sky-50/70 dark:from-blue-950/40 dark:via-indigo-950/30 dark:to-sky-950/30 border border-blue-200/80 dark:border-blue-800/60 shadow-xs space-y-2.5">
+                    <div class="flex items-center justify-between">
+                        <div class="font-bold text-xs sm:text-sm text-blue-950 dark:text-blue-200 flex items-center gap-1.5">
+                            <i class="fa-solid fa-scale-balanced text-blue-600 dark:text-blue-400"></i>
+                            <span data-i18n="cross_store_title">各大超市同款現場比價</span>
+                        </div>
+                        <span id="modalCrossStoreBadge" class="text-[10px] sm:text-[11px] font-bold px-2 py-0.5 rounded-full bg-blue-100 dark:bg-blue-900/60 text-blue-800 dark:text-blue-300">
+                            同款比價
+                        </span>
+                    </div>
+                    <div id="modalCrossStoreList" class="space-y-2">
+                        <!-- Populated dynamically via app.js -->
                     </div>
                 </div>
 
@@ -642,7 +663,7 @@
     </div>
 
     <!-- Scripts -->
-    <script src="./i18n.js?v=4.4"></script>
-    <script src="./app.js?v=4.4"></script>
+    <script src="./i18n.js?v=5.1"></script>
+    <script src="./app.js?v=5.1"></script>
 </body>
 </html>

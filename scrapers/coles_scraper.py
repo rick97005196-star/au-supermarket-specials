@@ -66,8 +66,8 @@ def discover_coles_catalogues() -> List[Dict[str, Any]]:
 
     return catalogues
 
-def scrape_coles_catalogue_items(base_list_url: str, initial_soup: BeautifulSoup, max_pages: int = 10) -> List[Dict[str, Any]]:
-    """Scrapes products from a specific catalogue list URL across pages."""
+def scrape_coles_catalogue_items(base_list_url: str, initial_soup: BeautifulSoup, max_pages: int = 50) -> List[Dict[str, Any]]:
+    """Scrapes products from a specific catalogue list URL across pages (in-store specials only)."""
     products = []
     seen_ids = set()
 
@@ -102,6 +102,11 @@ def scrape_coles_catalogue_items(base_list_url: str, initial_soup: BeautifulSoup
                     title = name_elem.get_text(strip=True)
 
                 if not title:
+                    continue
+
+                # Strict in-store check: exclude online only items
+                lower_title = title.lower()
+                if any(x in lower_title for x in ['online only', 'online exclusive', 'everyday market', 'marketplace']):
                     continue
 
                 href = name_elem.get('href', '') if name_elem else ''
@@ -139,12 +144,16 @@ def scrape_coles_catalogue_items(base_list_url: str, initial_soup: BeautifulSoup
                 desc_elem = item.select_one('.item-description')
                 discount_desc = desc_elem.get_text(strip=True) if desc_elem else ""
 
+                lower_desc = discount_desc.lower()
+                # Exclude if description indicates online only
+                if any(x in lower_desc for x in ['online only', 'online exclusive', 'web only']):
+                    continue
+
                 if was_price > price > 0 and save_amount == 0.0:
                     save_amount = round(was_price - price, 2)
                 elif save_amount > 0 and was_price == 0.0 and price > 0:
                     was_price = round(price + save_amount, 2)
 
-                lower_desc = discount_desc.lower()
                 if lower_desc.startswith('offers apply') or 'while stocks last' in lower_desc or 'specials not available' in lower_desc:
                     discount_desc = f"Save ${save_amount:.2f}" if save_amount > 0 else ""
                 elif not discount_desc and save_amount > 0:
@@ -178,7 +187,7 @@ def scrape_coles_catalogue_items(base_list_url: str, initial_soup: BeautifulSoup
 
     return products
 
-def scrape_coles_all_weeks(max_pages: int = 10) -> Dict[str, Dict[str, Any]]:
+def scrape_coles_all_weeks(max_pages: int = 50) -> Dict[str, Dict[str, Any]]:
     """Scrapes Coles specials for both current week and next week (if available)."""
     print("Scraping Coles (Current & Next Week)...")
     catalogues = discover_coles_catalogues()

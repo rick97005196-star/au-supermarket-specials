@@ -1,4 +1,5 @@
 // State
+var currentLang = (typeof window !== 'undefined' && window.currentLang) || (typeof localStorage !== 'undefined' && localStorage.getItem('lang')) || 'zh';
 let currentPeriod = 'current'; // 'current' or 'next'
 let currentStore = 'All';
 let currentCategory = 'all';
@@ -6,6 +7,8 @@ let currentSearch = '';
 let searchTimeout = null;
 let isUpdating = false;
 let globalStats = null;
+let isStaticMode = false;
+let staticSpecials = [];
 const DEFAULT_FALLBACK_IMG = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300' width='300' height='300'%3E%3Crect width='300' height='300' fill='%23f8fafc'/%3E%3Cpath d='M100 110 h100 v12 h-100 z M90 135 h120 v90 c0 10 -8 18 -18 18 h-84 c-10 0 -18 -8 -18 -18 z' fill='%23e2e8f0'/%3E%3Cpath d='M130 110 v-20 c0 -11 9 -20 20 -20 s20 9 20 20 v20' fill='none' stroke='%2394a3b8' stroke-width='8' stroke-linecap='round'/%3E%3Ctext x='150' y='270' font-family='system-ui, -apple-system, sans-serif' font-size='13' font-weight='600' fill='%2394a3b8' text-anchor='middle'%3EAU Specials%3C/text%3E%3C/svg%3E";
 
 // Categories definition (Aligned with Australian Supermarket Departments)
@@ -25,29 +28,6 @@ const CATEGORY_KEYS = [
     'household',
     'pet'
 ];
-
-// Initialization
-document.addEventListener('DOMContentLoaded', () => {
-    // Early Static Mode detection for instantaneous Cloudflare Pages & CDN loading
-    isStaticMode = window.location.hostname.includes('pages.dev') ||
-                   window.location.hostname.includes('github.io') ||
-                   window.location.protocol === 'file:' ||
-                   window.location.hostname === 'localhost' ||
-                   window.location.hostname === '127.0.0.1' ||
-                   !window.location.port;
-
-    initTheme();
-    initLanguage();
-    renderCategoryBar();
-    initScrollListeners();
-    loadStats();
-    loadAnnouncement();
-    loadSpecials();
-    loadShoppingList();
-    checkUpdateStatus();
-    // Non-blocking lazy background check for external dictionary
-    setTimeout(loadTranslations, 4000);
-});
 
 // Scroll & Back to Top Management
 function initScrollListeners() {
@@ -234,7 +214,7 @@ function renderCategoryBar() {
     };
 
     const existingBtns = bar.querySelectorAll('button');
-    if (existingBtns.length === 14) {
+    if (existingBtns.length === CATEGORY_KEYS.length) {
         existingBtns.forEach(btn => {
             const catKey = btn.dataset.cat;
             const isActive = currentCategory === catKey;
@@ -246,9 +226,8 @@ function renderCategoryBar() {
 
     bar.innerHTML = '';
     
-    // Arrange into 2 rows: 7 columns (Row 1: 7 items, Row 2: 7 items)
-    // Row 1: All -> 蔬菜水果 -> 肉品 -> 海鮮水產 -> 蛋奶製品 -> 麵包烘焙 -> 冷凍食品
-    // Row 2: 糧油調味 -> 休閒零食 -> 飲料 -> 酒類 -> 美妝保健 -> 日用清潔 -> 寵物用品
+    // Arrange into 2 rows: Row 1: All -> 蔬菜水果 -> 肉品 -> 海鮮水產 -> 蛋奶製品 -> 麵包烘焙 -> 冷凍食品 (7 items)
+    // Row 2: 糧油調味 -> 休閒零食 -> 飲料 -> 酒類 -> 美妝保健 -> 日用清潔 -> 寵物用品 (7 items)
     const row1Keys = ['all', 'produce', 'meat', 'seafood', 'dairy_eggs', 'bakery', 'frozen'];
     const row2Keys = ['pantry', 'snacks', 'drinks', 'liquor', 'health_vitamins', 'household', 'pet'];
     
@@ -358,9 +337,6 @@ function translateQueryClient(q) {
     }
     return res.trim();
 }
-
-let isStaticMode = false;
-let staticSpecials = [];
 
 // In-memory high-speed cache for static JSON files
 const staticJsonCache = new Map();
@@ -555,25 +531,368 @@ function updateHalfPricePillStyle() {
     }
 }
 
+// Hardware / Kitchenware Appliance Guard (Strictly exclude from grocery bestsellers)
+const APPLIANCE_HARDWARE_REGEX = /\b(kettle\s*\d|electric\s*toothbrush|toothbrush\s*handle|saucepan|frypan|cookware|knife\s*block|toaster|air\s*fryer|steam\s*iron|vacuum|pillow|quilt|bedsheet|blanket|storage\s*box|clothes\s*airer|pressure\s*cooker|slow\s*cooker|blender|mixer)\b/i;
+
+// Tier 1: Australia's #1 National Consumer Superstars (Highest weekly supermarket grocery unit volume)
+const SUPERSTAR_REGEX = /\b(shapes|red\s*rock\s*deli|coca-cola|coke|doritos|smith'?s|tim\s*tam|cadbury|magnum|drumstick|connoisseur|moccona|finish|fairy|omo|cold\s*power|weet-bix|milo|vegemite|chobani|bega|western\s*star|dare|up\s*&\s*go|quilton|sorbent|morning\s*fresh|primo\s*rindless|primo\s*bacon|heinz\s*ketchup|heinz\s*baked|natural\s*confectionery|sour\s*patch|birds\s*eye|mccain)\b/i;
+
+// Comprehensive Australian Supermarket Best-Sellers & Consumer Favorites Index
+const POPULAR_REGEX = /\b(tim\s*tam|arnott'?s|shapes|jatz|clix|teevee|wagon\s*wheels?|cadbury|favourites|roses|twirl|flake|marvellous|red\s*rock(\s*deli)?|smith'?s|doritos|kettle\s*(?:chips?|potato|brand|sea\s*salt|honey)|cheezels|grain\s*waves|twisties|burger\s*rings|pods|maltesers|m&m'?s|skittles|allen'?s|lindt|ferrero|kinder|nutella|biscoff|oreo|kit\s*kat|mars|snickers|twix|pringles|weet-bix|sanitarium|corn\s*flakes|nutri-grain|coco\s*pops|special\s*k|sultana\s*bran|froot\s*loops|milo|nesquik|vegemite|promite|moccona|nescafe|vittoria|lavazza|grinders|l'or|starbucks|twinings|lipton|dilmah|tetley|bushells|carman'?s|uncle\s*tobys|barilla|san\s*remo|leggo'?s|dolmio|heinz|masterfoods|praise|hellmann'?s|sirena|john\s*west|greenseas|cobram\s*estate|moro|bertolli|crisco|campbell'?s|spam|old\s*el\s*paso|coca-cola|coke|pepsi|solo|sunkist|mountain\s*dew|7up|sprite|fanta|schweppes|bundaberg|mount\s*franklin|pump|cool\s*ridge|san\s*pellegrino|kirks|golden\s*circle|daily\s*juice|v\s*energy|red\s*bull|monster|dare|farmers\s*union\s*iced\s*coffee|oak\s*milk|ice\s*break|up\s*&\s*go|bega|mainland|cheer|cracker\s*barrel|mersey\s*valley|chobani|gippsland|dairy\s*farmers|jalna|western\s*star|lurpak|devondale|flora|nuttelex|philadelphia|perfect\s*italiano|d'orsogna|primo|don|magnum|cornetto|golden\s*gaytime|paddle\s*pop|blue\s*ribbon|connoisseur|peters|drumstick|maxibon|ben\s*&\s*jerry'?s|h[aä]agen-dazs|bulla|weis|birds\s*eye|ingham'?s|steggles|four'?n\s*twenty|patties|sara\s*lee|mccain|finish|fairy|omo|dynamo|cold\s*power|radiant|biozet|comfort|fluffy|cuddly|morning\s*fresh|dawn|palmolive|pine\s*o\s*cleen|dettol|domestos|harpic|duck|bref|ajax|glen\s*20|quilton|sorbent|kleenex|viva|handee|glad|swisse|blackmores|nature'?s\s*own|cenovis|centrum|berocca|colgate|oral-b|sensodyne|listerine|rexona|nivea|dove|lynx|gillette|schick|head\s*&\s*shoulders|pantene|l'or[eé]al|garnier|sunsilk|tresemme|radox|aveeno|cetaphil|qv|cancer\s*council|banana\s*boat|huggies|babylove|curash|bananas?|hass\s*avocados?|pink\s*lady\s*apples?|strawberries|blueberries|carrots?|potatoes?|broccoli|chicken\s*breast|beef\s*mince|rump\s*steak|rib\s*eye|atlantic\s*salmon|tiger\s*prawns?)\b/i;
+
+function isItemPopular(it) {
+    if (!it) return false;
+    const title = it.title || '';
+    if (APPLIANCE_HARDWARE_REGEX.test(title)) return false;
+    if (it.is_popular === true) return true;
+    return POPULAR_REGEX.test(title);
+}
+
+function calculatePopularityScore(it) {
+    if (!it) return -999;
+    if (typeof it.popularity_score === 'number' && it.popularity_score !== 0) {
+        return it.popularity_score;
+    }
+    const title = it.title || '';
+    if (APPLIANCE_HARDWARE_REGEX.test(title)) return -999;
+    
+    let score = 0;
+    if (SUPERSTAR_REGEX.test(title)) {
+        score += 200;
+    } else if (POPULAR_REGEX.test(title)) {
+        score += 120;
+    } else if (it.is_popular) {
+        score += 60;
+    } else {
+        return 0;
+    }
+
+    const price = typeof it.price === 'number' ? it.price : parseFloat(it.price) || 0;
+    const was = typeof it.was_price === 'number' ? it.was_price : parseFloat(it.was_price) || 0;
+    const save = typeof it.save_amount === 'number' ? it.save_amount : parseFloat(it.save_amount) || 0;
+    const isHalf = isItemHalfPrice(it);
+
+    if (isHalf) {
+        score += 60;
+    } else if (save > 0 && was > 0 && (save / was) >= 0.3) {
+        score += 30;
+    }
+
+    if (price >= 1 && price <= 6) {
+        score += 50;
+    } else if (price > 6 && price <= 15) {
+        score += 35;
+    } else if (price > 15 && price <= 30) {
+        score += 15;
+    } else if (price > 30) {
+        score -= 20;
+    }
+
+    if (was > 0 && save > 0) {
+        score += Math.round((save / was) * 10);
+    }
+
+    return score;
+}
+
+function getProductFamilyKey(title) {
+    const t = (title || '').toLowerCase();
+    if (t.includes('shapes')) return 'shapes';
+    if (t.includes('red rock deli')) return 'red_rock_deli';
+    if (t.includes('coca-cola') || t.includes('coke')) return 'coca_cola';
+    if (t.includes('doritos')) return 'doritos';
+    if (t.includes('smith')) return 'smiths';
+    if (t.includes('tim tam')) return 'tim_tam';
+    if (t.includes('cadbury')) return 'cadbury';
+    if (t.includes('magnum')) return 'magnum';
+    if (t.includes('drumstick')) return 'drumstick';
+    if (t.includes('connoisseur')) return 'connoisseur';
+    if (t.includes('moccona')) return 'moccona';
+    if (t.includes('finish')) return 'finish';
+    if (t.includes('fairy')) return 'fairy';
+    if (t.includes('omo')) return 'omo';
+    if (t.includes('cold power')) return 'cold_power';
+    if (t.includes('morning fresh')) return 'morning_fresh';
+    if (t.includes('birds eye')) return 'birds_eye';
+    if (t.includes('milo')) return 'milo';
+    if (t.includes('heinz')) return 'heinz';
+    if (t.includes('sour patch') || t.includes('natural confectionery')) return 'lollies';
+    if (t.includes('primo')) return 'primo';
+    if (t.includes('quilton')) return 'quilton';
+    if (t.includes('sorbent')) return 'sorbent';
+    if (t.includes('bega')) return 'bega';
+    if (t.includes('twinings')) return 'twinings';
+    if (t.includes('colgate')) return 'colgate';
+    return t.split(' ').slice(0, 2).join('_');
+}
+
+function createDiverseBestSellers(items) {
+    const primaryRound = [];
+    const secondaryRound = [];
+    const seenFamilies = new Map();
+
+    for (const item of items) {
+        const familyKey = getProductFamilyKey(item.title);
+        const count = seenFamilies.get(familyKey) || 0;
+        if (count < 2) {
+            primaryRound.push(item);
+            seenFamilies.set(familyKey, count + 1);
+        } else {
+            secondaryRound.push(item);
+        }
+    }
+
+    return [...primaryRound, ...secondaryRound];
+}
+
+// Product Series Clustering (Groups identical product lines with different flavors/variants together)
+function getProductSeriesKey(item) {
+    if (!item) return '';
+    let title = (item.title || '').toLowerCase()
+        .replace(/['’]/g, '')
+        .replace(/\b\d+([.-]\d+)?\s*(g|kg|ml|l|litre|liter|pack|pk|s|pieces|tablets|capsules|sheets|wipes)\b/gi, ' ')
+        .replace(/\b\d+\s*[-–]\s*\d+\s*(g|kg|ml|l|litre|liter|pack|pk|s)?\b/gi, ' ')
+        .replace(/\bpk\s*\d+([.-]\d+)?\b/gi, ' ')
+        .replace(/\b\d+\s*pk\b/gi, ' ')
+        .replace(/[^\w\s]/g, ' ')
+        .replace(/\s+/g, ' ')
+        .trim();
+
+    if (title.includes('cadbury')) {
+        if (title.includes('favourites')) return 'cadbury_favourites';
+        if (title.includes('roses')) return 'cadbury_roses';
+        if (title.includes('chocolate block') || title.includes('block')) return 'cadbury_blocks';
+        if (title.includes('bar') || item.price <= 2.0) return 'cadbury_chocolate_bars';
+        return 'cadbury_general';
+    }
+    if (title.includes('smith')) {
+        if (title.includes('chips') || title.includes('crinkle')) return 'smiths_chips';
+        return 'smiths_general';
+    }
+    if (title.includes('red rock deli')) {
+        if (title.includes('chips')) return 'red_rock_deli_chips';
+        if (title.includes('dip')) return 'red_rock_deli_dip';
+        if (title.includes('crackers')) return 'red_rock_deli_crackers';
+        return 'red_rock_deli_general';
+    }
+    if (title.includes('connoisseur')) return 'connoisseur_ice_cream';
+    if (title.includes('magnum')) return 'magnum_ice_cream';
+    if (title.includes('twinings')) return 'twinings_tea';
+    if (title.includes('rexona')) return 'rexona_deodorant';
+    if (title.includes('dove')) return 'dove_personal_care';
+    if (title.includes('nivea')) return 'nivea_personal_care';
+    if (title.includes('head & shoulders') || title.includes('head shoulders')) return 'head_shoulders_haircare';
+    if (title.includes('pantene')) return 'pantene_haircare';
+    if (title.includes('colgate')) return 'colgate_oralcare';
+    if (title.includes('oral b') || title.includes('oral-b')) return 'oralb_oralcare';
+    if (title.includes('morning fresh')) return 'morning_fresh_dish';
+    if (title.includes('fairy')) return 'fairy_dish';
+    if (title.includes('finish')) return 'finish_dish';
+    if (title.includes('omo')) return 'omo_laundry';
+    if (title.includes('cold power')) return 'cold_power_laundry';
+    if (title.includes('dynamo')) return 'dynamo_laundry';
+    if (title.includes('earthwise')) return 'earthwise_household';
+    if (title.includes('quilton')) return 'quilton_paper';
+    if (title.includes('sorbent')) return 'sorbent_paper';
+    if (title.includes('kleenex')) return 'kleenex_paper';
+    if (title.includes('gippsland')) return 'gippsland_dairy';
+    if (title.includes('chobani')) return 'chobani_yoghurt';
+    if (title.includes('dare')) return 'dare_iced_coffee';
+    if (title.includes('ocean blue')) return 'ocean_blue_seafood';
+    if (title.includes('doritos')) return 'doritos_chips';
+    if (title.includes('tim tam')) return 'tim_tam';
+    if (title.includes('shapes')) return 'arnotts_shapes';
+    if (title.includes('vita gummies') || (title.includes('natures way') && title.includes('gummies'))) return 'natures_way_vita_gummies';
+    if (title.includes('swisse')) return 'swisse_vitamins';
+    if (title.includes('blackmores')) return 'blackmores_vitamins';
+    if (title.includes('cenovis')) return 'cenovis_vitamins';
+    if (title.includes('milo')) return 'milo_products';
+    if (title.includes('moccona')) return 'moccona_coffee';
+    if (title.includes('kewpie')) return 'kewpie_condiments';
+
+    const variants = [
+        'salt & vinegar', 'salt and vinegar', 'cheese & onion', 'cheese and onion',
+        'sour cream & chives', 'sweet chilli & sour cream', 'sour cream', 'sweet chilli',
+        'original', 'bbq', 'barbecue', 'lightly salted', 'sea salt', 'cracked pepper',
+        'honey soy chicken', 'honey soy & chicken', 'supreme', 'cheese supreme', 'nacho cheese',
+        'milk chocolate', 'dark chocolate', 'white chocolate', 'caramilk', 'hazelnut',
+        'fruit & nut', 'roast almond', 'peppermint', 'caramello', 'caramel',
+        'strawberry', 'vanilla', 'raspberry', 'cookies & cream', 'honeycomb', 'almond',
+        'double dipped', 'classic clean', 'smooth & silky', 'apple fresh', 'citrus breeze',
+        'lemon', 'lime', 'eucalyptus', 'antibacterial', 'sensitive', 'whitening',
+        'deep clean', 'total clean', 'extra fresh', 'cool mint', 'fresh mint',
+        'english breakfast', 'earl grey', 'green tea', 'peppermint tea', 'chamomile'
+    ];
+    let genericTitle = title;
+    for (const v of variants) {
+        genericTitle = genericTitle.replace(new RegExp('\\b' + v + '\\b', 'gi'), ' ');
+    }
+    const words = genericTitle.replace(/\s+/g, ' ').trim().split(' ').filter(w => w.length > 1);
+    return words.slice(0, 3).join('_');
+}
+
+// Cluster items by product series (keeps same product with different types together)
+function clusterItemsBySeries(items) {
+    if (!items || items.length <= 1) return items;
+    const groups = new Map();
+    items.forEach(item => {
+        const key = getProductSeriesKey(item);
+        if (!groups.has(key)) groups.set(key, []);
+        groups.get(key).push(item);
+    });
+
+    for (const [k, groupItems] of groups.entries()) {
+        groupItems.sort((a, b) => {
+            const titleA = (a.title || '').toLowerCase();
+            const titleB = (b.title || '').toLowerCase();
+            if (titleA < titleB) return -1;
+            if (titleA > titleB) return 1;
+            return (a.store || '').localeCompare(b.store || '');
+        });
+    }
+
+    const sortedGroupKeys = Array.from(groups.keys()).sort((k1, k2) => {
+        const g1 = groups.get(k1);
+        const g2 = groups.get(k2);
+        const maxScore1 = Math.max(...g1.map(x => x.popularity_score || 0));
+        const maxScore2 = Math.max(...g2.map(x => x.popularity_score || 0));
+        if (maxScore2 !== maxScore1) return maxScore2 - maxScore1;
+        const maxSave1 = Math.max(...g1.map(x => x.save_amount || 0));
+        const maxSave2 = Math.max(...g2.map(x => x.save_amount || 0));
+        return maxSave2 - maxSave1;
+    });
+
+    const result = [];
+    sortedGroupKeys.forEach(k => {
+        result.push(...groups.get(k));
+    });
+    return result;
+}
+
+// Sort items by comparator while clustering identical product lines together
+function sortAndClusterBySeries(items, comparator) {
+    if (!items || items.length <= 1) return items;
+    const groups = new Map();
+    items.forEach(item => {
+        const key = getProductSeriesKey(item);
+        if (!groups.has(key)) groups.set(key, []);
+        groups.get(key).push(item);
+    });
+
+    for (const [k, groupItems] of groups.entries()) {
+        groupItems.sort((a, b) => {
+            const comp = comparator(a, b);
+            if (comp !== 0) return comp;
+            return (a.title || '').localeCompare(b.title || '');
+        });
+    }
+
+    const sortedKeys = Array.from(groups.keys()).sort((k1, k2) => {
+        const item1 = groups.get(k1)[0];
+        const item2 = groups.get(k2)[0];
+        return comparator(item1, item2);
+    });
+
+    const result = [];
+    sortedKeys.forEach(k => result.push(...groups.get(k)));
+    return result;
+}
+
+// Cross-Supermarket Comparison Core Key
+function getCoreProductKey(item) {
+    if (!item || !item.title) return '';
+    return item.title.toLowerCase()
+        .replace(/['’]/g, '')
+        .replace(/\b\d+([.-]\d+)?\s*(g|kg|ml|l|litre|liter|pack|pk|s|pieces|tablets|capsules|sheets|wipes)\b/gi, ' ')
+        .replace(/\b\d+\s*[-–]\s*\d+\s*(g|kg|ml|l|litre|liter|pack|pk|s)?\b/gi, ' ')
+        .replace(/\bpk\s*\d+([.-]\d+)?\b/gi, ' ')
+        .replace(/\b\d+\s*pk\b/gi, ' ')
+        .replace(/\b(or|and|&)\b/gi, ' ')
+        .replace(/[^\w\s]/g, ' ')
+        .replace(/\s+/g, ' ')
+        .trim();
+}
+
+// Enriches list with cross-store comparison metadata
+function enrichCrossStoreComparisons(list) {
+    if (!list || list.length === 0) return;
+    const keyMap = new Map();
+    list.forEach(it => {
+        const k = getCoreProductKey(it);
+        if (!keyMap.has(k)) keyMap.set(k, []);
+        keyMap.get(k).push(it);
+    });
+
+    list.forEach(it => {
+        const k = getCoreProductKey(it);
+        const matches = (keyMap.get(k) || []).filter(other => other.store !== it.store);
+        if (matches.length > 0) {
+            it.cross_store_matches = matches.map(other => ({
+                id: other.id,
+                store: other.store,
+                title: other.title,
+                price: (typeof other.price === 'number') ? other.price : (parseFloat(other.price) || 0),
+                was_price: (typeof other.was_price === 'number') ? other.was_price : (parseFloat(other.was_price) || 0),
+                save_amount: (typeof other.save_amount === 'number') ? other.save_amount : (parseFloat(other.save_amount) || 0),
+                price_display: other.price_display || '',
+                unit_price: other.unit_price || '',
+                image_url: other.image_url || '',
+                product_url: other.product_url || '',
+                category: other.category || 'other'
+            }));
+            const other = it.cross_store_matches[0];
+            const priceDiff = Math.round((it.price - other.price) * 100) / 100;
+            if (priceDiff < -0.05) {
+                it.cross_store_cheaper = true;
+                it.cross_store_diff = Math.abs(priceDiff);
+            } else if (priceDiff > 0.05) {
+                it.cross_store_cheaper = false;
+                it.cross_store_diff = priceDiff;
+            } else {
+                it.cross_store_cheaper = false;
+                it.cross_store_diff = 0;
+            }
+        } else {
+            it.cross_store_matches = [];
+        }
+    });
+}
+
+function getCrossStoreBadgeText(item) {
+    if (!item.cross_store_matches || item.cross_store_matches.length === 0) return '';
+    const other = item.cross_store_matches[0];
+    if (item.cross_store_cheaper && item.cross_store_diff > 0) {
+        return t('cross_store_badge_cheaper', { store: other.store, amount: item.cross_store_diff.toFixed(2) });
+    } else if (item.cross_store_diff > 0) {
+        return t('cross_store_badge_other', { store: other.store, price: other.price.toFixed(2) });
+    } else {
+        return t('cross_store_badge_both', { price: item.price.toFixed(2) });
+    }
+}
+
+
 // Robust Australian Supermarket 1/2 Price (Half Price) Detection
 function isItemHalfPrice(it) {
     if (!it) return false;
     const desc = (it.discount_desc || '').toLowerCase();
-    if (desc.includes('1/2') || desc.includes('half')) return true;
+    if (desc.includes('1/2') || desc.includes('half price') || desc.includes('50%')) return true;
 
     const price = typeof it.price === 'number' ? it.price : parseFloat(it.price) || 0;
     const was = typeof it.was_price === 'number' ? it.was_price : parseFloat(it.was_price) || 0;
     const save = typeof it.save_amount === 'number' ? it.save_amount : parseFloat(it.save_amount) || 0;
 
-    // 1. Explicit was_price: discounted by >= 45%
-    if (was > 0 && price > 0 && price <= was * 0.55) return true;
-
-    // 2. Exact match: save_amount >= price (e.g. price $1.50, save $1.50 -> 50% half price)
-    if (save > 0 && price > 0 && save >= price * 0.95) return true;
-
-    // 3. Implied was_price = price + save: discount ratio >= 45%
     const effectiveWas = was > 0 ? was : (save > 0 ? price + save : 0);
-    if (effectiveWas > 0 && price > 0 && price <= effectiveWas * 0.55) return true;
+    if (effectiveWas > 0 && price > 0) {
+        // Strictly at least 49.5% discount (accounting for odd cent rounding such as $3.15 -> $1.57 save $1.58)
+        const discountRatio = (effectiveWas - price) / effectiveWas;
+        if (discountRatio >= 0.495) return true;
+    }
+
+    // Exact equal save and price: e.g. price $2.00, save $2.00
+    if (save > 0 && price > 0 && (save >= price - 0.05)) {
+        const total = price + save;
+        if (total > 0 && (save / total) >= 0.495) return true;
+    }
 
     return false;
 }
@@ -717,7 +1036,9 @@ async function loadSpecials() {
         let filtered = staticSpecials.filter(it => {
             if (it.period !== currentPeriod) return false;
             if (currentStore !== 'All' && it.store !== currentStore) return false;
-            if (currentCategory !== 'all' && it.category !== currentCategory) return false;
+            if (currentCategory !== 'all' && it.category !== currentCategory) {
+                return false;
+            }
             // Strictly only show items with genuine discounts (or ALDI Super Savers & Special Buys)
             if (it.store !== 'ALDI' && (!it.save_amount || it.save_amount <= 0)) return false;
             if (discountOnly) {
@@ -733,13 +1054,28 @@ async function loadSpecials() {
             return true;
         });
 
-        // Sorting
-        if (sortBy === 'save_desc') {
-            filtered.sort((a, b) => (b.save_amount || 0) - (a.save_amount || 0));
+        // Enrich with cross-supermarket comparison info
+        enrichCrossStoreComparisons(staticSpecials);
+
+        // Sorting & Series Clustering
+        if (sortBy === 'popular') {
+            filtered.sort((a, b) => {
+                const scoreA = calculatePopularityScore(a);
+                const scoreB = calculatePopularityScore(b);
+                if (scoreB !== scoreA) return scoreB - scoreA;
+                return (b.save_amount || 0) - (a.save_amount || 0);
+            });
+            // User requested: Limit popular items to top 100
+            filtered = createDiverseBestSellers(filtered).slice(0, 100);
+        } else if (sortBy === 'save_desc') {
+            filtered = sortAndClusterBySeries(filtered, (a, b) => (b.save_amount || 0) - (a.save_amount || 0));
         } else if (sortBy === 'price_asc') {
-            filtered.sort((a, b) => (a.price || 0) - (b.price || 0));
+            filtered = sortAndClusterBySeries(filtered, (a, b) => (a.price || 0) - (b.price || 0));
         } else if (sortBy === 'price_desc') {
-            filtered.sort((a, b) => (b.price || 0) - (a.price || 0));
+            filtered = sortAndClusterBySeries(filtered, (a, b) => (b.price || 0) - (a.price || 0));
+        } else {
+            // Default & relevance: Group identical products with different types together
+            filtered = clusterItemsBySeries(filtered);
         }
 
         loading.classList.add('hidden');
@@ -868,16 +1204,20 @@ function renderProducts(items) {
     // Set up IntersectionObserver to automatically load more on scroll
     if (sentinel && renderedCount < currentDisplayItems.length) {
         sentinel.classList.remove('hidden');
-        infiniteScrollObserver = new IntersectionObserver((entries) => {
-            if (entries[0] && entries[0].isIntersecting) {
-                renderNextBatch();
-            }
-        }, {
-            root: null,
-            rootMargin: '500px', // Pre-load 500px before user reaches bottom for zero perceived wait
-            threshold: 0.05
-        });
-        infiniteScrollObserver.observe(sentinel);
+        if (typeof IntersectionObserver !== 'undefined') {
+            infiniteScrollObserver = new IntersectionObserver((entries) => {
+                if (entries[0] && entries[0].isIntersecting) {
+                    renderNextBatch();
+                }
+            }, {
+                root: null,
+                rootMargin: '500px', // Pre-load 500px before user reaches bottom for zero perceived wait
+                threshold: 0.05
+            });
+            infiniteScrollObserver.observe(sentinel);
+        } else {
+            renderNextBatch();
+        }
     } else if (sentinel) {
         sentinel.classList.add('hidden');
     }
@@ -904,8 +1244,12 @@ function renderNextBatch() {
         const fragment = document.createDocumentFragment();
 
         nextSlice.forEach(item => {
-            const card = createProductCardElement(item);
-            fragment.appendChild(card);
+            try {
+                const card = createProductCardElement(item);
+                if (card) fragment.appendChild(card);
+            } catch (cardErr) {
+                console.error('Failed to create product card:', item, cardErr);
+            }
         });
 
         grid.appendChild(fragment);
@@ -934,8 +1278,14 @@ function createProductCardElement(item) {
     card.onclick = () => openProductModal(item);
 
     let storeBadgeClass = 'bg-[#007a3d] text-white';
-    if (item.store === 'Coles') storeBadgeClass = 'bg-[#e01a22] text-white';
-    if (item.store === 'ALDI') storeBadgeClass = 'bg-[#00205b] text-white';
+    let storeIcon = '<i class="fa-solid fa-leaf text-[9px] text-emerald-200"></i>';
+    if (item.store === 'Coles') {
+        storeBadgeClass = 'bg-[#e01a22] text-white';
+        storeIcon = '<i class="fa-solid fa-cart-shopping text-[9px] text-red-200"></i>';
+    } else if (item.store === 'ALDI') {
+        storeBadgeClass = 'bg-[#00205b] text-white';
+        storeIcon = '<i class="fa-solid fa-store text-[9px] text-sky-200"></i>';
+    }
 
     const isHalfPrice = isItemHalfPrice(item);
     const fallbackImg = DEFAULT_FALLBACK_IMG;
@@ -962,6 +1312,21 @@ function createProductCardElement(item) {
     const unitPriceClean = formatSupermarketUnitPrice(item.unit_price);
     const translated = getProductTranslation(item, currentLang);
     const catStyle = CATEGORY_STYLES[item.category] || { emoji: '🏷️' };
+    const crossStoreBadgeText = getCrossStoreBadgeText(item);
+
+    const cartPayload = {
+        id: item.id,
+        store: item.store,
+        title: item.title,
+        price: effectivePrice,
+        was_price: effectiveWas,
+        save_amount: effectiveSave,
+        price_display: item.price_display || `$${effectivePrice.toFixed(2)}`,
+        unit_price: item.unit_price || '',
+        image_url: item.image_url || '',
+        category: item.category || 'other',
+        period: item.period || 'current'
+    };
 
     card.innerHTML = `
         <div class="p-3 sm:p-3.5 space-y-2.5">
@@ -969,28 +1334,20 @@ function createProductCardElement(item) {
             <div class="relative w-full aspect-square rounded-xl sm:rounded-2xl bg-gradient-to-b from-slate-50/90 to-slate-100/50 dark:from-zinc-800/40 dark:to-zinc-850/60 p-2.5 sm:p-3 flex items-center justify-center overflow-hidden ring-1 ring-black/[0.04] dark:ring-white/[0.05]">
                 <!-- Top-Left Store Tag -->
                 <div class="absolute top-2 left-2 z-10">
-                    <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-lg text-[10px] sm:text-[11px] font-bold ${storeBadgeClass} shadow-xs">
-                        <span class="w-1.5 h-1.5 rounded-full bg-white"></span>
-                        ${item.store}
+                    <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-lg text-[10px] sm:text-[11px] font-bold ${storeBadgeClass} shadow-xs">
+                        ${storeIcon}
+                        <span>${item.store}</span>
                     </span>
                 </div>
 
-                <!-- Top-Right Discount Badge -->
+                <!-- Top-Right Discount Badge (Only shown for 1/2 Price items to avoid duplication with bottom-right save badge) -->
                 <div class="absolute top-2 right-2 z-10">
                     ${isHalfPrice ? `
                         <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-lg text-[10px] sm:text-[11px] font-black bg-gradient-to-r from-rose-500 via-rose-600 to-red-600 text-white shadow-md shadow-rose-500/25 tracking-tight">
                             <i class="fa-solid fa-fire text-[9px] text-amber-200"></i>
                             <span>${t('half_price_badge')}</span>
                         </span>
-                    ` : (effectiveSave > 0 ? `
-                        <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-lg text-[10px] sm:text-[11px] font-black bg-emerald-600 text-white shadow-xs tracking-tight">
-                            ${t('save_badge', { amount: effectiveSave.toFixed(2) })}
-                        </span>
-                    ` : (cleanDiscountDesc ? `
-                        <span class="inline-flex items-center px-2 py-0.5 rounded-lg text-[9px] sm:text-[10px] font-bold bg-amber-100 dark:bg-amber-950/80 text-amber-900 dark:text-amber-300 border border-amber-300/50 truncate max-w-[90px]" title="${cleanDiscountDesc}">
-                            ${cleanDiscountDesc}
-                        </span>
-                    ` : ''))}
+                    ` : ''}
                 </div>
 
                 <!-- Product Image with Zoom -->
@@ -1004,12 +1361,26 @@ function createProductCardElement(item) {
                 />
             </div>
 
-            <!-- Category & Unit Price Meta Row -->
+            <!-- Category, Unit Price & Comparison Meta Row -->
             <div class="flex items-center justify-between gap-1 text-[10px] text-slate-500 dark:text-zinc-400">
-                <span class="inline-flex items-center gap-1 font-medium bg-slate-100/90 dark:bg-zinc-800/70 px-1.5 py-0.5 rounded-md text-[9px] sm:text-[10px]">
-                    <span>${catStyle.emoji}</span>
-                    <span>${getCleanCategoryLabel(item.category)}</span>
-                </span>
+                <div class="flex items-center gap-1.5 flex-wrap min-w-0">
+                    <span class="inline-flex items-center gap-1 font-medium bg-slate-100/90 dark:bg-zinc-800/70 px-1.5 py-0.5 rounded-md text-[9px] sm:text-[10px]">
+                        <span>${catStyle.emoji}</span>
+                        <span>${getCleanCategoryLabel(item.category)}</span>
+                    </span>
+                    ${crossStoreBadgeText ? `
+                        <span class="inline-flex items-center gap-1 font-bold text-[9px] sm:text-[10px] px-1.5 py-0.5 rounded-md ${item.cross_store_cheaper ? 'bg-emerald-100 dark:bg-emerald-950/80 text-emerald-800 dark:text-emerald-300 border border-emerald-300/60' : 'bg-blue-100 dark:bg-blue-950/80 text-blue-800 dark:text-blue-300 border border-blue-200/60'} shrink-0 shadow-2xs" title="${crossStoreBadgeText}">
+                            <i class="fa-solid fa-scale-balanced text-[8px]"></i>
+                            <span>${crossStoreBadgeText}</span>
+                        </span>
+                    ` : ''}
+                    ${isItemPopular(item) ? `
+                        <span class="inline-flex items-center gap-1 font-black text-[9px] sm:text-[10px] px-1.5 py-0.5 rounded-md bg-amber-100 dark:bg-amber-950/70 text-amber-800 dark:text-amber-300 border border-amber-300/50 shrink-0">
+                            <i class="fa-solid fa-star text-[8px] text-amber-500"></i>
+                            <span>${t('popular_badge')}</span>
+                        </span>
+                    ` : ''}
+                </div>
                 ${unitPriceClean ? `
                     <span class="font-mono text-slate-500 dark:text-zinc-400 text-[10px] font-medium truncate max-w-[110px]" title="${unitPriceClean}">
                         ${unitPriceClean}
@@ -1057,7 +1428,7 @@ function createProductCardElement(item) {
 
             <!-- Add to Shopping List Button -->
             <button 
-                onclick='event.stopPropagation(); addToShoppingList(${JSON.stringify(item).replace(/'/g, "&#39;")})'
+                onclick='event.stopPropagation(); addToShoppingList(${JSON.stringify(cartPayload).replace(/'/g, "&#39;")})'
                 class="w-full py-2 px-3 rounded-xl sm:rounded-2xl text-[11px] sm:text-xs font-bold bg-slate-100 hover:bg-emerald-600 text-slate-700 hover:text-white dark:bg-zinc-800 dark:hover:bg-emerald-600 dark:text-zinc-200 dark:hover:text-white border border-slate-200/60 dark:border-zinc-700/60 hover:border-emerald-600 dark:hover:border-emerald-600 transition-all duration-200 flex items-center justify-center gap-1.5 active:scale-95 shadow-2xs group/btn"
             >
                 <i class="fa-solid fa-plus text-[10px] sm:text-xs transition-transform duration-200 group-hover/btn:rotate-90"></i>
@@ -1196,6 +1567,17 @@ function openProductModal(item) {
         halfBadge.classList.add('hidden');
     }
 
+    const popularBadge = document.getElementById('modalPopularBadge');
+    if (popularBadge) {
+        if (isItemPopular(item)) {
+            popularBadge.classList.remove('hidden');
+            const spanText = popularBadge.querySelector('span');
+            if (spanText) spanText.textContent = t('popular_modal_tag');
+        } else {
+            popularBadge.classList.add('hidden');
+        }
+    }
+
     // Image & Title
     const imgElem = document.getElementById('modalProductImg');
     imgElem.src = item.image_url || fallbackImg;
@@ -1258,6 +1640,89 @@ function openProductModal(item) {
     } else {
         unitPriceElem.textContent = '--';
         unitPriceBox.classList.add('hidden');
+    }
+
+    // Cross-store comparison in modal (各大超市現場同款比價)
+    const crossStoreBox = document.getElementById('modalCrossStoreBox');
+    const crossStoreList = document.getElementById('modalCrossStoreList');
+    const crossStoreBadge = document.getElementById('modalCrossStoreBadge');
+
+    if (crossStoreBox && crossStoreList) {
+        if (item.cross_store_matches && item.cross_store_matches.length > 0) {
+            crossStoreList.innerHTML = '';
+            
+            // Render this store's price row
+            const thisStoreRow = document.createElement('div');
+            thisStoreRow.className = "p-2.5 rounded-xl bg-white dark:bg-zinc-900 border border-slate-200/80 dark:border-zinc-800 flex items-center justify-between gap-2 shadow-2xs";
+            thisStoreRow.innerHTML = `
+                <div class="flex items-center gap-2">
+                    <span class="px-2 py-0.5 rounded-lg text-[10px] font-bold ${item.store === 'Coles' ? 'bg-[#e01a22]' : (item.store === 'ALDI' ? 'bg-[#00205b]' : 'bg-[#007a3d]')} text-white">
+                        ${item.store} (${currentLang === 'zh' ? '當前' : (currentLang === 'ja' ? '現在' : (currentLang === 'ko' ? '현재' : 'Current'))})
+                    </span>
+                    <span class="text-xs font-semibold text-slate-800 dark:text-zinc-200 truncate max-w-[180px] sm:max-w-xs" title="${item.title}">
+                        ${item.title}
+                    </span>
+                </div>
+                <div class="text-right leading-tight">
+                    <span class="font-mono font-black text-sm text-slate-900 dark:text-white">$${effectivePrice.toFixed(2)}</span>
+                    ${effectiveSave > 0 ? `<span class="block text-[10px] text-amber-600 dark:text-amber-400 font-bold">${t('save_badge', { amount: effectiveSave.toFixed(2) })}</span>` : ''}
+                </div>
+            `;
+            crossStoreList.appendChild(thisStoreRow);
+
+            // Render other matching stores
+            item.cross_store_matches.forEach(other => {
+                const otherPrice = (typeof other.price === 'number') ? other.price : (parseFloat(other.price) || 0);
+                const otherSave = (typeof other.save_amount === 'number') ? other.save_amount : (parseFloat(other.save_amount) || 0);
+                const diff = Math.round((otherPrice - effectivePrice) * 100) / 100;
+                
+                let diffBadge = '';
+                if (diff > 0.05) {
+                    diffBadge = `<span class="text-[10px] font-bold text-rose-600 dark:text-rose-400 bg-rose-50 dark:bg-rose-950/60 px-1.5 py-0.5 rounded">${currentLang === 'zh' ? '貴' : '+$'}${diff.toFixed(2)}</span>`;
+                } else if (diff < -0.05) {
+                    diffBadge = `<span class="text-[10px] font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/60 px-1.5 py-0.5 rounded">${currentLang === 'zh' ? '平' : '-$'}${Math.abs(diff).toFixed(2)}</span>`;
+                } else {
+                    diffBadge = `<span class="text-[10px] font-bold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/60 px-1.5 py-0.5 rounded">${t('cross_store_same_price')}</span>`;
+                }
+
+                const otherRow = document.createElement('div');
+                otherRow.className = "p-2.5 rounded-xl bg-white dark:bg-zinc-900 border border-slate-200/80 dark:border-zinc-800 flex items-center justify-between gap-2 shadow-2xs hover:border-blue-400 transition cursor-pointer";
+                otherRow.onclick = (e) => {
+                    e.stopPropagation();
+                    openProductModal(other);
+                };
+                otherRow.innerHTML = `
+                    <div class="flex items-center gap-2">
+                        <span class="px-2 py-0.5 rounded-lg text-[10px] font-bold ${other.store === 'Coles' ? 'bg-[#e01a22]' : (other.store === 'ALDI' ? 'bg-[#00205b]' : 'bg-[#007a3d]')} text-white">
+                            ${other.store}
+                        </span>
+                        <div class="space-y-0.5">
+                            <span class="text-xs font-semibold text-slate-800 dark:text-zinc-200 truncate max-w-[180px] sm:max-w-xs block" title="${other.title}">
+                                ${other.title}
+                            </span>
+                            <span class="text-[10px] text-blue-600 dark:text-blue-400 font-medium">
+                                <i class="fa-solid fa-arrow-right text-[8px]"></i> ${t('cross_store_view_other', { store: other.store })}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="text-right leading-tight">
+                        <div class="flex items-center gap-1 justify-end">
+                            <span class="font-mono font-black text-sm text-slate-900 dark:text-white">$${otherPrice.toFixed(2)}</span>
+                            ${diffBadge}
+                        </div>
+                        ${otherSave > 0 ? `<span class="block text-[10px] text-amber-600 dark:text-amber-400 font-bold">${t('save_badge', { amount: otherSave.toFixed(2) })}</span>` : ''}
+                    </div>
+                `;
+                crossStoreList.appendChild(otherRow);
+            });
+
+            if (crossStoreBadge) {
+                crossStoreBadge.textContent = t('cross_store_title');
+            }
+            crossStoreBox.classList.remove('hidden');
+        } else {
+            crossStoreBox.classList.add('hidden');
+        }
     }
 
     // WHV Advice
@@ -2068,4 +2533,32 @@ function dismissAnnouncement() {
         }
     }
 }
+
+// App Initialization (Runs after all constants, models, and UI functions are defined)
+function initApp() {
+    isStaticMode = window.location.hostname.includes('pages.dev') ||
+                   window.location.hostname.includes('github.io') ||
+                   window.location.protocol === 'file:' ||
+                   window.location.hostname === 'localhost' ||
+                   window.location.hostname === '127.0.0.1' ||
+                   !window.location.port;
+
+    initTheme();
+    initLanguage();
+    renderCategoryBar();
+    initScrollListeners();
+    loadStats();
+    loadAnnouncement();
+    loadSpecials();
+    loadShoppingList();
+    checkUpdateStatus();
+    setTimeout(loadTranslations, 4000);
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initApp);
+} else {
+    initApp();
+}
+
 

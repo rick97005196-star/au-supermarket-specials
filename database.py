@@ -107,6 +107,17 @@ def save_specials(store: str, items: List[Dict[str, Any]], period: str = 'curren
             if not item.get('title'):
                 continue
             title = html.unescape(item.get('title', '')).strip()
+
+            # Strictly enforce in-store specials only (reject online-only / marketplace items)
+            lower_title = title.lower()
+            if any(term in lower_title for term in ['online only', 'online exclusive', 'everyday market', 'marketplace']):
+                continue
+
+            discount_desc = html.unescape(item.get('discount_desc', '') or '').strip()
+            lower_desc = discount_desc.lower()
+            if any(term in lower_desc for term in ['online only', 'online exclusive', 'web only']):
+                continue
+
             p_url = item.get('product_url', '')
             dedup_key = (title.lower(), p_url) if p_url else title.lower()
             if dedup_key in seen_keys:
@@ -116,14 +127,12 @@ def save_specials(store: str, items: List[Dict[str, Any]], period: str = 'curren
             price = float(item.get('price', 0.0) or 0.0)
             was_price = float(item.get('was_price', 0.0) or 0.0)
             save_amount = float(item.get('save_amount', 0.0) or 0.0)
-            discount_desc = html.unescape(item.get('discount_desc', '') or '').strip()
 
             if was_price > price > 0 and save_amount <= 0:
                 save_amount = round(was_price - price, 2)
             elif save_amount > 0 and was_price <= 0 and price > 0:
                 was_price = round(price + save_amount, 2)
 
-            lower_desc = discount_desc.lower()
             if lower_desc.startswith('offers apply') or 'while stocks last' in lower_desc or 'specials not available' in lower_desc:
                 discount_desc = f"Save ${save_amount:.2f}" if save_amount > 0 else ""
             elif not discount_desc and save_amount > 0:
@@ -203,7 +212,18 @@ def get_specials(
         if discount_only:
             where_clauses.append("(discount_desc LIKE '%1/2%' OR discount_desc LIKE '%half%' OR save_amount > 0)")
 
-        if category and category.lower() != 'all':
+        if category and category.lower() == 'popular':
+            pop_likes = [
+                'tim tam', 'cadbury', 'red rock', 'smiths', "smith's", 'doritos', 'kettle',
+                'weet-bix', 'milo', 'vegemite', 'moccona', 'nescafe', 'twinings',
+                'coca-cola', 'coke', 'pepsi', 'schweppes', 'bundaberg', 'chobani', 'bega',
+                'finish', 'fairy', 'omo', 'dynamo', 'cold power', 'magnum', 'connoisseur',
+                'swisse', 'blackmores', 'colgate', 'oral-b', 'rexona', 'nivea', 'quilton'
+            ]
+            pop_clause = ' OR '.join(['title LIKE ?' for _ in pop_likes])
+            where_clauses.append(f"({pop_clause})")
+            params.extend([f"%{p}%" for p in pop_likes])
+        elif category and category.lower() != 'all':
             where_clauses.append('category = ?')
             params.append(category)
 
@@ -216,7 +236,10 @@ def get_specials(
 
         # Sorting
         order_by = "id ASC"
-        if sort_by == 'price_asc':
+        if sort_by == 'popular':
+            order_by = "save_amount DESC"
+            limit = min(limit, 100)
+        elif sort_by == 'price_asc':
             order_by = "price ASC"
         elif sort_by == 'price_desc':
             order_by = "price DESC"

@@ -28,8 +28,12 @@ if os.path.exists(trans_path):
         except Exception:
             translations = {}
 
+from categories import is_popular_product, calculate_popularity_score
+
 for it in items:
     t = it.get('title', '')
+    it['is_popular'] = is_popular_product(t)
+    it['popularity_score'] = calculate_popularity_score(it)
     if t in translations:
         it['translations'] = translations[t]
 
