@@ -118,6 +118,32 @@ function applyLanguage(lang) {
     if (emailInput) {
         emailInput.placeholder = t('email_placeholder');
     }
+
+    // Update dynamic tooltips & period badges
+    const backToTopBtn = document.getElementById('backToTopBtn');
+    if (backToTopBtn) {
+        backToTopBtn.title = t('back_to_top');
+    }
+    const drawerClearBtn = document.querySelector('button[onclick="clearShoppingList()"]');
+    if (drawerClearBtn) {
+        drawerClearBtn.title = t('clear_manifest');
+    }
+
+    updatePeriodBadges();
+}
+
+function updatePeriodBadges() {
+    const key = currentPeriod === 'current' ? 'current_cycle' : 'next_cycle';
+    const headerBadge = document.getElementById('headerPeriodBadge');
+    if (headerBadge) {
+        headerBadge.textContent = t(key);
+    }
+    const periodIndicator = document.getElementById('periodIndicatorBadge');
+    if (periodIndicator) {
+        const activeInfo = globalStats ? (currentPeriod === 'current' ? globalStats.current : globalStats.next) : null;
+        const activeRangeText = (activeInfo && activeInfo.date_range) ? activeInfo.date_range : '';
+        periodIndicator.textContent = activeRangeText ? `${t(key)} (${activeRangeText})` : t(key);
+    }
 }
 
 const CATEGORY_STYLES = {
@@ -432,7 +458,7 @@ function updateStatsDisplay() {
         if (nextData.total > 0 && nextDateStr && !nextDateStr.includes('尚未') && !nextDateStr.includes('公佈')) {
             nextBadgeEl.textContent = `(${nextDateStr.replace(' 2026', '')})`;
         } else {
-            nextBadgeEl.textContent = '(尚未釋出)';
+            nextBadgeEl.textContent = t('not_released_yet');
         }
     }
 
@@ -444,17 +470,30 @@ function updateStatsDisplay() {
     document.getElementById('activeDateRange').textContent = activeRangeText;
 
     const headerBadge = document.getElementById('headerPeriodBadge');
+    const headerBadgeContainer = headerBadge ? headerBadge.parentElement : null;
     const periodIndicator = document.getElementById('periodIndicatorBadge');
     if (currentPeriod === 'current') {
-        headerBadge.className = "text-[11px] font-semibold px-2 py-0.5 rounded-full bg-slate-100 dark:bg-zinc-800 text-slate-700 dark:text-zinc-300";
-        headerBadge.textContent = t('current_cycle');
-        periodIndicator.className = "text-[11px] px-2 py-0.5 rounded-md font-semibold bg-emerald-50 text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-300 border border-emerald-200/60 dark:border-emerald-800/60";
-        periodIndicator.textContent = `${t('current_cycle')} (${activeRangeText})`;
+        if (headerBadgeContainer) {
+            headerBadgeContainer.className = "inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-emerald-500/10 dark:bg-emerald-500/20 text-emerald-700 dark:text-emerald-400 text-[10px] font-bold border border-emerald-500/20 shrink-0";
+            const dot = headerBadgeContainer.querySelector('.rounded-full');
+            if (dot) dot.className = "w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse";
+        }
+        if (headerBadge) headerBadge.textContent = t('current_cycle');
+        if (periodIndicator) {
+            periodIndicator.className = "text-[10px] sm:text-[11px] px-2.5 py-0.5 rounded-full font-bold bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-400 border border-emerald-200/60 dark:border-emerald-800/60";
+            periodIndicator.textContent = activeRangeText ? `${t('current_cycle')} (${activeRangeText})` : t('current_cycle');
+        }
     } else {
-        headerBadge.className = "text-[11px] font-bold px-2 py-0.5 rounded-full bg-amber-100 text-amber-900 dark:bg-amber-950/70 dark:text-amber-300 border border-amber-300 dark:border-amber-700";
-        headerBadge.textContent = t('next_cycle');
-        periodIndicator.className = "text-[11px] px-2 py-0.5 rounded-md font-bold bg-amber-100 text-amber-900 dark:bg-amber-950/70 dark:text-amber-300 border border-amber-300 dark:border-amber-700";
-        periodIndicator.textContent = `${t('next_cycle')} (${activeRangeText})`;
+        if (headerBadgeContainer) {
+            headerBadgeContainer.className = "inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-amber-500/10 dark:bg-amber-500/20 text-amber-700 dark:text-amber-400 text-[10px] font-bold border border-amber-500/20 shrink-0";
+            const dot = headerBadgeContainer.querySelector('.rounded-full');
+            if (dot) dot.className = "w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse";
+        }
+        if (headerBadge) headerBadge.textContent = t('next_cycle');
+        if (periodIndicator) {
+            periodIndicator.className = "text-[10px] sm:text-[11px] px-2.5 py-0.5 rounded-full font-bold bg-amber-50 dark:bg-amber-950/60 text-amber-700 dark:text-amber-400 border border-amber-200/60 dark:border-amber-800/60";
+            periodIndicator.textContent = activeRangeText ? `${t('next_cycle')} (${activeRangeText})` : t('next_cycle');
+        }
     }
 
     document.getElementById('statTotal').textContent = activeInfo.total || 0;
@@ -941,11 +980,11 @@ function createProductCardElement(item) {
                     ${isHalfPrice ? `
                         <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-lg text-[10px] sm:text-[11px] font-black bg-gradient-to-r from-rose-500 via-rose-600 to-red-600 text-white shadow-md shadow-rose-500/25 tracking-tight">
                             <i class="fa-solid fa-fire text-[9px] text-amber-200"></i>
-                            <span>半價 50%</span>
+                            <span>${t('half_price_badge')}</span>
                         </span>
                     ` : (effectiveSave > 0 ? `
                         <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-lg text-[10px] sm:text-[11px] font-black bg-emerald-600 text-white shadow-xs tracking-tight">
-                            省 $${effectiveSave.toFixed(2)}
+                            ${t('save_badge', { amount: effectiveSave.toFixed(2) })}
                         </span>
                     ` : (cleanDiscountDesc ? `
                         <span class="inline-flex items-center px-2 py-0.5 rounded-lg text-[9px] sm:text-[10px] font-bold bg-amber-100 dark:bg-amber-950/80 text-amber-900 dark:text-amber-300 border border-amber-300/50 truncate max-w-[90px]" title="${cleanDiscountDesc}">
@@ -1005,12 +1044,12 @@ function createProductCardElement(item) {
                 <div class="text-right leading-none space-y-0.5">
                     ${effectiveWas > 0 ? `
                         <div class="text-[10px] sm:text-[11px] text-slate-400 line-through font-medium">
-                            Was $${effectiveWas.toFixed(2)}
+                            ${t('was_price')} $${effectiveWas.toFixed(2)}
                         </div>
                     ` : ''}
                     ${effectiveSave > 0 ? `
                         <span class="inline-block px-1.5 py-0.2 rounded text-[9px] sm:text-[10px] font-black bg-amber-400 text-slate-950">
-                            Save $${effectiveSave.toFixed(2)}
+                            ${t('save_badge', { amount: effectiveSave.toFixed(2) })}
                         </span>
                     ` : ''}
                 </div>
@@ -1151,7 +1190,7 @@ function openProductModal(item) {
     
     const halfBadge = document.getElementById('modalHalfPriceBadge');
     if (isHalfPrice) {
-        halfBadge.textContent = "1/2 PRICE";
+        halfBadge.textContent = t('half_price_badge');
         halfBadge.classList.remove('hidden');
     } else {
         halfBadge.classList.add('hidden');
@@ -1196,7 +1235,7 @@ function openProductModal(item) {
 
     const wasElem = document.getElementById('modalWasPrice');
     if (effectiveWas > 0) {
-        wasElem.textContent = `Was $${effectiveWas.toFixed(2)}`;
+        wasElem.textContent = `${t('was_price')} $${effectiveWas.toFixed(2)}`;
         wasElem.classList.remove('hidden');
     } else {
         wasElem.classList.add('hidden');
@@ -1204,7 +1243,7 @@ function openProductModal(item) {
 
     const saveBadge = document.getElementById('modalSaveBadge');
     if (effectiveSave > 0) {
-        saveBadge.textContent = `Save $${effectiveSave.toFixed(2)}`;
+        saveBadge.textContent = t('save_badge', { amount: effectiveSave.toFixed(2) });
         saveBadge.classList.remove('hidden');
     } else {
         saveBadge.classList.add('hidden');
@@ -1242,7 +1281,7 @@ function openProductModal(item) {
     linkElem.href = officialUrl;
     const linkSpan = linkElem.querySelector('span');
     if (linkSpan) {
-        linkSpan.textContent = `前往 ${item.store} 官方商品頁`;
+        linkSpan.textContent = t('open_official_store', { store: item.store });
     }
     document.getElementById('modalOfficialLinkBox').classList.remove('hidden');
 
@@ -1578,12 +1617,12 @@ async function loadShoppingList() {
                                     })()}
                                     <div class="text-[11px] text-slate-500 dark:text-zinc-400 flex items-center gap-2 mt-0.5 font-medium flex-wrap">
                                         <span class="font-bold text-slate-900 dark:text-white">${itPrice.displayWithUnit}</span>
-                                        ${itSave > 0 ? `<span class="px-1 py-0.2 rounded text-[10px] font-black bg-amber-400 text-slate-950">Save $${itSave.toFixed(2)}</span>` : ''}
-                                        ${itWas > 0 ? `<span class="text-slate-400 line-through text-[10px]">Was $${itWas.toFixed(2)}</span>` : ''}
+                                        ${itSave > 0 ? `<span class="px-1 py-0.2 rounded text-[10px] font-black bg-amber-400 text-slate-950">${t('save_badge', { amount: itSave.toFixed(2) })}</span>` : ''}
+                                        ${itWas > 0 ? `<span class="text-slate-400 line-through text-[10px]">${t('was_price')} $${itWas.toFixed(2)}</span>` : ''}
                                     </div>
                                 </div>
                             </div>
-                            <button onclick="deleteShoppingItem(${it.id})" class="text-slate-400 hover:text-rose-500 p-1.5 transition shrink-0" title="刪除">
+                            <button onclick="deleteShoppingItem(${it.id})" class="text-slate-400 hover:text-rose-500 p-1.5 transition shrink-0" title="${t('delete')}">
                                 <i class="fa-solid fa-xmark text-xs"></i>
                             </button>
                         </div>

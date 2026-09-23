@@ -165,7 +165,7 @@
                         <span data-i18n="app_title" class="truncate">澳洲超市特價優惠</span>
                         <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-emerald-500/10 dark:bg-emerald-500/20 text-emerald-700 dark:text-emerald-400 text-[10px] font-bold border border-emerald-500/20 shrink-0">
                             <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                            <span id="headerPeriodBadge">本週特價</span>
+                            <span id="headerPeriodBadge" data-i18n="current_cycle">本週特價</span>
                         </span>
                     </h1>
                     <p class="text-[10px] sm:text-xs text-slate-500 dark:text-zinc-400 flex items-center gap-1.5 mt-0.5 truncate font-medium">
@@ -273,8 +273,8 @@
 
                 <!-- Stats Mini Bar -->
                 <div class="flex items-center justify-between sm:justify-end gap-3 text-xs font-medium text-slate-600 dark:text-zinc-400 px-1">
-                    <div><span class="text-slate-400 dark:text-zinc-500">特價：</span><strong id="statTotal" class="text-slate-900 dark:text-white">--</strong></div>
-                    <div><span class="text-rose-500 font-semibold">半價：</span><strong id="statHalfPrice" class="text-rose-600 dark:text-rose-400 font-bold">--</strong></div>
+                    <div><span data-i18n="stat_specials_label" class="text-slate-400 dark:text-zinc-500">特價：</span><strong id="statTotal" class="text-slate-900 dark:text-white">--</strong></div>
+                    <div><span data-i18n="stat_half_label" class="text-rose-500 font-semibold">半價：</span><strong id="statHalfPrice" class="text-rose-600 dark:text-rose-400 font-bold">--</strong></div>
                     <div class="hidden sm:block"><span class="text-emerald-600 font-bold">W:</span> <span id="statWoolies">--</span></div>
                     <div class="hidden sm:block"><span class="text-rose-600 font-bold">C:</span> <span id="statColes">--</span></div>
                     <div class="hidden sm:block"><span class="text-blue-600 font-bold">A:</span> <span id="statAldi">--</span></div>
@@ -350,7 +350,7 @@
         <div class="flex items-center justify-between text-xs text-slate-500 dark:text-zinc-400 px-1 py-0.5">
             <div class="flex items-center gap-2">
                 <span id="resultsCountText" class="font-bold text-slate-700 dark:text-zinc-200">找到 0 項特價品</span>
-                <span id="periodIndicatorBadge" class="text-[10px] sm:text-[11px] px-2.5 py-0.5 rounded-full font-bold bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-400 border border-emerald-200/60 dark:border-emerald-800/60">
+                <span id="periodIndicatorBadge" data-i18n="current_cycle" class="text-[10px] sm:text-[11px] px-2.5 py-0.5 rounded-full font-bold bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-400 border border-emerald-200/60 dark:border-emerald-800/60">
                     本週特價
                 </span>
             </div>
@@ -366,7 +366,7 @@
         <div id="infiniteScrollSentinel" class="py-6 text-center hidden">
             <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-100 dark:bg-zinc-800 text-slate-500 dark:text-zinc-400 text-xs font-semibold shadow-2xs">
                 <i class="fa-solid fa-circle-notch fa-spin text-emerald-600 dark:text-emerald-400 text-xs"></i>
-                <span id="infiniteScrollText">載入更多商品中...</span>
+                <span id="infiniteScrollText" data-i18n="loading_more">載入更多商品中...</span>
             </div>
         </div>
 
@@ -381,12 +381,12 @@
             <div class="w-12 h-12 mx-auto rounded-2xl bg-slate-100 dark:bg-zinc-800/80 flex items-center justify-center text-xl text-slate-400 dark:text-zinc-500">
                 <i class="fa-solid fa-basket-shopping"></i>
             </div>
-            <h3 id="emptyStateTitle" class="text-sm sm:text-base font-bold text-slate-800 dark:text-zinc-200" data-i18n="empty_manifest">沒有找到符合的特價商品</h3>
+            <h3 id="emptyStateTitle" class="text-sm sm:text-base font-bold text-slate-800 dark:text-zinc-200">沒有找到符合的特價商品</h3>
             <p id="emptyStateSub" class="text-xs text-slate-400 dark:text-zinc-500 max-w-md mx-auto leading-relaxed">試試切換「本週 / 下週預告」或更改類別</p>
             <div id="emptyStateAction" class="pt-1">
                 <button onclick="selectPeriod('current')" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-bold bg-emerald-600 hover:bg-emerald-700 text-white shadow-xs transition active:scale-95">
                     <i class="fa-regular fa-calendar-check"></i>
-                    <span>返回查看「本週特價」</span>
+                    <span data-i18n="return_current">返回查看「本週特價」</span>
                 </button>
             </div>
         </div>
@@ -585,7 +585,7 @@
                 <!-- Next Week Notice Box (only shown if next week) -->
                 <div id="modalNextWeekNotice" class="hidden rounded-xl p-2.5 bg-amber-50 dark:bg-amber-950/40 border border-amber-200/80 dark:border-amber-800/60 text-[11px] text-amber-800 dark:text-amber-300 flex items-center gap-2">
                     <i class="fa-solid fa-clock text-amber-600 dark:text-amber-400 shrink-0"></i>
-                    <span>此商品為「下週特價預告」，超市官網特價預計於週三凌晨正式生效上架。</span>
+                    <span data-i18n="next_week_notice">此商品為「下週特價預告」，超市官網特價預計於週三凌晨正式生效上架。</span>
                 </div>
 
                 <!-- Official Store Link & Sub-Item Chips -->
@@ -593,12 +593,12 @@
                     <div class="flex flex-wrap items-center gap-2.5">
                         <a id="modalOfficialLink" href="#" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 font-bold px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white shadow-xs transition active:scale-95 text-xs sm:text-sm">
                             <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
-                            <span>前往超市官方商品頁</span>
+                            <span id="modalStoreActionText" data-i18n="open_official_store">前往超市官方商品頁</span>
                         </a>
                     </div>
                     <!-- Optional Sub-Item Quick Links for grouped products (e.g. Red Rock Deli, Smith's, Doritos) -->
                     <div id="modalSubItemsBox" class="hidden flex flex-wrap items-center gap-1.5 pt-1 text-[11px]">
-                        <span class="text-slate-400 dark:text-zinc-500 shrink-0 font-medium">多品項直接前往：</span>
+                        <span data-i18n="multiple_items_hint" class="text-slate-400 dark:text-zinc-500 shrink-0 font-medium">多品項直接前往：</span>
                         <div id="modalSubItemsList" class="flex flex-wrap items-center gap-1.5"></div>
                     </div>
                 </div>
@@ -642,7 +642,7 @@
     </div>
 
     <!-- Scripts -->
-    <script src="./i18n.js?v=4.3"></script>
-    <script src="./app.js?v=4.3"></script>
+    <script src="./i18n.js?v=4.4"></script>
+    <script src="./app.js?v=4.4"></script>
 </body>
 </html>
