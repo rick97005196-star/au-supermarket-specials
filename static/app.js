@@ -1438,15 +1438,15 @@ function createProductCardElement(item) {
                     </div>
                 ` : ''}
 
-                <!-- Top-Right Discount Badge (Only shown for 1/2 Price items to avoid duplication with bottom-right save badge) -->
-                <div class="absolute top-2 right-2 z-10">
-                    ${isHalfPrice ? `
-                        <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-lg text-[10px] sm:text-[11px] font-black bg-gradient-to-r from-rose-500 via-rose-600 to-red-600 text-white shadow-md shadow-rose-500/25 tracking-tight">
-                            <i class="fa-solid fa-fire text-[9px] text-amber-200"></i>
-                            <span>${t('half_price_badge')}</span>
+                <!-- Top-Right Popular Badge (Positioned on top-right of image stage for clean visual balance) -->
+                ${isItemPopular(item) ? `
+                    <div class="absolute top-2 right-2 z-10">
+                        <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[10px] sm:text-[11px] font-bold bg-amber-400 text-slate-950 shadow-xs tracking-tight">
+                            <i class="fa-solid fa-star text-[9px]"></i>
+                            <span>${t('popular_badge')}</span>
                         </span>
-                    ` : ''}
-                </div>
+                    </div>
+                ` : ''}
 
                 <!-- Product Image with Zoom -->
                 <img 
@@ -1460,11 +1460,11 @@ function createProductCardElement(item) {
             </div>
 
             <!-- Category, Unit Price & Comparison Meta Row -->
-            <div class="flex items-center justify-between gap-1 text-[10px] text-slate-500 dark:text-zinc-400">
-                <div class="flex items-center gap-1.5 flex-wrap min-w-0">
-                    <span class="inline-flex items-center gap-1 font-medium bg-slate-100/90 dark:bg-zinc-800/70 px-1.5 py-0.5 rounded-md text-[9px] sm:text-[10px]">
+            <div class="flex items-center justify-between gap-1.5 text-[10px] sm:text-[11px] text-slate-500 dark:text-zinc-400 min-h-[22px]">
+                <div class="flex items-center gap-1.5 min-w-0">
+                    <span class="inline-flex items-center gap-1 font-medium bg-slate-100/90 dark:bg-zinc-800/80 px-2 py-0.5 rounded-md text-[10px] sm:text-[11px] text-slate-600 dark:text-zinc-300">
                         <span>${catStyle.emoji}</span>
-                        <span>${getCleanCategoryLabel(item.category)}</span>
+                        <span class="truncate">${getCleanCategoryLabel(item.category)}</span>
                     </span>
                     ${crossStoreBadgeText ? `
                         <span class="inline-flex items-center gap-1 font-bold text-[9px] sm:text-[10px] px-1.5 py-0.5 rounded-md ${item.cross_store_cheaper ? 'bg-emerald-100 dark:bg-emerald-950/80 text-emerald-800 dark:text-emerald-300 border border-emerald-300/60' : 'bg-blue-100 dark:bg-blue-950/80 text-blue-800 dark:text-blue-300 border border-blue-200/60'} shrink-0 shadow-2xs" title="${crossStoreBadgeText}">
@@ -1472,15 +1472,9 @@ function createProductCardElement(item) {
                             <span>${crossStoreBadgeText}</span>
                         </span>
                     ` : ''}
-                    ${isItemPopular(item) ? `
-                        <span class="inline-flex items-center gap-1 font-black text-[9px] sm:text-[10px] px-1.5 py-0.5 rounded-md bg-amber-100 dark:bg-amber-950/70 text-amber-800 dark:text-amber-300 border border-amber-300/50 shrink-0">
-                            <i class="fa-solid fa-star text-[8px] text-amber-500"></i>
-                            <span>${t('popular_badge')}</span>
-                        </span>
-                    ` : ''}
                 </div>
                 ${unitPriceClean ? `
-                    <span class="font-mono text-slate-500 dark:text-zinc-400 text-[10px] font-medium truncate max-w-[110px]" title="${unitPriceClean}">
+                    <span class="font-mono text-slate-400 dark:text-zinc-500 text-[10px] sm:text-[11px] font-semibold tracking-tight shrink-0 whitespace-nowrap ml-auto" title="${unitPriceClean}">
                         ${unitPriceClean}
                     </span>
                 ` : ''}
@@ -1488,36 +1482,38 @@ function createProductCardElement(item) {
 
             <!-- Product Title & Multilingual Subtitle -->
             <div class="space-y-1">
-                <h3 class="text-xs sm:text-sm font-bold text-slate-900 dark:text-zinc-100 line-clamp-2 leading-snug group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors" title="${item.title}">
+                <h3 class="text-xs sm:text-sm font-bold text-slate-900 dark:text-zinc-100 line-clamp-2 leading-snug group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors h-[2.5rem]" title="${item.title}">
                     ${item.title}
                 </h3>
                 ${translated ? `
-                    <div class="text-[11px] sm:text-xs font-semibold text-emerald-800 dark:text-emerald-300 bg-emerald-50/80 dark:bg-emerald-950/50 border border-emerald-200/50 dark:border-emerald-800/50 px-2 py-0.5 rounded-lg line-clamp-1 leading-normal" title="${translated}">
+                    <div class="text-[11px] sm:text-xs font-semibold text-emerald-800 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200/60 dark:border-emerald-800/60 px-2 py-0.5 rounded-md line-clamp-1 leading-normal" title="${translated}">
                         ${translated}
                     </div>
-                ` : ''}
+                ` : `
+                    <div class="h-[21px]"></div>
+                `}
             </div>
         </div>
 
         <!-- Price & Action Footer -->
-        <div class="p-3 sm:p-3.5 pt-0 space-y-2 sm:space-y-2.5">
+        <div class="p-3 sm:p-3.5 pt-0 space-y-2.5">
             <!-- Price Display Row -->
             <div class="pt-2 border-t border-slate-100 dark:border-zinc-800/80 flex items-baseline justify-between gap-1">
                 <div class="flex items-baseline gap-0.5 leading-none">
                     <span class="text-xs sm:text-sm font-extrabold text-slate-900 dark:text-white self-start mt-0.5 font-mono">$</span>
-                    <span class="text-xl sm:text-3xl font-black tracking-tight text-slate-900 dark:text-white font-mono">${p.dollars}</span>
+                    <span class="text-2xl sm:text-3xl font-black tracking-tight text-slate-900 dark:text-white font-mono">${p.dollars}</span>
                     <span class="text-xs sm:text-sm font-extrabold text-slate-900 dark:text-white self-start mt-0.5 font-mono">${p.cents}</span>
-                    <span class="text-[10px] sm:text-xs font-semibold text-slate-500 dark:text-zinc-400 ml-0.5 self-baseline">${p.unit}</span>
+                    <span class="text-[10px] sm:text-xs font-semibold text-slate-400 dark:text-zinc-500 ml-1 self-baseline">${p.unit}</span>
                 </div>
 
-                <div class="text-right leading-none space-y-0.5">
+                <div class="text-right leading-none space-y-1">
                     ${effectiveWas > 0 ? `
-                        <div class="text-[10px] sm:text-[11px] text-slate-400 line-through font-medium">
+                        <div class="text-[10px] sm:text-[11px] text-slate-400 dark:text-zinc-500 line-through font-medium">
                             ${t('was_price')} $${effectiveWas.toFixed(2)}
                         </div>
                     ` : ''}
                     ${effectiveSave > 0 ? `
-                        <span class="inline-block px-1.5 py-0.2 rounded text-[9px] sm:text-[10px] font-black bg-amber-400 text-slate-950">
+                        <span class="inline-block px-1.5 py-0.5 rounded-md text-[10px] font-black bg-amber-400 text-slate-950 shadow-2xs">
                             ${t('save_badge', { amount: effectiveSave.toFixed(2) })}
                         </span>
                     ` : ''}
@@ -1527,7 +1523,7 @@ function createProductCardElement(item) {
             <!-- Add to Shopping List Button -->
             <button 
                 onclick='event.stopPropagation(); addToShoppingList(${JSON.stringify(cartPayload).replace(/'/g, "&#39;")})'
-                class="w-full py-2 px-3 rounded-lg text-[11px] sm:text-xs font-bold bg-slate-100 hover:bg-emerald-600 text-slate-700 hover:text-white dark:bg-zinc-800 dark:hover:bg-emerald-600 dark:text-zinc-200 dark:hover:text-white border border-slate-200/70 dark:border-zinc-700/70 hover:border-emerald-600 dark:hover:border-emerald-600 transition-all duration-150 flex items-center justify-center gap-1.5 active:scale-95 shadow-2xs group/btn"
+                class="w-full py-2 px-3 rounded-lg text-xs font-bold bg-slate-100 hover:bg-emerald-600 text-slate-700 hover:text-white dark:bg-zinc-800 dark:hover:bg-emerald-600 dark:text-zinc-200 dark:hover:text-white border border-slate-200/70 dark:border-zinc-700/70 hover:border-emerald-600 dark:hover:border-emerald-600 transition-all duration-150 flex items-center justify-center gap-1.5 active:scale-95 shadow-2xs group/btn"
             >
                 <i class="fa-solid fa-plus text-[10px] sm:text-xs transition-transform duration-200 group-hover/btn:rotate-90"></i>
                 <span data-i18n="add_to_list">${t('add_to_list')}</span>
@@ -1657,8 +1653,19 @@ function openProductModal(item) {
 
     document.getElementById('modalCategoryBadge').textContent = getCategoryName(item.category);
     
-    const halfBadge = document.getElementById('modalHalfPriceBadge');
+    const hasCatalogueBadge = !!(item.image_url && item.image_url.includes('cloudfront.net'));
+    let modalBadgeSrc = '';
     if (isHalfPrice) {
+        if (item.store === 'Woolworths' && !hasCatalogueBadge) {
+            modalBadgeSrc = './woolworths_half_price_badge.png';
+        } else if (item.store === 'Coles') {
+            modalBadgeSrc = './coles_half_price_badge.png';
+        }
+    }
+    const hasCircularBadge = (isHalfPrice && hasCatalogueBadge) || !!modalBadgeSrc;
+
+    const halfBadge = document.getElementById('modalHalfPriceBadge');
+    if (isHalfPrice && !hasCircularBadge) {
         halfBadge.textContent = t('half_price_badge');
         halfBadge.classList.remove('hidden');
     } else {
@@ -1685,15 +1692,6 @@ function openProductModal(item) {
     const modalHalfPriceOverlay = document.getElementById('modalHalfPriceOverlayBadge');
     const modalHalfPriceImg = document.getElementById('modalHalfPriceImg');
     if (modalHalfPriceOverlay && modalHalfPriceImg) {
-        const hasCatalogueBadge = !!(item.image_url && item.image_url.includes('cloudfront.net'));
-        let modalBadgeSrc = '';
-        if (isHalfPrice) {
-            if (item.store === 'Woolworths' && !hasCatalogueBadge) {
-                modalBadgeSrc = './woolworths_half_price_badge.png';
-            } else if (item.store === 'Coles') {
-                modalBadgeSrc = './coles_half_price_badge.png';
-            }
-        }
         if (modalBadgeSrc) {
             modalHalfPriceImg.src = modalBadgeSrc;
             modalHalfPriceOverlay.classList.remove('hidden');
