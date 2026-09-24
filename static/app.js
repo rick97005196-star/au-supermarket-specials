@@ -1372,6 +1372,15 @@ function createProductCardElement(item) {
     const hasCatalogueBadge = !!(item.image_url && item.image_url.includes('cloudfront.net'));
     const fallbackImg = DEFAULT_FALLBACK_IMG;
 
+    let halfPriceBadgeSrc = '';
+    if (isHalfPrice) {
+        if (item.store === 'Woolworths' && !hasCatalogueBadge) {
+            halfPriceBadgeSrc = './woolworths_half_price_badge.png';
+        } else if (item.store === 'Coles') {
+            halfPriceBadgeSrc = './coles_half_price_badge.png';
+        }
+    }
+
     const effectivePrice = (typeof item.price === 'number') ? item.price : (parseFloat(item.price) || 0);
     let effectiveSave = (typeof item.save_amount === 'number') ? item.save_amount : (parseFloat(item.save_amount) || 0);
     let effectiveWas = (typeof item.was_price === 'number') ? item.was_price : (parseFloat(item.was_price) || 0);
@@ -1422,10 +1431,10 @@ function createProductCardElement(item) {
                     </span>
                 </div>
 
-                <!-- Woolworths 1/2 Price Circular Badge Overlay (Scaled to exactly match catalogue printed size ~36% of image container) -->
-                ${(isHalfPrice && item.store === 'Woolworths' && !hasCatalogueBadge) ? `
+                <!-- Circular Half Price Badge Overlay (Woolworths green & Coles red official styles) -->
+                ${halfPriceBadgeSrc ? `
                     <div class="absolute top-2 left-2 sm:top-2.5 sm:left-2.5 z-0 pointer-events-none drop-shadow-sm select-none w-[36%] max-w-[68px] min-w-[44px] aspect-square transition-transform group-hover:scale-105">
-                        <img src="./woolworths_half_price_badge.png" alt="1/2 Price" class="w-full h-full object-contain" />
+                        <img src="${halfPriceBadgeSrc}" alt="1/2 Price" class="w-full h-full object-contain" />
                     </div>
                 ` : ''}
 
@@ -1673,13 +1682,23 @@ function openProductModal(item) {
     imgElem.onerror = () => { imgElem.src = fallbackImg; };
     document.getElementById('modalProductTitle').textContent = item.title;
 
-    const modalWooliesBadge = document.getElementById('modalWooliesHalfPriceBadge');
-    if (modalWooliesBadge) {
+    const modalHalfPriceOverlay = document.getElementById('modalHalfPriceOverlayBadge');
+    const modalHalfPriceImg = document.getElementById('modalHalfPriceImg');
+    if (modalHalfPriceOverlay && modalHalfPriceImg) {
         const hasCatalogueBadge = !!(item.image_url && item.image_url.includes('cloudfront.net'));
-        if (isHalfPrice && item.store === 'Woolworths' && !hasCatalogueBadge) {
-            modalWooliesBadge.classList.remove('hidden');
+        let modalBadgeSrc = '';
+        if (isHalfPrice) {
+            if (item.store === 'Woolworths' && !hasCatalogueBadge) {
+                modalBadgeSrc = './woolworths_half_price_badge.png';
+            } else if (item.store === 'Coles') {
+                modalBadgeSrc = './coles_half_price_badge.png';
+            }
+        }
+        if (modalBadgeSrc) {
+            modalHalfPriceImg.src = modalBadgeSrc;
+            modalHalfPriceOverlay.classList.remove('hidden');
         } else {
-            modalWooliesBadge.classList.add('hidden');
+            modalHalfPriceOverlay.classList.add('hidden');
         }
     }
 
