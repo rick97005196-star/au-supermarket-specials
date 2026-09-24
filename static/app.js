@@ -1420,31 +1420,29 @@ function createProductCardElement(item) {
     };
 
     card.innerHTML = `
-        <div class="p-3 sm:p-3.5 space-y-2.5">
-            <!-- Product Image Stage with Floating Badges -->
-            <div class="relative w-full aspect-square rounded-xl sm:rounded-2xl bg-gradient-to-b from-slate-50/90 to-slate-100/50 dark:from-zinc-800/40 dark:to-zinc-850/60 p-2.5 sm:p-3 flex items-center justify-center overflow-hidden ring-1 ring-black/[0.04] dark:ring-white/[0.05]">
-                <!-- Top-Left Store Tag -->
-                <div class="absolute top-2 left-2 z-10">
-                    <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-lg text-[10px] sm:text-[11px] font-bold ${storeBadgeClass} shadow-xs">
-                        ${storeIcon}
-                        <span>${item.store}</span>
-                    </span>
-                </div>
-
-                <!-- Circular Half Price Badge Overlay (Woolworths green & Coles red official styles) -->
-                ${halfPriceBadgeSrc ? `
-                    <div class="absolute top-2 left-2 sm:top-2.5 sm:left-2.5 z-0 pointer-events-none drop-shadow-sm select-none w-[36%] max-w-[68px] min-w-[44px] aspect-square transition-transform group-hover:scale-105">
-                        <img src="${halfPriceBadgeSrc}" alt="1/2 Price" class="w-full h-full object-contain" />
-                    </div>
-                ` : ''}
-
-                <!-- Top-Right Popular Badge (Positioned on top-right of image stage for clean visual balance) -->
+        <div class="p-2.5 sm:p-3.5 space-y-2 sm:space-y-2.5">
+            <!-- Top Header Row: Store Tag & Popular Badge (Moved above image stage to eliminate collisions & unblock product) -->
+            <div class="flex items-center justify-between gap-1 h-5 px-0.5">
+                <span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[10px] sm:text-[11px] font-bold ${storeBadgeClass} shadow-2xs">
+                    ${storeIcon}
+                    <span>${item.store}</span>
+                </span>
                 ${isItemPopular(item) ? `
-                    <div class="absolute top-2 right-2 z-10">
-                        <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[10px] sm:text-[11px] font-bold bg-amber-400 text-slate-950 shadow-xs tracking-tight">
-                            <i class="fa-solid fa-star text-[9px]"></i>
-                            <span>${t('popular_badge')}</span>
-                        </span>
+                    <span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[10px] sm:text-[11px] font-bold bg-amber-400 text-slate-950 shadow-2xs tracking-tight shrink-0">
+                        <i class="fa-solid fa-star text-[8px]"></i>
+                        <span>${t('popular_badge')}</span>
+                    </span>
+                ` : `
+                    <div class="h-[18px]"></div>
+                `}
+            </div>
+
+            <!-- Product Image Stage: Enlarged & Clean (1/2 Price circle has dedicated unblocked top-left placement) -->
+            <div class="relative w-full aspect-square rounded-xl sm:rounded-2xl bg-gradient-to-b from-slate-50/90 to-slate-100/50 dark:from-zinc-800/40 dark:to-zinc-850/60 p-2 sm:p-2.5 flex items-center justify-center overflow-hidden ring-1 ring-black/[0.04] dark:ring-white/[0.05]">
+                <!-- Circular Half Price Badge Overlay (Woolworths green & Coles red official styles - completely unblocked) -->
+                ${halfPriceBadgeSrc ? `
+                    <div class="absolute top-1.5 left-1.5 sm:top-2 sm:left-2 z-10 pointer-events-none drop-shadow-sm select-none w-[34%] max-w-[62px] min-w-[38px] aspect-square transition-transform group-hover:scale-105">
+                        <img src="${halfPriceBadgeSrc}" alt="1/2 Price" class="w-full h-full object-contain" />
                     </div>
                 ` : ''}
 
