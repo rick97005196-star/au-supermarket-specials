@@ -98,6 +98,12 @@ def save_specials(store: str, items: List[Dict[str, Any]], period: str = 'curren
     """Replace specials for a given store and period (current / next) with the newly scraped list."""
     with get_db() as conn:
         cursor = conn.cursor()
+        cursor.execute('SELECT COUNT(*) FROM specials WHERE store = ? AND period = ?', (store, period))
+        existing_count = cursor.fetchone()[0]
+        if existing_count > 400 and len(items) < 300:
+            print(f"⚠️ Anti-wipeout guard triggered: {store} ({period}) has {existing_count} existing items, but scraper only found {len(items)}. Preserving existing database!")
+            return existing_count
+
         cursor.execute('DELETE FROM specials WHERE store = ? AND period = ?', (store, period))
         
         insert_sql = '''
