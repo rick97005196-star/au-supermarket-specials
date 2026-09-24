@@ -89,6 +89,11 @@ GROCERY_TERMS = {
 
 # Post-processing glossary guard to fix notorious machine translation blunders
 KNOWN_TRANSLATION_REPAIRS = [
+    # Connoisseur ice cream brand & styles
+    (r'鑑賞家(?:美食)?(?:冰淇淋)?|行家冰淇淋', 'Connoisseur 頂級雪糕'),
+    (r'餅乾和奶油棒', '巧酥雪糕'),
+    (r'餅乾和奶油', '巧酥餅乾風味'),
+    (r'迷你香草棒', '迷你香草雪糕'),
     # Pet items where "Adult" becomes "成人"
     (r'成人(?=狗|犬|貓|寵物|糧|飼料)', '成犬/成貓'),
     (r'超級外套\s*成人', 'Supercoat 成犬'),
@@ -113,7 +118,19 @@ KNOWN_TRANSLATION_REPAIRS = [
     # Bega Cheese
     (r'貝加', 'Bega 起司/乳酪'),
     # Sirena Tuna
-    (r'塞雷娜', 'Sirena 頂級鮪魚罐頭')
+    (r'塞雷娜', 'Sirena 頂級鮪魚罐頭'),
+    # Flavor literal fixes
+    (r'蜂蜜大豆和雞肉|大豆和雞肉', '蜂蜜醬油雞汁風味'),
+    (r'酸奶油和韭菜', '酸奶洋蔥風味'),
+    # Underwear literal fixes
+    (r'男士前軀幹|前軀幹尺寸|泳褲（各裝各裝）|前軀幹', '男款平口四角內褲'),
+    (r'各裝各裝', '各款式'),
+    # Reduplications
+    (r'巧克力棒巧克力棒', '巧克力棒'),
+    (r'檸檬檸檬', '檸檬'),
+    (r'日式日式', '日式'),
+    (r'特大號特大號', '特大號'),
+    (r'餅乾餅乾', '薄脆餅乾')
 ]
 
 def clean_translated_text(text, orig_title):
@@ -128,7 +145,7 @@ def clean_translated_text(text, orig_title):
 # 1. Gemini AI Batch Translator (High Precision, Domain Aware)
 def translate_batch_with_gemini(titles, api_key):
     """
-    Translates up to 30 titles at once with Google Gemini 2.5 Flash API.
+    Translates up to 30 titles at once with Google Gemini API.
     Returns a dict mapping original title -> {'zh': ..., 'ja': ..., 'ko': ...}.
     """
     if not api_key or not titles:
@@ -140,9 +157,17 @@ def translate_batch_with_gemini(titles, api_key):
         "You are an expert translator and Australian supermarket merchandiser. "
         "Translate the following Australian grocery titles into:\n"
         "1. 'zh': Traditional Chinese (Taiwan/Hong Kong style, friendly for backpackers and locals in Australia). "
-        "Keep famous brand names (e.g. Arnott's, Tim Tam, Vegemite, Moccona, Finish, Fairy, Connoisseur, Peters Drumstick) "
-        "intact with concise Chinese descriptors. Translate grocery cuts, flavors, and packaging accurately "
-        "(e.g., 'Adult Dog Food' -> '成犬乾糧', NOT '成人').\n"
+        "CRITICAL BRAND RULES FOR CHINESE: "
+        "- NEVER translate brand names into literal Chinese! Keep famous brands in English: "
+        "  * 'Connoisseur' -> KEEP 'Connoisseur' (NEVER '鑑賞家' or '行家')\n"
+        "  * 'Arnott\\'s', 'Tim Tam', 'Shapes', 'Vegemite', 'Moccona', 'Finish', 'Fairy', 'Peters Drumstick', 'Bonds', 'Red Rock Deli'\n"
+        "- Translate grocery cuts, flavors, and packaging accurately: "
+        "  * 'Cookies & Cream' -> '巧酥餅乾風味' (NOT '餅乾和奶油')\n"
+        "  * 'Honey Soy & Chicken' -> '蜂蜜醬油雞汁風味' (NOT '大豆和雞肉')\n"
+        "  * 'Sour Cream & Chives' -> '酸奶洋蔥風味' (NOT '韭菜')\n"
+        "  * 'Gourmet Ice Cream Sticks' -> '頂級雪糕' (NOT '美食冰淇淋棒')\n"
+        "  * 'Trunk' (for underwear) -> '男款平口四角內褲' (NOT '前軀幹')\n"
+        "  * 'Adult Dog Food' -> '成犬乾糧' (NOT '成人')\n"
         "2. 'ja': Japanese supermarket grocery style.\n"
         "3. 'ko': Korean supermarket grocery style.\n\n"
         "Items to translate:\n"
