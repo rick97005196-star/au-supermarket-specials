@@ -1424,11 +1424,8 @@ function createProductCardElement(item) {
 
                 <!-- Woolworths 1/2 Price Circular Badge Overlay -->
                 ${(isHalfPrice && item.store === 'Woolworths' && !hasCatalogueBadge) ? `
-                    <div class="absolute top-8 left-2 sm:top-8.5 sm:left-2.5 z-10 pointer-events-none drop-shadow-sm select-none transition-transform group-hover:scale-110">
-                        <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white dark:bg-zinc-900 border-[2.5px] border-[#007837] flex flex-col items-center justify-center -rotate-6 shadow-sm">
-                            <span class="text-[12px] sm:text-[13px] font-black text-[#007837] dark:text-emerald-400 leading-none tracking-tight">1/2</span>
-                            <span class="text-[7.5px] sm:text-[8px] font-black text-[#007837] dark:text-emerald-300 uppercase tracking-tighter leading-none -mt-0.5">Price</span>
-                        </div>
+                    <div class="absolute top-8 left-2 sm:top-8.5 sm:left-2.5 z-10 pointer-events-none drop-shadow-sm select-none transition-transform group-hover:scale-105">
+                        <img src="./woolworths_half_price_badge.png" alt="1/2 Price" class="w-10 h-10 sm:w-11 sm:h-11 object-contain" />
                     </div>
                 ` : ''}
 
