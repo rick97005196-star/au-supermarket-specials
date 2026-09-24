@@ -65,7 +65,7 @@ def classify_product(title: str, raw_cat: str = "", product_url: str = "") -> st
     # -------------------------------------------------------------
     is_chocolate_bar = bool(re.search(r'\b(?:chocolate\s*block|choc\s*block|chocolate\s*bar|milk\s*choc|dairy\s*milk)\b', tl))
     is_meat_or_fresh = bool(re.search(r'\b(?:beef|steak|mince|chicken|pork|lamb|sausages?|bacon|ham\b)\b', tl))
-    is_edible_bakery_or_snack = bool(re.search(r'\b(?:chocolate\s*block|choc\s*block|chocolate\s*bar|milk\s*choc|dairy\s*milk|bread|buns?|rolls?|bagels?|crumpets?|cookies?|biscuits?|chips|crackers?)\b', tl))
+    is_edible_bakery_or_snack = not bool(re.search(r'\broll\s*on\b', tl)) and bool(re.search(r'\b(?:chocolate\s*block|choc\s*block|chocolate\s*bar|milk\s*choc|dairy\s*milk|bread|buns?|rolls?(?!\s*on)|bagels?|crumpets?|cookies?|biscuits?|chips|crackers?)\b', tl))
 
     is_personal_care = bool(re.search(r'\b(?:toothpaste|toothbrush|mouthwash|dental\s*floss|oral[- ]b|colgate|sensodyne|white\s*glo|polident)\b', tl)) or \
         bool(re.search(r'\b(?:shampoo|hair\s*conditioner|\bconditioner\b|hair\s*oil|hair\s*treatment|hair\s*colour|hair\s*color|hair\s*dye|hair\s*spray|hair\s*mask|leave[- ]in|dry\s*shampoo|texturising\s*spray|pantene|head\s*&\s*shoulders|herbal\s*essences|tresemm[eé]|schwarzkopf|clairol|hask|ogx|sunsilk|l\'or[eé]al|garnier\s*fructis|root\s*concealer|got2b|hair\s*mousse|hair\s*jelly|styling\s*gel|hair\s*wax|hair\s*wand|sculpting\s*cream|detangler|heat\s*protect|hair\s*primer|hair\s*styling|my\s*soda)\b', tl)) or \
@@ -151,7 +151,7 @@ def classify_product(title: str, raw_cat: str = "", product_url: str = "") -> st
     is_cookie_biscuit = bool(re.search(r'\b(?:cookies?|biscuits?|jaffa\s*cakes?)\b', tl))
 
     if not is_yoghurt_product and not is_pasta_sauce_mix and not is_cookie_biscuit:
-        if re.search(r'\b(?:bread|toast|loaf|sourdough|buns?|rolls?|bagels?|croissants?|crumpets?|muffins?|scones?|wraps?|pita|flatbread|tip\s*top|helga|abbott|wonder\s*white|pane\s*di\s*casa|baguette|hot\s*dog\s*rolls?|pizza\s*bases?|mighty\s*soft|brioche)\b', tl) or \
+        if re.search(r'\b(?:bread|toast|loaf|sourdough|buns?|rolls?(?!\s*on)|bagels?|croissants?|crumpets?|muffins?|scones?|wraps?|pita|flatbread|tip\s*top|helga|abbott|wonder\s*white|pane\s*di\s*casa|baguette|hot\s*dog\s*rolls?|pizza\s*bases?|mighty\s*soft|brioche)\b', tl) or \
            re.search(r'\b(?:cakes?|vanilla\s*slice|caramel\s*slice|bakery\s*slice|garlic\s*slices?|pastry\s*slice|mr\s*kipling|pavlova|lamington|donuts?|doughnuts?|crust|pastry|danish|tart|pains?\s*au\s*chocolat|pudding|steamy\s*puds?|brownie|profiteroles|la\s*famiglia|garlic\s*bread|sausage\s*rolls?|aunt\s*betty)\b', tl):
             if not is_packet_chips and not re.search(r'\b(?:cheese|cheddar|chips|tortilla\s*chips|baking\s*paper|baking\s*powder|cake\s*mix|rice\s*cake|shampoo|dog\s*food|cat\s*food)\b', tl):
                 return 'bakery'

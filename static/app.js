@@ -1369,6 +1369,7 @@ function createProductCardElement(item) {
     }
 
     const isHalfPrice = isItemHalfPrice(item);
+    const hasCatalogueBadge = !!(item.image_url && item.image_url.includes('cloudfront.net'));
     const fallbackImg = DEFAULT_FALLBACK_IMG;
 
     const effectivePrice = (typeof item.price === 'number') ? item.price : (parseFloat(item.price) || 0);
@@ -1420,6 +1421,16 @@ function createProductCardElement(item) {
                         <span>${item.store}</span>
                     </span>
                 </div>
+
+                <!-- Woolworths 1/2 Price Circular Badge Overlay -->
+                ${(isHalfPrice && item.store === 'Woolworths' && !hasCatalogueBadge) ? `
+                    <div class="absolute top-8 left-2 sm:top-8.5 sm:left-2.5 z-10 pointer-events-none drop-shadow-sm select-none transition-transform group-hover:scale-110">
+                        <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white dark:bg-zinc-900 border-[2.5px] border-[#007837] flex flex-col items-center justify-center -rotate-6 shadow-sm">
+                            <span class="text-[12px] sm:text-[13px] font-black text-[#007837] dark:text-emerald-400 leading-none tracking-tight">1/2</span>
+                            <span class="text-[7.5px] sm:text-[8px] font-black text-[#007837] dark:text-emerald-300 uppercase tracking-tighter leading-none -mt-0.5">Price</span>
+                        </div>
+                    </div>
+                ` : ''}
 
                 <!-- Top-Right Discount Badge (Only shown for 1/2 Price items to avoid duplication with bottom-right save badge) -->
                 <div class="absolute top-2 right-2 z-10">
@@ -1664,6 +1675,16 @@ function openProductModal(item) {
     imgElem.src = item.image_url || fallbackImg;
     imgElem.onerror = () => { imgElem.src = fallbackImg; };
     document.getElementById('modalProductTitle').textContent = item.title;
+
+    const modalWooliesBadge = document.getElementById('modalWooliesHalfPriceBadge');
+    if (modalWooliesBadge) {
+        const hasCatalogueBadge = !!(item.image_url && item.image_url.includes('cloudfront.net'));
+        if (isHalfPrice && item.store === 'Woolworths' && !hasCatalogueBadge) {
+            modalWooliesBadge.classList.remove('hidden');
+        } else {
+            modalWooliesBadge.classList.add('hidden');
+        }
+    }
 
     const translated = getProductTranslation(item, currentLang);
     const transElem = document.getElementById('modalProductTranslated');
