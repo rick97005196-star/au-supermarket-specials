@@ -638,9 +638,13 @@ function getProductFamilyKey(title) {
 function createDiverseBestSellers(items) {
     if (!items || items.length <= 1) return items;
 
+    // Strictly filter to genuine popular items ("不熱門就不用列入")
+    const popularOnly = items.filter(it => isItemPopular(it) && calculatePopularityScore(it) > 0);
+    if (popularOnly.length <= 1) return popularOnly;
+
     const brandCounts = new Map();
     const result = [];
-    const isMultiCategory = new Set(items.map(x => x.category)).size > 2;
+    const isMultiCategory = new Set(popularOnly.map(x => x.category)).size > 2;
 
     if (isMultiCategory) {
         const CATEGORY_TARGETS = {
@@ -658,7 +662,7 @@ function createDiverseBestSellers(items) {
         };
 
         const byCat = {};
-        for (const it of items) {
+        for (const it of popularOnly) {
             const cat = it.category || 'other';
             if (!byCat[cat]) byCat[cat] = [];
             byCat[cat].push(it);
@@ -680,10 +684,9 @@ function createDiverseBestSellers(items) {
             }
         }
 
-        // Pass 2: Fill remaining slots up to 100 with highest score items (strictly max 2 per brand!)
+        // Pass 2: Fill remaining popular items (strictly max 2 per brand)
         const pickedSet = new Set(result);
-        for (const it of items) {
-            if (result.length >= 100) break;
+        for (const it of popularOnly) {
             if (pickedSet.has(it)) continue;
             const fam = getProductFamilyKey(it.title);
             const count = brandCounts.get(fam) || 0;
@@ -694,7 +697,7 @@ function createDiverseBestSellers(items) {
             }
         }
 
-        // Sort resulting top 100 by popularity score descending
+        // Strictly sort by popularity score descending! ("越熱門的越上面 以此類推")
         result.sort((a, b) => {
             const scoreA = calculatePopularityScore(a);
             const scoreB = calculatePopularityScore(b);
@@ -705,7 +708,7 @@ function createDiverseBestSellers(items) {
         return result;
     } else {
         // Single category view: max 2 per brand family
-        for (const it of items) {
+        for (const it of popularOnly) {
             const fam = getProductFamilyKey(it.title);
             const count = brandCounts.get(fam) || 0;
             if (count < 2) {
@@ -713,6 +716,14 @@ function createDiverseBestSellers(items) {
                 brandCounts.set(fam, count + 1);
             }
         }
+
+        result.sort((a, b) => {
+            const scoreA = calculatePopularityScore(a);
+            const scoreB = calculatePopularityScore(b);
+            if (scoreB !== scoreA) return scoreB - scoreA;
+            return (b.save_amount || 0) - (a.save_amount || 0);
+        });
+
         return result;
     }
 }
@@ -1091,6 +1102,10 @@ async function loadSpecials() {
                 return;
             }
 
+            if (sortBy === 'popular') {
+                currentLoadedItems = currentLoadedItems.filter(it => isItemPopular(it) && calculatePopularityScore(it) > 0);
+            }
+
             renderProducts(currentLoadedItems);
             return;
         } catch (e) {
@@ -1131,14 +1146,8 @@ async function loadSpecials() {
 
         // Sorting & Series Clustering
         if (sortBy === 'popular') {
-            filtered.sort((a, b) => {
-                const scoreA = calculatePopularityScore(a);
-                const scoreB = calculatePopularityScore(b);
-                if (scoreB !== scoreA) return scoreB - scoreA;
-                return (b.save_amount || 0) - (a.save_amount || 0);
-            });
-            // User requested: Limit popular items to top 100
-            filtered = createDiverseBestSellers(filtered).slice(0, 100);
+            filtered = filtered.filter(it => isItemPopular(it) && calculatePopularityScore(it) > 0);
+            filtered = createDiverseBestSellers(filtered);
         } else if (sortBy === 'save_desc') {
             filtered = sortAndClusterBySeries(filtered, (a, b) => (b.save_amount || 0) - (a.save_amount || 0));
         } else if (sortBy === 'price_asc') {

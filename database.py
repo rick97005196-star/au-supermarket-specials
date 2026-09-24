@@ -35,13 +35,16 @@ def init_db():
                 updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             )
         ''')
-        # Check and migrate columns if table already existed
         cursor.execute("PRAGMA table_info(specials)")
         columns = [row[1] for row in cursor.fetchall()]
         if 'period' not in columns:
             cursor.execute("ALTER TABLE specials ADD COLUMN period TEXT NOT NULL DEFAULT 'current'")
         if 'date_range' not in columns:
             cursor.execute("ALTER TABLE specials ADD COLUMN date_range TEXT")
+        if 'is_popular' not in columns:
+            cursor.execute("ALTER TABLE specials ADD COLUMN is_popular INTEGER DEFAULT 0")
+        if 'popularity_score' not in columns:
+            cursor.execute("ALTER TABLE specials ADD COLUMN popularity_score INTEGER DEFAULT 0")
 
         cursor.execute("PRAGMA table_info(shopping_list)")
         sl_columns = [row[1] for row in cursor.fetchall()]
@@ -57,6 +60,9 @@ def init_db():
         ''')
         cursor.execute('''
             CREATE INDEX IF NOT EXISTS idx_specials_title ON specials (title)
+        ''')
+        cursor.execute('''
+            CREATE INDEX IF NOT EXISTS idx_specials_pop ON specials (is_popular, popularity_score)
         ''')
 
         cursor.execute('''
@@ -86,7 +92,7 @@ def init_db():
         ''')
         conn.commit()
 
-from categories import classify_product
+from categories import classify_product, is_popular_product, calculate_popularity_score
 
 def save_specials(store: str, items: List[Dict[str, Any]], period: str = 'current', date_range: str = ''):
     """Replace specials for a given store and period (current / next) with the newly scraped list."""
@@ -97,8 +103,8 @@ def save_specials(store: str, items: List[Dict[str, Any]], period: str = 'curren
         insert_sql = '''
             INSERT INTO specials (
                 store, period, date_range, title, price, price_display, was_price, save_amount,
-                discount_desc, unit_price, image_url, category, product_url, updated_at
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                discount_desc, unit_price, image_url, category, product_url, is_popular, popularity_score, updated_at
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         '''
         now = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
         rows = []
@@ -142,6 +148,14 @@ def save_specials(store: str, items: List[Dict[str, Any]], period: str = 'curren
             if store != 'ALDI' and save_amount <= 0 and (was_price <= price or was_price == 0):
                 continue
 
+            cat = classify_product(title, item.get('category', ''), item.get('product_url', ''))
+            is_pop = 1 if is_popular_product(title) else 0
+            score = calculate_popularity_score({
+                'title': title, 'price': price, 'was_price': was_price,
+                'save_amount': save_amount, 'discount_desc': discount_desc,
+                'category': cat, 'is_popular': bool(is_pop)
+            })
+
             rows.append((
                 store,
                 period,
@@ -154,8 +168,10 @@ def save_specials(store: str, items: List[Dict[str, Any]], period: str = 'curren
                 discount_desc,
                 html.unescape(item.get('unit_price', '')).strip(),
                 item.get('image_url', ''),
-                classify_product(title, item.get('category', ''), item.get('product_url', '')),
+                cat,
                 item.get('product_url', ''),
+                is_pop,
+                score,
                 now
             ))
         cursor.executemany(insert_sql, rows)
@@ -213,32 +229,16 @@ def get_specials(
             where_clauses.append("(discount_desc LIKE '%1/2%' OR discount_desc LIKE '%half%' OR save_amount > 0)")
 
         if category and category.lower() == 'popular':
-            pop_likes = [
-                'tim tam', 'cadbury', 'red rock', 'smiths', "smith's", 'doritos', 'kettle',
-                'weet-bix', 'milo', 'vegemite', 'moccona', 'nescafe', 'twinings',
-                'coca-cola', 'coke', 'pepsi', 'schweppes', 'bundaberg', 'chobani', 'bega',
-                'finish', 'fairy', 'omo', 'dynamo', 'cold power', 'magnum', 'connoisseur',
-                'swisse', 'blackmores', 'colgate', 'oral-b', 'rexona', 'nivea', 'quilton'
-            ]
-            pop_clause = ' OR '.join(['title LIKE ?' for _ in pop_likes])
-            where_clauses.append(f"({pop_clause})")
-            params.extend([f"%{p}%" for p in pop_likes])
+            where_clauses.append("(is_popular = 1 AND popularity_score > 0)")
         elif category and category.lower() != 'all':
             where_clauses.append('category = ?')
             params.append(category)
 
-        where_str = f"WHERE {' AND '.join(where_clauses)}"
-
-        # Count total
-        count_sql = f"SELECT COUNT(*) FROM specials {where_str}"
-        cursor.execute(count_sql, params)
-        total = cursor.fetchone()[0]
-
-        # Sorting
+        # Sorting & Filtering for popular
         order_by = "id ASC"
         if sort_by == 'popular':
-            order_by = "save_amount DESC"
-            limit = min(limit, 100)
+            where_clauses.append("(is_popular = 1 AND popularity_score > 0)")
+            order_by = "popularity_score DESC, save_amount DESC"
         elif sort_by == 'price_asc':
             order_by = "price ASC"
         elif sort_by == 'price_desc':
@@ -247,6 +247,13 @@ def get_specials(
             order_by = "save_amount DESC"
         elif sort_by == 'title_asc':
             order_by = "title ASC"
+
+        where_str = f"WHERE {' AND '.join(where_clauses)}"
+
+        # Count total
+        count_sql = f"SELECT COUNT(*) FROM specials {where_str}"
+        cursor.execute(count_sql, params)
+        total = cursor.fetchone()[0]
 
         select_sql = f'''
             SELECT * FROM specials
