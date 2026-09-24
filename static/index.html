@@ -87,11 +87,6 @@
             -ms-overflow-style: none;
             scrollbar-width: none;
         }
-
-        .scroll-fade-mask {
-            mask-image: linear-gradient(to right, transparent, black 16px, black calc(100% - 16px), transparent);
-            -webkit-mask-image: linear-gradient(to right, transparent, black 16px, black calc(100% - 16px), transparent);
-        }
     </style>
 </head>
 <body class="bg-[#f8fafc] text-slate-900 dark:bg-[#0c0d0e] dark:text-zinc-100 min-h-screen flex flex-col antialiased selection:bg-emerald-500 selection:text-white relative">
@@ -194,9 +189,9 @@
     </header>
 
     <!-- Sticky Category Navigation Bar (2 Rows, Firmly pinned at top-[56px] on mobile, top-16 on desktop) -->
-    <nav id="stickyCategoryNav" class="sticky top-14 sm:top-16 z-30 bg-white/80 dark:bg-[#0c0d0e]/80 backdrop-blur-xl border-b border-slate-200/70 dark:border-white/[0.06] shadow-[0_2px_10px_rgba(0,0,0,0.02)] transition-colors">
+    <nav id="stickyCategoryNav" class="sticky top-14 sm:top-16 z-30 bg-white/95 dark:bg-[#0c0d0e]/95 backdrop-blur-md border-b border-slate-200/80 dark:border-white/[0.06] shadow-xs transition-colors">
         <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 py-2 relative">
-            <div class="grid grid-rows-2 grid-flow-col auto-cols-max gap-1.5 sm:gap-2 overflow-x-auto no-scrollbar py-0.5 scroll-fade-mask" id="categoryBar">
+            <div class="grid grid-rows-2 grid-flow-col auto-cols-max gap-1.5 sm:gap-2 overflow-x-auto no-scrollbar py-0.5" id="categoryBar">
                 <!-- Injected via app.js with multi-language labels (2 rows) -->
             </div>
         </div>
@@ -666,7 +661,7 @@
     </div>
 
     <!-- Scripts -->
-    <script src="./i18n.js?v=5.3"></script>
-    <script src="./app.js?v=5.3"></script>
+    <script src="./i18n.js?v=5.4"></script>
+    <script src="./app.js?v=5.4"></script>
 </body>
 </html>
