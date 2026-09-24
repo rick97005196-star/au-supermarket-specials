@@ -55,6 +55,8 @@ jobs:
           python -c "from scrapers.updater import update_all_stores; update_all_stores(max_catalogue_pages=50)"
 
       - name: Generate Multilingual Translations
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: |
           python scripts/auto_translate.py
 
