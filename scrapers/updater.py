@@ -78,15 +78,33 @@ def update_all_stores(max_catalogue_pages: int = 50) -> Dict[str, Any]:
         print(f" Woolworths update error: {e}")
         results['Woolworths'] = {'status': f'error: {e}'}
 
-    # 3. ALDI
+    # 3. ALDI (Current & Next Week)
     try:
-        aldi_items = scrape_aldi_specials()
-        saved_aldi = save_specials('ALDI', aldi_items, period='current', date_range='本週 Super Savers & Special Buys')
-        results['ALDI'] = {'count': saved_aldi, 'status': 'success'}
-        print(f" Saved {saved_aldi} ALDI specials to database.")
+        from scrapers.aldi_scraper import scrape_aldi_all_weeks
+        aldi_data = scrape_aldi_all_weeks()
+
+        a_curr_items = aldi_data['current']['items']
+        a_curr_date = aldi_data['current']['date_range']
+        saved_a_curr = save_specials('ALDI', a_curr_items, period='current', date_range=a_curr_date)
+        print(f" Saved {saved_a_curr} ALDI current week specials ({a_curr_date}).")
+
+        a_next_items = aldi_data['next']['items']
+        a_next_date = aldi_data['next']['date_range']
+        saved_a_next = 0
+        if a_next_items:
+            saved_a_next = save_specials('ALDI', a_next_items, period='next', date_range=a_next_date)
+            print(f" Saved {saved_a_next} ALDI NEXT week specials ({a_next_date}).")
+
+        results['ALDI'] = {
+            'current': saved_a_curr,
+            'next': saved_a_next,
+            'current_date': a_curr_date,
+            'next_date': a_next_date,
+            'status': 'success'
+        }
     except Exception as e:
         print(f" ALDI update error: {e}")
-        results['ALDI'] = {'count': 0, 'status': f'error: {e}'}
+        results['ALDI'] = {'status': f'error: {e}'}
 
     stats = get_stats()
     print("=" * 65)

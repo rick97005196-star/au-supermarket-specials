@@ -88,7 +88,9 @@ GROCERY_TERMS = {
 }
 
 # Post-processing glossary guard to fix notorious machine translation blunders
-KNOWN_TRANSLATION_REPAIRS = [
+    # Nutella
+    (r'費列羅花生醬', '能多益 Nutella 榛果可可抹醬'),
+    (r'榛果可可醬', 'Nutella 榛果可可醬'),
     # Connoisseur ice cream brand & styles
     (r'鑑賞家(?:美食)?(?:冰淇淋)?|行家冰淇淋', 'Connoisseur 頂級雪糕'),
     (r'餅乾和奶油棒', '巧酥雪糕'),

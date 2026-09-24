@@ -1,173 +1,221 @@
 import re
-import time
 import html
+import datetime
 from typing import List, Dict, Any
 import requests
 from bs4 import BeautifulSoup
+import os
+import sys
+
+# Ensure root directory is in sys.path
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from categories import classify_product
+
+HEADERS = {
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
+    'Accept-Language': 'en-AU,en-US;q=0.9,en;q=0.8',
+    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8'
+}
 
 def parse_price(text: str) -> float:
-    match = re.search(r'\$(\d+(?:\.\d{2})?)', text)
-    return float(match.group(1)) if match else 0.0
+    m = re.search(r'\$(\d+(?:\.\d{2})?)', text)
+    if m:
+        return float(m.group(1))
+    c_m = re.search(r'(\d+)c\b', text)
+    if c_m:
+        return float(c_m.group(1)) / 100.0
+    return 0.0
 
-def scrape_aldi_specials() -> Dict[str, Any]:
-    """Scrapes ALDI Australia Super Savers and Special Buys."""
-    print("Starting ALDI specials scrape...")
-    products = []
-    seen_titles = set()
+def get_australian_supermarket_cycle():
+    """Calculates Wednesday to Tuesday cycle dates for current and next week."""
+    today = datetime.date.today()
+    days_since_wed = (today.weekday() - 2) % 7
+    current_cycle_wed = today - datetime.timedelta(days=days_since_wed)
+    current_cycle_tue = current_cycle_wed + datetime.timedelta(days=6)
+    next_cycle_wed = current_cycle_wed + datetime.timedelta(days=7)
+    next_cycle_tue = current_cycle_tue + datetime.timedelta(days=7)
+    return current_cycle_wed, current_cycle_tue, next_cycle_wed, next_cycle_tue
 
-    urls_to_scrape = [
-        ("https://www.aldi.com.au/groceries/super-savers/", "Super Savers", "Super Savers"),
-        ("https://www.aldi.com.au/special-buys/special-buys-wednesday/", "Special Buys (Wed)", "Special Buys"),
-        ("https://www.aldi.com.au/special-buys/special-buys-saturday/", "Special Buys (Sat)", "Special Buys")
+def discover_aldi_endpoints():
+    """
+    Discovers all dynamic ALDI Special Buys dates & themes, plus Super Savers.
+    Separates endpoints into 'current' and 'next' cycle.
+    """
+    current_wed, current_tue, next_wed, next_tue = get_australian_supermarket_cycle()
+    
+    endpoints = [
+        ('Super Savers', 'https://www.aldi.com.au/groceries/super-savers/', 'current')
     ]
-
+    seen_urls = set(['https://www.aldi.com.au/groceries/super-savers/'])
+    
     try:
-        from selenium import webdriver
-        from selenium.webdriver.chrome.options import Options
-        from selenium.webdriver.common.by import By
-
-        options = Options()
-        options.add_argument('--headless=new')
-        options.add_argument('--no-sandbox')
-        options.add_argument('--disable-dev-shm-usage')
-        options.add_argument('--disable-gpu')
-        options.add_argument('user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36')
+        r = requests.get('https://www.aldi.com.au/special-buys/', headers=HEADERS, timeout=15)
+        if r.status_code == 200:
+            soup = BeautifulSoup(r.text, 'html.parser')
+            for a in soup.find_all('a', href=True):
+                href = a['href']
+                if '/special-buys/' in href:
+                    full_url = f"https://www.aldi.com.au{href}" if href.startswith('/') else href
+                    if full_url in seen_urls:
+                        continue
+                    m = re.search(r'/special-buys/(\d{4}-\d{2}-\d{2})', full_url)
+                    if m:
+                        date_str = m.group(1)
+                        try:
+                            deal_date = datetime.date.fromisoformat(date_str)
+                        except ValueError:
+                            continue
+                        
+                        if deal_date <= current_tue:
+                            period = 'current'
+                        elif deal_date <= next_tue:
+                            period = 'next'
+                        else:
+                            # Beyond next week
+                            continue
+                        
+                        seen_urls.add(full_url)
+                        endpoints.append((f"Special Buys {date_str}", full_url, period))
+    except Exception as e:
+        print(f"Warning: Failed to discover ALDI Special Buys endpoints: {e}")
         
-        driver = webdriver.Chrome(options=options)
-        driver.set_page_load_timeout(30)
+    return endpoints, (current_wed, current_tue, next_wed, next_tue)
 
-        for target_url, display_cat, cat_name in urls_to_scrape:
-            try:
-                print(f"ALDI: loading {display_cat} ({target_url})...")
-                driver.get(target_url)
-                time.sleep(3)
-
-                driver.execute_script("window.scrollTo(0, 1500);")
-                time.sleep(1)
-
-                tiles = driver.find_elements(By.CSS_SELECTOR, '[data-qa="product-tile"], .product-tile, [class*="product-tile"], [class*="tile"]')
-                print(f"ALDI {display_cat}: found {len(tiles)} raw tiles.")
-
-                for tile in tiles:
-                    text = tile.text.strip()
-                    if not text or '$' not in text:
-                        continue
-
-                    lines = [line.strip() for line in text.split('\n') if line.strip()]
-                    if not lines:
-                        continue
-
-                    price = 0.0
-                    unit_price = ""
-                    for line in lines:
-                        if line.startswith('$') and price == 0.0:
-                            price = parse_price(line)
-                        elif '(' in line and 'per' in line:
-                            unit_price = line
-
-                    if price == 0.0:
-                        price = parse_price(text)
-                    if price == 0.0:
-                        continue
-
-                    # Extract valid title candidates (skipping weight, price, and unit price lines)
-                    real_title_candidates = [
-                        l for l in lines
-                        if not l.startswith('$')
-                        and not re.match(r'^\(.*?per.*?\)$', l)
-                        and not re.match(r'^\d+([,\.]\d+)?\s*(g|kg|ml|l)\s*\(.*?per.*?\)$', l, re.IGNORECASE)
-                        and not re.match(r'^\d+([,\.]\d+)?\s*(g|kg|ml|l)$', l, re.IGNORECASE)
-                        and not any(bad in l.lower() for bad in ['sign up', 'store locator', 'browse', 'privacy', 'terms', 'super savers', 'special buys'])
-                    ]
-                    if not real_title_candidates:
-                        continue
-
-                    if len(real_title_candidates) >= 2:
-                        title = f"{real_title_candidates[0]} {real_title_candidates[1]}"
-                    else:
-                        title = real_title_candidates[0]
-
-                    if title in seen_titles:
-                        continue
-                    seen_titles.add(title)
-
-                    image_url = ""
-                    product_url = target_url
-                    try:
-                        img_elem = tile.find_element(By.TAG_NAME, 'img')
-                        image_url = img_elem.get_attribute('src') or ""
-                    except Exception:
-                        pass
-
-                    try:
-                        link_elem = tile.find_element(By.TAG_NAME, 'a')
-                        product_url = link_elem.get_attribute('href') or target_url
-                    except Exception:
-                        pass
-
-                    products.append({
-                        'store': 'ALDI',
-                        'title': html.unescape(title),
-                        'price': price,
-                        'price_display': f"${price:.2f}",
-                        'was_price': 0.0,
-                        'save_amount': 0.0,
-                        'discount_desc': display_cat,
-                        'unit_price': unit_price,
-                        'image_url': image_url,
-                        'category': cat_name,
-                        'product_url': product_url,
-                        'date_range': '本週 Super Savers & Special Buys'
-                    })
-
-            except Exception as page_err:
-                print(f"Error scraping {display_cat}: {page_err}")
-
-        driver.quit()
-
-    except Exception as sel_err:
-        print(f"Selenium ALDI scraping failed ({sel_err}), falling back to requests...")
-        headers = {
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
+def scrape_aldi_all_weeks() -> Dict[str, Any]:
+    """
+    Scrapes ALDI Australia for both Current Week (Super Savers + Wednesday/Saturday Special Buys)
+    and Next Week Preview.
+    """
+    print("Starting ALDI Australia multi-week specials scrape...")
+    endpoints, (c_wed, c_tue, n_wed, n_tue) = discover_aldi_endpoints()
+    print(f"ALDI: Discovered {len(endpoints)} endpoints to scrape.")
+    
+    current_items_map = {}
+    next_items_map = {}
+    
+    for label, url, period in endpoints:
+        try:
+            res = requests.get(url, headers=HEADERS, timeout=15)
+            if res.status_code != 200:
+                continue
+            soup = BeautifulSoup(res.text, 'html.parser')
+            tiles = soup.select('a.product-tile__link, [data-qa="product-tile"]')
+            
+            # Fallback if modern tile selector is absent
+            if not tiles:
+                tiles = soup.select('.box--wrapper[href*="/product/"], a[href*="/product/"]')
+                
+            for tile in tiles:
+                # 1. Brand & Name extraction
+                brand_el = tile.select_one('[data-test="product-tile__brandname"]')
+                name_el = tile.select_one('[data-test="product-tile__name"]')
+                
+                brand = brand_el.get_text(strip=True).rstrip(',') if brand_el else ""
+                name = name_el.get_text(strip=True).rstrip(',') if name_el else ""
+                
+                if brand and name:
+                    title = f"{brand} {name}"
+                elif name:
+                    title = name
+                elif brand:
+                    title = brand
+                else:
+                    title_el = tile.select_one('.box--description--header, .box--title, h3, h4')
+                    raw = title_el.get_text(strip=True) if title_el else ""
+                    href_attr = tile.get('href', '')
+                    slug = href_attr.split('/product/')[-1].rsplit('-', 1)[0].replace('-', ' ').title() if '/product/' in href_attr else ""
+                    title = raw if len(raw) > 3 else slug
+                
+                title = html.unescape(title).strip()
+                if not title or len(title) < 2:
+                    continue
+                    
+                # 2. Real selling price extraction (avoids unit comparison price trap)
+                price_el = tile.select_one('[data-test="product-tile__price"], .base-price__regular')
+                if price_el:
+                    price = parse_price(price_el.get_text())
+                else:
+                    clone_tile = BeautifulSoup(str(tile), 'html.parser')
+                    comp_el = clone_tile.select_one('[data-test="product-tile__comparison-price"], .box--baseprice')
+                    if comp_el:
+                        comp_el.decompose()
+                    price = parse_price(clone_tile.get_text())
+                    
+                if price <= 0:
+                    continue
+                    
+                # 3. Unit comparison price
+                unit_el = tile.select_one('[data-test="product-tile__comparison-price"], .box--baseprice')
+                unit_price = unit_el.get_text(strip=True) if unit_el else ""
+                
+                # 4. Badge / On-sale label
+                badge_el = tile.select_one('[data-test="product-tile__on-sale-label"]')
+                badge = badge_el.get_text(strip=True) if badge_el else ("Super Savers" if "super-savers" in url else "Special Buys")
+                
+                # 5. Image URL (High-res)
+                img = tile.select_one('img')
+                img_src = ""
+                if img:
+                    img_src = img.get('src') or img.get('data-src') or ''
+                    if not img_src and img.get('srcset'):
+                        img_src = img.get('srcset').split(',')[0].split(' ')[0]
+                        
+                # 6. Canonical Product URL
+                href = tile.get('href', '')
+                prod_url = f"https://www.aldi.com.au{href}" if href.startswith('/') else (href or url)
+                
+                # Department categorization
+                cat = classify_product(title, badge, prod_url)
+                
+                date_range_str = f"本週特價 ({c_wed.strftime('%m/%d')} - {c_tue.strftime('%m/%d')})" if period == 'current' else f"下週預告 ({n_wed.strftime('%m/%d')} - {n_tue.strftime('%m/%d')})"
+                
+                item_data = {
+                    'store': 'ALDI',
+                    'title': title,
+                    'price': price,
+                    'price_display': f"${price:.2f}",
+                    'was_price': 0.0,
+                    'save_amount': 0.0,
+                    'discount_desc': badge,
+                    'unit_price': unit_price,
+                    'image_url': img_src,
+                    'category': cat,
+                    'product_url': prod_url,
+                    'period': period,
+                    'date_range': date_range_str
+                }
+                
+                dedup_key = prod_url if prod_url and '/product/' in prod_url else title.lower()
+                if period == 'current':
+                    if dedup_key not in current_items_map:
+                        current_items_map[dedup_key] = item_data
+                else:
+                    if dedup_key not in next_items_map:
+                        next_items_map[dedup_key] = item_data
+        except Exception as e:
+            print(f"Error scraping ALDI endpoint {url}: {e}")
+            
+    current_list = list(current_items_map.values())
+    next_list = list(next_items_map.values())
+    print(f"ALDI scrape completed: {len(current_list)} current items, {len(next_list)} next week items.")
+    
+    return {
+        'current': {
+            'items': current_list,
+            'date_range': f"Super Savers & Special Buys ({c_wed.strftime('%m/%d')} - {c_tue.strftime('%m/%d')})"
+        },
+        'next': {
+            'items': next_list,
+            'date_range': f"Special Buys 預告 ({n_wed.strftime('%m/%d')} - {n_tue.strftime('%m/%d')})"
         }
-        for target_url, display_cat, cat_name in urls_to_scrape:
-            try:
-                r = requests.get(target_url, headers=headers, timeout=15)
-                soup = BeautifulSoup(r.text, 'html.parser')
-                for item in soup.select('[class*="product"], [class*="tile"], [class*="card"]'):
-                    text = item.get_text(separator=' ', strip=True)
-                    if '$' not in text:
-                        continue
-                    price = parse_price(text)
-                    if price <= 0:
-                        continue
-                    img = item.find('img')
-                    img_src = img.get('src', '') if img else ''
-                    title = text.split('$')[0].strip()[:60]
-                    if title and title not in seen_titles:
-                        seen_titles.add(title)
-                        products.append({
-                            'store': 'ALDI',
-                            'title': html.unescape(title),
-                            'price': price,
-                            'price_display': f"${price:.2f}",
-                            'was_price': 0.0,
-                            'save_amount': 0.0,
-                            'discount_desc': display_cat,
-                            'unit_price': '',
-                            'image_url': img_src,
-                            'category': cat_name,
-                            'product_url': target_url,
-                            'date_range': '本週 Super Savers & Special Buys'
-                        })
-            except Exception as fb_err:
-                print(f"Fallback error for {display_cat}: {fb_err}")
+    }
 
-    print(f"ALDI scrape completed: {len(products)} products found.")
-    return products
+def scrape_aldi_specials() -> List[Dict[str, Any]]:
+    """Backward compatibility wrapper returning current week ALDI specials."""
+    data = scrape_aldi_all_weeks()
+    return data['current']['items']
 
 if __name__ == '__main__':
-    items = scrape_aldi_specials()
-    print("Preview first 3 ALDI items:")
-    for item in items[:3]:
-        print(item)
+    res = scrape_aldi_all_weeks()
+    print(f"Current count: {len(res['current']['items'])}")
+    print(f"Next count: {len(res['next']['items'])}")
