@@ -134,39 +134,28 @@ def translate_batch_with_gemini(titles, api_key):
     if not api_key or not titles:
         return {}
 
-    url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key={api_key}"
+    url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite:generateContent?key={api_key}"
     
-    system_instruction = (
+    prompt = (
         "You are an expert translator and Australian supermarket merchandiser. "
-        "Translate Australian grocery titles into: "
+        "Translate the following Australian grocery titles into:\n"
         "1. 'zh': Traditional Chinese (Taiwan/Hong Kong style, friendly for backpackers and locals in Australia). "
         "Keep famous brand names (e.g. Arnott's, Tim Tam, Vegemite, Moccona, Finish, Fairy, Connoisseur, Peters Drumstick) "
         "intact with concise Chinese descriptors. Translate grocery cuts, flavors, and packaging accurately "
-        "(e.g., 'Adult Dog Food' -> '成犬乾糧', NOT '成人'). "
-        "2. 'ja': Japanese supermarket grocery style. "
-        "3. 'ko': Korean supermarket grocery style. "
-        "Output MUST be a JSON array of objects with keys: 'title', 'zh', 'ja', 'ko'."
+        "(e.g., 'Adult Dog Food' -> '成犬乾糧', NOT '成人').\n"
+        "2. 'ja': Japanese supermarket grocery style.\n"
+        "3. 'ko': Korean supermarket grocery style.\n\n"
+        "Items to translate:\n"
+        f"{json.dumps([{'title': t} for t in titles], ensure_ascii=False)}\n\n"
+        "Respond with ONLY a raw JSON array of objects with keys: 'title', 'zh', 'ja', 'ko'. Do NOT wrap in markdown backticks."
     )
 
-    prompt_payload = [
-        {"title": t} for t in titles
-    ]
-
     body = {
-        "systemInstruction": {
-            "parts": [{"text": system_instruction}]
-        },
         "contents": [
             {
-                "parts": [
-                    {"text": f"Translate the following Australian grocery items:\n{json.dumps(prompt_payload, ensure_ascii=False)}"}
-                ]
+                "parts": [{"text": prompt}]
             }
-        ],
-        "generationConfig": {
-            "responseMimeType": "application/json",
-            "temperature": 0.1
-        }
+        ]
     }
 
     try:
@@ -180,14 +169,25 @@ def translate_batch_with_gemini(titles, api_key):
             },
             method='POST'
         )
-        with urllib.request.urlopen(req, timeout=15) as resp:
+        with urllib.request.urlopen(req, timeout=20) as resp:
             resp_data = json.loads(resp.read().decode('utf-8'))
             candidates = resp_data.get('candidates', [])
             if not candidates:
                 return {}
-            text_content = candidates[0].get('content', {}).get('parts', [{}])[0].get('text', '')
-            parsed_list = json.loads(text_content)
             
+            # Find the text part in candidate content
+            text_content = ''
+            for p in candidates[0].get('content', {}).get('parts', []):
+                if 'text' in p:
+                    text_content = p['text'].strip()
+                    break
+
+            # Strip markdown json codeblocks if any
+            if text_content.startswith('```'):
+                text_content = re.sub(r'^```(?:json)?\s*', '', text_content)
+                text_content = re.sub(r'\s*```$', '', text_content)
+
+            parsed_list = json.loads(text_content)
             results = {}
             for item in parsed_list:
                 orig = item.get('title')
