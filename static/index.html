@@ -133,11 +133,11 @@
 
             <!-- Right: 4-Language Selector & Theme Toggle -->
             <div class="flex items-center gap-1.5 shrink-0">
-                <div class="flex items-center rounded-xl bg-slate-100 dark:bg-zinc-800 p-0.5 text-[10px] sm:text-[11px] font-semibold border border-slate-200/60 dark:border-zinc-700/60">
-                    <button onclick="setLanguage('zh')" class="lang-btn px-2 py-0.5 rounded-lg transition" data-lang="zh">繁中</button>
-                    <button onclick="setLanguage('en')" class="lang-btn px-2 py-0.5 rounded-lg transition" data-lang="en">EN</button>
-                    <button onclick="setLanguage('ja')" class="lang-btn px-2 py-0.5 rounded-lg transition" data-lang="ja">日本語</button>
-                    <button onclick="setLanguage('ko')" class="lang-btn px-2 py-0.5 rounded-lg transition" data-lang="ko">한국어</button>
+                <div class="flex items-center rounded-lg bg-slate-100 dark:bg-zinc-800 p-0.5 text-[10px] sm:text-[11px] font-semibold border border-slate-200/80 dark:border-zinc-700/80">
+                    <button onclick="setLanguage('zh')" class="lang-btn px-2.5 py-1 rounded-md transition-all" data-lang="zh">繁中</button>
+                    <button onclick="setLanguage('en')" class="lang-btn px-2.5 py-1 rounded-md transition-all" data-lang="en">EN</button>
+                    <button onclick="setLanguage('ja')" class="lang-btn px-2.5 py-1 rounded-md transition-all" data-lang="ja">日本語</button>
+                    <button onclick="setLanguage('ko')" class="lang-btn px-2.5 py-1 rounded-md transition-all" data-lang="ko">한국어</button>
                 </div>
 
                 <!-- Dark / Light Theme Toggle Button -->
@@ -145,7 +145,7 @@
                     id="themeToggleBtn" 
                     onclick="toggleDarkMode()" 
                     title="Toggle Theme"
-                    class="w-7 h-7 rounded-xl flex items-center justify-center border border-slate-200/60 dark:border-zinc-700/60 bg-slate-100 dark:bg-zinc-800 text-slate-600 dark:text-amber-400 hover:scale-105 active:scale-95 transition text-xs shadow-2xs"
+                    class="w-7 h-7 rounded-lg flex items-center justify-center border border-slate-200/80 dark:border-zinc-700/80 bg-slate-100 dark:bg-zinc-800 text-slate-600 dark:text-amber-400 hover:scale-105 active:scale-95 transition text-xs shadow-2xs"
                 >
                     <i id="themeIcon" class="fa-solid fa-moon"></i>
                 </button>
@@ -159,11 +159,11 @@
             
             <!-- Brand & Title -->
             <div class="flex items-center gap-2.5 sm:gap-3.5 min-w-0">
-                <img src="./logo.jpg" alt="澳洲超市特價優惠" class="w-9 h-9 sm:w-11 sm:h-11 rounded-2xl object-cover shrink-0 shadow-sm ring-2 ring-emerald-500/20 border border-emerald-500/30">
+                <img src="./logo.jpg" alt="澳洲超市特價優惠" class="w-9 h-9 sm:w-11 sm:h-11 rounded-xl object-cover shrink-0 shadow-sm ring-1 ring-emerald-500/20 border border-emerald-500/30">
                 <div class="min-w-0">
                     <h1 class="text-sm sm:text-base lg:text-lg font-black tracking-tight text-slate-900 dark:text-white flex items-center gap-2 truncate">
                         <span data-i18n="app_title" class="truncate">澳洲超市特價優惠</span>
-                        <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-emerald-500/10 dark:bg-emerald-500/20 text-emerald-700 dark:text-emerald-400 text-[10px] font-bold border border-emerald-500/20 shrink-0">
+                        <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md bg-emerald-500/10 dark:bg-emerald-500/20 text-emerald-700 dark:text-emerald-400 text-[10px] font-bold border border-emerald-500/20 shrink-0">
                             <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
                             <span id="headerPeriodBadge" data-i18n="current_cycle">本週特價</span>
                         </span>
@@ -181,11 +181,11 @@
                 <!-- Shopping List Button -->
                 <button 
                     onclick="toggleShoppingDrawer()" 
-                    class="relative flex items-center gap-2 px-3 sm:px-4 py-2 rounded-2xl text-xs sm:text-sm font-bold bg-gradient-to-r from-emerald-600 via-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white shadow-md shadow-emerald-500/20 transition-all active:scale-95 group"
+                    class="relative flex items-center gap-2 px-3.5 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-gradient-to-r from-emerald-600 via-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white shadow-xs transition-all active:scale-95 group border border-emerald-500/80"
                 >
                     <i class="fa-solid fa-basket-shopping text-xs sm:text-sm transition-transform duration-200 group-hover:scale-110"></i>
                     <span data-i18n="shopping_manifest" class="hidden xs:inline">採買清單</span>
-                    <span id="cartCountBadge" class="px-2 py-0.5 text-[11px] font-black bg-amber-400 text-slate-950 rounded-full shadow-xs">
+                    <span id="cartCountBadge" class="px-1.5 py-0.2 text-[11px] font-black bg-amber-400 text-slate-950 rounded-md shadow-2xs">
                         0
                     </span>
                 </button>
@@ -245,15 +245,15 @@
             </div>
         </div>
 
-        <!-- Period Toggle Bar (Modern Segmented Pill Switch & Stats) -->
-        <div class="bg-white/85 dark:bg-[#121316]/90 backdrop-blur-xl border border-slate-200/80 dark:border-white/[0.07] p-2 sm:p-2.5 rounded-2xl sm:rounded-3xl shadow-[0_4px_20px_-4px_rgba(0,0,0,0.03)] space-y-2">
+        <!-- Period Toggle Bar (Modern Segmented Switch & Stats) -->
+        <div class="bg-white/85 dark:bg-[#121316]/90 backdrop-blur-xl border border-slate-200/80 dark:border-white/[0.07] p-2 sm:p-2.5 rounded-xl sm:rounded-2xl shadow-[0_4px_20px_-4px_rgba(0,0,0,0.03)] space-y-2">
             <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2">
                 <!-- Segmented Switcher (High Contrast Active States) -->
-                <div class="grid grid-cols-2 gap-1.5 p-1 bg-slate-100/90 dark:bg-zinc-800/80 rounded-2xl text-xs sm:text-sm border border-slate-200/60 dark:border-white/[0.05] shadow-inner">
+                <div class="grid grid-cols-2 gap-1.5 p-1 bg-slate-100/90 dark:bg-zinc-800/80 rounded-xl text-xs sm:text-sm border border-slate-200/80 dark:border-white/[0.06] shadow-2xs">
                     <button 
                         id="tabPeriodCurrent" 
                         onclick="selectPeriod('current')" 
-                        class="flex items-center justify-center gap-2 py-2 sm:py-2.5 px-3 sm:px-5 rounded-xl text-xs sm:text-sm font-black bg-gradient-to-r from-emerald-600 via-emerald-600 to-teal-600 text-white shadow-md shadow-emerald-500/25 ring-2 ring-emerald-400/40 border border-emerald-500/80 scale-[1.02] transition-all"
+                        class="flex items-center justify-center gap-2 py-2 sm:py-2.5 px-3 sm:px-5 rounded-lg text-xs sm:text-sm font-black bg-emerald-600 dark:bg-emerald-600 text-white shadow-xs border border-emerald-500 transition-all"
                     >
                         <i class="fa-regular fa-calendar-check text-white text-sm"></i>
                         <span data-i18n="current_cycle">本週特價</span>
@@ -262,11 +262,11 @@
                     <button 
                         id="tabPeriodNext" 
                         onclick="selectPeriod('next')" 
-                        class="flex items-center justify-center gap-2 py-2 sm:py-2.5 px-3 sm:px-5 rounded-xl text-xs sm:text-sm font-semibold text-slate-600 dark:text-zinc-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200/70 dark:hover:bg-zinc-700/70 transition-all opacity-80 hover:opacity-100"
+                        class="flex items-center justify-center gap-2 py-2 sm:py-2.5 px-3 sm:px-5 rounded-lg text-xs sm:text-sm font-bold text-slate-600 dark:text-zinc-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200/60 dark:hover:bg-zinc-700/60 transition-all opacity-85 hover:opacity-100"
                     >
                         <i class="fa-solid fa-wand-magic-sparkles text-amber-500 text-sm"></i>
                         <span data-i18n="next_cycle">下週預告</span>
-                        <span class="px-1.5 py-0.2 bg-amber-100 dark:bg-amber-950 text-amber-700 dark:text-amber-400 text-[9px] sm:text-[10px] font-bold rounded-md" data-i18n="cycle_preview">搶先看</span>
+                        <span class="px-1.5 py-0.2 bg-amber-100 dark:bg-amber-950 text-amber-700 dark:text-amber-400 text-[9px] sm:text-[10px] font-bold rounded" data-i18n="cycle_preview">搶先看</span>
                         <span id="periodDateNextBadge" class="hidden xs:inline text-[10px] sm:text-xs font-normal opacity-80"></span>
                     </button>
                 </div>
@@ -282,8 +282,8 @@
             </div>
         </div>
 
-        <!-- Search Bar & Modern Pill Filters -->
-        <div class="bg-white/85 dark:bg-[#121316]/90 backdrop-blur-xl border border-slate-200/80 dark:border-white/[0.07] p-3 sm:p-4 rounded-2xl sm:rounded-3xl shadow-[0_4px_20px_-4px_rgba(0,0,0,0.03)] space-y-2.5 sm:space-y-3">
+        <!-- Search Bar & Modern Filters -->
+        <div class="bg-white/85 dark:bg-[#121316]/90 backdrop-blur-xl border border-slate-200/80 dark:border-white/[0.07] p-3 sm:p-4 rounded-xl sm:rounded-2xl shadow-[0_4px_20px_-4px_rgba(0,0,0,0.03)] space-y-2.5 sm:space-y-3">
             
             <!-- Search Input -->
             <div class="relative">
@@ -292,7 +292,7 @@
                     type="text" 
                     id="searchInput" 
                     placeholder="搜尋特價商品（支援中/英/日/韓，如：牛奶, egg, 咖啡, chips, 洗衣精...）" 
-                    class="w-full pl-10 pr-9 py-2.5 sm:py-3 text-xs sm:text-sm rounded-2xl border border-slate-200/90 dark:border-white/[0.08] bg-slate-50/70 dark:bg-zinc-800/60 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/40 focus:border-emerald-500 transition-all shadow-inner"
+                    class="w-full pl-10 pr-9 py-2.5 sm:py-3 text-xs sm:text-sm rounded-xl border border-slate-200/90 dark:border-white/[0.08] bg-slate-50/70 dark:bg-zinc-800/60 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/40 focus:border-emerald-500 transition-all shadow-inner"
                     oninput="debounceSearch()"
                 />
                 <button id="clearSearchBtn" onclick="clearSearch()" class="hidden absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:hover:text-zinc-200 transition">
@@ -304,18 +304,18 @@
             <div class="flex flex-wrap items-center justify-between gap-2 pt-1 border-t border-slate-100 dark:border-zinc-800/80">
                 
                 <!-- Stores Pills -->
-                <div class="flex items-center gap-1 p-1 bg-slate-100/90 dark:bg-zinc-800/80 rounded-2xl text-xs font-semibold overflow-x-auto no-scrollbar max-w-full border border-slate-200/60 dark:border-white/[0.05]" id="storeTabs">
-                    <button onclick="selectStore('All')" class="store-tab active px-3 py-1.5 rounded-xl transition bg-slate-900 dark:bg-zinc-100 text-white dark:text-slate-900 shadow-xs font-bold scale-[1.02] shrink-0" data-store="All" data-i18n="all_markets">
+                <div class="flex items-center gap-1 p-1 bg-slate-100/90 dark:bg-zinc-800/80 rounded-xl text-xs font-semibold overflow-x-auto no-scrollbar max-w-full border border-slate-200/80 dark:border-white/[0.06]" id="storeTabs">
+                    <button onclick="selectStore('All')" class="store-tab active px-3 py-1.5 rounded-lg transition-all bg-slate-900 dark:bg-zinc-100 text-white dark:text-slate-900 shadow-xs font-bold border border-slate-900 dark:border-zinc-200 shrink-0" data-store="All" data-i18n="all_markets">
                         全部超市
                     </button>
-                    <button onclick="selectStore('Woolworths')" class="store-tab px-3 py-1.5 rounded-xl transition font-semibold text-emerald-700 dark:text-emerald-400 hover:bg-emerald-50 dark:hover:bg-emerald-950/40 shrink-0" data-store="Woolworths">
-                        <span class="store-dot inline-block w-2 h-2 rounded-full bg-emerald-600 mr-1"></span>Woolworths
+                    <button onclick="selectStore('Woolworths')" class="store-tab px-3 py-1.5 rounded-lg transition-all font-semibold text-emerald-700 dark:text-emerald-400 hover:bg-emerald-50 dark:hover:bg-emerald-950/40 shrink-0" data-store="Woolworths">
+                        <span class="store-dot inline-block w-2 h-2 rounded-xs bg-emerald-600 mr-1"></span>Woolworths
                     </button>
-                    <button onclick="selectStore('Coles')" class="store-tab px-3 py-1.5 rounded-xl transition font-semibold text-rose-700 dark:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-950/40 shrink-0" data-store="Coles">
-                        <span class="store-dot inline-block w-2 h-2 rounded-full bg-rose-600 mr-1"></span>Coles
+                    <button onclick="selectStore('Coles')" class="store-tab px-3 py-1.5 rounded-lg transition-all font-semibold text-rose-700 dark:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-950/40 shrink-0" data-store="Coles">
+                        <span class="store-dot inline-block w-2 h-2 rounded-xs bg-rose-600 mr-1"></span>Coles
                     </button>
-                    <button onclick="selectStore('ALDI')" class="store-tab px-3 py-1.5 rounded-xl transition font-semibold text-blue-700 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-950/40 shrink-0" data-store="ALDI">
-                        <span class="store-dot inline-block w-2 h-2 rounded-full bg-blue-600 mr-1"></span>ALDI
+                    <button onclick="selectStore('ALDI')" class="store-tab px-3 py-1.5 rounded-lg transition-all font-semibold text-blue-700 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-950/40 shrink-0" data-store="ALDI">
+                        <span class="store-dot inline-block w-2 h-2 rounded-xs bg-blue-600 mr-1"></span>ALDI
                     </button>
                 </div>
 
@@ -326,7 +326,7 @@
                         id="halfPricePill" 
                         type="button"
                         onclick="toggleHalfPricePill()" 
-                        class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl font-bold text-xs transition border border-slate-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-slate-700 dark:text-zinc-300 active:scale-95 shadow-xs"
+                        class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-bold text-xs transition border border-slate-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-slate-700 dark:text-zinc-300 hover:border-slate-300 dark:hover:border-zinc-600 active:scale-95 shadow-2xs"
                     >
                         <i class="fa-solid fa-fire text-rose-500 text-xs"></i>
                         <span data-i18n="half_price_only">只要半價 (1/2)</span>
@@ -334,7 +334,7 @@
                     <!-- Hidden checkbox for backward compatibility -->
                     <input type="checkbox" id="halfPriceOnly" onchange="loadSpecials()" class="hidden">
 
-                    <select id="sortSelect" onchange="loadSpecials()" class="text-xs font-semibold border border-slate-200 dark:border-zinc-700 rounded-xl px-3 py-1.5 bg-white dark:bg-zinc-800 text-slate-800 dark:text-zinc-200 focus:outline-none focus:ring-2 focus:ring-emerald-500/30 shadow-xs">
+                    <select id="sortSelect" onchange="loadSpecials()" class="text-xs font-bold border border-slate-200 dark:border-zinc-700 rounded-lg px-3 py-1.5 bg-white dark:bg-zinc-800 text-slate-800 dark:text-zinc-200 focus:outline-none focus:ring-2 focus:ring-emerald-500/30 shadow-2xs">
                         <option value="relevance" data-i18n="sort_relevance">推薦關聯</option>
                         <option value="popular" data-i18n="sort_popular">最多人買（熱門暢銷）</option>
                         <option value="save_desc" data-i18n="sort_save_desc">折扣省最多</option>
@@ -385,7 +385,7 @@
             <h3 id="emptyStateTitle" class="text-sm sm:text-base font-bold text-slate-800 dark:text-zinc-200">沒有找到符合的特價商品</h3>
             <p id="emptyStateSub" class="text-xs text-slate-400 dark:text-zinc-500 max-w-md mx-auto leading-relaxed">試試切換「本週 / 下週預告」或更改類別</p>
             <div id="emptyStateAction" class="pt-1">
-                <button onclick="selectPeriod('current')" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-bold bg-emerald-600 hover:bg-emerald-700 text-white shadow-xs transition active:scale-95">
+                <button onclick="selectPeriod('current')" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-bold bg-emerald-600 hover:bg-emerald-700 text-white shadow-xs transition active:scale-95">
                     <i class="fa-regular fa-calendar-check"></i>
                     <span data-i18n="return_current">返回查看「本週特價」</span>
                 </button>
@@ -393,7 +393,7 @@
         </div>
 
         <!-- Relocated Feedback & Wishlist Banner (Non-intrusive at bottom of page) -->
-        <div class="bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-700 text-white p-3.5 sm:p-4 rounded-2xl shadow-xs">
+        <div class="bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-700 text-white p-3.5 sm:p-4 rounded-xl shadow-xs">
             <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2.5">
                 <div class="flex items-center gap-2 flex-wrap">
                     <span class="bg-white/20 px-2 py-0.5 rounded-md font-bold text-[11px] flex items-center gap-1 shadow-2xs">
@@ -402,7 +402,7 @@
                     <span data-i18n="feedback_banner_text" class="text-xs font-medium text-white/95">有任何功能建議或超市品項想許願？歡迎隨時寫信至：</span>
                     <a href="mailto:rick97005109@gmail.com" class="text-xs font-bold underline underline-offset-2 hover:text-amber-200 transition tracking-wide">rick97005109@gmail.com</a>
                 </div>
-                <a href="mailto:rick97005109@gmail.com?subject=澳洲超市比價網功能建議與反饋" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold text-xs shadow-2xs transition active:scale-95 shrink-0">
+                <a href="mailto:rick97005109@gmail.com?subject=澳洲超市比價網功能建議與反饋" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold text-xs shadow-2xs transition active:scale-95 shrink-0">
                     <i class="fa-solid fa-paper-plane text-[10px]"></i>
                     <span data-i18n="feedback_banner_btn">寫信給站長</span>
                 </a>
@@ -447,7 +447,7 @@
                     <p class="text-xs text-slate-500 dark:text-zinc-400 font-medium" data-i18n="shopping_subtitle">按超市獨立分組，現場採買不漏買</p>
                 </div>
             </div>
-            <button onclick="toggleShoppingDrawer()" class="p-2 text-slate-400 hover:text-slate-600 dark:hover:text-zinc-200 rounded-xl hover:bg-slate-200/60 dark:hover:bg-zinc-800 transition">
+            <button onclick="toggleShoppingDrawer()" class="p-2 text-slate-400 hover:text-slate-600 dark:hover:text-zinc-200 rounded-lg hover:bg-slate-200/60 dark:hover:bg-zinc-800 transition">
                 <i class="fa-solid fa-xmark text-base"></i>
             </button>
         </div>
@@ -456,7 +456,7 @@
 
         <div class="p-4 sm:p-5 border-t border-slate-200/80 dark:border-zinc-800 bg-slate-50/80 dark:bg-zinc-800/40 space-y-3 sm:rounded-bl-3xl">
             <!-- Cart Price Breakdown (Original, Discount, Final Checkout Total) -->
-            <div class="space-y-1.5 p-3.5 sm:p-4 rounded-2xl bg-white dark:bg-zinc-900 border border-slate-200/80 dark:border-white/[0.07] shadow-xs text-xs sm:text-sm">
+            <div class="space-y-1.5 p-3.5 sm:p-4 rounded-xl bg-white dark:bg-zinc-900 border border-slate-200/80 dark:border-white/[0.07] shadow-xs text-xs sm:text-sm">
                 <div class="flex justify-between items-center text-slate-500 dark:text-zinc-400 font-medium">
                     <span data-i18n="original_total">商品原價：</span>
                     <span id="drawerOriginalTotal" class="font-semibold text-slate-600 dark:text-zinc-300 line-through">$0.00</span>
@@ -478,11 +478,11 @@
             </div>
 
             <div class="flex items-center gap-2 pt-1">
-                <button onclick="copyShoppingList()" class="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-2xl text-xs sm:text-sm font-bold bg-gradient-to-r from-emerald-600 via-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white shadow-md shadow-emerald-500/20 transition active:scale-95">
+                <button onclick="copyShoppingList()" class="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-lg text-xs sm:text-sm font-bold bg-emerald-600 hover:bg-emerald-700 text-white shadow-xs transition active:scale-95">
                     <i class="fa-solid fa-copy"></i>
                     <span data-i18n="copy_manifest">複製清單文字</span>
                 </button>
-                <button onclick="clearShoppingList()" title="清空採買清單" class="px-3.5 py-2.5 rounded-2xl text-xs font-semibold bg-slate-200/80 dark:bg-zinc-800 hover:bg-rose-100 dark:hover:bg-rose-950/60 text-slate-700 dark:text-zinc-300 hover:text-rose-700 dark:hover:text-rose-300 transition active:scale-95">
+                <button onclick="clearShoppingList()" title="清空採買清單" class="px-3.5 py-2.5 rounded-lg text-xs font-semibold bg-slate-200/80 dark:bg-zinc-800 hover:bg-rose-100 dark:hover:bg-rose-950/60 text-slate-700 dark:text-zinc-300 hover:text-rose-700 dark:hover:text-rose-300 transition active:scale-95">
                     <i class="fa-solid fa-trash-can"></i>
                 </button>
             </div>
@@ -519,7 +519,7 @@
                         <span data-i18n="popular_badge">熱門暢銷</span>
                     </span>
                 </div>
-                <button onclick="closeProductModal()" class="w-8 h-8 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-600 dark:hover:text-zinc-200 hover:bg-slate-100 dark:hover:bg-zinc-800 transition">
+                <button onclick="closeProductModal()" class="w-8 h-8 rounded-lg flex items-center justify-center text-slate-400 hover:text-slate-600 dark:hover:text-zinc-200 hover:bg-slate-100 dark:hover:bg-zinc-800 transition">
                     <i class="fa-solid fa-xmark text-sm"></i>
                 </button>
             </div>
@@ -615,7 +615,7 @@
                 <!-- Official Store Link & Sub-Item Chips -->
                 <div id="modalOfficialLinkBox" class="pt-2 border-t border-slate-100 dark:border-zinc-800 space-y-2 text-xs">
                     <div class="flex flex-wrap items-center gap-2.5">
-                        <a id="modalOfficialLink" href="#" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 font-bold px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white shadow-xs transition active:scale-95 text-xs sm:text-sm">
+                        <a id="modalOfficialLink" href="#" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 font-bold px-4 py-2.5 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white shadow-xs transition active:scale-95 text-xs sm:text-sm">
                             <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
                             <span id="modalStoreActionText" data-i18n="open_official_store">前往超市官方商品頁</span>
                         </a>
@@ -637,10 +637,10 @@
 
             <!-- Modal Footer -->
             <div class="px-5 py-4 border-t border-slate-100 dark:border-zinc-800 bg-slate-50/70 dark:bg-zinc-800/40 flex items-center justify-between gap-3">
-                <button onclick="closeProductModal()" class="px-4 py-2.5 rounded-xl text-xs font-semibold border border-slate-200 dark:border-zinc-700 hover:bg-slate-100 dark:hover:bg-zinc-800 text-slate-700 dark:text-zinc-300 transition" data-i18n="close">
+                <button onclick="closeProductModal()" class="px-4 py-2.5 rounded-lg text-xs font-semibold border border-slate-200 dark:border-zinc-700 hover:bg-slate-100 dark:hover:bg-zinc-800 text-slate-700 dark:text-zinc-300 transition" data-i18n="close">
                     關閉
                 </button>
-                <button id="modalAddToListBtn" onclick="modalAddCurrentToShoppingList()" class="flex-1 sm:flex-none flex items-center justify-center gap-2 px-6 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-emerald-600 hover:bg-emerald-700 text-white shadow-xs transition active:scale-95">
+                <button id="modalAddToListBtn" onclick="modalAddCurrentToShoppingList()" class="flex-1 sm:flex-none flex items-center justify-center gap-2 px-6 py-2.5 rounded-lg text-xs sm:text-sm font-bold bg-emerald-600 hover:bg-emerald-700 text-white shadow-xs transition active:scale-95">
                     <i class="fa-solid fa-basket-shopping"></i>
                     <span data-i18n="add_to_list">加入採買清單</span>
                 </button>
@@ -666,7 +666,7 @@
     </div>
 
     <!-- Scripts -->
-    <script src="./i18n.js?v=5.2"></script>
-    <script src="./app.js?v=5.2"></script>
+    <script src="./i18n.js?v=5.3"></script>
+    <script src="./app.js?v=5.3"></script>
 </body>
 </html>

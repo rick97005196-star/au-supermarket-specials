@@ -77,9 +77,9 @@ function applyLanguage(lang) {
     // Update language switcher active styles
     document.querySelectorAll('.lang-btn').forEach(btn => {
         if (btn.dataset.lang === lang) {
-            btn.className = "lang-btn px-2.5 py-1 rounded-lg transition bg-white dark:bg-zinc-700 text-slate-900 dark:text-white shadow-2xs font-bold";
+            btn.className = "lang-btn px-2.5 py-1 rounded-md transition-all bg-white dark:bg-zinc-700 text-slate-900 dark:text-white shadow-2xs font-bold border border-black/[0.04] dark:border-white/[0.06]";
         } else {
-            btn.className = "lang-btn px-2.5 py-1 rounded-lg transition text-slate-600 dark:text-zinc-400 hover:text-slate-900 dark:hover:text-white";
+            btn.className = "lang-btn px-2.5 py-1 rounded-md transition-all text-slate-500 dark:text-zinc-400 hover:text-slate-900 dark:hover:text-white font-medium";
         }
     });
 
@@ -195,15 +195,15 @@ function renderCategoryBar() {
     const bar = document.getElementById('categoryBar');
     if (!bar) return;
 
-    const activeClasses = "flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 rounded-2xl text-[11px] sm:text-xs font-bold bg-gradient-to-r from-emerald-600 via-emerald-600 to-teal-600 text-white shadow-[0_4px_16px_-2px_rgba(16,185,129,0.35)] ring-2 ring-emerald-400/50 border border-emerald-500/80 shrink-0 transition-all duration-200 active:scale-95 whitespace-nowrap scale-[1.03]";
-    const inactiveClasses = "flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 rounded-2xl text-[11px] sm:text-xs font-semibold bg-white/90 dark:bg-[#15171a] hover:bg-slate-50 dark:hover:bg-zinc-800/90 text-slate-700 dark:text-zinc-200 border border-slate-200/80 dark:border-white/[0.08] hover:border-slate-300 dark:hover:border-zinc-700 shrink-0 transition-all duration-200 active:scale-95 whitespace-nowrap shadow-[0_1px_3px_rgba(0,0,0,0.03)]";
+    const activeClasses = "flex items-center gap-1.5 sm:gap-2 px-3 sm:px-3.5 py-1.5 rounded-lg text-[11px] sm:text-xs font-bold bg-emerald-600 dark:bg-emerald-500 text-white shadow-xs ring-1 ring-emerald-400/40 border border-emerald-600 dark:border-emerald-500 shrink-0 transition-all duration-150 active:scale-95 whitespace-nowrap";
+    const inactiveClasses = "flex items-center gap-1.5 sm:gap-2 px-3 sm:px-3.5 py-1.5 rounded-lg text-[11px] sm:text-xs font-semibold bg-white/95 dark:bg-[#15171a] hover:bg-slate-50 dark:hover:bg-zinc-800 text-slate-700 dark:text-zinc-200 border border-slate-200/90 dark:border-white/[0.08] hover:border-slate-300 dark:hover:border-zinc-700 shrink-0 transition-all duration-150 active:scale-95 whitespace-nowrap shadow-2xs";
 
     const renderBtnContent = (btn, catKey, isActive) => {
         const style = CATEGORY_STYLES[catKey] || { emoji: '🏷️', iconBg: 'bg-slate-50 border-slate-200 text-slate-700' };
         const label = getCleanCategoryLabel(catKey);
         const iconClasses = isActive
-            ? 'w-5 h-5 sm:w-6 sm:h-6 rounded-xl bg-white/20 border border-white/30 text-white flex items-center justify-center text-xs sm:text-sm shrink-0 shadow-2xs backdrop-blur-xs'
-            : `w-5 h-5 sm:w-6 sm:h-6 rounded-xl border flex items-center justify-center text-xs sm:text-sm shrink-0 shadow-2xs ${style.iconBg}`;
+            ? 'w-5 h-5 sm:w-5.5 sm:h-5.5 rounded-md bg-white/20 border border-white/30 text-white flex items-center justify-center text-xs shrink-0 shadow-2xs'
+            : `w-5 h-5 sm:w-5.5 sm:h-5.5 rounded-md border flex items-center justify-center text-xs shrink-0 shadow-2xs ${style.iconBg}`;
 
         btn.innerHTML = `
             <span class="${iconClasses}">
@@ -490,19 +490,19 @@ function selectPeriod(period) {
     const btnNext = document.getElementById('tabPeriodNext');
 
     if (period === 'current') {
-        btnCurr.className = "flex items-center justify-center gap-2 py-2 sm:py-2.5 px-3 sm:px-5 rounded-xl text-xs sm:text-sm font-black bg-emerald-600 dark:bg-emerald-600 text-white shadow-md ring-2 ring-emerald-400/50 border border-emerald-500 scale-[1.02] transition-all";
+        btnCurr.className = "flex items-center justify-center gap-2 py-2 sm:py-2.5 px-3 sm:px-5 rounded-lg text-xs sm:text-sm font-black bg-emerald-600 dark:bg-emerald-600 text-white shadow-xs border border-emerald-500 transition-all";
         const iconC = btnCurr.querySelector('i');
         if (iconC) iconC.className = "fa-regular fa-calendar-check text-white text-sm";
 
-        btnNext.className = "flex items-center justify-center gap-2 py-2 sm:py-2.5 px-3 sm:px-5 rounded-xl text-xs sm:text-sm font-semibold text-slate-600 dark:text-zinc-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200/70 dark:hover:bg-zinc-700/70 transition-all opacity-80 hover:opacity-100";
+        btnNext.className = "flex items-center justify-center gap-2 py-2 sm:py-2.5 px-3 sm:px-5 rounded-lg text-xs sm:text-sm font-bold text-slate-600 dark:text-zinc-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200/60 dark:hover:bg-zinc-700/60 transition-all opacity-85 hover:opacity-100";
         const iconN = btnNext.querySelector('i');
         if (iconN) iconN.className = "fa-solid fa-wand-magic-sparkles text-amber-500 text-sm";
     } else {
-        btnNext.className = "flex items-center justify-center gap-2 py-2 sm:py-2.5 px-3 sm:px-5 rounded-xl text-xs sm:text-sm font-black bg-amber-500 dark:bg-amber-500 text-slate-950 shadow-md ring-2 ring-amber-300 border border-amber-400 scale-[1.02] transition-all";
+        btnNext.className = "flex items-center justify-center gap-2 py-2 sm:py-2.5 px-3 sm:px-5 rounded-lg text-xs sm:text-sm font-black bg-amber-500 dark:bg-amber-500 text-slate-950 shadow-xs border border-amber-400 transition-all";
         const iconN = btnNext.querySelector('i');
         if (iconN) iconN.className = "fa-solid fa-wand-magic-sparkles text-slate-950 text-sm";
 
-        btnCurr.className = "flex items-center justify-center gap-2 py-2 sm:py-2.5 px-3 sm:px-5 rounded-xl text-xs sm:text-sm font-semibold text-slate-600 dark:text-zinc-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200/70 dark:hover:bg-zinc-700/70 transition-all opacity-80 hover:opacity-100";
+        btnCurr.className = "flex items-center justify-center gap-2 py-2 sm:py-2.5 px-3 sm:px-5 rounded-lg text-xs sm:text-sm font-bold text-slate-600 dark:text-zinc-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200/60 dark:hover:bg-zinc-700/60 transition-all opacity-85 hover:opacity-100";
         const iconC = btnCurr.querySelector('i');
         if (iconC) iconC.className = "fa-regular fa-calendar-check text-emerald-600 dark:text-emerald-400 text-sm";
     }
@@ -525,9 +525,9 @@ function updateHalfPricePillStyle() {
     const pill = document.getElementById('halfPricePill');
     if (!checkbox || !pill) return;
     if (checkbox.checked) {
-        pill.className = "flex items-center gap-1.5 px-3 py-1 sm:py-1.5 rounded-xl font-black text-xs transition border border-rose-500 bg-rose-500 text-white shadow-xs active:scale-95";
+        pill.className = "flex items-center gap-1.5 px-3 py-1 sm:py-1.5 rounded-lg font-black text-xs transition border border-rose-500 bg-rose-500 text-white shadow-xs active:scale-95";
     } else {
-        pill.className = "flex items-center gap-1.5 px-3 py-1 sm:py-1.5 rounded-xl font-bold text-xs transition border border-slate-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-slate-700 dark:text-zinc-300 active:scale-95 shadow-2xs";
+        pill.className = "flex items-center gap-1.5 px-3 py-1 sm:py-1.5 rounded-lg font-bold text-xs transition border border-slate-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-slate-700 dark:text-zinc-300 hover:border-slate-300 dark:hover:border-zinc-600 active:scale-95 shadow-2xs";
     }
 }
 
@@ -1020,29 +1020,29 @@ function selectStore(store) {
 
         if (isActive) {
             if (s === 'All') {
-                tab.className = 'store-tab active px-3 py-1.5 rounded-xl transition bg-slate-900 dark:bg-zinc-100 text-white dark:text-slate-900 shadow-xs font-bold scale-[1.02] shrink-0';
+                tab.className = 'store-tab active px-3 py-1.5 rounded-lg transition-all bg-slate-900 dark:bg-zinc-100 text-white dark:text-slate-900 shadow-xs font-bold border border-slate-900 dark:border-zinc-200 shrink-0';
             } else if (s === 'Woolworths') {
-                tab.className = 'store-tab active px-3 py-1.5 rounded-xl transition bg-[#007a3d] text-white shadow-xs font-bold scale-[1.02] shrink-0';
-                if (dot) dot.className = 'store-dot inline-block w-2 h-2 rounded-full bg-white mr-1 shadow-2xs';
+                tab.className = 'store-tab active px-3 py-1.5 rounded-lg transition-all bg-[#007a3d] text-white shadow-xs font-bold border border-[#006633] shrink-0';
+                if (dot) dot.className = 'store-dot inline-block w-2 h-2 rounded-xs bg-white mr-1 shadow-2xs';
             } else if (s === 'Coles') {
-                tab.className = 'store-tab active px-3 py-1.5 rounded-xl transition bg-[#e01a22] text-white shadow-xs font-bold scale-[1.02] shrink-0';
-                if (dot) dot.className = 'store-dot inline-block w-2 h-2 rounded-full bg-white mr-1 shadow-2xs';
+                tab.className = 'store-tab active px-3 py-1.5 rounded-lg transition-all bg-[#e01a22] text-white shadow-xs font-bold border border-[#c4161d] shrink-0';
+                if (dot) dot.className = 'store-dot inline-block w-2 h-2 rounded-xs bg-white mr-1 shadow-2xs';
             } else if (s === 'ALDI') {
-                tab.className = 'store-tab active px-3 py-1.5 rounded-xl transition bg-[#00205b] text-white shadow-xs font-bold scale-[1.02] shrink-0';
-                if (dot) dot.className = 'store-dot inline-block w-2 h-2 rounded-full bg-white mr-1 shadow-2xs';
+                tab.className = 'store-tab active px-3 py-1.5 rounded-lg transition-all bg-[#00205b] text-white shadow-xs font-bold border border-[#001742] shrink-0';
+                if (dot) dot.className = 'store-dot inline-block w-2 h-2 rounded-xs bg-white mr-1 shadow-2xs';
             }
         } else {
             if (s === 'All') {
-                tab.className = 'store-tab px-3 py-1.5 rounded-xl transition font-semibold text-slate-600 dark:text-zinc-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200/60 dark:hover:bg-zinc-700/60 shrink-0';
+                tab.className = 'store-tab px-3 py-1.5 rounded-lg transition-all font-semibold text-slate-600 dark:text-zinc-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200/60 dark:hover:bg-zinc-700/60 shrink-0';
             } else if (s === 'Woolworths') {
-                tab.className = 'store-tab px-3 py-1.5 rounded-xl transition font-semibold text-emerald-700 dark:text-emerald-400 hover:bg-emerald-50 dark:hover:bg-emerald-950/40 shrink-0';
-                if (dot) dot.className = 'store-dot inline-block w-2 h-2 rounded-full bg-emerald-600 mr-1';
+                tab.className = 'store-tab px-3 py-1.5 rounded-lg transition-all font-semibold text-emerald-700 dark:text-emerald-400 hover:bg-emerald-50 dark:hover:bg-emerald-950/40 shrink-0';
+                if (dot) dot.className = 'store-dot inline-block w-2 h-2 rounded-xs bg-emerald-600 mr-1';
             } else if (s === 'Coles') {
-                tab.className = 'store-tab px-3 py-1.5 rounded-xl transition font-semibold text-rose-700 dark:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-950/40 shrink-0';
-                if (dot) dot.className = 'store-dot inline-block w-2 h-2 rounded-full bg-rose-600 mr-1';
+                tab.className = 'store-tab px-3 py-1.5 rounded-lg transition-all font-semibold text-rose-700 dark:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-950/40 shrink-0';
+                if (dot) dot.className = 'store-dot inline-block w-2 h-2 rounded-xs bg-rose-600 mr-1';
             } else if (s === 'ALDI') {
-                tab.className = 'store-tab px-3 py-1.5 rounded-xl transition font-semibold text-blue-700 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-950/40 shrink-0';
-                if (dot) dot.className = 'store-dot inline-block w-2 h-2 rounded-full bg-blue-600 mr-1';
+                tab.className = 'store-tab px-3 py-1.5 rounded-lg transition-all font-semibold text-blue-700 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-950/40 shrink-0';
+                if (dot) dot.className = 'store-dot inline-block w-2 h-2 rounded-xs bg-blue-600 mr-1';
             }
         }
     });
@@ -1527,7 +1527,7 @@ function createProductCardElement(item) {
             <!-- Add to Shopping List Button -->
             <button 
                 onclick='event.stopPropagation(); addToShoppingList(${JSON.stringify(cartPayload).replace(/'/g, "&#39;")})'
-                class="w-full py-2 px-3 rounded-xl sm:rounded-2xl text-[11px] sm:text-xs font-bold bg-slate-100 hover:bg-emerald-600 text-slate-700 hover:text-white dark:bg-zinc-800 dark:hover:bg-emerald-600 dark:text-zinc-200 dark:hover:text-white border border-slate-200/60 dark:border-zinc-700/60 hover:border-emerald-600 dark:hover:border-emerald-600 transition-all duration-200 flex items-center justify-center gap-1.5 active:scale-95 shadow-2xs group/btn"
+                class="w-full py-2 px-3 rounded-lg text-[11px] sm:text-xs font-bold bg-slate-100 hover:bg-emerald-600 text-slate-700 hover:text-white dark:bg-zinc-800 dark:hover:bg-emerald-600 dark:text-zinc-200 dark:hover:text-white border border-slate-200/70 dark:border-zinc-700/70 hover:border-emerald-600 dark:hover:border-emerald-600 transition-all duration-150 flex items-center justify-center gap-1.5 active:scale-95 shadow-2xs group/btn"
             >
                 <i class="fa-solid fa-plus text-[10px] sm:text-xs transition-transform duration-200 group-hover/btn:rotate-90"></i>
                 <span data-i18n="add_to_list">${t('add_to_list')}</span>
