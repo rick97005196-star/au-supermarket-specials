@@ -89,16 +89,17 @@ def classify_product(title: str, raw_cat: str = "", product_url: str = "") -> st
     # -------------------------------------------------------------
     is_packet_chips = bool(re.search(r'\b(?:potato\s*chips|corn\s*chips|tortilla\s*chips|turtle\s*chips|french\s*fries\s*original|thins\s*wedges|smith[\'’]?s|red\s*rock|doritos|cheezels|twisties|grainwaves|pringles)\b', tl))
     is_pizza_base = bool(re.search(r'\bpizza\s*bases?\b', tl))
+    is_cosmetic_sorbet = bool(re.search(r'\b(?:sorbet\s*(?:cream|face|wash)|hand\s*wash|face\s*cream|refill)\b', tl))
+    is_frozen_ice_cream = not is_cosmetic_sorbet and bool(re.search(r'\b(?:ice\s*cream|gelato|sorbet|magnum|connoisseur|ben\s*&\s*jerry|peters\b|bulla\b|cornetto|paddle\s*pop|weis\s*bars?|crunch\s*pops|proud\s*&\s*punch|drumstick|golden\s*gaytime|maxibon|zooper\s*dooper|ice\s*pole|water\s*ice|frozen\s*dessert|dessert\s*cones?)\b', tl))
+    is_frozen_potato = bool(re.search(r'\b(?:golden\s*crunch\s*chips|shoestring\s*chips|french\s*fries|hash\s*browns?|potato\s*gems?|superfries|from\s*the\s*freezer)\b', tl)) or \
+                       bool(re.search(r'\b(?:birds\s*eye|mccain|bellfarms).*(?:chips|fries|wedges|stealth|roast\s*potatoes)\b', tl))
+    is_frozen_meal_or_appetiser = bool(re.search(r'\b(?:dumplings?|gyoza|samosas?|spring\s*rolls?|dim\s*sims?|siu\s*mai|mandu|churros|pastizzi|pastizzis)\b', tl)) or \
+                                  bool(re.search(r'\b(?:chicken\s*tenders?|nuggets?|tegel\s*take\s*outs|wing\s*nibbles|crumbed\s*(?:calamari|squid|fish|prawns?)|fish\s*bites|fish\s*fingers)\b', tl)) or \
+                                  bool(re.search(r'\b(?:birds\s*eye|four[\'’]?n\s*twenty.*pie|patties\s*party|herbert\s*adams|meat\s*pies?|beef\s*pies?|dr\s*oetker|ristorante|frozen\s*pizza|mccain.*pizza|party\s*pizzas?|coles\s*kitchen\s*pizza|buonissimo\s*party\s*pizzas?)\b', tl))
 
-    if not is_packet_chips and not is_pizza_base and not is_edible_bakery_or_snack:
-        if re.search(r'\b(?:from\s*the\s*freezer|freezer|frozen|water\s*ice|zooper\s*dooper|ice\s*pole)\b', tl) or \
-           re.search(r'\b(?:ice\s*cream|gelato|sorbet|magnum|connoisseur|ben\s*&\s*jerry|peters\b|bulla\b|cornetto|paddle\s*pop|weis\s*bars?|crunch\s*pops|proud\s*&\s*punch|drumstick|golden\s*gaytime|maxibon)\b', tl) or \
-           re.search(r'\b(?:dumplings?|gyoza|samosas?|spring\s*rolls?|dim\s*sims?|siu\s*mai|mandu|churros|pastizzi|pastizzis)\b', tl) or \
-           re.search(r'\b(?:hash\s*browns?|potato\s*gems|french\s*fries|shoestring\s*chips|superfries)\b', tl) or \
-           re.search(r'\b(?:chicken\s*tenders?|nuggets?|tegel\s*take\s*outs|wing\s*nibbles|crumbed\s*(?:calamari|squid|fish|prawns?)|fish\s*bites|fish\s*fingers)\b', tl) or \
-           re.search(r'\b(?:birds\s*eye|four[\'’]?n\s*twenty|patties\s*party|herbert\s*adams|meat\s*pies?|beef\s*pies?|dr\s*oetker|ristorante|frozen\s*pizza|mccain.*pizza|party\s*pizzas?|coles\s*kitchen\s*pizza|buonissimo\s*party\s*pizzas?|pizza\b)\b', tl):
-            if not re.search(r'\b(?:biscuit|cookie|baking\s*paper|pan\b|tray|air\s*fryer|pizza\s*base)\b', tl):
-                return 'frozen'
+    if is_frozen_ice_cream or is_frozen_potato or is_frozen_meal_or_appetiser:
+        if not re.search(r'\b(?:baking\s*paper|air\s*fryer|pizza\s*bases?)\b', tl):
+            return 'frozen'
 
     # -------------------------------------------------------------
     # 5. HOUSEHOLD (Laundry, Dishwashing, Cleaning, Paper Goods, Batteries, Cookware, Bags, Bedding, Garden, Telecom, Apparel)
@@ -127,23 +128,24 @@ def classify_product(title: str, raw_cat: str = "", product_url: str = "") -> st
 
     # -------------------------------------------------------------
     # 6. DRINKS (Non-Alcoholic)
-    # (Coffee, Tea, Soda, Juice, Bottled Water, Energy Drinks, Flavoured Milk)
+    # (Coffee, Tea, Soda, Juice, Bottled Water, Energy Drinks, Flavoured Milk, Hot Chocolate)
     # Exclude: Reusable cups/bottles (smash coffee cup), body wash
     # -------------------------------------------------------------
     is_reusable_cup = bool(re.search(r'\b(?:coffee\s*cup|water\s*bottle|travel\s*mug)\b', tl))
+    is_hot_chocolate_drink = bool(re.search(r'\b(?:hot\s*chocolate|drinking\s*chocolate|milo\s*frothy|milo\b|nesquik|ovaltine|chai\s*latte)\b', tl))
     if not is_reusable_cup:
-        if is_ginger_ale or re.search(r'\b(?:coffee|coffee\s*beans|coffee\s*pods?|coffee\s*capsules?|instant\s*coffee|nespresso|lavazza|moccona|nescafe|starbucks|vittoria|grinders|l\'or\s*espresso|espresso|matcha\s*latte|cafe\s*peak)\b', tl) or \
+        if is_hot_chocolate_drink or is_ginger_ale or re.search(r'\b(?:coffee|coffee\s*beans|coffee\s*pods?|coffee\s*capsules?|instant\s*coffee|nespresso|lavazza|moccona|nescafe|starbucks|vittoria|grinders|l\'or\s*espresso|espresso|matcha\s*latte|cafe\s*peak)\b', tl) or \
            re.search(r'\b(?:tea\b|tea\s*bags|twinings|lipton|dilmah|tetley)\b', tl) or \
            re.search(r'\b(?:coca-cola|coke|pepsi|sprite|fanta|kirks|schweppes|soft\s*drink|sodaly|tonic\s*water|mineral\s*water)\b', tl) or \
            re.search(r'\b(?:juice|nectar|fruit\s*drink|daily\s*juice|nudie|golden\s*circle|cocobella|coconut\s*water)\b', tl) or \
            re.search(r'\b(?:spring\s*water|sparkling\s*water|mount\s*franklin|pump\s*water|genki\s*forest|water\s*\d+(?:\.\d+)?\s*(?:l|ml))\b', tl) or \
            re.search(r'\b(?:energy\s*drink|red\s*bull|monster\s*energy|monster\s*energy\s*ultra|v\s*energy|mother\s*energy|ghost\s*energy|gatorade|powerade|up&go|up\s*&\s*go|oak\s*flavoured\s*milk|oak\s*milk)\b', tl) or \
            re.search(r'\b(?:kombucha|cordial|bundaberg\s*brewed|passiona|cottee\'?s)\b', tl):
-            if not re.search(r'\b(?:coffee\s*cake|tea\s*towel|biscuit|chocolate|ice\s*cream|sauce|powder\b)\b', tl):
+            if is_hot_chocolate_drink or not re.search(r'\b(?:coffee\s*cake|tea\s*towel|biscuit|chocolate\s*(?:block|bar|box)|ice\s*cream|sauce|powder\b)\b', tl):
                 return 'drinks'
 
     # -------------------------------------------------------------
-    # 7. BAKERY (Bread, Buns, Rolls, Bagels, Muffins, Croissants, Pastries, Cakes, Garlic Bread, Puddings)
+    # 7. BAKERY (Bread, Buns, Rolls, Bagels, Muffins, Croissants, Pastries, Cakes, Garlic Bread, Puddings, Sausage Rolls)
     # Exclude: Yoghurt (e.g. yoghurt inspired pudding), pasta & sauce, cookies/biscuits
     # -------------------------------------------------------------
     is_yoghurt_product = bool(re.search(r'\b(?:yoghurt|yogurt)\b', tl))
@@ -152,8 +154,8 @@ def classify_product(title: str, raw_cat: str = "", product_url: str = "") -> st
 
     if not is_yoghurt_product and not is_pasta_sauce_mix and not is_cookie_biscuit:
         if re.search(r'\b(?:bread|toast|loaf|sourdough|buns?|rolls?(?!\s*on)|bagels?|croissants?|crumpets?|muffins?|scones?|wraps?|pita|flatbread|tip\s*top|helga|abbott|wonder\s*white|pane\s*di\s*casa|baguette|hot\s*dog\s*rolls?|pizza\s*bases?|mighty\s*soft|brioche)\b', tl) or \
-           re.search(r'\b(?:cakes?|vanilla\s*slice|caramel\s*slice|bakery\s*slice|garlic\s*slices?|pastry\s*slice|mr\s*kipling|pavlova|lamington|donuts?|doughnuts?|crust|pastry|danish|tart|pains?\s*au\s*chocolat|pudding|steamy\s*puds?|brownie|profiteroles|la\s*famiglia|garlic\s*bread|sausage\s*rolls?|aunt\s*betty)\b', tl):
-            if not is_packet_chips and not re.search(r'\b(?:cheese|cheddar|chips|tortilla\s*chips|baking\s*paper|baking\s*powder|cake\s*mix|rice\s*cake|shampoo|dog\s*food|cat\s*food)\b', tl):
+           re.search(r'\b(?:cakes?|vanilla\s*slice|caramel\s*slice|bakery\s*slice|garlic\s*slices?|pastry\s*slice|mr\s*kipling|pavlova|lamington|donuts?|doughnuts?|crust|pastry|danish|tart|pains?\s*au\s*chocolat|pudding|steamy\s*puds?|brownie|profiteroles|la\s*famiglia|garlic\s*bread|sausage\s*rolls?|aunt\s*betty|four[\'’]?n\s*twenty.*roll)\b', tl):
+            if not is_packet_chips and not re.search(r'\b(?:cheese\s*block|cheese\s*slices?|shredded\s*cheese|tasty\s*cheese|cottage\s*cheese|cream\s*cheese|brie|camembert|feta|cheddar\s*block|chips|tortilla\s*chips|baking\s*paper|baking\s*powder|cake\s*mix|rice\s*cake|shampoo|dog\s*food|cat\s*food)\b', tl):
                 return 'bakery'
 
     # -------------------------------------------------------------
@@ -215,7 +217,7 @@ def classify_product(title: str, raw_cat: str = "", product_url: str = "") -> st
            re.search(r'\b(?:cheese|cheddar|mozzarella|parmesan|feta|brie|camembert|cream\s*cheese|ricotta|bega\s*cheese|tasty\s*cheese|haloumi|d[\'’]affinois)\b', tl) or \
            re.search(r'\b(?:yogurt|yoghurt|chobani|goplain|jalna|gippsland|danone|yoplait|yo\s*pro|snack\s*pot|rokeby)\b', tl) or \
            re.search(r'\b(?:cream\b|sour\s*cream|custard|antipasto|dip\b|dips\b|hommus|tzatziki|obela|black\s*swan|meredith\s*dairy)\b', tl):
-            if not re.search(r'\b(?:soup|noodle|ramen|pasta|biscuit|chips|chocolate|coconut\s*milk|canned|peanut\s*butter)\b', tl):
+            if not re.search(r'\b(?:soup|noodle|ramen|pasta|biscuit|chips|chocolate|coconut\s*milk|canned|peanut\s*butter|sausage\s*roll|garlic\s*bread|meat\s*pie)\b', tl):
                 return 'dairy_eggs'
 
     # -------------------------------------------------------------
