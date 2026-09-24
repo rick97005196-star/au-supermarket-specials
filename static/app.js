@@ -1478,17 +1478,17 @@ function createProductCardElement(item) {
                 ` : ''}
             </div>
 
-            <!-- Product Title & Multilingual Subtitle -->
-            <div class="space-y-1">
-                <h3 class="text-xs sm:text-sm font-bold text-slate-900 dark:text-zinc-100 line-clamp-2 leading-snug group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors h-[2.5rem]" title="${item.title}">
+            <!-- Product Title & Multilingual Subtitle (Expanded to 3 lines for title and 2 lines for translation to prevent clipping) -->
+            <div class="space-y-1.5">
+                <h3 class="text-xs sm:text-sm font-bold text-slate-900 dark:text-zinc-100 line-clamp-3 leading-snug group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors min-h-[3rem] max-h-[3.6rem] overflow-hidden" title="${item.title}">
                     ${item.title}
                 </h3>
                 ${translated ? `
-                    <div class="text-[11px] sm:text-xs font-semibold text-emerald-800 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200/60 dark:border-emerald-800/60 px-2 py-0.5 rounded-md line-clamp-1 leading-normal" title="${translated}">
+                    <div class="text-[11px] sm:text-xs font-semibold text-emerald-800 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200/60 dark:border-emerald-800/60 px-2 py-1 rounded-md line-clamp-2 leading-snug min-h-[2.4rem] flex items-center" title="${translated}">
                         ${translated}
                     </div>
                 ` : `
-                    <div class="h-[21px]"></div>
+                    <div class="h-[2.4rem]"></div>
                 `}
             </div>
         </div>
