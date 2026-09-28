@@ -1453,7 +1453,7 @@ function createProductCardElement(item) {
                     loading="lazy" 
                     decoding="async"
                     class="max-h-full max-w-full object-contain group-hover:scale-108 transition-transform duration-500 ease-out"
-                    onerror="this.src='${fallbackImg}'"
+                    onerror="this.onerror=null;this.src=DEFAULT_FALLBACK_IMG"
                 />
             </div>
 
@@ -2178,7 +2178,7 @@ async function loadShoppingList() {
                                         alt="${it.title}" 
                                         loading="lazy" 
                                         class="max-h-full max-w-full object-contain"
-                                        onerror="this.src='${fallbackImg}'"
+                                        onerror="this.onerror=null;this.src=DEFAULT_FALLBACK_IMG"
                                     />
                                 </div>
                                 <div class="min-w-0 flex-1">

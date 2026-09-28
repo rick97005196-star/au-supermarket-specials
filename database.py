@@ -1,6 +1,7 @@
 import sqlite3
 import os
 import html
+import re
 from datetime import datetime
 from typing import List, Dict, Any, Optional
 
@@ -94,13 +95,43 @@ def init_db():
 
 from categories import classify_product, is_popular_product, calculate_popularity_score
 
+
+_MONTHS = {m: i for i, m in enumerate(['jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec'], 1)}
+
+def _range_start(date_range: str):
+    """Return the (month, day) a date_range starts on, e.g. 'Wed 30 Sep 2026 - ...' or 'ALDI ... (09/30 - 10/06)'."""
+    if not date_range:
+        return None
+    m = re.search(r'(\d{1,2})\s+([A-Za-z]{3})', date_range)
+    if m and m.group(2).lower() in _MONTHS:
+        return (_MONTHS[m.group(2).lower()], int(m.group(1)))
+    m = re.search(r'(\d{1,2})/(\d{1,2})', date_range)
+    if m:
+        return (int(m.group(1)), int(m.group(2)))
+    return None
+
+def _start_offset_days(a, b):
+    """Days from start a to start b (month/day tuples), wrapping around the year boundary."""
+    da = datetime(2001, a[0], a[1]).timetuple().tm_yday
+    db = datetime(2001, b[0], b[1]).timetuple().tm_yday
+    diff = (db - da) % 365
+    return diff - 365 if diff > 182 else diff
+
 def save_specials(store: str, items: List[Dict[str, Any]], period: str = 'current', date_range: str = ''):
     """Replace specials for a given store and period (current / next) with the newly scraped list."""
     with get_db() as conn:
         cursor = conn.cursor()
         cursor.execute('SELECT COUNT(*) FROM specials WHERE store = ? AND period = ?', (store, period))
         existing_count = cursor.fetchone()[0]
-        if existing_count > 400 and len(items) < 300:
+        # A new promotional week (different start date) must always replace last week's specials,
+        # otherwise expired specials would stay online. The guard only protects the SAME week.
+        new_week = False
+        if date_range and len(items) >= 20:
+            cursor.execute('SELECT date_range FROM specials WHERE store = ? AND period = ? LIMIT 1', (store, period))
+            row = cursor.fetchone()
+            old_start, new_start = _range_start(row[0] if row else ''), _range_start(date_range)
+            new_week = bool(old_start and new_start and old_start != new_start)
+        if existing_count > 400 and len(items) < 300 and not new_week:
             print(f"⚠️ Anti-wipeout guard triggered: {store} ({period}) has {existing_count} existing items, but scraper only found {len(items)}. Preserving existing database!")
             return existing_count
 
@@ -137,6 +168,8 @@ def save_specials(store: str, items: List[Dict[str, Any]], period: str = 'curren
             seen_keys.add(dedup_key)
 
             price = float(item.get('price', 0.0) or 0.0)
+            if price <= 0:
+                continue  # no valid selling price (would show as $0.00)
             was_price = float(item.get('was_price', 0.0) or 0.0)
             save_amount = float(item.get('save_amount', 0.0) or 0.0)
 
@@ -204,6 +237,27 @@ def save_specials(store: str, items: List[Dict[str, Any]], period: str = 'curren
         )
         conn.commit()
     return len(rows)
+
+def clear_stale_next(store: str, current_date_range: str) -> int:
+    """After the weekly rollover, last week's 'next' preview has become the current week.
+    If no new preview was found, remove the stale preview so it is not shown twice."""
+    cur = _range_start(current_date_range)
+    if not cur:
+        return 0
+    with get_db() as conn:
+        c = conn.cursor()
+        c.execute("SELECT DISTINCT date_range FROM specials WHERE store = ? AND period = 'next'", (store,))
+        removed = 0
+        for (dr,) in c.fetchall():
+            st = _range_start(dr or '')
+            if st and _start_offset_days(cur, st) <= 0:
+                c.execute("DELETE FROM specials WHERE store = ? AND period = 'next' AND date_range = ?", (store, dr))
+                removed += c.rowcount
+        if removed:
+            c.execute("DELETE FROM metadata WHERE key = ?", (f'date_range_{store.lower()}_next',))
+            print(f" Removed {removed} stale {store} 'next' items (that week is now current).")
+        conn.commit()
+        return removed
 
 def get_specials(
     query: Optional[str] = None,

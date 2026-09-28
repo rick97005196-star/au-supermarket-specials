@@ -6,7 +6,7 @@ from typing import Dict, Any
 # Ensure project root is in sys.path
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from database import init_db, save_specials, get_stats
+from database import init_db, save_specials, get_stats, clear_stale_next
 from scrapers.coles_scraper import scrape_coles_all_weeks
 from scrapers.woolies_scraper import scrape_woolies_all_weeks
 from scrapers.aldi_scraper import scrape_aldi_specials
@@ -37,6 +37,8 @@ def update_all_stores(max_catalogue_pages: int = 50) -> Dict[str, Any]:
         if next_items:
             saved_c_next = save_specials('Coles', next_items, period='next', date_range=next_date)
             print(f" Saved {saved_c_next} Coles NEXT week specials ({next_date}).")
+        else:
+            clear_stale_next('Coles', curr_date)
 
         results['Coles'] = {
             'current': saved_c_curr,
@@ -66,6 +68,8 @@ def update_all_stores(max_catalogue_pages: int = 50) -> Dict[str, Any]:
         if w_next_items:
             saved_w_next = save_specials('Woolworths', w_next_items, period='next', date_range=w_next_date)
             print(f" Saved {saved_w_next} Woolworths NEXT week specials ({w_next_date}).")
+        else:
+            clear_stale_next('Woolworths', w_curr_date)
 
         results['Woolworths'] = {
             'current': saved_w_curr,
@@ -94,6 +98,8 @@ def update_all_stores(max_catalogue_pages: int = 50) -> Dict[str, Any]:
         if a_next_items:
             saved_a_next = save_specials('ALDI', a_next_items, period='next', date_range=a_next_date)
             print(f" Saved {saved_a_next} ALDI NEXT week specials ({a_next_date}).")
+        else:
+            clear_stale_next('ALDI', a_curr_date)
 
         results['ALDI'] = {
             'current': saved_a_curr,

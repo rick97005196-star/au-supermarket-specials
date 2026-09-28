@@ -236,7 +236,7 @@ def scrape_woolies_online_half_price(max_pages: int = 100) -> List[Dict[str, Any
                     is_on_special = pr.get('InstoreIsOnSpecial', False) or pr.get('IsOnSpecial', False)
                     
                     # Strictly half price: price <= was_price * 0.55
-                    if not (is_on_special and was_price > 0 and price <= was_price * 0.55):
+                    if not (is_on_special and was_price > 0 and 0 < price <= was_price * 0.55):
                         continue
                         
                     pkg = (pr.get('PackageSize') or '').strip()

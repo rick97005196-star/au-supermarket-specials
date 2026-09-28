@@ -28,7 +28,12 @@ def parse_price(text: str) -> float:
 
 def get_australian_supermarket_cycle():
     """Calculates Wednesday to Tuesday cycle dates for current and next week."""
-    today = datetime.date.today()
+    # GitHub Actions runs in UTC; the supermarket week flips at Wednesday 00:00 Australian time.
+    try:
+        from zoneinfo import ZoneInfo
+        today = datetime.datetime.now(ZoneInfo('Australia/Sydney')).date()
+    except Exception:
+        today = (datetime.datetime.utcnow() + datetime.timedelta(hours=10)).date()
     days_since_wed = (today.weekday() - 2) % 7
     current_cycle_wed = today - datetime.timedelta(days=days_since_wed)
     current_cycle_tue = current_cycle_wed + datetime.timedelta(days=6)
@@ -185,7 +190,8 @@ def scrape_aldi_all_weeks() -> Dict[str, Any]:
                     'date_range': date_range_str
                 }
                 
-                dedup_key = prod_url if prod_url and '/product/' in prod_url else title.lower()
+                # Same title + price = colour/size variants of one Special Buy; list it once
+                dedup_key = (title.lower(), price)
                 if period == 'current':
                     if dedup_key not in current_items_map:
                         current_items_map[dedup_key] = item_data
