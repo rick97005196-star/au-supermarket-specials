@@ -32,6 +32,8 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
+        with:
+          ref: main  # always start from the latest main (not the SHA at trigger time)
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -69,7 +71,7 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action Bot"
           git add data/specials.db static/data/specials.json static/data/stats.json static/data/translations.json
-          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-update weekly specials & translations [skip ci]" && git pull --rebase origin main && git push origin main)
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-update weekly specials & translations [skip ci]" && git pull --rebase -X theirs origin main && git push origin main)
 
       - name: Deploy to Cloudflare Pages
         env:
