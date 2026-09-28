@@ -10,6 +10,7 @@ import sys
 import time
 import urllib.parse
 import urllib.request
+import urllib.error
 import re
 import sqlite3
 from concurrent.futures import ThreadPoolExecutor, as_completed
@@ -146,89 +147,134 @@ def clean_translated_text(text, orig_title):
     return clean
 
 # 1. Gemini AI Batch Translator (High Precision, Domain Aware)
+GEMINI_API_BASE = "https://generativelanguage.googleapis.com/v1beta"
+# Preferred models, best first. Override with the GEMINI_MODEL env var / GitHub secret.
+GEMINI_MODEL_PREFERENCE = [
+    'gemini-2.5-flash', 'gemini-flash-latest', 'gemini-3.1-flash-lite', 'gemini-3-flash',
+    'gemini-2.5-flash-lite', 'gemini-flash-lite-latest', 'gemini-2.0-flash',
+]
+_gemini_model_cache = {}
+_gemini_state = {'disabled': False}  # set when quota is exhausted, to stop calling for this run
+
+def gh_warning(msg):
+    """Print a warning that also shows up as an annotation on the GitHub Actions run page."""
+    print(f"::warning::{msg}" if os.environ.get('GITHUB_ACTIONS') else f"[WARN] {msg}")
+
+def _gemini_request(url, api_key, body=None, timeout=60):
+    headers = {'Content-Type': 'application/json', 'x-goog-api-key': api_key}
+    data = json.dumps(body).encode('utf-8') if body is not None else None
+    req = urllib.request.Request(url, data=data, headers=headers, method='POST' if body is not None else 'GET')
+    with urllib.request.urlopen(req, timeout=timeout) as resp:
+        return json.loads(resp.read().decode('utf-8'))
+
+def pick_gemini_model(api_key):
+    """Choose a model that actually exists for this API key (a wrong model name silently broke AI translation before)."""
+    if api_key in _gemini_model_cache:
+        return _gemini_model_cache[api_key]
+    wanted = [m for m in [os.environ.get('GEMINI_MODEL', '').strip()] if m] + GEMINI_MODEL_PREFERENCE
+    available = []
+    try:
+        data = _gemini_request(f"{GEMINI_API_BASE}/models?pageSize=200", api_key)
+        for m in data.get('models', []):
+            if 'generateContent' in m.get('supportedGenerationMethods', []):
+                available.append(m['name'].split('/', 1)[-1])
+    except Exception as e:
+        gh_warning(f"Gemini: could not list models ({e}); trying {wanted[0]}")
+    chosen = next((m for m in wanted if m in available), None)
+    if not chosen and available:
+        flash = [m for m in available if 'flash' in m and not any(x in m for x in ('image', 'tts', 'live', 'audio', 'embedding'))]
+        chosen = flash[0] if flash else None
+    chosen = chosen or wanted[0]
+    print(f"[AI] Gemini model: {chosen}")
+    _gemini_model_cache[api_key] = chosen
+    return chosen
+
+TRANSLATION_PROMPT = """You translate Australian supermarket product titles for a Taiwanese audience (working-holiday makers and students in Australia).
+
+For each title return:
+- "zh": Traditional Chinese as written in TAIWAN (台灣用語, 繁體字). Never use Simplified characters or Mainland/Hong Kong wording.
+- "ja": natural Japanese supermarket wording.
+- "ko": natural Korean supermarket wording.
+
+Rules for "zh" (read carefully):
+1. BRAND NAMES STAY IN ENGLISH, exactly as written: Smith's, Suntory Boss, Schweppes, Smash, Ingham's, Oreo, Arnott's, Tim Tam, Connoisseur, Bonds, Sistema, Revlon, Swisse, Coles, Woolworths, etc.
+   Never translate a brand word literally (Smith's is NOT 史密斯, Boss is NOT 老闆, Smash is NOT 粉碎, Oreo is NOT 奧利奧).
+   Only add a Chinese brand name if Taiwanese shoppers really use it (e.g. 可口可樂, 雀巢, 多芬, 露得清), placed after the English brand.
+2. Format: <English brand> <short Chinese product name + flavour/variant> <size>. Keep it short like a Taiwanese supermarket (全聯/家樂福) shelf label.
+3. Everyday Taiwanese terms: 洋芋片 (chips/crisps), 優格 (yoghurt), 起司 (cheese), 奶油 (butter), 冰淇淋 (ice cream), 餅乾, 汽水, 氣泡水, 通寧水 (tonic water), 麵 (noodles, never 面), 沐浴乳, 洗髮精, 潤髮乳, 洗衣精, 衛生紙, 廚房紙巾.
+4. Packaging/size: "Pk 8" / "8 pack" -> 8入; "4 x 375mL" -> 375毫升 x 4入; g -> 克; kg -> 公斤; mL -> 毫升; L/Litre -> 公升; "Size 12" -> 12號.
+5. "Assorted" -> 綜合款 (never 什錦); "Varieties"/"Selected varieties" -> 多款口味 (or 多款 for non-food); "each" -> leave out; "or" -> 或.
+6. Flavours: "Sour Cream & Chives" -> 酸奶油洋蔥口味, "Honey Soy" -> 蜂蜜醬油口味, "Cookies & Cream" -> 巧克力餅乾奶油口味, "Salt & Vinegar" -> 鹽醋口味.
+7. Pet food: "Adult" -> 成犬/成貓 (never 成人). Underwear "Trunk" -> 四角褲. SIM cards, phones and modems keep the product name in English.
+8. Output only the translation - no notes, no explanations, no marketing words.
+
+Titles:
+"""
+
 def translate_batch_with_gemini(titles, api_key):
     """
-    Translates up to 30 titles at once with Google Gemini API.
-    Returns a dict mapping original title -> {'zh': ..., 'ja': ..., 'ko': ...}.
+    Translates a batch of titles with the Gemini API.
+    Returns a dict mapping original title -> {'zh': ..., 'ja': ..., 'ko': ..., 'src': 'ai'}.
     """
-    if not api_key or not titles:
+    if not api_key or not titles or _gemini_state['disabled']:
         return {}
 
-    url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite:generateContent?key={api_key}"
-    
-    prompt = (
-        "You are an expert translator and Australian supermarket merchandiser. "
-        "Translate the following Australian grocery titles into:\n"
-        "1. 'zh': Traditional Chinese (Taiwan/Hong Kong style, friendly for backpackers and locals in Australia). "
-        "CRITICAL BRAND RULES FOR CHINESE: "
-        "- NEVER translate brand names into literal Chinese! Keep famous brands in English: "
-        "  * 'Connoisseur' -> KEEP 'Connoisseur' (NEVER '鑑賞家' or '行家')\n"
-        "  * 'Arnott\\'s', 'Tim Tam', 'Shapes', 'Vegemite', 'Moccona', 'Finish', 'Fairy', 'Peters Drumstick', 'Bonds', 'Red Rock Deli'\n"
-        "- Translate grocery cuts, flavors, and packaging accurately: "
-        "  * 'Cookies & Cream' -> '巧酥餅乾風味' (NOT '餅乾和奶油')\n"
-        "  * 'Honey Soy & Chicken' -> '蜂蜜醬油雞汁風味' (NOT '大豆和雞肉')\n"
-        "  * 'Sour Cream & Chives' -> '酸奶洋蔥風味' (NOT '韭菜')\n"
-        "  * 'Gourmet Ice Cream Sticks' -> '頂級雪糕' (NOT '美食冰淇淋棒')\n"
-        "  * 'Trunk' (for underwear) -> '男款平口四角內褲' (NOT '前軀幹')\n"
-        "  * 'Adult Dog Food' -> '成犬乾糧' (NOT '成人')\n"
-        "2. 'ja': Japanese supermarket grocery style.\n"
-        "3. 'ko': Korean supermarket grocery style.\n\n"
-        "Items to translate:\n"
-        f"{json.dumps([{'title': t} for t in titles], ensure_ascii=False)}\n\n"
-        "Respond with ONLY a raw JSON array of objects with keys: 'title', 'zh', 'ja', 'ko'. Do NOT wrap in markdown backticks."
-    )
-
+    model = pick_gemini_model(api_key)
+    url = f"{GEMINI_API_BASE}/models/{model}:generateContent"
     body = {
-        "contents": [
-            {
-                "parts": [{"text": prompt}]
-            }
-        ]
+        "contents": [{"parts": [{"text": TRANSLATION_PROMPT + json.dumps(titles, ensure_ascii=False) +
+                                  "\n\nRespond with a JSON array of objects with keys: title (copied exactly), zh, ja, ko."}]}],
+        "generationConfig": {"temperature": 0.2, "responseMimeType": "application/json"}
     }
 
-    try:
-        data_bytes = json.dumps(body).encode('utf-8')
-        req = urllib.request.Request(
-            url,
-            data=data_bytes,
-            headers={
-                'Content-Type': 'application/json',
-                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'
-            },
-            method='POST'
-        )
-        with urllib.request.urlopen(req, timeout=20) as resp:
-            resp_data = json.loads(resp.read().decode('utf-8'))
+    for attempt in range(3):
+        try:
+            resp_data = _gemini_request(url, api_key, body)
             candidates = resp_data.get('candidates', [])
             if not candidates:
+                gh_warning(f"Gemini returned no candidates: {str(resp_data)[:200]}")
                 return {}
-            
-            # Find the text part in candidate content
             text_content = ''
             for p in candidates[0].get('content', {}).get('parts', []):
                 if 'text' in p:
                     text_content = p['text'].strip()
                     break
-
-            # Strip markdown json codeblocks if any
             if text_content.startswith('```'):
                 text_content = re.sub(r'^```(?:json)?\s*', '', text_content)
                 text_content = re.sub(r'\s*```$', '', text_content)
 
             parsed_list = json.loads(text_content)
+            wanted = set(titles)
             results = {}
             for item in parsed_list:
-                orig = item.get('title')
-                if orig:
+                orig = (item.get('title') or '').strip()
+                if orig in wanted and item.get('zh'):
                     results[orig] = {
-                        'zh': clean_translated_text(item.get('zh', orig), orig),
-                        'ja': clean_translated_text(item.get('ja', orig), orig),
-                        'ko': clean_translated_text(item.get('ko', orig), orig)
+                        'zh': clean_translated_text(item.get('zh') or orig, orig),
+                        'ja': clean_translated_text(item.get('ja') or orig, orig),
+                        'ko': clean_translated_text(item.get('ko') or orig, orig),
+                        'src': 'ai'
                     }
             return results
-    except Exception as e:
-        print(f"[WARN] Gemini batch translation failed: {e}")
-        return {}
+        except urllib.error.HTTPError as e:
+            detail = ''
+            try:
+                detail = e.read().decode('utf-8')[:300]
+            except Exception:
+                pass
+            if e.code in (429, 500, 503) and attempt < 2:
+                wait = 30 * (attempt + 1)
+                print(f"  Gemini HTTP {e.code}, retrying in {wait}s...")
+                time.sleep(wait)
+                continue
+            gh_warning(f"Gemini translation failed: HTTP {e.code} (model {model}) {detail}")
+            if e.code in (400, 401, 403, 404, 429):
+                _gemini_state['disabled'] = True  # key/model/quota problem: no point retrying this run
+            return {}
+        except Exception as e:
+            gh_warning(f"Gemini translation failed: {e}")
+            return {}
+    return {}
 
 # 2. Free Google Translate Fallback
 def translate_via_free_api(text, target_lang):
@@ -253,10 +299,8 @@ def translate_via_free_api(text, target_lang):
         return None
 
 def fallback_translate(text, lang):
-    lower = text.lower()
-    for term, tr in GROCERY_TERMS.items():
-        if term in lower:
-            return f"{text} ({tr.get(lang, term)})"
+    # Keep the original English title when no real translation is available.
+    # (Appending a random glossary word like "(茶)" produced confusing titles.)
     return text
 
 def translate_single_fallback(title):
@@ -278,7 +322,7 @@ def run_auto_translate():
     gemini_key = get_gemini_api_key()
 
     if gemini_key:
-        print("[AI] Gemini API Key detected! Using Google Gemini 2.5 Flash for high-precision context translation.")
+        print("[AI] Gemini API Key detected! Using Google Gemini for high-precision context translation.")
     else:
         print("[INFO] GEMINI_API_KEY not set in .env or environment. Using intelligent rule-based glossary and fallback translator.")
         print("       (Tip: Add GEMINI_API_KEY to your .env or GitHub Secrets for 100% human-grade AI translations)")
@@ -332,23 +376,40 @@ def run_auto_translate():
     missing_titles = list(dict.fromkeys(missing_titles))
     print(f"Total titles: {len(titles_to_check)}. Missing, flawed, or untranslated: {len(missing_titles)}")
 
+    # Titles translated earlier by the literal machine-translation fallback are re-done by AI,
+    # a limited number per run so the free Gemini quota is never exhausted.
+    upgrade_titles = []
+    if gemini_key:
+        missing_set = set(missing_titles)
+        upgrade_titles = sorted(t for t in titles_to_check
+                                if t not in missing_set and (translations.get(t) or {}).get('src') != 'ai')
+        print(f"Non-AI translations waiting for AI upgrade: {len(upgrade_titles)}")
+
     # 4. Translate missing items
-    if missing_titles:
+    if missing_titles or upgrade_titles:
         if gemini_key:
-            print(f"Translating {len(missing_titles)} items with Gemini AI batch engine...")
             BATCH_SIZE = 25
-            for i in range(0, len(missing_titles), BATCH_SIZE):
-                batch = missing_titles[i:i + BATCH_SIZE]
-                print(f"  Batch {i//BATCH_SIZE + 1}/{(len(missing_titles) + BATCH_SIZE - 1)//BATCH_SIZE} ({len(batch)} items)...")
-                batch_res = translate_batch_with_gemini(batch, gemini_key)
-                
-                # Check for any items that failed in batch
-                for t in batch:
+            max_calls = int(os.environ.get('GEMINI_MAX_CALLS_PER_RUN', '40'))
+            queue = [(t, True) for t in missing_titles] + [(t, False) for t in upgrade_titles]
+            print(f"Translating with Gemini AI: {len(missing_titles)} new + {len(upgrade_titles)} upgrades (max {max_calls} requests this run)...")
+            calls = 0
+            ai_ok = 0
+            for i in range(0, len(queue), BATCH_SIZE):
+                chunk = queue[i:i + BATCH_SIZE]
+                batch_res = {}
+                if calls < max_calls:
+                    batch_res = translate_batch_with_gemini([t for t, _ in chunk], gemini_key)
+                    calls += 1
+                    time.sleep(4.5)  # stay under the free-tier requests-per-minute limit
+                for t, is_new in chunk:
                     if t in batch_res:
                         translations[t] = batch_res[t]
-                    else:
-                        translations[t] = translate_single_fallback(t)
-                time.sleep(1.0)
+                        ai_ok += 1
+                    elif is_new:
+                        translations[t] = translate_single_fallback(t)  # retried by AI on a later run
+                if calls >= max_calls and all(not is_new for t, is_new in queue[i + BATCH_SIZE:]):
+                    break
+            print(f"Gemini AI translated {ai_ok} titles using {calls} requests.")
         else:
             print(f"Translating {len(missing_titles)} new items concurrently via fallback...")
             workers = min(8, len(missing_titles))
