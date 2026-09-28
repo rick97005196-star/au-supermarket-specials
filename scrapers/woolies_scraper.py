@@ -193,6 +193,21 @@ def scrape_woolies_online_half_price(max_pages: int = 100) -> List[Dict[str, Any
     url = 'https://www.woolworths.com.au/apis/ui/Search/products'
     page = 1
     excluded_online_count = 0
+
+    # Woolworths blocks plain python-requests (403) from cloud servers such as GitHub Actions.
+    # curl_cffi mimics a real Chrome browser, which the site accepts, so the update is fully automatic.
+    try:
+        from curl_cffi import requests as cffi_requests
+        session = cffi_requests.Session(impersonate='chrome')
+        print("Woolies API: using curl_cffi (Chrome impersonation)")
+    except Exception:
+        session = requests.Session()
+        session.headers.update(HEADERS)
+        print("Woolies API: curl_cffi not installed, falling back to requests")
+    try:
+        session.get('https://www.woolworths.com.au/', timeout=20)  # obtain session cookies first
+    except Exception as e:
+        print(f"Woolies homepage warm-up failed: {e}")
     
     while page <= max_pages:
         try:
@@ -201,7 +216,7 @@ def scrape_woolies_online_half_price(max_pages: int = 100) -> List[Dict[str, Any
                 'PageSize': 36,
                 'PageNumber': page
             }
-            r = requests.get(url, params=params, headers=HEADERS, timeout=15)
+            r = session.get(url, params=params, timeout=20)
             if r.status_code != 200:
                 print(f"Woolies API status {r.status_code} at page {page}, stopping.")
                 break
