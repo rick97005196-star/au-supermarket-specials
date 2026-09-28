@@ -90,19 +90,19 @@ const I18N = {
         cross_store_view_other: '查看 {store} 特價商品',
         categories: {
             'all': '全部特價',
-            'produce': '🥦 蔬菜水果',
-            'meat': '🥩 肉品',
-            'seafood': '🦐 海鮮水產',
-            'dairy_eggs': '🥛 蛋奶製品',
-            'bakery': '🥖 麵包烘焙',
-            'frozen': '🧊 冷凍食品',
-            'pantry': '🍚 糧油調味',
-            'snacks': '🍫 休閒零食',
-            'drinks': '🥤 飲料',
+            'produce': '🥦 生鮮蔬果',
+            'meat': '🥩 肉類・火腿培根',
+            'seafood': '🦐 海鮮',
+            'dairy_eggs': '🥛 乳製品・蛋',
+            'bakery': '🥖 麵包・糕點',
+            'frozen': '🧊 冷凍食品・冰品',
+            'pantry': '🍚 米油乾貨・醬料',
+            'snacks': '🍫 零食・餅乾糖果',
+            'drinks': '🥤 飲料・咖啡茶',
             'liquor': '🍺 酒類',
-            'health_vitamins': '💊 美妝保健',
-            'household': '🧺 日用清潔',
-            'pet': '🐾 寵物用品'
+            'health_vitamins': '💊 個人清潔・美妝保健',
+            'household': '🧺 居家清潔・生活用品',
+            'pet': '🐾 寵物食品・用品'
         }
     },
     'en': {
