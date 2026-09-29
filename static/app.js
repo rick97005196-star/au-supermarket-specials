@@ -363,7 +363,7 @@ const SEARCH_SYNONYMS = [
     { terms: ['餅乾', '饼干', '曲奇', 'ビスケット', 'クッキー', '비스킷', '쿠키', 'biscuit', 'cookie'], en: ['biscuit', 'cookie', 'cracker', 'tim tam', 'oreo'], cat: ['snacks'] },
     { terms: ['巧克力', '朱古力', 'チョコ', 'チョコレート', '초콜릿', 'chocolate'], en: ['chocolate', 'cadbury', 'lindt', 'kitkat'], cat: ['snacks'] },
     { terms: ['糖果', '軟糖', '糖', 'キャンディ', 'グミ', '사탕', '젤리', 'lollies', 'candy'], en: ['lollies', 'lolly', 'candy', 'gummy', 'jelly'], cat: ['snacks'] },
-    { terms: ['牛奶', '鮮奶', '奶', '牛乳', 'ミルク', '우유', 'milk'], en: ['milk'], cat: ['dairy_eggs', 'drinks'] },
+    { terms: ['牛奶', '鮮奶', '奶', '牛乳', 'ミルク', '우유', 'milk'], en: ['milk'], not: ['milk chocolate', 'milk choc', 'milk bottles', 'milk thistle', 'dairy milk', 'デーリーミルク', 'ミルクシスル', '데어리 밀크', '밀크 시슬', '奶薊', '牛奶巧克力', 'ミルクチョコ', '밀크 초콜릿', '밀크초콜릿'], cat: ['dairy_eggs', 'drinks', 'pantry'], onlyCat: true },
     { terms: ['優格', '優酪乳', '酸奶', '酸乳', 'ヨーグルト', '요거트', '요구르트', 'yoghurt', 'yogurt'], en: ['yoghurt', 'yogurt'], cat: ['dairy_eggs'] },
     { terms: ['起司', '乳酪', '芝士', '奶酪', 'チーズ', '치즈', 'cheese'], en: ['cheese', 'cheddar', 'brie', 'camembert', 'mozzarella', 'parmesan', 'feta', 'haloumi'], cat: ['dairy_eggs'] },
     { terms: ['奶油', '牛油', '黃油', 'バター', '버터', 'butter'], en: ['butter'], cat: ['dairy_eggs'] },
@@ -394,7 +394,8 @@ const SEARCH_SYNONYMS = [
     { terms: ['咖啡', 'コーヒー', '커피', 'coffee'], en: ['coffee', 'espresso', 'latte', 'cappuccino', 'nescafe', 'moccona'], cat: ['drinks'] },
     { terms: ['茶', '茶包', 'お茶', '紅茶', '차', 'tea'], en: ['tea'], cat: ['drinks'] },
     { terms: ['果汁', 'ジュース', '주스', 'juice'], en: ['juice'], cat: ['drinks'] },
-    { terms: ['汽水', '可樂', '可乐', '碳酸飲料', 'コーラ', 'ソーダ', '콜라', '탄산', 'soda', 'soft drink', 'cola'], en: ['soft drink', 'cola', 'coke', 'pepsi', 'sprite', 'fanta', 'solo', 'schweppes'], cat: ['drinks'] },
+    { terms: ['可樂', '可乐', '可口可樂', 'コーラ', 'コカコーラ', '콜라', '코카콜라', 'coke', 'cola', 'coca cola', 'coca-cola', 'pepsi'], en: ['coca-cola', 'coca cola', 'coke', 'cola', 'pepsi'], cat: ['drinks'] },
+    { terms: ['汽水', '碳酸飲料', 'ソーダ', '탄산', 'soda', 'soft drink'], en: ['soft drink', 'cola', 'coke', 'pepsi', 'sprite', 'fanta', 'solo', 'schweppes'], cat: ['drinks'] },
     { terms: ['水', '礦泉水', '矿泉水', 'ミネラルウォーター', '생수', 'water'], en: ['water'], not: ['水果', '汽水', '香水', '水煮', '防水', '卸妝水', '化妝水', '漱口水'], cat: ['drinks'] },
     { terms: ['啤酒', 'ビール', '맥주', 'beer'], en: ['beer', 'lager', 'ale'], cat: ['liquor'] },
     { terms: ['葡萄酒', '紅酒', '白酒', 'ワイン', '와인', 'wine'], en: ['wine', 'shiraz', 'sauvignon', 'chardonnay', 'prosecco', 'merlot', 'pinot'], cat: ['liquor'] },
@@ -524,6 +525,8 @@ function scoreSearchMatch(item, query) {
     let score = 0;
     for (const term of terms) {
         const group = _findGroup(term);
+        // e.g. "牛奶" means milk to drink: not shampoo with coconut milk or milk chocolate
+        if (group && group.onlyCat && !group.cat.includes(item.category)) return 0;
         const nameHay = group ? _strip(item._hay, group.not) : item._hay;
         const titleClean = group ? _strip(item._title, group.not) : item._title;
         let best = 0;
@@ -2463,7 +2466,7 @@ function repairLocalShoppingItems() {
         const items = getLocalShoppingList();
         if (!items || items.length === 0) return;
         let changed = false;
-        const pool = window.staticSpecials || allSpecials || [];
+        const pool = (typeof staticSpecials !== 'undefined' && staticSpecials) || [];
         items.forEach(it => {
             const price = (typeof it.price === 'number') ? it.price : (parseFloat(it.price) || 0);
             let was = (typeof it.was_price === 'number') ? it.was_price : (parseFloat(it.was_price) || 0);

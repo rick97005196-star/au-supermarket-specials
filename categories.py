@@ -109,6 +109,25 @@ def classify_product(title: str, raw_cat: str = "", product_url: str = "") -> st
             return 'frozen'
 
     # -------------------------------------------------------------
+    # 4b. FOOD THAT THE HOUSEHOLD RULES BELOW WOULD OTHERWISE SWALLOW
+    #     ("Snack Bag", "Water Bottle", "Foil" in a food name) or that has no other rule
+    # -------------------------------------------------------------
+    is_non_food_thing = bool(re.search(r'\b(?:air\s*freshener|diffuser|disinfectant|cleaning|laundry|stain\s*remover|washing\s*powder|detergent|booster\s*beads|candles?|nail|polish|tea\s*towel|tablecloths?|mug|sprayer|cooler|ice\s*box|books?|cups?|drink\s*bottles?|sipper|tritan|stainless\s*steel|thermal|insulated|beauty\s*oil|baby\s*bath|plug\s*in|refills?)\b', tl))
+    if not is_non_food_thing:
+        if re.search(r'\b(?:pizzas?|cheesecakes?|frozen\s*bites)\b', tl) and not is_pizza_base and not is_packet_chips and not re.search(r'\bchips\b', tl):
+            return 'frozen'
+        if re.search(r'\b(?:tuna|albacore|real\s*stock|liquid\s*stock|stock\s*\d|seasoning|coconut\s*(?:milk|cream)|toddler\s*milk|milk\s*drink\s*stage|infant\s*formula)\b', tl) and not re.search(r'\bchocolate\b', tl):
+            return 'pantry'
+        if re.search(r'\b(?:milkybar|milky\s*way|smarties|snakes|jellies|go\s*ahead|hobnobs|mcvitie[\'’]?s|carman[\'’]?s|protein\s*bars?|oat\s*slices?|twisties|snack\s*bag|share\s*pack)\b', tl):
+            return 'snacks'
+        if re.search(r'\b(?:schweppes|tonic\s*water|mineral\s*water|soda\s*water)\b', tl):
+            return 'drinks'
+        if re.search(r'\b(?:yogo|yoghurt\s*pots?)\b', tl):
+            return 'dairy_eggs'
+        if re.search(r'\b(?:sliced\s*varieties|shaved\s*meat|sliced\s*or\s*shaved)\b', tl) and not re.search(r'\b(?:cheese|dips?|hommus|antipasto|olives)\b', tl):
+            return 'meat'
+
+    # -------------------------------------------------------------
     # 5. HOUSEHOLD (Laundry, Dishwashing, Cleaning, Paper Goods, Batteries, Cookware, Bags, Bedding, Garden, Telecom, Apparel)
     # Avoid stealing food items (noodle bowls, snack pots, hot dog rolls, etc.)
     # -------------------------------------------------------------
@@ -256,6 +275,10 @@ def classify_product(title: str, raw_cat: str = "", product_url: str = "") -> st
            re.search(r'\b(?:apples?|bananas?|oranges?|mandarins?|grapes?|strawberries|blueberries|raspberries|avocados?|lemons?|limes?|mangoes?|peaches|plums|pears?|pineapple|kiwifruit|wombok)\b', tl) or \
            re.search(r'\b(?:potatoes?|sweet\s*potatoes?|carrots?|onions?|broccoli|cauliflower|lettuce|salad|salads?|cabbage|zucchini|mushrooms?|capsicums?|cucumbers?|spinach|tomatoes?|slaw\s*kit|qukes|snackables|prepacked\s*salads?|coleslaw)\b', tl):
             return 'produce'
+
+    # Plain milk that no rule above caught (e.g. "Pauls Smarter White Milk 2L")
+    if re.search(r'\bmilk\b', tl) and not re.search(r'\b(?:shampoo|conditioner|lotion|body|serum|toner|diffuser|refill|candle|wash|mask|cream|hair)\b', tl):
+        return 'dairy_eggs'
 
     # Fallback to pantry if edible food grocery, else household
     if any(k in tl for k in ['snack', 'food', 'baking', 'flavour', 'sweet', 'organic', 'syrup', 'mix', 'noodle', 'rice', 'meal', 'pasta', 'taco', 'pho']):
