@@ -82,6 +82,8 @@ function applyLanguage(lang) {
     });
     const langSelect = document.getElementById('langSelect');
     if (langSelect) langSelect.value = lang;
+    const langPill = document.getElementById('langPillText');
+    if (langPill) langPill.textContent = ({ zh: '中文', en: 'EN', ja: '日本語', ko: '한국어' })[lang] || lang;
     document.documentElement.lang = ({ zh: 'zh-TW', en: 'en', ja: 'ja', ko: 'ko' })[lang] || 'zh-TW';
 
     // Update text content of all elements with data-i18n
