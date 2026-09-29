@@ -1,0 +1,30 @@
+name: diag-tmp
+on: workflow_dispatch
+jobs:
+  diag:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.11' }
+      - run: pip install -q -r requirements.txt
+      - run: |
+          python - <<'PY'
+          import re, random
+          from curl_cffi import requests as cr
+          import requests as rq
+          def links(t): return ' '.join(sorted(set(m.group(1)+'/'+m.group(2) for m in re.finditer(r'-catalogue/([a-z0-9-]+)/(\d+)/catalogue2', t))))[:150]
+          tests = [
+            ('cffi plain', lambda: cr.Session(impersonate='chrome').get('https://www.salefinder.com.au/Coles-catalogue', timeout=20)),
+            ('cffi cb+cookie', lambda: cr.Session(impersonate='chrome').get('https://www.salefinder.com.au/Coles-catalogue?cb=%d' % random.randint(1,10**9), cookies={'postcodeId':'8328'}, timeout=20)),
+            ('cffi lower cb+cookie', lambda: cr.Session(impersonate='chrome').get('https://www.salefinder.com.au/coles-catalogue?cb=%d' % random.randint(1,10**9), cookies={'postcodeId':'8328'}, timeout=20)),
+            ('cffi cookie hdr', lambda: cr.Session(impersonate='chrome').get('https://www.salefinder.com.au/coles-catalogue?cb=%d' % random.randint(1,10**9), headers={'Cookie':'postcodeId=8328'}, timeout=20)),
+            ('cffi cookie only', lambda: cr.Session(impersonate='chrome').get('https://www.salefinder.com.au/coles-catalogue', cookies={'postcodeId':'8328'}, timeout=20)),
+            ('woolies cb+cookie', lambda: cr.Session(impersonate='chrome').get('https://www.salefinder.com.au/woolworths-catalogue?cb=%d' % random.randint(1,10**9), cookies={'postcodeId':'8328'}, timeout=20)),
+          ]
+          for name, fn in tests:
+              try:
+                  r = fn(); print(f"::warning::{name}: {r.status_code} {r.url} len={len(r.text)} links={links(r.text)}")
+              except Exception as e:
+                  print(f"::warning::{name}: ERROR {str(e)[:200]}")
+          PY
