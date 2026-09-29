@@ -51,7 +51,7 @@
 
     <!-- Pre-built styles (no in-browser compiling = faster on phones) -->
     <link rel="stylesheet" href="./tw.css?v=6.1">
-    <link rel="stylesheet" href="./design.css?v=7.0">
+    <link rel="stylesheet" href="./design.css?v=7.2">
 
     <!-- Non-blocking fonts & icons: text shows immediately with the phone's own fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -183,6 +183,9 @@
     <!-- ===================== Main ===================== -->
     <main class="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-5 sm:py-7 flex-1 space-y-5">
 
+        <!-- My regulars (favourites) -->
+        <section id="favPanel" class="fav-panel hidden" aria-live="polite"></section>
+
         <!-- Announcement (collapsible) -->
         <div id="announcementBox" class="hidden notice">
             <div class="flex items-center">
@@ -255,7 +258,10 @@
                 <span id="resultsCountText" class="text-[15px] font-semibold t-ink">找到 0 項特價品</span>
                 <span id="periodIndicatorBadge" data-i18n="current_cycle" class="result-badge hidden sm:inline-block truncate">本週特價</span>
             </div>
-            <div id="activeFilterNotice" class="text-[12px] t-ink-3 truncate"></div>
+            <div class="flex items-center gap-2 shrink-0">
+                <div id="activeFilterNotice" class="text-[12px] t-ink-3 truncate"></div>
+                <button type="button" id="favSearchBtn" class="toggle-pill hidden" onclick="toggleFavoriteSearch()"></button>
+            </div>
         </div>
 
         <!-- Product grid -->
@@ -457,11 +463,26 @@
 
             <div class="px-5 py-4 border-t b-line flex items-center gap-3" style="padding-bottom: max(16px, env(safe-area-inset-bottom))">
                 <button onclick="closeProductModal()" class="btn-ghost" data-i18n="close">關閉</button>
+                <button id="modalFavBtn" type="button" class="btn-ghost p-fav-modal" style="width:44px;padding:0" onclick="if(currentModalItem) toggleFavoriteProduct(currentModalItem, this)" aria-label="常買"><i class="fa-regular fa-heart"></i></button>
                 <button id="modalAddToListBtn" onclick="modalAddCurrentToShoppingList()" class="btn-primary flex-1">
                     <i class="fa-solid fa-plus text-[12px]"></i>
                     <span data-i18n="add_to_list">加入採買清單</span>
                 </button>
             </div>
+        </div>
+    </div>
+
+    <!-- My regulars: manage -->
+    <div id="favManagerBackdrop" onclick="closeFavManager()" class="fixed inset-0 bg-black/40 z-50 hidden"></div>
+    <div id="favManager" class="panel fixed z-50 hidden left-0 right-0 bottom-0 sm:left-1/2 sm:right-auto sm:bottom-auto sm:top-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2 w-full sm:max-w-md rounded-t-3xl sm:rounded-3xl flex flex-col max-h-[80vh]" style="box-shadow: var(--shadow-lg)" role="dialog" aria-modal="true">
+        <div class="px-5 py-4 flex items-center justify-between border-b b-line">
+            <h2 class="text-[17px] font-semibold t-ink"><i class="fa-solid fa-heart t-sale mr-1.5"></i><span data-i18n="fav_title">我的常買</span></h2>
+            <button onclick="closeFavManager()" class="icon-btn" aria-label="Close"><i class="fa-solid fa-xmark text-[14px]"></i></button>
+        </div>
+        <div id="favManagerList" class="flex-1 overflow-y-auto p-4 space-y-2"></div>
+        <div class="p-4 border-t b-line flex gap-2" style="padding-bottom: max(16px, env(safe-area-inset-bottom))">
+            <button type="button" class="btn-ghost" onclick="clearAllFavorites()" data-i18n="fav_clear_all">全部清除</button>
+            <button type="button" class="btn-primary flex-1" onclick="closeFavManager()" data-i18n="fav_done">完成</button>
         </div>
     </div>
 
@@ -477,6 +498,6 @@
     </div>
 
     <script src="./i18n.js?v=6.4" defer></script>
-    <script src="./app.js?v=7.1" defer></script>
+    <script src="./app.js?v=7.2" defer></script>
 </body>
 </html>
