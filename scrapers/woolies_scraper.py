@@ -211,7 +211,7 @@ def scrape_woolies_catalogue_items(base_list_url: str, initial_soup: BeautifulSo
                     if was_match:
                         was_price = float(was_match.group(1))
 
-                    save_match = re.search(r'Save\s+\$(\d+(?:\.\d{2})?)', full_text, re.IGNORECASE)
+                    save_match = re.search(r'Save\s+(?:from\s+|up\s+to\s+)?\$(\d+(?:\.\d{2})?)', full_text, re.IGNORECASE)
                     if save_match:
                         save_amount = float(save_match.group(1))
 

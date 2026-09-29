@@ -41,6 +41,37 @@ def get_australian_supermarket_cycle():
     next_cycle_tue = current_cycle_tue + datetime.timedelta(days=7)
     return current_cycle_wed, current_cycle_tue, next_cycle_wed, next_cycle_tue
 
+SUPER_SAVERS_FALLBACK = 'https://www.aldi.com.au/products/super-savers/k/1588161426952145'
+TILE_SELECTOR = 'a.product-tile__link, [data-qa="product-tile"]'
+
+
+def fetch_all_tiles(url: str, max_pages: int = 15) -> list:
+    """All product tiles of an ALDI listing, following its ?page=N pages (30 products per page)."""
+    tiles, seen = [], set()
+    for page in range(1, max_pages + 1):
+        page_url = url if page == 1 else f"{url}{'&' if '?' in url else '?'}page={page}"
+        res = requests.get(page_url, headers=HEADERS, timeout=15)
+        if res.status_code != 200:
+            break
+        # A listing that redirects to the catalogue of ALL products is not a specials list
+        if re.search(r'aldi\.com\.au/products/?(\?|$)', res.url):
+            print(f"::warning::ALDI listing {url} redirects to all products - skipped")
+            break
+        soup = BeautifulSoup(res.text, 'html.parser')
+        found = soup.select(TILE_SELECTOR) or soup.select('.box--wrapper[href*="/product/"], a[href*="/product/"]')
+        new = 0
+        for t in found:
+            key = t.get('href') or t.get_text(' ', strip=True)[:80]
+            if key in seen:
+                continue
+            seen.add(key)
+            tiles.append(t)
+            new += 1
+        if new == 0 or len(found) < 30:
+            break
+    return tiles
+
+
 def discover_aldi_endpoints():
     """
     Discovers all dynamic ALDI Special Buys dates & themes, plus Super Savers.
@@ -48,15 +79,19 @@ def discover_aldi_endpoints():
     """
     current_wed, current_tue, next_wed, next_tue = get_australian_supermarket_cycle()
     
-    endpoints = [
-        ('Super Savers', 'https://www.aldi.com.au/groceries/super-savers/', 'current')
-    ]
-    seen_urls = set(['https://www.aldi.com.au/groceries/super-savers/'])
-    
+    endpoints = []
+    seen_urls = set()
+    super_savers = SUPER_SAVERS_FALLBACK
+
     try:
         r = requests.get('https://www.aldi.com.au/special-buys/', headers=HEADERS, timeout=15)
         if r.status_code == 200:
             soup = BeautifulSoup(r.text, 'html.parser')
+            # ALDI moved Super Savers before (the old /groceries/super-savers/ now redirects to ALL products),
+            # so take the current link from the site menu whenever possible.
+            ss = soup.find('a', href=re.compile(r'/products/super-savers/k/\d+'))
+            if ss:
+                super_savers = f"https://www.aldi.com.au{ss['href']}" if ss['href'].startswith('/') else ss['href']
             for a in soup.find_all('a', href=True):
                 href = a['href']
                 if '/special-buys/' in href:
@@ -83,7 +118,8 @@ def discover_aldi_endpoints():
                         endpoints.append((f"Special Buys {date_str}", full_url, period))
     except Exception as e:
         print(f"Warning: Failed to discover ALDI Special Buys endpoints: {e}")
-        
+
+    endpoints.insert(0, ('Super Savers', super_savers, 'current'))
     return endpoints, (current_wed, current_tue, next_wed, next_tue)
 
 def scrape_aldi_all_weeks() -> Dict[str, Any]:
@@ -100,16 +136,9 @@ def scrape_aldi_all_weeks() -> Dict[str, Any]:
     
     for label, url, period in endpoints:
         try:
-            res = requests.get(url, headers=HEADERS, timeout=15)
-            if res.status_code != 200:
-                continue
-            soup = BeautifulSoup(res.text, 'html.parser')
-            tiles = soup.select('a.product-tile__link, [data-qa="product-tile"]')
-            
-            # Fallback if modern tile selector is absent
-            if not tiles:
-                tiles = soup.select('.box--wrapper[href*="/product/"], a[href*="/product/"]')
-                
+            tiles = fetch_all_tiles(url)
+            print(f"ALDI {label}: {len(tiles)} products")
+
             for tile in tiles:
                 # 1. Brand & Name extraction
                 brand_el = tile.select_one('[data-test="product-tile__brandname"]')
