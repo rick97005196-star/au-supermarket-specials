@@ -167,8 +167,9 @@ def _gemini_request(url, api_key, body=None, timeout=60):
     with urllib.request.urlopen(req, timeout=timeout) as resp:
         return json.loads(resp.read().decode('utf-8'))
 
-def pick_gemini_model(api_key):
-    """Choose a model that actually exists for this API key (a wrong model name silently broke AI translation before)."""
+def gemini_model_candidates(api_key):
+    """Ordered list of models to try. The key's real model list is used, because hard-coded
+    names disappear over time (a missing model silently broke AI translation before)."""
     if api_key in _gemini_model_cache:
         return _gemini_model_cache[api_key]
     wanted = [m for m in [os.environ.get('GEMINI_MODEL', '').strip()] if m] + GEMINI_MODEL_PREFERENCE
@@ -179,15 +180,18 @@ def pick_gemini_model(api_key):
             if 'generateContent' in m.get('supportedGenerationMethods', []):
                 available.append(m['name'].split('/', 1)[-1])
     except Exception as e:
-        gh_warning(f"Gemini: could not list models ({e}); trying {wanted[0]}")
-    chosen = next((m for m in wanted if m in available), None)
-    if not chosen and available:
-        flash = [m for m in available if 'flash' in m and not any(x in m for x in ('image', 'tts', 'live', 'audio', 'embedding'))]
-        chosen = flash[0] if flash else None
-    chosen = chosen or wanted[0]
-    print(f"[AI] Gemini model: {chosen}")
-    _gemini_model_cache[api_key] = chosen
-    return chosen
+        gh_warning(f"Gemini: could not list models ({e})")
+    text_models = [m for m in available if 'gemini' in m and not any(
+        x in m for x in ('image', 'tts', 'live', 'audio', 'embedding', 'vision', 'robotics', 'computer-use'))]
+    flash = [m for m in text_models if 'flash' in m]
+    cands = [m for m in wanted if m in available]
+    cands += [m for m in flash if m not in cands] + [m for m in text_models if m not in cands]
+    cands = list(dict.fromkeys(cands)) or wanted
+    print(f"[AI] Gemini candidate models: {', '.join(cands[:8])}")
+    if os.environ.get('GITHUB_ACTIONS'):
+        print(f"::notice::Gemini models available to this key: {', '.join(text_models[:25]) or 'none listed'}")
+    _gemini_model_cache[api_key] = cands
+    return cands
 
 TRANSLATION_PROMPT = """You translate Australian supermarket product titles for a Taiwanese audience (working-holiday makers and students in Australia).
 
@@ -219,7 +223,10 @@ def translate_batch_with_gemini(titles, api_key):
     if not api_key or not titles or _gemini_state['disabled']:
         return {}
 
-    model = pick_gemini_model(api_key)
+    cands = gemini_model_candidates(api_key)
+    if not cands:
+        return {}
+    model = cands[0]
     url = f"{GEMINI_API_BASE}/models/{model}:generateContent"
     body = {
         "contents": [{"parts": [{"text": TRANSLATION_PROMPT + json.dumps(titles, ensure_ascii=False) +
@@ -227,7 +234,7 @@ def translate_batch_with_gemini(titles, api_key):
         "generationConfig": {"temperature": 0.2, "responseMimeType": "application/json"}
     }
 
-    for attempt in range(3):
+    for attempt in range(8):
         try:
             resp_data = _gemini_request(url, api_key, body)
             candidates = resp_data.get('candidates', [])
@@ -262,6 +269,12 @@ def translate_batch_with_gemini(titles, api_key):
                 detail = e.read().decode('utf-8')[:300]
             except Exception:
                 pass
+            if e.code == 404 and len(cands) > 1:
+                gh_warning(f"Gemini model {model} not available (404), switching to {cands[1]}")
+                cands.pop(0)
+                model = cands[0]
+                url = f"{GEMINI_API_BASE}/models/{model}:generateContent"
+                continue
             if e.code in (429, 500, 503) and attempt < 2:
                 wait = 30 * (attempt + 1)
                 print(f"  Gemini HTTP {e.code}, retrying in {wait}s...")
