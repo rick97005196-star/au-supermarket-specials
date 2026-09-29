@@ -35,7 +35,27 @@ function initScrollListeners() {
     if (!backToTopBtn) return;
 
     const siteHeader = document.getElementById('siteHeader');
+    const catNav = document.getElementById('stickyCategoryNav');
+    let lastY = window.scrollY;
+    let ticking = false;
+    const updateCatNav = () => {
+        ticking = false;
+        const y = window.scrollY;
+        // (a sticky element's own offsetTop moves while stuck, so measure from the hero above it)
+        const hero = catNav ? catNav.previousElementSibling : null;
+        const menuStart = hero ? hero.offsetTop + hero.offsetHeight : 0;
+        const pastMenu = catNav ? (y > menuStart + 120) : false;
+        // Scrolling down (reading products): tuck the category menu away.
+        // Scrolling up a little: slide it back down. Near the top: always shown.
+        if (catNav) {
+            if (!pastMenu) catNav.classList.remove('is-tucked');
+            else if (y > lastY + 6) catNav.classList.add('is-tucked');
+            else if (y < lastY - 6) catNav.classList.remove('is-tucked');
+        }
+        lastY = y;
+    };
     window.addEventListener('scroll', () => {
+        if (!ticking) { ticking = true; requestAnimationFrame(updateCatNav); }
         if (siteHeader) siteHeader.classList.toggle('is-scrolled', window.scrollY > 8);
         if (window.scrollY > 300) {
             backToTopBtn.classList.remove('translate-y-16', 'opacity-0', 'pointer-events-none');
@@ -194,7 +214,6 @@ function getCleanCategoryLabel(catKey) {
 
 // Render Categories Bar (2 Rows: Row 1 Fresh & Perishables, Row 2 Pantry, Drinks, Liquor, Home & Pet)
 function renderCategoryBar() {
-    renderCategorySheet();
     const bar = document.getElementById('categoryBar');
     if (!bar) return;
 
@@ -204,7 +223,7 @@ function renderCategoryBar() {
     const renderBtnContent = (btn, catKey, isActive) => {
         const style = CATEGORY_STYLES[catKey] || { emoji: '🏷️' };
         const label = getCleanCategoryLabel(catKey);
-        btn.innerHTML = `<span class="chip-emoji" aria-hidden="true">${style.emoji}</span><span>${label}</span>`;
+        btn.innerHTML = `<span class="chip-icon ${style.iconBg || ''}" aria-hidden="true">${style.emoji}</span><span>${label}</span>`;
         btn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
     };
 
@@ -226,7 +245,12 @@ function renderCategoryBar() {
     const row1Keys = ['all', 'produce', 'meat', 'seafood', 'dairy_eggs', 'bakery', 'frozen'];
     const row2Keys = ['pantry', 'snacks', 'drinks', 'liquor', 'health_vitamins', 'household', 'pet'];
     
-    const orderedKeys = [...row1Keys, ...row2Keys];
+    // Grid fills column by column, so interleave: upper row = row1Keys, lower row = row2Keys
+    const orderedKeys = [];
+    for (let i = 0; i < Math.max(row1Keys.length, row2Keys.length); i++) {
+        if (row1Keys[i]) orderedKeys.push(row1Keys[i]);
+        if (row2Keys[i]) orderedKeys.push(row2Keys[i]);
+    }
 
     orderedKeys.forEach(catKey => {
         const btn = document.createElement('button');
@@ -255,71 +279,6 @@ function selectCategory(catKey) {
     }
 
     loadSpecials();
-}
-
-// ---------- Mobile bottom navigation & category sheet ----------
-const CATEGORY_ORDER = ['all', 'produce', 'meat', 'seafood', 'dairy_eggs', 'bakery', 'frozen',
-                        'pantry', 'snacks', 'drinks', 'liquor', 'health_vitamins', 'household', 'pet'];
-
-function renderCategorySheet() {
-    const grid = document.getElementById('catSheetGrid');
-    if (grid) {
-        grid.innerHTML = '';
-        CATEGORY_ORDER.forEach(catKey => {
-            const style = CATEGORY_STYLES[catKey] || { emoji: '🏷️' };
-            const btn = document.createElement('button');
-            btn.className = 'sheet-cat' + (catKey === currentCategory ? ' is-active' : '') + (catKey === 'all' ? ' is-all' : '');
-            btn.innerHTML = `<span class="e" aria-hidden="true">${style.emoji}</span><span>${getCleanCategoryLabel(catKey)}</span>`;
-            btn.onclick = () => {
-                closeCategorySheet();
-                selectCategory(catKey);
-                const target = document.getElementById('resultsCountText');
-                if (target) {
-                    const y = target.getBoundingClientRect().top + window.scrollY - 80;
-                    window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
-                }
-            };
-            grid.appendChild(btn);
-        });
-    }
-    // Bottom bar shows the chosen category's name, so users always know what they're viewing
-    const label = document.getElementById('navCatLabel');
-    const dot = document.getElementById('navCatDot');
-    const isFiltered = currentCategory && currentCategory !== 'all';
-    if (label) label.textContent = isFiltered ? getCleanCategoryLabel(currentCategory) : t('category_label');
-    if (dot) dot.classList.toggle('hidden', !isFiltered);
-    const navCats = document.getElementById('navCats');
-    if (navCats) navCats.classList.toggle('is-active', !!isFiltered);
-}
-
-function openCategorySheet() {
-    renderCategorySheet();
-    const sheet = document.getElementById('catSheet');
-    const backdrop = document.getElementById('catSheetBackdrop');
-    if (sheet) sheet.classList.add('is-open');
-    if (backdrop) backdrop.classList.remove('hidden');
-}
-
-function closeCategorySheet() {
-    const sheet = document.getElementById('catSheet');
-    const backdrop = document.getElementById('catSheetBackdrop');
-    if (sheet) sheet.classList.remove('is-open');
-    if (backdrop) backdrop.classList.add('hidden');
-}
-
-function navGoHome() {
-    closeCategorySheet();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-
-function navFocusSearch() {
-    closeCategorySheet();
-    const input = document.getElementById('searchInput');
-    if (!input) return;
-    const y = input.getBoundingClientRect().top + window.scrollY - 90;
-    window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
-    // focus right away so the phone keyboard opens (must happen inside the tap)
-    try { input.focus({ preventScroll: true }); } catch (e) { input.focus(); }
 }
 
 // Theme Management (Dark / Light Mode)
@@ -2084,11 +2043,7 @@ async function loadShoppingList() {
 
         const elCartBadge = document.getElementById('cartCountBadge');
         if (elCartBadge) elCartBadge.textContent = data.total_items || 0;
-        const elNavCart = document.getElementById('navCartCount');
-        if (elNavCart) {
-            elNavCart.textContent = data.total_items || 0;
-            elNavCart.classList.toggle('hidden', !data.total_items);
-        }
+
 
         const elOriginal = document.getElementById('drawerOriginalTotal');
         if (elOriginal) elOriginal.textContent = `$${originalTotal.toFixed(2)}`;
