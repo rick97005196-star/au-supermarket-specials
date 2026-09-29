@@ -136,6 +136,16 @@ button, a, input, select { -webkit-tap-highlight-color: transparent; }
     appearance: none; -webkit-appearance: none; border: 0; font-size: 16px; /* 16px: no zoom-in on iPhone */
 }
 @media (min-width: 768px) { .lang-pill { display: none; } }
+
+/* Phones: the top bar (logo · language · theme · list) is FIXED, so it always stays on screen
+   while scrolling – also in in-app browsers (LINE, Facebook) and older iPhones where sticky is unreliable */
+@media (max-width: 767px) {
+    .site-header { position: fixed; top: 0; left: 0; right: 0; }
+    body { padding-top: 64px; }
+    .site-header { padding-top: env(safe-area-inset-top); }
+    body { padding-top: calc(64px + env(safe-area-inset-top)); }
+    .cat-nav { top: calc(64px + env(safe-area-inset-top)) !important; }
+}
 .lang-pill:focus-within { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft, rgba(29,107,71,.15)); }
 
 .cart-btn {

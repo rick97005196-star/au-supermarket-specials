@@ -11,6 +11,8 @@ How the data is stored (keeps the files small):
   * `regions`       = the states where it is on special (missing/empty = every state)
   * `region_prices` = {state: {price, was_price, ...}} only for states where the price differs
 """
+import json
+import os
 import random
 import re
 import threading
@@ -163,20 +165,51 @@ def merge_regions(per_region):
 
 # ---------------------------------------------------------------- orchestration
 
+MEMORY_FILE = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'data', 'catalogues.json')
+
+
+def _load_memory():
+    try:
+        with open(MEMORY_FILE, encoding='utf-8') as f:
+            return json.load(f)
+    except Exception:
+        return {}
+
+
+def _save_memory(memory):
+    try:
+        os.makedirs(os.path.dirname(MEMORY_FILE), exist_ok=True)
+        with open(MEMORY_FILE, 'w', encoding='utf-8') as f:
+            json.dump(memory, f, ensure_ascii=False, indent=1, sort_keys=True)
+    except Exception as e:
+        print(f"Could not save catalogue memory: {e}")
+
+
 def scrape_all_regions(store, discover_fn, scrape_items_fn, pick_fn, max_pages=50, workers=4):
     """Read every state's catalogues (the same catalogue is only downloaded once) and merge them.
     Returns {'current': {'items', 'date_range'}, 'next': {...}} like the single-state scrapers."""
     chosen = {}      # region -> {'current': cat, 'next': cat}
     catalogues = {}  # id -> cat
+    memory = _load_memory()
     for region, pid in REGIONS:
         try:
             cats = discover_fn(pid, region)
         except Exception as e:
-            print(f"::warning::{store} {region}: catalogue discovery failed: {e}")
+            print(f"{store} {region}: catalogue discovery failed: {e}")
             cats = []
-        if not cats:
-            print(f"::warning::{store} {region}: no catalogue found - this state will show the {BASE_REGION} specials")
-            continue
+        if cats:
+            memory.setdefault(store, {})[region] = [
+                {'id': c['id'], 'url': c['url'], 'date_range': c.get('date_range', '')} for c in cats]
+        else:
+            # The catalogue site sometimes refuses our server. Use the catalogues seen on an earlier
+            # run instead: yesterday's "next week" catalogue is today's "this week", so the Wednesday
+            # switch-over still happens.
+            cats = [dict(c, soup=None) for c in memory.get(store, {}).get(region, [])]
+            if cats:
+                print(f"::notice::{store} {region}: site busy - using the catalogues remembered from an earlier run")
+            else:
+                print(f"::warning::{store} {region}: no catalogue found - this state will show the {BASE_REGION} specials")
+                continue
         cur, nxt = pick_fn(cats)
         chosen[region] = {'current': cur, 'next': nxt}
         for c in (cur, nxt):
@@ -184,6 +217,7 @@ def scrape_all_regions(store, discover_fn, scrape_items_fn, pick_fn, max_pages=5
                 catalogues.setdefault(c['id'], c)
         print(f"{store} {region}: current {cur and cur['id']} ({cur and cur['date_range']}), next {nxt and nxt['id']}")
 
+    _save_memory(memory)
     items_by_id = {}
     lock = threading.Lock()
 

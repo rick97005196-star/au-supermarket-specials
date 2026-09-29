@@ -3146,7 +3146,38 @@ function initApp() {
     loadShoppingList();
     checkUpdateStatus();
     setTimeout(loadTranslations, 1500);
+    setTimeout(() => checkForNewData(true), 8000);   // a slow connection may have shown the saved copy first
 }
+
+// ---------- Always show the latest week ----------
+// Phones keep yesterday's tab in memory and show it again without reloading (and a slow connection
+// may show the saved offline copy). Whenever the page comes back to the screen, check for newer data.
+let lastFreshCheck = 0;
+async function checkForNewData(force) {
+    if (!isStaticMode) return;
+    if (!force && Date.now() - lastFreshCheck < 3 * 60 * 1000) return;
+    lastFreshCheck = Date.now();
+    try {
+        const res = await fetch('/data/stats.json?fresh=' + Date.now(), { cache: 'no-store' });
+        if (!res.ok) return;
+        const fresh = await res.json();
+        if (!fresh || !fresh.data_updated_at || !globalStats || fresh.data_updated_at === globalStats.data_updated_at) return;
+        staticJsonCache.clear();
+        staticJsonCache.set('stats.json', fresh);
+        rawSpecials = null;
+        staticSpecials = [];
+        globalStats = fresh;
+        updateStatsDisplay();
+        await loadSpecials();
+        try { renderFavPanel(); } catch (e) {}
+        showToast(t('data_refreshed'), 'fa-rotate');
+    } catch (e) {}
+}
+document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') checkForNewData(); });
+window.addEventListener('pageshow', (e) => { if (e.persisted) checkForNewData(true); });
+window.addEventListener('focus', () => checkForNewData());
+window.addEventListener('online', () => checkForNewData(true));
+setInterval(() => { if (document.visibilityState === 'visible') checkForNewData(true); }, 30 * 60 * 1000);
 
 // ---------- Offline support (works in supermarkets with bad reception) ----------
 function initOfflineSupport() {

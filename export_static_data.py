@@ -111,6 +111,22 @@ def _region_stats(region):
                 half += 1
         out[period] = {'total': total, 'by_store': by_store, 'half_price_count': half}
     return out
+# "Next week" must never show this week's dates (happens when only ALDI has published next week)
+def _shift_week(rng, days=7):
+    import re as _r
+    m = _r.findall(r'(\d{1,2})\s+([A-Za-z]{3})[a-z]*\s*(\d{4})?', rng or '')
+    if len(m) < 2:
+        return ''
+    try:
+        y = m[1][2] or str(datetime.date.today().year)
+        s0 = datetime.datetime.strptime(f"{m[0][0]} {m[0][1]} {m[0][2] or y}", "%d %b %Y").date() + datetime.timedelta(days=days)
+        e0 = datetime.datetime.strptime(f"{m[1][0]} {m[1][1]} {y}", "%d %b %Y").date() + datetime.timedelta(days=days)
+    except ValueError:
+        return ''
+    f = lambda d: f"{d.strftime('%a')} {d.day} {d.strftime('%b %Y')}"
+    return f"{f(s0)} - {f(e0)}"
+if stats['next'].get('total') and stats['next'].get('date_range') == stats['current'].get('date_range'):
+    stats['next']['date_range'] = _shift_week(stats['current']['date_range']) or stats['next']['date_range']
 stats['base_region'] = BASE_REGION
 stats['regions'] = {r: _region_stats(r) for r in ALL_REGIONS}
 for period in ('current', 'next'):   # the default numbers are Queensland's

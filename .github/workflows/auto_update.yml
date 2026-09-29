@@ -77,7 +77,7 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action Bot"
-          git add data/specials.db static/data/specials.json static/data/stats.json static/data/translations.json
+          git add data/specials.db data/catalogues.json static/data/specials.json static/data/stats.json static/data/translations.json
           git diff --staged --quiet || (git commit -m "Auto-update weekly specials & translations [skip ci]" && git pull --rebase -X theirs origin main && git push origin main)
 
       - name: Build CSS (pre-built Tailwind, fast on phones)
