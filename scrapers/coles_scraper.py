@@ -12,6 +12,31 @@ HEADERS = {
 
 BASE_URL = 'https://www.salefinder.com.au'
 
+# ---- Robust HTTP: behave like a real Chrome browser and retry, so a busy/blocked moment
+#      on the catalogue site doesn't make a whole weekly update fail ----
+try:
+    from curl_cffi import requests as _cffi_requests
+    _SESSION = _cffi_requests.Session(impersonate='chrome')
+except Exception:
+    _SESSION = requests.Session()
+    _SESSION.headers.update(HEADERS)
+
+def _get(url, timeout=20, **kwargs):
+    import time as _t
+    last = None
+    for attempt in range(3):
+        try:
+            r = _SESSION.get(url, timeout=timeout, **kwargs)
+            if r.status_code == 200:
+                return r
+            last = r
+        except Exception as e:
+            last = e
+        _t.sleep(3 * (attempt + 1))
+    if isinstance(last, Exception):
+        raise last
+    return last
+
 def parse_price(text: str) -> float:
     match = re.search(r'\$(\d+(?:\.\d{2})?)', text)
     return float(match.group(1)) if match else 0.0
@@ -27,7 +52,7 @@ def discover_coles_catalogues() -> List[Dict[str, Any]]:
     """Discovers available Coles catalogues (this week and next week preview)."""
     catalogues = []
     try:
-        r = requests.get(f"{BASE_URL}/Coles-catalogue", headers=HEADERS, timeout=15)
+        r = _get(f"{BASE_URL}/Coles-catalogue")
         soup = BeautifulSoup(r.text, 'html.parser')
         
         # Find catalogue links (only Coles supermarket, exclude liquorland)
@@ -46,7 +71,7 @@ def discover_coles_catalogues() -> List[Dict[str, Any]]:
 
             # Check dates from the catalogue page
             list_url = f"{BASE_URL}{href}".replace('/catalogue2', '/list')
-            cat_r = requests.get(list_url, headers=HEADERS, timeout=15)
+            cat_r = _get(list_url)
             cat_soup = BeautifulSoup(cat_r.text, 'html.parser')
             
             date_el = cat_soup.select_one('.sf-catalogue-dates, .sale-dates')
@@ -62,7 +87,7 @@ def discover_coles_catalogues() -> List[Dict[str, Any]]:
         # Sort by catalogue ID: smaller ID is current, larger ID is next week
         catalogues.sort(key=lambda x: x['id'])
     except Exception as e:
-        print(f"Error discovering Coles catalogues: {e}")
+        print(f"::warning::Coles catalogue discovery failed: {e}")
 
     return catalogues
 
@@ -77,7 +102,7 @@ def scrape_coles_catalogue_items(base_list_url: str, initial_soup: BeautifulSoup
                 soup = initial_soup
             else:
                 page_url = f"{base_list_url}?qs={page},,,,"
-                r = requests.get(page_url, headers=HEADERS, timeout=15)
+                r = _get(page_url)
                 if r.status_code != 200:
                     break
                 soup = BeautifulSoup(r.text, 'html.parser')
@@ -198,7 +223,7 @@ def scrape_coles_all_weeks(max_pages: int = 50) -> Dict[str, Dict[str, Any]]:
 
     if not catalogues:
         # Fallback to direct page 1
-        print("No sub-catalogues found, using default Coles catalogue...")
+        print("::warning::No Coles catalogues found on salefinder (site blocked or changed) - existing data will be kept")
         items = scrape_coles_catalogue_items(f"{BASE_URL}/Coles-catalogue", None, max_pages=max_pages)
         res['current']['items'] = items
         return res

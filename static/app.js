@@ -885,6 +885,10 @@ function clusterItemsBySeries(items) {
 }
 
 // Sort items by comparator while clustering identical product lines together
+function strictSort(items, comparator) {
+    return [...items].sort((a, b) => comparator(a, b) || (a.title || '').localeCompare(b.title || ''));
+}
+
 function sortAndClusterBySeries(items, comparator) {
     if (!items || items.length <= 1) return items;
     const groups = new Map();
@@ -1152,11 +1156,12 @@ async function loadSpecials() {
             filtered = filtered.filter(it => isItemPopular(it) && calculatePopularityScore(it) > 0);
             filtered = createDiverseBestSellers(filtered);
         } else if (sortBy === 'save_desc') {
-            filtered = sortAndClusterBySeries(filtered, (a, b) => (b.save_amount || 0) - (a.save_amount || 0));
+            // strict order (grouping product series here broke the order, e.g. $11 before $0.95)
+            filtered = strictSort(filtered, (a, b) => (b.save_amount || 0) - (a.save_amount || 0));
         } else if (sortBy === 'price_asc') {
-            filtered = sortAndClusterBySeries(filtered, (a, b) => (a.price || 0) - (b.price || 0));
+            filtered = strictSort(filtered, (a, b) => (a.price || 0) - (b.price || 0));
         } else if (sortBy === 'price_desc') {
-            filtered = sortAndClusterBySeries(filtered, (a, b) => (b.price || 0) - (a.price || 0));
+            filtered = strictSort(filtered, (a, b) => (b.price || 0) - (a.price || 0));
         } else {
             // Default & relevance: Group identical products with different types together
             filtered = clusterItemsBySeries(filtered);
