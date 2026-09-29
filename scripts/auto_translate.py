@@ -150,8 +150,9 @@ def clean_translated_text(text, orig_title):
 GEMINI_API_BASE = "https://generativelanguage.googleapis.com/v1beta"
 # Preferred models, best first. Override with the GEMINI_MODEL env var / GitHub secret.
 GEMINI_MODEL_PREFERENCE = [
-    'gemini-2.5-flash', 'gemini-flash-latest', 'gemini-3.1-flash-lite', 'gemini-3-flash',
-    'gemini-2.5-flash-lite', 'gemini-flash-lite-latest', 'gemini-2.0-flash',
+    # "lite" models have the largest free-tier quota, ideal for bulk product-title translation
+    'gemini-3.1-flash-lite', 'gemini-flash-lite-latest', 'gemini-3.5-flash-lite', 'gemini-2.5-flash-lite',
+    'gemini-flash-latest', 'gemini-3.5-flash', 'gemini-2.5-flash',
 ]
 _gemini_model_cache = {}
 _gemini_state = {'disabled': False}  # set when quota is exhausted, to stop calling for this run
@@ -182,10 +183,10 @@ def gemini_model_candidates(api_key):
     except Exception as e:
         gh_warning(f"Gemini: could not list models ({e})")
     text_models = [m for m in available if 'gemini' in m and not any(
-        x in m for x in ('image', 'tts', 'live', 'audio', 'embedding', 'vision', 'robotics', 'computer-use'))]
+        x in m for x in ('image', 'tts', 'live', 'audio', 'embedding', 'vision', 'robotics', 'computer-use', 'transcribe', 'omni', 'customtools'))]
     flash = [m for m in text_models if 'flash' in m]
     cands = [m for m in wanted if m in available]
-    cands += [m for m in flash if m not in cands] + [m for m in text_models if m not in cands]
+    cands += [m for m in flash if m not in cands]
     cands = list(dict.fromkeys(cands)) or wanted
     print(f"[AI] Gemini candidate models: {', '.join(cands[:8])}")
     if os.environ.get('GITHUB_ACTIONS'):
@@ -269,14 +270,14 @@ def translate_batch_with_gemini(titles, api_key):
                 detail = e.read().decode('utf-8')[:300]
             except Exception:
                 pass
-            if e.code == 404 and len(cands) > 1:
-                gh_warning(f"Gemini model {model} not available (404), switching to {cands[1]}")
+            if e.code in (404, 429, 500, 503) and len(cands) > 1:
+                gh_warning(f"Gemini model {model} unavailable (HTTP {e.code}), switching to {cands[1]}")
                 cands.pop(0)
                 model = cands[0]
                 url = f"{GEMINI_API_BASE}/models/{model}:generateContent"
                 continue
-            if e.code in (429, 500, 503) and attempt < 2:
-                wait = 30 * (attempt + 1)
+            if e.code in (500, 503) and attempt < 2:
+                wait = 15 * (attempt + 1)
                 print(f"  Gemini HTTP {e.code}, retrying in {wait}s...")
                 time.sleep(wait)
                 continue
