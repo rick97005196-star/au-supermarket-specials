@@ -112,6 +112,7 @@ function applyLanguage(lang) {
     }
 
     updatePeriodBadges();
+    renderSearchSuggestions();
 }
 
 function updatePeriodBadges() {
@@ -347,23 +348,202 @@ function showToast(message, icon = 'fa-circle-check', isError = false) {
 }
 
 // Client-side Multilingual Dictionary for Cloudflare Pages Static Mode
-const CLIENT_MULTILINGUAL = {
-    '牛奶': 'milk', '鮮奶': 'milk', '蛋': 'egg', '雞蛋': 'egg', '雞肉': 'chicken', '牛肉': 'beef', '豬肉': 'pork', '羊肉': 'lamb', '魚': 'fish', '鮭魚': 'salmon',
-    '咖啡': 'coffee', '茶': 'tea', '麵包': 'bread', '奶油': 'butter', '起司': 'cheese', '冰淇淋': 'ice cream', '洋芋片': 'chips', '巧克力': 'chocolate',
-    '衛生紙': 'toilet paper', '洗衣精': 'laundry', '洗碗精': 'dishwash', '洗髮精': 'shampoo', '沐浴乳': 'body wash', '牙膏': 'toothpaste',
-    '牛乳': 'milk', '卵': 'egg', '鶏肉': 'chicken', 'サーモン': 'salmon', '豚肉': 'pork', 'お茶': 'tea', 'パン': 'bread', 'チーズ': 'cheese',
-    '우유': 'milk', '계란': 'egg', '닭고기': 'chicken', '치킨': 'chicken', '소고기': 'beef', '연어': 'salmon', '커피': 'coffee', '라면': 'noodles'
+// ---------------- Multilingual smart search ----------------
+// Each group: every term (Chinese / Japanese / Korean / English / common variants) finds the same products.
+// "en" = English words matched against the product's English name (word start, so "rice" won't match "price").
+const SEARCH_SYNONYMS = [
+    { terms: ['米', '白米', '大米', '米飯', 'お米', 'ご飯', '쌀', '밥', 'rice'], en: ['rice'], not: ['玉米'], cat: ['pantry', 'snacks'] },
+    { terms: ['麵', '麵條', '面条', '義大利麵', '意大利面', 'パスタ', '파스타', 'pasta', 'spaghetti'], en: ['pasta', 'spaghetti', 'penne', 'fettuccine', 'noodle'], cat: ['pantry'] },
+    { terms: ['泡麵', '泡面', '即食麵', '方便麵', '拉麵', 'ラーメン', '라면', 'noodles', 'ramen'], en: ['noodle', 'ramen', 'mi goreng'], cat: ['pantry'] },
+    { terms: ['洋芋片', '薯片', '馬鈴薯片', 'ポテトチップス', 'ポテチ', '감자칩', 'chips', 'crisps'], en: ['potato chips', 'potato crisps', 'chips', 'crisps', 'pringles'], not: ['squid chips', 'chocolate chips', 'choc chips'], cat: ['snacks'] },
+    { terms: ['餅乾', '饼干', '曲奇', 'ビスケット', 'クッキー', '비스킷', '쿠키', 'biscuit', 'cookie'], en: ['biscuit', 'cookie', 'cracker', 'tim tam', 'oreo'], cat: ['snacks'] },
+    { terms: ['巧克力', '朱古力', 'チョコ', 'チョコレート', '초콜릿', 'chocolate'], en: ['chocolate', 'cadbury', 'lindt', 'kitkat'], cat: ['snacks'] },
+    { terms: ['糖果', '軟糖', '糖', 'キャンディ', 'グミ', '사탕', '젤리', 'lollies', 'candy'], en: ['lollies', 'lolly', 'candy', 'gummy', 'jelly'], cat: ['snacks'] },
+    { terms: ['牛奶', '鮮奶', '奶', '牛乳', 'ミルク', '우유', 'milk'], en: ['milk'], cat: ['dairy_eggs', 'drinks'] },
+    { terms: ['優格', '優酪乳', '酸奶', '酸乳', 'ヨーグルト', '요거트', '요구르트', 'yoghurt', 'yogurt'], en: ['yoghurt', 'yogurt'], cat: ['dairy_eggs'] },
+    { terms: ['起司', '乳酪', '芝士', '奶酪', 'チーズ', '치즈', 'cheese'], en: ['cheese', 'cheddar', 'brie', 'camembert', 'mozzarella', 'parmesan', 'feta', 'haloumi'], cat: ['dairy_eggs'] },
+    { terms: ['奶油', '牛油', '黃油', 'バター', '버터', 'butter'], en: ['butter'], cat: ['dairy_eggs'] },
+    { terms: ['蛋', '雞蛋', '鸡蛋', '卵', 'たまご', '玉子', '계란', '달걀', 'egg', 'eggs'], en: ['egg'], not: ['雞蛋花', '蛋白', '蛋糕'], cat: ['dairy_eggs'] },
+    { terms: ['雞肉', '雞', '鸡肉', '鶏肉', 'チキン', '닭고기', '닭', '치킨', 'chicken'], en: ['chicken'], cat: ['meat'] },
+    { terms: ['牛肉', '牛排', 'ビーフ', 'ステーキ', '소고기', '스테이크', 'beef', 'steak'], en: ['beef', 'steak', 'mince', 'brisket'], cat: ['meat'] },
+    { terms: ['豬肉', '猪肉', '豚肉', 'ポーク', '돼지고기', 'pork'], en: ['pork'], cat: ['meat'] },
+    { terms: ['培根', 'ベーコン', '베이컨', 'bacon'], en: ['bacon'], cat: ['meat'] },
+    { terms: ['火腿', 'ハム', '햄', 'ham'], en: ['ham'], cat: ['meat'] },
+    { terms: ['香腸', '热狗', '熱狗', 'ソーセージ', '소시지', 'sausage'], en: ['sausage', 'frank', 'kransky', 'chorizo'], cat: ['meat'] },
+    { terms: ['羊肉', 'ラム', '양고기', 'lamb'], en: ['lamb'], cat: ['meat'] },
+    { terms: ['魚', '鱼', '魚肉', '魚片', 'さかな', '생선', 'fish'], en: ['fish', 'salmon', 'tuna', 'barramundi', 'basa', 'cod'], cat: ['seafood'] },
+    { terms: ['鮭魚', '三文魚', '三文鱼', 'サーモン', '연어', 'salmon'], en: ['salmon'], cat: ['seafood'] },
+    { terms: ['鮪魚', '金槍魚', 'ツナ', '참치', 'tuna'], en: ['tuna'], cat: ['seafood'] },
+    { terms: ['蝦', '虾', '蝦子', 'えび', 'エビ', '새우', 'prawn', 'shrimp'], en: ['prawn', 'shrimp'], cat: ['seafood'] },
+    { terms: ['水果', 'フルーツ', '과일', 'fruit'], en: ['fruit', 'apple', 'banana', 'berries', 'grape', 'mandarin', 'orange'], cat: ['produce'] },
+    { terms: ['蘋果', '苹果', 'りんご', '사과', 'apple'], en: ['apple'], cat: ['produce'] },
+    { terms: ['香蕉', 'バナナ', '바나나', 'banana'], en: ['banana'], cat: ['produce'] },
+    { terms: ['草莓', 'いちご', '딸기', 'strawberry'], en: ['strawberr*'], cat: ['produce'] },
+    { terms: ['藍莓', 'ブルーベリー', '블루베리', 'blueberry'], en: ['blueberr*'], cat: ['produce'] },
+    { terms: ['蔬菜', '青菜', '野菜', '채소', '야채', 'vegetable'], en: ['vegetable', 'veggie', 'salad', 'broccoli', 'carrot', 'potato', 'tomato', 'cucumber'], cat: ['produce'] },
+    { terms: ['沙拉', '生菜', 'サラダ', '샐러드', 'salad'], en: ['salad', 'lettuce', 'coleslaw'], cat: ['produce'] },
+    { terms: ['番茄', '西紅柿', 'トマト', '토마토', 'tomato'], en: ['tomato'], cat: ['produce'] },
+    { terms: ['馬鈴薯', '土豆', 'じゃがいも', '감자', 'potato'], en: ['potato'], cat: ['produce'] },
+    { terms: ['酪梨', '牛油果', 'アボカド', '아보카도', 'avocado'], en: ['avocado'], cat: ['produce'] },
+    { terms: ['麵包', '面包', 'パン', '빵', 'bread'], en: ['bread', 'loaf', 'roll', 'bun', 'muffin', 'wrap', 'bagel', 'sourdough'], cat: ['bakery'] },
+    { terms: ['蛋糕', '甜點', 'ケーキ', '케이크', 'cake'], en: ['cake', 'brownie', 'donut', 'dessert', 'pudding'], cat: ['bakery'] },
+    { terms: ['咖啡', 'コーヒー', '커피', 'coffee'], en: ['coffee', 'espresso', 'latte', 'cappuccino', 'nescafe', 'moccona'], cat: ['drinks'] },
+    { terms: ['茶', '茶包', 'お茶', '紅茶', '차', 'tea'], en: ['tea'], cat: ['drinks'] },
+    { terms: ['果汁', 'ジュース', '주스', 'juice'], en: ['juice'], cat: ['drinks'] },
+    { terms: ['汽水', '可樂', '可乐', '碳酸飲料', 'コーラ', 'ソーダ', '콜라', '탄산', 'soda', 'soft drink', 'cola'], en: ['soft drink', 'cola', 'coke', 'pepsi', 'sprite', 'fanta', 'solo', 'schweppes'], cat: ['drinks'] },
+    { terms: ['水', '礦泉水', '矿泉水', 'ミネラルウォーター', '생수', 'water'], en: ['water'], not: ['水果', '汽水', '香水', '水煮', '防水', '卸妝水', '化妝水', '漱口水'], cat: ['drinks'] },
+    { terms: ['啤酒', 'ビール', '맥주', 'beer'], en: ['beer', 'lager', 'ale'], cat: ['liquor'] },
+    { terms: ['葡萄酒', '紅酒', '白酒', 'ワイン', '와인', 'wine'], en: ['wine', 'shiraz', 'sauvignon', 'chardonnay', 'prosecco', 'merlot', 'pinot'], cat: ['liquor'] },
+    { terms: ['冰淇淋', '雪糕', 'アイス', 'アイスクリーム', '아이스크림', 'ice cream'], en: ['ice cream', 'gelato', 'magnum', 'drumstick', 'sorbet'], cat: ['frozen'] },
+    { terms: ['麥片', '燕麥', '早餐穀片', 'シリアル', 'オートミール', '시리얼', '오트밀', 'cereal', 'oats'], en: ['cereal', 'oats', 'muesli', 'granola', 'weet-bix', 'corn flakes'], cat: ['pantry'] },
+    { terms: ['油', '食用油', '橄欖油', 'オイル', '오일', 'oil'], en: ['oil'], not: ['醬油', '奶油', '牛油', '油漬', '髮油', '精油', '魚油', '油性'], cat: ['pantry'] },
+    { terms: ['醬', '醬料', '酱', 'ソース', '소스', 'sauce'], en: ['sauce', 'ketchup', 'mayo', 'dressing', 'pesto', 'relish'], cat: ['pantry'] },
+    { terms: ['醬油', '酱油', 'しょうゆ', '간장', 'soy sauce'], en: ['soy'], cat: ['pantry'] },
+    { terms: ['衛生紙', '卫生纸', '廁紙', 'トイレットペーパー', '화장지', 'toilet paper'], en: ['toilet paper', 'toilet tissue', 'toilet roll', 'quilton', 'sorbent'], cat: ['household'] },
+    { terms: ['廚房紙巾', '纸巾', '紙巾', 'キッチンペーパー', '키친타월', 'paper towel'], en: ['paper towel'], cat: ['household'] },
+    { terms: ['面紙', '面纸', 'ティッシュ', '티슈', 'tissue'], en: ['tissue'], cat: ['household'] },
+    { terms: ['洗衣精', '洗衣粉', '洗衣液', '洗衣球', '洗剤', '세탁세제', 'laundry', 'detergent'], en: ['laundry', 'omo', 'cold power', 'dynamo', 'biozet'], cat: ['household'] },
+    { terms: ['洗碗精', '洗碗錠', '洗潔精', '食器用洗剤', '주방세제', 'dishwashing'], en: ['dishwash', 'finish', 'fairy', 'morning fresh'], cat: ['household'] },
+    { terms: ['洗髮精', '洗发水', 'シャンプー', '샴푸', 'shampoo'], en: ['shampoo'], cat: ['health_vitamins'] },
+    { terms: ['潤髮乳', '护发素', 'コンディショナー', '린스', 'conditioner'], en: ['conditioner'], cat: ['health_vitamins'] },
+    { terms: ['沐浴乳', '沐浴露', 'ボディソープ', '바디워시', 'body wash'], en: ['body wash', 'shower gel', 'shower'], cat: ['health_vitamins'] },
+    { terms: ['牙膏', '歯磨き粉', '치약', 'toothpaste'], en: ['toothpaste'], cat: ['health_vitamins'] },
+    { terms: ['牙刷', '歯ブラシ', '칫솔', 'toothbrush'], en: ['toothbrush'], cat: ['health_vitamins'] },
+    { terms: ['尿布', '紙尿褲', 'おむつ', '기저귀', 'nappy', 'diaper'], en: ['nappies', 'nappy', 'nappy pants'], cat: ['health_vitamins'] },
+    { terms: ['維他命', '维生素', '保健', 'ビタミン', '비타민', 'vitamin'], en: ['vitamin', 'multivitamin', 'supplement', 'magnesium', 'fish oil'], cat: ['health_vitamins'] },
+    { terms: ['狗', '狗糧', '狗食', 'ドッグフード', '강아지', '개', 'dog'], en: ['dog'], not: ['熱狗', 'hot dog'], cat: ['pet'] },
+    { terms: ['貓', '猫', '貓糧', 'キャットフード', '고양이', 'cat'], en: ['cat', 'kitten'], cat: ['pet'] },
+];
+
+const _termIndex = new Map();   // term -> group
+SEARCH_SYNONYMS.forEach(g => g.terms.forEach(t => _termIndex.set(t.toLowerCase(), g)));
+
+function normalizeSearchText(text) {
+    return String(text || '')
+        .normalize('NFKC')               // full-width -> half-width, etc.
+        .toLowerCase()
+        .replace(/[’`]/g, "'")
+        .replace(/\s+/g, ' ')
+        .trim();
+}
+
+// Everything a product can be found by: its English name + zh/ja/ko names (+ category names, weighted low)
+function getSearchHaystack(item) {
+    if (item._hay !== undefined) return item._hay;
+    let tr = item.translations;
+    if (typeof tr === 'string') { try { tr = JSON.parse(tr); } catch (e) { tr = null; } }
+    if (!tr && typeof productTranslations === 'object' && productTranslations[item.title]) tr = productTranslations[item.title];
+    item._title = normalizeSearchText(item.title);
+    item._zh = normalizeSearchText(tr && tr.zh);
+    item._hay = normalizeSearchText([item.title, tr && tr.zh, tr && tr.ja, tr && tr.ko].filter(Boolean).join(' | '));
+    const cats = [];
+    if (item.category && typeof I18N !== 'undefined') {
+        ['zh', 'en', 'ja', 'ko'].forEach(l => {
+            const c = I18N[l] && I18N[l].categories && I18N[l].categories[item.category];
+            if (c) cats.push(normalizeSearchText(c.replace(/^[^\p{L}]+/u, '')));
+        });
+    }
+    item._cat = cats.join(' | ');
+    return item._hay;
+}
+
+const _isCJK = (t) => /[぀-ヿ㐀-鿿가-힯]/.test(t);
+
+function _enWordMatch(title, word) {
+    // whole word (plural ok): "rice" matches "Rice"/"Rices" but not "Price"; "strawberr*" = prefix
+    const prefix = word.endsWith('*');
+    const esc = word.replace(/\*$/, '').replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const re = prefix ? new RegExp('(^|[^a-z])' + esc, 'i') : new RegExp('(^|[^a-z])' + esc + '(e?s)?([^a-z]|$)', 'i');
+    return re.test(title);
+}
+
+// CJK text: plain "contains"; latin text: must start at a word boundary ("egg" ≠ "Leggo's", "rice" ≠ "Liquorice")
+function _hayHas(hay, t) {
+    if (!t) return false;
+    if (_isCJK(t)) return hay.includes(t);
+    const esc = t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    return new RegExp('(^|[^a-z0-9])' + esc, 'i').test(hay);
+}
+
+function _strip(text, words) {
+    if (!words || !text) return text;
+    let t = text;
+    words.forEach(w => { t = t.split(w.toLowerCase()).join(' '); });
+    return t;
+}
+
+function parseSearchTerms(query) {
+    const q = normalizeSearchText(query);
+    if (!q) return [];
+    if (_termIndex.has(q)) return [q];          // dictionary phrases like "toilet paper" stay one term
+    return q.split(' ').filter(Boolean);
+}
+
+// Popular searches shown under the search box (one tap to search)
+const SEARCH_SUGGESTIONS = {
+    zh: ['米', '洋芋片', '牛奶', '咖啡', '巧克力', '泡麵', '衛生紙', '洗衣精'],
+    en: ['Rice', 'Chips', 'Milk', 'Coffee', 'Chocolate', 'Noodles', 'Toilet paper', 'Laundry'],
+    ja: ['お米', 'ポテトチップス', '牛乳', 'コーヒー', 'チョコ', 'ラーメン', 'トイレットペーパー', '洗剤'],
+    ko: ['쌀', '감자칩', '우유', '커피', '초콜릿', '라면', '화장지', '세탁세제']
 };
 
-function translateQueryClient(q) {
-    if (!q) return '';
-    let res = q.trim().toLowerCase();
-    for (const [term, en] of Object.entries(CLIENT_MULTILINGUAL)) {
-        if (res.includes(term)) {
-            res = res.replace(term, ` ${en} `);
-        }
+function renderSearchSuggestions() {
+    const box = document.getElementById('searchSuggest');
+    if (!box) return;
+    const words = SEARCH_SUGGESTIONS[currentLang] || SEARCH_SUGGESTIONS.zh;
+    const label = { zh: '熱門搜尋', en: 'Popular', ja: '人気検索', ko: '인기 검색' }[currentLang] || '熱門搜尋';
+    box.innerHTML = `<span class="suggest-label">${label}</span>` +
+        words.map(w => `<button type="button" class="suggest-chip${currentSearch === w ? ' is-active' : ''}">${w}</button>`).join('');
+    box.querySelectorAll('.suggest-chip').forEach(btn => {
+        btn.onclick = () => {
+            const w = btn.textContent;
+            if (currentSearch === w) { clearSearch(); } else { setSearch(w); }
+            renderSearchSuggestions();
+        };
+    });
+}
+
+function _findGroup(term) {
+    if (_termIndex.has(term)) return _termIndex.get(term);
+    let best = null;
+    for (const [k, g] of _termIndex) {
+        if (k.length >= 2 && term.includes(k) && (!best || k.length > best.len)) best = { g, len: k.length };
     }
-    return res.trim();
+    return best ? best.g : null;
+}
+
+// Relevance score for one product (0 = not a match). Every term must match.
+function scoreSearchMatch(item, query) {
+    const terms = parseSearchTerms(query);
+    if (!terms.length) return 1;
+    getSearchHaystack(item);
+    let score = 0;
+    for (const term of terms) {
+        const group = _findGroup(term);
+        const nameHay = group ? _strip(item._hay, group.not) : item._hay;
+        const titleClean = group ? _strip(item._title, group.not) : item._title;
+        let best = 0;
+        // 1) direct hit in the product name (any language). A single CJK character on its own
+        //    (米 / 水 / 油…) is too ambiguous, so for dictionary words we rely on the dictionary instead.
+        if (!(group && term.length === 1 && _isCJK(term)) && _hayHas(nameHay, term)) best = 10;
+        // 2) dictionary: same thing in other languages
+        if (group) {
+            if (group.en.some(w => _enWordMatch(titleClean, w))) best = Math.max(best, 9);
+            if (group.terms.some(t => t.length >= 2 && _isCJK(t) && nameHay.includes(t.toLowerCase()))) best = Math.max(best, 8);
+            if (best && group.cat && group.cat.includes(item.category)) best += 4;   // e.g. "牛奶" -> real milk before milk chocolate
+        }
+        // 3) the user typed a category name (e.g. "零食", "寵物", "snacks"): items IN that category come first
+        if (!group && term.length >= 2 && _hayHas(item._cat, term)) best = Math.max(best, 11);
+        if (!best) return 0;
+        score += best;
+    }
+    if (terms.length === 1 && item._zh && item._zh.replace(/^[a-z0-9'’&.\- ]+/i, '').startsWith(terms[0])) score += 2;
+    return score;
+}
+
+// Kept for backward compatibility with older code paths
+function translateQueryClient(q) {
+    return normalizeSearchText(q);
 }
 
 // On the static site (Cloudflare Pages) there is no Python backend: skip those calls instantly
@@ -1022,6 +1202,7 @@ function debounceSearch() {
     searchTimeout = setTimeout(() => {
         const val = document.getElementById('searchInput').value.trim();
         currentSearch = val;
+        renderSearchSuggestions();
         
         const clearBtn = document.getElementById('clearSearchBtn');
         if (val) {
@@ -1044,6 +1225,7 @@ function clearSearch() {
     document.getElementById('searchInput').value = '';
     currentSearch = '';
     document.getElementById('clearSearchBtn').classList.add('hidden');
+    renderSearchSuggestions();
     loadSpecials();
 }
 
@@ -1139,11 +1321,9 @@ async function loadSpecials() {
                 if (!isItemHalfPrice(it)) return false;
             }
             if (currentSearch) {
-                const translated = translateQueryClient(currentSearch);
-                const titleLower = it.title.toLowerCase();
-                const words = translated.split(/\s+/).filter(Boolean);
-                const match = words.every(w => titleLower.includes(w) || (it.category && it.category.includes(w)));
-                if (!match) return false;
+                const sc = scoreSearchMatch(it, currentSearch);
+                if (!sc) return false;
+                it._searchScore = sc;
             }
             return true;
         });
@@ -1162,6 +1342,9 @@ async function loadSpecials() {
             filtered = strictSort(filtered, (a, b) => (a.price || 0) - (b.price || 0));
         } else if (sortBy === 'price_desc') {
             filtered = strictSort(filtered, (a, b) => (b.price || 0) - (a.price || 0));
+        } else if (currentSearch) {
+            // While searching: best matches first
+            filtered = strictSort(filtered, (a, b) => (b._searchScore || 0) - (a._searchScore || 0));
         } else {
             // Default & relevance: Group identical products with different types together
             filtered = clusterItemsBySeries(filtered);
