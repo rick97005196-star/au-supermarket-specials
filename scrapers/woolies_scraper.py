@@ -246,12 +246,21 @@ def scrape_woolies_online_half_price(max_pages: int = 100) -> List[Dict[str, Any
 
                     seen_names.add(name.lower())
                     
-                    price = float(pr.get('InstorePrice') or pr.get('Price') or 0)
-                    was_price = float(pr.get('InstoreWasPrice') or pr.get('WasPrice') or 0)
-                    is_on_special = pr.get('InstoreIsOnSpecial', False) or pr.get('IsOnSpecial', False)
-                    
-                    # Strictly half price: price <= was_price * 0.55
-                    if not (is_on_special and was_price > 0 and 0 < price <= was_price * 0.55):
+                    # IN-STORE prices only. Never fall back to the online Price/WasPrice:
+                    # the site lists specials you can get in the shop, not online-only deals.
+                    if pr.get('InstorePrice') is None or pr.get('InstoreWasPrice') is None:
+                        excluded_online_count += 1
+                        continue
+                    if pr.get('InstoreIsAvailable') is False:
+                        excluded_online_count += 1
+                        continue
+                    price = float(pr.get('InstorePrice') or 0)
+                    was_price = float(pr.get('InstoreWasPrice') or 0)
+
+                    # Strictly half price in store: in-store price <= 55% of in-store was price
+                    # (the InstoreIsOnSpecial flag is sometimes false for catalogue half-price items,
+                    #  so the in-store prices themselves are the source of truth)
+                    if not (was_price > 0 and 0 < price <= was_price * 0.55):
                         continue
                         
                     pkg = (pr.get('PackageSize') or '').strip()

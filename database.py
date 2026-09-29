@@ -342,34 +342,52 @@ def get_specials(
             'items': rows
         }
 
+def is_half_price(price, was_price, save_amount, discount_desc) -> bool:
+    """Same rule as isItemHalfPrice() in static/app.js."""
+    desc = (discount_desc or '').lower()
+    if '1/2' in desc or 'half price' in desc or '50%' in desc:
+        return True
+    price = float(price or 0); was = float(was_price or 0); save = float(save_amount or 0)
+    eff_was = was if was > 0 else (price + save if save > 0 else 0)
+    if eff_was > 0 and price > 0 and (eff_was - price) / eff_was >= 0.495:
+        return True
+    if save > 0 and price > 0 and save >= price - 0.05 and save / (price + save) >= 0.495:
+        return True
+    return False
+
 def get_stats() -> Dict[str, Any]:
     with get_db() as conn:
         cursor = conn.cursor()
         
         # Current stats
-        cursor.execute("SELECT store, COUNT(*) as count FROM specials WHERE period = 'current' AND (save_amount > 0 OR was_price > price OR store = 'ALDI') GROUP BY store")
+        cursor.execute("SELECT store, COUNT(*) as count FROM specials WHERE period = 'current' AND (save_amount > 0 OR was_price > price OR store = 'ALDI') AND price > 0 GROUP BY store")
         counts_current = {row['store']: row['count'] for row in cursor.fetchall()}
 
-        cursor.execute("SELECT category, COUNT(*) as count FROM specials WHERE period = 'current' AND (save_amount > 0 OR was_price > price OR store = 'ALDI') GROUP BY category")
+        cursor.execute("SELECT category, COUNT(*) as count FROM specials WHERE period = 'current' AND (save_amount > 0 OR was_price > price OR store = 'ALDI') AND price > 0 GROUP BY category")
         cats_current = {row['category']: row['count'] for row in cursor.fetchall()}
         
         # Next week stats
-        cursor.execute("SELECT store, COUNT(*) as count FROM specials WHERE period = 'next' AND (save_amount > 0 OR was_price > price OR store = 'ALDI') GROUP BY store")
+        cursor.execute("SELECT store, COUNT(*) as count FROM specials WHERE period = 'next' AND (save_amount > 0 OR was_price > price OR store = 'ALDI') AND price > 0 GROUP BY store")
         counts_next = {row['store']: row['count'] for row in cursor.fetchall()}
 
-        cursor.execute("SELECT category, COUNT(*) as count FROM specials WHERE period = 'next' AND (save_amount > 0 OR was_price > price OR store = 'ALDI') GROUP BY category")
+        cursor.execute("SELECT category, COUNT(*) as count FROM specials WHERE period = 'next' AND (save_amount > 0 OR was_price > price OR store = 'ALDI') AND price > 0 GROUP BY category")
         cats_next = {row['category']: row['count'] for row in cursor.fetchall()}
 
-        cursor.execute("SELECT COUNT(*) FROM specials WHERE period = 'current' AND (save_amount > 0 OR was_price > price OR store = 'ALDI') AND (discount_desc LIKE '%1/2%' OR discount_desc LIKE '%half%')")
-        half_price_current = cursor.fetchone()[0]
+        # Half-price count uses exactly the same rule as the website's "1/2 price only" filter
+        cursor.execute("SELECT period, store, price, was_price, save_amount, discount_desc FROM specials WHERE (save_amount > 0 OR was_price > price OR store = 'ALDI') AND price > 0")
+        half_counts = {'current': 0, 'next': 0}
+        for r in cursor.fetchall():
+            if r['store'] != 'ALDI' and not (r['save_amount'] or 0) > 0:
+                continue
+            if is_half_price(r['price'], r['was_price'], r['save_amount'], r['discount_desc']):
+                half_counts[r['period']] = half_counts.get(r['period'], 0) + 1
+        half_price_current = half_counts.get('current', 0)
+        half_price_next = half_counts.get('next', 0)
 
-        cursor.execute("SELECT COUNT(*) FROM specials WHERE period = 'next' AND (save_amount > 0 OR was_price > price OR store = 'ALDI') AND (discount_desc LIKE '%1/2%' OR discount_desc LIKE '%half%')")
-        half_price_next = cursor.fetchone()[0]
-
-        cursor.execute("SELECT COUNT(*) FROM specials WHERE period = 'current' AND (save_amount > 0 OR was_price > price OR store = 'ALDI')")
+        cursor.execute("SELECT COUNT(*) FROM specials WHERE period = 'current' AND (save_amount > 0 OR was_price > price OR store = 'ALDI') AND price > 0")
         total_current = cursor.fetchone()[0]
 
-        cursor.execute("SELECT COUNT(*) FROM specials WHERE period = 'next' AND (save_amount > 0 OR was_price > price OR store = 'ALDI')")
+        cursor.execute("SELECT COUNT(*) FROM specials WHERE period = 'next' AND (save_amount > 0 OR was_price > price OR store = 'ALDI') AND price > 0")
         total_next = cursor.fetchone()[0]
 
         cursor.execute('SELECT key, value FROM metadata')
