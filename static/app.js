@@ -261,6 +261,41 @@ function selectCategory(catKey) {
     loadSpecials();
 }
 
+// ---------- Category row arrows ----------
+function updateCategoryArrows() {
+    const bar = document.getElementById('categoryBar');
+    const prev = document.getElementById('catPrev');
+    const next = document.getElementById('catNext');
+    if (!bar || !prev || !next) return;
+    const max = bar.scrollWidth - bar.clientWidth;
+    prev.classList.toggle('is-hidden', bar.scrollLeft <= 4);
+    next.classList.toggle('is-hidden', bar.scrollLeft >= max - 4 || max <= 4);
+}
+
+function scrollCategories(dir) {
+    const bar = document.getElementById('categoryBar');
+    if (!bar) return;
+    bar.scrollBy({ left: dir * Math.max(160, bar.clientWidth * 0.7), behavior: 'smooth' });
+}
+
+function initCategoryArrows() {
+    const bar = document.getElementById('categoryBar');
+    if (!bar) return;
+    bar.addEventListener('scroll', updateCategoryArrows, { passive: true });
+    window.addEventListener('resize', updateCategoryArrows, { passive: true });
+    updateCategoryArrows();
+    // One gentle peek on first load so people notice the row can be swiped
+    try {
+        if (!sessionStorage.getItem('catPeek') && bar.scrollWidth > bar.clientWidth + 8) {
+            sessionStorage.setItem('catPeek', '1');
+            setTimeout(() => {
+                bar.scrollTo({ left: 70, behavior: 'smooth' });
+                setTimeout(() => bar.scrollTo({ left: 0, behavior: 'smooth' }), 650);
+            }, 900);
+        }
+    } catch (e) {}
+}
+
 // Theme Management (Dark / Light Mode)
 function initTheme() {
     const savedTheme = localStorage.getItem('theme');
@@ -2589,6 +2624,7 @@ function initApp() {
     initTheme();
     initLanguage();
     renderCategoryBar();
+    initCategoryArrows();
     initScrollListeners();
     loadStats();
     loadAnnouncement();

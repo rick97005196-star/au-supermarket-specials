@@ -1,0 +1,35 @@
+name: 快速部署網頁（只改畫面時使用）
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'static/*.html'
+      - 'static/*.css'
+      - 'static/*.js'
+      - 'tailwind.config.js'
+  workflow_dispatch:
+
+concurrency:
+  group: weekly-specials-update
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: main
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+      - name: Build CSS
+        run: npx -y tailwindcss@3 -c tailwind.config.js -i tailwind.input.css -o static/tw.css --minify || echo "using committed static/tw.css"
+      - name: Deploy to Cloudflare Pages
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: npx wrangler pages deploy static --project-name=au-supermarket-specials --branch=main

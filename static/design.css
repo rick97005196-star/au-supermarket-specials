@@ -204,11 +204,7 @@ button, a, input, select { -webkit-tap-highlight-color: transparent; }
 }
 .cat-scroller { display: flex; gap: 8px; overflow-x: auto; padding: 10px 0; scroll-padding: 16px; }
 @media (min-width: 1024px) { .cat-scroller { flex-wrap: wrap; overflow: visible; } }
-.cat-fade { position: relative; }
-.cat-fade::after {
-    content: ''; position: absolute; right: 0; top: 0; bottom: 0; width: 36px; pointer-events: none;
-    background: linear-gradient(to right, transparent, var(--bg));
-}
+
 
 .chip {
     display: inline-flex; align-items: center; gap: 7px; flex-shrink: 0;
@@ -452,4 +448,32 @@ html.dark .chip.is-active { color: #0d1f16; }
 @media (max-width: 767px) {
     .cat-nav { top: 64px; }
     .cat-grid .chip { height: 42px; font-size: 14px; }
+}
+
+/* ---------- Category arrows: show there is more to the right ---------- */
+.cat-wrap { position: relative; }
+.cat-arrow {
+    position: absolute; top: 0; bottom: 0; width: 52px; z-index: 2;
+    display: flex; align-items: center; border: 0; cursor: pointer;
+    color: var(--ink); font-size: 13px; transition: opacity .2s ease;
+}
+.cat-arrow i {
+    width: 32px; height: 32px; border-radius: 999px; display: inline-flex; align-items: center; justify-content: center;
+    background: var(--surface); border: 1px solid var(--line-strong); box-shadow: var(--shadow-md);
+}
+.cat-arrow-right { right: -4px; justify-content: flex-end; background: linear-gradient(to right, transparent, var(--bg) 55%); }
+.cat-arrow-left { left: -4px; justify-content: flex-start; background: linear-gradient(to left, transparent, var(--bg) 55%); }
+.cat-arrow.is-hidden { opacity: 0; pointer-events: none; }
+@keyframes catNudge { 0%,100% { transform: translateX(0); } 50% { transform: translateX(4px); } }
+.cat-arrow-right:not(.is-hidden) i { animation: catNudge 1.6s ease-in-out 3; }
+
+/* ---------- Store filter: all four always visible on phones ---------- */
+@media (max-width: 767px) {
+    .store-seg { display: grid; grid-template-columns: .95fr 1.25fr .9fr .8fr; width: 100%; gap: 2px; }
+    .store-seg .seg-btn { min-width: 0; padding: 9px 4px; font-size: 13px; gap: 5px; }
+    .store-seg .store-dot { width: 7px; height: 7px; margin-right: 0; }
+}
+@media (max-width: 360px) {
+    .store-seg .seg-btn { font-size: 12px; padding: 9px 2px; gap: 4px; }
+    .store-seg .store-dot { display: none; }
 }
