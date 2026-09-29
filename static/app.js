@@ -326,6 +326,13 @@ function translateQueryClient(q) {
     return res.trim();
 }
 
+// On the static site (Cloudflare Pages) there is no Python backend: skip those calls instantly
+// instead of waiting for a 404 on every page load / list change (noticeably faster on mobile data).
+async function apiFetch(url, options) {
+    if (isStaticMode) throw new Error('static mode: no backend API');
+    return fetch(url, options);
+}
+
 // In-memory high-speed cache for static JSON files
 const staticJsonCache = new Map();
 
@@ -359,6 +366,16 @@ let productTranslations = {};
 
 async function loadTranslations() {
     try {
+        if (isStaticMode) {
+            // specials.json already carries each product's translations; build the lookup from it
+            const items = staticSpecials && staticSpecials.length ? staticSpecials : ((await fetchStaticJson('specials.json')) || []);
+            const map = {};
+            for (const it of items) {
+                if (it && it.title && it.translations) map[it.title] = it.translations;
+            }
+            productTranslations = map;
+            return;
+        }
         const data = await fetchStaticJson('translations.json');
         if (data) {
             productTranslations = data;
@@ -386,7 +403,7 @@ function getProductTranslation(item, lang) {
 // Stats & Metadata
 async function loadStats() {
     try {
-        const res = await fetch('/api/stats');
+        const res = await apiFetch('/api/stats');
         if (!res.ok) throw new Error('API not available');
         globalStats = await res.json();
         updateStatsDisplay();
@@ -1032,13 +1049,14 @@ async function loadSpecials() {
         }
 
         try {
-            const res = await fetch(`/api/specials?${params.toString()}`);
+            const res = await apiFetch(`/api/specials?${params.toString()}`);
             if (!res.ok) throw new Error('API specials unavailable');
             const data = await res.json();
             
             loading.classList.add('hidden');
             currentLoadedItems = data.items || [];
-            resultsCountText.textContent = t('found_targets', { n: data.total || 0 });
+            lastResultCount = data.total || 0;
+            resultsCountText.textContent = t('found_targets', { n: lastResultCount });
 
             if (!currentLoadedItems || currentLoadedItems.length === 0) {
                 empty.classList.remove('hidden');
@@ -1104,7 +1122,8 @@ async function loadSpecials() {
 
         loading.classList.add('hidden');
         currentLoadedItems = filtered;
-        resultsCountText.textContent = t('found_targets', { n: filtered.length });
+        lastResultCount = filtered.length;
+        resultsCountText.textContent = t('found_targets', { n: lastResultCount });
 
         if (filtered.length === 0) {
             loading.classList.add('hidden');
@@ -1150,7 +1169,12 @@ async function loadSpecials() {
     }
 }
 
+let lastResultCount = null;
+
 function renderProductsCurrent() {
+    // keep the result count in the selected language when switching languages
+    const countEl = document.getElementById('resultsCountText');
+    if (countEl && lastResultCount !== null) countEl.textContent = t('found_targets', { n: lastResultCount });
     if (currentLoadedItems && currentLoadedItems.length > 0) {
         renderProducts(currentLoadedItems);
     }
@@ -1977,7 +2001,7 @@ async function loadShoppingList() {
     repairLocalShoppingItems();
     let data = null;
     try {
-        const res = await fetch('/api/shopping-list');
+        const res = await apiFetch('/api/shopping-list');
         if (res.ok) {
             data = await res.json();
         } else {
@@ -2132,7 +2156,7 @@ async function addToShoppingList(item) {
     };
 
     try {
-        const res = await fetch('/api/shopping-list', {
+        const res = await apiFetch('/api/shopping-list', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload)
@@ -2156,7 +2180,7 @@ async function addToShoppingList(item) {
 
 async function toggleShoppingItem(id, isBought) {
     try {
-        const res = await fetch(`/api/shopping-list/${id}`, {
+        const res = await apiFetch(`/api/shopping-list/${id}`, {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ is_bought: isBought })
@@ -2176,7 +2200,7 @@ async function toggleShoppingItem(id, isBought) {
 
 async function deleteShoppingItem(id) {
     try {
-        const res = await fetch(`/api/shopping-list/${id}`, { method: 'DELETE' });
+        const res = await apiFetch(`/api/shopping-list/${id}`, { method: 'DELETE' });
         if (res.ok) {
             loadShoppingList();
             return;
@@ -2192,7 +2216,7 @@ async function deleteShoppingItem(id) {
 async function clearShoppingList() {
     if (!confirm(t('clear_manifest') + '?')) return;
     try {
-        const res = await fetch('/api/shopping-list', { method: 'DELETE' });
+        const res = await apiFetch('/api/shopping-list', { method: 'DELETE' });
         if (res.ok) {
             showToast(t('clear_manifest'));
             loadShoppingList();
@@ -2209,7 +2233,7 @@ async function copyShoppingList() {
     try {
         let data = null;
         try {
-            const res = await fetch('/api/shopping-list');
+            const res = await apiFetch('/api/shopping-list');
             if (res.ok) data = await res.json();
             else data = getLocalShoppingData();
         } catch (err) {
@@ -2265,7 +2289,7 @@ async function sendShoppingListEmail() {
     // Get current shopping list data
     let data = null;
     try {
-        const res = await fetch('/api/shopping-list');
+        const res = await apiFetch('/api/shopping-list');
         if (res.ok) data = await res.json();
         else data = getLocalShoppingData();
     } catch (err) {
@@ -2435,7 +2459,7 @@ async function triggerUpdate() {
     if (!confirm(t('update_feed') + '?')) return;
 
     try {
-        const res = await fetch('/api/update?pages=10', { method: 'POST' });
+        const res = await apiFetch('/api/update?pages=10', { method: 'POST' });
         const data = await res.json();
         showToast(t('updating'));
         checkUpdateStatus();
@@ -2450,7 +2474,7 @@ async function checkUpdateStatus() {
     const updateText = document.getElementById('updateBtnText');
 
     try {
-        const res = await fetch('/api/update-status');
+        const res = await apiFetch('/api/update-status');
         const data = await res.json();
 
         if (data.is_updating) {
@@ -2565,7 +2589,7 @@ function initApp() {
     loadSpecials();
     loadShoppingList();
     checkUpdateStatus();
-    setTimeout(loadTranslations, 4000);
+    setTimeout(loadTranslations, 1500);
 }
 
 if (document.readyState === 'loading') {

@@ -20,6 +20,9 @@ jobs:
         run: |
           git fetch --depth=1 origin main
           git checkout origin/main -- static/data
+      - name: Build CSS (pre-built Tailwind, fast on phones)
+        run: npx -y tailwindcss@3 -c tailwind.config.js -i tailwind.input.css -o static/tw.css --minify || echo "CSS build skipped, using committed static/tw.css"
+
       - name: Deploy preview (does NOT touch the live site)
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}

@@ -473,11 +473,12 @@ def run_auto_translate():
         for it in specials:
             t = it.get('title', '').strip()
             if t in translations:
-                it['translations'] = translations[t]
+                tr = translations[t]
+                it['translations'] = {k: tr[k] for k in ('zh', 'ja', 'ko') if tr.get(k)}
                 updated_count += 1
 
         with open(SPECIALS_FILE, 'w', encoding='utf-8') as f:
-            json.dump(specials, f, ensure_ascii=False, indent=2)
+            json.dump(specials, f, ensure_ascii=False, separators=(',', ':'))
         print(f"Successfully enriched {updated_count}/{len(specials)} specials with inline translations.")
 
     # 6. Update SQLite translations column
