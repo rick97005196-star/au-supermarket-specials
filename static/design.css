@@ -407,3 +407,27 @@ button, a, select, input, .chip, .p-card { touch-action: manipulation; }
     .p-body { padding: 9px 10px 11px; }
     .chip { font-size: 13.5px; }
 }
+
+
+/* ==========================================================================
+   RWD safety: nothing may ever be wider than the phone screen
+   ========================================================================== */
+html, body { max-width: 100%; overflow-x: clip; }
+body > * { min-width: 0; max-width: 100%; }
+img { max-width: 100%; }
+
+@media (max-width: 767px) {
+    /* Week toggle: two equal halves that always fit the screen */
+    .seg-lg { display: grid; grid-template-columns: 1fr 1fr; width: 100%; }
+    .seg-lg .seg-btn { min-width: 0; padding: 10px 8px; gap: 6px; }
+    .seg-lg .seg-btn > span:not(.seg-tag) { overflow: hidden; text-overflow: ellipsis; }
+    /* Store filter: scrolls sideways inside itself, never widens the page */
+    #storeTabs { width: 100%; }
+    .hero-sub { overflow-wrap: anywhere; }
+    .stat { flex-shrink: 0; }
+    #statsRow { flex-wrap: wrap; overflow: visible; row-gap: 14px; column-gap: 22px; }
+}
+@media (max-width: 400px) {
+    .seg-lg .seg-tag { display: none; }
+    .seg-lg .seg-btn i { display: none; }
+}
