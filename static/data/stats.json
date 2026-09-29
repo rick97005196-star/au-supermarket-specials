@@ -1,33 +1,33 @@
 {
   "current": {
-    "total": 2080,
+    "total": 2075,
     "by_store": {
       "ALDI": 62,
       "Coles": 286,
-      "Woolworths": 1732
+      "Woolworths": 1727
     },
     "by_category": {
       "bakery": 38,
       "dairy_eggs": 39,
       "drinks": 201,
       "frozen": 61,
-      "health_vitamins": 793,
-      "household": 415,
+      "health_vitamins": 792,
+      "household": 414,
       "liquor": 36,
-      "meat": 46,
-      "pantry": 105,
+      "meat": 45,
+      "pantry": 104,
       "pet": 69,
       "produce": 6,
       "seafood": 12,
-      "snacks": 259
+      "snacks": 258
     },
-    "half_price_count": 1720,
+    "half_price_count": 1715,
     "date_range": "Wed 23 Sep 2026 - Tue 29 Sep 2026"
   },
   "next": {
-    "total": 617,
+    "total": 616,
     "by_store": {
-      "ALDI": 114,
+      "ALDI": 113,
       "Coles": 280,
       "Woolworths": 223
     },
@@ -37,7 +37,7 @@
       "drinks": 64,
       "frozen": 36,
       "health_vitamins": 78,
-      "household": 171,
+      "household": 170,
       "liquor": 13,
       "meat": 36,
       "pantry": 65,
@@ -49,5 +49,5 @@
     "half_price_count": 195,
     "date_range": "Wed 30 Sep 2026 - Tue 6 Oct 2026"
   },
-  "last_updated": "2026-09-29 04:41:59"
+  "last_updated": "2026-09-29 07:43:22"
 }
