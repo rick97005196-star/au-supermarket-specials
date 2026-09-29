@@ -35,27 +35,7 @@ function initScrollListeners() {
     if (!backToTopBtn) return;
 
     const siteHeader = document.getElementById('siteHeader');
-    const catNav = document.getElementById('stickyCategoryNav');
-    let lastY = window.scrollY;
-    let ticking = false;
-    const updateCatNav = () => {
-        ticking = false;
-        const y = window.scrollY;
-        // (a sticky element's own offsetTop moves while stuck, so measure from the hero above it)
-        const hero = catNav ? catNav.previousElementSibling : null;
-        const menuStart = hero ? hero.offsetTop + hero.offsetHeight : 0;
-        const pastMenu = catNav ? (y > menuStart + 120) : false;
-        // Scrolling down (reading products): tuck the category menu away.
-        // Scrolling up a little: slide it back down. Near the top: always shown.
-        if (catNav) {
-            if (!pastMenu) catNav.classList.remove('is-tucked');
-            else if (y > lastY + 6) catNav.classList.add('is-tucked');
-            else if (y < lastY - 6) catNav.classList.remove('is-tucked');
-        }
-        lastY = y;
-    };
     window.addEventListener('scroll', () => {
-        if (!ticking) { ticking = true; requestAnimationFrame(updateCatNav); }
         if (siteHeader) siteHeader.classList.toggle('is-scrolled', window.scrollY > 8);
         if (window.scrollY > 300) {
             backToTopBtn.classList.remove('translate-y-16', 'opacity-0', 'pointer-events-none');

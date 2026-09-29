@@ -436,8 +436,6 @@ img { max-width: 100%; }
 /* ==========================================================================
    Category menu: two rows (upper + lower), swipe sideways, tucks away on scroll
    ========================================================================== */
-.cat-nav { transition: transform .28s cubic-bezier(.2,.8,.2,1); will-change: transform; }
-.cat-nav.is-tucked { transform: translateY(calc(-100% - 2px)); pointer-events: none; }
 .cat-grid {
     display: grid; grid-template-rows: repeat(2, auto); grid-auto-flow: column; grid-auto-columns: max-content;
     gap: 8px; overflow-x: auto; padding: 10px 0; scroll-padding: 16px; overscroll-behavior-x: contain;
