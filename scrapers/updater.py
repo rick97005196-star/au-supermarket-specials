@@ -119,7 +119,10 @@ def update_all_stores(max_catalogue_pages: int = 50) -> Dict[str, Any]:
     print("下週 (Next):", stats['next'])
     print("=" * 65)
 
-    # Auto-export static JSON and update translations
+    # Auto-export static JSON and update translations (GitHub Actions runs these as separate steps)
+    if os.environ.get('GITHUB_ACTIONS'):
+        return {'results': results, 'stats': stats}
+
     try:
         from scripts.auto_translate import run_auto_translate
         run_auto_translate()

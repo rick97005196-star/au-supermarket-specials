@@ -43,6 +43,50 @@ def _get(url, timeout=20, **kwargs):
         raise last
     return last
 
+def pick_current_and_next(catalogues, today=None):
+    """Choose this week's and next week's catalogue by their dates (Australian time),
+    not by catalogue number, so the Wednesday switch-over is never late.
+    Falls back to catalogue-number order when dates can't be read."""
+    import datetime as _dt
+    if today is None:
+        try:
+            from zoneinfo import ZoneInfo
+            today = _dt.datetime.now(ZoneInfo('Australia/Sydney')).date()
+        except Exception:
+            today = (_dt.datetime.utcnow() + _dt.timedelta(hours=10)).date()
+
+    def parse(rng):
+        m = re.findall(r'(\d{1,2})\s+([A-Za-z]{3})[a-z]*\s*(\d{4})?', rng or '')
+        if len(m) < 2:
+            return None
+        year_end = int(m[1][2]) if m[1][2] else today.year
+        year_start = int(m[0][2]) if m[0][2] else year_end
+        try:
+            s = _dt.datetime.strptime(f"{m[0][0]} {m[0][1]} {year_start}", "%d %b %Y").date()
+            e = _dt.datetime.strptime(f"{m[1][0]} {m[1][1]} {year_end}", "%d %b %Y").date()
+            if s > e:  # e.g. "30 Dec - 5 Jan 2027"
+                s = s.replace(year=s.year - 1)
+            return s, e
+        except ValueError:
+            return None
+
+    dated = [(parse(c.get('date_range')), c) for c in catalogues]
+    if not dated or any(d is None for d, _ in dated):
+        by_id = sorted(catalogues, key=lambda x: x['id'])
+        return (by_id[0] if by_id else None), (by_id[1] if len(by_id) > 1 else None)
+
+    current = [c for (s, e), c in dated if s <= today <= e]
+    upcoming = sorted([(s, c) for (s, e), c in dated if s > today], key=lambda x: x[0])
+    cur = max(current, key=lambda c: c['id']) if current else None
+    nxt = upcoming[0][1] if upcoming else None
+    if cur is None:
+        # nothing covers today (e.g. site still lists only last week) -> newest one that has started
+        started = sorted([(s, c) for (s, e), c in dated if s <= today], key=lambda x: x[0])
+        cur = started[-1][1] if started else (upcoming.pop(0)[1] if upcoming else None)
+        if nxt is cur:
+            nxt = None
+    return cur, nxt
+
 def parse_price(text: str) -> float:
     match = re.search(r'\$(\d+(?:\.\d{2})?)', text)
     return float(match.group(1)) if match else 0.0
@@ -351,13 +395,12 @@ def scrape_woolies_all_weeks(max_pages: int = 50) -> Dict[str, Dict[str, Any]]:
         items = scrape_woolies_catalogue_items(f"{BASE_URL}/Woolworths-catalogue", None, max_pages=max_pages)
         res['current']['items'] = items
     else:
-        current_cat = catalogues[0]
+        current_cat, next_cat = pick_current_and_next(catalogues)
         print(f"Woolworths Current Week ({current_cat['date_range']}) - ID {current_cat['id']}")
         res['current']['date_range'] = current_cat['date_range']
         res['current']['items'] = scrape_woolies_catalogue_items(current_cat['url'], current_cat['soup'], max_pages=max_pages)
 
-        if len(catalogues) > 1:
-            next_cat = catalogues[1]
+        if next_cat is not None:
             print(f"Woolworths Next Week ({next_cat['date_range']}) - ID {next_cat['id']}")
             res['next']['date_range'] = next_cat['date_range']
             res['next']['items'] = scrape_woolies_catalogue_items(next_cat['url'], next_cat['soup'], max_pages=max_pages)

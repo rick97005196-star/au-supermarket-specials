@@ -66,18 +66,41 @@ jobs:
         run: |
           python export_static_data.py
 
+      # ---- Layer 2 + 3: check the new data before it goes anywhere ----
+      - name: Check data before publishing
+        id: check
+        run: python scripts/check_data.py pre
+
+      # ---- Layer 5: only save when the specials really changed (keeps the repo small) ----
       - name: Commit and Push Updated Data
+        if: steps.check.outputs.changed == 'true' && steps.check.outputs.block != 'true'
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action Bot"
           git add data/specials.db static/data/specials.json static/data/stats.json static/data/translations.json
-          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-update weekly specials & translations [skip ci]" && git pull --rebase -X theirs origin main && git push origin main)
+          git diff --staged --quiet || (git commit -m "Auto-update weekly specials & translations [skip ci]" && git pull --rebase -X theirs origin main && git push origin main)
 
       - name: Build CSS (pre-built Tailwind, fast on phones)
+        if: steps.check.outputs.changed == 'true' && steps.check.outputs.block != 'true'
         run: npx -y tailwindcss@3 -c tailwind.config.js -i tailwind.input.css -o static/tw.css --minify || echo "CSS build skipped, using committed static/tw.css"
 
       - name: Deploy to Cloudflare Pages
+        if: steps.check.outputs.changed == 'true' && steps.check.outputs.block != 'true'
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
         run: |
           npx wrangler pages deploy static --project-name=au-supermarket-specials --branch=main
+
+      # ---- Layer 4: make sure the live website really shows the new data ----
+      - name: Verify live website
+        if: steps.check.outputs.changed == 'true' && steps.check.outputs.block != 'true'
+        run: python scripts/check_data.py post
+
+      # ---- Layer 3: anything wrong -> mark this run as failed so GitHub emails the owner ----
+      - name: Alert owner if something needs attention
+        if: steps.check.outputs.alert != ''
+        env:
+          ALERT: ${{ steps.check.outputs.alert }}
+        run: |
+          echo "::error::需要注意：$ALERT"
+          exit 1
