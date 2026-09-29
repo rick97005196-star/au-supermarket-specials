@@ -2847,6 +2847,22 @@ function initApp() {
     setTimeout(loadTranslations, 1500);
 }
 
+// ---------- Offline support (works in supermarkets with bad reception) ----------
+function initOfflineSupport() {
+    if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('/sw.js').catch(err => console.log('Service worker not registered', err));
+        });
+    }
+    const notify = (online) => {
+        try { showToast(t(online ? 'back_online' : 'offline_notice'), online ? 'fa-wifi' : 'fa-cloud', !online); } catch (e) {}
+    };
+    window.addEventListener('offline', () => notify(false));
+    window.addEventListener('online', () => notify(true));
+    if (navigator.onLine === false) setTimeout(() => notify(false), 1200);
+}
+initOfflineSupport();
+
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initApp);
 } else {
