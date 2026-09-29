@@ -24,6 +24,13 @@ jobs:
                   print(f"::warning::GET {url[:90]} EXC {e!r}"[:400]); raise
           c._get = spy
           try:
+              from curl_cffi import requests as _x
+              print("::warning::curl_cffi import OK " + str(_x.Session))
+              _x.Session(impersonate='chrome')
+          except Exception as e:
+              print(f"::warning::curl_cffi FAIL {e!r}")
+          print(f"::warning::session type {type(c._session())} {getattr(c._session(),'impersonate',None)}")
+          try:
               cats = c.discover_coles_catalogues(8328, 'QLD')
               print(f"::warning::coles QLD -> {[(x['id'], x['date_range']) for x in cats]}")
           except Exception:
