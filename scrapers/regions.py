@@ -40,6 +40,47 @@ def region_request(url, postcode_id):
     return f"{url}{sep}cb={random.randint(10**6, 10**9)}", {'cookies': {'postcodeId': str(postcode_id)}}
 
 
+def _has_region_links(text, region):
+    toks = SLUG_TOKENS.get(region, (region.lower(),))
+    for m in re.finditer(r'-catalogue/([a-z0-9-]+)/\d+/catalogue2', text or ''):
+        if any(t in m.group(1).lower().split('-') for t in toks):
+            return True
+    return False
+
+
+_IMPERSONATE = ('chrome', 'safari', 'chrome124', 'edge', 'chrome120', 'safari17_0')
+
+
+def fetch_region_page(url, postcode_id, region, attempts=6):
+    """The catalogue landing page as shown to someone living in `region`.
+    The catalogue site sometimes refuses cloud servers (HTTP 403) for uncached pages, so this
+    retries with fresh browser-like sessions, and only accepts a page listing that state's
+    own catalogues. Returns the page text or None."""
+    import time
+    last = None
+    for i in range(attempts):
+        full, kw = region_request(url, postcode_id)
+        try:
+            try:
+                from curl_cffi import requests as cr
+                sess = cr.Session(impersonate=_IMPERSONATE[i % len(_IMPERSONATE)])
+            except Exception:
+                import requests as rq
+                sess = rq.Session()
+                sess.headers['User-Agent'] = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36'
+            r = sess.get(full, timeout=25, **kw)
+            last = r.status_code
+            if r.status_code == 200 and _has_region_links(r.text, region):
+                return r.text
+            if r.status_code == 200:
+                last = '200 but another state'
+        except Exception as e:
+            last = repr(e)[:120]
+        time.sleep(4 + 4 * i + random.random() * 3)
+    print(f"{region}: landing page not available ({last})")
+    return None
+
+
 def filter_region_links(slugs_ids, region, exact_prefix=None):
     """Keep only catalogue links that belong to `region` (e.g. 'weekly-catalogue-qld',
     'coles-catalogue-qld-metro'); prefer the metro / exact version over regional-town ones."""

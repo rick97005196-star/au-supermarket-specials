@@ -112,12 +112,13 @@ def discover_woolies_catalogues(postcode_id=None, region=None) -> List[Dict[str,
     catalogues = []
     try:
         if postcode_id:
-            from scrapers.regions import region_request
-            url, kw = region_request(f"{BASE_URL}/Woolworths-catalogue", postcode_id)
-            r = _get(url, **kw)
+            from scrapers.regions import fetch_region_page
+            page = fetch_region_page(f"{BASE_URL}/Woolworths-catalogue", postcode_id, region)
+            if page is None:
+                return []
         else:
-            r = _get(f"{BASE_URL}/Woolworths-catalogue")
-        soup = BeautifulSoup(r.text, 'html.parser')
+            page = _get(f"{BASE_URL}/Woolworths-catalogue").text
+        soup = BeautifulSoup(page, 'html.parser')
         
         links = soup.find_all('a', href=re.compile(r'/woolworths-catalogue/.+/\d+/catalogue2'))
         if region:

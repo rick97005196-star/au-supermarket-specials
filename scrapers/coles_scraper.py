@@ -110,12 +110,13 @@ def discover_coles_catalogues(postcode_id=None, region=None) -> List[Dict[str, A
     catalogues = []
     try:
         if postcode_id:
-            from scrapers.regions import region_request
-            url, kw = region_request(f"{BASE_URL}/Coles-catalogue", postcode_id)
-            r = _get(url, **kw)
+            from scrapers.regions import fetch_region_page
+            page = fetch_region_page(f"{BASE_URL}/Coles-catalogue", postcode_id, region)
+            if page is None:
+                return []
         else:
-            r = _get(f"{BASE_URL}/Coles-catalogue")
-        soup = BeautifulSoup(r.text, 'html.parser')
+            page = _get(f"{BASE_URL}/Coles-catalogue").text
+        soup = BeautifulSoup(page, 'html.parser')
         
         # Find catalogue links (only Coles supermarket, exclude liquorland)
         links = soup.find_all('a', href=re.compile(r'/coles-catalogue/coles-catalogue-.+/\d+/catalogue2'))
