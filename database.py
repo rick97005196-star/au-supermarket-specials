@@ -131,6 +131,17 @@ def save_specials(store: str, items: List[Dict[str, Any]], period: str = 'curren
             row = cursor.fetchone()
             old_start, new_start = _range_start(row[0] if row else ''), _range_start(date_range)
             new_week = bool(old_start and new_start and old_start != new_start)
+        # A failed scrape must never wipe good data (this emptied Coles once, when it had < 400 items):
+        #  - no date range found = the catalogue page failed to load -> keep what we have
+        #  - same week but far fewer items than before -> probably a partial failure -> keep
+        cursor.execute("SELECT date_range FROM specials WHERE store = ? AND period = ? AND date_range != '' LIMIT 1", (store, period))
+        had_dated = cursor.fetchone() is not None
+        if existing_count >= 20 and not new_week and (
+            (not date_range and had_dated) or len(items) < existing_count * 0.6
+        ):
+            msg = f"Anti-wipeout guard: {store} ({period}) kept {existing_count} existing items (new scrape: {len(items)} items, date range '{date_range}')"
+            print(f"::warning::{msg}" if os.environ.get('GITHUB_ACTIONS') else f"⚠️ {msg}")
+            return existing_count
         if existing_count > 400 and len(items) < 300 and not new_week:
             print(f"⚠️ Anti-wipeout guard triggered: {store} ({period}) has {existing_count} existing items, but scraper only found {len(items)}. Preserving existing database!")
             return existing_count
