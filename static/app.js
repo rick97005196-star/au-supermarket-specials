@@ -114,6 +114,7 @@ function applyLanguage(lang) {
     updatePeriodBadges();
     renderSearchSuggestions();
     try { renderFavPanel(); renderFavSearchButton(); } catch (e) {}
+    renderRegionSelect();
 }
 
 function updatePeriodBadges() {
@@ -582,6 +583,66 @@ async function fetchStaticJson(filename) {
     return null;
 }
 
+// =====================================================================
+//  地區 (state): Coles & Woolworths catalogues differ a little per state.
+//  specials.json stores every special once; rg = states where it is on special
+//  (no rg = everywhere), rp = {state: prices} where that state's price differs.
+// =====================================================================
+const REGION_CODES = ['QLD', 'NSW', 'ACT', 'VIC', 'SA', 'WA', 'TAS', 'NT'];
+const REGION_NAMES = {
+    zh: { QLD: '昆士蘭', NSW: '新南威爾斯', ACT: '坎培拉', VIC: '維多利亞', SA: '南澳', WA: '西澳', TAS: '塔斯馬尼亞', NT: '北領地' },
+    en: { QLD: 'Queensland', NSW: 'New South Wales', ACT: 'Canberra (ACT)', VIC: 'Victoria', SA: 'South Australia', WA: 'Western Australia', TAS: 'Tasmania', NT: 'Northern Territory' },
+    ja: { QLD: 'クイーンズランド', NSW: 'ニューサウスウェールズ', ACT: 'キャンベラ', VIC: 'ビクトリア', SA: '南オーストラリア', WA: '西オーストラリア', TAS: 'タスマニア', NT: 'ノーザンテリトリー' },
+    ko: { QLD: '퀸즐랜드', NSW: '뉴사우스웨일스', ACT: '캔버라', VIC: '빅토리아', SA: '남호주', WA: '서호주', TAS: '태즈메이니아', NT: '노던 준주' }
+};
+const DEFAULT_REGION = 'QLD';
+let currentRegion = (() => {
+    try { const r = localStorage.getItem('region'); if (REGION_CODES.includes(r)) return r; } catch (e) {}
+    return DEFAULT_REGION;
+})();
+let rawSpecials = null;
+
+function regionize(list) {
+    const r = currentRegion;
+    const out = [];
+    for (const it of list || []) {
+        if (it.rg && !it.rg.includes(r)) continue;
+        const o = it.rp && it.rp[r];
+        out.push(o ? Object.assign({}, it, o) : it);
+    }
+    out._region = r;
+    return out;
+}
+
+async function getStaticSpecials() {
+    if (!rawSpecials) rawSpecials = (await fetchStaticJson('specials.json')) || [];
+    if (!staticSpecials || staticSpecials._region !== currentRegion || !staticSpecials.length) {
+        staticSpecials = regionize(rawSpecials);
+    }
+    return staticSpecials;
+}
+
+function renderRegionSelect() {
+    const sel = document.getElementById('regionSelect');
+    if (!sel) return;
+    const names = REGION_NAMES[currentLang] || REGION_NAMES.en;
+    sel.innerHTML = REGION_CODES.map(c => `<option value="${c}">${names[c]} ${c}</option>`).join('');
+    sel.value = currentRegion;
+    const chip = document.getElementById('regionChip');
+    if (chip) chip.title = t('region_hint');
+}
+
+function setRegion(code) {
+    if (!REGION_CODES.includes(code) || code === currentRegion) return;
+    currentRegion = code;
+    try { localStorage.setItem('region', code); } catch (e) {}
+    if (rawSpecials) staticSpecials = regionize(rawSpecials);
+    updateStatsDisplay();
+    loadSpecials();
+    try { renderFavPanel(); } catch (e) {}
+    showToast(t('region_changed', { name: (REGION_NAMES[currentLang] || REGION_NAMES.en)[code] }));
+}
+
 // Translations Management
 let productTranslations = {};
 
@@ -589,7 +650,7 @@ async function loadTranslations() {
     try {
         if (isStaticMode) {
             // specials.json already carries each product's translations; build the lookup from it
-            const items = staticSpecials && staticSpecials.length ? staticSpecials : ((await fetchStaticJson('specials.json')) || []);
+            const items = await getStaticSpecials();
             const map = {};
             for (const it of items) {
                 if (it && it.title && it.translations) map[it.title] = it.translations;
@@ -664,7 +725,10 @@ function updateStatsDisplay() {
         }
     }
 
-    const activeInfo = currentPeriod === 'current' ? currentData : nextData;
+    let activeInfo = currentPeriod === 'current' ? currentData : nextData;
+    // numbers of the visitor's own state
+    const regionInfo = globalStats.regions && globalStats.regions[currentRegion] && globalStats.regions[currentRegion][currentPeriod];
+    if (regionInfo) activeInfo = Object.assign({}, activeInfo, regionInfo);
     let activeRangeText = activeInfo.date_range || (currentPeriod === 'current' ? t('current_cycle') : t('next_cycle'));
     if (currentPeriod === 'next' && (!activeInfo.total || activeInfo.total === 0)) {
         activeRangeText = currentLang === 'zh' ? '尚未公佈（預計週二釋出）' : (currentLang === 'ja' ? '未公開（火曜公開予定）' : (currentLang === 'ko' ? '미공개 (화요일 공개 예정)' : 'Not Released Yet'));
@@ -1550,9 +1614,7 @@ async function loadSpecials() {
 
     // Static Mode execution (Cloudflare Pages fallback)
     try {
-        if (!staticSpecials || staticSpecials.length === 0) {
-            staticSpecials = (await fetchStaticJson('specials.json')) || [];
-        }
+        await getStaticSpecials();
 
         const favMatchIds = favOnly ? new Set(matchFavorites(staticSpecials).map(x => x.id)) : null;
         let filtered = staticSpecials.filter(it => {

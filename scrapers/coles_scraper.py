@@ -1,3 +1,5 @@
+import os
+import sys
 import requests
 from bs4 import BeautifulSoup
 import re
@@ -10,23 +12,34 @@ HEADERS = {
     'Accept-Language': 'en-AU,en;q=0.9',
 }
 
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 BASE_URL = 'https://www.salefinder.com.au'
 
 # ---- Robust HTTP: behave like a real Chrome browser and retry, so a busy/blocked moment
 #      on the catalogue site doesn't make a whole weekly update fail ----
-try:
-    from curl_cffi import requests as _cffi_requests
-    _SESSION = _cffi_requests.Session(impersonate='chrome')
-except Exception:
-    _SESSION = requests.Session()
-    _SESSION.headers.update(HEADERS)
+import threading as _threading
+_LOCAL = _threading.local()
+
+def _session():
+    # one browser-like session per thread (several states' catalogues are read in parallel)
+    s = getattr(_LOCAL, 'session', None)
+    if s is None:
+        try:
+            from curl_cffi import requests as _cffi_requests
+            s = _cffi_requests.Session(impersonate='chrome')
+        except Exception:
+            s = requests.Session()
+            s.headers.update(HEADERS)
+        _LOCAL.session = s
+    return s
 
 def _get(url, timeout=20, **kwargs):
     import time as _t
     last = None
     for attempt in range(3):
         try:
-            r = _SESSION.get(url, timeout=timeout, **kwargs)
+            r = _session().get(url, timeout=timeout, **kwargs)
             if r.status_code == 200:
                 return r
             last = r
@@ -92,15 +105,30 @@ def clean_date_range(text: str) -> str:
         return m.group(1)
     return text.replace('Offer valid', '').strip()
 
-def discover_coles_catalogues() -> List[Dict[str, Any]]:
+def discover_coles_catalogues(postcode_id=None, region=None) -> List[Dict[str, Any]]:
     """Discovers available Coles catalogues (this week and next week preview)."""
     catalogues = []
     try:
-        r = _get(f"{BASE_URL}/Coles-catalogue")
+        if postcode_id:
+            from scrapers.regions import region_request
+            url, kw = region_request(f"{BASE_URL}/Coles-catalogue", postcode_id)
+            r = _get(url, **kw)
+        else:
+            r = _get(f"{BASE_URL}/Coles-catalogue")
         soup = BeautifulSoup(r.text, 'html.parser')
         
         # Find catalogue links (only Coles supermarket, exclude liquorland)
         links = soup.find_all('a', href=re.compile(r'/coles-catalogue/coles-catalogue-.+/\d+/catalogue2'))
+        if region:
+            # only this state's own catalogue (not Liquorland, not regional-town versions)
+            from scrapers.regions import filter_region_links
+            pairs = []
+            for l in links:
+                m = re.search(r'-catalogue/([^/]+)/\d+/catalogue2', l.get('href', ''))
+                if m:
+                    pairs.append((m.group(1), l))
+            keep = {id(l) for _, l in filter_region_links(pairs, region, exact_prefix=None)}
+            links = [l for l in links if id(l) in keep]
         seen_ids = set()
         
         for link in links:
@@ -257,34 +285,11 @@ def scrape_coles_catalogue_items(base_list_url: str, initial_soup: BeautifulSoup
     return products
 
 def scrape_coles_all_weeks(max_pages: int = 50) -> Dict[str, Dict[str, Any]]:
-    """Scrapes Coles specials for both current week and next week (if available)."""
-    print("Scraping Coles (Current & Next Week)...")
-    catalogues = discover_coles_catalogues()
-    res = {
-        'current': {'items': [], 'date_range': ''},
-        'next': {'items': [], 'date_range': ''}
-    }
-
-    if not catalogues:
-        # Fallback to direct page 1
-        print("::warning::No Coles catalogues found on salefinder (site blocked or changed) - existing data will be kept")
-        items = scrape_coles_catalogue_items(f"{BASE_URL}/Coles-catalogue", None, max_pages=max_pages)
-        res['current']['items'] = items
-        return res
-
-    # The first is current week
-    current_cat, next_cat = pick_current_and_next(catalogues)
-    print(f"Coles Current Week ({current_cat['date_range']}) - ID {current_cat['id']}")
-    res['current']['date_range'] = current_cat['date_range']
-    res['current']['items'] = scrape_coles_catalogue_items(current_cat['url'], current_cat['soup'], max_pages=max_pages)
-
-    # If there's a second one, it's next week's preview!
-    if next_cat is not None:
-        print(f"Coles Next Week ({next_cat['date_range']}) - ID {next_cat['id']}")
-        res['next']['date_range'] = next_cat['date_range']
-        res['next']['items'] = scrape_coles_catalogue_items(next_cat['url'], next_cat['soup'], max_pages=max_pages)
-
-    return res
+    """Coles specials for this week and next week, for every state (Queensland is the main one)."""
+    from scrapers.regions import scrape_all_regions
+    print("Scraping Coles (Current & Next Week, all states)...")
+    return scrape_all_regions('Coles', discover_coles_catalogues, scrape_coles_catalogue_items,
+                              pick_current_and_next, max_pages=max_pages)
 
 if __name__ == '__main__':
     data = scrape_coles_all_weeks(max_pages=2)

@@ -1,3 +1,4 @@
+import json
 import sqlite3
 import os
 import html
@@ -46,6 +47,11 @@ def init_db():
             cursor.execute("ALTER TABLE specials ADD COLUMN is_popular INTEGER DEFAULT 0")
         if 'popularity_score' not in columns:
             cursor.execute("ALTER TABLE specials ADD COLUMN popularity_score INTEGER DEFAULT 0")
+        # State availability: '' = every state, otherwise e.g. 'QLD,NSW' (see scrapers/regions.py)
+        if 'regions' not in columns:
+            cursor.execute("ALTER TABLE specials ADD COLUMN regions TEXT DEFAULT ''")
+        if 'region_prices' not in columns:
+            cursor.execute("ALTER TABLE specials ADD COLUMN region_prices TEXT DEFAULT ''")
 
         cursor.execute("PRAGMA table_info(shopping_list)")
         sl_columns = [row[1] for row in cursor.fetchall()]
@@ -151,8 +157,9 @@ def save_specials(store: str, items: List[Dict[str, Any]], period: str = 'curren
         insert_sql = '''
             INSERT INTO specials (
                 store, period, date_range, title, price, price_display, was_price, save_amount,
-                discount_desc, unit_price, image_url, category, product_url, is_popular, popularity_score, updated_at
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                discount_desc, unit_price, image_url, category, product_url, is_popular, popularity_score, updated_at,
+                regions, region_prices
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         '''
         now = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
         rows = []
@@ -222,7 +229,9 @@ def save_specials(store: str, items: List[Dict[str, Any]], period: str = 'curren
                 item.get('product_url', ''),
                 is_pop,
                 score,
-                now
+                now,
+                ','.join(item.get('regions') or []),
+                json.dumps(item['region_prices'], ensure_ascii=False, separators=(',', ':')) if item.get('region_prices') else ''
             ))
         cursor.executemany(insert_sql, rows)
         

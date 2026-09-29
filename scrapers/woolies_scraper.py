@@ -20,19 +20,28 @@ BASE_URL = 'https://www.salefinder.com.au'
 
 # ---- Robust HTTP: behave like a real Chrome browser and retry, so a busy/blocked moment
 #      on the catalogue site doesn't make a whole weekly update fail ----
-try:
-    from curl_cffi import requests as _cffi_requests
-    _SESSION = _cffi_requests.Session(impersonate='chrome')
-except Exception:
-    _SESSION = requests.Session()
-    _SESSION.headers.update(HEADERS)
+import threading as _threading
+_LOCAL = _threading.local()
+
+def _session():
+    # one browser-like session per thread (several states' catalogues are read in parallel)
+    s = getattr(_LOCAL, 'session', None)
+    if s is None:
+        try:
+            from curl_cffi import requests as _cffi_requests
+            s = _cffi_requests.Session(impersonate='chrome')
+        except Exception:
+            s = requests.Session()
+            s.headers.update(HEADERS)
+        _LOCAL.session = s
+    return s
 
 def _get(url, timeout=20, **kwargs):
     import time as _t
     last = None
     for attempt in range(3):
         try:
-            r = _SESSION.get(url, timeout=timeout, **kwargs)
+            r = _session().get(url, timeout=timeout, **kwargs)
             if r.status_code == 200:
                 return r
             last = r
@@ -98,14 +107,29 @@ def clean_date_range(text: str) -> str:
         return m.group(1)
     return text.replace('Offer valid', '').strip()
 
-def discover_woolies_catalogues() -> List[Dict[str, Any]]:
+def discover_woolies_catalogues(postcode_id=None, region=None) -> List[Dict[str, Any]]:
     """Discovers available Woolworths catalogues (this week and next week preview)."""
     catalogues = []
     try:
-        r = _get(f"{BASE_URL}/Woolworths-catalogue")
+        if postcode_id:
+            from scrapers.regions import region_request
+            url, kw = region_request(f"{BASE_URL}/Woolworths-catalogue", postcode_id)
+            r = _get(url, **kw)
+        else:
+            r = _get(f"{BASE_URL}/Woolworths-catalogue")
         soup = BeautifulSoup(r.text, 'html.parser')
         
         links = soup.find_all('a', href=re.compile(r'/woolworths-catalogue/.+/\d+/catalogue2'))
+        if region:
+            # only this state's own catalogue (not Liquorland, not regional-town versions)
+            from scrapers.regions import filter_region_links
+            pairs = []
+            for l in links:
+                m = re.search(r'-catalogue/([^/]+)/\d+/catalogue2', l.get('href', ''))
+                if m:
+                    pairs.append((m.group(1), l))
+            keep = {id(l) for _, l in filter_region_links(pairs, region, exact_prefix='weekly-catalogue')}
+            links = [l for l in links if id(l) in keep]
         seen_ids = set()
         
         for link in links:
@@ -383,27 +407,10 @@ def scrape_woolies_online_half_price(max_pages: int = 100) -> List[Dict[str, Any
 
 def scrape_woolies_all_weeks(max_pages: int = 50) -> Dict[str, Dict[str, Any]]:
     """Scrapes Woolworths specials for both current week and next week (if available)."""
-    print("Scraping Woolworths (Current & Next Week)...")
-    catalogues = discover_woolies_catalogues()
-    res = {
-        'current': {'items': [], 'date_range': ''},
-        'next': {'items': [], 'date_range': ''}
-    }
-
-    if not catalogues:
-        print("::warning::No Woolworths catalogues found on salefinder (site blocked or changed) - existing data will be kept")
-        items = scrape_woolies_catalogue_items(f"{BASE_URL}/Woolworths-catalogue", None, max_pages=max_pages)
-        res['current']['items'] = items
-    else:
-        current_cat, next_cat = pick_current_and_next(catalogues)
-        print(f"Woolworths Current Week ({current_cat['date_range']}) - ID {current_cat['id']}")
-        res['current']['date_range'] = current_cat['date_range']
-        res['current']['items'] = scrape_woolies_catalogue_items(current_cat['url'], current_cat['soup'], max_pages=max_pages)
-
-        if next_cat is not None:
-            print(f"Woolworths Next Week ({next_cat['date_range']}) - ID {next_cat['id']}")
-            res['next']['date_range'] = next_cat['date_range']
-            res['next']['items'] = scrape_woolies_catalogue_items(next_cat['url'], next_cat['soup'], max_pages=max_pages)
+    from scrapers.regions import scrape_all_regions
+    print("Scraping Woolworths (Current & Next Week, all states)...")
+    res = scrape_all_regions('Woolworths', discover_woolies_catalogues, scrape_woolies_catalogue_items,
+                             pick_current_and_next, max_pages=max_pages)
 
     # Merge online Half Price specials (Kinder Bueno, snacks, confectionery, etc.)
     try:
