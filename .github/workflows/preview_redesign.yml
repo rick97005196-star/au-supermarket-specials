@@ -1,0 +1,26 @@
+name: Preview Redesign (Cloudflare preview URL)
+
+on:
+  push:
+    branches: [redesign]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+      - name: Refresh data from main (so the preview shows current specials)
+        run: |
+          git fetch --depth=1 origin main
+          git checkout origin/main -- static/data
+      - name: Deploy preview (does NOT touch the live site)
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: npx wrangler pages deploy static --project-name=au-supermarket-specials --branch=redesign

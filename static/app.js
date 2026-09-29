@@ -34,7 +34,9 @@ function initScrollListeners() {
     const backToTopBtn = document.getElementById('backToTopBtn');
     if (!backToTopBtn) return;
 
+    const siteHeader = document.getElementById('siteHeader');
     window.addEventListener('scroll', () => {
+        if (siteHeader) siteHeader.classList.toggle('is-scrolled', window.scrollY > 8);
         if (window.scrollY > 300) {
             backToTopBtn.classList.remove('translate-y-16', 'opacity-0', 'pointer-events-none');
             backToTopBtn.classList.add('translate-y-0', 'opacity-100', 'pointer-events-auto');
@@ -76,17 +78,17 @@ function setLanguage(lang) {
 function applyLanguage(lang) {
     // Update language switcher active styles
     document.querySelectorAll('.lang-btn').forEach(btn => {
-        if (btn.dataset.lang === lang) {
-            btn.className = "lang-btn px-2.5 py-1 rounded-md transition-all bg-white dark:bg-zinc-700 text-slate-900 dark:text-white shadow-2xs font-bold border border-black/[0.04] dark:border-white/[0.06]";
-        } else {
-            btn.className = "lang-btn px-2.5 py-1 rounded-md transition-all text-slate-500 dark:text-zinc-400 hover:text-slate-900 dark:hover:text-white font-medium";
-        }
+        btn.classList.toggle('is-active', btn.dataset.lang === lang);
     });
+    const langSelect = document.getElementById('langSelect');
+    if (langSelect) langSelect.value = lang;
+    document.documentElement.lang = ({ zh: 'zh-TW', en: 'en', ja: 'ja', ko: 'ko' })[lang] || 'zh-TW';
 
     // Update text content of all elements with data-i18n
     document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.dataset.i18n;
-        el.textContent = t(key);
+        const text = t(key);
+        el.textContent = el.hasAttribute('data-strip-colon') ? String(text).replace(/[:：]\s*$/, '') : text;
     });
 
     // Update placeholders
@@ -195,22 +197,14 @@ function renderCategoryBar() {
     const bar = document.getElementById('categoryBar');
     if (!bar) return;
 
-    const activeClasses = "flex items-center gap-1.5 sm:gap-2 px-3 sm:px-3.5 py-1.5 rounded-lg text-[11px] sm:text-xs font-bold bg-emerald-600 dark:bg-emerald-500 text-white shadow-xs ring-1 ring-emerald-400/40 border border-emerald-600 dark:border-emerald-500 shrink-0 transition-all duration-150 active:scale-95 whitespace-nowrap";
-    const inactiveClasses = "flex items-center gap-1.5 sm:gap-2 px-3 sm:px-3.5 py-1.5 rounded-lg text-[11px] sm:text-xs font-semibold bg-white/95 dark:bg-[#15171a] hover:bg-slate-50 dark:hover:bg-zinc-800 text-slate-700 dark:text-zinc-200 border border-slate-200/90 dark:border-white/[0.08] hover:border-slate-300 dark:hover:border-zinc-700 shrink-0 transition-all duration-150 active:scale-95 whitespace-nowrap shadow-2xs";
+    const activeClasses = "chip is-active";
+    const inactiveClasses = "chip";
 
     const renderBtnContent = (btn, catKey, isActive) => {
-        const style = CATEGORY_STYLES[catKey] || { emoji: '🏷️', iconBg: 'bg-slate-50 border-slate-200 text-slate-700' };
+        const style = CATEGORY_STYLES[catKey] || { emoji: '🏷️' };
         const label = getCleanCategoryLabel(catKey);
-        const iconClasses = isActive
-            ? 'w-5 h-5 sm:w-5.5 sm:h-5.5 rounded-md bg-white/20 border border-white/30 text-white flex items-center justify-center text-xs shrink-0 shadow-2xs'
-            : `w-5 h-5 sm:w-5.5 sm:h-5.5 rounded-md border flex items-center justify-center text-xs shrink-0 shadow-2xs ${style.iconBg}`;
-
-        btn.innerHTML = `
-            <span class="${iconClasses}">
-                ${style.emoji}
-            </span>
-            <span class="truncate tracking-tight font-medium">${label}</span>
-        `;
+        btn.innerHTML = `<span class="chip-emoji" aria-hidden="true">${style.emoji}</span><span>${label}</span>`;
+        btn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
     };
 
     const existingBtns = bar.querySelectorAll('button');
@@ -231,13 +225,7 @@ function renderCategoryBar() {
     const row1Keys = ['all', 'produce', 'meat', 'seafood', 'dairy_eggs', 'bakery', 'frozen'];
     const row2Keys = ['pantry', 'snacks', 'drinks', 'liquor', 'health_vitamins', 'household', 'pet'];
     
-    const orderedKeys = [];
-    for (let i = 0; i < row1Keys.length; i++) {
-        orderedKeys.push(row1Keys[i]);
-        if (i < row2Keys.length) {
-            orderedKeys.push(row2Keys[i]);
-        }
-    }
+    const orderedKeys = [...row1Keys, ...row2Keys];
 
     orderedKeys.forEach(catKey => {
         const btn = document.createElement('button');
@@ -291,12 +279,12 @@ function applyTheme(theme) {
         document.documentElement.classList.add('dark');
         document.documentElement.classList.remove('light');
         localStorage.setItem('theme', 'dark');
-        if (icon) icon.className = 'fa-solid fa-sun text-amber-400 text-xs';
+        if (icon) icon.className = 'fa-solid fa-sun text-[13px]';
     } else {
         document.documentElement.classList.remove('dark');
         document.documentElement.classList.add('light');
         localStorage.setItem('theme', 'light');
-        if (icon) icon.className = 'fa-solid fa-moon text-slate-600 text-xs';
+        if (icon) icon.className = 'fa-solid fa-moon text-[13px]';
     }
 }
 
@@ -443,33 +431,18 @@ function updateStatsDisplay() {
     if (currentPeriod === 'next' && (!activeInfo.total || activeInfo.total === 0)) {
         activeRangeText = currentLang === 'zh' ? '尚未公佈（預計週二釋出）' : (currentLang === 'ja' ? '未公開（火曜公開予定）' : (currentLang === 'ko' ? '미공개 (화요일 공개 예정)' : 'Not Released Yet'));
     }
-    document.getElementById('activeDateRange').textContent = activeRangeText;
+    document.getElementById('activeDateRange').textContent = formatHeroDateRange(activeRangeText);
 
     const headerBadge = document.getElementById('headerPeriodBadge');
-    const headerBadgeContainer = headerBadge ? headerBadge.parentElement : null;
+    const headerChip = document.getElementById('headerPeriodChip');
     const periodIndicator = document.getElementById('periodIndicatorBadge');
-    if (currentPeriod === 'current') {
-        if (headerBadgeContainer) {
-            headerBadgeContainer.className = "inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-emerald-500/10 dark:bg-emerald-500/20 text-emerald-700 dark:text-emerald-400 text-[10px] font-bold border border-emerald-500/20 shrink-0";
-            const dot = headerBadgeContainer.querySelector('.rounded-full');
-            if (dot) dot.className = "w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse";
-        }
-        if (headerBadge) headerBadge.textContent = t('current_cycle');
-        if (periodIndicator) {
-            periodIndicator.className = "text-[10px] sm:text-[11px] px-2.5 py-0.5 rounded-full font-bold bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-400 border border-emerald-200/60 dark:border-emerald-800/60";
-            periodIndicator.textContent = activeRangeText ? `${t('current_cycle')} (${activeRangeText})` : t('current_cycle');
-        }
-    } else {
-        if (headerBadgeContainer) {
-            headerBadgeContainer.className = "inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-amber-500/10 dark:bg-amber-500/20 text-amber-700 dark:text-amber-400 text-[10px] font-bold border border-amber-500/20 shrink-0";
-            const dot = headerBadgeContainer.querySelector('.rounded-full');
-            if (dot) dot.className = "w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse";
-        }
-        if (headerBadge) headerBadge.textContent = t('next_cycle');
-        if (periodIndicator) {
-            periodIndicator.className = "text-[10px] sm:text-[11px] px-2.5 py-0.5 rounded-full font-bold bg-amber-50 dark:bg-amber-950/60 text-amber-700 dark:text-amber-400 border border-amber-200/60 dark:border-amber-800/60";
-            periodIndicator.textContent = activeRangeText ? `${t('next_cycle')} (${activeRangeText})` : t('next_cycle');
-        }
+    const isNext = currentPeriod !== 'current';
+    const periodKey = isNext ? 'next_cycle' : 'current_cycle';
+    if (headerChip) headerChip.classList.toggle('is-next', isNext);
+    if (headerBadge) headerBadge.textContent = t(periodKey);
+    if (periodIndicator) {
+        periodIndicator.className = 'result-badge hidden sm:inline-block truncate' + (isNext ? ' is-next' : '');
+        periodIndicator.textContent = t(periodKey);
     }
 
     document.getElementById('statTotal').textContent = activeInfo.total || 0;
@@ -481,6 +454,26 @@ function updateStatsDisplay() {
     document.getElementById('statAldi').textContent = byStore['ALDI'] || 0;
 }
 
+// "Wed 23 Sep 2026 - Tue 29 Sep 2026" -> "9月23日 – 9月29日" / "23 Sep – 29 Sep"
+function formatHeroDateRange(text) {
+    if (!text) return text;
+    const MONTHS = ['jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec'];
+    const re = /(\d{1,2})\s+([A-Za-z]{3})[a-z]*/g;
+    const parts = [];
+    let m;
+    while ((m = re.exec(text)) !== null && parts.length < 2) {
+        const mi = MONTHS.indexOf(m[2].toLowerCase());
+        if (mi >= 0) parts.push({ d: parseInt(m[1], 10), m: mi + 1, mon: m[2] });
+    }
+    if (parts.length !== 2) return text;
+    const fmt = (p) => {
+        if (currentLang === 'zh' || currentLang === 'ja') return `${p.m}月${p.d}日`;
+        if (currentLang === 'ko') return `${p.m}월 ${p.d}일`;
+        return `${p.d} ${p.mon}`;
+    };
+    return `${fmt(parts[0])} – ${fmt(parts[1])}`;
+}
+
 // Period / Week Switcher
 function selectPeriod(period) {
     if (currentPeriod === period) return;
@@ -488,24 +481,8 @@ function selectPeriod(period) {
 
     const btnCurr = document.getElementById('tabPeriodCurrent');
     const btnNext = document.getElementById('tabPeriodNext');
-
-    if (period === 'current') {
-        btnCurr.className = "flex items-center justify-center gap-2 py-2 sm:py-2.5 px-3 sm:px-5 rounded-lg text-xs sm:text-sm font-black bg-emerald-600 dark:bg-emerald-600 text-white shadow-xs border border-emerald-500 transition-all";
-        const iconC = btnCurr.querySelector('i');
-        if (iconC) iconC.className = "fa-regular fa-calendar-check text-white text-sm";
-
-        btnNext.className = "flex items-center justify-center gap-2 py-2 sm:py-2.5 px-3 sm:px-5 rounded-lg text-xs sm:text-sm font-bold text-slate-600 dark:text-zinc-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200/60 dark:hover:bg-zinc-700/60 transition-all opacity-85 hover:opacity-100";
-        const iconN = btnNext.querySelector('i');
-        if (iconN) iconN.className = "fa-solid fa-wand-magic-sparkles text-amber-500 text-sm";
-    } else {
-        btnNext.className = "flex items-center justify-center gap-2 py-2 sm:py-2.5 px-3 sm:px-5 rounded-lg text-xs sm:text-sm font-black bg-amber-500 dark:bg-amber-500 text-slate-950 shadow-xs border border-amber-400 transition-all";
-        const iconN = btnNext.querySelector('i');
-        if (iconN) iconN.className = "fa-solid fa-wand-magic-sparkles text-slate-950 text-sm";
-
-        btnCurr.className = "flex items-center justify-center gap-2 py-2 sm:py-2.5 px-3 sm:px-5 rounded-lg text-xs sm:text-sm font-bold text-slate-600 dark:text-zinc-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200/60 dark:hover:bg-zinc-700/60 transition-all opacity-85 hover:opacity-100";
-        const iconC = btnCurr.querySelector('i');
-        if (iconC) iconC.className = "fa-regular fa-calendar-check text-emerald-600 dark:text-emerald-400 text-sm";
-    }
+    if (btnCurr) btnCurr.classList.toggle('is-active', period === 'current');
+    if (btnNext) btnNext.classList.toggle('is-active', period !== 'current');
 
     updateStatsDisplay();
     loadSpecials();
@@ -524,11 +501,7 @@ function updateHalfPricePillStyle() {
     const checkbox = document.getElementById('halfPriceOnly');
     const pill = document.getElementById('halfPricePill');
     if (!checkbox || !pill) return;
-    if (checkbox.checked) {
-        pill.className = "flex items-center gap-1.5 px-3 py-1 sm:py-1.5 rounded-lg font-black text-xs transition border border-rose-500 bg-rose-500 text-white shadow-xs active:scale-95";
-    } else {
-        pill.className = "flex items-center gap-1.5 px-3 py-1 sm:py-1.5 rounded-lg font-bold text-xs transition border border-slate-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-slate-700 dark:text-zinc-300 hover:border-slate-300 dark:hover:border-zinc-600 active:scale-95 shadow-2xs";
-    }
+    pill.classList.toggle('is-on', checkbox.checked);
 }
 
 // Hardware / Kitchenware Appliance Guard (Strictly exclude from grocery bestsellers)
@@ -1014,37 +987,7 @@ function clearSearch() {
 function selectStore(store) {
     currentStore = store;
     document.querySelectorAll('.store-tab').forEach(tab => {
-        const s = tab.dataset.store;
-        const dot = tab.querySelector('.store-dot');
-        const isActive = (s === store);
-
-        if (isActive) {
-            if (s === 'All') {
-                tab.className = 'store-tab active px-3 py-1.5 rounded-lg transition-all bg-slate-900 dark:bg-zinc-100 text-white dark:text-slate-900 shadow-xs font-bold border border-slate-900 dark:border-zinc-200 shrink-0';
-            } else if (s === 'Woolworths') {
-                tab.className = 'store-tab active px-3 py-1.5 rounded-lg transition-all bg-[#007a3d] text-white shadow-xs font-bold border border-[#006633] shrink-0';
-                if (dot) dot.className = 'store-dot inline-block w-2 h-2 rounded-xs bg-white mr-1 shadow-2xs';
-            } else if (s === 'Coles') {
-                tab.className = 'store-tab active px-3 py-1.5 rounded-lg transition-all bg-[#e01a22] text-white shadow-xs font-bold border border-[#c4161d] shrink-0';
-                if (dot) dot.className = 'store-dot inline-block w-2 h-2 rounded-xs bg-white mr-1 shadow-2xs';
-            } else if (s === 'ALDI') {
-                tab.className = 'store-tab active px-3 py-1.5 rounded-lg transition-all bg-[#00205b] text-white shadow-xs font-bold border border-[#001742] shrink-0';
-                if (dot) dot.className = 'store-dot inline-block w-2 h-2 rounded-xs bg-white mr-1 shadow-2xs';
-            }
-        } else {
-            if (s === 'All') {
-                tab.className = 'store-tab px-3 py-1.5 rounded-lg transition-all font-semibold text-slate-600 dark:text-zinc-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200/60 dark:hover:bg-zinc-700/60 shrink-0';
-            } else if (s === 'Woolworths') {
-                tab.className = 'store-tab px-3 py-1.5 rounded-lg transition-all font-semibold text-emerald-700 dark:text-emerald-400 hover:bg-emerald-50 dark:hover:bg-emerald-950/40 shrink-0';
-                if (dot) dot.className = 'store-dot inline-block w-2 h-2 rounded-xs bg-emerald-600 mr-1';
-            } else if (s === 'Coles') {
-                tab.className = 'store-tab px-3 py-1.5 rounded-lg transition-all font-semibold text-rose-700 dark:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-950/40 shrink-0';
-                if (dot) dot.className = 'store-dot inline-block w-2 h-2 rounded-xs bg-rose-600 mr-1';
-            } else if (s === 'ALDI') {
-                tab.className = 'store-tab px-3 py-1.5 rounded-lg transition-all font-semibold text-blue-700 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-950/40 shrink-0';
-                if (dot) dot.className = 'store-dot inline-block w-2 h-2 rounded-xs bg-blue-600 mr-1';
-            }
-        }
+        tab.classList.toggle('is-active', tab.dataset.store === store);
     });
     loadSpecials();
 }
@@ -1355,7 +1298,7 @@ function renderNextBatch() {
 
 function createProductCardElement(item) {
     const card = document.createElement('div');
-    card.className = 'bg-white dark:bg-[#121316] rounded-2xl sm:rounded-3xl border border-slate-200/80 dark:border-white/[0.07] overflow-hidden shadow-[0_2px_10px_-2px_rgba(0,0,0,0.04)] hover:shadow-[0_16px_36px_-6px_rgba(0,0,0,0.12)] dark:hover:shadow-[0_16px_36px_-6px_rgba(0,0,0,0.5)] hover:-translate-y-1 hover:border-emerald-500/40 dark:hover:border-emerald-500/40 transition-all duration-300 flex flex-col justify-between group cursor-pointer relative';
+    card.className = 'p-card group';
     card.onclick = () => openProductModal(item);
 
     let storeBadgeClass = 'bg-[#007a3d] text-white';
@@ -1419,113 +1362,65 @@ function createProductCardElement(item) {
         period: item.period || 'current'
     };
 
+    const storeDotClass = item.store === 'Coles' ? 'dot-coles' : (item.store === 'ALDI' ? 'dot-aldi' : 'dot-woolies');
+    const primaryTitle = translated || item.title;
+    const secondaryTitle = translated ? item.title : '';
+    const escAttr = (v) => String(v || '').replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
+
     card.innerHTML = `
-        <div class="p-2.5 sm:p-3.5 space-y-2 sm:space-y-2.5">
-            <!-- Top Header Row: Store Tag & Popular Badge (Moved above image stage to eliminate collisions & unblock product) -->
-            <div class="flex items-center justify-between gap-1 h-5 px-0.5">
-                <span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[10px] sm:text-[11px] font-bold ${storeBadgeClass} shadow-2xs">
-                    ${storeIcon}
-                    <span>${item.store}</span>
-                </span>
-                ${isItemPopular(item) ? `
-                    <span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[10px] sm:text-[11px] font-bold bg-amber-400 text-slate-950 shadow-2xs tracking-tight shrink-0">
-                        <i class="fa-solid fa-star text-[8px]"></i>
-                        <span>${t('popular_badge')}</span>
-                    </span>
-                ` : `
-                    <div class="h-[18px]"></div>
-                `}
-            </div>
-
-            <!-- Product Image Stage: Enlarged & Clean (1/2 Price circle has dedicated unblocked top-left placement) -->
-            <div class="relative w-full aspect-square rounded-xl sm:rounded-2xl bg-gradient-to-b from-slate-50/90 to-slate-100/50 dark:from-zinc-800/40 dark:to-zinc-850/60 p-2 sm:p-2.5 flex items-center justify-center overflow-hidden ring-1 ring-black/[0.04] dark:ring-white/[0.05]">
-                <!-- Circular Half Price Badge Overlay (Woolworths green & Coles red official styles - completely unblocked) -->
-                ${halfPriceBadgeSrc ? `
-                    <div class="absolute top-1.5 left-1.5 sm:top-2 sm:left-2 z-10 pointer-events-none drop-shadow-sm select-none w-[34%] max-w-[62px] min-w-[38px] aspect-square transition-transform group-hover:scale-105">
-                        <img src="${halfPriceBadgeSrc}" alt="1/2 Price" class="w-full h-full object-contain" />
-                    </div>
-                ` : ''}
-
-                <!-- Product Image with Zoom -->
-                <img 
-                    src="${item.image_url || fallbackImg}" 
-                    alt="${item.title}" 
-                    loading="lazy" 
-                    decoding="async"
-                    class="max-h-full max-w-full object-contain group-hover:scale-108 transition-transform duration-500 ease-out"
-                    onerror="this.onerror=null;this.src=DEFAULT_FALLBACK_IMG"
-                />
-            </div>
-
-            <!-- Category, Unit Price & Comparison Meta Row -->
-            <div class="flex items-center justify-between gap-1.5 text-[10px] sm:text-[11px] text-slate-500 dark:text-zinc-400 min-h-[22px]">
-                <div class="flex items-center gap-1.5 min-w-0">
-                    <span class="inline-flex items-center gap-1 font-medium bg-slate-100/90 dark:bg-zinc-800/80 px-2 py-0.5 rounded-md text-[10px] sm:text-[11px] text-slate-600 dark:text-zinc-300">
-                        <span>${catStyle.emoji}</span>
-                        <span class="truncate">${getCleanCategoryLabel(item.category)}</span>
-                    </span>
-                    ${crossStoreBadgeText ? `
-                        <span class="inline-flex items-center gap-1 font-bold text-[9px] sm:text-[10px] px-1.5 py-0.5 rounded-md ${item.cross_store_cheaper ? 'bg-emerald-100 dark:bg-emerald-950/80 text-emerald-800 dark:text-emerald-300 border border-emerald-300/60' : 'bg-blue-100 dark:bg-blue-950/80 text-blue-800 dark:text-blue-300 border border-blue-200/60'} shrink-0 shadow-2xs" title="${crossStoreBadgeText}">
-                            <i class="fa-solid fa-scale-balanced text-[8px]"></i>
-                            <span>${crossStoreBadgeText}</span>
-                        </span>
-                    ` : ''}
-                </div>
-                ${unitPriceClean ? `
-                    <span class="font-mono text-slate-400 dark:text-zinc-500 text-[10px] sm:text-[11px] font-semibold tracking-tight shrink-0 whitespace-nowrap ml-auto" title="${unitPriceClean}">
-                        ${unitPriceClean}
-                    </span>
-                ` : ''}
-            </div>
-
-            <!-- Product Title & Multilingual Subtitle (Expanded to 3 lines for title and 2 lines for translation to prevent clipping) -->
-            <div class="space-y-1.5">
-                <h3 class="text-xs sm:text-sm font-bold text-slate-900 dark:text-zinc-100 line-clamp-3 leading-snug group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors min-h-[3rem] max-h-[3.6rem] overflow-hidden" title="${item.title}">
-                    ${item.title}
-                </h3>
-                ${translated ? `
-                    <div class="text-[11px] sm:text-xs font-semibold text-emerald-800 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200/60 dark:border-emerald-800/60 px-2 py-1 rounded-md line-clamp-2 leading-snug min-h-[2.4rem] flex items-center" title="${translated}">
-                        ${translated}
-                    </div>
-                ` : `
-                    <div class="h-[2.4rem]"></div>
-                `}
-            </div>
+        <div class="p-media">
+            ${halfPriceBadgeSrc ? `
+                <div class="p-half"><img src="${halfPriceBadgeSrc}" alt="1/2 Price" /></div>
+            ` : ''}
+            ${isItemPopular(item) ? `
+                <span class="p-flag"><i class="fa-solid fa-star text-[8px]"></i>${t('popular_badge')}</span>
+            ` : ''}
+            <img
+                class="p-img"
+                src="${item.image_url || fallbackImg}"
+                alt="${escAttr(item.title)}"
+                loading="lazy"
+                decoding="async"
+                onerror="this.onerror=null;this.src=DEFAULT_FALLBACK_IMG"
+            />
         </div>
 
-        <!-- Price & Action Footer -->
-        <div class="p-3 sm:p-3.5 pt-0 space-y-2.5">
-            <!-- Price Display Row -->
-            <div class="pt-2 border-t border-slate-100 dark:border-zinc-800/80 flex items-baseline justify-between gap-1">
-                <div class="flex items-baseline gap-0.5 leading-none">
-                    <span class="text-xs sm:text-sm font-extrabold text-slate-900 dark:text-white self-start mt-0.5 font-mono">$</span>
-                    <span class="text-2xl sm:text-3xl font-black tracking-tight text-slate-900 dark:text-white font-mono">${p.dollars}</span>
-                    <span class="text-xs sm:text-sm font-extrabold text-slate-900 dark:text-white self-start mt-0.5 font-mono">${p.cents}</span>
-                    <span class="text-[10px] sm:text-xs font-semibold text-slate-400 dark:text-zinc-500 ml-1 self-baseline">${p.unit}</span>
-                </div>
-
-                <div class="text-right leading-none space-y-1">
-                    ${effectiveWas > 0 ? `
-                        <div class="text-[10px] sm:text-[11px] text-slate-400 dark:text-zinc-500 line-through font-medium">
-                            ${t('was_price')} $${effectiveWas.toFixed(2)}
-                        </div>
-                    ` : ''}
-                    ${effectiveSave > 0 ? `
-                        <span class="inline-block px-1.5 py-0.5 rounded-md text-[10px] font-black bg-amber-400 text-slate-950 shadow-2xs">
-                            ${t('save_badge', { amount: effectiveSave.toFixed(2) })}
-                        </span>
-                    ` : ''}
-                </div>
+        <div class="p-body">
+            <div class="p-meta">
+                <span class="p-store"><i class="store-dot ${storeDotClass}"></i>${item.store}</span>
+                <span class="sep">·</span>
+                <span class="p-cat">${getCleanCategoryLabel(item.category)}</span>
             </div>
 
-            <!-- Add to Shopping List Button -->
-            <button 
-                onclick='event.stopPropagation(); addToShoppingList(${JSON.stringify(cartPayload).replace(/'/g, "&#39;")})'
-                class="w-full py-2 px-3 rounded-lg text-xs font-bold bg-slate-100 hover:bg-emerald-600 text-slate-700 hover:text-white dark:bg-zinc-800 dark:hover:bg-emerald-600 dark:text-zinc-200 dark:hover:text-white border border-slate-200/70 dark:border-zinc-700/70 hover:border-emerald-600 dark:hover:border-emerald-600 transition-all duration-150 flex items-center justify-center gap-1.5 active:scale-95 shadow-2xs group/btn"
-            >
-                <i class="fa-solid fa-plus text-[10px] sm:text-xs transition-transform duration-200 group-hover/btn:rotate-90"></i>
-                <span data-i18n="add_to_list">${t('add_to_list')}</span>
-            </button>
+            <h3 class="p-title" title="${escAttr(primaryTitle)}">${primaryTitle}</h3>
+            <p class="p-subtitle" title="${escAttr(secondaryTitle)}">${secondaryTitle}</p>
+
+            ${crossStoreBadgeText ? `
+                <span class="p-compare ${item.cross_store_cheaper ? 'is-cheaper' : ''}" title="${escAttr(crossStoreBadgeText)}">
+                    <i class="fa-solid fa-scale-balanced text-[9px]"></i>${crossStoreBadgeText}
+                </span>
+            ` : ''}
+
+            <div class="p-price-row">
+                <div class="min-w-0">
+                    <div class="p-price num">
+                        <span class="cur">$</span><span class="dol">${p.dollars}</span><span class="cts">${p.cents}</span><span class="unit">${p.unit}</span>
+                    </div>
+                    <div class="p-was num mt-1.5">
+                        ${effectiveWas > 0 ? `<s>${t('was_price')} $${effectiveWas.toFixed(2)}</s>` : ''}
+                        ${effectiveSave > 0 ? `<span class="p-save">${t('save_badge', { amount: effectiveSave.toFixed(2) })}</span>` : ''}
+                    </div>
+                    ${unitPriceClean ? `<div class="p-unit num mt-0.5 truncate" title="${escAttr(unitPriceClean)}">${unitPriceClean}</div>` : ''}
+                </div>
+                <button
+                    class="p-add"
+                    title="${escAttr(t('add_to_list'))}"
+                    aria-label="${escAttr(t('add_to_list'))}"
+                    onclick='event.stopPropagation(); addToShoppingList(${JSON.stringify(cartPayload).replace(/'/g, "&#39;")})'
+                >
+                    <i class="fa-solid fa-plus text-[13px]"></i>
+                </button>
+            </div>
         </div>
     `;
 
@@ -1646,7 +1541,8 @@ function openProductModal(item) {
 
     // Badges
     const storeBadge = document.getElementById('modalStoreBadge');
-    storeBadge.className = `px-2.5 py-0.5 rounded-lg text-xs font-bold ${storeColor}`;
+    storeBadge.className = 'tag';
+    storeBadge.style.color = item.store === 'Coles' ? 'var(--coles)' : (item.store === 'ALDI' ? 'var(--aldi)' : 'var(--woolies)');
     storeBadge.textContent = item.store;
 
     document.getElementById('modalCategoryBadge').textContent = getCategoryName(item.category);
@@ -1767,7 +1663,7 @@ function openProductModal(item) {
             
             // Render this store's price row
             const thisStoreRow = document.createElement('div');
-            thisStoreRow.className = "p-2.5 rounded-xl bg-white dark:bg-zinc-900 border border-slate-200/80 dark:border-zinc-800 flex items-center justify-between gap-2 shadow-2xs";
+            thisStoreRow.className = "list-item justify-between";
             thisStoreRow.innerHTML = `
                 <div class="flex items-center gap-2">
                     <span class="px-2 py-0.5 rounded-lg text-[10px] font-bold ${item.store === 'Coles' ? 'bg-[#e01a22]' : (item.store === 'ALDI' ? 'bg-[#00205b]' : 'bg-[#007a3d]')} text-white">
@@ -1800,7 +1696,7 @@ function openProductModal(item) {
                 }
 
                 const otherRow = document.createElement('div');
-                otherRow.className = "p-2.5 rounded-xl bg-white dark:bg-zinc-900 border border-slate-200/80 dark:border-zinc-800 flex items-center justify-between gap-2 shadow-2xs hover:border-blue-400 transition cursor-pointer";
+                otherRow.className = "list-item justify-between cursor-pointer transition hover:opacity-80";
                 otherRow.onclick = (e) => {
                     e.stopPropagation();
                     openProductModal(other);
@@ -1884,7 +1780,7 @@ function openProductModal(item) {
                 subLink.href = targetUrl;
                 subLink.target = '_blank';
                 subLink.rel = 'noopener noreferrer';
-                subLink.className = "px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-zinc-800 hover:bg-emerald-50 hover:text-emerald-700 dark:hover:bg-zinc-700 text-slate-700 dark:text-zinc-300 font-medium transition flex items-center gap-1 shadow-2xs";
+                subLink.className = "tag hover:opacity-80 transition inline-flex items-center gap-1";
                 subLink.innerHTML = `<span>${sub}</span><i class="fa-solid fa-arrow-up-right-from-square text-[9px] opacity-70"></i>`;
                 subItemsList.appendChild(subLink);
             });
@@ -2119,10 +2015,10 @@ async function loadShoppingList() {
 
         if (!data.items || data.items.length === 0) {
             container.innerHTML = `
-                <div class="py-20 text-center text-slate-400 dark:text-zinc-500">
-                    <i class="fa-solid fa-basket-shopping text-4xl mb-3 text-slate-300 dark:text-zinc-700"></i>
-                    <p class="text-xs font-bold text-slate-600 dark:text-zinc-400">${t('empty_manifest')}</p>
-                    <p class="text-[11px] text-slate-400 dark:text-zinc-500 mt-1">${t('empty_manifest_sub')}</p>
+                <div class="py-20 text-center t-ink-3">
+                    <i class="fa-solid fa-basket-shopping text-3xl mb-4 opacity-40"></i>
+                    <p class="text-[14px] font-semibold t-ink-2">${t('empty_manifest')}</p>
+                    <p class="text-[12px] mt-1">${t('empty_manifest_sub')}</p>
                 </div>
             `;
             return;
@@ -2133,22 +2029,16 @@ async function loadShoppingList() {
             const items = data.grouped[store];
             if (!items || items.length === 0) return;
 
-            let badgeClass = 'bg-emerald-600 text-white';
-            if (store === 'Coles') badgeClass = 'bg-rose-600 text-white';
-            if (store === 'ALDI') badgeClass = 'bg-blue-600 text-white';
+            const dotClass = store === 'Coles' ? 'dot-coles' : (store === 'ALDI' ? 'dot-aldi' : 'dot-woolies');
 
             let storeSubtotal = items.reduce((acc, cur) => acc + (cur.price * cur.quantity), 0);
 
             const section = document.createElement('div');
-            section.className = 'bg-slate-50 dark:bg-zinc-800/40 p-3.5 rounded-2xl border border-slate-200/80 dark:border-zinc-800 space-y-2.5';
+            section.className = 'list-section space-y-2';
             section.innerHTML = `
-                <div class="flex items-center justify-between pb-2 border-b border-slate-200 dark:border-zinc-700/80 text-xs">
-                    <span class="px-2 py-0.5 rounded-md font-bold ${badgeClass}">
-                        ${store} (${items.length})
-                    </span>
-                    <span class="font-bold text-slate-700 dark:text-zinc-300">
-                        ${t('subtotal')} $${storeSubtotal.toFixed(2)}
-                    </span>
+                <div class="flex items-center justify-between px-1 pb-1 text-[13px]">
+                    <span class="store-label"><i class="store-dot ${dotClass}"></i>${store} <span class="t-ink-3 font-normal">(${items.length})</span></span>
+                    <span class="num font-semibold t-ink-2">${t('subtotal')} $${storeSubtotal.toFixed(2)}</span>
                 </div>
                 <div class="space-y-1.5">
                     ${items.map(it => {
@@ -2163,16 +2053,16 @@ async function loadShoppingList() {
                         }
                         const fallbackImg = DEFAULT_FALLBACK_IMG;
                         return `
-                        <div class="flex items-center justify-between gap-2.5 p-2.5 rounded-xl bg-white dark:bg-zinc-800 border border-slate-200/80 dark:border-zinc-700/70 shadow-2xs ${it.is_bought ? 'opacity-40' : ''}">
+                        <div class="list-item ${it.is_bought ? 'opacity-40' : ''}">
                             <div class="flex items-center gap-2.5 flex-1 min-w-0">
                                 <input 
                                     type="checkbox" 
                                     ${it.is_bought ? 'checked' : ''} 
                                     onchange="toggleShoppingItem(${it.id}, this.checked)"
-                                    class="w-4 h-4 text-emerald-600 rounded border-slate-300 dark:border-zinc-600 focus:ring-emerald-500 cursor-pointer shrink-0"
+                                    class="w-4 h-4 cursor-pointer shrink-0" style="accent-color: var(--accent)"
                                 />
                                 <!-- Product Image Thumbnail -->
-                                <div class="w-12 h-12 rounded-lg bg-slate-50 dark:bg-zinc-900/60 p-1 flex items-center justify-center shrink-0 border border-slate-100 dark:border-zinc-700/60 overflow-hidden">
+                                <div class="w-12 h-12 rounded-lg p-1 flex items-center justify-center shrink-0 overflow-hidden" style="background:#fff;border:1px solid var(--line)">
                                     <img 
                                         src="${it.image_url || fallbackImg}" 
                                         alt="${it.title}" 
@@ -2183,25 +2073,25 @@ async function loadShoppingList() {
                                 </div>
                                 <div class="min-w-0 flex-1">
                                     <div class="flex items-center gap-1.5">
-                                        <h4 class="text-xs font-semibold text-slate-900 dark:text-zinc-100 truncate ${it.is_bought ? 'line-through text-slate-400' : ''}" title="${it.title}">
+                                        <h4 class="text-[13px] font-medium t-ink truncate ${it.is_bought ? 'line-through' : ''}" title="${it.title}">
                                              ${it.title}
                                         </h4>
-                                        <span class="text-[9px] sm:text-[10px] px-1 py-0.2 rounded font-medium shrink-0 ${it.period === 'next' ? 'bg-amber-100 text-amber-800 dark:bg-amber-950/70 dark:text-amber-300' : 'bg-slate-100 dark:bg-zinc-700 text-slate-600 dark:text-zinc-300'}">
+                                        <span class="tag shrink-0 ${it.period === 'next' ? 'is-next' : ''}">
                                             ${it.period === 'next' ? t('next_cycle') : t('current_cycle')}
                                         </span>
                                     </div>
                                     ${(() => {
                                         const itTrans = getProductTranslation(it, currentLang);
-                                        return (itTrans && currentLang !== 'en') ? `<div class="text-[11px] font-medium text-emerald-700 dark:text-emerald-300 truncate mt-0.5" title="${itTrans}">${itTrans}</div>` : '';
+                                        return (itTrans && currentLang !== 'en') ? `<div class="text-[12px] t-ink-2 truncate mt-0.5" title="${itTrans}">${itTrans}</div>` : '';
                                     })()}
-                                    <div class="text-[11px] text-slate-500 dark:text-zinc-400 flex items-center gap-2 mt-0.5 font-medium flex-wrap">
-                                        <span class="font-bold text-slate-900 dark:text-white">${itPrice.displayWithUnit}</span>
-                                        ${itSave > 0 ? `<span class="px-1 py-0.2 rounded text-[10px] font-black bg-amber-400 text-slate-950">${t('save_badge', { amount: itSave.toFixed(2) })}</span>` : ''}
-                                        ${itWas > 0 ? `<span class="text-slate-400 line-through text-[10px]">${t('was_price')} $${itWas.toFixed(2)}</span>` : ''}
+                                    <div class="text-[12px] t-ink-3 flex items-center gap-2 mt-0.5 flex-wrap num">
+                                        <span class="font-semibold t-ink">${itPrice.displayWithUnit}</span>
+                                        ${itSave > 0 ? `<span class="t-sale font-medium">${t('save_badge', { amount: itSave.toFixed(2) })}</span>` : ''}
+                                        ${itWas > 0 ? `<span class="line-through">${t('was_price')} $${itWas.toFixed(2)}</span>` : ''}
                                     </div>
                                 </div>
                             </div>
-                            <button onclick="deleteShoppingItem(${it.id})" class="text-slate-400 hover:text-rose-500 p-1.5 transition shrink-0" title="${t('delete')}">
+                            <button onclick="deleteShoppingItem(${it.id})" class="t-ink-3 hover:t-ink p-1.5 transition shrink-0" title="${t('delete')}">
                                 <i class="fa-solid fa-xmark text-xs"></i>
                             </button>
                         </div>
@@ -2635,6 +2525,15 @@ function renderAnnouncement() {
     }
 
     box.classList.remove('hidden');
+}
+
+function toggleAnnouncementOpen() {
+    const box = document.getElementById('announcementBox');
+    if (!box) return;
+    const open = !box.classList.contains('is-open');
+    box.classList.toggle('is-open', open);
+    const btn = box.querySelector('.notice-toggle');
+    if (btn) btn.setAttribute('aria-expanded', open ? 'true' : 'false');
 }
 
 function dismissAnnouncement() {
