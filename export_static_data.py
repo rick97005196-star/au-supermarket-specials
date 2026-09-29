@@ -1,4 +1,5 @@
 import sqlite3
+import datetime
 import json
 import os
 
@@ -79,6 +80,8 @@ print(f"Exported {len(items)} specials to static/data/specials.json (with transl
 # Also generate stats.json
 import database
 stats = database.get_stats()
+# When the specials were last refreshed (UTC, ISO format) - shown on the site as "updated x hours ago"
+stats['data_updated_at'] = datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')
 with open('static/data/stats.json', 'w', encoding='utf-8') as f:
     json.dump(stats, f, ensure_ascii=False, indent=2)
 

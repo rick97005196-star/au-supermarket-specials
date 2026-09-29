@@ -682,6 +682,7 @@ function updateStatsDisplay() {
         periodIndicator.textContent = t(periodKey);
     }
 
+    renderLastUpdated();
     document.getElementById('statTotal').textContent = activeInfo.total || 0;
     document.getElementById('statHalfPrice').textContent = activeInfo.half_price_count || 0;
     
@@ -710,6 +711,28 @@ function formatHeroDateRange(text) {
     };
     return `${fmt(parts[0])} – ${fmt(parts[1])}`;
 }
+
+// ---------- "Updated x hours ago" ----------
+function renderLastUpdated() {
+    const box = document.getElementById('lastUpdated');
+    const txt = document.getElementById('lastUpdatedText');
+    if (!box || !txt || !globalStats) return;
+    let iso = globalStats.data_updated_at;
+    if (!iso && globalStats.last_updated) iso = globalStats.last_updated.replace(' ', 'T') + 'Z'; // older files (UTC)
+    const t0 = iso ? Date.parse(iso) : NaN;
+    if (isNaN(t0)) { box.classList.add('hidden'); return; }
+    const mins = Math.max(0, Math.floor((Date.now() - t0) / 60000));
+    let label;
+    if (mins < 2) label = t('updated_just_now');
+    else if (mins < 60) label = t('updated_minutes', { n: mins });
+    else if (mins < 48 * 60) label = t('updated_hours', { n: Math.floor(mins / 60) });
+    else label = t('updated_days', { n: Math.floor(mins / 1440) });
+    txt.textContent = label;
+    box.title = new Date(t0).toLocaleString();
+    box.classList.remove('hidden');
+    box.classList.toggle('is-old', mins > 4 * 24 * 60);   // older than 4 days: shown in amber
+}
+setInterval(renderLastUpdated, 60000);
 
 // Period / Week Switcher
 function selectPeriod(period) {

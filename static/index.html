@@ -49,7 +49,7 @@
 
     <!-- Pre-built styles (no in-browser compiling = faster on phones) -->
     <link rel="stylesheet" href="./tw.css?v=6.1">
-    <link rel="stylesheet" href="./design.css?v=6.9">
+    <link rel="stylesheet" href="./design.css?v=7.0">
 
     <!-- Non-blocking fonts & icons: text shows immediately with the phone's own fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -107,10 +107,13 @@
     <section class="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 pt-8 sm:pt-12 pb-6 sm:pb-8">
         <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
             <div class="space-y-3 min-w-0">
-                <span class="period-chip" id="headerPeriodChip">
-                    <span class="status-dot"></span>
-                    <span id="headerPeriodBadge" data-i18n="current_cycle">本週特價</span>
-                </span>
+                <div class="flex items-center gap-3 flex-wrap">
+                    <span class="period-chip" id="headerPeriodChip">
+                        <span class="status-dot"></span>
+                        <span id="headerPeriodBadge" data-i18n="current_cycle">本週特價</span>
+                    </span>
+                    <span id="lastUpdated" class="updated-chip hidden" title=""><i class="fa-regular fa-clock"></i><span id="lastUpdatedText"></span></span>
+                </div>
                 <h1 class="hero-title">
                     <span id="activeDateRange" class="num">載入中...</span>
                 </h1>
@@ -472,6 +475,6 @@
     </div>
 
     <script src="./i18n.js?v=6.4" defer></script>
-    <script src="./app.js?v=6.9" defer></script>
+    <script src="./app.js?v=7.0" defer></script>
 </body>
 </html>

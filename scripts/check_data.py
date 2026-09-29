@@ -72,7 +72,7 @@ def fingerprint(items, stats, translations):
         json.dumps({k: v for k, v in it.items() if k not in ('id',)}, ensure_ascii=False, sort_keys=True)
         for it in items or []
     )
-    st = {k: v for k, v in (stats or {}).items() if k != 'last_updated'}
+    st = {k: v for k, v in (stats or {}).items() if k not in ('last_updated', 'data_updated_at')}
     h = hashlib.sha256()
     h.update('\n'.join(rows).encode('utf-8'))
     h.update(json.dumps(st, ensure_ascii=False, sort_keys=True).encode('utf-8'))
@@ -154,7 +154,7 @@ def pre():
 def post():
     """Layer 4: the live site must now serve exactly what we just deployed."""
     local = load(os.path.join(DATA, 'stats.json'))
-    want = (local.get('current', {}).get('total'), local.get('last_updated'))
+    want = (local.get('current', {}).get('total'), local.get('data_updated_at') or local.get('last_updated'))
     got = None
     for attempt in range(8):
         try:
@@ -162,7 +162,7 @@ def post():
                                          headers={'Cache-Control': 'no-cache', 'User-Agent': 'update-check'})
             with urllib.request.urlopen(req, timeout=20) as r:
                 live = json.loads(r.read().decode('utf-8'))
-            got = (live.get('current', {}).get('total'), live.get('last_updated'))
+            got = (live.get('current', {}).get('total'), live.get('data_updated_at') or live.get('last_updated'))
             if got == want:
                 print(f"網站已更新：本週 {want[0]} 件，更新時間 {want[1]}")
                 return 0
