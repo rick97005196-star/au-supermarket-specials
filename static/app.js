@@ -575,7 +575,9 @@ function isItemPopular(it) {
     const title = it.title || '';
     if (APPLIANCE_HARDWARE_REGEX.test(title)) return false;
     if (/fairy\s*floss/i.test(title)) return false;
-    if (it.is_popular === true) return true;
+    // The data file marks only the top ~10% per category (max 2 per brand) as popular.
+    if (typeof it.is_popular === 'boolean') return it.is_popular;
+    if (it.is_popular === 1 || it.is_popular === 0) return it.is_popular === 1;
     return POPULAR_REGEX.test(title);
 }
 

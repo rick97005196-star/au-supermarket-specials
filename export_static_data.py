@@ -39,6 +39,37 @@ for it in items:
         tr = translations[t]
         it['translations'] = {k: tr[k] for k in ('zh', 'ja', 'ko') if tr.get(k)}
 
+# ---- "熱門暢銷" badge: only the top ~10% per category, max 2 per brand, so the badge stays meaningful ----
+import math, re as _re
+HOUSE_BRANDS = {'coles', 'woolworths', 'macro', 'essentials'}
+def _brand(title):
+    words = _re.sub(r"[^a-z0-9&' ]", ' ', (title or '').lower()).split()
+    if not words:
+        return ''
+    # two-word brands like "red rock", "tip top", "dairy farmers", "tim tam"
+    return ' '.join(words[:2]) if words[0] in HOUSE_BRANDS or len(words[0]) <= 3 else words[0]
+
+groups = {}
+for it in items:
+    it['is_popular'] = False
+    if (it.get('popularity_score') or 0) > 0:
+        groups.setdefault((it.get('period'), it.get('category')), []).append(it)
+for (period, cat), members in groups.items():
+    size = sum(1 for x in items if x.get('period') == period and x.get('category') == cat)
+    quota = max(1, min(20, math.ceil(size * 0.10)))
+    per_brand = {}
+    picked = 0
+    for it in sorted(members, key=lambda x: -(x.get('popularity_score') or 0)):
+        b = _brand(it.get('title'))
+        if per_brand.get(b, 0) >= 2:
+            continue
+        per_brand[b] = per_brand.get(b, 0) + 1
+        it['is_popular'] = True
+        picked += 1
+        if picked >= quota:
+            break
+print(f"Popular badge: {sum(1 for x in items if x['is_popular'])} of {len(items)} items")
+
 with open('static/data/specials.json', 'w', encoding='utf-8') as f:
     # compact JSON: this file is downloaded by every visitor (mostly on mobile data)
     json.dump(items, f, ensure_ascii=False, separators=(',', ':'))
