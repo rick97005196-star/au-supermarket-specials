@@ -36,10 +36,12 @@ for it in items:
     it['is_popular'] = is_popular_product(t)
     it['popularity_score'] = calculate_popularity_score(it)
     if t in translations:
-        it['translations'] = translations[t]
+        tr = translations[t]
+        it['translations'] = {k: tr[k] for k in ('zh', 'ja', 'ko') if tr.get(k)}
 
 with open('static/data/specials.json', 'w', encoding='utf-8') as f:
-    json.dump(items, f, ensure_ascii=False, indent=2)
+    # compact JSON: this file is downloaded by every visitor (mostly on mobile data)
+    json.dump(items, f, ensure_ascii=False, separators=(',', ':'))
 
 print(f"Exported {len(items)} specials to static/data/specials.json (with translations)")
 

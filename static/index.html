@@ -2,14 +2,14 @@
 <html lang="zh-TW" class="light">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>澳洲超市特價優惠 | AU Supermarket Specials</title>
-    
+
     <!-- Disable Browser Cache for Instant Updates -->
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
-    
+
     <!-- Open Graph / LINE / Facebook / Messenger Social Share Tags -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://au-supermarket-specials.pages.dev/">
@@ -26,315 +26,208 @@
     <meta name="twitter:image" content="https://au-supermarket-specials.pages.dev/og_image.jpg">
 
     <!-- Mobile PWA & App Meta Tags -->
-    <meta name="theme-color" content="#15803d">
+    <meta name="theme-color" content="#f6f5f1" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#121211" media="(prefers-color-scheme: dark)">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="apple-mobile-web-app-title" content="澳洲超市特價優惠">
     <link rel="icon" type="image/jpeg" href="/logo.jpg">
     <link rel="apple-touch-icon" href="/logo.jpg">
     <link rel="manifest" href="./manifest.json">
 
-    <!-- Preconnect CDNs for Ultra-Fast Resource Fetching -->
+    <!-- Theme before first paint (avoids a white flash in dark mode) -->
+    <script>
+        (function () {
+            try {
+                var saved = localStorage.getItem('theme');
+                var dark = saved ? saved === 'dark' : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+                document.documentElement.classList.toggle('dark', dark);
+                document.documentElement.classList.toggle('light', !dark);
+            } catch (e) {}
+        })();
+    </script>
+
+    <!-- Pre-built styles (no in-browser compiling = faster on phones) -->
+    <link rel="stylesheet" href="./tw.css?v=6.1">
+    <link rel="stylesheet" href="./design.css?v=6.5">
+
+    <!-- Non-blocking fonts & icons: text shows immediately with the phone's own fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://cdn.tailwindcss.com">
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    </noscript>
 
-    <!-- Google Fonts with display=swap for zero-blocking text render -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&family=Noto+Sans+TC:wght@400;500;700;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
-
-    <!-- Tailwind CSS CDN & FontAwesome -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        woolies: {
-                            DEFAULT: '#007a3d',
-                            light: '#f0fdf4',
-                            dark: '#004f27'
-                        },
-                        coles: {
-                            DEFAULT: '#e01a22',
-                            light: '#fff1f2',
-                            dark: '#881337'
-                        },
-                        aldi: {
-                            DEFAULT: '#00205b',
-                            light: '#eff6ff',
-                            dark: '#001438'
-                        }
-                    },
-                    fontFamily: {
-                        sans: ['"Plus Jakarta Sans"', '"Inter"', '"Noto Sans TC"', 'sans-serif'],
-                        mono: ['"JetBrains Mono"', 'monospace']
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        body {
-            font-family: 'Plus Jakarta Sans', 'Inter', 'Noto Sans TC', sans-serif;
-            transition: background-color 0.25s ease, color 0.25s ease;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            text-rendering: optimizeLegibility;
-        }
-
-        .no-scrollbar::-webkit-scrollbar {
-            display: none;
-        }
-        .no-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
-    </style>
 </head>
-<body class="bg-[#f8fafc] text-slate-900 dark:bg-[#0c0d0e] dark:text-zinc-100 min-h-screen flex flex-col antialiased selection:bg-emerald-500 selection:text-white relative">
+<body class="min-h-screen flex flex-col">
 
-    <!-- Ambient Luxury Glow Backdrop -->
-    <div class="fixed inset-0 pointer-events-none -z-10 overflow-hidden">
-        <div class="absolute -top-32 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-gradient-to-b from-emerald-500/12 via-teal-500/6 to-transparent rounded-full blur-3xl opacity-80 dark:opacity-40"></div>
-        <div class="absolute top-[600px] -right-32 w-[500px] h-[500px] bg-emerald-500/5 rounded-full blur-3xl opacity-50 dark:opacity-20"></div>
-    </div>
-
-    <!-- Top Utility & Language Switcher Bar (Normal flow, scrolls away naturally) -->
-    <div class="bg-white/90 dark:bg-zinc-900/90 border-b border-slate-200/80 dark:border-zinc-800/80 backdrop-blur-md px-3 sm:px-6 py-1.5 text-xs transition-colors">
-        <div class="max-w-7xl mx-auto flex items-center justify-between gap-2">
-            <!-- Left: Contact Admin (Mobile & Desktop) & Desktop Badges -->
-            <div class="flex items-center gap-2 min-w-0">
-                <!-- Contact Admin Pill -->
-                <a 
-                    href="mailto:rick97005109@gmail.com?subject=澳洲超市特價優惠-聯絡版主" 
-                    class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-zinc-800 dark:hover:bg-zinc-700 text-slate-700 dark:text-zinc-300 font-semibold text-[10px] sm:text-[11px] transition active:scale-95 border border-slate-200/60 dark:border-zinc-700/60 shadow-2xs shrink-0"
-                    title="聯絡版主"
-                >
-                    <i class="fa-regular fa-envelope text-[10px] text-emerald-600 dark:text-emerald-400"></i>
-                    <span data-i18n="contact_admin">聯絡版主</span>
-                </a>
-
-                <!-- Desktop Badges: WHV Budget Badge & Currency Indicator (hidden on mobile to keep clean breathing room) -->
-                <div class="hidden sm:flex items-center gap-1.5 text-slate-600 dark:text-zinc-400 text-[11px] font-medium truncate">
-                    <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-400 font-bold border border-emerald-200/60 dark:border-emerald-800/60 shrink-0">
-                        <i class="fa-solid fa-plane-departure text-[9px]"></i>
-                        <span data-i18n="whv_badge">打工度假省錢必備</span>
-                    </span>
-                    <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-slate-100 dark:bg-zinc-800 text-slate-700 dark:text-zinc-300 font-bold border border-slate-200 dark:border-zinc-700 shrink-0">
-                        <span data-i18n="currency_badge">🇦🇺 澳洲超商標價均為 AUD ($)</span>
-                    </span>
-                    <span class="hidden md:inline text-slate-300 dark:text-zinc-700">•</span>
-                    <span class="hidden md:inline truncate" data-i18n="cycle_info">每週三換檔，週一/二提前看下週型錄</span>
+    <!-- ===================== Header ===================== -->
+    <header id="siteHeader" class="site-header">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-3">
+            <a href="./" class="flex items-center gap-3 min-w-0">
+                <img src="./logo.jpg" alt="澳洲超市特價優惠" class="brand-mark shrink-0">
+                <div class="min-w-0 leading-tight">
+                    <div data-i18n="app_title" class="text-[15px] font-semibold t-ink truncate">澳洲超市特價優惠</div>
+                    <div data-i18n="app_subtitle" class="text-[12px] t-ink-3 truncate hidden sm:block">Woolworths · Coles · ALDI 每週省錢比價助手</div>
                 </div>
-            </div>
+            </a>
 
-            <!-- Right: 4-Language Selector & Theme Toggle -->
-            <div class="flex items-center gap-1.5 shrink-0">
-                <div class="flex items-center rounded-lg bg-slate-100 dark:bg-zinc-800 p-0.5 text-[10px] sm:text-[11px] font-semibold border border-slate-200/80 dark:border-zinc-700/80">
-                    <button onclick="setLanguage('zh')" class="lang-btn px-2.5 py-1 rounded-md transition-all" data-lang="zh">繁中</button>
-                    <button onclick="setLanguage('en')" class="lang-btn px-2.5 py-1 rounded-md transition-all" data-lang="en">EN</button>
-                    <button onclick="setLanguage('ja')" class="lang-btn px-2.5 py-1 rounded-md transition-all" data-lang="ja">日本語</button>
-                    <button onclick="setLanguage('ko')" class="lang-btn px-2.5 py-1 rounded-md transition-all" data-lang="ko">한국어</button>
-                </div>
-
-                <!-- Dark / Light Theme Toggle Button -->
-                <button 
-                    id="themeToggleBtn" 
-                    onclick="toggleDarkMode()" 
-                    title="Toggle Theme"
-                    class="w-7 h-7 rounded-lg flex items-center justify-center border border-slate-200/80 dark:border-zinc-700/80 bg-slate-100 dark:bg-zinc-800 text-slate-600 dark:text-amber-400 hover:scale-105 active:scale-95 transition text-xs shadow-2xs"
-                >
-                    <i id="themeIcon" class="fa-solid fa-moon"></i>
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Minimalist Clean Navigation Header (Sticky Top-0, height 56px on mobile, 64px on desktop) -->
-    <header class="sticky top-0 z-40 h-14 sm:h-16 bg-white/80 dark:bg-[#0c0d0e]/80 backdrop-blur-xl border-b border-slate-200/70 dark:border-white/[0.06] transition-colors flex items-center shadow-xs">
-        <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 w-full flex items-center justify-between gap-2 sm:gap-4">
-            
-            <!-- Brand & Title -->
-            <div class="flex items-center gap-2.5 sm:gap-3.5 min-w-0">
-                <img src="./logo.jpg" alt="澳洲超市特價優惠" class="w-9 h-9 sm:w-11 sm:h-11 rounded-xl object-cover shrink-0 shadow-sm ring-1 ring-emerald-500/20 border border-emerald-500/30">
-                <div class="min-w-0">
-                    <h1 class="text-sm sm:text-base lg:text-lg font-black tracking-tight text-slate-900 dark:text-white flex items-center gap-2 truncate">
-                        <span data-i18n="app_title" class="truncate">澳洲超市特價優惠</span>
-                        <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md bg-emerald-500/10 dark:bg-emerald-500/20 text-emerald-700 dark:text-emerald-400 text-[10px] font-bold border border-emerald-500/20 shrink-0">
-                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                            <span id="headerPeriodBadge" data-i18n="current_cycle">本週特價</span>
-                        </span>
-                    </h1>
-                    <p class="text-[10px] sm:text-xs text-slate-500 dark:text-zinc-400 flex items-center gap-1.5 mt-0.5 truncate font-medium">
-                        <span data-i18n="app_subtitle" class="hidden sm:inline">Woolworths · Coles · ALDI 每週省錢比價助手</span>
-                        <span class="hidden sm:inline text-slate-300 dark:text-zinc-700">•</span>
-                        <span id="activeDateRange" class="font-semibold text-emerald-700 dark:text-emerald-400 truncate">載入中...</span>
-                    </p>
-                </div>
-            </div>
-
-            <!-- Actions -->
             <div class="flex items-center gap-2 shrink-0">
-                <!-- Shopping List Button -->
-                <button 
-                    onclick="toggleShoppingDrawer()" 
-                    class="relative flex items-center gap-2 px-3.5 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-gradient-to-r from-emerald-600 via-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white shadow-xs transition-all active:scale-95 group border border-emerald-500/80"
-                >
-                    <i class="fa-solid fa-basket-shopping text-xs sm:text-sm transition-transform duration-200 group-hover:scale-110"></i>
-                    <span data-i18n="shopping_manifest" class="hidden xs:inline">採買清單</span>
-                    <span id="cartCountBadge" class="px-1.5 py-0.2 text-[11px] font-black bg-amber-400 text-slate-950 rounded-md shadow-2xs">
-                        0
-                    </span>
+                <div class="hidden md:block"><div class="lang-group" role="group" aria-label="Language">
+                    <button onclick="setLanguage('zh')" class="lang-btn" data-lang="zh">繁中</button>
+                    <button onclick="setLanguage('en')" class="lang-btn" data-lang="en">EN</button>
+                    <button onclick="setLanguage('ja')" class="lang-btn" data-lang="ja">日本語</button>
+                    <button onclick="setLanguage('ko')" class="lang-btn" data-lang="ko">한국어</button>
+                </div></div>
+                <div class="md:hidden"><select id="langSelect" class="lang-select" aria-label="Language" onchange="setLanguage(this.value)">
+                    <option value="zh">繁中</option>
+                    <option value="en">EN</option>
+                    <option value="ja">日本語</option>
+                    <option value="ko">한국어</option>
+                </select></div>
+
+                <button id="themeToggleBtn" onclick="toggleDarkMode()" title="Toggle Theme" class="icon-btn" aria-label="Toggle theme">
+                    <i id="themeIcon" class="fa-solid fa-moon text-[13px]"></i>
+                </button>
+
+                <button onclick="toggleShoppingDrawer()" class="cart-btn" aria-label="Shopping list">
+                    <i class="fa-solid fa-basket-shopping text-[13px]"></i>
+                    <span data-i18n="shopping_manifest" class="hidden sm:inline">採買清單</span>
+                    <span id="cartCountBadge" class="cart-count num">0</span>
                 </button>
             </div>
         </div>
     </header>
 
-    <!-- Sticky Category Navigation Bar (2 Rows, Firmly pinned at top-[56px] on mobile, top-16 on desktop) -->
-    <nav id="stickyCategoryNav" class="sticky top-14 sm:top-16 z-30 bg-white/95 dark:bg-[#0c0d0e]/95 backdrop-blur-md border-b border-slate-200/80 dark:border-white/[0.06] shadow-xs transition-colors">
-        <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 py-2 relative">
-            <div class="grid grid-rows-2 grid-flow-col auto-cols-max gap-1.5 sm:gap-2 overflow-x-auto no-scrollbar py-0.5" id="categoryBar">
-                <!-- Injected via app.js with multi-language labels (2 rows) -->
+    <!-- ===================== Hero ===================== -->
+    <section class="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 pt-8 sm:pt-12 pb-6 sm:pb-8">
+        <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
+            <div class="space-y-3 min-w-0">
+                <span class="period-chip" id="headerPeriodChip">
+                    <span class="status-dot"></span>
+                    <span id="headerPeriodBadge" data-i18n="current_cycle">本週特價</span>
+                </span>
+                <h1 class="hero-title">
+                    <span id="activeDateRange" class="num">載入中...</span>
+                </h1>
+                <p class="hero-sub">
+                    <span data-i18n="cycle_info">每週三換檔，週一/二提前看下週型錄</span>
+                    <span class="t-ink-3"> · </span>
+                    <span data-i18n="currency_badge" class="t-ink-3">🇦🇺 澳洲超商標價均為 AUD ($)</span>
+                </p>
+            </div>
+
+            <div class="seg seg-lg self-start lg:self-auto" role="tablist">
+                <button id="tabPeriodCurrent" onclick="selectPeriod('current')" class="seg-btn is-active" role="tab">
+                    <i class="fa-regular fa-calendar-check text-[13px]"></i>
+                    <span data-i18n="current_cycle">本週特價</span>
+                    <span id="periodDateCurrentBadge" class="hidden"></span>
+                </button>
+                <button id="tabPeriodNext" onclick="selectPeriod('next')" class="seg-btn" role="tab">
+                    <i class="fa-solid fa-wand-magic-sparkles text-[13px]"></i>
+                    <span data-i18n="next_cycle">下週預告</span>
+                    <span class="seg-tag" data-i18n="cycle_preview">搶先看</span>
+                    <span id="periodDateNextBadge" class="hidden"></span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Stats -->
+        <div id="statsRow" class="mt-7 flex items-stretch gap-4 sm:gap-8 overflow-x-auto no-scrollbar">
+            <div class="stat">
+                <span class="stat-value num" id="statTotal">--</span>
+                <span class="stat-label" data-i18n="stat_specials_label" data-strip-colon>特價：</span>
+            </div>
+            <div class="stat">
+                <span class="stat-value num t-sale" id="statHalfPrice">--</span>
+                <span class="stat-label" data-i18n="stat_half_label" data-strip-colon>半價：</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat">
+                <span class="stat-value num" id="statWoolies">--</span>
+                <span class="stat-label"><i class="store-dot dot-woolies"></i>Woolworths</span>
+            </div>
+            <div class="stat">
+                <span class="stat-value num" id="statColes">--</span>
+                <span class="stat-label"><i class="store-dot dot-coles"></i>Coles</span>
+            </div>
+            <div class="stat">
+                <span class="stat-value num" id="statAldi">--</span>
+                <span class="stat-label"><i class="store-dot dot-aldi"></i>ALDI</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== Category nav (sticky) ===================== -->
+    <nav id="stickyCategoryNav" class="cat-nav top-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 cat-fade">
+            <div id="categoryBar" class="cat-grid no-scrollbar">
+                <!-- Injected via app.js -->
             </div>
         </div>
     </nav>
 
-    <!-- Main Content -->
-    <main class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-3.5 sm:py-5 flex-1 w-full space-y-3.5 sm:space-y-5">
+    <!-- ===================== Main ===================== -->
+    <main class="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-5 sm:py-7 flex-1 space-y-5">
 
-        <!-- Creator Announcement / 站長的話 (想對大家說的話) -->
-        <div id="announcementBox" class="hidden bg-white dark:bg-zinc-900 border border-slate-200/90 dark:border-zinc-800 rounded-2xl sm:rounded-3xl p-3.5 sm:p-5 shadow-2xs transition-all relative overflow-hidden">
-            <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 pb-2 border-b border-slate-100 dark:border-zinc-800/80">
-                <div class="flex items-center gap-2 flex-wrap">
-                    <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg sm:rounded-xl bg-amber-100 dark:bg-amber-950/60 text-amber-700 dark:text-amber-400 flex items-center justify-center text-xs sm:text-sm">
-                        <i class="fa-solid fa-bullhorn"></i>
-                    </div>
-                    <div>
-                        <div class="flex items-center gap-2 flex-wrap">
-                            <h2 id="announcementTitle" class="text-xs sm:text-sm font-bold text-slate-900 dark:text-white">
-                                📢 站長的話 / 澳洲打工度假生活交流
-                            </h2>
-                            <span id="announcementBadge" class="px-2 py-0.5 rounded-full text-[9px] sm:text-[10px] font-bold bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-300">
-                                最新公告
-                            </span>
-                        </div>
-                        <p class="text-[10px] sm:text-[11px] text-slate-400 dark:text-zinc-500 flex items-center gap-1.5 mt-0.5">
-                            <span id="announcementAuthor">站長 Rick</span>
-                            <span>•</span>
-                            <span id="announcementDate">2026-09-22</span>
-                        </p>
-                    </div>
-                </div>
-                <div class="flex items-center gap-2 self-end sm:self-center">
-                    <a id="announcementLink" href="#" target="_blank" rel="noopener noreferrer" class="hidden inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-semibold bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-400 border border-emerald-200/60 dark:border-emerald-800/60 hover:bg-emerald-100 transition">
-                        <span id="announcementLinkText">💬 交流與反饋</span>
-                        <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
-                    </a>
-                    <button onclick="dismissAnnouncement()" class="text-slate-400 hover:text-slate-600 dark:hover:text-zinc-300 p-1 rounded-lg hover:bg-slate-100 dark:hover:bg-zinc-800 transition text-xs" title="關閉公告">
-                        <i class="fa-solid fa-xmark"></i>
-                    </button>
-                </div>
+        <!-- Announcement (collapsible) -->
+        <div id="announcementBox" class="hidden notice">
+            <div class="flex items-center">
+                <button type="button" class="notice-toggle" onclick="toggleAnnouncementOpen()" aria-expanded="false">
+                    <span class="notice-icon"><i class="fa-solid fa-bullhorn"></i></span>
+                    <span class="min-w-0 flex-1">
+                        <span class="flex items-center gap-2 min-w-0">
+                            <span id="announcementTitle" class="text-[14px] font-semibold t-ink truncate">📢 站長的話</span>
+                            <span id="announcementBadge" class="notice-badge">最新公告</span>
+                        </span>
+                        <span class="block text-[12px] t-ink-3 mt-0.5">
+                            <span id="announcementAuthor">站長 Rick</span> · <span id="announcementDate" class="num">2026-09-22</span>
+                        </span>
+                    </span>
+                    <i class="fa-solid fa-chevron-down text-[12px] notice-chevron"></i>
+                </button>
+                <button onclick="dismissAnnouncement()" class="icon-btn border-0 mr-2 shrink-0" title="關閉公告" aria-label="Close">
+                    <i class="fa-solid fa-xmark text-[13px]"></i>
+                </button>
             </div>
-            <div class="pt-2.5">
-                <p id="announcementContent" class="text-xs sm:text-sm text-slate-700 dark:text-zinc-300 leading-relaxed whitespace-pre-line">
-                    --
-                </p>
+            <div class="notice-body">
+                <p id="announcementContent" class="text-[14px] t-ink-2 leading-relaxed whitespace-pre-line">--</p>
+                <a id="announcementLink" href="#" target="_blank" rel="noopener noreferrer" class="hidden mt-3 inline-flex items-center gap-1.5 text-[13px] font-semibold t-accent hover:underline">
+                    <span id="announcementLinkText">💬 交流與反饋</span>
+                    <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                </a>
             </div>
         </div>
 
-        <!-- Period Toggle Bar (Modern Segmented Switch & Stats) -->
-        <div class="bg-white/85 dark:bg-[#121316]/90 backdrop-blur-xl border border-slate-200/80 dark:border-white/[0.07] p-2 sm:p-2.5 rounded-xl sm:rounded-2xl shadow-[0_4px_20px_-4px_rgba(0,0,0,0.03)] space-y-2">
-            <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2">
-                <!-- Segmented Switcher (High Contrast Active States) -->
-                <div class="grid grid-cols-2 gap-1.5 p-1 bg-slate-100/90 dark:bg-zinc-800/80 rounded-xl text-xs sm:text-sm border border-slate-200/80 dark:border-white/[0.06] shadow-2xs">
-                    <button 
-                        id="tabPeriodCurrent" 
-                        onclick="selectPeriod('current')" 
-                        class="flex items-center justify-center gap-2 py-2 sm:py-2.5 px-3 sm:px-5 rounded-lg text-xs sm:text-sm font-black bg-emerald-600 dark:bg-emerald-600 text-white shadow-xs border border-emerald-500 transition-all"
-                    >
-                        <i class="fa-regular fa-calendar-check text-white text-sm"></i>
-                        <span data-i18n="current_cycle">本週特價</span>
-                        <span id="periodDateCurrentBadge" class="hidden xs:inline text-[10px] sm:text-xs font-bold opacity-90"></span>
-                    </button>
-                    <button 
-                        id="tabPeriodNext" 
-                        onclick="selectPeriod('next')" 
-                        class="flex items-center justify-center gap-2 py-2 sm:py-2.5 px-3 sm:px-5 rounded-lg text-xs sm:text-sm font-bold text-slate-600 dark:text-zinc-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200/60 dark:hover:bg-zinc-700/60 transition-all opacity-85 hover:opacity-100"
-                    >
-                        <i class="fa-solid fa-wand-magic-sparkles text-amber-500 text-sm"></i>
-                        <span data-i18n="next_cycle">下週預告</span>
-                        <span class="px-1.5 py-0.2 bg-amber-100 dark:bg-amber-950 text-amber-700 dark:text-amber-400 text-[9px] sm:text-[10px] font-bold rounded" data-i18n="cycle_preview">搶先看</span>
-                        <span id="periodDateNextBadge" class="hidden xs:inline text-[10px] sm:text-xs font-normal opacity-80"></span>
-                    </button>
-                </div>
-
-                <!-- Stats Mini Bar (Fully Visible on Both Mobile & Desktop) -->
-                <div class="flex items-center justify-between sm:justify-end gap-2 sm:gap-3 text-[11px] sm:text-xs font-medium text-slate-600 dark:text-zinc-400 px-1 flex-wrap">
-                    <div><span data-i18n="stat_specials_label" class="text-slate-400 dark:text-zinc-500">特價：</span><strong id="statTotal" class="text-slate-900 dark:text-white">--</strong></div>
-                    <div><span data-i18n="stat_half_label" class="text-rose-500 font-semibold">半價：</span><strong id="statHalfPrice" class="text-rose-600 dark:text-rose-400 font-bold">--</strong></div>
-                    <div><span class="text-emerald-600 dark:text-emerald-400 font-bold">W:</span> <span id="statWoolies" class="font-semibold text-slate-700 dark:text-zinc-300">--</span></div>
-                    <div><span class="text-rose-600 dark:text-rose-400 font-bold">C:</span> <span id="statColes" class="font-semibold text-slate-700 dark:text-zinc-300">--</span></div>
-                    <div><span class="text-blue-600 dark:text-blue-400 font-bold">A:</span> <span id="statAldi" class="font-semibold text-slate-700 dark:text-zinc-300">--</span></div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Search Bar & Modern Filters -->
-        <div class="bg-white/85 dark:bg-[#121316]/90 backdrop-blur-xl border border-slate-200/80 dark:border-white/[0.07] p-3 sm:p-4 rounded-xl sm:rounded-2xl shadow-[0_4px_20px_-4px_rgba(0,0,0,0.03)] space-y-2.5 sm:space-y-3">
-            
-            <!-- Search Input -->
+        <!-- Toolbar: search + filters -->
+        <div class="toolbar p-3 sm:p-4 space-y-3">
             <div class="relative">
-                <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs sm:text-sm"></i>
-                <input 
-                    type="text" 
-                    id="searchInput" 
-                    placeholder="搜尋特價商品（支援中/英/日/韓，如：牛奶, egg, 咖啡, chips, 洗衣精...）" 
-                    class="w-full pl-10 pr-9 py-2.5 sm:py-3 text-xs sm:text-sm rounded-xl border border-slate-200/90 dark:border-white/[0.08] bg-slate-50/70 dark:bg-zinc-800/60 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/40 focus:border-emerald-500 transition-all shadow-inner"
-                    oninput="debounceSearch()"
-                />
-                <button id="clearSearchBtn" onclick="clearSearch()" class="hidden absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:hover:text-zinc-200 transition">
-                    <i class="fa-solid fa-circle-xmark text-sm sm:text-base"></i>
+                <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 t-ink-3 text-[14px]"></i>
+                <input type="text" id="searchInput" placeholder="搜尋特價商品" class="search-field" oninput="debounceSearch()" autocomplete="off" />
+                <button id="clearSearchBtn" onclick="clearSearch()" class="hidden absolute right-3 top-1/2 -translate-y-1/2 t-ink-3 hover:t-ink p-1" aria-label="Clear">
+                    <i class="fa-solid fa-circle-xmark text-[15px]"></i>
                 </button>
             </div>
 
-            <!-- Supermarket Tabs & 1/2 Price Pill Toggle & Sort -->
-            <div class="flex flex-wrap items-center justify-between gap-2 pt-1 border-t border-slate-100 dark:border-zinc-800/80">
-                
-                <!-- Stores Pills -->
-                <div class="flex items-center gap-1 p-1 bg-slate-100/90 dark:bg-zinc-800/80 rounded-xl text-xs font-semibold overflow-x-auto no-scrollbar max-w-full border border-slate-200/80 dark:border-white/[0.06]" id="storeTabs">
-                    <button onclick="selectStore('All')" class="store-tab active px-3 py-1.5 rounded-lg transition-all bg-slate-900 dark:bg-zinc-100 text-white dark:text-slate-900 shadow-xs font-bold border border-slate-900 dark:border-zinc-200 shrink-0" data-store="All" data-i18n="all_markets">
-                        全部超市
-                    </button>
-                    <button onclick="selectStore('Woolworths')" class="store-tab px-3 py-1.5 rounded-lg transition-all font-semibold text-emerald-700 dark:text-emerald-400 hover:bg-emerald-50 dark:hover:bg-emerald-950/40 shrink-0" data-store="Woolworths">
-                        <span class="store-dot inline-block w-2 h-2 rounded-xs bg-emerald-600 mr-1"></span>Woolworths
-                    </button>
-                    <button onclick="selectStore('Coles')" class="store-tab px-3 py-1.5 rounded-lg transition-all font-semibold text-rose-700 dark:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-950/40 shrink-0" data-store="Coles">
-                        <span class="store-dot inline-block w-2 h-2 rounded-xs bg-rose-600 mr-1"></span>Coles
-                    </button>
-                    <button onclick="selectStore('ALDI')" class="store-tab px-3 py-1.5 rounded-lg transition-all font-semibold text-blue-700 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-950/40 shrink-0" data-store="ALDI">
-                        <span class="store-dot inline-block w-2 h-2 rounded-xs bg-blue-600 mr-1"></span>ALDI
-                    </button>
+            <div class="flex flex-wrap items-center justify-between gap-2.5">
+                <div id="storeTabs" class="seg overflow-x-auto no-scrollbar">
+                    <button onclick="selectStore('All')" class="store-tab seg-btn is-active" data-store="All" data-i18n="all_markets">全部超市</button>
+                    <button onclick="selectStore('Woolworths')" class="store-tab seg-btn" data-store="Woolworths"><span class="store-dot dot-woolies"></span>Woolworths</button>
+                    <button onclick="selectStore('Coles')" class="store-tab seg-btn" data-store="Coles"><span class="store-dot dot-coles"></span>Coles</button>
+                    <button onclick="selectStore('ALDI')" class="store-tab seg-btn" data-store="ALDI"><span class="store-dot dot-aldi"></span>ALDI</button>
                 </div>
 
-                <!-- Secondary Toggles: 1/2 Price Pill & Sort -->
-                <div class="flex items-center justify-between sm:justify-end gap-2 text-xs w-full sm:w-auto">
-                    <!-- Modern 1/2 Price Pill Button -->
-                    <button 
-                        id="halfPricePill" 
-                        type="button"
-                        onclick="toggleHalfPricePill()" 
-                        class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-bold text-xs transition border border-slate-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-slate-700 dark:text-zinc-300 hover:border-slate-300 dark:hover:border-zinc-600 active:scale-95 shadow-2xs"
-                    >
-                        <i class="fa-solid fa-fire text-rose-500 text-xs"></i>
+                <div class="flex items-center gap-2 w-full sm:w-auto">
+                    <button id="halfPricePill" type="button" onclick="toggleHalfPricePill()" class="toggle-pill">
+                        <i class="fa-solid fa-fire text-[12px]"></i>
                         <span data-i18n="half_price_only">只要半價 (1/2)</span>
                     </button>
-                    <!-- Hidden checkbox for backward compatibility -->
                     <input type="checkbox" id="halfPriceOnly" onchange="loadSpecials()" class="hidden">
-
-                    <select id="sortSelect" onchange="loadSpecials()" class="text-xs font-bold border border-slate-200 dark:border-zinc-700 rounded-lg px-3 py-1.5 bg-white dark:bg-zinc-800 text-slate-800 dark:text-zinc-200 focus:outline-none focus:ring-2 focus:ring-emerald-500/30 shadow-2xs">
+                    <select id="sortSelect" onchange="loadSpecials()" class="select-pill flex-1 sm:flex-none min-w-0" aria-label="Sort">
                         <option value="relevance" data-i18n="sort_relevance">推薦關聯</option>
                         <option value="popular" data-i18n="sort_popular">最多人買（熱門暢銷）</option>
                         <option value="save_desc" data-i18n="sort_save_desc">折扣省最多</option>
@@ -342,331 +235,237 @@
                         <option value="price_desc" data-i18n="sort_price_desc">價格：高至低</option>
                     </select>
                 </div>
-
             </div>
-
         </div>
 
-        <!-- Results Counter & Status -->
-        <div class="flex items-center justify-between text-xs text-slate-500 dark:text-zinc-400 px-1 py-0.5">
-            <div class="flex items-center gap-2">
-                <span id="resultsCountText" class="font-bold text-slate-700 dark:text-zinc-200">找到 0 項特價品</span>
-                <span id="periodIndicatorBadge" data-i18n="current_cycle" class="text-[10px] sm:text-[11px] px-2.5 py-0.5 rounded-full font-bold bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-400 border border-emerald-200/60 dark:border-emerald-800/60">
-                    本週特價
-                </span>
+        <!-- Results header -->
+        <div class="flex items-center justify-between gap-3 px-0.5">
+            <div class="flex items-center gap-2.5 min-w-0">
+                <span id="resultsCountText" class="text-[15px] font-semibold t-ink">找到 0 項特價品</span>
+                <span id="periodIndicatorBadge" data-i18n="current_cycle" class="result-badge hidden sm:inline-block truncate">本週特價</span>
             </div>
-            <div id="activeFilterNotice" class="text-xs text-slate-400"></div>
+            <div id="activeFilterNotice" class="text-[12px] t-ink-3 truncate"></div>
         </div>
 
-        <!-- Product Cards Grid (Clean Minimalist Cards - 2 Columns on Mobile, 3-5 on Desktop) -->
-        <div id="productsGrid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-4.5 lg:gap-5">
-            <!-- Dynamic Content loaded via app.js -->
-        </div>
+        <!-- Product grid -->
+        <div id="productsGrid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-5"></div>
 
-        <!-- Infinite Scroll Sentinel & Batch Loading Indicator -->
-        <div id="infiniteScrollSentinel" class="py-6 text-center hidden">
-            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-100 dark:bg-zinc-800 text-slate-500 dark:text-zinc-400 text-xs font-semibold shadow-2xs">
-                <i class="fa-solid fa-circle-notch fa-spin text-emerald-600 dark:text-emerald-400 text-xs"></i>
+        <!-- Infinite scroll sentinel -->
+        <div id="infiniteScrollSentinel" class="py-8 text-center hidden">
+            <span class="inline-flex items-center gap-2 text-[13px] t-ink-3">
+                <i class="fa-solid fa-circle-notch fa-spin"></i>
                 <span id="infiniteScrollText" data-i18n="loading_more">載入更多商品中...</span>
-            </div>
+            </span>
         </div>
 
-        <!-- Loading State -->
-        <div id="loadingState" class="hidden py-20 text-center text-slate-400 dark:text-zinc-500">
-            <i class="fa-solid fa-circle-notch fa-spin text-3xl text-emerald-600 dark:text-emerald-400 mb-3"></i>
-            <p class="text-xs font-semibold tracking-wider" data-i18n="updating">正在載入特價商品...</p>
+        <!-- Loading -->
+        <div id="loadingState" class="hidden py-24 text-center t-ink-3">
+            <i class="fa-solid fa-circle-notch fa-spin text-2xl mb-3"></i>
+            <p class="text-[13px]" data-i18n="updating">正在載入特價商品...</p>
         </div>
 
-        <!-- Empty State -->
-        <div id="emptyState" class="hidden py-14 px-4 text-center bg-white dark:bg-zinc-900 rounded-3xl border border-slate-200 dark:border-zinc-800 shadow-2xs space-y-3">
-            <div class="w-12 h-12 mx-auto rounded-2xl bg-slate-100 dark:bg-zinc-800/80 flex items-center justify-center text-xl text-slate-400 dark:text-zinc-500">
+        <!-- Empty -->
+        <div id="emptyState" class="hidden py-16 px-4 text-center toolbar space-y-3">
+            <div class="w-12 h-12 mx-auto rounded-full bg-surface-2 flex items-center justify-center t-ink-3">
                 <i class="fa-solid fa-basket-shopping"></i>
             </div>
-            <h3 id="emptyStateTitle" class="text-sm sm:text-base font-bold text-slate-800 dark:text-zinc-200">沒有找到符合的特價商品</h3>
-            <p id="emptyStateSub" class="text-xs text-slate-400 dark:text-zinc-500 max-w-md mx-auto leading-relaxed">試試切換「本週 / 下週預告」或更改類別</p>
-            <div id="emptyStateAction" class="pt-1">
-                <button onclick="selectPeriod('current')" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-bold bg-emerald-600 hover:bg-emerald-700 text-white shadow-xs transition active:scale-95">
+            <h3 id="emptyStateTitle" class="text-[16px] font-semibold t-ink">沒有找到符合的特價商品</h3>
+            <p id="emptyStateSub" class="text-[13px] t-ink-3 max-w-md mx-auto leading-relaxed">試試切換「本週 / 下週預告」或更改類別</p>
+            <div id="emptyStateAction" class="pt-2">
+                <button onclick="selectPeriod('current')" class="btn-primary">
                     <i class="fa-regular fa-calendar-check"></i>
                     <span data-i18n="return_current">返回查看「本週特價」</span>
                 </button>
             </div>
         </div>
 
-        <!-- Relocated Feedback & Wishlist Banner (Non-intrusive at bottom of page) -->
-        <div class="bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-700 text-white p-3.5 sm:p-4 rounded-xl shadow-xs">
-            <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2.5">
-                <div class="flex items-center gap-2 flex-wrap">
-                    <span class="bg-white/20 px-2 py-0.5 rounded-md font-bold text-[11px] flex items-center gap-1 shadow-2xs">
-                        <i class="fa-solid fa-comment-dots text-[10px]"></i> <span data-i18n="feedback_banner_tag">意見反饋</span>
-                    </span>
-                    <span data-i18n="feedback_banner_text" class="text-xs font-medium text-white/95">有任何功能建議或超市品項想許願？歡迎隨時寫信至：</span>
-                    <a href="mailto:rick97005109@gmail.com" class="text-xs font-bold underline underline-offset-2 hover:text-amber-200 transition tracking-wide">rick97005109@gmail.com</a>
-                </div>
-                <a href="mailto:rick97005109@gmail.com?subject=澳洲超市比價網功能建議與反饋" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold text-xs shadow-2xs transition active:scale-95 shrink-0">
-                    <i class="fa-solid fa-paper-plane text-[10px]"></i>
-                    <span data-i18n="feedback_banner_btn">寫信給站長</span>
-                </a>
+        <!-- Feedback -->
+        <div class="toolbar p-5 sm:p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4 mt-6">
+            <div class="space-y-1">
+                <p class="text-[15px] font-semibold t-ink" data-i18n="feedback_banner_tag">意見反饋</p>
+                <p class="text-[13px] t-ink-2">
+                    <span data-i18n="feedback_banner_text">有任何功能建議或超市品項想許願？歡迎隨時寫信至：</span>
+                    <a href="mailto:rick97005109@gmail.com" class="font-medium t-ink underline underline-offset-2">rick97005109@gmail.com</a>
+                </p>
             </div>
+            <a href="mailto:rick97005109@gmail.com?subject=澳洲超市比價網功能建議與反饋" class="btn-ghost shrink-0 self-start sm:self-auto">
+                <i class="fa-regular fa-paper-plane text-[12px]"></i>
+                <span data-i18n="feedback_banner_btn">寫信給站長</span>
+            </a>
         </div>
-
-        <!-- Page Footer & Legal Disclaimer -->
-        <footer class="mt-8 py-6 border-t border-slate-200/80 dark:border-zinc-800/80 text-center text-xs text-slate-500 dark:text-zinc-400 space-y-3">
-            <!-- Legal Disclaimer Box / 免責聲明 -->
-            <div class="max-w-2xl mx-auto p-3 sm:p-3.5 rounded-xl bg-slate-100/90 dark:bg-zinc-800/60 border border-slate-200/80 dark:border-zinc-700/60 text-slate-600 dark:text-zinc-400 text-[11px] sm:text-xs leading-relaxed text-left sm:text-center space-y-1">
-                <p class="font-bold text-slate-700 dark:text-zinc-300 flex items-center justify-start sm:justify-center gap-1.5">
-                    <i class="fa-solid fa-triangle-exclamation text-amber-500 text-xs"></i>
-                    <span data-i18n="disclaimer_title">免責聲明</span>
-                </p>
-                <p data-i18n="disclaimer_text">
-                    本網站特價資訊僅供參考，實際商品售價、優惠檔期與庫存狀況均以各超市實體門市現場及官方最新公告為準。
-                </p>
-            </div>
-
-            <p>
-                <span data-i18n="feedback_prompt">💡 任何建議與反饋，歡迎來信：</span>
-                <a href="mailto:rick97005109@gmail.com" class="font-semibold text-emerald-600 dark:text-emerald-400 hover:underline">rick97005109@gmail.com</a>
-            </p>
-            <p class="text-[11px] text-slate-400 dark:text-zinc-500">
-                🇦🇺 澳洲超市特價優惠 (AU Supermarket Specials) · 祝您採買省心省荷包
-            </p>
-        </footer>
-
     </main>
 
-    <!-- Shopping List Drawer -->
-    <div id="shoppingDrawerBackdrop" onclick="toggleShoppingDrawer()" class="fixed inset-0 bg-slate-900/50 dark:bg-black/70 backdrop-blur-md z-50 hidden transition-opacity"></div>
-    
-    <aside id="shoppingDrawer" class="fixed right-0 top-0 bottom-0 w-full max-w-md bg-white dark:bg-[#111215] shadow-2xl z-50 transform translate-x-full transition-transform duration-300 flex flex-col border-l border-slate-200/80 dark:border-white/[0.08] sm:rounded-l-3xl">
-        <div class="p-4 sm:p-5 border-b border-slate-200/80 dark:border-zinc-800 flex items-center justify-between bg-slate-50/80 dark:bg-zinc-800/40 sm:rounded-tl-3xl">
-            <div class="flex items-center gap-2.5">
-                <div class="w-9 h-9 rounded-2xl bg-emerald-100 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-400 flex items-center justify-center text-base shadow-xs">
-                    <i class="fa-solid fa-basket-shopping"></i>
-                </div>
+    <!-- ===================== Footer ===================== -->
+    <footer class="border-t b-line mt-4">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col md:flex-row md:items-start md:justify-between gap-6 text-[12px] t-ink-3">
+            <div class="flex items-center gap-3">
+                <img src="./logo.jpg" alt="" class="brand-mark" style="width:28px;height:28px;border-radius:8px">
                 <div>
-                    <h2 class="text-sm sm:text-base font-black text-slate-900 dark:text-white" data-i18n="shopping_manifest">我的採買清單</h2>
-                    <p class="text-xs text-slate-500 dark:text-zinc-400 font-medium" data-i18n="shopping_subtitle">按超市獨立分組，現場採買不漏買</p>
+                    <p class="t-ink-2 font-medium">澳洲超市特價優惠 · AU Supermarket Specials</p>
+                    <p>
+                        <span data-i18n="contact_admin">聯絡版主</span>:
+                        <a href="mailto:rick97005109@gmail.com?subject=澳洲超市特價優惠-聯絡版主" class="hover:underline t-ink-2">rick97005109@gmail.com</a>
+                    </p>
                 </div>
             </div>
-            <button onclick="toggleShoppingDrawer()" class="p-2 text-slate-400 hover:text-slate-600 dark:hover:text-zinc-200 rounded-lg hover:bg-slate-200/60 dark:hover:bg-zinc-800 transition">
-                <i class="fa-solid fa-xmark text-base"></i>
-            </button>
+            <div class="max-w-xl md:text-right space-y-1">
+                <p class="font-semibold t-ink-2" data-i18n="disclaimer_title">免責聲明</p>
+                <p data-i18n="disclaimer_text" class="leading-relaxed">本網站特價資訊僅供參考，實際商品售價、優惠檔期與庫存狀況均以各超市實體門市現場及官方最新公告為準。</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===================== Shopping list drawer ===================== -->
+    <div id="shoppingDrawerBackdrop" onclick="toggleShoppingDrawer()" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 hidden"></div>
+    <aside id="shoppingDrawer" class="panel fixed right-0 top-0 bottom-0 w-full max-w-md z-50 transform translate-x-full transition-transform duration-300 flex flex-col sm:rounded-l-3xl" style="box-shadow: var(--shadow-lg)">
+        <div class="px-5 py-4 flex items-center justify-between border-b b-line">
+            <div>
+                <h2 class="text-[17px] font-semibold t-ink" data-i18n="shopping_manifest">我的採買清單</h2>
+                <p class="text-[12px] t-ink-3" data-i18n="shopping_subtitle">按超市獨立分組，現場採買不漏買</p>
+            </div>
+            <button onclick="toggleShoppingDrawer()" class="icon-btn" aria-label="Close"><i class="fa-solid fa-xmark text-[14px]"></i></button>
         </div>
 
-        <div id="shoppingListContainer" class="flex-1 overflow-y-auto p-4 sm:p-5 space-y-4"></div>
+        <div id="shoppingListContainer" class="flex-1 overflow-y-auto p-4 sm:p-5 space-y-3"></div>
 
-        <div class="p-4 sm:p-5 border-t border-slate-200/80 dark:border-zinc-800 bg-slate-50/80 dark:bg-zinc-800/40 space-y-3 sm:rounded-bl-3xl">
-            <!-- Cart Price Breakdown (Original, Discount, Final Checkout Total) -->
-            <div class="space-y-1.5 p-3.5 sm:p-4 rounded-xl bg-white dark:bg-zinc-900 border border-slate-200/80 dark:border-white/[0.07] shadow-xs text-xs sm:text-sm">
-                <div class="flex justify-between items-center text-slate-500 dark:text-zinc-400 font-medium">
+        <div class="p-4 sm:p-5 border-t b-line space-y-4">
+            <div class="space-y-1.5 text-[13px]">
+                <div class="flex justify-between t-ink-3">
                     <span data-i18n="original_total">商品原價：</span>
-                    <span id="drawerOriginalTotal" class="font-semibold text-slate-600 dark:text-zinc-300 line-through">$0.00</span>
+                    <span id="drawerOriginalTotal" class="num line-through">$0.00</span>
                 </div>
-                <div class="flex justify-between items-center text-rose-600 dark:text-rose-400 font-bold">
+                <div class="flex justify-between t-sale font-medium">
                     <span data-i18n="discount_total">優惠折抵：</span>
-                    <span id="drawerDiscountTotal">- $0.00</span>
+                    <span id="drawerDiscountTotal" class="num">- $0.00</span>
                 </div>
-                <div class="pt-2 border-t border-slate-100 dark:border-zinc-800 flex justify-between items-baseline">
-                    <span data-i18n="checkout_total" class="font-bold text-slate-900 dark:text-white text-sm sm:text-base">結帳總金額：</span>
-                    <div class="flex items-baseline gap-1">
-                        <span id="drawerCheckoutTotal" class="font-black text-emerald-600 dark:text-emerald-400 text-lg sm:text-2xl font-mono">$0.00</span>
-                        <span class="text-[10px] sm:text-xs font-semibold text-slate-400 dark:text-zinc-500">AUD</span>
-                    </div>
+                <div class="pt-2 flex justify-between items-baseline">
+                    <span data-i18n="checkout_total" class="font-semibold t-ink text-[15px]">結帳總金額：</span>
+                    <span class="flex items-baseline gap-1">
+                        <span id="drawerCheckoutTotal" class="num font-bold t-ink text-[26px]">$0.00</span>
+                        <span class="text-[11px] t-ink-3">AUD</span>
+                    </span>
                 </div>
-                <!-- Hidden elements for backward compatibility -->
                 <span id="drawerTotalCost" class="hidden">$0.00</span>
                 <span id="drawerTotalSaved" class="hidden">$0.00</span>
             </div>
-
-            <div class="flex items-center gap-2 pt-1">
-                <button onclick="copyShoppingList()" class="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-lg text-xs sm:text-sm font-bold bg-emerald-600 hover:bg-emerald-700 text-white shadow-xs transition active:scale-95">
-                    <i class="fa-solid fa-copy"></i>
+            <div class="flex items-center gap-2">
+                <button onclick="copyShoppingList()" class="btn-primary flex-1">
+                    <i class="fa-regular fa-copy"></i>
                     <span data-i18n="copy_manifest">複製清單文字</span>
                 </button>
-                <button onclick="clearShoppingList()" title="清空採買清單" class="px-3.5 py-2.5 rounded-lg text-xs font-semibold bg-slate-200/80 dark:bg-zinc-800 hover:bg-rose-100 dark:hover:bg-rose-950/60 text-slate-700 dark:text-zinc-300 hover:text-rose-700 dark:hover:text-rose-300 transition active:scale-95">
-                    <i class="fa-solid fa-trash-can"></i>
+                <button onclick="clearShoppingList()" title="清空採買清單" class="btn-ghost" style="width:44px;padding:0" aria-label="Clear list">
+                    <i class="fa-regular fa-trash-can"></i>
                 </button>
-            </div>
-
-            <div class="text-center pt-1.5">
-                <p class="text-[11px] text-slate-400 dark:text-zinc-500 font-medium">
-                    <span data-i18n="feedback_prompt">💡 任何建議與反饋，歡迎來信：</span>
-                    <a href="mailto:rick97005109@gmail.com" class="text-emerald-600 dark:text-emerald-400 hover:underline font-semibold">rick97005109@gmail.com</a>
-                </p>
             </div>
         </div>
     </aside>
 
-    <!-- Product Details Modal (點進去看商品內容) -->
-    <div id="productModalBackdrop" onclick="closeProductModal()" class="fixed inset-0 bg-slate-900/60 dark:bg-black/80 backdrop-blur-md z-50 hidden transition-opacity"></div>
-    
-    <div id="productModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 sm:p-6 overflow-y-auto pointer-events-none">
-        <div class="bg-white dark:bg-[#121316] w-full max-w-xl rounded-3xl shadow-2xl border border-slate-200/80 dark:border-white/[0.08] overflow-hidden pointer-events-auto transform transition-all flex flex-col max-h-[90vh]">
-            
-            <!-- Modal Header -->
-            <div class="px-5 py-4 border-b border-slate-100 dark:border-zinc-800 flex items-center justify-between bg-slate-50/70 dark:bg-zinc-800/40">
-                <div class="flex items-center gap-2">
-                    <span id="modalStoreBadge" class="px-2.5 py-0.5 rounded-lg text-xs font-bold text-white bg-emerald-600">
-                        Store
-                    </span>
-                    <span id="modalCategoryBadge" class="px-2 py-0.5 rounded-lg text-xs font-semibold bg-slate-100 dark:bg-zinc-800 text-slate-700 dark:text-zinc-300">
-                        Category
-                    </span>
-                    <span id="modalHalfPriceBadge" class="hidden px-2 py-0.5 rounded-lg text-xs font-black bg-rose-500 text-white">
-                        ½ 50% OFF
-                    </span>
-                    <span id="modalPopularBadge" class="hidden px-2 py-0.5 rounded-lg text-xs font-black bg-amber-400 text-slate-950 flex items-center gap-1 shadow-2xs">
-                        <i class="fa-solid fa-star text-[10px]"></i>
-                        <span data-i18n="popular_badge">熱門暢銷</span>
-                    </span>
+    <!-- ===================== Product modal ===================== -->
+    <div id="productModalBackdrop" onclick="closeProductModal()" class="fixed inset-0 bg-black/45 backdrop-blur-sm z-50 hidden"></div>
+    <div id="productModal" class="fixed inset-0 z-50 hidden flex items-end sm:items-center justify-center sm:p-6 pointer-events-none">
+        <div class="panel w-full sm:max-w-xl rounded-t-3xl sm:rounded-3xl overflow-hidden pointer-events-auto flex flex-col max-h-[92vh]" style="box-shadow: var(--shadow-lg)">
+            <div class="px-5 py-3.5 flex items-center justify-between border-b b-line">
+                <div class="flex items-center gap-1.5 flex-wrap">
+                    <span id="modalStoreBadge" class="tag">Store</span>
+                    <span id="modalCategoryBadge" class="tag">Category</span>
+                    <span id="modalHalfPriceBadge" class="hidden tag is-sale">½ 50% OFF</span>
+                    <span id="modalPopularBadge" class="hidden tag is-next"><i class="fa-solid fa-star text-[9px]"></i> <span data-i18n="popular_badge">熱門暢銷</span></span>
                 </div>
-                <button onclick="closeProductModal()" class="w-8 h-8 rounded-lg flex items-center justify-center text-slate-400 hover:text-slate-600 dark:hover:text-zinc-200 hover:bg-slate-100 dark:hover:bg-zinc-800 transition">
-                    <i class="fa-solid fa-xmark text-sm"></i>
-                </button>
+                <button onclick="closeProductModal()" class="icon-btn" aria-label="Close"><i class="fa-solid fa-xmark text-[14px]"></i></button>
             </div>
 
-            <!-- Modal Body (Scrollable) -->
             <div class="p-5 sm:p-6 overflow-y-auto space-y-5">
-                
-                <!-- Product Visual & Key Metrics -->
                 <div class="flex flex-col sm:flex-row gap-5 items-center sm:items-start">
-                    <div class="relative w-full sm:w-44 h-44 rounded-2xl bg-slate-50 dark:bg-zinc-800/60 p-3 flex items-center justify-center shrink-0 border border-slate-100 dark:border-zinc-800">
+                    <div class="relative w-40 h-40 sm:w-48 sm:h-48 rounded-2xl p-4 flex items-center justify-center shrink-0" style="background:#fff;border:1px solid var(--line)">
                         <img id="modalProductImg" src="" alt="Product Image" class="max-h-full max-w-full object-contain" />
-                        <div id="modalHalfPriceOverlayBadge" class="hidden absolute top-2.5 left-2.5 z-10 pointer-events-none drop-shadow-sm select-none">
-                            <img id="modalHalfPriceImg" src="" alt="1/2 Price" class="w-16 h-16 object-contain" />
+                        <div id="modalHalfPriceOverlayBadge" class="hidden absolute top-2.5 left-2.5 pointer-events-none">
+                            <img id="modalHalfPriceImg" src="" alt="1/2 Price" class="w-14 h-14 object-contain" />
                         </div>
                     </div>
-                    <div class="flex-1 space-y-2.5 text-left w-full">
-                        <h3 id="modalProductTitle" class="text-base sm:text-lg font-bold text-slate-900 dark:text-white leading-snug">
-                            Product Title
-                        </h3>
-                        <div id="modalProductTranslated" class="hidden text-xs sm:text-sm font-medium text-emerald-700 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/70 border border-emerald-200/60 dark:border-emerald-800/60 px-2.5 py-1 rounded-xl leading-snug">
-                        </div>
-                        
-                        <!-- Dates -->
-                        <div class="flex items-center gap-1.5 text-xs text-slate-500 dark:text-zinc-400">
-                            <i class="fa-regular fa-calendar-check text-emerald-600 dark:text-emerald-400"></i>
+                    <div class="flex-1 space-y-3 w-full">
+                        <h3 id="modalProductTitle" class="text-[18px] font-semibold t-ink leading-snug">Product Title</h3>
+                        <div id="modalProductTranslated" class="hidden text-[14px] t-ink-2 leading-snug"></div>
+                        <div class="flex items-center gap-1.5 text-[12px] t-ink-3">
+                            <i class="fa-regular fa-calendar"></i>
                             <span data-i18n="valid_period">特價檔期:</span>
-                            <span id="modalDateRange" class="font-medium text-slate-700 dark:text-zinc-300">--</span>
+                            <span id="modalDateRange" class="num t-ink-2">--</span>
                         </div>
-
-                        <!-- Australian Supermarket Style Price Breakdown -->
-                        <div class="pt-1 flex flex-col gap-1">
-                            <div class="flex items-baseline gap-0.5 leading-none">
-                                <span class="text-base sm:text-lg font-extrabold text-slate-900 dark:text-white self-start mt-1">$</span>
-                                <span id="modalDollars" class="text-4xl sm:text-5xl font-black tracking-tight text-slate-900 dark:text-white">0</span>
-                                <span id="modalCents" class="text-lg sm:text-xl font-extrabold text-slate-900 dark:text-white self-start mt-1">00</span>
-                                <span id="modalUnit" class="text-sm font-semibold text-slate-500 dark:text-zinc-400 ml-1.5">ea</span>
-                            </div>
-                            <div class="flex items-center gap-2 flex-wrap pt-0.5">
-                                <span id="modalSaveBadge" class="px-2 py-0.5 rounded text-xs font-black bg-amber-400 text-slate-950 dark:bg-amber-400 dark:text-slate-950 shadow-2xs">
-                                    Save $0.00
-                                </span>
-                                <span id="modalWasPrice" class="text-xs text-slate-400 line-through font-medium">
-                                    Was $0.00
-                                </span>
-                            </div>
+                        <div class="flex items-baseline gap-0.5 leading-none t-ink pt-1">
+                            <span class="text-[18px] font-semibold self-start mt-1">$</span>
+                            <span id="modalDollars" class="num text-[44px] font-bold">0</span>
+                            <span id="modalCents" class="num text-[18px] font-semibold self-start mt-1">00</span>
+                            <span id="modalUnit" class="text-[13px] t-ink-3 ml-1.5">ea</span>
                         </div>
-
-                        <!-- Prominent Unit Price for WHV -->
-                        <div id="modalUnitPriceBox" class="p-2.5 rounded-xl bg-slate-50 dark:bg-zinc-800/80 border border-slate-200/80 dark:border-zinc-700/80 flex items-center justify-between gap-2">
-                            <span class="text-xs text-slate-500 dark:text-zinc-400 font-medium flex items-center gap-1.5">
-                                <span>⚖️</span>
-                                <span data-i18n="unit_price_label">單位價格 (Unit Price)</span>
-                            </span>
-                            <span id="modalUnitPrice" class="font-mono font-bold text-sm text-emerald-700 dark:text-emerald-400">
-                                --
-                            </span>
+                        <div class="flex items-center gap-2 flex-wrap">
+                            <span id="modalSaveBadge" class="tag is-sale num">Save $0.00</span>
+                            <span id="modalWasPrice" class="text-[12px] t-ink-3 line-through num">Was $0.00</span>
+                        </div>
+                        <div id="modalUnitPriceBox" class="flex items-center justify-between gap-2 px-3 py-2.5 rounded-xl panel-2">
+                            <span class="text-[12px] t-ink-3" data-i18n="unit_price_label">單位價格 (Unit Price)</span>
+                            <span id="modalUnitPrice" class="num text-[13px] font-semibold t-ink">--</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Supermarket Price Comparison Box (各大超市同款現場比價) -->
-                <div id="modalCrossStoreBox" class="hidden rounded-2xl p-3.5 sm:p-4 bg-gradient-to-br from-blue-50/90 via-indigo-50/60 to-sky-50/70 dark:from-blue-950/40 dark:via-indigo-950/30 dark:to-sky-950/30 border border-blue-200/80 dark:border-blue-800/60 shadow-xs space-y-2.5">
+                <div id="modalCrossStoreBox" class="hidden rounded-2xl p-4 panel-2 space-y-2.5">
                     <div class="flex items-center justify-between">
-                        <div class="font-bold text-xs sm:text-sm text-blue-950 dark:text-blue-200 flex items-center gap-1.5">
-                            <i class="fa-solid fa-scale-balanced text-blue-600 dark:text-blue-400"></i>
+                        <div class="font-semibold text-[13px] t-ink flex items-center gap-2">
+                            <i class="fa-solid fa-scale-balanced t-ink-3"></i>
                             <span data-i18n="cross_store_title">各大超市同款現場比價</span>
                         </div>
-                        <span id="modalCrossStoreBadge" class="text-[10px] sm:text-[11px] font-bold px-2 py-0.5 rounded-full bg-blue-100 dark:bg-blue-900/60 text-blue-800 dark:text-blue-300">
-                            同款比價
-                        </span>
+                        <span id="modalCrossStoreBadge" class="tag is-accent">同款比價</span>
                     </div>
-                    <div id="modalCrossStoreList" class="space-y-2">
-                        <!-- Populated dynamically via app.js -->
-                    </div>
+                    <div id="modalCrossStoreList" class="space-y-2"></div>
                 </div>
 
-                <!-- Backpacker Buying & Value Advice Box -->
-                <div class="rounded-2xl p-4 bg-amber-50/80 dark:bg-amber-950/30 border border-amber-200/70 dark:border-amber-800/40 text-xs space-y-1.5">
-                    <div class="font-bold text-amber-900 dark:text-amber-200 flex items-center gap-1.5">
-                        <span data-i18n="whv_advice_title">🎒 背包客採買建議</span>
-                    </div>
-                    <p id="modalWhvAdvice" class="text-amber-800 dark:text-amber-300/90 leading-relaxed">
-                        --
-                    </p>
+                <div class="rounded-2xl p-4 panel-2 space-y-1.5">
+                    <div class="font-semibold text-[13px] t-ink" data-i18n="whv_advice_title">🎒 背包客採買建議</div>
+                    <p id="modalWhvAdvice" class="text-[13px] t-ink-2 leading-relaxed">--</p>
                 </div>
 
-                <!-- Next Week Notice Box (only shown if next week) -->
-                <div id="modalNextWeekNotice" class="hidden rounded-xl p-2.5 bg-amber-50 dark:bg-amber-950/40 border border-amber-200/80 dark:border-amber-800/60 text-[11px] text-amber-800 dark:text-amber-300 flex items-center gap-2">
-                    <i class="fa-solid fa-clock text-amber-600 dark:text-amber-400 shrink-0"></i>
+                <div id="modalNextWeekNotice" class="hidden rounded-xl px-3 py-2.5 text-[12px] flex items-center gap-2" style="background:var(--next-soft);color:var(--next)">
+                    <i class="fa-regular fa-clock shrink-0"></i>
                     <span data-i18n="next_week_notice">此商品為「下週特價預告」，超市官網特價預計於週三凌晨正式生效上架。</span>
                 </div>
 
-                <!-- Official Store Link & Sub-Item Chips -->
-                <div id="modalOfficialLinkBox" class="pt-2 border-t border-slate-100 dark:border-zinc-800 space-y-2 text-xs">
-                    <div class="flex flex-wrap items-center gap-2.5">
-                        <a id="modalOfficialLink" href="#" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 font-bold px-4 py-2.5 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white shadow-xs transition active:scale-95 text-xs sm:text-sm">
-                            <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
-                            <span id="modalStoreActionText" data-i18n="open_official_store">前往超市官方商品頁</span>
-                        </a>
-                    </div>
-                    <!-- Optional Sub-Item Quick Links for grouped products (e.g. Red Rock Deli, Smith's, Doritos) -->
-                    <div id="modalSubItemsBox" class="hidden flex flex-wrap items-center gap-1.5 pt-1 text-[11px]">
-                        <span data-i18n="multiple_items_hint" class="text-slate-400 dark:text-zinc-500 shrink-0 font-medium">多品項直接前往：</span>
+                <div id="modalOfficialLinkBox" class="space-y-2.5">
+                    <a id="modalOfficialLink" href="#" target="_blank" rel="noopener noreferrer" class="btn-ghost w-full sm:w-auto">
+                        <span id="modalStoreActionText" data-i18n="open_official_store">前往超市官方商品頁</span>
+                        <i class="fa-solid fa-arrow-up-right-from-square text-[11px]"></i>
+                    </a>
+                    <div id="modalSubItemsBox" class="hidden flex flex-wrap items-center gap-1.5 text-[12px]">
+                        <span data-i18n="multiple_items_hint" class="t-ink-3 shrink-0">多品項直接前往：</span>
                         <div id="modalSubItemsList" class="flex flex-wrap items-center gap-1.5"></div>
                     </div>
                 </div>
 
-                <!-- Modal In-Store Disclaimer -->
-                <p class="text-[10px] sm:text-[11px] text-slate-400 dark:text-zinc-500 text-center flex items-center justify-center gap-1.5 pt-1">
-                    <i class="fa-solid fa-circle-info text-[10px] text-amber-500"></i>
+                <p class="text-[11px] t-ink-3 text-center">
                     <span data-i18n="disclaimer_short">特價僅供參考，實際狀況依照現場為主</span>
                 </p>
-
             </div>
 
-            <!-- Modal Footer -->
-            <div class="px-5 py-4 border-t border-slate-100 dark:border-zinc-800 bg-slate-50/70 dark:bg-zinc-800/40 flex items-center justify-between gap-3">
-                <button onclick="closeProductModal()" class="px-4 py-2.5 rounded-lg text-xs font-semibold border border-slate-200 dark:border-zinc-700 hover:bg-slate-100 dark:hover:bg-zinc-800 text-slate-700 dark:text-zinc-300 transition" data-i18n="close">
-                    關閉
-                </button>
-                <button id="modalAddToListBtn" onclick="modalAddCurrentToShoppingList()" class="flex-1 sm:flex-none flex items-center justify-center gap-2 px-6 py-2.5 rounded-lg text-xs sm:text-sm font-bold bg-emerald-600 hover:bg-emerald-700 text-white shadow-xs transition active:scale-95">
-                    <i class="fa-solid fa-basket-shopping"></i>
+            <div class="px-5 py-4 border-t b-line flex items-center gap-3" style="padding-bottom: max(16px, env(safe-area-inset-bottom))">
+                <button onclick="closeProductModal()" class="btn-ghost" data-i18n="close">關閉</button>
+                <button id="modalAddToListBtn" onclick="modalAddCurrentToShoppingList()" class="btn-primary flex-1">
+                    <i class="fa-solid fa-plus text-[12px]"></i>
                     <span data-i18n="add_to_list">加入採買清單</span>
                 </button>
             </div>
-
         </div>
     </div>
 
-    <!-- Floating Back to Top Button -->
-    <button 
-        id="backToTopBtn" 
-        onclick="scrollToTop()" 
-        title="回到頂部" 
-        class="fixed bottom-6 right-5 z-40 w-11 h-11 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white shadow-lg flex items-center justify-center transition-all duration-300 transform translate-y-16 opacity-0 pointer-events-none hover:scale-105 active:scale-95"
-    >
-        <i class="fa-solid fa-arrow-up text-sm"></i>
+    <!-- Back to top -->
+    <button id="backToTopBtn" onclick="scrollToTop()" title="回到頂部" class="to-top translate-y-16 opacity-0 pointer-events-none" aria-label="Back to top">
+        <i class="fa-solid fa-arrow-up text-[13px]"></i>
     </button>
 
-    <!-- Toast Notification -->
-    <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 hidden bg-slate-900/95 dark:bg-zinc-100/95 text-white dark:text-zinc-900 px-5 py-2.5 rounded-2xl shadow-xl flex items-center gap-2.5 text-xs sm:text-sm font-semibold transition-all border border-slate-700/40 dark:border-zinc-300/40">
-        <i id="toastIcon" class="fa-solid fa-circle-check text-emerald-400 dark:text-emerald-600"></i>
+    <!-- Toast -->
+    <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 hidden items-center gap-2.5 px-5 py-3 rounded-full text-[13px] font-medium" style="background:var(--ink);color:var(--bg);box-shadow:var(--shadow-lg)">
+        <i id="toastIcon" class="fa-solid fa-circle-check"></i>
         <span id="toastMessage">Action completed</span>
     </div>
 
-    <!-- Scripts -->
-    <script src="./i18n.js?v=5.9.2"></script>
-    <script src="./app.js?v=5.9.1"></script>
+    <script src="./i18n.js?v=6.4" defer></script>
+    <script src="./app.js?v=6.5" defer></script>
 </body>
 </html>

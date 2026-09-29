@@ -73,6 +73,9 @@ jobs:
           git add data/specials.db static/data/specials.json static/data/stats.json static/data/translations.json
           git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-update weekly specials & translations [skip ci]" && git pull --rebase -X theirs origin main && git push origin main)
 
+      - name: Build CSS (pre-built Tailwind, fast on phones)
+        run: npx -y tailwindcss@3 -c tailwind.config.js -i tailwind.input.css -o static/tw.css --minify || echo "CSS build skipped, using committed static/tw.css"
+
       - name: Deploy to Cloudflare Pages
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
