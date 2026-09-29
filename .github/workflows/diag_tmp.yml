@@ -10,21 +10,22 @@ jobs:
       - run: pip install -q -r requirements.txt
       - run: |
           python - <<'PY'
-          import re, random
-          from curl_cffi import requests as cr
-          import requests as rq
-          def links(t): return ' '.join(sorted(set(m.group(1)+'/'+m.group(2) for m in re.finditer(r'-catalogue/([a-z0-9-]+)/(\d+)/catalogue2', t))))[:150]
-          tests = [
-            ('cffi plain', lambda: cr.Session(impersonate='chrome').get('https://www.salefinder.com.au/Coles-catalogue', timeout=20)),
-            ('cffi cb+cookie', lambda: cr.Session(impersonate='chrome').get('https://www.salefinder.com.au/Coles-catalogue?cb=%d' % random.randint(1,10**9), cookies={'postcodeId':'8328'}, timeout=20)),
-            ('cffi lower cb+cookie', lambda: cr.Session(impersonate='chrome').get('https://www.salefinder.com.au/coles-catalogue?cb=%d' % random.randint(1,10**9), cookies={'postcodeId':'8328'}, timeout=20)),
-            ('cffi cookie hdr', lambda: cr.Session(impersonate='chrome').get('https://www.salefinder.com.au/coles-catalogue?cb=%d' % random.randint(1,10**9), headers={'Cookie':'postcodeId=8328'}, timeout=20)),
-            ('cffi cookie only', lambda: cr.Session(impersonate='chrome').get('https://www.salefinder.com.au/coles-catalogue', cookies={'postcodeId':'8328'}, timeout=20)),
-            ('woolies cb+cookie', lambda: cr.Session(impersonate='chrome').get('https://www.salefinder.com.au/woolworths-catalogue?cb=%d' % random.randint(1,10**9), cookies={'postcodeId':'8328'}, timeout=20)),
-          ]
-          for name, fn in tests:
+          import traceback, sys
+          sys.path.insert(0, '.')
+          import scrapers.coles_scraper as c
+          import scrapers.woolies_scraper as w
+          orig = c._get
+          def spy(url, **kw):
               try:
-                  r = fn(); print(f"::warning::{name}: {r.status_code} {r.url} len={len(r.text)} links={links(r.text)}")
+                  r = orig(url, **kw)
+                  print(f"::warning::GET {url[:90]} kw={list(kw)} -> {getattr(r,'status_code',r)}")
+                  return r
               except Exception as e:
-                  print(f"::warning::{name}: ERROR {str(e)[:200]}")
+                  print(f"::warning::GET {url[:90]} EXC {e!r}"[:400]); raise
+          c._get = spy
+          try:
+              cats = c.discover_coles_catalogues(8328, 'QLD')
+              print(f"::warning::coles QLD -> {[(x['id'], x['date_range']) for x in cats]}")
+          except Exception:
+              print("::warning::" + traceback.format_exc().replace(chr(10), ' | ')[-600:])
           PY
