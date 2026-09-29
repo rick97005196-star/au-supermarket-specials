@@ -636,6 +636,8 @@ function setRegion(code) {
     if (!REGION_CODES.includes(code) || code === currentRegion) return;
     currentRegion = code;
     try { localStorage.setItem('region', code); } catch (e) {}
+    const sel = document.getElementById('regionSelect');
+    if (sel && sel.value !== code) sel.value = code;
     if (rawSpecials) staticSpecials = regionize(rawSpecials);
     updateStatsDisplay();
     loadSpecials();
