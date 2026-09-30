@@ -639,3 +639,16 @@ html.is-locked, html.is-locked body { overflow: hidden; }
 #fbStatus.is-err { color: var(--sale); }
 #feedbackBox { padding-bottom: env(safe-area-inset-bottom); max-height: calc(100dvh - env(safe-area-inset-top) - 12px); }
 html.fb-off .fb-card, html.fb-off .fb-report { display: none !important; }
+
+/* Floating "意見箱" button: bottom-left, always on screen (back-to-top sits bottom-right) */
+.fb-fab {
+    position: fixed; z-index: 40; left: 16px; bottom: calc(20px + env(safe-area-inset-bottom));
+    display: inline-flex; align-items: center; gap: 7px; height: 44px; padding: 0 16px 0 14px; border-radius: 999px;
+    background: var(--accent); color: #fff; font-size: 14px; font-weight: 600; border: 0;
+    box-shadow: 0 6px 18px -6px rgba(0,0,0,.35); transition: transform .12s ease, box-shadow .2s ease;
+}
+.fb-fab i { font-size: 16px; }
+.fb-fab:hover { box-shadow: 0 8px 22px -6px rgba(0,0,0,.45); }
+.fb-fab:active { transform: scale(.96); }
+html.fb-off .fb-fab, html.is-locked .fb-fab { display: none; }
+@media (min-width: 1024px) { .fb-fab { left: 24px; bottom: 24px; } }
