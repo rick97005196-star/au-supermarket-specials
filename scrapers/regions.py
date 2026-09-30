@@ -105,12 +105,21 @@ def _norm_desc(item):
     return re.sub(r'[\d.$]+', '#', (item.get('discount_desc') or '').lower()).strip()
 
 
+def clean_title(title):
+    """Catalogue names carry footnote marks that differ per state ("Prawns§", "Tablets Pk 100~")
+    and mixed quote styles (Nando's / Nando’s). Remove them so one product = one entry."""
+    t = (title or '').replace('\u2019', "'").replace('\u2018', "'").replace('\u00a0', ' ')
+    t = re.sub(r'[\s§~*#^†‡¹²³]+$', '', t)
+    return re.sub(r'\s{2,}', ' ', t).strip()
+
+
 def _key_map(items):
     """(title, n) -> item. Items with the same name (e.g. one multi-buy + one 1/2 price) are told
     apart by the kind of offer, so they are matched to the same offer in other states."""
     groups = {}
     for it in items:
-        groups.setdefault((it.get('title') or '').strip().lower(), []).append(it)
+        it['title'] = clean_title(it.get('title'))
+        groups.setdefault(it['title'].lower(), []).append(it)
     out = {}
     for title, members in groups.items():
         members = sorted(members, key=lambda x: (_norm_desc(x), x.get('price') or 0))

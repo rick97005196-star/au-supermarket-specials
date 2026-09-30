@@ -594,3 +594,23 @@ html.dark .toggle-pill.is-on-accent { color: #0d1f16; }
 #favSearchBtn.hidden { display: none; }
 #favSearchBtn i { color: var(--sale); }
 #favSearchBtn.is-on-accent i { color: inherit; }
+
+/* ---------- iPhone notch / Dynamic Island / home bar (viewport-fit=cover) ----------
+   Pop-ups that touch the screen edges keep their buttons out of the status bar and home bar */
+#shoppingDrawer {
+    height: 100vh; height: 100dvh; top: 0; bottom: auto;
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+    overscroll-behavior: contain;
+}
+#shoppingDrawer > div:first-child { position: sticky; top: 0; z-index: 2; background: inherit; }
+#shoppingDrawer .icon-btn[aria-label="Close"] { width: 44px; height: 44px; font-size: 16px; flex-shrink: 0; }
+#shoppingListContainer { overscroll-behavior: contain; -webkit-overflow-scrolling: touch; }
+#productModalPanel {
+    max-height: calc(100vh - env(safe-area-inset-top) - 12px);
+    max-height: calc(100dvh - env(safe-area-inset-top) - 12px);
+    padding-bottom: env(safe-area-inset-bottom);
+}
+#favManager { padding-bottom: env(safe-area-inset-bottom); max-height: calc(100dvh - env(safe-area-inset-top) - 12px); }
+#toast { bottom: calc(24px + env(safe-area-inset-bottom)); }
+html.is-locked, html.is-locked body { overflow: hidden; }

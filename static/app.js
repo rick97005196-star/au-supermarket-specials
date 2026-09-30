@@ -2377,13 +2377,19 @@ function openProductModal(item) {
         }
     }
 
+    const modalWasHidden = modal.classList.contains('hidden');
     modal.classList.remove('hidden');
     backdrop.classList.remove('hidden');
+    lockPage();
+    if (modalWasHidden) { try { history.pushState({ overlay: 'modal' }, ''); } catch (e) {} }
 }
 
 function closeProductModal() {
+    const wasOpen = !document.getElementById('productModal').classList.contains('hidden');
     document.getElementById('productModal').classList.add('hidden');
     document.getElementById('productModalBackdrop').classList.add('hidden');
+    unlockPage();
+    if (wasOpen && !_closingFromBack && history.state && history.state.overlay === 'modal') history.back();
     currentModalItem = null;
 }
 
@@ -2447,12 +2453,34 @@ function toggleShoppingDrawer() {
     if (isOpen) {
         drawer.classList.add('translate-x-full');
         backdrop.classList.add('hidden');
+        unlockPage();
+        // opened with a history step -> remove it, so the Back button isn't needed twice
+        if (!_closingFromBack && history.state && history.state.overlay === 'drawer') history.back();
     } else {
         drawer.classList.remove('translate-x-full');
         backdrop.classList.remove('hidden');
+        lockPage();
+        try { history.pushState({ overlay: 'drawer' }, ''); } catch (e) {}
         loadShoppingList();
     }
 }
+
+// Phone "back" (iPhone swipe from the left edge, Android back button) closes the open pop-up
+// instead of leaving the website; the page behind never scrolls while a pop-up is open.
+let _closingFromBack = false;
+function lockPage() { document.documentElement.classList.add('is-locked'); }
+function unlockPage() {
+    const drawerOpen = !document.getElementById('shoppingDrawer').classList.contains('translate-x-full');
+    const modalOpen = !document.getElementById('productModal').classList.contains('hidden');
+    if (!drawerOpen && !modalOpen) document.documentElement.classList.remove('is-locked');
+}
+window.addEventListener('popstate', () => {
+    _closingFromBack = true;
+    try {
+        if (!document.getElementById('productModal').classList.contains('hidden')) closeProductModal();
+        else if (!document.getElementById('shoppingDrawer').classList.contains('translate-x-full')) toggleShoppingDrawer();
+    } finally { _closingFromBack = false; }
+});
 
 // LocalStorage helpers for Shopping List in Static / Cloudflare Pages mode
 function getLocalShoppingList() {

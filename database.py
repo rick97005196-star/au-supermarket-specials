@@ -167,7 +167,8 @@ def save_specials(store: str, items: List[Dict[str, Any]], period: str = 'curren
         for item in items:
             if not item.get('title'):
                 continue
-            title = html.unescape(item.get('title', '')).strip()
+            from scrapers.regions import clean_title
+            title = clean_title(html.unescape(item.get('title', '')))
 
             # Strictly enforce in-store specials only (reject online-only / marketplace items)
             lower_title = title.lower()
