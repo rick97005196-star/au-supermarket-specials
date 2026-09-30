@@ -3191,7 +3191,7 @@ function initApp() {
 //  匿名意見箱: the message goes straight to the owner's mailbox (Web3Forms, free, no backend).
 //  Nothing identifying is sent: no name, no email, no IP stored by this site.
 // =====================================================================
-const FEEDBACK_ACCESS_KEY = '';   // Web3Forms access key (safe to be public: it can only email the owner)
+const FEEDBACK_ACCESS_KEY = 'ed265f26-46f5-4048-9eb6-d7d6d4a6c09f';   // Web3Forms access key (safe to be public: it can only email the owner)
 let feedbackType = 'suggestion';
 // Until the access key is added, keep the feedback entry points hidden (nothing that can't work is shown)
 if (!FEEDBACK_ACCESS_KEY) document.documentElement.classList.add('fb-off');
