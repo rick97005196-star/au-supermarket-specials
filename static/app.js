@@ -2472,7 +2472,8 @@ function lockPage() { document.documentElement.classList.add('is-locked'); }
 function unlockPage() {
     const drawerOpen = !document.getElementById('shoppingDrawer').classList.contains('translate-x-full');
     const modalOpen = !document.getElementById('productModal').classList.contains('hidden');
-    if (!drawerOpen && !modalOpen) document.documentElement.classList.remove('is-locked');
+    const fbOpen = !document.getElementById('feedbackBox').classList.contains('hidden');
+    if (!drawerOpen && !modalOpen && !fbOpen) document.documentElement.classList.remove('is-locked');
 }
 window.addEventListener('popstate', () => {
     _closingFromBack = true;
@@ -3185,6 +3186,100 @@ function initApp() {
     setTimeout(loadTranslations, 1500);
     setTimeout(() => checkForNewData(true), 8000);   // a slow connection may have shown the saved copy first
 }
+
+// =====================================================================
+//  匿名意見箱: the message goes straight to the owner's mailbox (Web3Forms, free, no backend).
+//  Nothing identifying is sent: no name, no email, no IP stored by this site.
+// =====================================================================
+const FEEDBACK_ACCESS_KEY = '';   // Web3Forms access key (safe to be public: it can only email the owner)
+let feedbackType = 'suggestion';
+// Until the access key is added, keep the feedback entry points hidden (nothing that can't work is shown)
+if (!FEEDBACK_ACCESS_KEY) document.documentElement.classList.add('fb-off');
+
+function openFeedback(prefill) {
+    const box = document.getElementById('feedbackBox');
+    const msg = document.getElementById('fbMessage');
+    const st = document.getElementById('fbStatus');
+    st.classList.add('hidden'); st.className = 'text-[13px] hidden';
+    msg.placeholder = t('fb_placeholder');
+    if (prefill) msg.value = prefill;
+    updateFeedbackCount();
+    document.getElementById('feedbackBackdrop').classList.remove('hidden');
+    box.classList.remove('hidden');
+    lockPage();
+    setTimeout(() => { try { msg.focus({ preventScroll: true }); msg.setSelectionRange(msg.value.length, msg.value.length); } catch (e) {} }, 60);
+}
+function closeFeedback() {
+    document.getElementById('feedbackBox').classList.add('hidden');
+    document.getElementById('feedbackBackdrop').classList.add('hidden');
+    unlockPage();
+}
+function pickFeedbackType(btn) {
+    document.querySelectorAll('#fbTypes .fb-type').forEach(b => b.classList.toggle('is-active', b === btn));
+    feedbackType = btn.dataset.type;
+}
+function updateFeedbackCount() {
+    const n = (document.getElementById('fbMessage').value || '').length;
+    document.getElementById('fbCount').textContent = `${n} / 1000`;
+}
+function reportCurrentProduct() {
+    const it = currentModalItem;
+    closeProductModal();
+    const btn = document.querySelector('#fbTypes [data-type="data_error"]');
+    if (btn) pickFeedbackType(btn);
+    const info = it ? `【${it.store}】${it.title}  $${Number(it.price || 0).toFixed(2)}（${currentPeriod === 'next' ? t('next_cycle') : t('current_cycle')}）\n` : '';
+    setTimeout(() => openFeedback(info + t('fb_report_prompt')), 150);
+}
+async function sendFeedback() {
+    const msgEl = document.getElementById('fbMessage');
+    const st = document.getElementById('fbStatus');
+    const btn = document.getElementById('fbSend');
+    const message = (msgEl.value || '').trim();
+    const show = (text, ok) => { st.textContent = text; st.className = 'text-[13px] ' + (ok ? 'is-ok' : 'is-err'); };
+    if (message.length < 2) { show(t('fb_too_short'), false); return; }
+    if (document.getElementById('fbBot').checked) return;           // spam robot
+    let last = 0;
+    try { last = +localStorage.getItem('fb_last_sent') || 0; } catch (e) {}
+    if (Date.now() - last < 30000) { show(t('fb_wait'), false); return; }
+    if (!FEEDBACK_ACCESS_KEY) { show(t('fb_not_ready'), false); return; }
+    btn.disabled = true;
+    const typeLabel = { suggestion: '建議', data_error: '價格/商品有誤', bug: '網站問題', other: '其他' }[feedbackType] || feedbackType;
+    try {
+        const res = await fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+            body: JSON.stringify({
+                access_key: FEEDBACK_ACCESS_KEY,
+                subject: `【意見箱】${typeLabel}：${message.slice(0, 30)}`,
+                from_name: '澳洲超市特價優惠 · 匿名意見箱',
+                '類型': typeLabel,
+                '內容': message,
+                '訪客使用的語言': currentLang,
+                '訪客選的地區': currentRegion,
+                '裝置': window.innerWidth < 768 ? '手機' : '電腦',
+                '送出時間（布里斯本）': new Date().toLocaleString('zh-TW', { timeZone: 'Australia/Brisbane' }),
+                botcheck: ''
+            })
+        });
+        const data = await res.json().catch(() => ({}));
+        if (res.ok && data.success) {
+            try { localStorage.setItem('fb_last_sent', String(Date.now())); } catch (e) {}
+            msgEl.value = '';
+            updateFeedbackCount();
+            show(t('fb_thanks'), true);
+            showToast(t('fb_thanks'));
+            setTimeout(closeFeedback, 1600);
+        } else {
+            show(t('fb_failed'), false);
+        }
+    } catch (e) {
+        show(t('fb_failed'), false);
+    } finally {
+        btn.disabled = false;
+    }
+}
+document.addEventListener('input', (e) => { if (e.target && e.target.id === 'fbMessage') updateFeedbackCount(); });
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !document.getElementById('feedbackBox').classList.contains('hidden')) closeFeedback(); });
 
 // ---------- Always show the latest week ----------
 // Phones keep yesterday's tab in memory and show it again without reloading (and a slow connection
