@@ -3241,9 +3241,35 @@ async function sendFeedback() {
     let last = 0;
     try { last = +localStorage.getItem('fb_last_sent') || 0; } catch (e) {}
     if (Date.now() - last < 30000) { show(t('fb_wait'), false); return; }
-    if (!FEEDBACK_ACCESS_KEY) { show(t('fb_not_ready'), false); return; }
     btn.disabled = true;
     const typeLabel = { suggestion: '建議', data_error: '價格/商品有誤', bug: '網站問題', other: '其他' }[feedbackType] || feedbackType;
+    const device = window.innerWidth < 768 ? '手機' : '電腦';
+    // 1) backup copy in the site's own database (never lost, even if the email service is full)
+    let savedToDb = false;
+    try {
+        const r = await fetch('/api/feedback', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ type: feedbackType, message, lang: currentLang, region: currentRegion, device, botcheck: '' })
+        });
+        const d = await r.json().catch(() => ({}));
+        savedToDb = !!(r.ok && d.ok);
+        if (r.status === 429) { show(t('fb_wait'), false); btn.disabled = false; return; }
+    } catch (e) {}
+    const finishOk = () => {
+        try { localStorage.setItem('fb_last_sent', String(Date.now())); } catch (e) {}
+        msgEl.value = '';
+        updateFeedbackCount();
+        show(t('fb_thanks'), true);
+        showToast(t('fb_thanks'));
+        setTimeout(closeFeedback, 1600);
+    };
+    if (!FEEDBACK_ACCESS_KEY) {
+        if (savedToDb) finishOk(); else show(t('fb_not_ready'), false);
+        btn.disabled = false;
+        return;
+    }
+    // 2) email to the owner
     try {
         const res = await fetch('https://api.web3forms.com/submit', {
             method: 'POST',
@@ -3256,24 +3282,16 @@ async function sendFeedback() {
                 '內容': message,
                 '訪客使用的語言': currentLang,
                 '訪客選的地區': currentRegion,
-                '裝置': window.innerWidth < 768 ? '手機' : '電腦',
+                '裝置': device,
                 '送出時間（布里斯本）': new Date().toLocaleString('zh-TW', { timeZone: 'Australia/Brisbane' }),
                 botcheck: ''
             })
         });
         const data = await res.json().catch(() => ({}));
-        if (res.ok && data.success) {
-            try { localStorage.setItem('fb_last_sent', String(Date.now())); } catch (e) {}
-            msgEl.value = '';
-            updateFeedbackCount();
-            show(t('fb_thanks'), true);
-            showToast(t('fb_thanks'));
-            setTimeout(closeFeedback, 1600);
-        } else {
-            show(t('fb_failed'), false);
-        }
+        if ((res.ok && data.success) || savedToDb) finishOk();
+        else show(t('fb_failed'), false);
     } catch (e) {
-        show(t('fb_failed'), false);
+        if (savedToDb) finishOk(); else show(t('fb_failed'), false);
     } finally {
         btn.disabled = false;
     }

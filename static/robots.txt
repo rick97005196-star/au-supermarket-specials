@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /admin.html
 
 Sitemap: https://au-supermarket-specials.pages.dev/sitemap.xml
