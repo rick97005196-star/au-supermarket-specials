@@ -1373,10 +1373,16 @@ function clusterItemsBySeries(items) {
         return maxSave2 - maxSave1;
     });
 
+    // Variety first: every product line shows its best 2 items first, the rest of long lines
+    // (e.g. 15 Moccona coffees) follow later, so the first screen is not one single brand.
     const result = [];
+    const rest = [];
     sortedGroupKeys.forEach(k => {
-        result.push(...groups.get(k));
+        const g = groups.get(k);
+        result.push(...g.slice(0, 2));
+        rest.push(...g.slice(2));
     });
+    result.push(...rest);
     return result;
 }
 

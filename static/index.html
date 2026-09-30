@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>澳洲超市特價優惠 | AU Supermarket Specials</title>
+    <meta name="description" content="每週自動整理 Woolworths、Coles、ALDI 三大超市的店內特價與半價商品，可依州別（QLD、NSW、VIC…）查看、搜尋中英日韓商品名稱，免費使用。">
+    <link rel="canonical" href="https://au-supermarket-specials.pages.dev/">
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"澳洲超市特價優惠 AU Supermarket Specials","url":"https://au-supermarket-specials.pages.dev/","inLanguage":["zh-TW","en","ja","ko"],"description":"Weekly in-store specials and half-price deals from Woolworths, Coles and ALDI in Australia."}</script>
 
     <!-- Disable Browser Cache for Instant Updates -->
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
@@ -32,7 +35,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="apple-mobile-web-app-title" content="超市特價">
     <meta name="mobile-web-app-capable" content="yes">
-    <link rel="icon" type="image/jpeg" href="/logo.jpg">
+    <link rel="icon" type="image/png" href="/favicon-48.png">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
     <link rel="manifest" href="./manifest.json">
@@ -51,7 +54,7 @@
 
     <!-- Pre-built styles (no in-browser compiling = faster on phones) -->
     <link rel="stylesheet" href="./tw.css?v=6.1">
-    <link rel="stylesheet" href="./design.css?v=7.5">
+    <link rel="stylesheet" href="./design.css?v=7.6">
 
     <!-- Non-blocking fonts & icons: text shows immediately with the phone's own fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -71,7 +74,7 @@
     <header id="siteHeader" class="site-header">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-3">
             <a href="./" class="brand-link flex items-center gap-3 min-w-0">
-                <img src="./logo.jpg" alt="澳洲超市特價優惠" class="brand-mark shrink-0">
+                <img src="./logo-96.png" alt="" width="36" height="36" class="brand-mark shrink-0">
                 <div class="min-w-0 leading-tight">
                     <div data-i18n="app_title" class="text-[15px] font-semibold t-ink truncate">澳洲超市特價優惠</div>
                     <div data-i18n="app_subtitle" class="text-[12px] t-ink-3 truncate hidden sm:block">Woolworths · Coles · ALDI 每週省錢比價助手</div>
@@ -327,7 +330,7 @@
     <footer class="border-t b-line mt-4">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col md:flex-row md:items-start md:justify-between gap-6 text-[12px] t-ink-3">
             <div class="flex items-center gap-3">
-                <img src="./logo.jpg" alt="" class="brand-mark" style="width:28px;height:28px;border-radius:8px">
+                <img src="./logo-96.png" alt="" width="28" height="28" class="brand-mark" style="width:28px;height:28px;border-radius:8px">
                 <div>
                     <p class="t-ink-2 font-medium">澳洲超市特價優惠 · AU Supermarket Specials</p>
                     <p>
@@ -405,9 +408,9 @@
             <div class="p-5 sm:p-6 overflow-y-auto space-y-5">
                 <div class="flex flex-col sm:flex-row gap-5 items-center sm:items-start">
                     <div class="relative w-40 h-40 sm:w-48 sm:h-48 rounded-2xl p-4 flex items-center justify-center shrink-0" style="background:#fff;border:1px solid var(--line)">
-                        <img id="modalProductImg" src="" alt="Product Image" class="max-h-full max-w-full object-contain" />
+                        <img id="modalProductImg" alt="Product Image" class="max-h-full max-w-full object-contain" />
                         <div id="modalHalfPriceOverlayBadge" class="hidden absolute top-2.5 left-2.5 pointer-events-none">
-                            <img id="modalHalfPriceImg" src="" alt="1/2 Price" class="w-14 h-14 object-contain" />
+                            <img id="modalHalfPriceImg" alt="1/2 Price" class="w-14 h-14 object-contain" />
                         </div>
                     </div>
                     <div class="flex-1 space-y-3 w-full">
@@ -509,6 +512,6 @@
     </div>
 
     <script src="./i18n.js?v=6.6" defer></script>
-    <script src="./app.js?v=7.7" defer></script>
+    <script src="./app.js?v=7.8" defer></script>
 </body>
 </html>
