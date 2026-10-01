@@ -3186,6 +3186,27 @@ function initApp() {
     checkUpdateStatus();
     setTimeout(loadTranslations, 1500);
     setTimeout(() => checkForNewData(true), 8000);   // a slow connection may have shown the saved copy first
+    setTimeout(recordVisit, 1500);
+}
+
+// Anonymous visitor count for the owner's dashboard: a random id made up by this browser
+// (no name, email or IP), phone/computer, language and state. "Do Not Track" is respected.
+function recordVisit() {
+    try {
+        if (navigator.doNotTrack === '1' || window.doNotTrack === '1') return;
+        if (!/pages\.dev$|^localhost$|^127\.0\.0\.1$/.test(location.hostname)) return;
+        let vid = localStorage.getItem('vid');
+        if (!vid || !/^[a-f0-9]{16,32}$/.test(vid)) {
+            const a = new Uint8Array(12);
+            crypto.getRandomValues(a);
+            vid = [...a].map(b => b.toString(16).padStart(2, '0')).join('');
+            localStorage.setItem('vid', vid);
+        }
+        fetch('/api/hit', {
+            method: 'POST', keepalive: true, headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ vid, device: window.innerWidth < 768 ? 'mobile' : 'desktop', lang: currentLang, region: currentRegion })
+        }).catch(() => {});
+    } catch (e) {}
 }
 
 // =====================================================================
