@@ -97,13 +97,18 @@ if os.path.exists(trans_path):
 
 from categories import classify_product, is_popular_product, calculate_popularity_score
 
+# translations are also found for slightly renamed products (footnote marks, quote style, spaces)
+_tr_norm = {}
+for _k, _v in translations.items():
+    _tr_norm.setdefault(_re2.sub(r'\s+', ' ', clean_title(_k)).strip().lower(), _v)
+
 for it in items:
     t = it.get('title', '')
     it['category'] = classify_product(t, it.get('category') or '')
     it['is_popular'] = is_popular_product(t)
     it['popularity_score'] = calculate_popularity_score(it)
-    if t in translations:
-        tr = translations[t]
+    tr = translations.get(t) or _tr_norm.get(_re2.sub(r'\s+', ' ', t).strip().lower())
+    if tr:
         it['translations'] = {k: tr[k] for k in ('zh', 'ja', 'ko') if tr.get(k)}
 
 # ---- "熱門暢銷" badge: only the top ~10% per category, max 2 per brand, so the badge stays meaningful ----

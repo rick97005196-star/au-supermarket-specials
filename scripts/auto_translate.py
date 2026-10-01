@@ -91,8 +91,8 @@ GROCERY_TERMS = {
 # Post-processing glossary guard to fix notorious machine translation blunders
 KNOWN_TRANSLATION_REPAIRS = [
     # Nutella
-    (r'費列羅花生醬', '能多益 Nutella 榛果可可抹醬'),
-    (r'榛果可可醬', 'Nutella 榛果可可醬'),
+    (r'費列羅花生醬', '能多益 榛果可可抹醬'),
+    (r'(?<!Nutella )(?<!能多益 )榛果可可醬', 'Nutella 榛果可可醬'),
     # Connoisseur ice cream brand & styles
     (r'鑑賞家(?:美食)?(?:冰淇淋)?|行家冰淇淋', 'Connoisseur 頂級雪糕'),
     (r'餅乾和奶油棒', '巧酥雪糕'),
@@ -120,12 +120,12 @@ KNOWN_TRANSLATION_REPAIRS = [
     # Twinings tea
     (r'川寧', 'Twinings 唐寧茶'),
     # Bega Cheese
-    (r'貝加', 'Bega 起司/乳酪'),
+    (r'(?<!Bega )貝加', 'Bega 起司/乳酪'),
     # Sirena Tuna
     (r'塞雷娜', 'Sirena 頂級鮪魚罐頭'),
     # Flavor literal fixes
     (r'蜂蜜大豆和雞肉|大豆和雞肉', '蜂蜜醬油雞汁風味'),
-    (r'酸奶油和韭菜', '酸奶洋蔥風味'),
+    (r'酸奶油和韭菜', '酸奶油洋蔥口味'),
     # Underwear literal fixes
     (r'男士前軀幹|前軀幹尺寸|泳褲（各裝各裝）|前軀幹', '男款平口四角內褲'),
     (r'各裝各裝', '各款式'),
@@ -144,7 +144,32 @@ def clean_translated_text(text, orig_title):
     clean = re.sub(r'[\r\n]+', ' ', clean)
     for pattern, repl in KNOWN_TRANSLATION_REPAIRS:
         clean = re.sub(pattern, repl, clean)
+    # an AI glitch repeating the same word ("Nutella Nutella Nutella ...") -> once
+    clean = re.sub(r"\b([A-Za-z][\w'’&.-]*)(?:\s+\1\b)+", r"\1", clean)
     return clean
+
+
+_S2TW = None
+def polish_zh(zh):
+    """Taiwan wording and Traditional characters, fixed without asking the AI again."""
+    global _S2TW
+    if not zh:
+        return zh
+    from scripts.translation_check import simplified_chars, MAINLAND_WORDS
+    bad = simplified_chars(zh)
+    if bad:
+        try:
+            if _S2TW is None:
+                from opencc import OpenCC
+                _S2TW = OpenCC('s2tw')
+            for c in bad:
+                zh = zh.replace(c, _S2TW.convert(c))
+        except Exception:
+            pass
+    for w, good in MAINLAND_WORDS.items():
+        if '/' not in good:
+            zh = zh.replace(w, good) if w != '酸奶' else re.sub(r'酸奶(?!油)', '優格', zh)
+    return zh
 
 # 1. Gemini AI Batch Translator (High Precision, Domain Aware)
 GEMINI_API_BASE = "https://generativelanguage.googleapis.com/v1beta"
@@ -212,11 +237,16 @@ Rules for "zh" (read carefully):
 6. Flavours: "Sour Cream & Chives" -> 酸奶油洋蔥口味, "Honey Soy" -> 蜂蜜醬油口味, "Cookies & Cream" -> 巧克力餅乾奶油口味, "Salt & Vinegar" -> 鹽醋口味.
 7. Pet food: "Adult" -> 成犬/成貓 (never 成人). Underwear "Trunk" -> 四角褲. SIM cards, phones and modems keep the product name in English.
 8. Output only the translation - no notes, no explanations, no marketing words.
+9. Keep EVERY number of the English title: sizes, pack counts, shade/step/size numbers ("Step 3" -> 3階段, "105-120g" -> 105-120克, "Shade 3" -> 3號).
+10. Never repeat a word. The brand appears exactly once.
+11. Traditional characters only (黃 not 黄, 強 not 强, 麥 not 麦, 蟎 not 螨). Taiwan words: 沐浴乳 (not 沐浴露), 優格 (yoghurt), 酸奶油 (sour cream).
+12. Fish and seafood must match the English exactly: salmon=鮭魚, whiting=鱚魚, hoki=藍鱈, barramundi=尖吻鱸, dory=多利魚, basa=巴沙魚, tuna=鮪魚, prawn=蝦, squid/calamari=魷魚/中卷. Never swap one fish or meat for another.
+13. If a list of problems is given for a title, the new translation must fix all of them.
 
 Titles:
 """
 
-def translate_batch_with_gemini(titles, api_key):
+def translate_batch_with_gemini(titles, api_key, notes=None):
     """
     Translates a batch of titles with the Gemini API.
     Returns a dict mapping original title -> {'zh': ..., 'ja': ..., 'ko': ..., 'src': 'ai'}.
@@ -231,6 +261,9 @@ def translate_batch_with_gemini(titles, api_key):
     url = f"{GEMINI_API_BASE}/models/{model}:generateContent"
     body = {
         "contents": [{"parts": [{"text": TRANSLATION_PROMPT + json.dumps(titles, ensure_ascii=False) +
+                                  (("\n\nProblems found in the previous translations (fix every one):\n" +
+                                    json.dumps({t: notes[t] for t in titles if notes and t in notes}, ensure_ascii=False))
+                                   if notes else '') +
                                   "\n\nRespond with a JSON array of objects with keys: title (copied exactly), zh, ja, ko."}]}],
         "generationConfig": {"temperature": 0.2, "responseMimeType": "application/json"}
     }
@@ -258,7 +291,7 @@ def translate_batch_with_gemini(titles, api_key):
                 orig = (item.get('title') or '').strip()
                 if orig in wanted and item.get('zh'):
                     results[orig] = {
-                        'zh': clean_translated_text(item.get('zh') or orig, orig),
+                        'zh': polish_zh(clean_translated_text(item.get('zh') or orig, orig)),
                         'ja': clean_translated_text(item.get('ja') or orig, orig),
                         'ko': clean_translated_text(item.get('ko') or orig, orig),
                         'src': 'ai'
@@ -375,6 +408,38 @@ def run_auto_translate():
             titles_to_check.add(r[0].strip())
         conn.close()
 
+    # 2b. A product whose name changed slightly (footnote mark removed, different quote style)
+    #     keeps its existing translation instead of showing up untranslated
+    from scrapers.regions import clean_title
+    _norm = lambda t: re.sub(r'\s+', ' ', clean_title(t or '')).strip().lower()
+    by_norm = {}
+    for k, v in translations.items():
+        by_norm.setdefault(_norm(k), v)
+    recovered = 0
+    for title in titles_to_check:
+        if title not in translations and _norm(title) in by_norm:
+            translations[title] = dict(by_norm[_norm(title)])
+            recovered += 1
+    if recovered:
+        print(f"Recovered {recovered} translations for slightly renamed products.")
+
+    # 2c. Quality check: fix what can be fixed without AI (Traditional characters, Taiwan words,
+    #     repeated words) and collect the rest for re-translation with the problems explained
+    from scripts.translation_check import problems as tr_problems
+    for title in titles_to_check:
+        tr = translations.get(title)
+        if tr and tr.get('zh'):
+            tr['zh'] = polish_zh(clean_translated_text(tr['zh'], title))
+    qa_notes = {}
+    for title in titles_to_check:
+        tr = translations.get(title)
+        if not tr or tr.get('reviewed') or tr.get('qa_tries', 0) >= 2:
+            continue
+        p = tr_problems(title, tr)
+        if p and p != ['沒有翻譯']:
+            qa_notes[title] = p
+    print(f"Quality check: {len(qa_notes)} translations need fixing.")
+
     # 3. Detect missing or untranslated items
     missing_titles = []
     for title in titles_to_check:
@@ -396,28 +461,40 @@ def run_auto_translate():
     if gemini_key:
         missing_set = set(missing_titles)
         upgrade_titles = sorted(t for t in titles_to_check
-                                if t not in missing_set and (translations.get(t) or {}).get('src') != 'ai')
+                                if t not in missing_set and t not in qa_notes
+                                and not (translations.get(t) or {}).get('reviewed')
+                                and (translations.get(t) or {}).get('src') != 'ai')
         print(f"Non-AI translations waiting for AI upgrade: {len(upgrade_titles)}")
 
     # 4. Translate missing items
-    if missing_titles or upgrade_titles:
+    if missing_titles or upgrade_titles or qa_notes:
         if gemini_key:
             BATCH_SIZE = 25
             max_calls = int(os.environ.get('GEMINI_MAX_CALLS_PER_RUN', '40'))
-            queue = [(t, True) for t in missing_titles] + [(t, False) for t in upgrade_titles]
-            print(f"Translating with Gemini AI: {len(missing_titles)} new + {len(upgrade_titles)} upgrades (max {max_calls} requests this run)...")
+            qa_list = [t for t in qa_notes if t not in set(missing_titles)]
+            queue = [(t, True) for t in missing_titles] + [(t, False) for t in qa_list] + [(t, False) for t in upgrade_titles]
+            print(f"Translating with Gemini AI: {len(missing_titles)} new + {len(qa_list)} quality fixes + {len(upgrade_titles)} upgrades (max {max_calls} requests this run)...")
             calls = 0
             ai_ok = 0
             for i in range(0, len(queue), BATCH_SIZE):
                 chunk = queue[i:i + BATCH_SIZE]
                 batch_res = {}
                 if calls < max_calls:
-                    batch_res = translate_batch_with_gemini([t for t, _ in chunk], gemini_key)
+                    batch_res = translate_batch_with_gemini([t for t, _ in chunk], gemini_key, notes=qa_notes)
                     calls += 1
                     time.sleep(4.5)  # stay under the free-tier requests-per-minute limit
                 for t, is_new in chunk:
                     if t in batch_res:
-                        translations[t] = batch_res[t]
+                        old = translations.get(t)
+                        new = batch_res[t]
+                        if t in qa_notes:
+                            new['qa_tries'] = (old or {}).get('qa_tries', 0) + 1
+                        # only accept a new translation that is not worse than the one we have
+                        if old and old.get('zh') and len(tr_problems(t, new)) > len(tr_problems(t, old)):
+                            if t in qa_notes:
+                                old['qa_tries'] = old.get('qa_tries', 0) + 1
+                            continue
+                        translations[t] = new
                         ai_ok += 1
                     elif is_new:
                         translations[t] = translate_single_fallback(t)  # retried by AI on a later run
@@ -445,7 +522,7 @@ def run_auto_translate():
         # Run glossary cleanup on all translations to ensure zero defects
         for t, tr in translations.items():
             if tr and isinstance(tr, dict):
-                tr['zh'] = clean_translated_text(tr.get('zh', ''), t)
+                tr['zh'] = polish_zh(clean_translated_text(tr.get('zh', ''), t))
 
         # Save updated translations.json
         with open(TRANSLATIONS_FILE, 'w', encoding='utf-8') as f:
@@ -462,10 +539,19 @@ def run_auto_translate():
                 if old_zh != new_zh:
                     tr['zh'] = new_zh
                     fixed_count += 1
+        # always save: recovered names and quality fixes (step 2b/2c) must be kept too
+        with open(TRANSLATIONS_FILE, 'w', encoding='utf-8') as f:
+            json.dump(translations, f, ensure_ascii=False, indent=2)
         if fixed_count > 0:
-            with open(TRANSLATIONS_FILE, 'w', encoding='utf-8') as f:
-                json.dump(translations, f, ensure_ascii=False, indent=2)
             print(f"Cleaned {fixed_count} existing translations with grocery glossary.")
+
+    # 4b. Report what is still wrong (shown as a warning in the GitHub Actions run)
+    remaining = {t: tr_problems(t, translations.get(t)) for t in titles_to_check}
+    remaining = {t: p for t, p in remaining.items() if p}
+    print(f"Translation quality: {len(titles_to_check) - len(remaining)}/{len(titles_to_check)} OK")
+    if remaining:
+        sample = '; '.join(f"{t[:40]} ({p[0]})" for t, p in list(remaining.items())[:5])
+        gh_warning(f"{len(remaining)} translations still have problems (retried automatically next run): {sample}")
 
     # 5. Enrich specials.json directly with translations field
     if specials:
