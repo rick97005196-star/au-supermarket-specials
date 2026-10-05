@@ -13,12 +13,15 @@ jobs:
           import json, re, time, collections
           from curl_cffi import requests as r
           def w(m): print('::warning::' + m.replace('\n', ' ')[:1500])
-          s = r.Session(impersonate='chrome')
+          IMPS = ['chrome', 'safari', 'chrome124', 'safari17_0', 'chrome120', 'safari15_5', 'chrome116', 'edge101']
+          ses = {'i': 0, 's': r.Session(impersonate='chrome')}
+          def fresh():
+              ses['i'] += 1; ses['s'] = r.Session(impersonate=IMPS[ses['i'] % len(IMPS)])
           log = []
           def get(pg):
               t = time.time()
               try:
-                  x = s.get(f'https://www.coles.com.au/on-special?filter_Special=halfprice&page={pg}', timeout=20)
+                  x = ses['s'].get(f'https://www.coles.com.au/on-special?filter_Special=halfprice&page={pg}', timeout=20)
               except Exception as e:
                   log.append(f'{pg}:EXC'); return None
               m = re.search(r'<script id="__NEXT_DATA__"[^>]*>(.*?)</script>', x.text, re.S)
@@ -43,11 +46,11 @@ jobs:
                       if len(ex) < 3: ex.append(json.dumps({k: p.get(k) for k in ('name','brand','size','pricing')})[:400])
               else:
                   bad += 1
-                  if bad >= 3: break
-                  time.sleep(10); sr = get(pg); continue
+                  if bad >= 6: break
+                  fresh(); time.sleep(15); sr = get(pg); continue
               pg += 1
               if pg > pages: break
-              time.sleep(1.5); sr = get(pg)
+              time.sleep(4); sr = get(pg)
           w(f'total={total} pages={pages} ' + json.dumps(c))
           w(' '.join(log))
           for e in ex: w(e)
