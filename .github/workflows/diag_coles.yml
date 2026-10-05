@@ -47,10 +47,12 @@ jobs:
               else:
                   bad += 1
                   if bad >= 6: break
-                  fresh(); time.sleep(15); sr = get(pg); continue
+                  fresh(); time.sleep(20 * bad); sr = get(pg); continue
               pg += 1
               if pg > pages: break
-              time.sleep(4); sr = get(pg)
+              time.sleep(3)
+              if pg % 4 == 1: fresh(); time.sleep(5)
+              sr = get(pg)
           w(f'total={total} pages={pages} ' + json.dumps(c))
           w(' '.join(log))
           for e in ex: w(e)
