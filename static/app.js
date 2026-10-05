@@ -167,7 +167,7 @@ const CATEGORY_STYLES = {
         iconBg: 'bg-orange-50 dark:bg-orange-950/80 border-orange-200/80 dark:border-orange-800/80 text-orange-700 dark:text-orange-300'
     },
     'snacks': {
-        emoji: '🍫',
+        emoji: '🍪',
         iconBg: 'bg-purple-50 dark:bg-purple-950/80 border-purple-200/80 dark:border-purple-800/80 text-purple-700 dark:text-purple-300'
     },
     'drinks': {
@@ -179,7 +179,7 @@ const CATEGORY_STYLES = {
         iconBg: 'bg-yellow-50 dark:bg-yellow-950/80 border-yellow-200/80 dark:border-yellow-800/80 text-yellow-800 dark:text-yellow-300'
     },
     'health_vitamins': {
-        emoji: '💊',
+        emoji: '🧴',
         iconBg: 'bg-pink-50 dark:bg-pink-950/80 border-pink-200/80 dark:border-pink-800/80 text-pink-700 dark:text-pink-300'
     },
     'household': {
@@ -189,8 +189,27 @@ const CATEGORY_STYLES = {
     'pet': {
         emoji: '🐾',
         iconBg: 'bg-lime-50 dark:bg-lime-950/80 border-lime-200/80 dark:border-lime-800/80 text-lime-800 dark:text-lime-300'
-    }
+    },
+    // Shortcuts for things people buy all the time (they search instead of filtering one department)
+    'sub_icecream': { emoji: '🍦' },
+    'sub_chocolate': { emoji: '🍫' },
+    'sub_chips': { emoji: '🥔' },
+    'sub_coffee': { emoji: '☕' },
+    'sub_noodles': { emoji: '🍜' },
+    'sub_soda': { emoji: '🫧' },
+    'sub_laundry': { emoji: '🧼' },
+    'sub_vitamins': { emoji: '💊' }
 };
+// shortcut chip -> the search word that finds it (works in every language through the search dictionary)
+const SUB_CATEGORY_TERMS = {
+    sub_icecream: '冰淇淋', sub_chocolate: '巧克力', sub_chips: '洋芋片', sub_coffee: '咖啡',
+    sub_noodles: '泡麵', sub_soda: '汽水', sub_laundry: '洗衣精', sub_vitamins: '維他命'
+};
+function itemInCategory(it, cat) {
+    if (!cat || cat === 'all') return true;
+    if (SUB_CATEGORY_TERMS[cat]) return scoreSearchMatch(it, SUB_CATEGORY_TERMS[cat]) > 0;
+    return it.category === cat;
+}
 
 function getCleanCategoryLabel(catKey) {
     const raw = getCategoryName(catKey);
@@ -213,7 +232,7 @@ function renderCategoryBar() {
     };
 
     const existingBtns = bar.querySelectorAll('button');
-    if (existingBtns.length === CATEGORY_KEYS.length) {
+    if (existingBtns.length === CATEGORY_KEYS.length + Object.keys(SUB_CATEGORY_TERMS).length) {
         existingBtns.forEach(btn => {
             const catKey = btn.dataset.cat;
             const isActive = currentCategory === catKey;
@@ -227,8 +246,11 @@ function renderCategoryBar() {
     
     // Arrange into 2 rows: Row 1: All -> 蔬菜水果 -> 肉品 -> 海鮮水產 -> 蛋奶製品 -> 麵包烘焙 -> 冷凍食品 (7 items)
     // Row 2: 糧油調味 -> 休閒零食 -> 飲料 -> 酒類 -> 美妝保健 -> 日用清潔 -> 寵物用品 (7 items)
-    const row1Keys = ['all', 'produce', 'meat', 'seafood', 'dairy_eggs', 'bakery', 'frozen'];
-    const row2Keys = ['pantry', 'snacks', 'drinks', 'liquor', 'health_vitamins', 'household', 'pet'];
+    // Most-used first (left), so the first screen shows them without swiping
+    const row1Keys = ['all', 'meat', 'produce', 'sub_icecream', 'sub_chocolate', 'sub_chips', 'sub_coffee',
+                      'dairy_eggs', 'bakery', 'frozen', 'seafood'];
+    const row2Keys = ['snacks', 'drinks', 'sub_noodles', 'sub_soda', 'pantry', 'sub_laundry', 'sub_vitamins',
+                      'health_vitamins', 'household', 'liquor', 'pet'];
     
     // Grid fills column by column, so interleave: upper row = row1Keys, lower row = row2Keys
     const orderedKeys = [];
@@ -1670,7 +1692,7 @@ async function loadSpecials() {
         let filtered = staticSpecials.filter(it => {
             if (it.period !== currentPeriod) return false;
             if (currentStore !== 'All' && it.store !== currentStore) return false;
-            if (currentCategory !== 'all' && it.category !== currentCategory) {
+            if (!itemInCategory(it, currentCategory)) {
                 return false;
             }
             // Strictly only show items with genuine discounts (or ALDI Super Savers & Special Buys)
