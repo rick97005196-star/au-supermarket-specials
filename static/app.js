@@ -1675,6 +1675,10 @@ async function loadSpecials() {
         } else if (currentSearch) {
             // While searching: best matches first
             filtered = strictSort(filtered, (a, b) => (b._searchScore || 0) - (a._searchScore || 0));
+        } else if (currentStore === 'ALDI') {
+            // ALDI: in the order they go on sale (Super Savers, then Wednesday, then Saturday)
+            filtered = strictSort(filtered, (a, b) => (a.sf || '').localeCompare(b.sf || '') ||
+                (/super/i.test(b.discount_desc || '') - /super/i.test(a.discount_desc || '')));
         } else {
             // Default & relevance: Group identical products with different types together
             filtered = clusterItemsBySeries(filtered);
@@ -1884,6 +1888,31 @@ function renderNextBatch() {
     }
 }
 
+// ---------------- ALDI: each deal has its own date ----------------
+// Super Savers = weekly price (Wed–Tue). Special Buys = on sale from a Wednesday or Saturday, while stocks last.
+function _brisbaneToday() {
+    const d = new Date(Date.now() + 10 * 3600 * 1000);
+    return d.toISOString().slice(0, 10);
+}
+function _fmtAldiDay(iso) {
+    const d = new Date(iso + 'T00:00:00Z');
+    const wd = (t('weekdays') || [])[d.getUTCDay()] || '';
+    return `${wd} ${d.getUTCMonth() + 1}/${d.getUTCDate()}`.trim();
+}
+function aldiDateInfo(item) {
+    if (!item || item.store !== 'ALDI' || !item.sf) return null;
+    const isSaver = /super/i.test(item.discount_desc || '');
+    const today = _brisbaneToday();
+    if (isSaver) {
+        const end = new Date(item.sf + 'T00:00:00Z'); end.setUTCDate(end.getUTCDate() + 6);
+        const d = _fmtAldiDay(end.toISOString().slice(0, 10));
+        return { kind: 'saver', upcoming: item.sf > today, text: t('aldi_until', { d }), long: t('aldi_super_saver', { d }) };
+    }
+    const d = _fmtAldiDay(item.sf);
+    if (item.sf > today) return { kind: 'buy', upcoming: true, text: t('aldi_on_sale_from', { d }), long: `${t('aldi_on_sale_from', { d })} · ${t('aldi_while_stocks')}` };
+    return { kind: 'buy', upcoming: false, text: t('aldi_since_short', { d }), long: t('aldi_on_sale_since', { d }) };
+}
+
 function createProductCardElement(item) {
     const card = document.createElement('div');
     card.className = 'p-card group';
@@ -1936,6 +1965,7 @@ function createProductCardElement(item) {
     const catStyle = CATEGORY_STYLES[item.category] || { emoji: '🏷️' };
     const crossStoreBadgeText = getCrossStoreBadgeText(item);
 
+    const aldiInfo = aldiDateInfo(item);
     const cartPayload = {
         id: item.id,
         store: item.store,
@@ -1960,6 +1990,7 @@ function createProductCardElement(item) {
             ${halfPriceBadgeSrc ? `
                 <div class="p-half"><img src="${halfPriceBadgeSrc}" alt="1/2 Price" /></div>
             ` : ''}
+            ${aldiInfo ? `<span class="p-aldi-tag ${aldiInfo.kind === 'saver' ? 'is-saver' : ''}">${aldiInfo.kind === 'saver' ? 'Super Saver' : 'Special Buy'}</span>` : ''}
             ${isItemPopular(item) ? `
                 <span class="p-flag"><i class="fa-solid fa-star text-[8px]"></i>${t('popular_badge')}</span>
             ` : ''}
@@ -1995,10 +2026,11 @@ function createProductCardElement(item) {
                     <div class="p-price num">
                         <span class="cur">$</span><span class="dol">${p.dollars}</span><span class="cts">${p.cents}</span><span class="unit">${p.unit}</span>
                     </div>
+                    ${aldiInfo ? `<div class="p-aldi ${aldiInfo.upcoming ? 'is-upcoming' : ''} ${aldiInfo.kind === 'saver' ? 'is-saver' : ''}"><i class="fa-regular ${aldiInfo.upcoming ? 'fa-calendar' : (aldiInfo.kind === 'saver' ? 'fa-clock' : 'fa-box-open')}"></i>${aldiInfo.text}</div>` : `
                     <div class="p-was num mt-1.5">
                         ${effectiveWas > 0 ? `<s>${t('was_price')} $${effectiveWas.toFixed(2)}</s>` : ''}
                         ${effectiveSave > 0 ? `<span class="p-save">${t('save_badge', { amount: effectiveSave.toFixed(2) })}</span>` : ''}
-                    </div>
+                    </div>`}
                     ${unitPriceClean ? `<div class="p-unit num mt-0.5 truncate" title="${escAttr(unitPriceClean)}">${unitPriceClean}</div>` : ''}
                 </div>
                 <div class="p-qty"></div>
@@ -2198,8 +2230,9 @@ function openProductModal(item) {
         }
     }
 
-    // Dates
-    document.getElementById('modalDateRange').textContent = item.date_range || 'Active Specials';
+    // Dates (ALDI: the deal's own day instead of the week)
+    const _aldi = aldiDateInfo(item);
+    document.getElementById('modalDateRange').textContent = _aldi ? _aldi.long : (item.date_range || 'Active Specials');
 
     // Supermarket Price Lockup in Modal
     const p = parseSupermarketPrice(item.price_display, item.price);
@@ -2333,7 +2366,7 @@ function openProductModal(item) {
     // Next Week Notice
     const nextNotice = document.getElementById('modalNextWeekNotice');
     if (nextNotice) {
-        if (item.period === 'next') {
+        if (item.period === 'next' && !_aldi) {
             nextNotice.classList.remove('hidden');
         } else {
             nextNotice.classList.add('hidden');

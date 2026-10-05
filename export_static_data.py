@@ -12,7 +12,7 @@ c = conn.cursor()
 c.execute("""
     SELECT id, store, period, date_range, category, title, price, price_display,
            unit_price, was_price, save_amount, discount_desc, image_url, product_url,
-           regions, region_prices
+           regions, region_prices, sale_from
     FROM specials
     WHERE price > 0 AND ((save_amount > 0 OR was_price > price) OR store = 'ALDI')
     ORDER BY id ASC
@@ -23,6 +23,9 @@ items = [dict(r) for r in rows]
 # State availability (compact keys, only when needed): rg = states where it is on special,
 # rp = {state: prices} where that state's price differs. No rg = every state.
 for it in items:
+    sf = it.pop('sale_from', '') or ''
+    if sf:
+        it['sf'] = sf          # ALDI: on sale from this date (YYYY-MM-DD)
     rg = it.pop('regions', '') or ''
     rp = it.pop('region_prices', '') or ''
     if rg:

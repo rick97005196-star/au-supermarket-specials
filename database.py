@@ -52,6 +52,9 @@ def init_db():
             cursor.execute("ALTER TABLE specials ADD COLUMN regions TEXT DEFAULT ''")
         if 'region_prices' not in columns:
             cursor.execute("ALTER TABLE specials ADD COLUMN region_prices TEXT DEFAULT ''")
+        # ALDI: the day a Special Buy goes on sale (Wednesday or Saturday), or the first day of a Super Saver week
+        if 'sale_from' not in columns:
+            cursor.execute("ALTER TABLE specials ADD COLUMN sale_from TEXT DEFAULT ''")
 
         cursor.execute("PRAGMA table_info(shopping_list)")
         sl_columns = [row[1] for row in cursor.fetchall()]
@@ -158,8 +161,8 @@ def save_specials(store: str, items: List[Dict[str, Any]], period: str = 'curren
             INSERT INTO specials (
                 store, period, date_range, title, price, price_display, was_price, save_amount,
                 discount_desc, unit_price, image_url, category, product_url, is_popular, popularity_score, updated_at,
-                regions, region_prices
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                regions, region_prices, sale_from
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         '''
         now = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
         rows = []
@@ -232,7 +235,8 @@ def save_specials(store: str, items: List[Dict[str, Any]], period: str = 'curren
                 score,
                 now,
                 ','.join(item.get('regions') or []),
-                json.dumps(item['region_prices'], ensure_ascii=False, separators=(',', ':')) if item.get('region_prices') else ''
+                json.dumps(item['region_prices'], ensure_ascii=False, separators=(',', ':')) if item.get('region_prices') else '',
+                item.get('sale_from') or ''
             ))
         cursor.executemany(insert_sql, rows)
         

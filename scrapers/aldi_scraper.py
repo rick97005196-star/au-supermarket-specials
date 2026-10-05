@@ -96,9 +96,9 @@ def discover_aldi_endpoints():
                 href = a['href']
                 if '/special-buys/' in href:
                     full_url = f"https://www.aldi.com.au{href}" if href.startswith('/') else href
-                    if full_url in seen_urls:
+                    if full_url in seen_urls or '?theme=' in full_url:
                         continue
-                    m = re.search(r'/special-buys/(\d{4}-\d{2}-\d{2})', full_url)
+                    m = re.search(r'/special-buys/(\d{4}-\d{2}-\d{2})/?$', full_url)
                     if m:
                         date_str = m.group(1)
                         try:
@@ -115,11 +115,11 @@ def discover_aldi_endpoints():
                             continue
                         
                         seen_urls.add(full_url)
-                        endpoints.append((f"Special Buys {date_str}", full_url, period))
+                        endpoints.append((f"Special Buys {date_str}", full_url, period, date_str))
     except Exception as e:
         print(f"Warning: Failed to discover ALDI Special Buys endpoints: {e}")
 
-    endpoints.insert(0, ('Super Savers', super_savers, 'current'))
+    endpoints.insert(0, ('Super Savers', super_savers, 'current', current_wed.isoformat()))
     return endpoints, (current_wed, current_tue, next_wed, next_tue)
 
 def scrape_aldi_all_weeks() -> Dict[str, Any]:
@@ -134,7 +134,7 @@ def scrape_aldi_all_weeks() -> Dict[str, Any]:
     current_items_map = {}
     next_items_map = {}
     
-    for label, url, period in endpoints:
+    for label, url, period, sale_from in endpoints:
         try:
             tiles = fetch_all_tiles(url)
             print(f"ALDI {label}: {len(tiles)} products")
@@ -184,7 +184,9 @@ def scrape_aldi_all_weeks() -> Dict[str, Any]:
                 
                 # 4. Badge / On-sale label
                 badge_el = tile.select_one('[data-test="product-tile__on-sale-label"]')
-                badge = badge_el.get_text(strip=True) if badge_el else ("Super Savers" if "super-savers" in url else "Special Buys")
+                # The kind decides how the website shows the date: Super Savers = a weekly price (Wed–Tue),
+                # Special Buys = on sale from a Wednesday or Saturday while stocks last
+                badge = "Super Savers" if "super-savers" in url else "Special Buys"
                 
                 # 5. Image URL (High-res)
                 img = tile.select_one('img')
@@ -216,7 +218,8 @@ def scrape_aldi_all_weeks() -> Dict[str, Any]:
                     'category': cat,
                     'product_url': prod_url,
                     'period': period,
-                    'date_range': date_range_str
+                    'date_range': date_range_str,
+                    'sale_from': sale_from,
                 }
                 
                 # Same title + price = colour/size variants of one Special Buy; list it once
