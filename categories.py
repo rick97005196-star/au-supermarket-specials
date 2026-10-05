@@ -35,7 +35,10 @@ def classify_product(title: str, raw_cat: str = "", product_url: str = "") -> st
     # -------------------------------------------------------------
     is_hot_dog = bool(re.search(r'\bhot\s*dogs?\b', tl))
     is_bulldog_skincare = bool(re.search(r'\bbulldog\b.*(?:skincare|wash|scrub|oil|moisturiser|moisturizer)', tl))
-    if not is_hot_dog and not is_bulldog_skincare:
+    # lollies named after animals ("Allen's Black Cats") are sweets, not pet food
+    is_lolly = bool(re.search(r"\b(?:lollies|lolly|allen'?s|black\s*cats\s*(?:lollies|\d)|natural\s*confectionery|jelly\s*cats)\b", tl)) and \
+               not re.search(r'\b(?:cat|dog)\s*(?:food|treats?|litter)\b', tl)
+    if not is_hot_dog and not is_bulldog_skincare and not is_lolly:
         if re.search(r'\b(?:dog|dogs|puppy|puppies|cat|cats|kitten|kittens|canine|feline)\b', tl) or \
            re.search(r'\b(?:pet\s*food|pet\s*treats?|cat\s*litter|cat\s*food|dog\s*food|dog\s*treats?|cat\s*treats?|pet\s*dental|dog\s*chews)\b', tl) or \
            re.search(r'\b(?:purina|whiskas|pedigree|dine\b|felix|fancy\s*feast|supercoat|optimum\s*(?:dog|cat|adult|puppy)|schmackos|my\s*dog|fussy\s*cat|temptations|hartz|billie\'?s\s*bowl|vip\s*petfoods|open\s*paddock|the\s*paw\s*grocer)\b', tl):

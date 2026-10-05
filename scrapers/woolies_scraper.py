@@ -413,7 +413,8 @@ def scrape_woolies_online_half_price(max_pages: int = 100) -> List[Dict[str, Any
                         'category': cat,
                         'title': full_title,
                         'price': price,
-                        'price_display': f"${price:.2f} ea",
+                        # deli / meat counter items are priced per kg (the unit price equals the price)
+                        'price_display': f"${price:.2f} kg" if (str(unit_m or '').upper() == '1KG' and unit_p and abs(float(unit_p) - price) < 0.01) else f"${price:.2f} ea",
                         'unit_price': unit_str,
                         'was_price': was_price,
                         'save_amount': save_amt,

@@ -1394,6 +1394,35 @@ function clusterItemsBySeries(items) {
     return result;
 }
 
+// Opening view: best sellers ("熱門暢銷", max 2 per brand) first, taking turns between departments
+// so the first screen shows snacks, drinks, meat, pantry… instead of one category; then the rest.
+function popularFirst(items) {
+    const top = createDiverseBestSellers(items) || [];
+    if (!top.length) return clusterItemsBySeries(items);
+    const queues = new Map();
+    top.forEach(it => {
+        const c = it.category || 'other';
+        if (!queues.has(c)) queues.set(c, []);
+        queues.get(c).push(it);
+    });
+    // the departments people browse most come first on the opening screen
+    const APPEAL = ['snacks', 'drinks', 'meat', 'dairy_eggs', 'pantry', 'frozen', 'bakery', 'seafood',
+                    'produce', 'household', 'health_vitamins', 'liquor', 'pet'];
+    const order = [...queues.keys()].sort((a, b) =>
+        (APPEAL.indexOf(a) < 0 ? 99 : APPEAL.indexOf(a)) - (APPEAL.indexOf(b) < 0 ? 99 : APPEAL.indexOf(b)));
+    queues.forEach(q => q.sort((a, b) => calculatePopularityScore(b) - calculatePopularityScore(a) ||
+        (isItemHalfPrice(b) - isItemHalfPrice(a)) || ((b.save_amount || 0) - (a.save_amount || 0))));
+    const mixed = [];
+    while (mixed.length < top.length) {
+        for (const c of order) {
+            const q = queues.get(c);
+            if (q.length) mixed.push(q.shift());
+        }
+    }
+    const topSet = new Set(top);
+    return [...mixed, ...clusterItemsBySeries(items.filter(it => !topSet.has(it)))];
+}
+
 // Sort items by comparator while clustering identical product lines together
 function strictSort(items, comparator) {
     return [...items].sort((a, b) => comparator(a, b) || (a.title || '').localeCompare(b.title || ''));
@@ -1680,8 +1709,9 @@ async function loadSpecials() {
             filtered = strictSort(filtered, (a, b) => (a.sf || '').localeCompare(b.sf || '') ||
                 (/super/i.test(b.discount_desc || '') - /super/i.test(a.discount_desc || '')));
         } else {
-            // Default & relevance: Group identical products with different types together
-            filtered = clusterItemsBySeries(filtered);
+            // Default & relevance: this week's best sellers first (what people come for), mixed across
+            // departments, then everything else grouped by product line
+            filtered = popularFirst(filtered);
         }
 
         loading.classList.add('hidden');
