@@ -3,8 +3,6 @@
 // and it is kept in the private Cloudflare D1 database, NOT in this public code.
 // A network that types a wrong password 10 times in an hour is locked out for that hour.
 const ITERATIONS = 100000;           // the most Cloudflare Workers allow
-// One-time bootstrap only: the old password works until a new one is saved in D1, then never again.
-const LEGACY = { salt: '135173e7189e04226c92687201601ac4', hash: '18dc82d6907dc5134cf9f5e8f99c59afe446c5a47020addd3debe43edd2e2f54' };
 
 const hex = (buf) => [...new Uint8Array(buf)].map(b => b.toString(16).padStart(2, '0')).join('');
 const unhex = (s) => new Uint8Array(s.match(/../g).map(x => parseInt(x, 16)));
@@ -51,7 +49,7 @@ export async function checkOwner(request, env) {
     const since = Date.now() - 3600 * 1000;
     const row = await db.prepare('SELECT COUNT(*) AS n FROM auth_fail WHERE who = ? AND at > ?').bind(who, since).first();
     if (row && row.n >= 10) return 'locked';
-    const sec = (await storedSecret(db)) || LEGACY;
+    const sec = await storedSecret(db);      // set with PUT /api/owner-password
     if (sec && key && key.length <= 200 && sameHex(await pbkdf2(key, sec.salt), sec.hash)) return 'ok';
     if (key) await db.prepare('INSERT INTO auth_fail (who, at) VALUES (?, ?)').bind(who, Date.now()).run();
     return 'wrong';
