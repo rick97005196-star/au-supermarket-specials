@@ -289,8 +289,26 @@ def scrape_coles_all_weeks(max_pages: int = 50) -> Dict[str, Dict[str, Any]]:
     """Coles specials for this week and next week, for every state (Queensland is the main one)."""
     from scrapers.regions import scrape_all_regions
     print("Scraping Coles (Current & Next Week, all states)...")
-    return scrape_all_regions('Coles', discover_coles_catalogues, scrape_coles_catalogue_items,
-                              pick_current_and_next, max_pages=max_pages)
+    res = scrape_all_regions('Coles', discover_coles_catalogues, scrape_coles_catalogue_items,
+                             pick_current_and_next, max_pages=max_pages)
+
+    # The printed catalogue only shows ~300 highlights; coles.com.au lists every in-store Half Price
+    # special (~1,200). Add those (online-only deals are excluded inside scrape_coles_web_half_price).
+    try:
+        from scrapers.coles_web import scrape_coles_web_half_price
+        if res['current']['items']:
+            web = scrape_coles_web_half_price()
+            existing = {it['title'].lower() for it in res['current']['items']}
+            added = 0
+            for it in web:
+                if it['title'].lower() not in existing:
+                    res['current']['items'].append(dict(it))
+                    existing.add(it['title'].lower())
+                    added += 1
+            print(f"Merged {added} Coles website in-store Half Price specials into Coles current week.")
+    except Exception as e:
+        print(f"Error merging Coles website half price specials: {e}")
+    return res
 
 if __name__ == '__main__':
     data = scrape_coles_all_weeks(max_pages=2)

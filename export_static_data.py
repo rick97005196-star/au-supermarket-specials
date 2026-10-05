@@ -46,27 +46,29 @@ for it in items:
         continue
     _seen[k] = it
     _dedup.append(it)
-# 2) Woolworths: the catalogue lists a whole range ("Pringles Potato Chips 134g") while the website
+# 2) Woolworths / Coles: the catalogue lists a whole range ("Pringles Potato Chips 134g") while the website
 #    lists each flavour at the same price -> keep the website's individual products, drop the range line
 _STOP = {'from', 'the', 'dept', 'deli', 'fridge', 'freezer', 'bakery', 'aisle', 'health', 'food', 'varieties',
-         'variety', 'range', 'or', 'and', 'pk', 'pack', 'each', 'selected', 'bottle', 'bottles', 'cans', 'can', 'x'}
+         'variety', 'range', 'or', 'and', 'pk', 'pack', 'each', 'selected', 'bottle', 'bottles', 'cans', 'can', 'x',
+         'litre', 'litres', 'l', 'ml', 'g', 'kg', 'with'}
 def _toks(t):
     t = _re2.sub(r'\s[–-]\s*from the .*$', '', t.lower())
     words = _re2.findall(r"[a-z0-9']+", t)
     return {w for w in words if w not in _STOP and not _re2.fullmatch(r'\d+(?:\.\d+)?(?:g|kg|ml|l|litre|pk)?', w)}
 def _nums(t):
     return set(_re2.findall(r'\d+(?:\.\d+)?', t.lower()))
+_WEB = {'Woolworths': 'woolworths.com.au', 'Coles': 'coles.com.au'}
 _web = {}
 for it in _dedup:
-    if it['store'] == 'Woolworths' and 'woolworths.com.au' in (it.get('product_url') or ''):
-        _web.setdefault((it['period'], round(it['price'] or 0, 2)), []).append(it)
+    if it['store'] in _WEB and _WEB[it['store']] in (it.get('product_url') or ''):
+        _web.setdefault((it['store'], it['period'], round(it['price'] or 0, 2)), []).append(it)
 items = []
 _dropped = 0
 for it in _dedup:
-    if it['store'] == 'Woolworths' and 'salefinder' in (it.get('product_url') or '') and 'rg' not in it:
+    if it['store'] in _WEB and 'salefinder' in (it.get('product_url') or '') and 'rg' not in it:
         ta, na = _toks(it['title']), _nums(it['title'])
         dup = False
-        for w in _web.get((it['period'], round(it['price'] or 0, 2)), []):
+        for w in _web.get((it['store'], it['period'], round(it['price'] or 0, 2)), []):
             tb, nb = _toks(w['title']), _nums(w['title'])
             if not ta or not tb:
                 continue
