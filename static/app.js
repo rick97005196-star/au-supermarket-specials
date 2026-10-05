@@ -227,7 +227,10 @@ function renderCategoryBar() {
     const renderBtnContent = (btn, catKey, isActive) => {
         const style = CATEGORY_STYLES[catKey] || { emoji: '🏷️' };
         const label = getCleanCategoryLabel(catKey);
-        btn.innerHTML = `<span class="chip-icon ${style.iconBg || ''}" aria-hidden="true">${style.emoji}</span><span>${label}</span>`;
+        const icon = (typeof CATEGORY_ICONS !== 'undefined' && CATEGORY_ICONS[catKey])
+            ? `<span class="chip-icon chip-svg" aria-hidden="true">${CATEGORY_ICONS[catKey]}</span>`
+            : `<span class="chip-icon ${style.iconBg || ''}" aria-hidden="true">${style.emoji}</span>`;
+        btn.innerHTML = `${icon}<span>${label}</span>`;
         btn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
     };
 
