@@ -358,17 +358,17 @@ function showToast(message, icon = 'fa-circle-check', isError = false) {
 const SEARCH_SYNONYMS = [
     { terms: ['米', '白米', '大米', '米飯', 'お米', 'ご飯', '쌀', '밥', 'rice'], en: ['rice'], not: ['玉米'], cat: ['pantry', 'snacks', 'frozen'], onlyCat: true },
     { terms: ['麵', '麵條', '面条', '義大利麵', '意大利面', 'パスタ', '파스타', 'pasta', 'spaghetti'], en: ['pasta', 'spaghetti', 'penne', 'fettuccine', 'noodle'], cat: ['pantry', 'frozen'], onlyCat: true },
-    { terms: ['泡麵', '泡面', '即食麵', '方便麵', '拉麵', 'ラーメン', '라면', 'noodles', 'ramen'], en: ['noodle', 'ramen', 'mi goreng'], cat: ['pantry', 'frozen'], onlyCat: true },
-    { terms: ['洋芋片', '薯片', '馬鈴薯片', 'ポテトチップス', 'ポテチ', '감자칩', 'chips', 'crisps'], en: ['potato chips', 'potato crisps', 'chips', 'crisps', 'pringles'], not: ['squid chips', 'chocolate chips', 'choc chips'], cat: ['snacks', 'frozen'], onlyCat: true },
-    { terms: ['餅乾', '饼干', '曲奇', 'ビスケット', 'クッキー', '비스킷', '쿠키', 'biscuit', 'cookie'], en: ['biscuit', 'cookie', 'cracker', 'tim tam', 'oreo'], cat: ['snacks', 'bakery'], onlyCat: true },
-    { terms: ['巧克力', '朱古力', 'チョコ', 'チョコレート', '초콜릿', 'chocolate'], en: ['chocolate', 'cadbury', 'lindt', 'kitkat'], cat: ['snacks', 'drinks', 'frozen', 'bakery', 'dairy_eggs'], onlyCat: true },
-    { terms: ['糖果', '軟糖', '糖', 'キャンディ', 'グミ', '사탕', '젤리', 'lollies', 'candy'], en: ['lollies', 'lolly', 'candy', 'gummy', 'jelly'], cat: ['snacks'], onlyCat: true },
-    { terms: ['牛奶', '鮮奶', '奶', '牛乳', 'ミルク', '우유', 'milk'], en: ['milk'], not: ['milk chocolate', 'milk choc', 'milk bottles', 'milk thistle', 'dairy milk', 'デーリーミルク', 'ミルクシスル', '데어리 밀크', '밀크 시슬', '奶薊', '牛奶巧克力', 'ミルクチョコ', '밀크 초콜릿', '밀크초콜릿'], cat: ['dairy_eggs', 'drinks', 'pantry'], onlyCat: true },
-    { terms: ['優格', '優酪乳', '酸奶', '酸乳', 'ヨーグルト', '요거트', '요구르트', 'yoghurt', 'yogurt'], en: ['yoghurt', 'yogurt'], cat: ['dairy_eggs', 'frozen', 'snacks'], onlyCat: true },
-    { terms: ['起司', '乳酪', '芝士', '奶酪', 'チーズ', '치즈', 'cheese'], en: ['cheese', 'cheddar', 'brie', 'camembert', 'mozzarella', 'parmesan', 'feta', 'haloumi'], cat: ['dairy_eggs', 'snacks', 'frozen'], onlyCat: true },
+    { terms: ['泡麵', '泡面', '即食麵', '方便麵', '拉麵', 'ラーメン', '라면', 'noodles', 'ramen'], en: ['noodle', 'ramen', 'mi goreng'], cat: ['pantry', 'frozen'], rel: ['indomie', 'shin', 'nongshim', 'fantastic', 'cup noodle*', 'udon', 'pho', 'laksa', 'samyang', 'nissin', 'mama', 'trident'], relZh: ['杯麵', '烏龍麵', '拉麵', '湯麵', '炒麵'], relCat: ['pantry', 'frozen'], onlyCat: true },
+    { terms: ['洋芋片', '薯片', '馬鈴薯片', 'ポテトチップス', 'ポテチ', '감자칩', 'chips', 'crisps'], en: ['potato chips', 'potato crisps', 'chips', 'crisps', 'pringles'], not: ['squid chips', 'chocolate chips', 'choc chips'], cat: ['snacks', 'frozen'], rel: ['corn chips', 'tortilla', 'doritos', 'twisties', 'cheezels', 'burger rings', 'smith*', 'kettle', 'thins', 'red rock deli', 'grain waves', 'grainwaves', 'sunbites', 'popcorners', 'nacho', "cc's", 'samboy', 'jumpy', 'vege chips', 'rice crackers', 'popcorn', 'pretzel*', 'shapes', 'cheese snacks'], relZh: ['玉米片', '玉米脆片', '爆米花', '米餅', '脆片'], relCat: ['snacks'], onlyCat: true },
+    { terms: ['餅乾', '饼干', '曲奇', 'ビスケット', 'クッキー', '비스킷', '쿠키', 'biscuit', 'cookie'], en: ['biscuit', 'cookie', 'cracker', 'tim tam', 'oreo'], cat: ['snacks', 'bakery'], rel: ['cracker*', 'shapes', 'wafer*', 'crispbread*', 'rice cakes', 'tim tam', 'scotch finger', 'arnott*', 'mcvitie*', 'oreo', 'kingston', 'monte carlo', 'shortbread'], relZh: ['薄餅', '脆餅', '威化'], relCat: ['snacks', 'bakery'], onlyCat: true },
+    { terms: ['巧克力', '朱古力', 'チョコ', 'チョコレート', '초콜릿', 'chocolate'], en: ['chocolate', 'cadbury', 'lindt', 'kitkat'], cat: ['snacks', 'drinks', 'frozen', 'bakery', 'dairy_eggs'], rel: ['m&m*', 'maltesers', 'snickers', 'mars', 'twix', 'kinder', 'ferrero', 'toblerone', 'freddo', 'caramilk', 'cherry ripe', 'crunchie', 'picnic', 'kit kat', 'aero', 'milky way', 'whittaker*', 'moser roth', 'nutella'], relZh: ['可可', '松露', '金莎'], relCat: ['snacks'], onlyCat: true },
+    { terms: ['糖果', '軟糖', '糖', 'キャンディ', 'グミ', '사탕', '젤리', 'lollies', 'candy'], en: ['lollies', 'lolly', 'candy', 'gummy', 'jelly'], cat: ['snacks'], rel: ["allen's", 'natural confectionery', 'skittles', 'mentos', 'chupa', 'marshmallow*', 'licorice', 'liquorice', 'jelly beans', 'sour straps', 'warheads', 'mints', 'gum', 'pascall', 'starburst', 'fruit pastilles'], relZh: ['棉花糖', '口香糖', '薄荷糖', '甘草'], relCat: ['snacks'], onlyCat: true },
+    { terms: ['牛奶', '鮮奶', '奶', '牛乳', 'ミルク', '우유', 'milk'], en: ['milk'], not: ['milk chocolate', 'milk choc', 'milk bottles', 'milk thistle', 'dairy milk', 'デーリーミルク', 'ミルクシスル', '데어리 밀크', '밀크 시슬', '奶薊', '牛奶巧克力', 'ミルクチョコ', '밀크 초콜릿', '밀크초콜릿'], cat: ['dairy_eggs', 'drinks', 'pantry'], rel: ['up&go', 'up & go', 'a2', 'oak', 'norco', 'devondale', 'barista milk', 'oat', 'almond', 'soy', 'lactose free'], relZh: ['調味乳', '燕麥奶', '杏仁奶', '豆漿', '保久乳'], relCat: ['dairy_eggs', 'drinks'], onlyCat: true },
+    { terms: ['優格', '優酪乳', '酸奶', '酸乳', 'ヨーグルト', '요거트', '요구르트', 'yoghurt', 'yogurt'], en: ['yoghurt', 'yogurt'], cat: ['dairy_eggs', 'frozen', 'snacks'], rel: ['chobani', 'yoplait', 'danone', 'jalna', 'gippsland', 'yopro', 'vaalia', 'activia', 'farmers union', 'yakult'], relZh: ['乳酸', '養樂多'], relCat: ['dairy_eggs'], onlyCat: true },
+    { terms: ['起司', '乳酪', '芝士', '奶酪', 'チーズ', '치즈', 'cheese'], en: ['cheese', 'cheddar', 'brie', 'camembert', 'mozzarella', 'parmesan', 'feta', 'haloumi'], cat: ['dairy_eggs', 'snacks', 'frozen'], rel: ['babybel', 'bega', 'mainland', 'perfect italiano', 'kraft', 'cream cheese', 'philadelphia', 'tasmanian heritage', 'south cape', 'castello', 'ricotta'], relZh: ['奶油乳酪', '乳酪'], relCat: ['dairy_eggs'], onlyCat: true },
     { terms: ['奶油', '牛油', '黃油', 'バター', '버터', 'butter'], en: ['butter'], not: ['butter chicken', 'peanut butter', 'garlic butter', 'herb butter', 'steak & butter', '奶油雞', 'バターチキン', '버터 치킨', '버터치킨', '花生醬', '奶油乳酪', '酸奶油', 'cream cheese', 'sour cream'], cat: ['dairy_eggs', 'pantry'], onlyCat: true },
     { terms: ['蛋', '雞蛋', '鸡蛋', '卵', 'たまご', '玉子', '계란', '달걀', 'egg', 'eggs'], en: ['egg'], not: ['雞蛋花', '蛋白', '蛋糕'], cat: ['dairy_eggs'], onlyCat: true },
-    { terms: ['雞肉', '雞', '鸡肉', '鶏肉', 'チキン', '닭고기', '닭', '치킨', 'chicken'], en: ['chicken'], cat: ['meat', 'frozen'], onlyCat: true },
+    { terms: ['雞肉', '雞', '鸡肉', '鶏肉', 'チキン', '닭고기', '닭', '치킨', 'chicken'], en: ['chicken'], cat: ['meat', 'frozen'], rel: ['nugget*', 'tender*', 'schnitzel', 'kiev', 'wings', 'drumstick*', 'thigh*', 'breast', 'ingham*', 'steggles', 'lilydale'], relZh: ['雞塊', '雞翅', '雞腿', '雞排'], relCat: ['meat', 'frozen'], onlyCat: true },
     { terms: ['牛肉', '牛排', 'ビーフ', 'ステーキ', '소고기', '스테이크', 'beef', 'steak'], en: ['beef', 'steak', 'mince', 'brisket'], cat: ['meat', 'frozen'], onlyCat: true },
     { terms: ['豬肉', '猪肉', '豚肉', 'ポーク', '돼지고기', 'pork'], en: ['pork'], cat: ['meat', 'frozen'], onlyCat: true },
     { terms: ['培根', 'ベーコン', '베이컨', 'bacon'], en: ['bacon'], cat: ['meat'], onlyCat: true },
@@ -391,15 +391,15 @@ const SEARCH_SYNONYMS = [
     { terms: ['酪梨', '牛油果', 'アボカド', '아보카도', 'avocado'], en: ['avocado'], cat: ['produce'], onlyCat: true },
     { terms: ['麵包', '面包', '吐司', 'パン', '食パン', '빵', '식빵', 'bread'], en: ['bread', 'bread rolls', 'hot dog rolls', 'burger buns', 'buns', 'bagel', 'sourdough', 'english muffins', 'crumpets', 'brioche', 'baguette', 'pane di casa', 'wraps', 'tear & share', 'garlic bread', 'loaf'], not: ['麵包粉', 'パン粉', '빵가루', 'breadcrumbs', 'crumbed'], cat: ['bakery', 'frozen'], onlyCat: true },
     { terms: ['蛋糕', '甜點', 'ケーキ', '케이크', 'cake'], en: ['cake', 'brownie', 'donut', 'dessert', 'pudding'], cat: ['bakery', 'frozen'], onlyCat: true },
-    { terms: ['咖啡', 'コーヒー', '커피', 'coffee'], en: ['coffee', 'espresso', 'latte', 'cappuccino', 'nescafe', 'moccona'], cat: ['drinks'], onlyCat: true },
+    { terms: ['咖啡', 'コーヒー', '커피', 'coffee'], en: ['coffee', 'espresso', 'latte', 'cappuccino', 'nescafe', 'moccona'], cat: ['drinks'], rel: ['iced coffee', 'dare', 'pods', 'capsule*', 'nespresso', 'vittoria', 'lavazza', "jed's", 'cold brew', 'mocha', 'barista'], relZh: ['膠囊', '拿鐵', '摩卡', '冰咖啡'], relCat: ['drinks'], onlyCat: true },
     { terms: ['茶', '茶包', 'お茶', '紅茶', '차', 'tea'], en: ['tea'], cat: ['drinks'], onlyCat: true },
-    { terms: ['果汁', 'ジュース', '주스', 'juice'], en: ['juice'], cat: ['drinks'], onlyCat: true },
+    { terms: ['果汁', 'ジュース', '주스', 'juice'], en: ['juice'], cat: ['drinks'], rel: ['nudie', 'golden circle', 'cordial', 'daily juice', 'sunraysia', 'mother earth', 'smoothie', 'nectar', 'v8'], relZh: ['果昔'], relCat: ['drinks'], onlyCat: true },
     { terms: ['可樂', '可乐', '可口可樂', 'コーラ', 'コカコーラ', '콜라', '코카콜라', 'coke', 'cola', 'coca cola', 'coca-cola', 'pepsi'], en: ['coca-cola', 'coca cola', 'coke', 'cola', 'pepsi'], cat: ['drinks'], onlyCat: true },
-    { terms: ['汽水', '碳酸飲料', 'ソーダ', '탄산', 'soda', 'soft drink'], en: ['soft drink', 'cola', 'coke', 'pepsi', 'sprite', 'fanta', 'solo', 'schweppes'], cat: ['drinks'], onlyCat: true },
+    { terms: ['汽水', '碳酸飲料', 'ソーダ', '탄산', 'soda', 'soft drink'], en: ['soft drink', 'cola', 'coke', 'pepsi', 'sprite', 'fanta', 'solo', 'schweppes'], cat: ['drinks'], rel: ['kirks', 'bundaberg', 'pepsi max', 'mountain dew', 'lemonade', 'ginger beer', 'mixer*', 'tonic', 'soda water', 'sparkling', 'kombucha', 'creaming soda', 'lemon squash'], relZh: ['氣泡', '蘇打', '檸檬水', '薑汁'], relCat: ['drinks'], onlyCat: true },
     { terms: ['水', '礦泉水', '矿泉水', 'ミネラルウォーター', '생수', 'water'], en: ['water'], not: ['水果', '汽水', '香水', '水煮', '防水', '卸妝水', '化妝水', '漱口水'], cat: ['drinks'], onlyCat: true },
     { terms: ['啤酒', 'ビール', '맥주', 'beer'], en: ['beer', 'lager', 'ale'], cat: ['liquor'], onlyCat: true },
     { terms: ['葡萄酒', '紅酒', '白酒', 'ワイン', '와인', 'wine'], en: ['wine', 'shiraz', 'sauvignon', 'chardonnay', 'prosecco', 'merlot', 'pinot'], cat: ['liquor'], onlyCat: true },
-    { terms: ['冰淇淋', '雪糕', 'アイス', 'アイスクリーム', '아이스크림', 'ice cream'], en: ['ice cream', 'gelato', 'magnum', 'drumstick', 'sorbet'], cat: ['frozen'], onlyCat: true },
+    { terms: ['冰淇淋', '雪糕', 'アイス', 'アイスクリーム', '아이스크림', 'ice cream'], en: ['ice cream', 'gelato', 'magnum', 'drumstick', 'sorbet'], cat: ['frozen'], rel: ['streets', 'bulla', 'connoisseur', 'peters', 'cornetto', 'paddle pop', 'weis', 'golden gaytime', 'splice', 'frozen dessert', 'sundae'], relZh: ['雪糕', '冰棒', '甜筒', '冰品'], relCat: ['frozen'], onlyCat: true },
     { terms: ['麥片', '燕麥', '早餐穀片', 'シリアル', 'オートミール', '시리얼', '오트밀', 'cereal', 'oats'], en: ['cereal', 'oats', 'muesli', 'granola', 'weet-bix', 'corn flakes'], cat: ['pantry', 'snacks'], onlyCat: true },
     { terms: ['油', '食用油', '橄欖油', 'オイル', '오일', 'oil'], en: ['oil'], not: ['醬油', '奶油', '牛油', '油漬', '髮油', '精油', '魚油', '油性'], cat: ['pantry'], onlyCat: true },
     { terms: ['醬', '醬料', '酱', 'ソース', '소스', 'sauce'], en: ['sauce', 'ketchup', 'mayo', 'dressing', 'pesto', 'relish'], cat: ['pantry'], onlyCat: true },
@@ -407,7 +407,7 @@ const SEARCH_SYNONYMS = [
     { terms: ['衛生紙', '卫生纸', '廁紙', 'トイレットペーパー', '화장지', 'toilet paper'], en: ['toilet paper', 'toilet tissue', 'toilet roll', 'quilton', 'sorbent'], cat: ['household'], onlyCat: true },
     { terms: ['廚房紙巾', '纸巾', '紙巾', 'キッチンペーパー', '키친타월', 'paper towel'], en: ['paper towel'], cat: ['household'], onlyCat: true },
     { terms: ['面紙', '面纸', 'ティッシュ', '티슈', 'tissue'], en: ['tissue'], cat: ['household'], onlyCat: true },
-    { terms: ['洗衣精', '洗衣粉', '洗衣液', '洗衣球', '洗剤', '세탁세제', 'laundry', 'detergent'], en: ['laundry', 'omo', 'cold power', 'dynamo', 'biozet'], cat: ['household'], onlyCat: true },
+    { terms: ['洗衣精', '洗衣粉', '洗衣液', '洗衣球', '洗剤', '세탁세제', 'laundry', 'detergent'], en: ['laundry', 'omo', 'cold power', 'dynamo', 'biozet'], cat: ['household'], rel: ['fabric softener', 'softener', 'fabric rinse', 'laundry sanitiser', 'vanish', 'napisan', 'sard', 'fluffy', 'comfort fabric', 'persil', 'dryer sheets'], relZh: ['柔軟精', '衣物'], relCat: ['household'], onlyCat: true },
     { terms: ['洗碗精', '洗碗錠', '洗潔精', '食器用洗剤', '주방세제', 'dishwashing'], en: ['dishwash', 'finish', 'fairy', 'morning fresh'], cat: ['household'], onlyCat: true },
     { terms: ['洗髮精', '洗发水', 'シャンプー', '샴푸', 'shampoo'], en: ['shampoo'], cat: ['health_vitamins'], onlyCat: true },
     { terms: ['潤髮乳', '护发素', 'コンディショナー', '린스', 'conditioner'], en: ['conditioner'], cat: ['health_vitamins'], onlyCat: true },
@@ -539,6 +539,13 @@ function scoreSearchMatch(item, query) {
             if (group.terms.some(t => t.length >= 2 && _isCJK(t) && nameHay.includes(t.toLowerCase()))) best = Math.max(best, 8);
             // the group's main department first ("米": rice before rice-crispy chocolate bars)
             if (best && group.cat && group.cat.includes(item.category)) best += (item.category === group.cat[0] ? 4 : 2);
+        }
+        // 2b) related products (looser): e.g. 洋芋片 also shows corn chips, Twisties, Doritos, popcorn.
+        //     They score lower, so real matches always stay on top.
+        if (!best && group && (group.rel || group.relZh) && (!group.relCat || group.relCat.includes(item.category))) {
+            const relHit = (group.rel || []).some(w => _enWordMatch(titleClean, w)) ||
+                           (group.relZh || []).some(t => nameHay.includes(t.toLowerCase()));
+            if (relHit) best = 3;
         }
         // 3) the user typed a category name (e.g. "零食", "寵物", "snacks"): items IN that category come first
         if (!group && term.length >= 2 && _hayHas(item._cat, term)) best = Math.max(best, 11);

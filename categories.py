@@ -106,7 +106,7 @@ def classify_product(title: str, raw_cat: str = "", product_url: str = "") -> st
                                   bool(re.search(r'\b(?:birds\s*eye|four[\'’]?n\s*twenty.*pie|patties\s*party|herbert\s*adams|meat\s*pies?|beef\s*pies?|dr\s*oetker|ristorante|frozen\s*pizza|mccain.*pizza|party\s*pizzas?|coles\s*kitchen\s*pizza|buonissimo\s*party\s*pizzas?)\b', tl))
 
     if is_frozen_ice_cream or is_frozen_potato or is_frozen_meal_or_appetiser:
-        if not re.search(r'\b(?:baking\s*paper|air\s*fryer|pizza\s*bases?)\b', tl):
+        if not re.search(r'\b(?:baking\s*paper|air\s*fryer\s*(?:liners?|paper|baskets?)|pizza\s*bases?)\b', tl):
             return 'frozen'
 
     # -------------------------------------------------------------
