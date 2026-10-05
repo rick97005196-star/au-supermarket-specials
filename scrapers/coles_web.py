@@ -28,12 +28,12 @@ NEXT_DATA = re.compile(r'<script id="__NEXT_DATA__"[^>]*>(.*?)</script>', re.S)
 
 
 def coles_week_start(now=None):
-    """The Wednesday the current Coles specials week started (Sydney time)."""
-    try:
-        from zoneinfo import ZoneInfo
-        today = (now or datetime.datetime.now(ZoneInfo('Australia/Sydney'))).date()
-    except Exception:
-        today = ((now or datetime.datetime.utcnow()) + datetime.timedelta(hours=10)).date()
+    """The Wednesday the current Coles specials week started.
+    Counted from Wednesday 1am Brisbane time (= 2am Sydney in summer): by then every state's Coles
+    website has switched, so items read just before the switch are never kept as "next week's"."""
+    now = now or datetime.datetime.utcnow()
+    local = now + datetime.timedelta(hours=10) - datetime.timedelta(hours=1)
+    today = local.date()
     return (today - datetime.timedelta(days=(today.weekday() - 2) % 7)).isoformat()
 
 
@@ -99,6 +99,12 @@ def product_to_item(p):
 
 def scrape_coles_web_half_price(time_budget=300, max_blocked=4):
     """Returns this week's in-store Half Price specials from coles.com.au (remembered across updates)."""
+    # Tuesday 11pm – Wednesday 1am Brisbane: the states switch to the new week one after another.
+    # Show only the catalogue for these two hours instead of mixing two weeks of website prices.
+    now = datetime.datetime.utcnow()
+    if now.weekday() == 1 and 13 <= now.hour < 15:
+        print('Coles website: weekly switch-over in progress, website half-price list skipped this run')
+        return []
     week = coles_week_start()
     mem = _load_memory(week)
     try:

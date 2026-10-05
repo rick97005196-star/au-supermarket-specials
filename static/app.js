@@ -1799,6 +1799,11 @@ async function loadSpecials() {
         renderFavSearchButton();
         const notice = document.getElementById('activeFilterNotice');
         if (notice) notice.innerHTML = favOnly ? `<button type="button" class="tag is-accent" onclick="toggleFavOnly()"><i class="fa-solid fa-heart text-[9px]"></i> ${t('fav_filter_on')} ✕</button>` : '';
+        // Wednesday–Sunday: only ALDI has announced next week yet -> say when the others come
+        if (notice && !favOnly && currentPeriod === 'next' &&
+            !staticSpecials.some(x => x.period === 'next' && (x.store === 'Coles' || x.store === 'Woolworths'))) {
+            notice.innerHTML = `<span class="tag is-next">${t('next_cw_pending')}</span>`;
+        }
 
         if (filtered.length === 0) {
             loading.classList.add('hidden');
@@ -2084,7 +2089,8 @@ function createProductCardElement(item) {
         unit_price: item.unit_price || '',
         image_url: item.image_url || '',
         category: item.category || 'other',
-        period: item.period || 'current'
+        period: item.period || 'current',
+        date_range: item.date_range || ''
     };
 
     const storeDotClass = item.store === 'Coles' ? 'dot-coles' : (item.store === 'ALDI' ? 'dot-aldi' : 'dot-woolies');
@@ -2700,11 +2706,51 @@ function saveLocalShoppingList(items) {
     localStorage.setItem('whv_shopping_items', JSON.stringify(items));
 }
 
+// Start/end dates of a special's week: 'Wed 7 Oct 2026 - Tue 13 Oct 2026' or ALDI's '(10/07 - 10/13)'
+function parseWeekRange(text) {
+    if (!text) return null;
+    const MONTHS = ['jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec'];
+    const year = Number(_brisbaneToday().slice(0, 4));
+    const iso = (y, m, d) => `${y}-${String(m).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
+    let m = [...text.matchAll(/(\d{1,2})\s+([A-Za-z]{3})[a-z]*\s*(\d{4})?/g)].filter(x => MONTHS.includes(x[2].toLowerCase()));
+    if (m.length >= 2) {
+        const ye = Number(m[1][3] || year), ys = Number(m[0][3] || ye);
+        return { start: iso(ys, MONTHS.indexOf(m[0][2].toLowerCase()) + 1, m[0][1]), end: iso(ye, MONTHS.indexOf(m[1][2].toLowerCase()) + 1, m[1][1]) };
+    }
+    m = [...text.matchAll(/(\d{1,2})\/(\d{1,2})/g)];
+    if (m.length >= 2) {
+        const ys = year, ye = Number(m[1][1]) < Number(m[0][1]) ? year + 1 : year;
+        return { start: iso(ys, m[0][1], m[0][2]), end: iso(ye, m[1][1], m[1][2]) };
+    }
+    return null;
+}
+
+// Weekly switch-over for the shopping list: "next week" items become "this week" on Wednesday,
+// and items whose special has ended are marked so nobody goes to the shop for an old price.
+function rollShoppingListWeek(items) {
+    const today = _brisbaneToday();
+    let changed = false;
+    const pool = (typeof staticSpecials !== 'undefined' && staticSpecials) || [];
+    items.forEach(it => {
+        if (!it.date_range && pool.length) {     // older list entries: find the week from today's data
+            const m = pool.find(s => s.store === it.store && s.title === it.title && s.period === (it.period || 'current'))
+                   || pool.find(s => s.store === it.store && s.title === it.title);
+            if (m && m.date_range) { it.date_range = m.date_range; changed = true; }
+        }
+        const r = parseWeekRange(it.date_range);
+        if (!r) return;
+        if (it.period === 'next' && r.start <= today) { it.period = 'current'; changed = true; }
+        const expired = r.end < today;
+        if (!!it.expired !== expired) { it.expired = expired; changed = true; }
+    });
+    return changed;
+}
+
 function repairLocalShoppingItems() {
     try {
         let items = getLocalShoppingList();
         if (!items || items.length === 0) return;
-        let changed = false;
+        let changed = rollShoppingListWeek(items);
         const byKey = new Map();
         items = items.filter(it => {
             const k = shoppingKey(it);
@@ -2908,8 +2954,8 @@ async function loadShoppingList() {
                                         <h4 class="text-[13px] font-medium t-ink truncate ${it.is_bought ? 'line-through' : ''}" title="${it.title}">
                                              ${it.title}
                                         </h4>
-                                        <span class="tag shrink-0 ${it.period === 'next' ? 'is-next' : ''}">
-                                            ${it.period === 'next' ? t('next_cycle') : t('current_cycle')}
+                                        <span class="tag shrink-0 ${it.expired ? 'is-sale' : (it.period === 'next' ? 'is-next' : '')}">
+                                            ${it.expired ? t('expired_tag') : (it.period === 'next' ? t('next_cycle') : t('current_cycle'))}
                                         </span>
                                     </div>
                                     ${(() => {

@@ -268,6 +268,53 @@ def save_specials(store: str, items: List[Dict[str, Any]], period: str = 'curren
         conn.commit()
     return len(rows)
 
+def _range_dates(date_range: str):
+    """(start, end) dates of 'Wed 7 Oct 2026 - Tue 13 Oct 2026', or None."""
+    import datetime as _dt
+    m = re.findall(r'(\d{1,2})\s+([A-Za-z]{3})[a-z]*\s*(\d{4})?', date_range or '')
+    if len(m) < 2 or m[0][1].lower() not in _MONTHS or m[1][1].lower() not in _MONTHS:
+        return None
+    y_end = int(m[1][2]) if m[1][2] else _dt.date.today().year
+    y_start = int(m[0][2]) if m[0][2] else y_end
+    try:
+        s = _dt.date(y_start, _MONTHS[m[0][1].lower()], int(m[0][0]))
+        e = _dt.date(y_end, _MONTHS[m[1][1].lower()], int(m[1][0]))
+    except ValueError:
+        return None
+    if s > e:
+        s = s.replace(year=s.year - 1)
+    return s, e
+
+
+def promote_next_week(store: str, today=None) -> int:
+    """Wednesday safety net: when the stored 'next week' preview has started and the stored 'current'
+    week is over, the preview becomes this week straight away. So even if the catalogue site is
+    down on Wednesday, the website never keeps showing last week's (expired) specials."""
+    import datetime as _dt
+    if today is None:
+        today = (_dt.datetime.utcnow() + _dt.timedelta(hours=10)).date()     # Brisbane
+    with get_db() as conn:
+        c = conn.cursor()
+        c.execute("SELECT DISTINCT date_range FROM specials WHERE store = ? AND period = 'next'", (store,))
+        nxt = [r[0] for r in c.fetchall() if _range_dates(r[0])]
+        c.execute("SELECT DISTINCT date_range FROM specials WHERE store = ? AND period = 'current'", (store,))
+        cur = [r[0] for r in c.fetchall() if _range_dates(r[0])]
+        started = [dr for dr in nxt if _range_dates(dr)[0] <= today <= _range_dates(dr)[1]]
+        cur_over = (not cur) or all(_range_dates(dr)[1] < today for dr in cur)
+        if not started or not cur_over:
+            return 0
+        dr = started[0]
+        c.execute("DELETE FROM specials WHERE store = ? AND period = 'current'", (store,))
+        c.execute("UPDATE specials SET period = 'current' WHERE store = ? AND period = 'next' AND date_range = ?", (store, dr))
+        moved = c.rowcount
+        c.execute("INSERT OR REPLACE INTO metadata (key, value) VALUES (?, ?)", (f'date_range_{store.lower()}_current', dr))
+        c.execute("INSERT OR REPLACE INTO metadata (key, value) VALUES (?, ?)", ('date_range_current', dr))
+        c.execute("DELETE FROM metadata WHERE key = ?", (f'date_range_{store.lower()}_next',))
+        conn.commit()
+        print(f" {store}: next week ({dr}) has started - moved {moved} preview items to this week.")
+        return moved
+
+
 def clear_stale_next(store: str, current_date_range: str) -> int:
     """After the weekly rollover, last week's 'next' preview has become the current week.
     If no new preview was found, remove the stale preview so it is not shown twice."""

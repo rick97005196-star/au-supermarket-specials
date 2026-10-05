@@ -20,6 +20,14 @@ def update_all_stores(max_catalogue_pages: int = 50) -> Dict[str, Any]:
     init_db()
     results = {}
 
+    # Wednesday safety net: yesterday's "next week" becomes "this week" before anything is scraped
+    from database import promote_next_week
+    for _store in ('Coles', 'Woolworths'):
+        try:
+            promote_next_week(_store)
+        except Exception as e:
+            print(f" Could not move {_store} next week to this week: {e}")
+
     # 1. Coles (Current & Next Week)
     try:
         coles_data = scrape_coles_all_weeks(max_pages=max_catalogue_pages)
