@@ -11,7 +11,7 @@
  * Nothing that identifies a visitor is stored: no name, email or IP address. For the anti-flood
  * limit only a one-way daily hash of the IP is kept (it cannot be turned back into the IP).
  */
-const ADMIN_KEY_SHA256 = 'c87ae0c4b58095d1e998ae52f2796a7779377f67af2dc545a18a7781c2cecce0';   // the owner's password is never stored, only its hash
+import { checkOwner, authError } from '../_lib/auth.js';
 const TYPES = ['suggestion', 'data_error', 'bug', 'other'];
 const SITE = 'au-supermarket-specials.pages.dev';
 
@@ -32,12 +32,6 @@ async function ensureTable(db) {
         is_read INTEGER DEFAULT 0, ip_hash TEXT)`).run();
 }
 
-async function isOwner(request) {
-    const auth = request.headers.get('Authorization') || '';
-    const key = auth.replace(/^Bearer\s+/i, '').trim();
-    if (!key) return false;
-    return (await sha256(key)) === ADMIN_KEY_SHA256;
-}
 
 export async function onRequestPost({ request, env }) {
     const origin = request.headers.get('Origin') || request.headers.get('Referer') || '';
@@ -69,7 +63,8 @@ export async function onRequestPost({ request, env }) {
 }
 
 export async function onRequestGet({ request, env }) {
-    if (!(await isOwner(request))) return json({ ok: false, error: 'unauthorized' }, 401);
+    const auth = await checkOwner(request, env);
+    if (auth !== 'ok') return authError(auth);
     if (!env.FEEDBACK_DB) return json({ ok: false, error: 'no_db' });
     const db = env.FEEDBACK_DB;
     await ensureTable(db);
@@ -80,7 +75,8 @@ export async function onRequestGet({ request, env }) {
 }
 
 export async function onRequestPut({ request, env }) {
-    if (!(await isOwner(request))) return json({ ok: false, error: 'unauthorized' }, 401);
+    const auth = await checkOwner(request, env);
+    if (auth !== 'ok') return authError(auth);
     const url = new URL(request.url);
     const id = parseInt(url.searchParams.get('id'), 10);
     const read = url.searchParams.get('read') === '1' ? 1 : 0;
@@ -90,7 +86,8 @@ export async function onRequestPut({ request, env }) {
 }
 
 export async function onRequestDelete({ request, env }) {
-    if (!(await isOwner(request))) return json({ ok: false, error: 'unauthorized' }, 401);
+    const auth = await checkOwner(request, env);
+    if (auth !== 'ok') return authError(auth);
     const id = parseInt(new URL(request.url).searchParams.get('id'), 10);
     if (!id || !env.FEEDBACK_DB) return json({ ok: false }, 400);
     await env.FEEDBACK_DB.prepare('DELETE FROM feedback WHERE id = ?').bind(id).run();

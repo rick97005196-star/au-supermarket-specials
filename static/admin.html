@@ -184,6 +184,7 @@
             const res = await api('GET');
             const data = await res.json().catch(() => ({}));
             if (res.status === 401) { errEl.textContent = '密碼不對'; if (!fromLogin) logout(); return false; }
+            if (res.status === 429) { errEl.textContent = '密碼錯太多次，為了安全已暫時鎖住，請一小時後再試'; return false; }
             if (!data.ok) { errEl.textContent = data.error === 'no_db' ? '資料庫還沒連接好（Cloudflare 設定中）' : '讀取失敗，請稍後再試'; return false; }
             items = data.items || [];
             const s = data.stats || {};

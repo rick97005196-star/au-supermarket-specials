@@ -7,7 +7,7 @@
  * What is stored: the day, a random visitor id that the browser made up itself (no name, email,
  * IP or cookie from anyone else), phone/computer, language and chosen state. Robots are ignored.
  */
-const ADMIN_KEY_SHA256 = 'c87ae0c4b58095d1e998ae52f2796a7779377f67af2dc545a18a7781c2cecce0';   // same owner password as the feedback box
+import { checkOwner, authError } from '../_lib/auth.js';
 const SITE = 'au-supermarket-specials.pages.dev';
 const BOT = /bot|crawl|spider|slurp|preview|headless|lighthouse|facebookexternalhit|whatsapp|telegram|discord|curl|wget|python|node-fetch|axios|monitor|uptime/i;
 
@@ -59,8 +59,8 @@ export async function onRequestPost({ request, env }) {
 }
 
 export async function onRequestGet({ request, env }) {
-    const key = (request.headers.get('Authorization') || '').replace(/^Bearer\s+/i, '').trim();
-    if (!key || (await sha256(key)) !== ADMIN_KEY_SHA256) return json({ ok: false, error: 'unauthorized' }, 401);
+    const auth = await checkOwner(request, env);
+    if (auth !== 'ok') return authError(auth);
     if (!env.FEEDBACK_DB) return json({ ok: false, error: 'no_db' });
     const db = env.FEEDBACK_DB;
     await ensureTables(db);
