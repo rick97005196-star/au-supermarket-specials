@@ -127,6 +127,8 @@ def pre():
         if p >= 20 and n == 0:
             block = True
             problems.append(f"{store} 本週特價變成 0 件（原本 {p} 件），已停止上線，網站維持原本資料")
+        elif store == 'ALDI' and prev_items and not any(x.get('sf') for x in prev_items if x.get('store') == 'ALDI'):
+            pass   # one-time switch to ALDI's own sale dates (older Special Buys no longer listed by ALDI drop out)
         elif p >= 20 and now_r.get(key) == prev_r.get(key) and n < p * 0.5:
             block = True
             problems.append(f"{store} 本週特價從 {p} 件驟減到 {n} 件（同一檔期），已停止上線")

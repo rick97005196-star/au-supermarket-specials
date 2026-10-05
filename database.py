@@ -145,6 +145,11 @@ def save_specials(store: str, items: List[Dict[str, Any]], period: str = 'curren
         #  - same week but far fewer items than before -> probably a partial failure -> keep
         cursor.execute("SELECT date_range FROM specials WHERE store = ? AND period = ? AND date_range != '' LIMIT 1", (store, period))
         had_dated = cursor.fetchone() is not None
+        # One-time switch to ALDI's per-deal sale dates: the old rows have no date, so replace them
+        if store == 'ALDI' and items and all(it.get('sale_from') for it in items):
+            cursor.execute("SELECT COUNT(*) FROM specials WHERE store = ? AND period = ? AND COALESCE(sale_from, '') = ''", (store, period))
+            if cursor.fetchone()[0] > 0:
+                new_week = True
         if existing_count >= 20 and not new_week and (
             (not date_range and had_dated) or len(items) < existing_count * 0.6
         ):
