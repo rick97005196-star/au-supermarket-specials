@@ -43771,10 +43771,11 @@
     "src": "ai"
   },
   "Cadbury Dairy Milk Marvellous Creations Sharepack 160g": {
-    "zh": "Cadbury Dairy Milk Marvellous Creations 綜合巧克力分享包 160克",
-    "ja": "Cadbury Dairy Milk Marvellous Creations シェアパック 160g",
-    "ko": "Cadbury Dairy Milk Marvellous Creations 쉐어팩 160g",
-    "src": "ai"
+    "zh": "Cadbury 吉力貝 牛奶巧克力驚奇分享包 160克",
+    "ja": "Cadbury デパシー ミルクチョコレート マーベラスクリエーションズ シェアパック 160g",
+    "ko": "Cadbury 데일리 밀크 밀크 초콜릿 마블러스 크리에이션즈 셰어팩 160g",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Bonds Bloody Comfy Period Bikini Brief Moderate Size 8 1 Pack": {
     "zh": "Bonds Bloody Comfy Period 比基尼生理褲中流量 8號 1入",
@@ -43855,10 +43856,11 @@
     "src": "ai"
   },
   "Banana Boat Sport 50+ Clear Spray 175g": {
-    "zh": "Banana Boat Sport 運動防曬噴霧SPF50+ 175克",
-    "ja": "Banana Boat Sport 日焼け止めスプレー SPF50+ 175g",
-    "ko": "Banana Boat Sport 스포츠 선 스프레이 SPF50+ 175g",
-    "src": "ai"
+    "zh": "Banana Boat 運動防曬透明噴霧 SPF50+ 175克",
+    "ja": "Banana Boat スポーツ 50+ クリアスプレー 175g",
+    "ko": "Banana Boat 스포츠 50+ 클리어 스프레이 175g",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Queen Victoria Lemon & Ginger Tea Bags 10 Pack": {
     "zh": "Queen Victoria 檸檬薑茶包 10入",
@@ -43900,6 +43902,108 @@
     "zh": "Queen Victoria 綠茶茶包 10入",
     "ja": "Queen Victoria 緑茶ティーバッグ 10個入",
     "ko": "Queen Victoria 녹차 티백 10개입",
+    "src": "ai"
+  },
+  "Masterfoods Buttermilk Ranch 250mL": {
+    "zh": "Masterfoods 白脫牛奶牧場沙拉醬 250毫升",
+    "ja": "Masterfoods バターミルクランチドレッシング 250mL",
+    "ko": "Masterfoods 버터밀크 랜치 소스 250mL",
+    "src": "ai"
+  },
+  "Celebrations Milk Chocolate Gift Box 290g": {
+    "zh": "Celebrations 牛奶巧克力禮盒 290克",
+    "ja": "Celebrations ミルクチョコレート ギフトボックス 290g",
+    "ko": "Celebrations 밀크 초콜릿 기프트 박스 290g",
+    "src": "ai"
+  },
+  "Got2b Curlz Flexible Curl Mousse 200mL": {
+    "zh": "Got2b 彈力捲髮慕絲 200毫升",
+    "ja": "Got2b カールズ フレキシブル カールムース 200mL",
+    "ko": "Got2b 컬즈 플렉시블 컬 무스 200mL",
+    "src": "ai"
+  },
+  "Banana Boat Ultra Light Face Fluid Sunscreen Lotion Spf50+ 50mL": {
+    "zh": "Banana Boat 極輕透臉部防曬乳液 SPF50+ 50毫升",
+    "ja": "Banana Boat ウルトラライト フェイスフルード 日焼け止めローション SPF50+ 50mL",
+    "ko": "Banana Boat 울트라 라이트 페이스 플루이드 선스크린 로션 SPF50+ 50mL",
+    "src": "ai"
+  },
+  "The Natural Paw Company Tofu Cat Litter 2kg": {
+    "zh": "The Natural Paw Company 豆腐貓砂 2公斤",
+    "ja": "The Natural Paw Company おから猫砂 2kg",
+    "ko": "The Natural Paw Company 두부 고양이 모래 2kg",
+    "src": "ai"
+  },
+  "Hellmann's Real Mayonnaise 400g": {
+    "zh": "Hellmann's 經典美乃滋 400克",
+    "ja": "Hellmann's リアルマヨネーズ 400g",
+    "ko": "Hellmann's 리얼 마요네즈 400g",
+    "src": "ai"
+  },
+  "Morning Fresh Lime Dishwashing Liquid 900mL": {
+    "zh": "Morning Fresh 萊姆洗碗精 900毫升",
+    "ja": "Morning Fresh ライム 食器用洗剤 900mL",
+    "ko": "Morning Fresh 라임 주방세제 900mL",
+    "src": "ai"
+  },
+  "Got2b Curlz Moisturizing Detangler 200mL": {
+    "zh": "Got2b 捲髮保濕糾結噴霧 200毫升",
+    "ja": "Got2b カールズ モイスチャライジング デタングラー 200mL",
+    "ko": "Got2b 컬즈 모이스처라이징 디탱글러 200mL",
+    "src": "ai"
+  },
+  "Masterfoods Sweet Chilli & Sour Cream 250mL": {
+    "zh": "Masterfoods 甜辣酸奶油醬 250毫升",
+    "ja": "Masterfoods スイートチリ＆サワークリーム 250mL",
+    "ko": "Masterfoods 스위트 칠리 & 사워크림 250mL",
+    "src": "ai"
+  },
+  "Revlon Colorstay Concealer Flexwear Medium 11.4mL": {
+    "zh": "Revlon 不脫色遮瑕膏 Medium 11.4毫升",
+    "ja": "Revlon カラーステイ コンシーラー フレックスウェア ミディアム 11.4mL",
+    "ko": "Revlon 컬러스테이 컨실러 플렉스웨어 미디엄 11.4mL",
+    "src": "ai"
+  },
+  "Clairol Root Touch Up Permanent Hair Colour - 4 Dark Brown 1 Pack": {
+    "zh": "Clairol 根部補色染髮劑 4號 深褐色 1入",
+    "ja": "Clairol ルートタッチアップ 白髪用ヘアカラー 4 ダークブラウン 1個",
+    "ko": "Clairol 루트 터치업 새치 염색약 4 다크 브라운 1개",
+    "src": "ai"
+  },
+  "Schwarzkopf Extra Care Ultimate Repair Strengthening Conditioner 400mL": {
+    "zh": "Schwarzkopf 纖維重建強韌潤髮乳 400毫升",
+    "ja": "Schwarzkopf エクストラケア ウルティマ修理 強化コンディショナー 400mL",
+    "ko": "Schwarzkopf 엑스트라 케어 울티메이트 리페어 강화 컨디셔너 400mL",
+    "src": "ai"
+  },
+  "Neutrogena SPF 50 Beach Defence Sunscreen Lotion 198mL": {
+    "zh": "Neutrogena 露得清 海洋防護防曬乳液 SPF50 198毫升",
+    "ja": "Neutrogena ビーチディフェンス 日焼け止めローション SPF50 198mL",
+    "ko": "Neutrogena 비치 디펜스 선스크린 로션 SPF50 198mL",
+    "src": "ai"
+  },
+  "Golden Fields Sunflower Oil 4L": {
+    "zh": "Golden Fields 葵花油 4公升",
+    "ja": "Golden Fields ひまわり油 4L",
+    "ko": "Golden Fields 해바라기유 4L",
+    "src": "ai"
+  },
+  "Golden Fields Australian Canola Oil 4L": {
+    "zh": "Golden Fields 澳洲芥花油 4公升",
+    "ja": "Golden Fields オーストラリア産 キャノーラ油 4L",
+    "ko": "Golden Fields 호주산 카놀라유 4L",
+    "src": "ai"
+  },
+  "Schwarzkopf Extra Care Marrakesh Oil & Coconut Replenishing Conditioner 400mL": {
+    "zh": "Schwarzkopf 摩洛哥堅果油椰子修護潤髮乳 400毫升",
+    "ja": "Schwarzkopf エクストラケア モロッカンオイル＆ココナッツ リプレニッシング コンディショナー 400mL",
+    "ko": "Schwarzkopf 엑스트라 케어 마라케시 오일 & 코코넛 리플레니싱 컨디셔너 400mL",
+    "src": "ai"
+  },
+  "Kleenex Facial Tissue 6 Ply Soft Pack 20 Pack": {
+    "zh": "Kleenex 舒潔 6層柔韌包裝面紙 20入",
+    "ja": "Kleenex フェイシャルティッシュ 6層 ソフトパック 20個",
+    "ko": "Kleenex 페이셜 티슈 6겹 소프트 팩 20개",
     "src": "ai"
   }
 }
