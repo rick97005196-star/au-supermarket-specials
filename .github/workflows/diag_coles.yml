@@ -1,58 +1,17 @@
 name: diag coles (temporary)
 on: workflow_dispatch
+permissions:
+  contents: write
 jobs:
   diag:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
+      - uses: actions/checkout@v5
       - uses: actions/setup-python@v5
         with: { python-version: '3.11' }
       - run: pip install curl_cffi
-      - shell: python
-        run: |
-          import json, re, time, collections
-          from curl_cffi import requests as r
-          def w(m): print('::warning::' + m.replace('\n', ' ')[:1500])
-          IMPS = ['chrome', 'safari', 'chrome124', 'safari17_0', 'chrome120', 'safari15_5', 'chrome116', 'edge101']
-          ses = {'i': 0, 's': r.Session(impersonate='chrome')}
-          def fresh():
-              ses['i'] += 1; ses['s'] = r.Session(impersonate=IMPS[ses['i'] % len(IMPS)])
-          log = []
-          def get(pg):
-              t = time.time()
-              try:
-                  x = ses['s'].get(f'https://www.coles.com.au/on-special?filter_Special=halfprice&page={pg}', timeout=20)
-              except Exception as e:
-                  log.append(f'{pg}:EXC'); return None
-              m = re.search(r'<script id="__NEXT_DATA__"[^>]*>(.*?)</script>', x.text, re.S)
-              sr = m and json.loads(m.group(1))['props']['pageProps'].get('searchResults')
-              log.append(f'{pg}:{x.status_code}:{"ok" if sr else ("blk" if "Pardon" in x.text else "err")}:{time.time()-t:.1f}s')
-              return sr
-          sr = get(1)
-          total = sr['noOfResults']; pages = -(-total // sr['pageSize'])
-          c = collections.Counter(); seen = set(); ex = []; bad = 0; pg = 1
-          while True:
-              if sr:
-                  bad = 0
-                  for p in sr['results']:
-                      if p.get('_type') != 'PRODUCT': continue
-                      pr = p.get('pricing') or {}
-                      if p['id'] in seen: c['dup'] += 1; continue
-                      seen.add(p['id']); c['n'] += 1
-                      if pr.get('onlineSpecial'): c['online'] += 1; continue
-                      if not p.get('availability'): c['unavail'] += 1
-                      now, was = pr.get('now') or 0, pr.get('was') or 0
-                      c['half' if was and now and now <= was * 0.55 else ('was' if was else 'nowas')] += 1
-                      if len(ex) < 3: ex.append(json.dumps({k: p.get(k) for k in ('name','brand','size','pricing')})[:400])
-              else:
-                  bad += 1
-                  if bad >= 6: break
-                  fresh(); time.sleep(20 * bad); sr = get(pg); continue
-              pg += 1
-              if pg > pages: break
-              time.sleep(3)
-              if pg % 4 == 1: fresh(); time.sleep(5)
-              sr = get(pg)
-          w(f'total={total} pages={pages} ' + json.dumps(c))
-          w(' '.join(log))
-          for e in ex: w(e)
+      - run: python -c "from scrapers.coles_web import scrape_coles_web_half_price as f; print(len(f()))"
+      - run: |
+          git config user.email action@github.com; git config user.name bot
+          git checkout -b diag-data; git add -f data/coles_web.json; git commit -qm diag; git push -f origin diag-data
