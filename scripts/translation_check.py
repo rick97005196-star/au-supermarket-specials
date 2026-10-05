@@ -63,7 +63,7 @@ FOOD_TERMS = [
     (r'\bcheese\b', ['起司', '乳酪', '起士', '奶酪']),
     (r'(?<!shea )(?<!cocoa )(?<!peanut )(?<!body )(?<!lip )\bbutter\b(?!\s*(?:chicken|me up|balm))', ['奶油', '牛油', '黃油', '酥']),
     (r'\by[o]?gh?urt\b', ['優格', '優酪', '乳']),
-    (r'(?<!soy )(?<!oat )(?<!almond )\bmilk\b(?!\s*(?:choc|to water|thistle))', ['奶', '乳']),
+    (r'(?<!soy )(?<!oat )(?<!almond )(?<!dairy )\bmilk\b(?!\s*(?:choc|to water|thistle))', ['奶', '乳']),
     (r'\beggs?\b', ['蛋']),
     (r'\brice\b', ['米', '飯']),
     (r'\bnoodles?\b', ['麵', '粉絲', '米粉', '冬粉']),
@@ -103,14 +103,15 @@ def _numbers(text):
     t = re.sub(r'\d+(?:\.\d+)?\s*%', ' ', t)
     t = re.split(r'\b(?:excludes?|excluding|不含)\b', t, flags=re.I)[0]
     t = re.sub(r'\d+\s*-?\s*(?:in|合)\s*-?\s*(?:1|one)\b|\ball\s*in\s*(?:1|one)\b', ' ', t, flags=re.I)
-    t = re.sub(r'\d+/\d+|(?<![\w.])-\d+|\bB\d+|Q\d+|\bG\d+\b|\b(?:pro|mach|retinol|t-inspire)\s*\d+|(?<![\d.])1\s*each\b|\bSPF\s*\d+\+?|\d+\s*(?:hr|hour|h)\b|\d+\s*小時', ' ', t, flags=re.I)
+    t = re.sub(r'\d+/\d+|(?<![\w.])-\d+|\bB\d+|Q\d+|\bG\d+\b|\b(?:pro|mach|retinol|t-inspire)\s*\d+|(?<![\d.])1\s*each\b|\d+\s*(?:hr|hour|h)\b|\d+\s*小時', ' ', t, flags=re.I)
+    t = re.sub(r'\bSPF\s*(\d+)\+?', r' \1 ', t, flags=re.I)
     t = re.sub(r'(?<=\d),(?=\d{3})', '', t)
     nums = set(re.findall(r'\d+(?:\.\d+)?', t))
     # drop numbers that are part of model/percentage/years noise
     return {n for n in nums if not (len(n) == 4 and n.startswith(('19', '20')))}
 
 
-def problems(title, tr):
+def problems(title, tr, style=False):
     """List of human-readable problems with one product's translations (empty = fine)."""
     out = []
     if not tr or not isinstance(tr, dict):
@@ -136,8 +137,9 @@ def problems(title, tr):
             m = re.search(pat, en)
             if m and not any(n in zh for n in need):
                 out.append(f'中文漏了食材：英文有「{m.group(0)}」')
+        zh_meat = zh.replace('火雞', '')          # 火雞肉 (turkey) is not 雞肉 (chicken)
         for zw, back in REVERSE_TERMS:
-            if zw in zh and not re.search(back, en):
+            if zw in zh_meat and not re.search(back, en):
                 out.append(f'中文食材錯誤：寫了「{zw}」，但英文沒有這個食材')
         # the same word repeated again and again (AI glitch, e.g. "Nutella Nutella Nutella …")
         words = re.findall(r'[A-Za-z][A-Za-z\'’]+', zh)
@@ -148,7 +150,7 @@ def problems(title, tr):
     # sizes and pack counts must survive translation
     if re.search(r'\b(?:telstra|optus|vodafone|lebara|dodo|boost|sim)\b', en):
         return out                      # phone plans / SIM cards keep their English names
-    want = _numbers(title)
+    want = {n for n in _numbers(title) if not re.search(rf'(?<![\d.]){re.escape(n)}\s*billion', en)}
     for lang, txt in (('中文', zh), ('日文', ja), ('韓文', ko)):
         if txt and want:
             have = _numbers(txt)
@@ -159,7 +161,44 @@ def problems(title, tr):
                 out.append(f'{lang}漏了數字/容量：{", ".join(sorted(missing))}')
     if zh and len(zh) > max(60, len(title) * 1.6):
         out.append('中文過長（可能加了多餘的說明）')
+
+    # ---- added after the full human review of ~6,000 translations (Oct 2026) ----
+    # each language field must be written in its own script (no Korean inside Japanese etc.)
+    if zh and (KANA_ONLY.search(zh) or HANGUL.search(zh)):
+        out.append('中文裡混入日文假名或韓文')
+    if ja and HANGUL.search(ja):
+        out.append('日文裡混入韓文')
+    if ko and KANA_ONLY.search(ko):
+        out.append('韓文裡混入日文假名')
+    # a pack count written twice ("85克 x 12入 12入裝" reads like 144)
+    for lang, txt in (('中文', zh), ('日文', ja), ('韓文', ko)):
+        m = re.search(r'(?<![\d.])(\d+)\s*(?:入|個入|本入|袋入|개입)(?!\d).{0,12}?(?<![\d.])\1\s*(?:入|個入|本入|袋入|개입)', txt or '')
+        if m:
+            out.append(f'{lang}重複寫了包裝數量「{m.group(0)}」')
+    # the brand (first word of the title, kept in English in zh) should also stay in English in ja / ko.
+    # Only a style point: checked for NEW translations (style=True) and when a reviewer's fix is applied,
+    # never a reason to re-translate an existing, otherwise correct translation.
+    brand = _brand_word(title) if style else ''
+    if brand and brand.lower() in zh.lower():
+        for lang, txt in (('日文', ja), ('韓文', ko)):
+            if txt and brand.lower() not in txt.lower():
+                out.append(f'{lang}品牌沒有保留英文「{brand}」')
     return out
+
+
+KANA_ONLY = re.compile(r'[ぁ-ゟ゠-ヿ]')
+GENERIC_FIRST = {'australian', 'aussie', 'fresh', 'new', 'organic', 'frozen', 'free', 'classic', 'premium', 'natural',
+                 'mini', 'large', 'small', 'family', 'the', 'tasmanian', 'whole', 'chicken', 'beef', 'pork', 'lamb',
+                 'fruit', 'macro', 'woolworths', 'coles', 'aldi', 'grass', 'any', 'select', 'selected', 'assorted'}
+
+
+def _brand_word(title):
+    """First word of a title when it looks like a brand ('Cadbury', "Arnott's", 'OMO'), else ''."""
+    m = re.match(r"\s*([A-Z][A-Za-z'’&.-]{2,})", title or '')
+    if not m:
+        return ''
+    w = m.group(1).rstrip('.')
+    return '' if w.lower().replace('’', "'") in GENERIC_FIRST else w
 
 
 def load_current():

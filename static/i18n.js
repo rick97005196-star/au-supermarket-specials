@@ -34,6 +34,10 @@ const I18N = {
         sort_price_asc: '價格：低至高',
         sort_price_desc: '價格：高至低',
         sort_unit_asc: '每公斤／公升最便宜',
+        aria_cat_prev: '上一組分類',
+        aria_cat_next: '更多分類',
+        aria_feedback: '匿名意見箱',
+        aria_close: '關閉',
         found_targets: '找到 {n} 項特價品',
         was_price: '原價',
         save: '省',
@@ -141,7 +145,7 @@ const I18N = {
             'dairy_eggs': '🥛 乳品蛋類',
             'bakery': '🥖 麵包甜點',
             'frozen': '🧊 冷凍食品',
-            'pantry': '🍚 米油調味',
+            'pantry': '🍚 雜貨調味',
             'snacks': '🍫 零食餅乾',
             'drinks': '🥤 飲料',
             'liquor': '🍺 酒類',
@@ -170,6 +174,10 @@ const I18N = {
         sort_price_asc: 'Price: Low to High',
         sort_price_desc: 'Price: High to Low',
         sort_unit_asc: 'Cheapest per kg / L',
+        aria_cat_prev: 'Previous categories',
+        aria_cat_next: 'More categories',
+        aria_feedback: 'Anonymous feedback',
+        aria_close: 'Close',
         found_targets: 'Found {n} items on special',
         was_price: 'Was',
         save: 'Save',
@@ -284,7 +292,7 @@ const I18N = {
             'health_vitamins': '💊 Health & Beauty',
             'household': '🧺 Household & Cleaning',
             'pet': '🐾 Pet Supplies',
-            'sub_icecream': 'Ice Cream', 'sub_chocolate': 'Chocolate', 'sub_chips': 'Chips', 'sub_coffee': 'Coffee', 'sub_noodles': 'Noodles', 'sub_quickmeals': 'Quick Meals', 'sub_soda': 'Soft Drinks', 'sub_laundry': 'Laundry', 'sub_vitamins': 'Vitamins'
+            'sub_icecream': 'Ice Cream', 'sub_chocolate': 'Chocolate', 'sub_chips': 'Chips', 'sub_coffee': 'Coffee', 'sub_noodles': 'Instant Noodles', 'sub_quickmeals': 'Ready Meals', 'sub_soda': 'Soft Drinks', 'sub_laundry': 'Laundry', 'sub_vitamins': 'Vitamins'
         }
     },
     'ja': {
@@ -306,6 +314,10 @@ const I18N = {
         sort_price_asc: '価格が安い順',
         sort_price_desc: '価格が高い順',
         sort_unit_asc: 'kg・L あたりが安い順',
+        aria_cat_prev: '前のカテゴリー',
+        aria_cat_next: 'その他のカテゴリー',
+        aria_feedback: '匿名ご意見箱',
+        aria_close: '閉じる',
         found_targets: '{n} 件のセール商品',
         was_price: '元値',
         save: '節約',
@@ -420,7 +432,7 @@ const I18N = {
             'health_vitamins': '💊 ヘルス＆ビューティー',
             'household': '🧺 日用品・洗剤',
             'pet': '🐾 ペット用品',
-            'sub_icecream': 'アイス', 'sub_chocolate': 'チョコ', 'sub_chips': 'ポテチ', 'sub_coffee': 'コーヒー', 'sub_noodles': 'ラーメン', 'sub_quickmeals': 'レンジ食品', 'sub_soda': '炭酸飲料', 'sub_laundry': '洗濯洗剤', 'sub_vitamins': 'ビタミン'
+            'sub_icecream': 'アイス', 'sub_chocolate': 'チョコ', 'sub_chips': 'ポテチ', 'sub_coffee': 'コーヒー', 'sub_noodles': 'インスタント麺', 'sub_quickmeals': 'レンジ食品', 'sub_soda': '炭酸飲料', 'sub_laundry': '洗濯洗剤', 'sub_vitamins': 'ビタミン'
         }
     },
     'ko': {
@@ -442,6 +454,10 @@ const I18N = {
         sort_price_asc: '가격 낮은순',
         sort_price_desc: '가격 높은순',
         sort_unit_asc: 'kg·L당 저렴한순',
+        aria_cat_prev: '이전 카테고리',
+        aria_cat_next: '더 많은 카테고리',
+        aria_feedback: '익명 의견함',
+        aria_close: '닫기',
         found_targets: '{n}개 특가 상품 검색됨',
         was_price: '정가',
         save: '할인',

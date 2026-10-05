@@ -1,0 +1,30 @@
+name: 分類規則自動檢查
+
+# Runs whenever the category rules change: every product that was once in the wrong place
+# (tests/category_cases.json) must still land in the right category. A failure emails the owner
+# and the website keeps working as before.
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'categories.py'
+      - 'static/category-rules.js'
+      - 'tests/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  categories:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+      - name: Category regression test
+        run: python tests/test_categories.py

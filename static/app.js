@@ -92,6 +92,8 @@ function applyLanguage(lang) {
         const text = t(key);
         el.textContent = el.hasAttribute('data-strip-colon') ? String(text).replace(/[:：]\s*$/, '') : text;
     });
+    // Labels read out by screen readers (icon-only buttons) follow the language too
+    document.querySelectorAll('[data-i18n-aria]').forEach(el => el.setAttribute('aria-label', t(el.dataset.i18nAria)));
 
     // Update placeholders
     const searchInput = document.getElementById('searchInput');
@@ -203,56 +205,7 @@ const CATEGORY_STYLES = {
 };
 // Shortcut chips: strict rules (department + what the product is + what it is NOT), checked by hand
 // against every product, so e.g. "維他命" never shows a body lotion "with Vitamin C".
-const SUB_CATEGORY_RULES = {
-    sub_icecream: { cats: ['frozen'],
-        inc: /\b(ice\s*creams?|gelato|sorbet|magnum|cornetto|drumstick|paddle\s*pop|weis|frosty\s*fruits|icy\s*poles?|ice\s*blocks?|zooper|connoisseur|cremissimo|ben\s*&\s*jerry'?s|h[aä]agen|frozen\s*(?:dessert|yogh?urt)|yogh?urt\s*sticks|ice\s*sticks|sundae|golden\s*gaytime|splice|maxibon|bulla)\b/i,
-        exc: /\b(makers?|machines?|blenders?)\b/i },
-    sub_chocolate: { cats: ['snacks'],
-        inc: /\b(chocolates?|choc|cadbury|lindt|lindor|ferrero|kinder|toblerone|maltesers|m&m'?s|mars|snickers|twix|bounty|milky\s*way|kit\s*kat|kitkat|aero|freddo|caramilk|cherry\s*ripe|crunchie|picnic|boost|moro|chomp|chokito|milkybar|smarties|reese'?s|violet\s*crumble|darrell\s*lea|whittaker'?s|nudo|raffaello|roses|old\s*gold|toffifee|allen'?s\s*block)\b/i,
-        exc: /\b(biscuits?|cookies?|digestives?|tim\s*tams?|timtams|tee\s*vee|wagon\s*wheels|fingers|nut\s*bars?|protein\s*bars?|muesli|fibre\s*one|oaty|brownies?|(?:cookie|brownie|baking|trail)\s*mix|popcorn|lollies|eclairs|cereal|crackers?|slice|allsorts)\b/i },
-    sub_chips: { cats: ['snacks'],
-        inc: /\b(chips|crisps|tortilla|twisties|cheezels|burger\s*rings|cheetos|doritos|pringles|thins|kettle|grain\s*waves|grainwaves|nibbles|samboy|jumpy'?s|smith'?s|smiths|red\s*rock\s*deli|cc'?s|tostitos|popcorners)\b/i,
-        exc: /\b(dips?|crackers?|choc(?:olate)?\s*chips|fruit\s*crisps|bars?|biscuits?|cookies?)\b/i },
-    sub_coffee: { cats: ['drinks'],
-        inc: /\b(coffee|espresso|latte|cappuccino|mocha|affogato|nescaf[eé]|moccona|nespresso|lungo|cold\s*brew)\b/i,
-        exc: /\b(caffeine\s*free|decaffeinated\s+(?:black\s+)?tea|nail|machines?|makers?|grinders?(?!\s*coffee))\b/i },
-    // 微波即食: complete meals you only heat in the microwave and eat (Lean Cuisine, On The Menu,
-    // supermarket ready meals like "Butter Chicken with Basmati Rice 350g", slow-cooked mains)
-    sub_quickmeals: { cats: ['frozen', 'pantry', 'meat', 'dairy_eggs'],
-        inc: /\b(microwave\s*(?:meals?|pouch|rice|pies?|sausage\s*rolls?)|microwav\w*\s*meal|ready\s*meals?|frozen\s*meals?|lean\s*cuisine|on\s*the\s*menu|ruffie|strength\s*meals|core\s*powerfoods|cucina\s*classica\s*meal|sirena\s*ready|youfoodz|muscle\s*chef|macro\s*meals?|big\s*feast|takeaway\s*main|with\s+(?:\w+\s+){0,2}(?:rice|mash)|slow\s*cooked|heat\s*(?:&|and)\s*eat|meal\s*\d{3}\s*g)\b/i,
-        exc: /\b(sauce\s*\d|pasta\s*sauce|filled\s*pasta|simmer|paste|kits?|salad|soup|pasty|dumplings?|noodles?|chutney|relish)\b|(?<!microwave\s)\bpies?\b/i,
-        force: /\btakeaway\s*main\b/i },
-    sub_noodles: { cats: ['pantry', 'frozen'],
-        inc: /\b(noodles?|ramen|ramyun|ramyeon|udon|pho|laksa|mi\s*goreng|indomie|chapagetti)\b/i },
-    sub_soda: { cats: ['drinks'],
-        inc: /\b(soft\s*drinks?|cola|coke|pepsi|sprite|fanta|solo|kirks|schweppes|lemonade|ginger\s*(?:beer|ale)|creaming\s*soda|lemon\s*squash|tonic|mixers?|soda|sparkling|mineral\s*water|kombucha|sodaly|sunkist|mountain\s*dew|bundaberg|passiona|pasito|agrum|bitters)\b/i,
-        exc: /\b(energy\s*drinks?)\b/i },
-    sub_laundry: { cats: ['household'],
-        inc: /\b(laundry|washing\s*powder|fabric\s*(?:softener|conditioner|rinse)|softener|napisan|stain\s*(?:remover|power|lifter)|booster\s*beads|omo|cold\s*power|biozet|dynamo|radiant|ka\s*pod|arfum|persil|surf\s*(?:laundry|capsules|powder|liquid)|fluffy|cuddly|comfort\s*(?:laundry|fabric|concentrate|softener))\b/i,
-        exc: /\b(dish\w*|toilet|floor|bowl|surface|kitchen|bathroom|oven|glass)\b/i },
-    sub_vitamins: { cats: ['health_vitamins'],
-        inc: /\b(vitamins?|vit|vita|multi-?vit\w*|magnesium|zinc|iron|calcium|fish\s*oil|omega|krill|probiotics?|glucosamine|collagen|coq10|b12|b\s*complex|d3|echinacea|electrolyte|effervescent|tablets?|tabs|capsules?|caplets?|gumm(?:y|ies)|vitagummies|chewable|pastilles|supplements?|evening\s*primrose|lutein|turmeric|ashwagandha|liver\s*detox|prostate|immune|ultiboost|ultivite|blackmores|cenovis|ostelin|centrum|caltrate|nature'?s\s*(?:way|own)|healthy\s*care|elevit|berocca|hydralyte|voost|metamucil|healthcarebear|haircarebear|life\s*botanics)\b/i,
-        exc: /\b(lotion|wash|serum|moisturi[sz]er|primer|scrub|cuticle|nail|bubble\s*bath|bath|soap|cream|cleanser|shampoo|conditioner|lip|sunscreen|spf|deodorant|mask|toothpaste|mouthwash|makeup|foundation|mascara|protein\s*powder|wipes|blush|sticks?|yogh?urts?|milky\s*bites)\b/i },
-};
-const SUB_CATEGORY_TERMS = Object.fromEntries(Object.keys(SUB_CATEGORY_RULES).map(k => [k, k]));
-function _inSub(it, key) {
-    const rule = SUB_CATEGORY_RULES[key];
-    const title = it.title || '';
-    if (!rule.cats.includes(it.category)) return false;
-    if (rule.force && rule.force.test(title)) return true;
-    return rule.inc.test(title) && !(rule.exc && rule.exc.test(title));
-}
-// Each product sits in ONE place: a cola is under 汽水 only, not also under 飲料.
-// Departments therefore leave out what already has its own shortcut chip.
-// The one shortcut a product belongs to (first match wins, so nothing is listed twice)
-function subCategoryOf(it) {
-    if (it._sub !== undefined) return it._sub;
-    it._sub = '';
-    for (const key in SUB_CATEGORY_RULES) {
-        if (_inSub(it, key)) { it._sub = key; break; }
-    }
-    return it._sub;
-}
+// Shortcut categories (冰淇淋, 巧克力, 洋芋片…) live in category-rules.js (shared with the automatic tests)
 // What the product card shows as its category: "汽水" for a cola rather than "飲料"
 function displayCategoryKey(it) {
     return subCategoryOf(it) || it.category;
@@ -1038,7 +991,7 @@ function renderFavPanel() {
             <div class="fav-hint">
                 <i class="fa-regular fa-heart"></i>
                 <span>${t('fav_hint')}</span>
-                <button type="button" class="icon-btn border-0" aria-label="Close" onclick="try{safeStore.setItem('fav_hint_dismissed','1')}catch(e){}; renderFavPanel()"><i class="fa-solid fa-xmark text-[12px]"></i></button>
+                <button type="button" class="icon-btn border-0" aria-label="${t('aria_close')}" onclick="try{safeStore.setItem('fav_hint_dismissed','1')}catch(e){}; renderFavPanel()"><i class="fa-solid fa-xmark text-[12px]"></i></button>
             </div>`;
         panel.classList.remove('hidden');
         return;

@@ -243,6 +243,17 @@ Rules for "zh" (read carefully):
 12. Fish and seafood must match the English exactly: salmon=鮭魚, whiting=鱚魚, hoki=藍鱈, barramundi=尖吻鱸, dory=多利魚, basa=巴沙魚, tuna=鮪魚, prawn=蝦, squid/calamari=魷魚/中卷. Never swap one fish or meat for another.
 13. If a list of problems is given for a title, the new translation must fix all of them.
 
+Rules for ALL THREE languages (learned from a full human review of 6,000 translations):
+14. The brand stays in English letters in "ja" and "ko" too (Cadbury, not キャドバリー / 캐드버리). Shoppers match it to the pack on the Australian shelf.
+15. Translate only what the title says. Never add words, claims, sizes or brands that are not there (no 成犬 unless it says Adult, no 無毒/純水/抗菌/冷凍/保濕/經典, no Chinese brand of a DIFFERENT company: Garnier is not 露得清, Cadbury is not 吉力貝, Revlon is not 麗仕). Never drop a variant word that changes the product (Extra Strong, Sugar Free, Zero Carb = 零碳水 not 零碳, Dairy Free ≠ Lactose Free, Permanent, Leave-in, Sensitive, Anti-Fall = 防落髮).
+16. Pack counts: "Pk 12" / "12 Pack" = 12 pieces -> zh 12入, ja 12個入/12本入/12枚入 (never 12パック), ko 12개입 (never 12팩). "2 Pack 450g" means 450g in total -> 450克（2入）, not 450克 x 2入. Write a pack count only ONCE ("85g x 12" -> 85克 x 12入, never "85克 x 12入 12入裝").
+17. "per kg" means the price is per kilogram -> zh 每公斤 / ja 1kgあたり / ko kg당 (it is NOT a 1 kg pack).
+18. Non-food items have a scent, not a flavour: candles, air fresheners, dish liquid, body wash -> 香 / 香り / 향 (never 口味 / 味 / 맛). "Original" on skincare = 經典款 (not 原味).
+19. Meat cuts: Scotch Fillet = 肋眼 (rib eye), Rump = 牛臀肉, Porterhouse = 紐約客, Sirloin = 沙朗, Eye Fillet = 菲力, Forequarter Chops = 肩胛排, Loin Chops = 里肌排. "No Added Hormones" = 無添加荷爾蒙 / ホルモン剤不使用 / 호르몬 무첨가.
+20. Hosiery & clothing: Tights = 褲襪, Knee Hi = 及膝襪, Footlet = 隱形襪, Brief = 三角褲, Trunk = 四角褲. Australian sizes stay as written ("Size 10" -> 10號 in zh, サイズ10 / 사이즈 10).
+21. Taiwan wording in zh: 雷射 (not 激光), 嬌生 (Johnson's), 淡菜 (mussels, not 青口), 聖代 (not 新地), 番茄醬 only for ketchup (pasta sauce = 義大利麵醬).
+22. Each field contains only its own language's script (no Korean inside "ja", no Japanese kana inside "zh" or "ko").
+
 Titles:
 """
 
@@ -490,7 +501,7 @@ def run_auto_translate():
                         if t in qa_notes:
                             new['qa_tries'] = (old or {}).get('qa_tries', 0) + 1
                         # only accept a new translation that is not worse than the one we have
-                        if old and old.get('zh') and len(tr_problems(t, new)) > len(tr_problems(t, old)):
+                        if old and old.get('zh') and len(tr_problems(t, new, style=True)) > len(tr_problems(t, old, style=True)):
                             if t in qa_notes:
                                 old['qa_tries'] = old.get('qa_tries', 0) + 1
                             continue

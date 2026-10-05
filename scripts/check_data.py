@@ -144,6 +144,21 @@ def pre():
         block = True
         problems.append("三家超市都沒有本週特價資料")
 
+    # Category health: new products that no category rule recognised (they were guessed as
+    # 居家日用/雜貨調味). Shown on the run page so a rule can be added; never blocks the update.
+    try:
+        sys.path.insert(0, ROOT)
+        import categories
+        categories.GUESSED.clear()
+        for it in items:
+            if it.get('period') == 'current':
+                categories.classify_product(it.get('title') or '')
+        guessed = sorted(categories.GUESSED)
+        if guessed:
+            print(f"::notice::{len(guessed)} 件新商品沒有對應的分類規則（暫放居家日用/雜貨調味），例如：" + '；'.join(t[:40] for t in guessed[:8]))
+    except Exception as e:
+        print(f"[WARN] category check skipped: {e}")
+
     changed = prev_items is None or fingerprint(items, stats, trans) != fingerprint(prev_items, prev_stats, prev_trans)
     print("本週件數:", {f"{s}/{p}": n for (s, p), n in sorted(now_c.items())})
     out('changed', 'true' if changed and not block else 'false')
