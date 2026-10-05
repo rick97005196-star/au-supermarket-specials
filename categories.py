@@ -31,7 +31,7 @@ _SUPPLEMENT_BRANDS = r"(?:blackmores|swisse|nature'?s\s*(?:way|own)|centrum|calt
 _RULES = [
     # ---- added after the full review of ~6,000 products (Oct 2026); each line is a pattern, not one product ----
     # not food, although a food word is in the name (stand MIXER, cake TINS, fruit & citrus FOOD for plants…)
-    ('household', r"\b(?:stand\s*mixer|hand\s*mixer|food\s*chopper|snack\s*containers?|food\s*containers?|bento\s*(?:box|containers?)|container\s*bags|phone\s*holder|baking\s*accessories|silicone\s*baking|cake\s*tins?|loaf\s*tin|bakeware|doormats?|leggings?|fertilis\w*|brunnings|(?:fruit\s*&\s*citrus|rose\s*&\s*flower|plant|lawn|garden)\s*food|growing\s*mix|potting\s*mix|seaweed\s*concentrate|gardenlife|trampoline|backpack|scrub\s*brush|soap\s*dispens\w*|dip\s*station|home\s*gym|meerkat)\b"),
+    ('household', r"\b(?:stand\s*mixer|hand\s*mixer|food\s*chopper|snack\s*containers?|food\s*containers?|bento\s*(?:box|containers?)|container\s*bags|phone\s*holder|baking\s*accessories|silicone\s*baking|cake\s*tins?|loaf\s*tin|bakeware|doormats?|leggings?|fertilis\w*|brunnings|(?:fruit\s*&\s*citrus|rose\s*&\s*flower|plant|lawn|garden)\s*food|growing\s*mix|potting\s*mix|seaweed\s*concentrate|gardenlife|trampoline|backpack|scrub\s*brush|soap\s*dispens\w*|dip\s*station|home\s*gym|meerkat|facial\s*tissues?|tissues?\s*(?:box|pack|\d))\b"),
     # personal care the old rules missed (nail, hair styling, oral care, first aid, skin patches)
     ('health_vitamins', r"\b(?:pore\s*strips?|hand\s*saniti[sz]\w*|ointment|mighty\s*patch|pimple\s*patch|teeth\s*whitening|whitening\s*strips|hismile|baby\s*bath|shave\s*(?:gel|foam|cream)|king\s*of\s*shaves|detangl\w*|face\s*care|body\s*cream|neat\s*feat|arch\s*cushion|metatarsal|heat\s*protection|slick\s*styler|texturising|curl\s*enhancer|volume\s*powder|volumising|all\s*in\s*one\s*treatment|interdental|piksters|sally\s*hansen|miracle\s*gel|top\s*coat|nail\s*strengthener|hair\s*bleach|bleach\s*hair|post\s*bleach|band[\s-]*aids?|elastoplast|instant\s*natural\s*protein|protein\s*powder)\b|\b(?:protein|creatine)\b[^,]*\bpowder\b"),
     # supplements that do not say "tablets/capsules" (powders, cubes, kids' chews)
@@ -366,6 +366,11 @@ def classify_product(title: str, raw_cat: str = "", product_url: str = "") -> st
     if re.search(r'\bfrozen\b', tl):
         return 'frozen'
 
+    # Clearly not food (clothing, stationery, car, tools, toys, electronics, home goods): household,
+    # and not worth reporting as "unknown"
+    if re.search(_NON_FOOD, tl):
+        return 'household'
+
     # Fallback to pantry if edible food grocery, else household
     # (GUESSED is set so the weekly check can list products no rule recognised -> new rules get added)
     GUESSED.add(t)
@@ -377,6 +382,26 @@ def classify_product(title: str, raw_cat: str = "", product_url: str = "") -> st
 
 # Titles that reached the last-resort guess above (no rule recognised them)
 GUESSED = set()
+
+# Everyday non-food words (ALDI Special Buys, Bonds clothing, stationery, car, tools...)
+_NON_FOOD = re.compile(
+    r"\b(?:socks?|briefs?|bikini|trunks?|boxers?|undies|underwear|singlets?|chesty\s*bond|tights?|knee\s*highs?|"
+    r"leggings?|bras?|crop|hipsters?|pyjamas?|onesies?|t-?shirts?|shirts?|jackets?|hoodies?|shorts|pants|jeans|"
+    r"boots?|shoes|sneakers|slippers|thongs|gloves|beanies?|hats?|"
+    r"pens?|pencils?|markers?|crayons?|notebooks?|stationery|scissors|tape|glue|stickers?|"
+    r"car|seat\s*covers?|cargo|tyres?|auto|dash\s*cam|"
+    r"vacuum|cleaner|mop|broom|brush(?:es)?|cloths?|towels?|bed\s*sheets?|quilts?|pillows?|blankets?|mattress|cushions?|rugs?|mats?|curtains?|"
+    r"drill|saw|tools?|toolbox|ladder|torch|led|lights?|lamps?|globes?|batter(?:y|ies)|chargers?|cables?|usb|speakers?|headphones|earbuds|"
+    r"display|tv|monitor|camera|tablet\s*case|phone|"
+    r"toys?|puzzles?|games?|lego|dolls?|plush|figures?|craft|"
+    r"chairs?|tables?|shelf|shelves|storage|organi[sz]er|baskets?|hangers?|airer|bins?|buckets?|"
+    r"bottles?|sipper|tumbler|flask|mugs?|dinner\s*plates?|cutlery|knives|knife|frypans?|saucepans?|"
+    r"candles?|diffuser|vase|frames?|clocks?|"
+    r"tent|esky|cooler|bbq|barbecue|garden|hose|planters?|"
+    r"footlets?|low\s*cut|q(?:ua)?r?te?r\s*crew|crew\s*\d|no\s*show|wondersuit|washbag|chesty|compression|"
+    r"books?|colouring|slime|bouncy\s*ball|caps?|apron|belts?|socket|r(?:at|a)chet|lighters?|tongs|hooks|scales?|"
+    r"fryer|air\s*purifier|pedestal\s*fan|mower|sprayer|shears|puppets|grill\s*accessories|mosquito\s*coils|fly\s*trap|"
+    r"insect|weed|canister|caddy|trivet|tablecloths?|shoe\s*protector|sneaker\s*wipes|leather\s*wipes|sim)\b", re.I)
 
 
 APPLIANCE_HARDWARE_REGEX = re.compile(
