@@ -23,7 +23,8 @@ async function sha256(text) {
 async function ensureTables(db) {
     await db.batch([
         db.prepare('CREATE TABLE IF NOT EXISTS visit_unique (day TEXT NOT NULL, vid TEXT NOT NULL, device TEXT, lang TEXT, region TEXT, PRIMARY KEY (day, vid))'),
-        db.prepare('CREATE TABLE IF NOT EXISTS visit_count (day TEXT PRIMARY KEY, views INTEGER NOT NULL DEFAULT 0)')
+        db.prepare('CREATE TABLE IF NOT EXISTS visit_count (day TEXT PRIMARY KEY, views INTEGER NOT NULL DEFAULT 0)'),
+        db.prepare('CREATE TABLE IF NOT EXISTS hit_rate (day TEXT NOT NULL, who TEXT NOT NULL, n INTEGER NOT NULL DEFAULT 0, PRIMARY KEY (day, who))')
     ]);
 }
 
@@ -52,6 +53,11 @@ export async function onRequestPost({ request, env }) {
     const day = brisbaneDay();
     const db = env.FEEDBACK_DB;
     await ensureTables(db);
+    // anti-flood: one network counts at most 300 page views a day (a script cannot inflate the numbers
+    // or use up the free database allowance). Only a one-way daily hash of the IP is kept.
+    const who = (await sha256((request.headers.get('CF-Connecting-IP') || 'x') + '|' + day + '|hit')).slice(0, 16);
+    const lim = await db.prepare('INSERT INTO hit_rate (day, who, n) VALUES (?, ?, 1) ON CONFLICT(day, who) DO UPDATE SET n = n + 1 RETURNING n').bind(day, who).first();
+    if (lim && lim.n > 300) return json({ ok: true, limited: true });
     await db.batch([
         db.prepare('INSERT OR IGNORE INTO visit_unique (day, vid, device, lang, region) VALUES (?, ?, ?, ?, ?)').bind(day, vid, device, lang, region),
         db.prepare('INSERT INTO visit_count (day, views) VALUES (?, 1) ON CONFLICT(day) DO UPDATE SET views = views + 1').bind(day)
@@ -65,6 +71,7 @@ export async function onRequestGet({ request, env }) {
     if (!env.FEEDBACK_DB) return json({ ok: false, error: 'no_db' });
     const db = env.FEEDBACK_DB;
     await ensureTables(db);
+    await db.prepare('DELETE FROM hit_rate WHERE day < ?').bind(brisbaneDay(1)).run();
     const from30 = brisbaneDay(29), from7 = brisbaneDay(6), today = brisbaneDay();
     const [visitors, views, totals, device, lang, region] = await db.batch([
         db.prepare('SELECT day, COUNT(*) AS n FROM visit_unique WHERE day >= ? GROUP BY day').bind(from30),
