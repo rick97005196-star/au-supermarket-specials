@@ -208,18 +208,20 @@ const SUB_CATEGORY_RULES = {
         inc: /\b(ice\s*creams?|gelato|sorbet|magnum|cornetto|drumstick|paddle\s*pop|weis|frosty\s*fruits|icy\s*poles?|ice\s*blocks?|zooper|connoisseur|cremissimo|ben\s*&\s*jerry'?s|h[aä]agen|frozen\s*(?:dessert|yogh?urt)|yogh?urt\s*sticks|ice\s*sticks|sundae|golden\s*gaytime|splice|maxibon|bulla)\b/i,
         exc: /\b(makers?|machines?|blenders?)\b/i },
     sub_chocolate: { cats: ['snacks'],
-        inc: /\b(chocolates?|choc|cadbury|lindt|lindor|ferrero|kinder|toblerone|maltesers|m&m'?s|mars|snickers|twix|bounty|milky\s*way|kit\s*kat|kitkat|aero|freddo|caramilk|cherry\s*ripe|crunchie|picnic|boost|moro|chomp|chokito|milkybar|smarties|reese'?s|violet\s*crumble|darrell\s*lea|whittaker'?s|nudo|raffaello|roses|old\s*gold|toffifee)\b/i,
-        exc: /\b(biscuits?|cookies?|digestives?|tim\s*tams?|timtams|tee\s*vee|wagon\s*wheels|fingers|nut\s*bars?|protein\s*bars?|muesli|fibre\s*one|oaty|brownies?|mix|popcorn|lollies|eclairs|cereal|crackers?|slice|allsorts)\b/i },
+        inc: /\b(chocolates?|choc|cadbury|lindt|lindor|ferrero|kinder|toblerone|maltesers|m&m'?s|mars|snickers|twix|bounty|milky\s*way|kit\s*kat|kitkat|aero|freddo|caramilk|cherry\s*ripe|crunchie|picnic|boost|moro|chomp|chokito|milkybar|smarties|reese'?s|violet\s*crumble|darrell\s*lea|whittaker'?s|nudo|raffaello|roses|old\s*gold|toffifee|allen'?s\s*block)\b/i,
+        exc: /\b(biscuits?|cookies?|digestives?|tim\s*tams?|timtams|tee\s*vee|wagon\s*wheels|fingers|nut\s*bars?|protein\s*bars?|muesli|fibre\s*one|oaty|brownies?|(?:cookie|brownie|baking|trail)\s*mix|popcorn|lollies|eclairs|cereal|crackers?|slice|allsorts)\b/i },
     sub_chips: { cats: ['snacks'],
         inc: /\b(chips|crisps|tortilla|twisties|cheezels|burger\s*rings|cheetos|doritos|pringles|thins|kettle|grain\s*waves|grainwaves|nibbles|samboy|jumpy'?s|smith'?s|smiths|red\s*rock\s*deli|cc'?s|tostitos|popcorners)\b/i,
         exc: /\b(dips?|crackers?|choc(?:olate)?\s*chips|fruit\s*crisps|bars?|biscuits?|cookies?)\b/i },
     sub_coffee: { cats: ['drinks'],
         inc: /\b(coffee|espresso|latte|cappuccino|mocha|affogato|nescaf[eé]|moccona|nespresso|lungo|cold\s*brew)\b/i,
         exc: /\b(caffeine\s*free|decaffeinated\s+(?:black\s+)?tea|nail|machines?|makers?|grinders?(?!\s*coffee))\b/i },
-    // 微波即食: heat-and-eat meals (ready meals, microwave rice, instant soup, frozen dumplings…)
+    // 微波即食: complete meals you only heat in the microwave and eat (Lean Cuisine, On The Menu,
+    // supermarket ready meals like "Butter Chicken with Basmati Rice 350g", slow-cooked mains)
     sub_quickmeals: { cats: ['frozen', 'pantry', 'meat', 'dairy_eggs'],
-        inc: /\b(microwave\w*|ready\s*meals?|lean\s*cuisine|on\s*the\s*menu|healthy\s*choice|youfoodz|muscle\s*chef|tasty\s*bite|ben'?s\s*original|uncle\s*ben'?s|rice\s*(?:pouch|cups?)|quick\s*cups?|lunch\s*bowl|instant\s*meals?|meals?\s*(?:for\s*one|pots?)|big\s*feast|takeaway\s*(?:main|side)|steamfresh|cup\s*a\s*soup|soup\s*(?:sachets|cups?|pots?)|continental\s*sensations?|big\s*red\s*soup|ready\s*to\s*eat|heat\s*(?:&|and)\s*eat|mac\s*(?:&|and)\s*cheese|fried\s*rice|dumplings?|dim\s*sims?|gyoza|wontons?|siu\s*mai|pork\s*buns|bao)\b/i,
-        exc: /\b(bases?|flour|crackers?|meal\s*kits?|kits?|sauce|pastry|popcorn|seasoning|stock|wrappers?|filled\s*pasta)\b/i },
+        inc: /\b(microwave\s*(?:meals?|pouch|rice|pies?|sausage\s*rolls?)|microwav\w*\s*meal|ready\s*meals?|frozen\s*meals?|lean\s*cuisine|on\s*the\s*menu|ruffie|strength\s*meals|core\s*powerfoods|cucina\s*classica\s*meal|sirena\s*ready|youfoodz|muscle\s*chef|macro\s*meals?|big\s*feast|takeaway\s*main|with\s+(?:\w+\s+){0,2}(?:rice|mash)|slow\s*cooked|heat\s*(?:&|and)\s*eat|meal\s*\d{3}\s*g)\b/i,
+        exc: /\b(sauce\s*\d|pasta\s*sauce|filled\s*pasta|simmer|paste|kits?|salad|soup|pasty|dumplings?|noodles?|chutney|relish)\b|(?<!microwave\s)\bpies?\b/i,
+        force: /\btakeaway\s*main\b/i },
     sub_noodles: { cats: ['pantry', 'frozen'],
         inc: /\b(noodles?|ramen|ramyun|ramyeon|udon|pho|laksa|mi\s*goreng|indomie|chapagetti)\b/i },
     sub_soda: { cats: ['drinks'],
@@ -233,14 +235,32 @@ const SUB_CATEGORY_RULES = {
         exc: /\b(lotion|wash|serum|moisturi[sz]er|primer|scrub|cuticle|nail|bubble\s*bath|bath|soap|cream|cleanser|shampoo|conditioner|lip|sunscreen|spf|deodorant|mask|toothpaste|mouthwash|makeup|foundation|mascara|protein\s*powder|wipes|blush|sticks?|yogh?urts?|milky\s*bites)\b/i },
 };
 const SUB_CATEGORY_TERMS = Object.fromEntries(Object.keys(SUB_CATEGORY_RULES).map(k => [k, k]));
+function _inSub(it, key) {
+    const rule = SUB_CATEGORY_RULES[key];
+    const title = it.title || '';
+    if (!rule.cats.includes(it.category)) return false;
+    if (rule.force && rule.force.test(title)) return true;
+    return rule.inc.test(title) && !(rule.exc && rule.exc.test(title));
+}
+// Each product sits in ONE place: a cola is under 汽水 only, not also under 飲料.
+// Departments therefore leave out what already has its own shortcut chip.
+// The one shortcut a product belongs to (first match wins, so nothing is listed twice)
+function subCategoryOf(it) {
+    if (it._sub !== undefined) return it._sub;
+    it._sub = '';
+    for (const key in SUB_CATEGORY_RULES) {
+        if (_inSub(it, key)) { it._sub = key; break; }
+    }
+    return it._sub;
+}
+// What the product card shows as its category: "汽水" for a cola rather than "飲料"
+function displayCategoryKey(it) {
+    return subCategoryOf(it) || it.category;
+}
 function itemInCategory(it, cat) {
     if (!cat || cat === 'all') return true;
-    const rule = SUB_CATEGORY_RULES[cat];
-    if (rule) {
-        const title = it.title || '';
-        return rule.cats.includes(it.category) && rule.inc.test(title) && !(rule.exc && rule.exc.test(title));
-    }
-    return it.category === cat;
+    if (SUB_CATEGORY_RULES[cat]) return subCategoryOf(it) === cat;
+    return it.category === cat && !subCategoryOf(it);
 }
 
 function getCleanCategoryLabel(catKey) {
@@ -2096,7 +2116,7 @@ function createProductCardElement(item) {
             <div class="p-meta">
                 <span class="p-store"><i class="store-dot ${storeDotClass}"></i>${item.store}</span>
                 <span class="sep">·</span>
-                <span class="p-cat">${getCleanCategoryLabel(item.category)}</span>
+                <span class="p-cat">${getCleanCategoryLabel(displayCategoryKey(item))}</span>
             </div>
 
             <h3 class="p-title" title="${escAttr(primaryTitle)}">${primaryTitle}</h3>

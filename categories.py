@@ -41,7 +41,9 @@ _RULES = [
     ('dairy_eggs', r"\b(?:yogh?urt|custard)\b[^,]{0,25}\bpouch\b|\b(?:yogh?urt|custard)\s*(?:pouch|tub|\d+\s*g)\b(?!.*(?:sticks|frozen|coated|trail\s*mix|bars?))|\bthick\s*&\s*creamy\b.*\byogh?urt\b"),
     # heat-and-eat ready meals and pies -> frozen
     ('frozen', r"\b(?:lean\s*cuisine|on\s*the\s*menu\s*(?:big\s*feast|takeaway)|mccain\s*(?:air\s*fryer|airfryer)|charlotte'?s\s*bakery.*pies?|vili'?s.*pie|ruffie,\s*lean\s*cuisine)\b"),
-    ('snacks', r"\b(?:rice\s*cakes|rice\s*crackers|cereal\s*bars|muesli\s*bars)\b"),
+    ('snacks', r"\b(?:rice\s*cakes|rice\s*crackers|cereal\s*bars|muesli\s*bars|chocolate\s*bar)\b"),
+    ('dairy_eggs', r"\b(?:long\s*life\s*milk|(?:macadamia|almond|oat|soy)\s*milk)\b"),
+    ('pantry', r"\b(?:smooth|crunchy)\b.*\bpeanut\s*butter\b(?!\s*cups)"),
     ('household', r"\bfabric\s*(?:softener|conditioner)\b"),
     ('drinks', r"\bsoft\s*drinks?\b"),
     ('meat', r"\bscotch\s*(?:fillet|thin|steaks?)\b"),
@@ -51,6 +53,10 @@ _RULES = [
     ('produce', r"\bsalad\s*bowls?\b"),
 ]
 def _strong_department(tl):
+    # cleaning products are household whatever their scent ("Lemon" toilet gel is not fruit)
+    if re.search(r"\b(?:dishwash\w*|dishwasher|dish\s*(?:liquid|wash)|laundry|toilet|washing\s*machine|detergent|bleach|disinfectant|multipurpose|surface\s*(?:spray|cleaner|wipes)|(?:floor|glass|oven|bathroom|kitchen|toilet)\s*clean\w*|stain\s*remover|air\s*freshener|fly\s*spray|insect\s*spray|bin\s*liners|garbage\s*bags)\b", tl) \
+            and not re.search(r"\b(?:baby|face|makeup|cleansing|hand\s*wash|body|toothpaste|teeth|denture)\b", tl):
+        return 'household'
     if re.search(r"\b(?:dishwash\w*|dishwasher|laundry|toilet|washing\s*machine)\b", tl):
         return None
     for dept, pat in _RULES:
