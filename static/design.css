@@ -953,3 +953,6 @@ html.dark {
 .search-field:focus, .fb-text:focus { box-shadow: 0 0 0 3px rgba(118,118,128,.25); }
 :focus-visible { outline-color: var(--ink-2); }
 ::selection { background: rgba(118,118,128,.3); }
+
+/* "熱門暢銷" sits on the white photo area in both themes: keep a dark orange that is readable on white */
+.p-flag, html.dark .p-flag { color: #b64400; background: rgba(255,255,255,.92); }
