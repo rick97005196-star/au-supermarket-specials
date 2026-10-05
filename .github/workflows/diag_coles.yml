@@ -3,6 +3,7 @@ on: workflow_dispatch
 jobs:
   diag:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - uses: actions/setup-python@v5
         with: { python-version: '3.11' }
@@ -13,40 +14,40 @@ jobs:
           from curl_cffi import requests as r
           def w(m): print('::warning::' + m.replace('\n', ' ')[:1500])
           s = r.Session(impersonate='chrome')
+          log = []
           def get(pg):
-              for a in range(3):
-                  try:
-                      x = s.get(f'https://www.coles.com.au/on-special?page={pg}', timeout=30)
-                      m = re.search(r'<script id="__NEXT_DATA__"[^>]*>(.*?)</script>', x.text, re.S)
-                      if m:
-                          d = json.loads(m.group(1)); sr = d['props']['pageProps'].get('searchResults')
-                          if sr: return d, sr
-                  except Exception as e: pass
-                  time.sleep(5)
-              return None, None
-          t0 = time.time()
-          d, sr = get(1)
-          f = [x for x in sr.get('filters', []) if x.get('name') == 'Special']
-          w('store=' + str(d['props']['pageProps'].get('initStoreId')) + ' filter=' + json.dumps(f)[:1200])
-          pages = -(-sr['noOfResults'] // sr['pageSize'])
-          c = collections.Counter(); fails = []; seen = set(); ex = []
-          for pg in range(1, pages + 1):
-              if pg > 1:
-                  time.sleep(1); d, sr = get(pg)
-              if not sr: fails.append(pg); continue
-              for p in sr['results']:
-                  if p.get('_type') != 'PRODUCT': continue
-                  pr = p.get('pricing') or {}
-                  if p['id'] in seen: c['dup'] += 1; continue
-                  seen.add(p['id']); c['n'] += 1
-                  if pr.get('onlineSpecial'): c['online'] += 1; continue
-                  if not p.get('availability'): c['unavail'] += 1
-                  now, was = pr.get('now') or 0, pr.get('was') or 0
-                  if was and now and now <= was * 0.55: c['half'] += 1
-                  elif was and now and now <= was * 0.7: c['30pct+'] += 1
-                  elif was: c['was'] += 1
-                  else: c['nowas_' + str(pr.get('specialType'))] += 1
-                  c['st_' + str(pr.get('specialType'))] += 1
-                  if len(ex) < 4 and not was: ex.append(json.dumps({k: p.get(k) for k in ('name','brand','size','pricing')})[:300])
-          w(f'pages={pages} fails={fails[:20]} nfail={len(fails)} secs={int(time.time()-t0)} ' + json.dumps(c))
+              t = time.time()
+              try:
+                  x = s.get(f'https://www.coles.com.au/on-special?filter_Special=halfprice&page={pg}', timeout=20)
+              except Exception as e:
+                  log.append(f'{pg}:EXC'); return None
+              m = re.search(r'<script id="__NEXT_DATA__"[^>]*>(.*?)</script>', x.text, re.S)
+              sr = m and json.loads(m.group(1))['props']['pageProps'].get('searchResults')
+              log.append(f'{pg}:{x.status_code}:{"ok" if sr else ("blk" if "Pardon" in x.text else "err")}:{time.time()-t:.1f}s')
+              return sr
+          sr = get(1)
+          total = sr['noOfResults']; pages = -(-total // sr['pageSize'])
+          c = collections.Counter(); seen = set(); ex = []; bad = 0; pg = 1
+          while True:
+              if sr:
+                  bad = 0
+                  for p in sr['results']:
+                      if p.get('_type') != 'PRODUCT': continue
+                      pr = p.get('pricing') or {}
+                      if p['id'] in seen: c['dup'] += 1; continue
+                      seen.add(p['id']); c['n'] += 1
+                      if pr.get('onlineSpecial'): c['online'] += 1; continue
+                      if not p.get('availability'): c['unavail'] += 1
+                      now, was = pr.get('now') or 0, pr.get('was') or 0
+                      c['half' if was and now and now <= was * 0.55 else ('was' if was else 'nowas')] += 1
+                      if len(ex) < 3: ex.append(json.dumps({k: p.get(k) for k in ('name','brand','size','pricing')})[:400])
+              else:
+                  bad += 1
+                  if bad >= 3: break
+                  time.sleep(10); sr = get(pg); continue
+              pg += 1
+              if pg > pages: break
+              time.sleep(1.5); sr = get(pg)
+          w(f'total={total} pages={pages} ' + json.dumps(c))
+          w(' '.join(log))
           for e in ex: w(e)
