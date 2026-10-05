@@ -917,3 +917,39 @@ html.dark .cat-grid .chip, html.dark .chip { background: var(--surface); box-sha
 :root { --glass: rgba(251, 251, 253, 0.86); }
 html.dark { --glass: rgba(22, 22, 23, 0.86); }
 @media (max-width: 640px) { .brand-link [data-i18n="app_title"] { font-size: 15px; } .header-actions { gap: 4px; } .lang-pill { padding: 0 6px; } }
+
+
+/* ==========================================================================
+   v9.2 – no blue: classic black & white (Apple Store style) with a fresh green
+   for "this week" status. Buttons are black in light mode, white in dark mode.
+   ========================================================================== */
+:root {
+    --accent: #1d1d1f;
+    --accent-ink: #ffffff;
+    --accent-soft: #f0f0f2;
+    --accent-text: #1a7f45;
+    --fresh: #1a7f45;
+}
+html.dark {
+    --accent: #f5f5f7;
+    --accent-ink: #1d1d1f;
+    --accent-soft: #2c2c2e;
+    --accent-text: #4cc27a;
+    --fresh: #4cc27a;
+}
+.cart-btn { background: var(--accent); color: var(--accent-ink); }
+.cart-count { background: var(--accent-ink); color: var(--accent); }
+.p-add { background: var(--accent); color: var(--accent-ink); }
+.p-add:hover { background: var(--accent); color: var(--accent-ink); opacity: .85; }
+.fb-fab { background: var(--accent); color: var(--accent-ink); box-shadow: 0 6px 18px -6px rgba(0,0,0,.35); }
+.btn-primary, .btn-accent { background: var(--accent); color: var(--accent-ink); }
+.btn-ghost, .btn-ghost:hover { color: var(--ink); }
+.suggest-chip.is-active, html.dark .suggest-chip.is-active,
+.toggle-pill.is-on-accent, html.dark .toggle-pill.is-on-accent { background: var(--accent); color: var(--accent-ink); }
+.status-dot { background: var(--fresh); }
+.period-chip { color: var(--fresh); }
+.lang-pill > .fa-globe, .region-chip > i { color: var(--ink-2); }
+.fb-card-icon { background: var(--fill); color: var(--ink); }
+.search-field:focus, .fb-text:focus { box-shadow: 0 0 0 3px rgba(118,118,128,.25); }
+:focus-visible { outline-color: var(--ink-2); }
+::selection { background: rgba(118,118,128,.3); }
