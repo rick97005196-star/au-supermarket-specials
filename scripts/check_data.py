@@ -159,6 +159,23 @@ def pre():
     except Exception as e:
         print(f"[WARN] category check skipped: {e}")
 
+    # Quick searches (熱門搜尋): how many products each one shows this week, with a few examples,
+    # so an odd result can be spotted on the run page. Never blocks the update.
+    try:
+        js = ("const r=require(process.argv[1]);const a=JSON.parse(require('fs').readFileSync(0,'utf8'));"
+              "const o={};for(const k in r.QUICK_SEARCH){const m=a.filter(i=>r.quickSearchMatch(i,k));"
+              "o[k]=[m.length,m.slice(0,3).map(i=>i.title.slice(0,30))]}process.stdout.write(JSON.stringify(o))")
+        cur = [{'title': it.get('title') or '', 'category': it.get('category') or ''} for it in items
+               if it.get('period') == 'current' and (it.get('store') == 'ALDI' or (it.get('save_amount') or 0) > 0)]
+        res = subprocess.run(['node', '-e', js, os.path.join(ROOT, 'static', 'category-rules.js')],
+                             input=json.dumps(cur), capture_output=True, text=True, timeout=60, check=True)
+        summary = json.loads(res.stdout)
+        print("::notice::熱門搜尋本週結果：" + '，'.join(f"{k} {v[0]} 件" for k, v in summary.items()))
+        for k, (n, ex) in summary.items():
+            print(f"  {k}: {n} -> {' / '.join(ex)}")
+    except Exception as e:
+        print(f"[WARN] quick-search summary skipped: {e}")
+
     changed = prev_items is None or fingerprint(items, stats, trans) != fingerprint(prev_items, prev_stats, prev_trans)
     print("本週件數:", {f"{s}/{p}": n for (s, p), n in sorted(now_c.items())})
     out('changed', 'true' if changed and not block else 'false')

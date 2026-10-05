@@ -65,4 +65,40 @@ function subCategoryOf(it) {
     }
     return it._sub;
 }
-if (typeof module !== 'undefined') module.exports = { SUB_CATEGORY_RULES, subCategoryOf };
+// ---------------- Quick searches (熱門搜尋 chips, and the same words typed in any language) ----------------
+// These do NOT match words in product names (that is how "牛奶" used to show milk coffee, Up&Go and
+// toddler formula). They use strict "what is this product" rules, like the categories:
+//  - a word that has its own category chip (洋芋片, 咖啡, 巧克力, 泡麵, 洗衣精) shows exactly that category,
+//    so the search and the chip always show the same products and the same number;
+//  - 米 / 牛奶 / 衛生紙 have their own strict rules below.
+// Every product that was ever wrongly shown is a test case in tests/search_cases.json.
+const _T = (it) => it.title || '';
+const QUICK_SEARCH = {
+    rice: { terms: ['米', '白米', '大米', '米飯', '白飯', 'お米', 'ご飯', '쌀', '밥', 'rice'],
+        match: (it) => it.category === 'pantry' && !subCategoryOf(it) && /\brice\b/i.test(_T(it)) &&
+            !/\b(?:kits?|tuna|salmon|sirena|crackers?|cakes?|rusks?|crisp\w*|bran|flour|vinegar|wine|paper|noodles?|milk|pudding|seasoning|stock|sauce|cereal|bubbles)\b/i.test(_T(it)) },
+    milk: { terms: ['牛奶', '鮮奶', '奶', '牛乳', '鮮乳', '鲜奶', 'ミルク', '우유', 'milk'],
+        // drinking milk: fresh / long-life / lactose-free / barista / plant milks / flavoured milk
+        match: (it) => ['dairy_eggs', 'drinks'].includes(it.category) && !subCategoryOf(it) && /\bmilk\b|\bm\*lk\b/i.test(_T(it)) &&
+            !/\b(?:up\s*&?\s*go|liquid\s*breakfast|breakfast\s*drink|smoothies?|shakes?|protein\s*(?:drink|water)|coffee|espresso|latte|cappuccino|mocha|chocolate(?!\s*(?:flavoured\s*)?milk)|choc(?!\s*milk)|yogh?urt|custard|cheese|condensed|evaporated|powder|formula|toddler|infant|kefir|thistle|bottles|coconut|dessert|pudding|snack)\b/i.test(_T(it)) },
+    toilet: { terms: ['衛生紙', '卫生纸', '廁紙', '廁所衛生紙', 'トイレットペーパー', '화장지', '휴지', 'toilet paper', 'toilet tissue'],
+        match: (it) => it.category === 'household' && /\btoilet\s*(?:paper|tissue|rolls?)\b/i.test(_T(it)) &&
+            !/\b(?:wipes|cleaner|cleaning|gel|brush|holder|freshener|spray|bombs?|blocks?|duck|bowl|rim)\b/i.test(_T(it)) },
+    chips: { terms: ['洋芋片', '薯片', '馬鈴薯片', 'ポテトチップス', 'ポテチ', '감자칩', 'chips', 'crisps', 'potato chips'], sub: 'sub_chips' },
+    coffee: { terms: ['咖啡', 'コーヒー', '커피', 'coffee'], sub: 'sub_coffee' },
+    chocolate: { terms: ['巧克力', '朱古力', 'チョコ', 'チョコレート', '초콜릿', 'chocolate'], sub: 'sub_chocolate' },
+    noodles: { terms: ['泡麵', '泡面', '即食麵', '方便麵', '拉麵', 'ラーメン', 'インスタント麺', 'カップ麺', '라면', 'noodles', 'instant noodles', 'ramen'], sub: 'sub_noodles' },
+    laundry: { terms: ['洗衣精', '洗衣粉', '洗衣液', '洗衣球', '洗剤', '洗濯洗剤', '세탁세제', 'laundry', 'detergent', 'laundry detergent'], sub: 'sub_laundry' },
+};
+const _quickIndex = new Map();
+for (const k in QUICK_SEARCH) QUICK_SEARCH[k].terms.forEach(t => _quickIndex.set(String(t).normalize('NFKC').toLowerCase(), k));
+// "牛奶" / " Milk " / "ＭＩＬＫ" -> 'milk'; anything else -> '' (normal word search)
+function quickSearchKey(query) {
+    return _quickIndex.get(String(query || '').normalize('NFKC').toLowerCase().replace(/\s+/g, ' ').trim()) || '';
+}
+function quickSearchMatch(it, key) {
+    const q = QUICK_SEARCH[key];
+    if (!q) return false;
+    return q.sub ? subCategoryOf(it) === q.sub : !!q.match(it);
+}
+if (typeof module !== 'undefined') module.exports = { SUB_CATEGORY_RULES, subCategoryOf, QUICK_SEARCH, quickSearchKey, quickSearchMatch };

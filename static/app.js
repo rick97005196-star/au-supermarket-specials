@@ -551,6 +551,9 @@ function _findGroup(term) {
 
 // Relevance score for one product (0 = not a match). Every term must match.
 function scoreSearchMatch(item, query) {
+    // 熱門搜尋 words (and the same words typed in any language): strict product rules, not name matching
+    const qk = (typeof quickSearchKey === 'function') ? quickSearchKey(query) : '';
+    if (qk) return quickSearchMatch(item, qk) ? 10 + (isItemPopular(item) ? 2 : 0) : 0;
     const terms = parseSearchTerms(query);
     if (!terms.length) return 1;
     getSearchHaystack(item);
