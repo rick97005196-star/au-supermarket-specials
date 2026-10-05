@@ -956,3 +956,27 @@ html.dark {
 
 /* "熱門暢銷" sits on the white photo area in both themes: keep a dark orange that is readable on white */
 .p-flag, html.dark .p-flag { color: #b64400; background: rgba(255,255,255,.92); }
+
+/* ---------- Quantity stepper (card + shopping list): − 2 + ---------- */
+.p-qty { flex-shrink: 0; display: flex; align-items: center; }
+.qty-stepper {
+    display: inline-flex; align-items: center; height: 30px; border-radius: 999px;
+    background: var(--accent); color: var(--accent-ink); overflow: hidden;
+    animation: qtyIn .18s ease;
+}
+.qty-btn {
+    width: 30px; height: 30px; display: inline-flex; align-items: center; justify-content: center;
+    font-size: 11px; color: inherit; background: transparent; border: 0; cursor: pointer;
+    transition: background .12s ease;
+}
+.qty-btn:active { background: rgba(255,255,255,.18); }
+html.dark .qty-btn:active { background: rgba(0,0,0,.1); }
+.qty-num { min-width: 18px; text-align: center; font-size: 14px; font-weight: 600; }
+.qty-stepper.is-small { height: 30px; background: var(--fill); color: var(--ink); }
+.qty-stepper.is-small .qty-btn:active { background: var(--surface-3); }
+.list-qty { flex-shrink: 0; margin-left: 6px; }
+@keyframes qtyIn { from { transform: scale(.85); opacity: .4; } to { transform: scale(1); opacity: 1; } }
+@media (max-width: 380px) {
+    .qty-btn { width: 27px; }
+    .qty-num { min-width: 14px; font-size: 13px; }
+}

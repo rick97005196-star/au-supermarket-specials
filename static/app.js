@@ -2001,17 +2001,14 @@ function createProductCardElement(item) {
                     </div>
                     ${unitPriceClean ? `<div class="p-unit num mt-0.5 truncate" title="${escAttr(unitPriceClean)}">${unitPriceClean}</div>` : ''}
                 </div>
-                <button
-                    class="p-add"
-                    title="${escAttr(t('add_to_list'))}"
-                    aria-label="${escAttr(t('add_to_list'))}"
-                    onclick='event.stopPropagation(); addToShoppingList(${JSON.stringify(cartPayload).replace(/'/g, "&#39;")})'
-                >
-                    <i class="fa-solid fa-plus text-[13px]"></i>
-                </button>
+                <div class="p-qty"></div>
             </div>
         </div>
     `;
+
+    card.dataset.slKey = shoppingKey(cartPayload);
+    card._slPayload = cartPayload;
+    renderQtyControl(card);
 
     const favBtn = card.querySelector('.p-fav');
     if (favBtn) {
@@ -2491,6 +2488,65 @@ window.addEventListener('popstate', () => {
     } finally { _closingFromBack = false; }
 });
 
+// ---------------- Quantities: one line per product, with − / + ----------------
+// A product is the same product when store + week + name match (database ids change every update).
+function shoppingKey(it) {
+    return `${it.store || ''}|${it.period || 'current'}|${it.title || ''}`;
+}
+let _shoppingQty = {};          // key -> quantity in the list
+function refreshShoppingQtyMap() {
+    _shoppingQty = {};
+    getLocalShoppingList().forEach(it => {
+        const k = shoppingKey(it);
+        _shoppingQty[k] = (_shoppingQty[k] || 0) + (parseInt(it.quantity, 10) || 1);
+    });
+}
+function qtyStepperHTML(q, small) {
+    const minusIcon = q <= 1 ? 'fa-trash-can' : 'fa-minus';
+    const minusLabel = q <= 1 ? t('delete') : '−1';
+    return `<div class="qty-stepper${small ? ' is-small' : ''}" role="group">
+        <button type="button" class="qty-btn" data-d="-1" aria-label="${minusLabel}"><i class="fa-solid ${minusIcon}"></i></button>
+        <span class="qty-num num" aria-live="polite">${q}</span>
+        <button type="button" class="qty-btn" data-d="1" aria-label="+1"><i class="fa-solid fa-plus"></i></button>
+    </div>`;
+}
+// Product card: "+" when not in the list, "− 2 +" when it is
+function renderQtyControl(card) {
+    const box = card.querySelector('.p-qty');
+    if (!box) return;
+    const key = card.dataset.slKey;
+    const q = _shoppingQty[key] || 0;
+    if (box.dataset.q === String(q)) return;
+    box.dataset.q = String(q);
+    box.onclick = (e) => e.stopPropagation();
+    if (!q) {
+        box.innerHTML = `<button type="button" class="p-add" title="${t('add_to_list')}" aria-label="${t('add_to_list')}"><i class="fa-solid fa-plus text-[13px]"></i></button>`;
+        box.firstElementChild.onclick = (e) => { e.stopPropagation(); addToShoppingList(card._slPayload); };
+    } else {
+        box.innerHTML = qtyStepperHTML(q);
+        box.querySelectorAll('.qty-btn').forEach(b => {
+            b.onclick = (e) => { e.stopPropagation(); changeShoppingQty(key, parseInt(b.dataset.d, 10)); };
+        });
+    }
+}
+function refreshCardQtyControls() {
+    document.querySelectorAll('.p-card').forEach(renderQtyControl);
+}
+function changeShoppingQty(key, delta) {
+    let items = getLocalShoppingList();
+    const idx = items.findIndex(it => shoppingKey(it) === key);
+    if (idx < 0) return;
+    const q = (parseInt(items[idx].quantity, 10) || 1) + delta;
+    if (q <= 0) items.splice(idx, 1);
+    else items[idx].quantity = Math.min(q, 99);
+    saveLocalShoppingList(items);
+    loadShoppingList();
+}
+function changeShoppingQtyById(id, delta) {
+    const it = getLocalShoppingList().find(x => x.id === id);
+    if (it) changeShoppingQty(shoppingKey(it), delta);
+}
+
 // LocalStorage helpers for Shopping List in Static / Cloudflare Pages mode
 function getLocalShoppingList() {
     try {
@@ -2506,9 +2562,18 @@ function saveLocalShoppingList(items) {
 
 function repairLocalShoppingItems() {
     try {
-        const items = getLocalShoppingList();
+        let items = getLocalShoppingList();
         if (!items || items.length === 0) return;
         let changed = false;
+        const byKey = new Map();
+        items = items.filter(it => {
+            const k = shoppingKey(it);
+            const first = byKey.get(k);
+            if (!first) { it.quantity = parseInt(it.quantity, 10) || 1; byKey.set(k, it); return true; }
+            first.quantity = Math.min(99, first.quantity + (parseInt(it.quantity, 10) || 1));
+            changed = true;
+            return false;
+        });
         const pool = (typeof staticSpecials !== 'undefined' && staticSpecials) || [];
         items.forEach(it => {
             const price = (typeof it.price === 'number') ? it.price : (parseFloat(it.price) || 0);
@@ -2590,7 +2655,7 @@ function getLocalShoppingData() {
     return {
         items,
         grouped,
-        total_items: items.length,
+        total_items: items.reduce((n, it) => n + (parseInt(it.quantity, 10) || 1), 0),
         total_original: finalOriginal,
         total_saved: Math.round(total_saved * 100) / 100,
         total_cost: Math.round(total_cost * 100) / 100
@@ -2599,6 +2664,8 @@ function getLocalShoppingData() {
 
 async function loadShoppingList() {
     repairLocalShoppingItems();
+    refreshShoppingQtyMap();
+    refreshCardQtyControls();
     let data = null;
     try {
         const res = await apiFetch('/api/shopping-list');
@@ -2656,13 +2723,13 @@ async function loadShoppingList() {
 
             const dotClass = store === 'Coles' ? 'dot-coles' : (store === 'ALDI' ? 'dot-aldi' : 'dot-woolies');
 
-            let storeSubtotal = items.reduce((acc, cur) => acc + (cur.price * cur.quantity), 0);
+            let storeSubtotal = items.reduce((acc, cur) => acc + (cur.price * (parseInt(cur.quantity, 10) || 1)), 0);
 
             const section = document.createElement('div');
             section.className = 'list-section space-y-2';
             section.innerHTML = `
                 <div class="flex items-center justify-between px-1 pb-1 text-[13px]">
-                    <span class="store-label"><i class="store-dot ${dotClass}"></i>${store} <span class="t-ink-3 font-normal">(${items.length})</span></span>
+                    <span class="store-label"><i class="store-dot ${dotClass}"></i>${store} <span class="t-ink-3 font-normal">(${items.reduce((n, it) => n + (parseInt(it.quantity, 10) || 1), 0)})</span></span>
                     <span class="num font-semibold t-ink-2">${t('subtotal')} $${storeSubtotal.toFixed(2)}</span>
                 </div>
                 <div class="space-y-1.5">
@@ -2711,19 +2778,24 @@ async function loadShoppingList() {
                                     })()}
                                     <div class="text-[12px] t-ink-3 flex items-center gap-2 mt-0.5 flex-wrap num">
                                         <span class="font-semibold t-ink">${itPrice.displayWithUnit}</span>
+                                        ${(parseInt(it.quantity, 10) || 1) > 1 ? `<span class="t-ink-2">× ${it.quantity} = <b class="t-ink">$${(itPriceNum * it.quantity).toFixed(2)}</b></span>` : ''}
                                         ${itSave > 0 ? `<span class="t-sale font-medium">${t('save_badge', { amount: itSave.toFixed(2) })}</span>` : ''}
                                         ${itWas > 0 ? `<span class="line-through">${t('was_price')} $${itWas.toFixed(2)}</span>` : ''}
                                     </div>
                                 </div>
                             </div>
-                            <button onclick="deleteShoppingItem(${it.id})" class="t-ink-3 hover:t-ink p-1.5 transition shrink-0" title="${t('delete')}">
-                                <i class="fa-solid fa-xmark text-xs"></i>
-                            </button>
+                            <div class="list-qty" data-id="${it.id}">${qtyStepperHTML(parseInt(it.quantity, 10) || 1, true)}</div>
                         </div>
                     `;}).join('')}
                 </div>
             `;
             container.appendChild(section);
+        });
+        container.querySelectorAll('.list-qty').forEach(box => {
+            const id = Number(box.dataset.id);
+            box.querySelectorAll('.qty-btn').forEach(b => {
+                b.onclick = () => changeShoppingQtyById(id, parseInt(b.dataset.d, 10));
+            });
         });
 
     } catch (e) {
@@ -2771,6 +2843,14 @@ async function addToShoppingList(item) {
 
     // Fallback to localStorage
     const items = getLocalShoppingList();
+    const existing = items.find(it => shoppingKey(it) === shoppingKey(payload));
+    if (existing) {
+        existing.quantity = Math.min(99, (parseInt(existing.quantity, 10) || 1) + 1);
+        saveLocalShoppingList(items);
+        showToast(`${t('added')}: ${item.title.substring(0, 18)}... × ${existing.quantity}`);
+        loadShoppingList();
+        return;
+    }
     payload.id = Date.now();
     payload.is_bought = false;
     items.push(payload);

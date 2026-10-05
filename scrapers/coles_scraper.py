@@ -230,8 +230,11 @@ def scrape_coles_catalogue_items(base_list_url: str, initial_soup: BeautifulSoup
                     price_elem = price_box.select_one('.price')
                     price_text = price_elem.get_text(strip=True) if price_elem else ""
                     price = parse_price(price_text) if price_text else parse_price(full_text)
+                    now_m = re.search(r'\bNow\s+\$(\d+(?:\.\d{2})?)', full_text, re.IGNORECASE)
+                    if now_m:   # "Price Drop, Was on 22/09 $50.00 Now $42.00"
+                        price = float(now_m.group(1))
                     
-                    was_match = re.search(r'Was\s+\$(\d+(?:\.\d{2})?)', full_text, re.IGNORECASE)
+                    was_match = re.search(r'Was(?:\s+on\s+[\d/]+)?\s+\$(\d+(?:\.\d{2})?)', full_text, re.IGNORECASE)  # also "Price Drop, Was on 22/09 $50.00 Now $42.00"
                     if was_match:
                         was_price = float(was_match.group(1))
 

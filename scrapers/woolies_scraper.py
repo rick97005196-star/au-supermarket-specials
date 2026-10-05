@@ -231,8 +231,11 @@ def scrape_woolies_catalogue_items(base_list_url: str, initial_soup: BeautifulSo
                     price_elem = price_box.select_one('.price')
                     price_text = price_elem.get_text(strip=True) if price_elem else ""
                     price = parse_price(price_text) if price_text else parse_price(full_text)
+                    now_m = re.search(r'\bNow\s+\$(\d+(?:\.\d{2})?)', full_text, re.IGNORECASE)
+                    if now_m:   # "Price Drop, Was on 22/09 $50.00 Now $42.00"
+                        price = float(now_m.group(1))
                     
-                    was_match = re.search(r'Was\s+\$(\d+(?:\.\d{2})?)', full_text, re.IGNORECASE)
+                    was_match = re.search(r'Was(?:\s+on\s+[\d/]+)?\s+\$(\d+(?:\.\d{2})?)', full_text, re.IGNORECASE)  # also "Price Drop, Was on 22/09 $50.00 Now $42.00"
                     if was_match:
                         was_price = float(was_match.group(1))
 
@@ -303,19 +306,39 @@ def scrape_woolies_online_half_price(max_pages: int = 100) -> List[Dict[str, Any
     except Exception as e:
         print(f"Woolies homepage warm-up failed: {e}")
     
+    # The official "Half Price" specials page (shop/browse/specials/half-price) is the complete list.
+    # The old "half price" text search missed ~20 products a week, so it is only the fallback now.
+    use_category = True
     while page <= max_pages:
         try:
-            params = {
-                'SearchTerm': 'half price',
-                'PageSize': 36,
-                'PageNumber': page
-            }
-            r = session.get(url, params=params, timeout=20)
+            if use_category:
+                body = {
+                    'categoryId': 'specialsgroup.3676', 'pageNumber': page, 'pageSize': 36,
+                    'sortType': 'TraderRelevance', 'url': '/shop/browse/specials/half-price',
+                    'location': '/shop/browse/specials/half-price', 'formatObject': '{"name":"Half Price"}',
+                    'isSpecial': True, 'isBundle': False, 'isMobile': False, 'filters': [], 'token': '',
+                    'gpBoost': 0, 'isHideUnavailableProducts': False, 'isRegisteredRewardCardPromotion': False,
+                    'enableAdReRanking': False, 'groupEdmVariants': False, 'categoryVersion': 'v2',
+                    'flags': {'EnableProductBoostExperiment': False},
+                }
+                r = session.post('https://www.woolworths.com.au/apis/ui/browse/category', json=body, timeout=20)
+                if r.status_code != 200 or not (r.json().get('Bundles') if r.status_code == 200 else None):
+                    if page == 1:
+                        print(f"Woolies half-price page unavailable (status {r.status_code}), using search instead")
+                        use_category = False
+                        continue
+            else:
+                params = {
+                    'SearchTerm': 'half price',
+                    'PageSize': 36,
+                    'PageNumber': page
+                }
+                r = session.get(url, params=params, timeout=20)
             if r.status_code != 200:
                 print(f"Woolies API status {r.status_code} at page {page}, stopping.")
                 break
             data = r.json()
-            bundles = data.get('Products') or []
+            bundles = (data.get('Bundles') if use_category else data.get('Products')) or []
             if not bundles:
                 print(f"Woolies reached end of Half Price specials at page {page - 1}.")
                 break
@@ -342,14 +365,19 @@ def scrape_woolies_online_half_price(max_pages: int = 100) -> List[Dict[str, Any
                     
                     # IN-STORE prices only. Never fall back to the online Price/WasPrice:
                     # the site lists specials you can get in the shop, not online-only deals.
-                    if pr.get('InstorePrice') is None or pr.get('InstoreWasPrice') is None:
+                    if pr.get('InstoreWasPrice') is None:
                         excluded_online_count += 1
                         continue
-                    if pr.get('InstoreIsAvailable') is False:
-                        excluded_online_count += 1
-                        continue
-                    price = float(pr.get('InstorePrice') or 0)
                     was_price = float(pr.get('InstoreWasPrice') or 0)
+                    if pr.get('InstorePrice') is None:
+                        # On the official Half Price page but sold out at the reference store today:
+                        # still a half-price special in other stores (Woolworths runs these nationally)
+                        if not use_category:
+                            excluded_online_count += 1
+                            continue
+                        price = round(was_price / 2, 2)
+                    else:
+                        price = float(pr.get('InstorePrice') or 0)
 
                     # Strictly half price in store: in-store price <= 55% of in-store was price
                     # (the InstoreIsOnSpecial flag is sometimes false for catalogue half-price items,
