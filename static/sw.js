@@ -6,7 +6,7 @@
  * - Product photos from the supermarkets' servers are not stored (they can't be cached safely);
  *   the page shows a placeholder for them while offline.
  */
-const VERSION = 'v2';
+const VERSION = 'v3';
 const SHELL_CACHE = `shell-${VERSION}`;
 const DATA_CACHE = `data-${VERSION}`;
 const ASSET_CACHE = `assets-${VERSION}`;

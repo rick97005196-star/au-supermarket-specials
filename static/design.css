@@ -652,3 +652,150 @@ html.fb-off .fb-card, html.fb-off .fb-report { display: none !important; }
 .fb-fab:active { transform: scale(.96); }
 html.fb-off .fb-fab, html.is-locked .fb-fab { display: none; }
 @media (min-width: 1024px) { .fb-fab { left: 24px; bottom: 24px; } }
+
+
+/* ==========================================================================
+   Apple-style look (v9)
+   Light grey canvas, white cards without borders, SF system font, Apple blue,
+   frosted-glass bars and iOS-style segmented controls / search field.
+   Only colours, shapes and type change here – layout and functions stay the same.
+   ========================================================================== */
+:root {
+    --bg: #f5f5f7;
+    --surface: #ffffff;
+    --surface-2: #f2f2f7;
+    --surface-3: #e5e5ea;
+    --ink: #1d1d1f;
+    --ink-2: #424245;
+    --ink-3: #6e6e73;
+    --line: #e5e5ea;
+    --line-strong: #d2d2d7;
+    --accent: #0071e3;
+    --accent-ink: #ffffff;
+    --accent-soft: #e8f1fc;
+    --accent-text: #0066cc;
+    --sale: #d70015;
+    --sale-soft: #fdeceb;
+    --next: #b64400;
+    --next-soft: #fdf0e6;
+    --fill: rgba(118, 118, 128, 0.12);
+    --glass: rgba(251, 251, 253, 0.8);
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+    --shadow-md: 0 2px 6px rgba(0, 0, 0, 0.06), 0 8px 24px -10px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 4px 12px rgba(0, 0, 0, 0.06), 0 22px 44px -16px rgba(0, 0, 0, 0.2);
+    --radius: 18px;
+    --radius-sm: 12px;
+}
+html.dark {
+    --bg: #000000;
+    --surface: #1c1c1e;
+    --surface-2: #2c2c2e;
+    --surface-3: #3a3a3c;
+    --ink: #f5f5f7;
+    --ink-2: #c7c7cc;
+    --ink-3: #98989d;
+    --line: #38383a;
+    --line-strong: #48484a;
+    --accent: #0a84ff;
+    --accent-ink: #ffffff;
+    --accent-soft: #0b2a4a;
+    --accent-text: #4aa3ff;
+    --sale: #ff6961;
+    --sale-soft: #3a1514;
+    --next: #ff9f0a;
+    --next-soft: #3a2608;
+    --fill: rgba(118, 118, 128, 0.24);
+    --glass: rgba(22, 22, 23, 0.8);
+    --shadow-sm: none;
+    --shadow-md: 0 8px 24px -10px rgba(0, 0, 0, 0.8);
+    --shadow-lg: 0 22px 44px -16px rgba(0, 0, 0, 0.9);
+}
+
+body, .num {
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', 'Helvetica Neue', 'Inter',
+                 'PingFang TC', 'Noto Sans TC', 'Noto Sans CJK TC', 'Microsoft JhengHei', system-ui, sans-serif;
+    font-feature-settings: normal;
+    letter-spacing: -0.01em;
+}
+
+/* Frosted-glass bars, like apple.com and iOS */
+.site-header, .cat-nav,
+html .site-header, html .cat-nav {
+    background: var(--glass);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+}
+.site-header { border-bottom: 0.5px solid var(--line); }
+.cat-nav { border-bottom: 0.5px solid var(--line); }
+
+/* Header buttons: soft grey circles, blue bag */
+.icon-btn { border: 0; background: var(--fill); color: var(--ink); }
+.icon-btn:hover { background: var(--surface-3); border: 0; }
+.lang-pill { border: 0; background: var(--fill); }
+.lang-pill > .fa-globe { color: var(--accent); }
+.lang-select, .select-pill { border: 0; background-color: var(--fill); }
+.cart-btn { background: var(--accent); color: #fff; }
+.cart-count { background: #fff; color: var(--accent); }
+.brand-mark { box-shadow: none; border-radius: 9px; }
+
+/* Big, tight Apple headline */
+.hero-title { font-weight: 700; letter-spacing: -0.035em; }
+.eyebrow { letter-spacing: .02em; text-transform: none; font-size: 13px; color: var(--next); }
+.stat-value { font-weight: 600; letter-spacing: -0.02em; }
+.status-dot { box-shadow: none; }
+.region-chip { border: 0; background: var(--fill); color: var(--ink); }
+
+/* iOS segmented control */
+.seg { background: var(--fill); border-radius: 11px; padding: 2px; gap: 0; }
+.seg-btn { border-radius: 9px; color: var(--ink); font-weight: 500; }
+.seg-btn.is-active { background: var(--surface); box-shadow: 0 3px 8px rgba(0,0,0,.12), 0 3px 1px rgba(0,0,0,.04); font-weight: 600; }
+html.dark .seg-btn.is-active { background: #636366; color: #fff; }
+
+/* Category chips: borderless pills, selected = solid dark (light) / white (dark) */
+.chip { border: 0; background: var(--surface); box-shadow: var(--shadow-sm); color: var(--ink); }
+.cat-grid .chip { border-radius: 999px; padding: 0 16px 0 6px; }
+.chip-icon { border-radius: 999px; border: 0; }
+.chip.is-active, html.dark .chip.is-active { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.chip.is-active .chip-icon { background: rgba(255,255,255,.18) !important; border-color: transparent !important; }
+html.dark .chip.is-active .chip-icon { background: rgba(0,0,0,.08) !important; }
+.cat-arrow i { border: 0; background: var(--surface); }
+
+/* Cards and panels: white, no borders, soft shadow */
+.notice, .toolbar, .fav-panel, .fb-card { border: 0; box-shadow: var(--shadow-sm); border-radius: var(--radius); }
+.p-card { border: 0; border-radius: var(--radius); box-shadow: var(--shadow-sm); }
+@media (hover: hover) { .p-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-3px); } }
+.p-media { border-bottom: 0; }
+html.dark .p-media { background: #fff; }
+.p-title { font-weight: 600; letter-spacing: -0.015em; }
+.p-price .dol { font-weight: 600; letter-spacing: -0.03em; }
+.p-flag { box-shadow: none; background: rgba(255,255,255,.9); color: var(--next); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+.p-add { border: 0; background: var(--fill); color: var(--accent); }
+.p-add:hover { background: var(--accent); color: #fff; border: 0; }
+.p-fav { border: 0; }
+.p-compare { background: var(--fill); }
+
+/* iOS search field */
+.search-field { border-radius: 12px; background: var(--fill); border: 0; height: 44px; }
+.search-field:focus { background: var(--surface); border: 0; box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 35%, transparent); }
+.suggest-chip { background: var(--fill); color: var(--ink); }
+.suggest-chip.is-active, html.dark .suggest-chip.is-active { background: var(--accent); color: #fff; }
+.toggle-pill { border: 0; background: var(--fill); color: var(--ink); }
+.toggle-pill.is-on-accent, html.dark .toggle-pill.is-on-accent { background: var(--accent); color: #fff; }
+.result-badge { background: var(--fill); color: var(--ink-2); }
+
+/* Buttons: Apple blue pills */
+.btn-primary, .btn-accent { background: var(--accent); color: #fff; }
+.btn-ghost { border: 0; background: var(--fill); color: var(--accent-text); }
+.btn-ghost:hover { border: 0; background: var(--surface-3); color: var(--accent-text); }
+.fb-type { border: 0; background: var(--fill); color: var(--ink); }
+.fb-type.is-active { background: var(--ink); color: var(--bg); }
+.fb-text { border: 0; background: var(--fill); }
+.fb-text:focus { box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 35%, transparent); }
+.fb-card-icon { background: var(--accent-soft); color: var(--accent); border-radius: 10px; }
+.fb-fab { background: var(--accent); color: #fff; box-shadow: 0 8px 20px -6px color-mix(in srgb, var(--accent) 60%, transparent); }
+.to-top { border: 0; background: var(--glass); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+.list-section { background: var(--surface-2); border-radius: var(--radius); }
+.list-item { border-radius: 14px; }
+.tag { background: var(--fill); }
+:focus-visible { outline-color: var(--accent); }
+::selection { background: color-mix(in srgb, var(--accent) 30%, transparent); color: inherit; }
