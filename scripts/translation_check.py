@@ -20,7 +20,7 @@ try:
     _S2T = OpenCC('s2t')
 except Exception:          # converter not installed: fall back to a short list of common ones
     _S2T = None
-VARIANT_OK = set('唇郁胜里床群采游托栗台干岩面着松谷只系制余卷斗向注布占咸酸才克并借准舍')
+VARIANT_OK = set('皂唇郁胜里床群采游托栗台干岩面着松谷只系制余卷斗向注布占咸酸才克并借准舍')
 COMMON_SIMPLIFIED = set('黄强麦螨鸡鱼虾猪饼条这为发买卖们个来时对长东车门问间关头声体觉观见样热电话语说请让认计记读写书儿过还进边运远选钱铁银锅饭馆汤饮酱鲜鲑鳕鸭鹅肠脏药剂护肤洁净纸湿装听两处专业产员价质优择饰卫厨厅红绿蓝杂粮枣荞萝苹赠减满额')
 
 
@@ -67,7 +67,7 @@ FOOD_TERMS = [
     (r'\beggs?\b', ['蛋']),
     (r'\brice\b', ['米', '飯']),
     (r'\bnoodles?\b', ['麵', '粉絲', '米粉', '冬粉']),
-    (r'\bbread\b', ['麵包', '吐司']),
+    (r'\bbread\b', ['麵包', '吐司', '餅']),
     (r'\bcoffee\b', ['咖啡', '拿鐵', '濃縮']),
     (r'\bchocolate\b|\bchoc\b', ['巧克力', '可可']),
     (r'\bshampoo\b', ['洗髮', '洗潤']),
