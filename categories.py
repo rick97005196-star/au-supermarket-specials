@@ -22,12 +22,51 @@ CATEGORIES = [
 
 INTERNAL_CATEGORY_KEYS = set(CATEGORIES) | {'groceries', 'other'}
 
+# ---------------------------------------------------------------------------------------------
+# Strong signals checked FIRST. Each line was added after a strict review of every product on the
+# site (e.g. nail polish was in "household", "Scotch-Brite" sponges in "liquor", yoghurt pouches in
+# "health", coffee machines in "drinks"). A word here decides the department on its own.
+# ---------------------------------------------------------------------------------------------
+_SUPPLEMENT_BRANDS = r"(?:blackmores|swisse|nature'?s\s*(?:way|own)|centrum|caltrate|ostelin|cenovis|naturopathica|healthcarebear|haircarebear|life\s*botanics|healthy\s*care|elevit|berocca|voost|hydralyte|metamucil|bioglan|nutra-?life|thompson'?s|life-?space)"
+_RULES = [
+    # appliances, tools, gadgets, garden, textiles -> household
+    ('household', r"\b(?:ice\s*cream\s*(?:&\s*frozen\s*treat\s*)?maker|slushie\s*machine|coffee\s*machine|espresso\s*(?:and|&)\s*cappuccino\s*maker|(?:espresso|latte)\s*maker|vacuum\s*(?:food\s*)?sealer|headphones|earbuds|garden\s*tonic|seasol|scotch-?brite|scourers?|sponges?|bbq\s*(?:wipes|liners|briquettes)|heat\s*beads)"),
+    # nail / make-up / skin / body care -> personal care
+    ('health_vitamins', r"\b(?:nail\s*polish|nail\s*(?:strengthener|treatment|rehab|care|complete)|press\s*on\s*nails|polish\s*remover|base\s*coat|lipstick|lip\s*(?:gloss|balm|oil)|mascara|eyeliner|concealer|highlighter|primer\b|foundation\b|face\s*(?:tint|serum|scrub|mask|wipes)|sheet\s*mask|moisturi[sz]er|moisturising\s*wash|body\s*(?:wash|lotion|scrub|butter)|shower\s*gel|hand\s*(?:wash|cream)|body\s*bar|beauty\s*oil|frizz|hair\s*oil|oil\s*(?:treatment|elixir)|deodorant|antiperspirant|shampoo|hair\s*(?:colou?r|spray|gel)|colourant|sunscreen|spf\s*\d+|razors?|tampons?|period\s*undies|toothpaste|toothbrush|mouthwash|dental\s*floss)\b"),
+    # vitamins & supplements (but never dishwasher / laundry tablets or capsules)
+    ('health_vitamins', _SUPPLEMENT_BRANDS + r".*\b(?:tablets?|capsules?|caplets?|gumm(?:y|ies)|pastilles|chewable|powder|sachets|pack|each)\b"),
+    # alcohol (not ginger beer, beer batter, champagne ham, cider vinegar, bourbon BBQ sauce, rum raisin…)
+    ('liquor', r"\b(?:victoria\s*bitter|great\s*northern|xxxx\s*gold|carlton\s*(?:draught|dry)|tooheys|hahn|corona|asahi|heineken|stone\s*&\s*wood|gage\s*roads|balter|coopers\s*(?:pale|sparkling)|summer\s*ale\s*cans|lager\s*(?:cans|bottles)|vodka\s*cruiser|canadian\s*club|jim\s*beam|bundaberg\s*rum|jack\s*daniel'?s|jameson|smirnoff|bacardi)\b"),
+    # yoghurt & custard pouches / tubs -> dairy (not frozen yoghurt sticks or yoghurt-coated snacks)
+    ('dairy_eggs', r"\b(?:yogh?urt|custard)\b[^,]{0,25}\bpouch\b|\b(?:yogh?urt|custard)\s*(?:pouch|tub|\d+\s*g)\b(?!.*(?:sticks|frozen|coated|trail\s*mix|bars?))|\bthick\s*&\s*creamy\b.*\byogh?urt\b"),
+    # heat-and-eat ready meals and pies -> frozen
+    ('frozen', r"\b(?:lean\s*cuisine|on\s*the\s*menu\s*(?:big\s*feast|takeaway)|mccain\s*(?:air\s*fryer|airfryer)|charlotte'?s\s*bakery.*pies?|vili'?s.*pie|ruffie,\s*lean\s*cuisine)\b"),
+    ('snacks', r"\b(?:rice\s*cakes|rice\s*crackers|cereal\s*bars|muesli\s*bars)\b"),
+    ('household', r"\bfabric\s*(?:softener|conditioner)\b"),
+    ('drinks', r"\bsoft\s*drinks?\b"),
+    ('meat', r"\bscotch\s*(?:fillet|thin|steaks?)\b"),
+    ('dairy_eggs', r"\b(?:protein\s*pudding|fett?a\s*cheese)\b"),
+    ('pantry', r"(?<!corn )\bflour\b(?!\s*(?:tortillas?|wraps?))|\b(?:sea\s*salt\s*flakes|salt\s*flakes|spice\s*rub)\b"),
+    ('frozen', r"\b(?:family\s*pie|pies?\s*or\s*pasty|balfours|national\s*pies|four'?n\s*twenty|herbert\s*adams|patties\s*party)\b"),
+    ('produce', r"\bsalad\s*bowls?\b"),
+]
+def _strong_department(tl):
+    if re.search(r"\b(?:dishwash\w*|dishwasher|laundry|toilet|washing\s*machine)\b", tl):
+        return None
+    for dept, pat in _RULES:
+        if re.search(pat, tl, re.I):
+            return dept
+    return None
+
 def classify_product(title: str, raw_cat: str = "", product_url: str = "") -> str:
     """
     Logically sound, real-world supermarket department classifier for Australian specials.
     """
     t = title.strip()
     tl = f" {t.lower()} "
+    early = _strong_department(tl)
+    if early:
+        return early
 
     # -------------------------------------------------------------
     # 1. PET CARE (Highest priority: never let dog/cat food into meat, pantry, or health!)

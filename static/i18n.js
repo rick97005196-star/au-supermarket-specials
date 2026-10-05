@@ -113,7 +113,7 @@ const I18N = {
             'health_vitamins': '💊 個人清潔保養',
             'household': '🧺 居家日用',
             'pet': '🐾 寵物用品',
-            'sub_icecream': '冰淇淋', 'sub_chocolate': '巧克力', 'sub_chips': '洋芋片', 'sub_coffee': '咖啡', 'sub_noodles': '泡麵', 'sub_soda': '汽水', 'sub_laundry': '洗衣精', 'sub_vitamins': '維他命'
+            'sub_icecream': '冰淇淋', 'sub_chocolate': '巧克力', 'sub_chips': '洋芋片', 'sub_coffee': '咖啡', 'sub_noodles': '泡麵', 'sub_quickmeals': '微波即食', 'sub_soda': '汽水', 'sub_laundry': '洗衣精', 'sub_vitamins': '維他命'
         }
     },
     'en': {
@@ -230,7 +230,7 @@ const I18N = {
             'health_vitamins': '💊 Health & Beauty',
             'household': '🧺 Household & Cleaning',
             'pet': '🐾 Pet Supplies',
-            'sub_icecream': 'Ice Cream', 'sub_chocolate': 'Chocolate', 'sub_chips': 'Chips', 'sub_coffee': 'Coffee', 'sub_noodles': 'Noodles', 'sub_soda': 'Soft Drinks', 'sub_laundry': 'Laundry', 'sub_vitamins': 'Vitamins'
+            'sub_icecream': 'Ice Cream', 'sub_chocolate': 'Chocolate', 'sub_chips': 'Chips', 'sub_coffee': 'Coffee', 'sub_noodles': 'Noodles', 'sub_quickmeals': 'Quick Meals', 'sub_soda': 'Soft Drinks', 'sub_laundry': 'Laundry', 'sub_vitamins': 'Vitamins'
         }
     },
     'ja': {
@@ -347,7 +347,7 @@ const I18N = {
             'health_vitamins': '💊 ヘルス＆ビューティー',
             'household': '🧺 日用品・洗剤',
             'pet': '🐾 ペット用品',
-            'sub_icecream': 'アイス', 'sub_chocolate': 'チョコ', 'sub_chips': 'ポテチ', 'sub_coffee': 'コーヒー', 'sub_noodles': 'ラーメン', 'sub_soda': '炭酸飲料', 'sub_laundry': '洗濯洗剤', 'sub_vitamins': 'ビタミン'
+            'sub_icecream': 'アイス', 'sub_chocolate': 'チョコ', 'sub_chips': 'ポテチ', 'sub_coffee': 'コーヒー', 'sub_noodles': 'ラーメン', 'sub_quickmeals': 'レンジ食品', 'sub_soda': '炭酸飲料', 'sub_laundry': '洗濯洗剤', 'sub_vitamins': 'ビタミン'
         }
     },
     'ko': {
@@ -464,7 +464,7 @@ const I18N = {
             'health_vitamins': '💊 뷰티·건강',
             'household': '🧺 생활·주방용품',
             'pet': '🐾 반려동물 용품',
-            'sub_icecream': '아이스크림', 'sub_chocolate': '초콜릿', 'sub_chips': '감자칩', 'sub_coffee': '커피', 'sub_noodles': '라면', 'sub_soda': '탄산음료', 'sub_laundry': '세탁세제', 'sub_vitamins': '비타민'
+            'sub_icecream': '아이스크림', 'sub_chocolate': '초콜릿', 'sub_chips': '감자칩', 'sub_coffee': '커피', 'sub_noodles': '라면', 'sub_quickmeals': '전자레인지 간편식', 'sub_soda': '탄산음료', 'sub_laundry': '세탁세제', 'sub_vitamins': '비타민'
         }
     }
 };

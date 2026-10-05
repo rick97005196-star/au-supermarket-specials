@@ -48,6 +48,8 @@ I['drinks'] = ('#e4f7ef', f'''<path d="M15 15h18v25H15z" {st('#7fd8b0')}/><path 
 {face(24,30)}''')
 I['sub_noodles'] = ('#fff0d9', f'''<path d="M9 24h30a15 13 0 0 1-30 0z" {st('#ff8a5c')}/><path d="M14 24c2-6 4-6 6 0s4 6 6 0 4-6 6 0" fill="none" stroke="#ffe08a" stroke-width="2.4" stroke-linecap="round"/>
 <path d="M30 6l-6 16M36 8l-8 15" {line(1.8)}/>{face(24,31)}''')
+I['sub_quickmeals'] = ('#ffecd2', f'''<rect x="6" y="13" width="36" height="24" rx="5" {st('#ffffff')}/><rect x="10" y="17" width="21" height="16" rx="3" fill="#ffd28a" stroke="{O}" stroke-width="1.8"/>
+<circle cx="36" cy="20" r="2.4" {st('#ff8a65')}/><path d="M34 27h4M34 31h4" {line(1.8)}/><path d="M17 11c-1.5-2 1.5-3 0-5M23 11c-1.5-2 1.5-3 0-5" {line(1.5)}/>{face(20.5,24,5,s=.85)}''')
 I['sub_soda'] = ('#e0f0ff', f'''<path d="M16 12h16l1 4v20l-1 4H16l-1-4V16z" {st('#ff5d5d')}/><path d="M16 12h16M15 16h18M15 36h18" {line(1.6)}/>
 <path d="M18 21h12v9H18z" fill="#fff" stroke="none"/>{face(24,25,5,s=.85)}<circle cx="37" cy="10" r="2" {line(1.3)}/><circle cx="40" cy="16" r="1.3" {line(1.2)}/>''')
 I['pantry'] = ('#fdf3d9', f'''<path d="M9 24h30a15 13 0 0 1-30 0z" {st('#ffffff')}/>
@@ -71,7 +73,7 @@ for k, (bg, body) in I.items():
     out[k] = f'<svg viewBox="0 0 48 48" aria-hidden="true"><rect x="1" y="1" width="46" height="46" rx="15" fill="{bg}"/>{body}</svg>'.replace('\n','')
 js = "// Hand-drawn category icons (cute sticker style). Generated: one SVG per category.\nconst CATEGORY_ICONS = " + json.dumps(out, ensure_ascii=False, indent=0) + ";\n"
 open(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'static', 'category-icons.js'),'w').write(js)
-labels = {'all':'全部特價','meat':'肉品','produce':'蔬果','sub_icecream':'冰淇淋','sub_chocolate':'巧克力','sub_chips':'洋芋片','sub_coffee':'咖啡','dairy_eggs':'乳品蛋類','bakery':'麵包甜點','frozen':'冷凍食品','seafood':'海鮮','snacks':'零食餅乾','drinks':'飲料沖泡','sub_noodles':'泡麵','sub_soda':'汽水','pantry':'米油調味','sub_laundry':'洗衣精','sub_vitamins':'維他命','health_vitamins':'個人清潔保養','household':'居家日用','liquor':'酒類','pet':'寵物用品'}
+labels = {'all':'全部特價','meat':'肉品','produce':'蔬果','sub_icecream':'冰淇淋','sub_chocolate':'巧克力','sub_chips':'洋芋片','sub_coffee':'咖啡','dairy_eggs':'乳品蛋類','bakery':'麵包甜點','frozen':'冷凍食品','seafood':'海鮮','snacks':'零食餅乾','drinks':'飲料沖泡','sub_noodles':'泡麵','sub_quickmeals':'微波即食','sub_soda':'汽水','pantry':'米油調味','sub_laundry':'洗衣精','sub_vitamins':'維他命','health_vitamins':'個人清潔保養','household':'居家日用','liquor':'酒類','pet':'寵物用品'}
 html = '<html><body style="font-family:sans-serif;background:#f5f5f7;padding:20px"><div style="display:grid;grid-template-columns:repeat(6,120px);gap:16px">' + ''.join(f'<div style="text-align:center"><div style="width:96px;height:96px;margin:auto">{out[k]}</div><div style="display:flex;align-items:center;gap:6px;justify-content:center;margin-top:8px;background:#fff;border-radius:99px;padding:4px 10px 4px 4px;font-size:13px"><span style="width:26px;height:26px;display:inline-block">{out[k]}</span>{labels[k]}</div></div>' for k in out) + '</div></body></html>'
 open(os.devnull,'w').write(html)
 print(len(out))

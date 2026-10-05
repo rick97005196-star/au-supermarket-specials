@@ -196,18 +196,50 @@ const CATEGORY_STYLES = {
     'sub_chips': { emoji: '🥔' },
     'sub_coffee': { emoji: '☕' },
     'sub_noodles': { emoji: '🍜' },
+    'sub_quickmeals': { emoji: '🍛' },
     'sub_soda': { emoji: '🫧' },
     'sub_laundry': { emoji: '🧼' },
     'sub_vitamins': { emoji: '💊' }
 };
-// shortcut chip -> the search word that finds it (works in every language through the search dictionary)
-const SUB_CATEGORY_TERMS = {
-    sub_icecream: '冰淇淋', sub_chocolate: '巧克力', sub_chips: '洋芋片', sub_coffee: '咖啡',
-    sub_noodles: '泡麵', sub_soda: '汽水', sub_laundry: '洗衣精', sub_vitamins: '維他命'
+// Shortcut chips: strict rules (department + what the product is + what it is NOT), checked by hand
+// against every product, so e.g. "維他命" never shows a body lotion "with Vitamin C".
+const SUB_CATEGORY_RULES = {
+    sub_icecream: { cats: ['frozen'],
+        inc: /\b(ice\s*creams?|gelato|sorbet|magnum|cornetto|drumstick|paddle\s*pop|weis|frosty\s*fruits|icy\s*poles?|ice\s*blocks?|zooper|connoisseur|cremissimo|ben\s*&\s*jerry'?s|h[aä]agen|frozen\s*(?:dessert|yogh?urt)|yogh?urt\s*sticks|ice\s*sticks|sundae|golden\s*gaytime|splice|maxibon|bulla)\b/i,
+        exc: /\b(makers?|machines?|blenders?)\b/i },
+    sub_chocolate: { cats: ['snacks'],
+        inc: /\b(chocolates?|choc|cadbury|lindt|lindor|ferrero|kinder|toblerone|maltesers|m&m'?s|mars|snickers|twix|bounty|milky\s*way|kit\s*kat|kitkat|aero|freddo|caramilk|cherry\s*ripe|crunchie|picnic|boost|moro|chomp|chokito|milkybar|smarties|reese'?s|violet\s*crumble|darrell\s*lea|whittaker'?s|nudo|raffaello|roses|old\s*gold|toffifee)\b/i,
+        exc: /\b(biscuits?|cookies?|digestives?|tim\s*tams?|timtams|tee\s*vee|wagon\s*wheels|fingers|nut\s*bars?|protein\s*bars?|muesli|fibre\s*one|oaty|brownies?|mix|popcorn|lollies|eclairs|cereal|crackers?|slice|allsorts)\b/i },
+    sub_chips: { cats: ['snacks'],
+        inc: /\b(chips|crisps|tortilla|twisties|cheezels|burger\s*rings|cheetos|doritos|pringles|thins|kettle|grain\s*waves|grainwaves|nibbles|samboy|jumpy'?s|smith'?s|smiths|red\s*rock\s*deli|cc'?s|tostitos|popcorners)\b/i,
+        exc: /\b(dips?|crackers?|choc(?:olate)?\s*chips|fruit\s*crisps|bars?|biscuits?|cookies?)\b/i },
+    sub_coffee: { cats: ['drinks'],
+        inc: /\b(coffee|espresso|latte|cappuccino|mocha|affogato|nescaf[eé]|moccona|nespresso|lungo|cold\s*brew)\b/i,
+        exc: /\b(caffeine\s*free|decaffeinated\s+(?:black\s+)?tea|nail|machines?|makers?|grinders?(?!\s*coffee))\b/i },
+    // 微波即食: heat-and-eat meals (ready meals, microwave rice, instant soup, frozen dumplings…)
+    sub_quickmeals: { cats: ['frozen', 'pantry', 'meat', 'dairy_eggs'],
+        inc: /\b(microwave\w*|ready\s*meals?|lean\s*cuisine|on\s*the\s*menu|healthy\s*choice|youfoodz|muscle\s*chef|tasty\s*bite|ben'?s\s*original|uncle\s*ben'?s|rice\s*(?:pouch|cups?)|quick\s*cups?|lunch\s*bowl|instant\s*meals?|meals?\s*(?:for\s*one|pots?)|big\s*feast|takeaway\s*(?:main|side)|steamfresh|cup\s*a\s*soup|soup\s*(?:sachets|cups?|pots?)|continental\s*sensations?|big\s*red\s*soup|ready\s*to\s*eat|heat\s*(?:&|and)\s*eat|mac\s*(?:&|and)\s*cheese|fried\s*rice|dumplings?|dim\s*sims?|gyoza|wontons?|siu\s*mai|pork\s*buns|bao)\b/i,
+        exc: /\b(bases?|flour|crackers?|meal\s*kits?|kits?|sauce|pastry|popcorn|seasoning|stock|wrappers?|filled\s*pasta)\b/i },
+    sub_noodles: { cats: ['pantry', 'frozen'],
+        inc: /\b(noodles?|ramen|ramyun|ramyeon|udon|pho|laksa|mi\s*goreng|indomie|chapagetti)\b/i },
+    sub_soda: { cats: ['drinks'],
+        inc: /\b(soft\s*drinks?|cola|coke|pepsi|sprite|fanta|solo|kirks|schweppes|lemonade|ginger\s*(?:beer|ale)|creaming\s*soda|lemon\s*squash|tonic|mixers?|soda|sparkling|mineral\s*water|kombucha|sodaly|sunkist|mountain\s*dew|bundaberg|passiona|pasito|agrum|bitters)\b/i,
+        exc: /\b(energy\s*drinks?)\b/i },
+    sub_laundry: { cats: ['household'],
+        inc: /\b(laundry|washing\s*powder|fabric\s*(?:softener|conditioner|rinse)|softener|napisan|stain\s*(?:remover|power|lifter)|booster\s*beads|omo|cold\s*power|biozet|dynamo|radiant|ka\s*pod|arfum|persil|surf\s*(?:laundry|capsules|powder|liquid)|fluffy|cuddly|comfort\s*(?:laundry|fabric|concentrate|softener))\b/i,
+        exc: /\b(dish\w*|toilet|floor|bowl|surface|kitchen|bathroom|oven|glass)\b/i },
+    sub_vitamins: { cats: ['health_vitamins'],
+        inc: /\b(vitamins?|vit|vita|multi-?vit\w*|magnesium|zinc|iron|calcium|fish\s*oil|omega|krill|probiotics?|glucosamine|collagen|coq10|b12|b\s*complex|d3|echinacea|electrolyte|effervescent|tablets?|tabs|capsules?|caplets?|gumm(?:y|ies)|vitagummies|chewable|pastilles|supplements?|evening\s*primrose|lutein|turmeric|ashwagandha|liver\s*detox|prostate|immune|ultiboost|ultivite|blackmores|cenovis|ostelin|centrum|caltrate|nature'?s\s*(?:way|own)|healthy\s*care|elevit|berocca|hydralyte|voost|metamucil|healthcarebear|haircarebear|life\s*botanics)\b/i,
+        exc: /\b(lotion|wash|serum|moisturi[sz]er|primer|scrub|cuticle|nail|bubble\s*bath|bath|soap|cream|cleanser|shampoo|conditioner|lip|sunscreen|spf|deodorant|mask|toothpaste|mouthwash|makeup|foundation|mascara|protein\s*powder|wipes|blush|sticks?|yogh?urts?|milky\s*bites)\b/i },
 };
+const SUB_CATEGORY_TERMS = Object.fromEntries(Object.keys(SUB_CATEGORY_RULES).map(k => [k, k]));
 function itemInCategory(it, cat) {
     if (!cat || cat === 'all') return true;
-    if (SUB_CATEGORY_TERMS[cat]) return scoreSearchMatch(it, SUB_CATEGORY_TERMS[cat]) > 0;
+    const rule = SUB_CATEGORY_RULES[cat];
+    if (rule) {
+        const title = it.title || '';
+        return rule.cats.includes(it.category) && rule.inc.test(title) && !(rule.exc && rule.exc.test(title));
+    }
     return it.category === cat;
 }
 
@@ -252,7 +284,7 @@ function renderCategoryBar() {
     // Most-used first (left), so the first screen shows them without swiping
     const row1Keys = ['all', 'meat', 'produce', 'sub_icecream', 'sub_chocolate', 'sub_chips', 'sub_coffee',
                       'dairy_eggs', 'bakery', 'frozen', 'seafood'];
-    const row2Keys = ['snacks', 'drinks', 'sub_noodles', 'sub_soda', 'pantry', 'sub_laundry', 'sub_vitamins',
+    const row2Keys = ['snacks', 'drinks', 'sub_noodles', 'sub_quickmeals', 'sub_soda', 'pantry', 'sub_laundry', 'sub_vitamins',
                       'health_vitamins', 'household', 'liquor', 'pet'];
     
     // Grid fills column by column, so interleave: upper row = row1Keys, lower row = row2Keys
