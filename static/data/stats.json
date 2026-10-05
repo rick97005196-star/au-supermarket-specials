@@ -12,9 +12,9 @@
       "drinks": 239,
       "frozen": 89,
       "health_vitamins": 1471,
-      "household": 802,
+      "household": 801,
       "liquor": 23,
-      "meat": 64,
+      "meat": 65,
       "pantry": 179,
       "pet": 96,
       "produce": 7,
@@ -32,24 +32,24 @@
       "ALDI": 124
     },
     "by_category": {
-      "bakery": 22,
-      "dairy_eggs": 61,
+      "bakery": 20,
+      "dairy_eggs": 60,
       "drinks": 62,
-      "frozen": 39,
-      "health_vitamins": 104,
-      "household": 186,
+      "frozen": 40,
+      "health_vitamins": 105,
+      "household": 185,
       "liquor": 30,
-      "meat": 55,
-      "pantry": 87,
-      "pet": 22,
+      "meat": 54,
+      "pantry": 88,
+      "pet": 26,
       "produce": 8,
-      "seafood": 13,
-      "snacks": 99
+      "seafood": 14,
+      "snacks": 96
     },
     "half_price_count": 248,
     "date_range": "Wed 7 Oct 2026 - Tue 13 Oct 2026"
   },
-  "last_updated": "2026-10-05 16:24:53",
+  "last_updated": "2026-10-05 23:13:03",
   "base_region": "QLD",
   "regions": {
     "QLD": {
@@ -213,5 +213,5 @@
       }
     }
   },
-  "data_updated_at": "2026-10-05T17:33:50Z"
+  "data_updated_at": "2026-10-05T23:13:07Z"
 }
