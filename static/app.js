@@ -1,5 +1,5 @@
 // State
-var currentLang = (typeof window !== 'undefined' && window.currentLang) || (typeof localStorage !== 'undefined' && localStorage.getItem('lang')) || 'zh';
+var currentLang = (typeof window !== 'undefined' && window.currentLang) || safeStore.getItem('lang') || 'zh';
 let currentPeriod = 'current'; // 'current' or 'next'
 let currentStore = 'All';
 let currentCategory = 'all';
@@ -56,14 +56,14 @@ function scrollToTop() {
 
 // Language Management
 function initLanguage() {
-    currentLang = localStorage.getItem('lang') || 'zh';
+    currentLang = safeStore.getItem('lang') || 'zh';
     applyLanguage(currentLang);
 }
 
 function setLanguage(lang) {
     if (currentLang === lang) return;
     currentLang = lang;
-    localStorage.setItem('lang', lang);
+    safeStore.setItem('lang', lang);
     applyLanguage(lang);
     renderCategoryBar();
     updateStatsDisplay();
@@ -380,7 +380,7 @@ function initCategoryArrows() {
 
 // Theme Management (Dark / Light Mode)
 function initTheme() {
-    const savedTheme = localStorage.getItem('theme');
+    const savedTheme = safeStore.getItem('theme');
     const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
     
     if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
@@ -400,12 +400,12 @@ function applyTheme(theme) {
     if (theme === 'dark') {
         document.documentElement.classList.add('dark');
         document.documentElement.classList.remove('light');
-        localStorage.setItem('theme', 'dark');
+        safeStore.setItem('theme', 'dark');
         if (icon) icon.className = 'fa-solid fa-sun text-[13px]';
     } else {
         document.documentElement.classList.remove('dark');
         document.documentElement.classList.add('light');
-        localStorage.setItem('theme', 'light');
+        safeStore.setItem('theme', 'light');
         if (icon) icon.className = 'fa-solid fa-moon text-[13px]';
     }
 }
@@ -421,8 +421,10 @@ function showToast(message, icon = 'fa-circle-check', isError = false) {
     
     toast.classList.remove('hidden');
     toast.classList.add('flex');
-    
-    setTimeout(() => {
+    toast.setAttribute('role', 'status');
+
+    clearTimeout(showToast._timer);           // a new message always gets its full time on screen
+    showToast._timer = setTimeout(() => {
         toast.classList.add('hidden');
         toast.classList.remove('flex');
     }, 2500);
@@ -687,7 +689,7 @@ const REGION_NAMES = {
 };
 const DEFAULT_REGION = 'QLD';
 let currentRegion = (() => {
-    try { const r = localStorage.getItem('region'); if (REGION_CODES.includes(r)) return r; } catch (e) {}
+    try { const r = safeStore.getItem('region'); if (REGION_CODES.includes(r)) return r; } catch (e) {}
     return DEFAULT_REGION;
 })();
 let rawSpecials = null;
@@ -704,8 +706,35 @@ function regionize(list) {
     return out;
 }
 
+// ---------- Safety: product text comes from scraped websites + machine translation ----------
+// Every text field is cleaned once when loaded, so no "<…>" from a shop's website can ever run as
+// code on this site, and only real https links/images are used.
+const _ALLOWED_LINK = /^https:\/\/(?:www\.)?(?:coles\.com\.au|woolworths\.com\.au|aldi\.com\.au|salefinder\.com\.au)\//i;
+function escHTML(v) {
+    return String(v == null ? '' : v).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+}
+function _cleanText(v) { return typeof v === 'string' ? v.replace(/[<>]/g, '') : v; }
+function sanitizeProduct(it) {
+    if (!it || typeof it !== 'object') return null;
+    for (const k of ['title', 'price_display', 'unit_price', 'discount_desc', 'date_range', 'store', 'category', 'period', 'sf']) {
+        if (k in it) it[k] = _cleanText(it[k]);
+    }
+    if (it.translations && typeof it.translations === 'object') {
+        for (const l in it.translations) it.translations[l] = _cleanText(it.translations[l]);
+    }
+    if (it.image_url && !/^https:\/\//i.test(it.image_url)) it.image_url = '';
+    if (it.image_url) it.image_url = it.image_url.replace(/["'\s<>]/g, encodeURIComponent);
+    if (it.product_url && !_ALLOWED_LINK.test(it.product_url)) it.product_url = '';
+    if (it.product_url) it.product_url = it.product_url.replace(/["'\s<>]/g, encodeURIComponent);
+    return it;
+}
+
 async function getStaticSpecials() {
-    if (!rawSpecials) rawSpecials = (await fetchStaticJson('specials.json')) || [];
+    if (!rawSpecials) {
+        const data = await fetchStaticJson('specials.json');
+        if (Array.isArray(data) && data.length) rawSpecials = data.map(sanitizeProduct).filter(Boolean);
+        else return [];        // failed load: try again next time instead of remembering "no specials"
+    }
     if (!staticSpecials || staticSpecials._region !== currentRegion || !staticSpecials.length) {
         staticSpecials = regionize(rawSpecials);
     }
@@ -725,7 +754,7 @@ function renderRegionSelect() {
 function setRegion(code) {
     if (!REGION_CODES.includes(code) || code === currentRegion) return;
     currentRegion = code;
-    try { localStorage.setItem('region', code); } catch (e) {}
+    try { safeStore.setItem('region', code); } catch (e) {}
     const sel = document.getElementById('regionSelect');
     if (sel && sel.value !== code) sel.value = code;
     if (rawSpecials) staticSpecials = regionize(rawSpecials);
@@ -806,12 +835,12 @@ function updateStatsDisplay() {
     const nextDateStr = nextData.date_range || '';
 
     if (currDateStr) {
-        document.getElementById('periodDateCurrentBadge').textContent = `(${currDateStr.replace(' 2026', '')})`;
+        document.getElementById('periodDateCurrentBadge').textContent = `(${currDateStr.replace(/\s20\d\d\b/g, '')})`;
     }
     const nextBadgeEl = document.getElementById('periodDateNextBadge');
     if (nextBadgeEl) {
         if (nextData.total > 0 && nextDateStr && !nextDateStr.includes('尚未') && !nextDateStr.includes('公佈')) {
-            nextBadgeEl.textContent = `(${nextDateStr.replace(' 2026', '')})`;
+            nextBadgeEl.textContent = `(${nextDateStr.replace(/\s20\d\d\b/g, '')})`;
         } else {
             nextBadgeEl.textContent = t('not_released_yet');
         }
@@ -898,10 +927,13 @@ const FAV_KEY = 'favorites_v1';
 let favOnly = false;
 
 function loadFavorites() {
-    try { return JSON.parse(localStorage.getItem(FAV_KEY) || '[]') || []; } catch (e) { return []; }
+    try {
+        const v = JSON.parse(safeStore.getItem(FAV_KEY) || '[]');
+        return Array.isArray(v) ? v.filter(f => f && typeof f === 'object') : [];
+    } catch (e) { return []; }
 }
 function saveFavorites(list) {
-    try { localStorage.setItem(FAV_KEY, JSON.stringify(list)); } catch (e) {}
+    try { safeStore.setItem(FAV_KEY, JSON.stringify(list)); } catch (e) {}
 }
 function favProductKey(item) {
     return getCoreProductKey(item);
@@ -963,9 +995,18 @@ function setFavButton(btn, on) {
 }
 
 // Which specials match the saved regulars?
+let _favMatchCache = { key: '', list: null, result: [] };
 function matchFavorites(items) {
     const favs = loadFavorites();
     if (!favs.length) return [];
+    // same favourites + same product list = same answer (this runs on every filter change)
+    const key = JSON.stringify(favs);
+    if (_favMatchCache.list === items && _favMatchCache.key === key) return _favMatchCache.result;
+    const result = _matchFavoritesNow(items, favs);
+    _favMatchCache = { key, list: items, result };
+    return result;
+}
+function _matchFavoritesNow(items, favs) {
     const productKeys = new Set(favs.filter(f => f.type === 'product').map(f => f.key));
     const keywords = favs.filter(f => f.type === 'keyword').map(f => f.q);
     return (items || []).filter(it => {
@@ -989,7 +1030,7 @@ function renderFavPanel() {
     if (!panel) return;
     const favs = loadFavorites();
     let hintDismissed = false;
-    try { hintDismissed = localStorage.getItem('fav_hint_dismissed') === '1'; } catch (e) {}
+    try { hintDismissed = safeStore.getItem('fav_hint_dismissed') === '1'; } catch (e) {}
 
     if (!favs.length) {
         if (hintDismissed) { panel.classList.add('hidden'); return; }
@@ -997,7 +1038,7 @@ function renderFavPanel() {
             <div class="fav-hint">
                 <i class="fa-regular fa-heart"></i>
                 <span>${t('fav_hint')}</span>
-                <button type="button" class="icon-btn border-0" aria-label="Close" onclick="try{localStorage.setItem('fav_hint_dismissed','1')}catch(e){}; renderFavPanel()"><i class="fa-solid fa-xmark text-[12px]"></i></button>
+                <button type="button" class="icon-btn border-0" aria-label="Close" onclick="try{safeStore.setItem('fav_hint_dismissed','1')}catch(e){}; renderFavPanel()"><i class="fa-solid fa-xmark text-[12px]"></i></button>
             </div>`;
         panel.classList.remove('hidden');
         return;
@@ -1085,17 +1126,25 @@ function openFavManager() {
             </div>
             <button type="button" class="icon-btn shrink-0" aria-label="${t('fav_remove')}" onclick="removeFavoriteAt(${i})"><i class="fa-regular fa-trash-can text-[13px]"></i></button>
         </div>`).join('') : `<p class="text-[14px] t-ink-3 text-center py-10">${t('fav_empty')}</p>`;
+    const wasHidden = box.classList.contains('hidden');
     box.classList.remove('hidden');
     document.getElementById('favManagerBackdrop').classList.remove('hidden');
+    lockPage();
+    if (wasHidden) { try { history.pushState({ overlay: 'fav' }, ''); } catch (e) {} }
 }
 function closeFavManager() {
-    document.getElementById('favManager').classList.add('hidden');
+    const box = document.getElementById('favManager');
+    const wasOpen = !box.classList.contains('hidden');
+    box.classList.add('hidden');
     document.getElementById('favManagerBackdrop').classList.add('hidden');
+    unlockPage();
+    if (wasOpen && !_closingFromBack && history.state && history.state.overlay === 'fav') history.back();
 }
 function removeFavoriteAt(i) {
     const list = loadFavorites();
     list.splice(i, 1);
     saveFavorites(list);
+    if (!list.length) favOnly = false;      // nothing left to filter by
     openFavManager();
     renderFavPanel();
     renderProductsCurrent();
@@ -1344,6 +1393,10 @@ function createDiverseBestSellers(items) {
 // Product Series Clustering (Groups identical product lines with different flavors/variants together)
 function getProductSeriesKey(item) {
     if (!item) return '';
+    if (item._seriesKey !== undefined) return item._seriesKey;      // computed once per product
+    return (item._seriesKey = _computeSeriesKey(item));
+}
+function _computeSeriesKey(item) {
     let title = (item.title || '').toLowerCase()
         .replace(/['’]/g, '')
         .replace(/\b\d+([.-]\d+)?\s*(g|kg|ml|l|litre|liter|pack|pk|s|pieces|tablets|capsules|sheets|wipes)\b/gi, ' ')
@@ -1536,6 +1589,11 @@ function sortAndClusterBySeries(items, comparator) {
 // Cross-Supermarket Comparison Core Key
 function getCoreProductKey(item) {
     if (!item || !item.title) return '';
+    if (item._coreKey !== undefined && item._coreKeyTitle === item.title) return item._coreKey;
+    item._coreKeyTitle = item.title;
+    return (item._coreKey = _computeCoreKey(item));
+}
+function _computeCoreKey(item) {
     return item.title.toLowerCase()
         .replace(/['’]/g, '')
         .replace(/\b\d+([.-]\d+)?\s*(g|kg|ml|l|litre|liter|pack|pk|s|pieces|tablets|capsules|sheets|wipes)\b/gi, ' ')
@@ -1548,21 +1606,39 @@ function getCoreProductKey(item) {
         .trim();
 }
 
-// Enriches list with cross-store comparison metadata
+// Same product at another supermarket: SAME week and SAME size/pack only
+// ("Vita Gummies 110 Pack $21" is not compared with "50 pack $11"; this week never with next week)
+function getCompareKey(item) {
+    if (item._cmpKey !== undefined) return item._cmpKey;
+    const t = (item.title || '').toLowerCase()
+        .replace(/['’]/g, '')
+        .replace(/\b(litres?|liters?)\b/g, 'l').replace(/\bmillilitres?\b/g, 'ml').replace(/\bgrams?\b/g, 'g')
+        .replace(/\b(pack|pk|packs)\b/g, 'pk')
+        .replace(/(\d+(?:\.\d+)?)\s*(kg|g|ml|l|pk)\b/g, '$1$2')
+        .replace(/\bpk\s*(\d+)\b/g, '$1pk')
+        .replace(/\b(or|and|&|the|from|varieties|selected)\b/g, ' ')
+        .replace(/[^\w\s.]/g, ' ').replace(/\s+/g, ' ').trim();
+    item._cmpKey = `${item.period || 'current'}|${t}`;
+    return item._cmpKey;
+}
+
+// Enriches list with cross-store comparison metadata (once per loaded list)
 function enrichCrossStoreComparisons(list) {
-    if (!list || list.length === 0) return;
+    if (!list || list.length === 0 || list._enriched) return;
+    list._enriched = true;
     const keyMap = new Map();
     list.forEach(it => {
-        const k = getCoreProductKey(it);
+        const k = getCompareKey(it);
         if (!keyMap.has(k)) keyMap.set(k, []);
         keyMap.get(k).push(it);
     });
 
     list.forEach(it => {
-        const k = getCoreProductKey(it);
+        const k = getCompareKey(it);
         const matches = (keyMap.get(k) || []).filter(other => other.store !== it.store);
         if (matches.length > 0) {
             it.cross_store_matches = matches.map(other => ({
+                ref: other,      // the full product, so tapping it opens the real item (week, dates, translations)
                 id: other.id,
                 store: other.store,
                 title: other.title,
@@ -1820,7 +1896,16 @@ async function loadSpecials() {
             const emptyTitle = document.getElementById('emptyStateTitle');
             const emptySub = document.getElementById('emptyStateSub');
             const emptyAction = document.getElementById('emptyStateAction');
-            if (currentPeriod === 'next') {
+            if (!rawSpecials) {
+                // the specials file could not be downloaded (offline / bad connection)
+                if (emptyTitle) emptyTitle.textContent = t('load_failed_title');
+                if (emptySub) emptySub.textContent = t('load_failed_sub');
+                if (emptyAction) emptyAction.classList.add('hidden');
+            } else if (favOnly) {
+                if (emptyTitle) emptyTitle.textContent = t('fav_none_title');
+                if (emptySub) emptySub.textContent = t('fav_none_sub');
+                if (emptyAction) emptyAction.classList.add('hidden');
+            } else if (currentPeriod === 'next') {
                 if (emptyTitle) {
                     emptyTitle.textContent = currentLang === 'zh' ? '下週特價型錄尚未公佈' : (currentLang === 'ja' ? '来週のチラシはまだ公開されていません' : (currentLang === 'ko' ? '다음 주 세일 카탈로그가 아직 공개되지 않았습니다' : 'Next Week Specials Not Released Yet'));
                 }
@@ -1857,6 +1942,8 @@ function renderProductsCurrent() {
     if (countEl && lastResultCount !== null) countEl.textContent = t('found_targets', { n: lastResultCount });
     if (currentLoadedItems && currentLoadedItems.length > 0) {
         renderProducts(currentLoadedItems);
+    } else {
+        loadSpecials();      // empty result: redraw its message (and filter notes) in the new language
     }
 }
 
@@ -2029,6 +2116,7 @@ function createProductCardElement(item) {
     const card = document.createElement('div');
     card.className = 'p-card group';
     card.onclick = () => openProductModal(item);
+    card.tabIndex = 0;      // keyboard: Tab to a card, Enter opens it (no role=button: the card holds its own buttons)
 
     let storeBadgeClass = 'bg-[#007a3d] text-white';
     let storeIcon = '<i class="fa-solid fa-leaf text-[9px] text-emerald-200"></i>';
@@ -2199,7 +2287,7 @@ function buildStoreSearchUrl(store, queryTerm, fallbackUrl = '') {
         if (fallbackUrl && fallbackUrl.includes('aldi.com.au')) {
             return fallbackUrl;
         }
-        return `https://www.aldi.com.au/groceries/super-savers/`;
+        return `https://www.aldi.com.au/products/super-savers/k/1588161426952145`;
     }
     return fallbackUrl || '#';
 }
@@ -2258,7 +2346,7 @@ function getOfficialStoreUrl(item) {
         if (item.product_url && item.product_url.includes('aldi.com.au')) {
             return item.product_url;
         }
-        return `https://www.aldi.com.au/groceries/super-savers/`;
+        return `https://www.aldi.com.au/products/super-savers/k/1588161426952145`;
     }
     return item.product_url || '#';
 }
@@ -2407,7 +2495,7 @@ function openProductModal(item) {
                     <span class="px-2 py-0.5 rounded-lg text-[10px] font-bold ${item.store === 'Coles' ? 'bg-[#e01a22]' : (item.store === 'ALDI' ? 'bg-[#00205b]' : 'bg-[#007a3d]')} text-white">
                         ${item.store} (${currentLang === 'zh' ? '當前' : (currentLang === 'ja' ? '現在' : (currentLang === 'ko' ? '현재' : 'Current'))})
                     </span>
-                    <span class="text-xs font-semibold text-slate-800 dark:text-zinc-200 truncate max-w-[180px] sm:max-w-xs" title="${item.title}">
+                    <span class="text-xs font-semibold text-slate-800 dark:text-zinc-200 truncate max-w-[180px] sm:max-w-xs" title="${escHTML(item.title)}">
                         ${item.title}
                     </span>
                 </div>
@@ -2437,7 +2525,7 @@ function openProductModal(item) {
                 otherRow.className = "list-item justify-between cursor-pointer transition hover:opacity-80";
                 otherRow.onclick = (e) => {
                     e.stopPropagation();
-                    openProductModal(other);
+                    openProductModal(other.ref || other);
                 };
                 otherRow.innerHTML = `
                     <div class="flex items-center gap-2">
@@ -2445,7 +2533,7 @@ function openProductModal(item) {
                             ${other.store}
                         </span>
                         <div class="space-y-0.5">
-                            <span class="text-xs font-semibold text-slate-800 dark:text-zinc-200 truncate max-w-[180px] sm:max-w-xs block" title="${other.title}">
+                            <span class="text-xs font-semibold text-slate-800 dark:text-zinc-200 truncate max-w-[180px] sm:max-w-xs block" title="${escHTML(other.title)}">
                                 ${other.title}
                             </span>
                             <span class="text-[10px] text-blue-600 dark:text-blue-400 font-medium">
@@ -2624,15 +2712,31 @@ function unlockPage() {
     const drawerOpen = !document.getElementById('shoppingDrawer').classList.contains('translate-x-full');
     const modalOpen = !document.getElementById('productModal').classList.contains('hidden');
     const fbOpen = !document.getElementById('feedbackBox').classList.contains('hidden');
-    if (!drawerOpen && !modalOpen && !fbOpen) document.documentElement.classList.remove('is-locked');
+    const favOpen = !document.getElementById('favManager').classList.contains('hidden');
+    if (!drawerOpen && !modalOpen && !fbOpen && !favOpen) document.documentElement.classList.remove('is-locked');
+}
+// Close the top-most open overlay (phone Back button and the Esc key do the same thing)
+function closeTopOverlay() {
+    if (!document.getElementById('feedbackBox').classList.contains('hidden')) { closeFeedback(); return true; }
+    if (!document.getElementById('favManager').classList.contains('hidden')) { closeFavManager(); return true; }
+    if (!document.getElementById('productModal').classList.contains('hidden')) { closeProductModal(); return true; }
+    if (!document.getElementById('shoppingDrawer').classList.contains('translate-x-full')) { toggleShoppingDrawer(); return true; }
+    return false;
 }
 window.addEventListener('popstate', () => {
     _closingFromBack = true;
-    try {
-        if (!document.getElementById('productModal').classList.contains('hidden')) closeProductModal();
-        else if (!document.getElementById('shoppingDrawer').classList.contains('translate-x-full')) toggleShoppingDrawer();
-    } finally { _closingFromBack = false; }
+    try { closeTopOverlay(); } finally { _closingFromBack = false; }
 });
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') { closeTopOverlay(); return; }
+    // product cards open with Enter / Space like a button
+    if ((e.key === 'Enter' || e.key === ' ') && e.target && e.target.classList && e.target.classList.contains('p-card')) {
+        e.preventDefault();
+        e.target.click();
+    }
+});
+// After a reload the browser may still remember an overlay step that is no longer open
+try { if (history.state && history.state.overlay) history.replaceState(null, ''); } catch (e) {}
 
 // ---------------- Quantities: one line per product, with − / + ----------------
 // A product is the same product when store + week + name match (database ids change every update).
@@ -2696,14 +2800,15 @@ function changeShoppingQtyById(id, delta) {
 // LocalStorage helpers for Shopping List in Static / Cloudflare Pages mode
 function getLocalShoppingList() {
     try {
-        return JSON.parse(localStorage.getItem('whv_shopping_items') || '[]');
+        const v = JSON.parse(safeStore.getItem('whv_shopping_items') || '[]');
+        return Array.isArray(v) ? v.filter(x => x && typeof x === 'object' && x.title).map(sanitizeProduct) : [];
     } catch (e) {
         return [];
     }
 }
 
 function saveLocalShoppingList(items) {
-    localStorage.setItem('whv_shopping_items', JSON.stringify(items));
+    try { safeStore.setItem('whv_shopping_items', JSON.stringify(items)); } catch (e) {}
 }
 
 // Start/end dates of a special's week: 'Wed 7 Oct 2026 - Tue 13 Oct 2026' or ALDI's '(10/07 - 10/13)'
@@ -2943,7 +3048,7 @@ async function loadShoppingList() {
                                 <div class="w-12 h-12 rounded-lg p-1 flex items-center justify-center shrink-0 overflow-hidden" style="background:#fff;border:1px solid var(--line)">
                                     <img 
                                         src="${it.image_url || fallbackImg}" 
-                                        alt="${it.title}" 
+                                        alt="${escHTML(it.title)}" 
                                         loading="lazy" 
                                         class="max-h-full max-w-full object-contain"
                                         onerror="this.onerror=null;this.src=DEFAULT_FALLBACK_IMG"
@@ -2951,7 +3056,7 @@ async function loadShoppingList() {
                                 </div>
                                 <div class="min-w-0 flex-1">
                                     <div class="flex items-center gap-1.5">
-                                        <h4 class="text-[13px] font-medium t-ink truncate ${it.is_bought ? 'line-through' : ''}" title="${it.title}">
+                                        <h4 class="text-[13px] font-medium t-ink truncate ${it.is_bought ? 'line-through' : ''}" title="${escHTML(it.title)}">
                                              ${it.title}
                                         </h4>
                                         <span class="tag shrink-0 ${it.expired ? 'is-sale' : (it.period === 'next' ? 'is-next' : '')}">
@@ -2960,7 +3065,7 @@ async function loadShoppingList() {
                                     </div>
                                     ${(() => {
                                         const itTrans = getProductTranslation(it, currentLang);
-                                        return (itTrans && currentLang !== 'en') ? `<div class="text-[12px] t-ink-2 truncate mt-0.5" title="${itTrans}">${itTrans}</div>` : '';
+                                        return (itTrans && currentLang !== 'en') ? `<div class="text-[12px] t-ink-2 truncate mt-0.5" title="${escHTML(itTrans)}">${itTrans}</div>` : '';
                                     })()}
                                     <div class="text-[12px] t-ink-3 flex items-center gap-2 mt-0.5 flex-wrap num">
                                         <span class="font-semibold t-ink">${itPrice.displayWithUnit}</span>
@@ -3120,11 +3225,13 @@ async function copyShoppingList() {
             if (items && items.length > 0) {
                 text += `【${st}】\n`;
                 items.forEach((it, idx) => {
-                    const tag = it.period === 'next' ? `[${t('next_cycle')}]` : `[${t('current_cycle')}]`;
+                    const tag = it.expired ? `[${t('expired_tag')}]` : (it.period === 'next' ? `[${t('next_cycle')}]` : `[${t('current_cycle')}]`);
                     const itPrice = parseSupermarketPrice(it.price_display, it.price);
                     const itTrans = getProductTranslation(it, currentLang);
                     const titleDisplay = (itTrans && currentLang !== 'en') ? `${it.title} (${itTrans})` : it.title;
-                    text += `  ${idx + 1}. ${tag} ${titleDisplay} - ${itPrice.displayWithUnit}\n`;
+                    const qty = parseInt(it.quantity, 10) || 1;
+                    const qtyText = qty > 1 ? ` × ${qty} = $${((parseFloat(it.price) || 0) * qty).toFixed(2)}` : '';
+                    text += `  ${idx + 1}. ${tag} ${titleDisplay} - ${itPrice.displayWithUnit}${qtyText}\n`;
                 });
                 text += `\n`;
             }
@@ -3142,185 +3249,6 @@ async function copyShoppingList() {
     }
 }
 
-async function sendShoppingListEmail() {
-    const emailInput = document.getElementById('shoppingEmailInput');
-    const email = (emailInput ? emailInput.value : '').trim();
-
-    // Validate Email
-    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        showToast(t('email_invalid'), 'fa-circle-exclamation', true);
-        if (emailInput) emailInput.focus();
-        return;
-    }
-
-    // Get current shopping list data
-    let data = null;
-    try {
-        const res = await apiFetch('/api/shopping-list');
-        if (res.ok) data = await res.json();
-        else data = getLocalShoppingData();
-    } catch (err) {
-        data = getLocalShoppingData();
-    }
-
-    if (!data.items || data.items.length === 0) {
-        showToast(t('empty_cart_error'), 'fa-circle-exclamation', true);
-        return;
-    }
-
-    const btn = document.getElementById('sendEmailBtn');
-    const icon = document.getElementById('sendEmailIcon');
-    const btnText = document.getElementById('sendEmailBtnText');
-    const origIcon = icon ? icon.className : 'fa-solid fa-paper-plane text-xs';
-    const origText = btnText ? btnText.textContent : t('email_send_btn');
-
-    if (btn) btn.disabled = true;
-    if (icon) icon.className = 'fa-solid fa-spinner fa-spin text-xs';
-    if (btnText) btnText.textContent = t('sending_email');
-
-    // Build plain text version
-    let text = `🛒 ${t('shopping_manifest')} (${new Date().toLocaleDateString()})\n`;
-    text += `🇦🇺 All prices in AUD ($)\n\n`;
-    const stores = ['Woolworths', 'Coles', 'ALDI', 'Other'];
-    stores.forEach(st => {
-        const items = data.grouped[st];
-        if (items && items.length > 0) {
-            text += `【${st}】\n`;
-            items.forEach((it, idx) => {
-                const tag = it.period === 'next' ? `[${t('next_cycle')}]` : `[${t('current_cycle')}]`;
-                const itPrice = parseSupermarketPrice(it.price_display, it.price);
-                const itTrans = getProductTranslation(it, currentLang);
-                const titleDisplay = (itTrans && currentLang !== 'en') ? `${it.title} (${itTrans})` : it.title;
-                text += `  ${idx + 1}. ${tag} ${titleDisplay} - ${itPrice.displayWithUnit}`;
-                if (it.quantity > 1) text += ` x${it.quantity}`;
-                if (it.save_amount > 0) text += ` (Save $${(it.save_amount * it.quantity).toFixed(2)})`;
-                text += `\n`;
-            });
-            text += `\n`;
-        }
-    });
-    text += `💰 ${t('total_budget')} $${data.total_cost.toFixed(2)} (${t('total_saved')} $${data.total_saved.toFixed(2)})\n\n`;
-    text += `來自：澳洲三大超市特價比價站 (AU Supermarket Specials)\n`;
-    text += `💡 任何建議與反饋，歡迎來信至：rick97005109@gmail.com`;
-
-    // Build responsive HTML version for email
-    let html = `
-    <div style="max-width: 600px; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #1e293b; background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; overflow: hidden;">
-        <div style="background: linear-gradient(135deg, #059669, #0d9488); padding: 24px; text-align: center; color: #ffffff;">
-            <h1 style="margin: 0; font-size: 20px; font-weight: bold;">🛒 澳洲三大超市特價採買清單</h1>
-            <p style="margin: 6px 0 0 0; font-size: 12px; opacity: 0.9;">Woolworths · Coles · ALDI 每週省錢比價清單 (${new Date().toLocaleDateString()})</p>
-        </div>
-        <div style="padding: 20px;">
-    `;
-
-    stores.forEach(st => {
-        const items = data.grouped[st];
-        if (items && items.length > 0) {
-            let badgeBg = '#059669';
-            if (st === 'Coles') badgeBg = '#e11d48';
-            if (st === 'ALDI') badgeBg = '#2563eb';
-
-            html += `
-                <div style="margin-bottom: 20px; border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden;">
-                    <div style="background-color: #f8fafc; padding: 10px 14px; border-bottom: 1px solid #e2e8f0;">
-                        <span style="background-color: ${badgeBg}; color: #ffffff; padding: 3px 8px; border-radius: 6px; font-size: 12px; font-weight: bold;">${st} (${items.length})</span>
-                    </div>
-                    <ul style="list-style: none; margin: 0; padding: 10px 14px;">
-            `;
-            items.forEach(it => {
-                const itPrice = parseSupermarketPrice(it.price_display, it.price);
-                const tag = it.period === 'next' ? `[${t('next_cycle')}] ` : '';
-                const itTrans = getProductTranslation(it, currentLang);
-                html += `
-                    <li style="padding: 10px 0; border-bottom: 1px dashed #f1f5f9; display: flex; align-items: center; justify-content: space-between; font-size: 13px;">
-                        <div style="display: flex; align-items: center; gap: 10px;">
-                            ${it.image_url ? `<img src="${it.image_url}" alt="${it.title}" style="width: 44px; height: 44px; object-fit: contain; border-radius: 8px; background: #f8fafc; border: 1px solid #e2e8f0; padding: 2px; flex-shrink: 0;" />` : ''}
-                            <div>
-                                <strong style="color: #0f172a;">${tag}${it.title}</strong>
-                                ${itTrans && currentLang !== 'en' ? `<div style="color: #059669; font-size: 11px; font-weight: 600; margin-top: 2px;">${itTrans}</div>` : ''}
-                                <div style="color: #64748b; font-size: 11px; margin-top: 2px;">數量: ${it.quantity} | 單價: ${itPrice.displayWithUnit}</div>
-                            </div>
-                        </div>
-                        <div style="text-align: right; flex-shrink: 0;">
-                            <span style="font-weight: bold; color: #059669;">$${(it.price * it.quantity).toFixed(2)}</span>
-                            ${it.save_amount > 0 ? `<div style="color: #e11d48; font-size: 11px;">省 $${(it.save_amount * it.quantity).toFixed(2)}</div>` : ''}
-                        </div>
-                    </li>
-                `;
-            });
-            html += `
-                    </ul>
-                </div>
-            `;
-        }
-    });
-
-    html += `
-            <div style="background-color: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 12px; padding: 14px; margin-top: 15px;">
-                <div style="display: flex; justify-content: space-between; font-size: 14px; font-weight: bold; color: #0f172a;">
-                    <span>預估總花費：</span>
-                    <span>$${data.total_cost.toFixed(2)} AUD</span>
-                </div>
-                <div style="display: flex; justify-content: space-between; font-size: 13px; font-weight: bold; color: #e11d48; margin-top: 4px;">
-                    <span>本週預計節省：</span>
-                    <span>$${data.total_saved.toFixed(2)} AUD</span>
-                </div>
-            </div>
-            <div style="text-align: center; margin-top: 24px; font-size: 11px; color: #94a3b8;">
-                <p style="margin: 0;">此郵件由 <strong>澳洲超市特價優惠</strong> 系統自動產生</p>
-                <p style="margin: 4px 0 0 0;">祝您在澳洲採買省心省荷包！🦘✨</p>
-                <p style="margin: 8px 0 0 0; color: #64748b;">💡 任何建議或反饋，歡迎來信：<a href="mailto:rick97005109@gmail.com" style="color: #059669; text-decoration: underline; font-weight: bold;">rick97005109@gmail.com</a></p>
-            </div>
-        </div>
-    </div>
-    `;
-
-    try {
-        const res = await fetch('/api/send-email', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                email: email,
-                items: data.items,
-                grouped: data.grouped,
-                total_cost: data.total_cost,
-                total_saved: data.total_saved,
-                text_content: text,
-                html_content: html
-            })
-        });
-
-        const result = await res.json().catch(() => ({}));
-        if (res.ok && result.ok) {
-            showToast(t('email_sent_success'), 'fa-circle-check');
-            if (emailInput) emailInput.value = '';
-        } else {
-            if (result.error && result.error.message) {
-                console.warn('Resend notice:', result.error.message);
-                showToast(result.error.message, 'fa-triangle-exclamation', true);
-            }
-            // Backend signaled fallback or key not configured -> open mail client
-            openMailtoFallback(email, text);
-        }
-    } catch (e) {
-        // Pure static deployment without /api/send-email -> open mail client
-        openMailtoFallback(email, text);
-    } finally {
-        if (btn) btn.disabled = false;
-        if (icon) icon.className = origIcon;
-        if (btnText) btnText.textContent = origText;
-    }
-}
-
-function openMailtoFallback(email, text) {
-    const subject = encodeURIComponent(`🛒 我的澳洲超市採買清單 (${new Date().toLocaleDateString()})`);
-    const body = encodeURIComponent(text);
-    const mailtoUrl = `mailto:${email}?subject=${subject}&body=${body}`;
-    window.location.href = mailtoUrl;
-    showToast(t('email_mailto_opened'), 'fa-envelope');
-}
-
-// Background Updater
 async function triggerUpdate() {
     if (isUpdating) return;
     if (!confirm(t('update_feed') + '?')) return;
@@ -3389,7 +3317,7 @@ function renderAnnouncement() {
         return;
     }
 
-    const isDismissed = localStorage.getItem('dismiss_announcement_date');
+    const isDismissed = safeStore.getItem('dismiss_announcement_date');
     if (isDismissed === cachedAnnouncement.date) {
         box.classList.add('hidden');
         return;
@@ -3433,7 +3361,7 @@ function dismissAnnouncement() {
         box.classList.add('hidden');
         const dateText = document.getElementById('announcementDate').textContent;
         if (dateText) {
-            localStorage.setItem('dismiss_announcement_date', dateText);
+            safeStore.setItem('dismiss_announcement_date', dateText);
         }
     }
 }
@@ -3468,12 +3396,12 @@ function recordVisit() {
     try {
         if (navigator.doNotTrack === '1' || window.doNotTrack === '1') return;
         if (!/pages\.dev$|^localhost$|^127\.0\.0\.1$/.test(location.hostname)) return;
-        let vid = localStorage.getItem('vid');
+        let vid = safeStore.getItem('vid');
         if (!vid || !/^[a-f0-9]{16,32}$/.test(vid)) {
             const a = new Uint8Array(12);
             crypto.getRandomValues(a);
             vid = [...a].map(b => b.toString(16).padStart(2, '0')).join('');
-            localStorage.setItem('vid', vid);
+            safeStore.setItem('vid', vid);
         }
         fetch('/api/hit', {
             method: 'POST', keepalive: true, headers: { 'Content-Type': 'application/json' },
@@ -3500,14 +3428,19 @@ function openFeedback(prefill) {
     if (prefill) msg.value = prefill;
     updateFeedbackCount();
     document.getElementById('feedbackBackdrop').classList.remove('hidden');
+    const wasHidden = box.classList.contains('hidden');
     box.classList.remove('hidden');
     lockPage();
+    if (wasHidden) { try { history.pushState({ overlay: 'feedback' }, ''); } catch (e) {} }
     setTimeout(() => { try { msg.focus({ preventScroll: true }); msg.setSelectionRange(msg.value.length, msg.value.length); } catch (e) {} }, 60);
 }
 function closeFeedback() {
-    document.getElementById('feedbackBox').classList.add('hidden');
+    const box = document.getElementById('feedbackBox');
+    const wasOpen = !box.classList.contains('hidden');
+    box.classList.add('hidden');
     document.getElementById('feedbackBackdrop').classList.add('hidden');
     unlockPage();
+    if (wasOpen && !_closingFromBack && history.state && history.state.overlay === 'feedback') history.back();
 }
 function pickFeedbackType(btn) {
     document.querySelectorAll('#fbTypes .fb-type').forEach(b => b.classList.toggle('is-active', b === btn));
@@ -3534,7 +3467,7 @@ async function sendFeedback() {
     if (message.length < 2) { show(t('fb_too_short'), false); return; }
     if (document.getElementById('fbBot').checked) return;           // spam robot
     let last = 0;
-    try { last = +localStorage.getItem('fb_last_sent') || 0; } catch (e) {}
+    try { last = +safeStore.getItem('fb_last_sent') || 0; } catch (e) {}
     if (Date.now() - last < 30000) { show(t('fb_wait'), false); return; }
     btn.disabled = true;
     const typeLabel = { suggestion: '建議', data_error: '價格/商品有誤', bug: '網站問題', other: '其他' }[feedbackType] || feedbackType;
@@ -3552,7 +3485,7 @@ async function sendFeedback() {
         if (r.status === 429) { show(t('fb_wait'), false); btn.disabled = false; return; }
     } catch (e) {}
     const finishOk = () => {
-        try { localStorage.setItem('fb_last_sent', String(Date.now())); } catch (e) {}
+        try { safeStore.setItem('fb_last_sent', String(Date.now())); } catch (e) {}
         msgEl.value = '';
         updateFeedbackCount();
         show(t('fb_thanks'), true);
@@ -3592,13 +3525,18 @@ async function sendFeedback() {
     }
 }
 document.addEventListener('input', (e) => { if (e.target && e.target.id === 'fbMessage') updateFeedbackCount(); });
-document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !document.getElementById('feedbackBox').classList.contains('hidden')) closeFeedback(); });
 
 // ---------- Always show the latest week ----------
 // Phones keep yesterday's tab in memory and show it again without reloading (and a slow connection
 // may show the saved offline copy). Whenever the page comes back to the screen, check for newer data.
 let lastFreshCheck = 0;
 async function checkForNewData(force) {
+    if (!rawSpecials) {
+        // the first download failed (no reception): try again now instead of staying empty
+        try { staticJsonCache.clear(); } catch (e) {}
+        try { if (!globalStats) await loadStats(); await loadSpecials(); renderFavPanel(); } catch (e) {}
+        return;
+    }
     if (!isStaticMode) return;
     if (!force && Date.now() - lastFreshCheck < 3 * 60 * 1000) return;
     lastFreshCheck = Date.now();

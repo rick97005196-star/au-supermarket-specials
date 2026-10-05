@@ -161,7 +161,7 @@
     let key = '';
     let items = [];
     let filter = 'all';
-    try { key = localStorage.getItem('fb_admin_key') || ''; } catch (e) {}
+    try { key = sessionStorage.getItem('fb_admin_key') || ''; } catch (e) {}
 
     const esc = (s) => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
     const api = (method, qs = '') => fetch('/api/feedback' + qs, { method, headers: { Authorization: 'Bearer ' + key } });
@@ -169,11 +169,11 @@
     async function login() {
         key = document.getElementById('pw').value.trim();
         const ok = await load(true);
-        if (ok) { try { localStorage.setItem('fb_admin_key', key); } catch (e) {} }
+        if (ok) { try { sessionStorage.setItem('fb_admin_key', key); } catch (e) {} }
     }
     function logout() {
         key = '';
-        try { localStorage.removeItem('fb_admin_key'); } catch (e) {}
+        try { sessionStorage.removeItem('fb_admin_key'); } catch (e) {}
         document.getElementById('listView').classList.add('hidden');
         document.getElementById('loginView').classList.remove('hidden');
     }

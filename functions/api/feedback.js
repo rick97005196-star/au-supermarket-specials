@@ -43,6 +43,7 @@ export async function onRequestPost({ request, env }) {
     if (raw.length > 8000) return json({ ok: false, error: 'too_long' }, 413);
     let d;
     try { d = JSON.parse(raw); } catch (e) { return json({ ok: false, error: 'bad_json' }, 400); }
+    if (!d || typeof d !== 'object' || Array.isArray(d)) return json({ ok: false, error: 'bad_json' }, 400);
     if (d.botcheck) return json({ ok: true });                       // robot: pretend success
     const message = String(d.message || '').trim().slice(0, 1000);
     if (message.length < 2) return json({ ok: false, error: 'empty' }, 400);

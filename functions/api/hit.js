@@ -42,6 +42,7 @@ export async function onRequestPost({ request, env }) {
     if (!env.FEEDBACK_DB) return json({ ok: false, error: 'no_db' });
     let d = {};
     try { d = JSON.parse((await request.text()).slice(0, 500)); } catch (e) { return json({ ok: false }, 400); }
+    if (!d || typeof d !== 'object' || Array.isArray(d)) return json({ ok: false }, 400);
     const vid = String(d.vid || '');
     if (!/^[a-f0-9]{16,32}$/.test(vid)) return json({ ok: false }, 400);
     const short = (v, ok) => (ok.includes(v) ? v : 'other');

@@ -6,7 +6,7 @@
  * - Product photos from the supermarkets' servers are not stored (they can't be cached safely);
  *   the page shows a placeholder for them while offline.
  */
-const VERSION = 'v3';
+const VERSION = 'v4';
 const SHELL_CACHE = `shell-${VERSION}`;
 const DATA_CACHE = `data-${VERSION}`;
 const ASSET_CACHE = `assets-${VERSION}`;
@@ -69,7 +69,7 @@ async function staleWhileRevalidate(request, cacheName) {
     const cache = await caches.open(cacheName);
     const cached = await cache.match(request);
     const refresh = fetch(request).then((response) => {
-        if (response && (response.ok || response.type === 'cors')) cache.put(request, response.clone());
+        if (response && response.ok) cache.put(request, response.clone());     // never keep error pages
         return response;
     }).catch(() => cached);
     return cached || refresh;
@@ -79,6 +79,8 @@ async function staleWhileRevalidate(request, cacheName) {
 function stripSearch(request) {
     const url = new URL(request.url);
     if (url.pathname.startsWith('/data/')) return new Request(url.origin + url.pathname);
+    // pages opened from shared links (?fbclid=…, ?utm=…) are one page, not a new saved copy each time
+    if (request.mode === 'navigate') return new Request(url.origin + url.pathname);
     return request;
 }
 

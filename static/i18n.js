@@ -1,3 +1,19 @@
+// Storage that never breaks the site: private browsing / blocked cookies make localStorage throw,
+// then settings are simply kept in memory for this visit.
+var safeStore = (function () {
+    try {
+        var ls = window.localStorage, k = '__probe__';
+        ls.setItem(k, '1'); ls.removeItem(k);
+        return ls;
+    } catch (e) {
+        var m = {};
+        return {
+            getItem: function (k) { return Object.prototype.hasOwnProperty.call(m, k) ? m[k] : null; },
+            setItem: function (k, v) { m[k] = String(v); },
+            removeItem: function (k) { delete m[k]; }
+        };
+    }
+})();
 const I18N = {
     'zh': {
         name: '繁體中文',
@@ -77,6 +93,10 @@ const I18N = {
         aldi_until: '特價至 {d}',
         expired_tag: '特價已結束',
         next_cw_pending: 'Coles／Woolworths 下週型錄通常週一公佈',
+        load_failed_title: '特價資料下載失敗',
+        load_failed_sub: '請確認網路連線，恢復後網站會自動重新載入。',
+        fav_none_title: '目前沒有你常買的特價',
+        fav_none_sub: '關掉「只顯示常買」就能看全部特價。',
         aldi_since_short: '{d} 起 · 售完為止',
         aldi_special_buy: 'Special Buys 限量特賣',
         aldi_on_sale_from: '{d} 開賣',
@@ -196,6 +216,10 @@ const I18N = {
         aldi_until: 'Until {d}',
         expired_tag: 'Special ended',
         next_cw_pending: 'Coles & Woolworths usually publish next week on Monday',
+        load_failed_title: 'Could not download the specials',
+        load_failed_sub: 'Check your connection – the site reloads by itself once you are back online.',
+        fav_none_title: 'None of your regular buys are on special',
+        fav_none_sub: 'Turn off "Favourites only" to see all specials.',
         aldi_since_short: 'From {d} · while stocks last',
         aldi_special_buy: 'Special Buy',
         aldi_on_sale_from: 'On sale {d}',
@@ -315,6 +339,10 @@ const I18N = {
         aldi_until: '{d}まで',
         expired_tag: '特売終了',
         next_cw_pending: 'Coles・Woolworthsの来週分は通常月曜日に公開',
+        load_failed_title: '特売データを読み込めませんでした',
+        load_failed_sub: '通信状況を確認してください。回復すると自動で再読み込みします。',
+        fav_none_title: 'いつもの商品は今は特売していません',
+        fav_none_sub: '「いつもの商品のみ」をオフにすると全ての特売が見られます。',
         aldi_since_short: '{d}から · 在庫限り',
         aldi_special_buy: 'Special Buys 限定品',
         aldi_on_sale_from: '{d} 発売',
@@ -434,6 +462,10 @@ const I18N = {
         aldi_until: '{d}까지',
         expired_tag: '특가 종료',
         next_cw_pending: 'Coles·Woolworths 다음 주 전단은 보통 월요일 공개',
+        load_failed_title: '특가 데이터를 불러오지 못했습니다',
+        load_failed_sub: '인터넷 연결을 확인해 주세요. 연결되면 자동으로 다시 불러옵니다.',
+        fav_none_title: '자주 사는 상품 중 특가가 없습니다',
+        fav_none_sub: '「자주 사는 상품만」을 끄면 모든 특가를 볼 수 있습니다.',
         aldi_since_short: '{d}부터 · 재고 소진 시까지',
         aldi_special_buy: 'Special Buys 한정 특가',
         aldi_on_sale_from: '{d} 판매 시작',
@@ -477,7 +509,7 @@ const I18N = {
     }
 };
 
-var currentLang = (typeof localStorage !== 'undefined' && localStorage.getItem('lang')) || 'zh';
+var currentLang = safeStore.getItem('lang') || 'zh';
 if (typeof window !== 'undefined') {
     window.currentLang = currentLang;
 }
