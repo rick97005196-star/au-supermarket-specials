@@ -1029,3 +1029,29 @@ html.dark .qty-btn:active { background: rgba(0,0,0,.1); }
 @media (max-width: 767px) { .top-disclaimer + section { padding-top: 20px; } }
 .top-disclaimer .disc-short { display: none; }
 @media (max-width: 639px) { .top-disclaimer .disc-long { display: none; } .top-disclaimer .disc-short { display: inline; } }
+
+/* ---------- 這週必買: one row of everyday staples ---------- */
+.must-buy { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 0 12px; box-shadow: var(--shadow-sm); }
+.mb-head { padding: 0 14px 10px; }
+.mb-title { font-size: 17px; font-weight: 700; color: var(--ink); letter-spacing: -0.01em; }
+.mb-sub { font-size: 12px; color: var(--ink-3); margin-top: 2px; line-height: 1.45; }
+.mb-row { display: flex; gap: 10px; overflow-x: auto; padding: 2px 14px 4px; scroll-snap-type: x proximity; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+.mb-row::-webkit-scrollbar { display: none; }
+.mb-card {
+    flex: 0 0 132px; scroll-snap-align: start; display: flex; flex-direction: column; align-items: flex-start; gap: 3px;
+    text-align: left; padding: 8px; border-radius: 14px; background: var(--surface-2); border: 1px solid transparent;
+    transition: border-color .15s ease, transform .1s ease; cursor: pointer;
+}
+.mb-card:hover { border-color: var(--line-strong); }
+.mb-card:active { transform: scale(.98); }
+.mb-card:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+.mb-slot { display: inline-flex; align-items: center; gap: 4px; font-size: 12px; font-weight: 700; color: var(--ink); }
+.mb-img { position: relative; width: 100%; aspect-ratio: 1 / 1; border-radius: 10px; background: #fff; overflow: hidden; margin: 2px 0; }
+.mb-img img { width: 100%; height: 100%; object-fit: contain; padding: 6px; }
+.mb-half { position: absolute; top: 4px; right: 4px; min-width: 22px; height: 22px; padding: 0 5px; border-radius: 999px; background: var(--sale); color: #fff; font-size: 12px; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; }
+.mb-name { font-size: 12px; line-height: 1.35; color: var(--ink-2); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; min-height: 2.7em; }
+.mb-price { font-size: 17px; font-weight: 700; color: var(--ink); line-height: 1.1; }
+.mb-price small { font-size: 11px; font-weight: 500; color: var(--ink-3); margin-left: 2px; }
+.mb-unit { font-size: 11.5px; font-weight: 600; color: var(--accent-text); background: var(--accent-soft); padding: 1px 7px; border-radius: 999px; }
+.mb-store { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; color: var(--ink-3); margin-top: 1px; }
+@media (min-width: 768px) { .mb-card { flex-basis: 150px; } .mb-head { padding: 0 18px 12px; } .mb-row { padding: 2px 18px 4px; } }
