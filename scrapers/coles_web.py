@@ -97,7 +97,7 @@ def product_to_item(p):
     }
 
 
-def scrape_coles_web_half_price(time_budget=300, max_blocked=4):
+def scrape_coles_web_half_price(time_budget=None, max_blocked=4):
     """Returns this week's in-store Half Price specials from coles.com.au (remembered across updates)."""
     # Tuesday 11pm – Wednesday 1am Brisbane: the states switch to the new week one after another.
     # Show only the catalogue for these two hours instead of mixing two weeks of website prices.
@@ -107,6 +107,13 @@ def scrape_coles_web_half_price(time_budget=300, max_blocked=4):
         return []
     week = coles_week_start()
     mem = _load_memory(week)
+    if time_budget is None:
+        # list not complete yet (e.g. right after the Wednesday reset): read for up to 15 minutes
+        # so the ~1,200 specials come back in one or two updates instead of five or six
+        complete = len(mem['items']) >= 900
+        time_budget = 300 if complete else 900
+        if not complete:
+            max_blocked = 6
     try:
         from curl_cffi import requests as cffi
     except Exception:

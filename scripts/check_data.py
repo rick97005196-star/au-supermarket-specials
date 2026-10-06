@@ -140,6 +140,19 @@ def pre():
         end = range_end(rng)
         if end and (today - end).days >= 2:   # a day of grace for the Wednesday switch-over
             problems.append(f"{store} 本週特價的檔期已過期（{rng}），可能是超市網站改版導致抓不到新資料")
+    # Coles website half-price list: after the Wednesday reset it should be refilled by noon.
+    # Fewer than 800 Coles specials outside that window = the website list is not coming back
+    # (blocked, or the updates are not running) -> email the owner. Never blocks the update.
+    try:
+        from zoneinfo import ZoneInfo
+        bne = dt.datetime.now(ZoneInfo('Australia/Brisbane'))
+    except Exception:
+        bne = dt.datetime.utcnow() + dt.timedelta(hours=10)
+    refill_window = (bne.weekday() == 2 and bne.hour < 12) or (bne.weekday() == 1 and bne.hour >= 23)
+    coles_now = now_c.get(('Coles', 'current'), 0)
+    if not refill_window and 0 < coles_now < 800:
+        problems.append(f"Coles 本週只有 {coles_now} 件（正常約 1,300 件），Coles 官網半價清單可能被擋或沒有更新")
+
     if not any(now_c.get((s, 'current')) for s in STORES):
         block = True
         problems.append("三家超市都沒有本週特價資料")
