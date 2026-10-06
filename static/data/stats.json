@@ -1,217 +1,194 @@
 {
   "current": {
-    "total": 3301,
-    "by_store": {
-      "Coles": 1422,
-      "Woolworths": 1829,
-      "ALDI": 50
-    },
-    "by_category": {
-      "bakery": 45,
-      "dairy_eggs": 51,
-      "drinks": 244,
-      "frozen": 97,
-      "health_vitamins": 1500,
-      "household": 755,
-      "liquor": 23,
-      "meat": 62,
-      "pantry": 183,
-      "pet": 95,
-      "produce": 7,
-      "seafood": 10,
-      "snacks": 389
-    },
-    "half_price_count": 2944,
-    "date_range": "Wed 30 Sep 2026 - Tue 6 Oct 2026"
-  },
-  "next": {
-    "total": 692,
+    "total": 2389,
     "by_store": {
       "Coles": 294,
-      "Woolworths": 274,
-      "ALDI": 124
+      "Woolworths": 1921,
+      "ALDI": 174
     },
     "by_category": {
-      "bakery": 24,
-      "dairy_eggs": 61,
-      "drinks": 66,
-      "frozen": 42,
-      "health_vitamins": 103,
-      "household": 160,
+      "bakery": 39,
+      "dairy_eggs": 73,
+      "drinks": 154,
+      "frozen": 60,
+      "health_vitamins": 976,
+      "household": 567,
       "liquor": 30,
-      "meat": 61,
-      "pantry": 89,
-      "pet": 26,
+      "meat": 66,
+      "pantry": 150,
+      "pet": 63,
       "produce": 6,
-      "seafood": 13,
-      "snacks": 107
+      "seafood": 14,
+      "snacks": 292
     },
-    "half_price_count": 248,
+    "half_price_count": 1895,
     "date_range": "Wed 7 Oct 2026 - Tue 13 Oct 2026"
   },
-  "last_updated": "2026-10-06 06:36:22",
+  "next": {
+    "total": 160,
+    "by_store": {
+      "ALDI": 160
+    },
+    "by_category": {
+      "bakery": 1,
+      "frozen": 1,
+      "health_vitamins": 14,
+      "household": 114,
+      "liquor": 2,
+      "meat": 3,
+      "pantry": 4,
+      "snacks": 21
+    },
+    "half_price_count": 0,
+    "date_range": "Wed 14 Oct 2026 - Tue 20 Oct 2026"
+  },
+  "last_updated": "2026-10-06 13:49:19",
   "base_region": "QLD",
   "regions": {
     "QLD": {
       "current": {
-        "total": 3301,
-        "by_store": {
-          "Coles": 1422,
-          "Woolworths": 1829,
-          "ALDI": 50
-        },
-        "half_price_count": 2944
-      },
-      "next": {
-        "total": 692,
+        "total": 2389,
         "by_store": {
           "Coles": 294,
-          "Woolworths": 274,
-          "ALDI": 124
+          "Woolworths": 1921,
+          "ALDI": 174
         },
-        "half_price_count": 248
+        "half_price_count": 1895
+      },
+      "next": {
+        "total": 160,
+        "by_store": {
+          "ALDI": 160
+        },
+        "half_price_count": 0
       }
     },
     "NSW": {
       "current": {
-        "total": 3303,
-        "by_store": {
-          "Coles": 1423,
-          "Woolworths": 1830,
-          "ALDI": 50
-        },
-        "half_price_count": 2944
-      },
-      "next": {
-        "total": 695,
+        "total": 2392,
         "by_store": {
           "Coles": 297,
-          "Woolworths": 274,
-          "ALDI": 124
+          "Woolworths": 1921,
+          "ALDI": 174
         },
-        "half_price_count": 248
+        "half_price_count": 1895
+      },
+      "next": {
+        "total": 160,
+        "by_store": {
+          "ALDI": 160
+        },
+        "half_price_count": 0
       }
     },
     "ACT": {
       "current": {
-        "total": 3303,
-        "by_store": {
-          "Coles": 1423,
-          "Woolworths": 1830,
-          "ALDI": 50
-        },
-        "half_price_count": 2944
-      },
-      "next": {
-        "total": 695,
+        "total": 2392,
         "by_store": {
           "Coles": 297,
-          "Woolworths": 274,
-          "ALDI": 124
+          "Woolworths": 1921,
+          "ALDI": 174
         },
-        "half_price_count": 248
+        "half_price_count": 1895
+      },
+      "next": {
+        "total": 160,
+        "by_store": {
+          "ALDI": 160
+        },
+        "half_price_count": 0
       }
     },
     "VIC": {
       "current": {
-        "total": 3300,
-        "by_store": {
-          "Coles": 1420,
-          "Woolworths": 1830,
-          "ALDI": 50
-        },
-        "half_price_count": 2944
-      },
-      "next": {
-        "total": 692,
+        "total": 2389,
         "by_store": {
           "Coles": 296,
-          "Woolworths": 272,
-          "ALDI": 124
+          "Woolworths": 1919,
+          "ALDI": 174
         },
-        "half_price_count": 247
+        "half_price_count": 1894
+      },
+      "next": {
+        "total": 160,
+        "by_store": {
+          "ALDI": 160
+        },
+        "half_price_count": 0
       }
     },
     "SA": {
       "current": {
-        "total": 3298,
-        "by_store": {
-          "Coles": 1419,
-          "Woolworths": 1829,
-          "ALDI": 50
-        },
-        "half_price_count": 2944
-      },
-      "next": {
-        "total": 717,
+        "total": 2414,
         "by_store": {
           "Coles": 319,
-          "Woolworths": 274,
-          "ALDI": 124
+          "Woolworths": 1921,
+          "ALDI": 174
         },
-        "half_price_count": 251
+        "half_price_count": 1898
+      },
+      "next": {
+        "total": 160,
+        "by_store": {
+          "ALDI": 160
+        },
+        "half_price_count": 0
       }
     },
     "WA": {
       "current": {
-        "total": 3302,
-        "by_store": {
-          "Coles": 1419,
-          "Woolworths": 1833,
-          "ALDI": 50
-        },
-        "half_price_count": 2944
-      },
-      "next": {
-        "total": 718,
+        "total": 2415,
         "by_store": {
           "Coles": 312,
-          "Woolworths": 282,
-          "ALDI": 124
+          "Woolworths": 1929,
+          "ALDI": 174
         },
-        "half_price_count": 246
+        "half_price_count": 1893
+      },
+      "next": {
+        "total": 160,
+        "by_store": {
+          "ALDI": 160
+        },
+        "half_price_count": 0
       }
     },
     "TAS": {
       "current": {
-        "total": 3304,
-        "by_store": {
-          "Coles": 1418,
-          "Woolworths": 1836,
-          "ALDI": 50
-        },
-        "half_price_count": 2941
-      },
-      "next": {
-        "total": 713,
+        "total": 2410,
         "by_store": {
           "Coles": 317,
-          "Woolworths": 272,
-          "ALDI": 124
+          "Woolworths": 1919,
+          "ALDI": 174
         },
-        "half_price_count": 248
+        "half_price_count": 1895
+      },
+      "next": {
+        "total": 160,
+        "by_store": {
+          "ALDI": 160
+        },
+        "half_price_count": 0
       }
     },
     "NT": {
       "current": {
-        "total": 3303,
-        "by_store": {
-          "Coles": 1424,
-          "Woolworths": 1829,
-          "ALDI": 50
-        },
-        "half_price_count": 2944
-      },
-      "next": {
-        "total": 693,
+        "total": 2390,
         "by_store": {
           "Coles": 297,
-          "Woolworths": 272,
-          "ALDI": 124
+          "Woolworths": 1919,
+          "ALDI": 174
         },
-        "half_price_count": 245
+        "half_price_count": 1892
+      },
+      "next": {
+        "total": 160,
+        "by_store": {
+          "ALDI": 160
+        },
+        "half_price_count": 0
       }
     }
   },
-  "data_updated_at": "2026-10-06T06:37:01Z"
+  "data_updated_at": "2026-10-06T13:51:24Z"
 }
