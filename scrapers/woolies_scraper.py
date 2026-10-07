@@ -467,7 +467,7 @@ def woolies_half_price_remembered():
     if mem['items'] and now - float(mem.get('last_full') or 0) < WOOLIES_REFRESH_HOURS * 3600:
         print(f"Woolies half-price list: read completely {int((now - mem['last_full']) / 60)} min ago - using the saved list ({len(mem['items'])} specials)")
         return list(mem['items'].values())
-    fresh = scrape_woolies_online_half_price(max_pages=100)
+    fresh = scrape_woolies_online_half_price(max_pages=300)
     if getattr(fresh, 'complete', False) and len(fresh) >= 50:
         mem['items'] = {it['title'].lower(): it for it in fresh}       # full list: replaces the old one
         mem['last_full'] = now
