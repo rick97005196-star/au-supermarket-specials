@@ -1055,3 +1055,152 @@ html.dark .qty-btn:active { background: rgba(0,0,0,.1); }
 .mb-unit { font-size: 11.5px; font-weight: 600; color: var(--accent-text); background: var(--accent-soft); padding: 1px 7px; border-radius: 999px; }
 .mb-store { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; color: var(--ink-3); margin-top: 1px; }
 @media (min-width: 768px) { .mb-card { flex-basis: 150px; } .mb-head { padding: 0 18px 12px; } .mb-row { padding: 2px 18px 4px; } }
+
+/* ==========================================================================
+   v10 – Refined controls. One family for every button:
+   neutral = "raised paper" (white, hairline edge, micro-shadow, crisp press)
+   primary = one tactile dark pebble (white in dark mode) for the few things that matter:
+             my list, the selected category, add to list, feedback.
+   (html:root prefix: these rules must win over the earlier layers in both themes)
+   ========================================================================== */
+:root {
+    --ctl-surface: #ffffff;
+    --ctl-ring: rgba(17, 17, 19, 0.09);
+    --ctl-ring-strong: rgba(17, 17, 19, 0.17);
+    --ctl-shadow: 0 1px 1px rgba(17, 17, 19, 0.04), 0 3px 8px -3px rgba(17, 17, 19, 0.12);
+    --ctl-shadow-hover: 0 1px 1px rgba(17, 17, 19, 0.05), 0 8px 18px -8px rgba(17, 17, 19, 0.24);
+    --ctl-track: rgba(118, 118, 128, 0.11);
+    --ctl-track-inset: inset 0 1px 2px rgba(17, 17, 19, 0.06);
+    --ctl-thumb-shadow: 0 0 0 0.5px rgba(17, 17, 19, 0.10), 0 1px 1px rgba(17, 17, 19, 0.04), 0 3px 8px -2px rgba(17, 17, 19, 0.16);
+    --pebble-top: #313134;
+    --pebble-bottom: #141416;
+    --pebble-text: #ffffff;
+    --pebble-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), inset 0 -1px 0 rgba(0, 0, 0, 0.35),
+                     0 1px 2px rgba(0, 0, 0, 0.16), 0 6px 14px -6px rgba(0, 0, 0, 0.42);
+    --pebble-shadow-hover: inset 0 1px 0 rgba(255, 255, 255, 0.18), inset 0 -1px 0 rgba(0, 0, 0, 0.35),
+                     0 1px 2px rgba(0, 0, 0, 0.18), 0 10px 20px -8px rgba(0, 0, 0, 0.48);
+    --sale-top: #e4513f;
+    --sale-bottom: #c42f1f;
+    --ease-out: cubic-bezier(.2, .7, .2, 1);
+}
+html.dark {
+    --ctl-surface: #2b2b2d;
+    --ctl-ring: rgba(255, 255, 255, 0.08);
+    --ctl-ring-strong: rgba(255, 255, 255, 0.16);
+    --ctl-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 1px 2px rgba(0, 0, 0, 0.45);
+    --ctl-shadow-hover: inset 0 1px 0 rgba(255, 255, 255, 0.07), 0 8px 18px -8px rgba(0, 0, 0, 0.7);
+    --ctl-track: rgba(118, 118, 128, 0.22);
+    --ctl-track-inset: inset 0 1px 2px rgba(0, 0, 0, 0.35);
+    --ctl-thumb-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.10), 0 2px 6px rgba(0, 0, 0, 0.45);
+    --pebble-top: #ffffff;
+    --pebble-bottom: #e3e3e8;
+    --pebble-text: #1d1d1f;
+    --pebble-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9), inset 0 -1px 0 rgba(0, 0, 0, 0.12),
+                     0 1px 2px rgba(0, 0, 0, 0.5), 0 6px 14px -6px rgba(0, 0, 0, 0.65);
+    --pebble-shadow-hover: inset 0 1px 0 rgba(255, 255, 255, 0.9), inset 0 -1px 0 rgba(0, 0, 0, 0.12),
+                     0 1px 2px rgba(0, 0, 0, 0.5), 0 10px 20px -8px rgba(0, 0, 0, 0.75);
+    --sale-top: #ff6b5c;
+    --sale-bottom: #e0473a;
+}
+
+/* ---- Neutral: raised paper ---- */
+html:root .chip, html:root .cat-grid .chip, html:root .suggest-chip, html:root .toggle-pill,
+html:root .select-pill, html:root .region-chip {
+    background-color: var(--ctl-surface);
+    border: 0;
+    color: var(--ink);
+    box-shadow: 0 0 0 1px var(--ctl-ring), var(--ctl-shadow);
+    transition: box-shadow .18s var(--ease-out), transform .12s var(--ease-out), background-color .18s ease, color .18s ease;
+}
+html:root .chip, html:root .cat-grid .chip { font-weight: 500; letter-spacing: -0.01em; }
+html:root .suggest-chip { color: var(--ink-2); font-weight: 500; }
+@media (hover: hover) {
+    html:root .chip:not(.is-active):hover, html:root .suggest-chip:not(.is-active):hover,
+    html:root .toggle-pill:not(.is-on):not(.is-on-accent):hover, html:root .select-pill:hover,
+    html:root .region-chip:hover {
+        color: var(--ink);
+        box-shadow: 0 0 0 1px var(--ctl-ring-strong), var(--ctl-shadow-hover);
+        transform: translateY(-1px);
+    }
+}
+html:root .chip:active, html:root .suggest-chip:active, html:root .toggle-pill:active, html:root .select-pill:active {
+    transform: translateY(1px) scale(.985);
+    box-shadow: 0 0 0 1px var(--ctl-ring-strong), 0 1px 1px rgba(17, 17, 19, 0.06);
+}
+html:root .select-pill:focus { box-shadow: 0 0 0 1px var(--ctl-ring-strong), 0 0 0 4px var(--ctl-track); }
+
+/* ---- Primary: one tactile pebble ---- */
+html:root .cart-btn, html:root .p-add, html:root .fb-fab, html:root .btn-primary, html:root .btn-accent,
+html:root .chip.is-active, html:root .cat-grid .chip.is-active,
+html:root .suggest-chip.is-active, html:root .toggle-pill.is-on-accent,
+html:root .qty-stepper:not(.is-small) {
+    background: linear-gradient(180deg, var(--pebble-top), var(--pebble-bottom));
+    color: var(--pebble-text);
+    border: 0;
+    box-shadow: var(--pebble-shadow);
+    opacity: 1;
+    transition: box-shadow .18s var(--ease-out), transform .12s var(--ease-out);
+}
+html:root .chip.is-active, html:root .cat-grid .chip.is-active, html:root .suggest-chip.is-active { font-weight: 600; }
+@media (hover: hover) {
+    html:root .cart-btn:hover, html:root .p-add:hover, html:root .fb-fab:hover, html:root .btn-primary:hover {
+        opacity: 1; box-shadow: var(--pebble-shadow-hover); transform: translateY(-1px);
+    }
+}
+html:root .cart-btn:active, html:root .p-add:active, html:root .fb-fab:active, html:root .btn-primary:active,
+html:root .chip.is-active:active { transform: translateY(1px) scale(.97); }
+html:root .cart-count { background: var(--pebble-text); color: var(--pebble-bottom); box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.12); }
+html.dark:root .cart-count { color: #fff; }
+
+/* The selected category's picture sits in a fine ring, like a coin on the dark button */
+html:root .chip.is-active .chip-icon.chip-svg {
+    border-radius: 999px;
+    box-shadow: 0 0 0 2px var(--pebble-text), 0 2px 5px rgba(0, 0, 0, 0.35);
+}
+
+/* ---- Half price: the one red control ---- */
+html:root .toggle-pill.is-on {
+    background: linear-gradient(180deg, var(--sale-top), var(--sale-bottom));
+    color: #fff; font-weight: 600;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22), inset 0 -1px 0 rgba(0, 0, 0, 0.18),
+                0 6px 14px -6px color-mix(in srgb, var(--sale-bottom) 75%, transparent);
+}
+
+/* ---- Segmented controls: recessed track, raised thumb ---- */
+html:root .seg, html:root .lang-group {
+    background: var(--ctl-track);
+    box-shadow: var(--ctl-track-inset);
+}
+html:root .seg-btn, html:root .lang-btn {
+    color: var(--ink-2);
+    transition: background-color .18s ease, box-shadow .2s var(--ease-out), color .18s ease;
+}
+html:root .seg-btn:hover, html:root .lang-btn:hover { color: var(--ink); }
+html:root .seg-btn.is-active, html:root .lang-btn.is-active {
+    background: var(--ctl-surface);
+    color: var(--ink);
+    font-weight: 600;
+    box-shadow: var(--ctl-thumb-shadow);
+}
+html.dark:root .seg-btn.is-active, html.dark:root .lang-btn.is-active { background: #5a5a5e; color: #fff; }
+/* the selected store keeps its colour, with a soft halo round its dot */
+html:root .store-tab.is-active .store-dot { box-shadow: 0 0 0 3px color-mix(in srgb, currentColor 20%, transparent); }
+
+/* ---- Small round buttons ---- */
+html:root .cat-arrow i {
+    background: var(--ctl-surface);
+    box-shadow: 0 0 0 1px var(--ctl-ring), var(--ctl-shadow-hover);
+}
+html:root .icon-btn:hover { background: var(--ctl-track); }
+
+/* ---- Keyboard focus: one clear ring everywhere ---- */
+html:root :is(.chip, .suggest-chip, .toggle-pill, .select-pill, .seg-btn, .lang-btn, .cart-btn, .p-add,
+              .fb-fab, .icon-btn, .region-chip, .btn-primary, .btn-ghost, .qty-btn):focus-visible {
+    outline: 2px solid var(--ink);
+    outline-offset: 2px;
+}
+
+/* ---- Search: recessed like the segmented tracks, lifts to white while typing ---- */
+html:root .search-field { background: var(--ctl-track); box-shadow: var(--ctl-track-inset); }
+html:root .search-field:focus { background: var(--ctl-surface); box-shadow: 0 0 0 1px var(--ctl-ring-strong), 0 0 0 4px var(--ctl-track); }
+
