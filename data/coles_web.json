@@ -1,5 +1,5 @@
 {
-"cursor": 2,
+"cursor": 7,
 "items": {
 "1000301": {
 "category": "Biscuits & Cookies Rice",
@@ -12433,6 +12433,20 @@
 "unit_price": "$2.12/ 100g",
 "was_price": 7.0
 },
+"4963353": {
+"category": "Hair Care Shampoo/Conditioner",
+"discount_desc": "1/2 PRICE",
+"id": "4963353",
+"image_url": "https://productimages.coles.com.au/productimages/4/4963353.jpg",
+"price": 7.5,
+"price_display": "$7.50",
+"product_url": "https://www.coles.com.au/product/grow-thicker-fuller-250ml-4963353",
+"save_amount": 7.5,
+"store": "Coles",
+"title": "Grow Thicker Fuller 250mL",
+"unit_price": "$3.00/ 100mL",
+"was_price": 15.0
+},
 "4963364": {
 "category": "Hair Care Shampoo/Conditioner",
 "discount_desc": "1/2 PRICE",
@@ -15373,6 +15387,20 @@
 "unit_price": "$4.50/ 10mL",
 "was_price": 27.0
 },
+"7038883": {
+"category": "Makeup Face",
+"discount_desc": "1/2 PRICE",
+"id": "7038883",
+"image_url": "https://productimages.coles.com.au/productimages/7/7038883.jpg",
+"price": 13.5,
+"price_display": "$13.50",
+"product_url": "https://www.coles.com.au/product/rimmel-lasting-finish-35h-foundation-200-soft-beige-30ml-7038883",
+"save_amount": 13.5,
+"store": "Coles",
+"title": "Rimmel Lasting Finish 35h Foundation 200 Soft Beige 30mL",
+"unit_price": "$4.50/ 10mL",
+"was_price": 27.0
+},
 "7038930": {
 "category": "Makeup Face",
 "discount_desc": "1/2 PRICE",
@@ -15384,6 +15412,20 @@
 "save_amount": 13.5,
 "store": "Coles",
 "title": "Rimmel Lasting Finish 35h Foundation 103 True Ivory 30mL",
+"unit_price": "$4.50/ 10mL",
+"was_price": 27.0
+},
+"7038941": {
+"category": "Makeup Face",
+"discount_desc": "1/2 PRICE",
+"id": "7038941",
+"image_url": "https://productimages.coles.com.au/productimages/7/7038941.jpg",
+"price": 13.5,
+"price_display": "$13.50",
+"product_url": "https://www.coles.com.au/product/rimmel-lasting-finish-35h-foundation-400-natural-beige-30ml-7038941",
+"save_amount": 13.5,
+"store": "Coles",
+"title": "Rimmel Lasting Finish 35h Foundation 400 Natural Beige 30mL",
 "unit_price": "$4.50/ 10mL",
 "was_price": 27.0
 },
@@ -16043,6 +16085,20 @@
 "store": "Coles",
 "title": "Maybelline Sky High Mascara Brown 7.2mL",
 "unit_price": "$19.44/ 10mL",
+"was_price": 28.0
+},
+"7704828": {
+"category": "Makeup Eye",
+"discount_desc": "1/2 PRICE",
+"id": "7704828",
+"image_url": "https://productimages.coles.com.au/productimages/7/7704828.jpg",
+"price": 14.0,
+"price_display": "$14.00",
+"product_url": "https://www.coles.com.au/product/maybelline-falsies-sureal-wp-mascara-10ml-7704828",
+"save_amount": 14.0,
+"store": "Coles",
+"title": "Maybelline Falsies Sureal Wp Mascara 10mL",
+"unit_price": "$14.00/ 10mL",
 "was_price": 28.0
 },
 "7704952": {
@@ -17753,6 +17809,20 @@
 "unit_price": "$5.00/ 10mL",
 "was_price": 35.0
 },
+"9040445": {
+"category": "Makeup Face",
+"discount_desc": "1/2 PRICE",
+"id": "9040445",
+"image_url": "https://productimages.coles.com.au/productimages/9/9040445.jpg",
+"price": 17.5,
+"price_display": "$17.50",
+"product_url": "https://www.coles.com.au/product/maybelline-superstay-lumi-matte-126-foundation-35ml-9040445",
+"save_amount": 17.5,
+"store": "Coles",
+"title": "Maybelline Superstay Lumi Matte 126 Foundation 35mL",
+"unit_price": "$5.00/ 10mL",
+"was_price": 35.0
+},
 "9040525": {
 "category": "Makeup Eye",
 "discount_desc": "1/2 PRICE",
@@ -18594,7 +18664,8 @@
 "was_price": 8.6
 }
 },
+"last_full": 1791387042.3606088,
 "pages": 30,
-"pages_done": 25,
+"pages_done": 0,
 "week": "2026-10-07"
 }

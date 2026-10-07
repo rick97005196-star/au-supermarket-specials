@@ -58567,9 +58567,10 @@
     "src": "ai"
   },
   "Maybelline New York Superlock Brow Glue Deep Brown 7mL": {
-    "zh": "美寶蓮紐約 Superlock 眉膠深棕色 7mL",
-    "ja": "メイベリン ニューヨーク スーパーロック ブロウ グルー ディープ ブラウン 7mL",
-    "ko": "메이블린 뉴욕 슈퍼락 브로우 글루 딥 브라운 7mL"
+    "zh": "Maybelline New York Superlock 染眉膠 Deep Brown 7毫升",
+    "ja": "Maybelline New York Superlock アイブロウジェル Deep Brown 7mL",
+    "ko": "Maybelline New York Superlock 아이브로우 젤 Deep Brown 7mL",
+    "src": "ai"
   },
   "Maybelline Face Lifter 112 Foundation 30mL": {
     "zh": "Maybelline 臉部提拉粉底液 112號 30毫升",
@@ -58585,16 +58586,18 @@
     "src": "ai"
   },
   "Rimmel Omg Lip Butter Bubble Gum 15mL": {
-    "zh": "Rimmel Omg 護唇膏 Bubble Gum 15毫升",
-    "ja": "Rimmel Omg Lip Butter Bubble Gum 15mL",
-    "ko": "Rimmel Omg Lip Butter Bubble Gum 15mL",
-    "src": "ai"
+    "zh": "Rimmel Omg 護唇奶油 Bubble Gum 15毫升",
+    "ja": "Rimmel Omg リップバター Bubble Gum 15mL",
+    "ko": "Rimmel Omg 립 버터 Bubble Gum 15mL",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Sally Hansen Miracle Gel Sweet Home 14.7mL": {
     "zh": "Sally Hansen Miracle Gel 指甲油 Sweet Home 14.7毫升",
-    "ja": "Sally Hansen Miracle Gel Sweet Home 14.7mL",
-    "ko": "Sally Hansen Miracle Gel Sweet Home 14.7mL",
-    "src": "ai"
+    "ja": "Sally Hansen Miracle Gel ネイルカラー Sweet Home 14.7mL",
+    "ko": "Sally Hansen Miracle Gel 네일 컬러 Sweet Home 14.7mL",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Maybelline Lifter Matte Open Latte 03 Lipstick 3.4g": {
     "zh": "Maybelline 霧面唇膏 Open Latte 03號 3.4克",
@@ -58604,14 +58607,16 @@
   },
   "Rimmel Omg Lip Oil Clear Cloud 4.5mL": {
     "zh": "Rimmel Omg 護唇油 Clear Cloud 4.5毫升",
-    "ja": "Rimmel Omg Lip Oil Clear Cloud 4.5mL",
-    "ko": "Rimmel Omg Lip Oil Clear Cloud 4.5mL",
-    "src": "ai"
+    "ja": "Rimmel Omg リップオイル Clear Cloud 4.5mL",
+    "ko": "Rimmel Omg 립 오일 Clear Cloud 4.5mL",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Maybelline Superstay Mi Lipstick Dreamer 5mL": {
-    "zh": "美寶蓮 Superstay Mi 夢想唇膏 5mL",
-    "ja": "メイベリン スーパーステイ Mi リップスティック ドリーマー 5mL",
-    "ko": "메이블린 슈퍼스테이 미 립스틱 드리머 5mL"
+    "zh": "Maybelline Superstay Mi 唇膏 Dreamer 5毫升",
+    "ja": "Maybelline Superstay Mi リップスティック Dreamer 5mL",
+    "ko": "Maybelline Superstay Mi 립스틱 Dreamer 5mL",
+    "src": "ai"
   },
   "Grow Thicker Fuller Daily Densifying Serum 90mL": {
     "zh": "Grow Thicker Fuller 日用豐盈精華液 90毫升",
@@ -58634,9 +58639,10 @@
   },
   "Rimmel Wonderbond Lashfiller Black 11mL": {
     "zh": "Rimmel Wonderbond 睫毛膏 Black 11毫升",
-    "ja": "Rimmel Wonderbond Lashfiller Black 11mL",
-    "ko": "Rimmel Wonderbond Lashfiller Black 11mL",
-    "src": "ai"
+    "ja": "Rimmel Wonderbond マスカラ Black 11mL",
+    "ko": "Rimmel Wonderbond 마스카라 Black 11mL",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Blackmores Mega B Complex Energy Vitamin Tablets 75 Pack": {
     "zh": "Blackmores 高單位維生素B群 75入",
@@ -58757,6 +58763,42 @@
     "zh": "Rimmel 多功能遮瑕膏 Ivory 10毫升",
     "ja": "Rimmel マルチタスカー コンシーラー Ivory 10mL",
     "ko": "Rimmel 멀티 태스커 컨실러 Ivory 10mL",
+    "src": "ai"
+  },
+  "Grow Thicker Fuller 250mL": {
+    "zh": "Grow Thicker Fuller 豐盈洗髮精 250毫升",
+    "ja": "Grow Thicker Fuller ボリュームアップシャンプー 250mL",
+    "ko": "Grow Thicker Fuller 볼륨 샴푸 250mL",
+    "src": "ai"
+  },
+  "Rimmel Lasting Finish 35h Foundation 400 Natural Beige 30mL": {
+    "zh": "Rimmel Lasting Finish 35h 粉底液 400號 Natural Beige 30毫升",
+    "ja": "Rimmel Lasting Finish 35h ファンデーション 400 Natural Beige 30mL",
+    "ko": "Rimmel Lasting Finish 35h 파운데이션 400 Natural Beige 30mL",
+    "src": "ai"
+  },
+  "Maybelline Falsies Sureal Wp Mascara 10mL": {
+    "zh": "Maybelline Falsies Sureal 防水睫毛膏 10毫升",
+    "ja": "Maybelline Falsies Sureal ウォータープルーフマスカラ 10mL",
+    "ko": "Maybelline Falsies Sureal 워터프루프 마스카라 10mL",
+    "src": "ai"
+  },
+  "Maybelline Superstay Lumi Matte 126 Foundation 35mL": {
+    "zh": "Maybelline Superstay Lumi Matte 粉底液 126號 35毫升",
+    "ja": "Maybelline Superstay Lumi Matte ファンデーション 126 35mL",
+    "ko": "Maybelline Superstay Lumi Matte 파운데이션 126 35mL",
+    "src": "ai"
+  },
+  "OMBRA Coconut Lip Balm SPF 50+ 2 Pack 4.5g": {
+    "zh": "OMBRA 椰子護唇膏 SPF 50+ 4.5克（2入）",
+    "ja": "OMBRA ココナッツリップバーム SPF 50+ 4.5g（2個入）",
+    "ko": "OMBRA 코코넛 립밤 SPF 50+ 4.5g（2개입）",
+    "src": "ai"
+  },
+  "Rimmel Lasting Finish 35h Foundation 200 Soft Beige 30mL": {
+    "zh": "Rimmel Lasting Finish 35h 粉底液 200號 Soft Beige 30毫升",
+    "ja": "Rimmel Lasting Finish 35h ファンデーション 200 Soft Beige 30mL",
+    "ko": "Rimmel Lasting Finish 35h 파운데이션 200 Soft Beige 30mL",
     "src": "ai"
   }
 }
