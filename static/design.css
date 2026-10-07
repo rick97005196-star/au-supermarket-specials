@@ -1204,3 +1204,35 @@ html:root :is(.chip, .suggest-chip, .toggle-pill, .select-pill, .seg-btn, .lang-
 html:root .search-field { background: var(--ctl-track); box-shadow: var(--ctl-track-inset); }
 html:root .search-field:focus { background: var(--ctl-surface); box-shadow: 0 0 0 1px var(--ctl-ring-strong), 0 0 0 4px var(--ctl-track); }
 
+
+/* ==========================================================================
+   v10.1 – Box shapes: every button and tag is a box with softly rounded corners
+   (no pills). Radii step down with size, and an inner box is always rounder than
+   zero but tighter than its outer box (track 12 -> thumb 9).
+   ========================================================================== */
+:root { --r-box: 10px; --r-box-sm: 8px; --r-box-xs: 6px; }
+
+/* buttons */
+html:root .chip, html:root .cat-grid .chip, html:root .toggle-pill, html:root .select-pill,
+html:root .cart-btn, html:root .fb-fab, html:root .btn-primary, html:root .btn-ghost, html:root .btn-accent,
+html:root .fb-type, html:root .lang-pill, html:root .region-chip, html:root .search-field, html:root #toast {
+    border-radius: var(--r-box);
+}
+/* small buttons */
+html:root .suggest-chip, html:root .icon-btn, html:root .header-actions .icon-btn, html:root .p-add,
+html:root .p-fav, html:root .to-top, html:root .cat-arrow i, html:root .qty-stepper, html:root .p-compare {
+    border-radius: var(--r-box-sm);
+}
+/* segmented controls: box track, box thumb */
+html:root .seg { border-radius: 12px; }
+html:root .seg-btn { border-radius: 9px; }
+html:root .lang-group { border-radius: var(--r-box); }
+html:root .lang-btn { border-radius: 7px; }
+/* tags, badges and counts */
+html:root .tag, html:root .result-badge, html:root .notice-badge, html:root .seg-btn .seg-tag,
+html:root .cart-count, html:root .p-flag, html:root .p-unit-strong, html:root .mb-unit,
+html:root .mb-half, html:root .p-aldi-tag, html:root .updated-chip {
+    border-radius: var(--r-box-xs);
+}
+/* the category picture: a small box, and the ring on the selected one follows it */
+html:root .chip-icon, html:root .chip-icon.chip-svg, html:root .chip.is-active .chip-icon.chip-svg { border-radius: 7px; }
