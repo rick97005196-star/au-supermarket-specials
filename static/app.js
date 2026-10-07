@@ -808,7 +808,7 @@ function updateStatsDisplay() {
     if (regionInfo) activeInfo = Object.assign({}, activeInfo, regionInfo);
     let activeRangeText = activeInfo.date_range || (currentPeriod === 'current' ? t('current_cycle') : t('next_cycle'));
     if (currentPeriod === 'next' && (!activeInfo.total || activeInfo.total === 0)) {
-        activeRangeText = currentLang === 'zh' ? '尚未公佈（預計週二釋出）' : (currentLang === 'ja' ? '未公開（火曜公開予定）' : (currentLang === 'ko' ? '미공개 (화요일 공개 예정)' : 'Not Released Yet'));
+        activeRangeText = currentLang === 'zh' ? '尚未公布（預計週二公布）' : (currentLang === 'ja' ? '未公開（火曜公開予定）' : (currentLang === 'ko' ? '미공개 (화요일 공개 예정)' : 'Not Released Yet'));
     }
     document.getElementById('activeDateRange').textContent = formatHeroDateRange(activeRangeText);
 
@@ -1870,18 +1870,18 @@ async function loadSpecials() {
                 if (emptyAction) emptyAction.classList.add('hidden');
             } else if (currentPeriod === 'next') {
                 if (emptyTitle) {
-                    emptyTitle.textContent = currentLang === 'zh' ? '下週特價型錄尚未公佈' : (currentLang === 'ja' ? '来週のチラシはまだ公開されていません' : (currentLang === 'ko' ? '다음 주 세일 카탈로그가 아직 공개되지 않았습니다' : 'Next Week Specials Not Released Yet'));
+                    emptyTitle.textContent = currentLang === 'zh' ? '下週特價型錄尚未公布' : (currentLang === 'ja' ? '来週のチラシはまだ公開されていません' : (currentLang === 'ko' ? '다음 주 세일 카탈로그가 아직 공개되지 않았습니다' : 'Next Week Specials Not Released Yet'));
                 }
                 if (emptySub) {
-                    emptySub.textContent = currentLang === 'zh' ? '澳洲超商（Coles / Woolies）每週三換檔，通常於週一或週二提前釋出下週預告，目前請先查看「本週特價」！' : (currentLang === 'ja' ? '豪州スーパーは通常月曜・火曜に来週のチラシを先行公開します。まずは今週の特売をご覧ください！' : (currentLang === 'ko' ? '호주 대형마트는 보통 월/화요일에 다음 주 카탈로그를 선공개합니다. 이번 주 특가를 먼저 확인하세요!' : 'Supermarkets typically preview next week specials on Mon/Tue. Please check This Week specials for now!'));
+                    emptySub.textContent = currentLang === 'zh' ? 'Coles 與 Woolworths 每週三更新特價，下週型錄通常於週一或週二公布，請先瀏覽本週特價。' : (currentLang === 'ja' ? '豪州スーパーは通常月曜・火曜に来週のチラシを先行公開します。まずは今週の特売をご覧ください！' : (currentLang === 'ko' ? '호주 대형마트는 보통 월/화요일에 다음 주 카탈로그를 선공개합니다. 이번 주 특가를 먼저 확인하세요!' : 'Supermarkets typically preview next week specials on Mon/Tue. Please check This Week specials for now!'));
                 }
                 if (emptyAction) emptyAction.classList.remove('hidden');
             } else {
                 if (emptyTitle) {
-                    emptyTitle.textContent = currentLang === 'zh' ? '沒有找到符合的特價商品' : (currentLang === 'ja' ? '該当する商品が見つかりませんでした' : (currentLang === 'ko' ? '조건에 맞는 특가 상품이 없습니다' : 'No matching specials found'));
+                    emptyTitle.textContent = currentLang === 'zh' ? '沒有符合條件的特價商品' : (currentLang === 'ja' ? '該当する商品が見つかりませんでした' : (currentLang === 'ko' ? '조건에 맞는 특가 상품이 없습니다' : 'No matching specials found'));
                 }
                 if (emptySub) {
-                    emptySub.textContent = currentLang === 'zh' ? '試試切換其他分類或調整搜尋關鍵字' : (currentLang === 'ja' ? '他のカテゴリーを選択するか検索条件を変更してください' : (currentLang === 'ko' ? '다른 카테고리를 선택하거나 검색어를 변경해보세요' : 'Try selecting another category or adjusting your search filters'));
+                    emptySub.textContent = currentLang === 'zh' ? '請選擇其他分類或調整搜尋關鍵字' : (currentLang === 'ja' ? '他のカテゴリーを選択するか検索条件を変更してください' : (currentLang === 'ko' ? '다른 카테고리를 선택하거나 검색어를 변경해보세요' : 'Try selecting another category or adjusting your search filters'));
                 }
                 if (emptyAction) emptyAction.classList.add('hidden');
             }
@@ -2381,11 +2381,40 @@ function renderMustBuy() {
             <h2 id="mustBuyTitle" class="mb-title">${escHTML(t('mb_title'))}</h2>
             <p class="mb-sub">${escHTML(t('mb_sub'))}</p>
         </div>
-        <div class="mb-row">${cards}</div>`;
+        <div class="mb-wrap">
+            <div class="mb-row">${cards}</div>
+            <button type="button" class="cat-arrow cat-arrow-left mb-arrow is-hidden" data-dir="-1" aria-label="${escHTML(t('aria_scroll_left'))}"><i class="fa-solid fa-chevron-left"></i></button>
+            <button type="button" class="cat-arrow cat-arrow-right mb-arrow is-hidden" data-dir="1" aria-label="${escHTML(t('aria_scroll_right'))}"><i class="fa-solid fa-chevron-right"></i></button>
+        </div>`;
     box.querySelectorAll('.mb-card').forEach(btn => {
         btn.onclick = () => { const pick = picks[+btn.dataset.mb]; if (pick) openProductModal(pick.item); };
     });
     box.classList.remove('hidden');
+    initMustBuyArrows(box);
+}
+
+// 這週必買 row on computers: a mouse cannot swipe sideways, so left / right arrows scroll it
+function initMustBuyArrows(box) {
+    const row = box.querySelector('.mb-row');
+    const prev = box.querySelector('.mb-arrow[data-dir="-1"]');
+    const next = box.querySelector('.mb-arrow[data-dir="1"]');
+    if (!row || !prev || !next) return;
+    const update = () => {
+        const max = row.scrollWidth - row.clientWidth;
+        const pad = parseFloat(getComputedStyle(row).paddingLeft) || 0;   // the row may rest on its own padding
+        prev.classList.toggle('is-hidden', row.scrollLeft <= pad + 4);
+        next.classList.toggle('is-hidden', max <= 4 || row.scrollLeft >= max - 4);
+    };
+    [prev, next].forEach(b => {
+        b.onclick = () => row.scrollBy({ left: (+b.dataset.dir) * Math.max(220, row.clientWidth * 0.8), behavior: 'smooth' });
+    });
+    row.addEventListener('scroll', update, { passive: true });
+    box._mbUpdate = update;
+    if (!window._mbResizeHooked) {
+        window._mbResizeHooked = true;
+        window.addEventListener('resize', () => { const b = document.getElementById('mustBuy'); if (b && b._mbUpdate) b._mbUpdate(); }, { passive: true });
+    }
+    requestAnimationFrame(update);
 }
 
 function renderAldiCompare(item) {
@@ -2841,9 +2870,9 @@ function openProductModal(item) {
                 
                 let diffBadge = '';
                 if (diff > 0.05) {
-                    diffBadge = `<span class="text-[10px] font-bold text-rose-600 dark:text-rose-400 bg-rose-50 dark:bg-rose-950/60 px-1.5 py-0.5 rounded">${currentLang === 'zh' ? '貴' : '+$'}${diff.toFixed(2)}</span>`;
+                    diffBadge = `<span class="text-[10px] font-bold text-rose-600 dark:text-rose-400 bg-rose-50 dark:bg-rose-950/60 px-1.5 py-0.5 rounded">+$${diff.toFixed(2)}</span>`;
                 } else if (diff < -0.05) {
-                    diffBadge = `<span class="text-[10px] font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/60 px-1.5 py-0.5 rounded">${currentLang === 'zh' ? '平' : '-$'}${Math.abs(diff).toFixed(2)}</span>`;
+                    diffBadge = `<span class="text-[10px] font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/60 px-1.5 py-0.5 rounded">−$${Math.abs(diff).toFixed(2)}</span>`;
                 } else {
                     diffBadge = `<span class="text-[10px] font-bold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/60 px-1.5 py-0.5 rounded">${t('cross_store_same_price')}</span>`;
                 }
@@ -2973,44 +3002,50 @@ function generateWhvAdvice(item) {
     const isHalf = item.discount_desc && (item.discount_desc.includes('1/2') || item.discount_desc.toLowerCase().includes('half'));
     const cat = item.category;
     const store = item.store;
-
-    if (currentLang === 'zh') {
-        if (isHalf) return "🔥 50% OFF 半價極限折扣！非易腐生活用品（如洗劑、衛生紙、罐頭、零食）建議趁特價大量囤貨，省下整週生活費。";
-        if (cat === 'meat') return "🥩 澳洲肉品性價比判斷重點：注意每公斤單價 ($/kg)。雞肉/肉末低於 $11/kg、牛排低於 $25/kg 即為打工度假高性價比蛋白質首選！";
-        if (cat === 'seafood') return "🦐 超市每週輪流特價鮭魚與蝦子，建議自備保冷袋採買，回家可分裝冷凍保鮮。";
-        if (cat === 'health_vitamins') return "💊 澳洲保健品（Swisse、Blackmores）通常每 2-3 週輪流推出 50% 半價，切勿在非特價時購買原價！";
-        if (cat === 'dairy_eggs') return "🥛 鮮奶與雞蛋常態建議比價 ALDI。若 Coles / Woolies 特價起司或大包裝優格有折扣，可列入備餐優質蛋白質清單。";
-        if (cat === 'produce') return "🥦 蔬菜水果看每公斤價格與產季。週二下午至傍晚有機會在生鮮區遇到即期黃標（Quick Sale）出清！";
-        if (store === 'ALDI') return "⚡ ALDI 自有品牌日常定價已非常平價，適合固定採買米、油、蛋、麵包等每週必備主食基底。";
-        return "💡 採買前請核對卡片上的單位價格（$/100g 或 $/kg），確認大包裝是否真的比單件更划算！";
-    } else if (currentLang === 'en') {
-        if (isHalf) return "🔥 50% OFF Half Price Deal! Great time to stock up on non-perishables (laundry, toiletries, pantry staples) to save big on your weekly budget.";
-        if (cat === 'meat') return "🥩 Working holiday tip: Always check unit price ($/kg). Chicken breast/mince under $11/kg and beef steaks under $25/kg offer the best value.";
-        if (cat === 'seafood') return "🦐 Supermarkets alternate weekly specials on salmon and tiger prawns. Bring a cooler bag and portion into freezer bags at home.";
-        if (cat === 'health_vitamins') return "💊 Vitamins & supplements (Blackmores, Swisse) go on 50% OFF every 2-3 weeks. Never pay full price!";
-        if (cat === 'dairy_eggs') return "🥛 Everyday milk and eggs are often cheapest at ALDI. Grab branded cheese/yogurt when discounted at Coles or Woolies.";
-        if (cat === 'produce') return "🥦 Check $/kg across seasonal produce. Look for yellow clearance stickers on Tuesday afternoons!";
-        if (store === 'ALDI') return "⚡ ALDI's private labels are already everyday low-priced—ideal for staples like rice, flour, oil, and bread.";
-        return "💡 Always check the unit price ($/100g or $/kg) to confirm whether bulk packs offer genuine savings.";
-    } else if (currentLang === 'ja') {
-        if (isHalf) return "🔥 50% OFF 半額セール！洗剤・トイレットペーパー・保存食など日持ちするものは、このタイミングでの買いだめが一番節約になります。";
-        if (cat === 'meat') return "🥩 ワーホリ自炊のコツ：必ず「$/kg（1kgあたり）」を確認！鶏むね肉やひき肉が$11/kg以下、牛肉ステーキが$25/kg以下なら買い時です。";
-        if (cat === 'seafood') return "🦐 サーモンやエビはColes/Wooliesで交互に半額になります。保冷バッグを持参し、小分けにして冷凍保存がおすすめ。";
-        if (cat === 'health_vitamins') return "💊 サプリメント（SwisseやBlackmores）は2〜3週間おきに50%オフになります。定価では買わないのがオーストラリアの常識！";
-        if (cat === 'dairy_eggs') return "🥛 普段の牛乳や卵はALDIが最安。チーズやヨーグルトはColes/Wooliesの特売日を狙いましょう。";
-        if (cat === 'produce') return "🥦 野菜・果物は1kgあたりの価格に注目。火曜日の夕方は賞味期限間近の黄色い割引シール（Quick Sale）が見つかりやすいです！";
-        if (store === 'ALDI') return "⚡ ALDIはPB商品が普段から格安。お米、油、食パンなどの基本食料の買い出しに最適です。";
-        return "💡 大容量パックが本当にお得かどうか、「単位価格（$/100gまたは$/kg）」で確認しましょう。";
-    } else { // ko
-        if (isHalf) return "🔥 50% OFF 반값 특가! 세제, 화장지, 통조림 등 유통기한이 긴 생필품은 반값 세일 때 쟁여두면 주간 생활비를 대폭 아낄 수 있습니다.";
-        if (cat === 'meat') return "🥩 워홀러 장보기 팁: 반드시 '$/kg' 단위 가격을 확인하세요! 닭가슴살/다진육은 $11/kg 이하, 스테이크는 $25/kg 이하일 때가 가성비 최고입니다.";
-        if (cat === 'seafood') return "🦐 연어와 타이거 새우는 울월스와 콜스에서 번갈아 반값 행사를 진행합니다. 보랭백을 챙겨가 소분 냉동 보관하세요.";
-        if (cat === 'health_vitamins') return "💊 영양제(Swisse, Blackmores)는 2~3주마다 정기적으로 50% 반값 세일을 하니 정가에 구매하지 마세요!";
-        if (cat === 'dairy_eggs') return "🥛 기본 우유와 계란은 ALDI가 가장 저렴하며, 요거트나 치즈는 콜스/울월스 특가 때 구매하는 것이 좋습니다.";
-        if (cat === 'produce') return "🥦 신선 채소/과일은 kg당 가격과 제철 여부를 체크하세요. 화요일 오후~저녁에는 마감 임박 노란색 할인 스티커가 자주 붙습니다!";
-        if (store === 'ALDI') return "⚡ ALDI 자체 브랜드(PB)는 평소에도 최저가 수준이므로 쌀, 식용유, 식빵 등 기본 식자재 구매에 최적입니다.";
-        return "💡 대용량이 항상 저렴한 것은 아닙니다. 카드에 표기된 단위 가격($/100g 또는 $/kg)을 반드시 비교하세요.";
-    }
+    const key = isHalf ? 'half' : (['meat', 'seafood', 'health_vitamins', 'dairy_eggs', 'produce'].includes(cat) ? cat : (store === 'ALDI' ? 'aldi' : 'default'));
+    const ADVICE = {
+        zh: {
+            half: '半價商品為本期折扣幅度最大的優惠。清潔用品、衛生紙、罐頭等可長期保存的商品，可於此時一併採購。',
+            meat: '選購肉品時，建議參考每公斤單價（$/kg），以比較不同部位與包裝的實際價格。',
+            seafood: '選購生鮮海鮮時建議使用保冷袋，返家後分裝冷凍以維持鮮度。',
+            health_vitamins: '保健食品（如 Swisse、Blackmores）經常推出半價優惠，可於特價期間選購。',
+            dairy_eggs: '鮮奶與雞蛋等日常用品，可一併比較 ALDI 的平日售價；起司與優格則可留意 Coles、Woolworths 的特價。',
+            produce: '蔬果價格隨產季變動，建議參考每公斤單價選購。',
+            aldi: 'ALDI 自有品牌的平日售價較低，適合採購米、食用油、雞蛋、麵包等日常主食。',
+            default: '選購前可參考商品卡上的單位價格（$/100g 或 $/kg），比較不同包裝的實際價格。'
+        },
+        en: {
+            half: 'Half-price specials offer the largest discount of the week. Long-life items such as cleaning products, toilet paper and canned food are worth buying during this period.',
+            meat: 'Compare the price per kilogram ($/kg) to evaluate different cuts and pack sizes.',
+            seafood: 'Bring an insulated bag for fresh seafood and portion it for the freezer at home.',
+            health_vitamins: 'Supplements such as Swisse and Blackmores are regularly offered at half price; consider buying during these promotions.',
+            dairy_eggs: "For everyday milk and eggs, compare ALDI's regular prices; look for cheese and yoghurt specials at Coles and Woolworths.",
+            produce: 'Produce prices vary by season; compare the price per kilogram.',
+            aldi: "ALDI's own brands have low everyday prices and suit staples such as rice, oil, eggs and bread.",
+            default: 'Check the unit price ($/100g or $/kg) to compare the real cost of different pack sizes.'
+        },
+        ja: {
+            half: '半額商品は今週最も割引率の高い特売です。洗剤やトイレットペーパー、缶詰など日持ちする商品は、この機会にまとめてご購入いただけます。',
+            meat: '精肉は1kgあたりの価格（$/kg）で、部位や容量の異なる商品を比較できます。',
+            seafood: '鮮魚・海産物には保冷バッグのご利用をおすすめします。ご帰宅後は小分けにして冷凍保存してください。',
+            health_vitamins: 'サプリメント（Swisse、Blackmoresなど）は定期的に半額となるため、特売期間中のご購入をおすすめします。',
+            dairy_eggs: '牛乳や卵などの日用品はALDIの通常価格もあわせてご比較ください。チーズやヨーグルトはColes・Woolworthsの特売をご確認ください。',
+            produce: '青果の価格は季節により変動します。1kgあたりの価格を目安にお選びください。',
+            aldi: 'ALDIのプライベートブランドは通常価格が低めで、米・食用油・卵・パンなどの日常的な食材に適しています。',
+            default: '単位価格（$/100g・$/kg）を確認すると、容量の異なる商品の実質価格を比較できます。'
+        },
+        ko: {
+            half: '반값 특가는 이번 주 할인 폭이 가장 큰 상품입니다. 세제, 화장지, 통조림 등 오래 보관할 수 있는 상품은 이 기간에 함께 구매하시는 것이 좋습니다.',
+            meat: '정육은 kg당 가격($/kg)으로 부위와 용량이 다른 상품을 비교할 수 있습니다.',
+            seafood: '신선 해산물은 보냉백을 이용하시고, 귀가 후 소분하여 냉동 보관하시기 바랍니다.',
+            health_vitamins: '영양제(Swisse, Blackmores 등)는 정기적으로 반값 행사가 진행되므로 특가 기간에 구매하시는 것을 권장합니다.',
+            dairy_eggs: '우유와 계란 등 생필품은 ALDI의 평소 가격도 함께 비교해 보시고, 치즈와 요거트는 Coles·Woolworths 특가를 확인해 주세요.',
+            produce: '채소와 과일은 계절에 따라 가격이 달라지므로 kg당 가격을 참고해 주세요.',
+            aldi: 'ALDI 자체 브랜드는 평소 가격이 낮아 쌀, 식용유, 계란, 빵 등 기본 식재료 구매에 적합합니다.',
+            default: '단위 가격($/100g, $/kg)을 확인하시면 용량이 다른 상품의 실제 가격을 비교할 수 있습니다.'
+        }
+    };
+    return (ADVICE[currentLang] || ADVICE.zh)[key];
 }
 
 // Shopping Drawer Operations
@@ -3656,8 +3691,8 @@ function renderAnnouncement() {
     // Read language specific announcement
     const langData = cachedAnnouncement[currentLang] || cachedAnnouncement['zh'] || cachedAnnouncement;
 
-    document.getElementById('announcementTitle').textContent = langData.title || cachedAnnouncement.title || '📢 站長的話';
-    document.getElementById('announcementAuthor').textContent = langData.author || cachedAnnouncement.author || '站長';
+    document.getElementById('announcementTitle').textContent = langData.title || cachedAnnouncement.title || '網站公告';
+    document.getElementById('announcementAuthor').textContent = langData.author || cachedAnnouncement.author || '網站管理員';
     document.getElementById('announcementDate').textContent = cachedAnnouncement.date || '';
     document.getElementById('announcementBadge').textContent = langData.badge || cachedAnnouncement.badge || '最新公告';
     document.getElementById('announcementContent').textContent = langData.content || cachedAnnouncement.content || '';
@@ -3834,8 +3869,8 @@ async function sendFeedback() {
             headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
             body: JSON.stringify({
                 access_key: FEEDBACK_ACCESS_KEY,
-                subject: `【意見箱】${typeLabel}：${message.slice(0, 30)}`,
-                from_name: '澳洲超市特價優惠 · 匿名意見箱',
+                subject: `【意見回饋】${typeLabel}：${message.slice(0, 30)}`,
+                from_name: '澳洲超市特價資訊 · 意見回饋',
                 '類型': typeLabel,
                 '內容': message,
                 '訪客使用的語言': currentLang,

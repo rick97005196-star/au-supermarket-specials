@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>澳洲超市特價優惠 | AU Supermarket Specials</title>
-    <meta name="description" content="每週自動整理 Woolworths、Coles、ALDI 三大超市的店內特價與半價商品，可依州別（QLD、NSW、VIC…）查看、搜尋中英日韓商品名稱，免費使用。">
+    <title>澳洲超市特價資訊 | AU Supermarket Specials</title>
+    <meta name="description" content="每週彙整 Woolworths、Coles、ALDI 三大超市的店內特價與半價商品，可依州別（QLD、NSW、VIC…）瀏覽，並以中、英、日、韓文搜尋商品。">
     <link rel="canonical" href="https://au-supermarket-specials.pages.dev/">
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"澳洲超市特價優惠 AU Supermarket Specials","url":"https://au-supermarket-specials.pages.dev/","inLanguage":["zh-TW","en","ja","ko"],"description":"Weekly in-store specials and half-price deals from Woolworths, Coles and ALDI in Australia."}</script>
 
@@ -16,16 +16,16 @@
     <!-- Open Graph / LINE / Facebook / Messenger Social Share Tags -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://au-supermarket-specials.pages.dev/">
-    <meta property="og:title" content="澳洲超市特價優惠 | AU Supermarket Specials">
-    <meta property="og:description" content="Woolworths · Coles · ALDI 每週省錢比價助手，打工度假與生活必備！秒查每週半價與特價型錄。">
+    <meta property="og:title" content="澳洲超市特價資訊 | AU Supermarket Specials">
+    <meta property="og:description" content="每週彙整 Woolworths、Coles、ALDI 的店內特價與半價商品，可依州別瀏覽並比較單位價格。">
     <meta property="og:image" content="https://au-supermarket-specials.pages.dev/og_image.jpg">
     <meta property="og:image:width" content="1024">
     <meta property="og:image:height" content="1024">
 
     <!-- Twitter Preview -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="澳洲超市特價優惠 | AU Supermarket Specials">
-    <meta name="twitter:description" content="Woolworths · Coles · ALDI 每週省錢比價助手，打工度假與生活必備！秒查每週半價與特價型錄。">
+    <meta name="twitter:title" content="澳洲超市特價資訊 | AU Supermarket Specials">
+    <meta name="twitter:description" content="每週彙整 Woolworths、Coles、ALDI 的店內特價與半價商品，可依州別瀏覽並比較單位價格。">
     <meta name="twitter:image" content="https://au-supermarket-specials.pages.dev/og_image.jpg">
 
     <!-- Mobile PWA & App Meta Tags -->
@@ -33,7 +33,7 @@
     <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
-    <meta name="apple-mobile-web-app-title" content="超市特價">
+    <meta name="apple-mobile-web-app-title" content="超市特價資訊">
     <meta name="mobile-web-app-capable" content="yes">
     <link rel="icon" type="image/png" href="/favicon-48.png">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -54,7 +54,7 @@
 
     <!-- Pre-built styles (no in-browser compiling = faster on phones) -->
     <link rel="stylesheet" href="./tw.css?v=6.1">
-    <link rel="stylesheet" href="./design.css?v=10.2">
+    <link rel="stylesheet" href="./design.css?v=10.3">
 
     <!-- Non-blocking fonts & icons: text shows immediately with the phone's own fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -76,8 +76,8 @@
             <a href="./" class="brand-link flex items-center gap-3 min-w-0">
                 <img src="./logo-96.png" alt="" width="36" height="36" class="brand-mark shrink-0">
                 <div class="min-w-0 leading-tight">
-                    <div data-i18n="app_title" class="text-[15px] font-semibold t-ink truncate">澳洲超市特價優惠</div>
-                    <div data-i18n="app_subtitle" class="text-[12px] t-ink-3 truncate hidden sm:block">Woolworths · Coles · ALDI 每週省錢比價助手</div>
+                    <div data-i18n="app_title" class="text-[15px] font-semibold t-ink truncate">澳洲超市特價資訊</div>
+                    <div data-i18n="app_subtitle" class="text-[12px] t-ink-3 truncate hidden sm:block">Woolworths · Coles · ALDI 每週特價彙整</div>
                 </div>
             </a>
 
@@ -106,7 +106,7 @@
 
                 <button onclick="toggleShoppingDrawer()" class="cart-btn" aria-label="Shopping list">
                     <i class="fa-solid fa-basket-shopping text-[13px]"></i>
-                    <span data-i18n="shopping_manifest" class="hidden sm:inline">採買清單</span>
+                    <span data-i18n="shopping_manifest" class="hidden sm:inline">我的採買清單</span>
                     <span id="cartCountBadge" class="cart-count num">0</span>
                 </button>
             </div>
@@ -117,7 +117,7 @@
     <div class="top-disclaimer" role="note">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
-            <span><b data-i18n="disclaimer_title">免責聲明</b> <span class="disc-long" data-i18n="disclaimer_text">本網站特價資訊僅供參考，實際商品售價、優惠檔期與庫存狀況均以各超市實體門市現場及官方最新公告為準。</span><span class="disc-short" data-i18n="disclaimer_short">特價僅供參考，實際狀況依照現場為主</span></span>
+            <span><b data-i18n="disclaimer_title">免責聲明</b> <span class="disc-long" data-i18n="disclaimer_text">本網站特價資訊僅供參考，實際商品售價、優惠檔期與庫存狀況均以各超市實體門市現場及官方最新公告為準。</span><span class="disc-short" data-i18n="disclaimer_short">特價資訊僅供參考，請以門市實際標示為準</span></span>
         </div>
     </div>
 
@@ -142,9 +142,9 @@
                     <span id="activeDateRange" class="num">載入中...</span>
                 </h1>
                 <p class="hero-sub">
-                    <span data-i18n="cycle_info">每週三換檔，週一/二提前看下週型錄</span>
+                    <span data-i18n="cycle_info">Coles 與 Woolworths 每週三更新特價，下週型錄通常於週一或週二公布</span>
                     <span class="t-ink-3"> · </span>
-                    <span data-i18n="currency_badge" class="t-ink-3">🇦🇺 澳洲超商標價均為 AUD ($)</span>
+                    <span data-i18n="currency_badge" class="t-ink-3">價格均以澳幣（AUD）標示</span>
                 </p>
             </div>
 
@@ -156,8 +156,8 @@
                 </button>
                 <button id="tabPeriodNext" onclick="selectPeriod('next')" class="seg-btn" role="tab">
                     <i class="fa-solid fa-wand-magic-sparkles text-[13px]"></i>
-                    <span data-i18n="next_cycle">下週預告</span>
-                    <span class="seg-tag" data-i18n="cycle_preview">搶先看</span>
+                    <span data-i18n="next_cycle">下週特價預告</span>
+                    <span class="seg-tag" data-i18n="cycle_preview">已公布</span>
                     <span id="periodDateNextBadge" class="hidden"></span>
                 </button>
             </div>
@@ -228,16 +228,16 @@
                 <div class="flex items-center gap-2 w-full sm:w-auto">
                     <button id="halfPricePill" type="button" onclick="toggleHalfPricePill()" class="toggle-pill">
                         <i class="fa-solid fa-fire text-[12px]"></i>
-                        <span data-i18n="half_price_only">只要半價 (1/2)</span>
+                        <span data-i18n="half_price_only">僅顯示半價商品</span>
                     </button>
                     <input type="checkbox" id="halfPriceOnly" onchange="loadSpecials()" class="hidden">
                     <select id="sortSelect" onchange="loadSpecials()" class="select-pill flex-1 sm:flex-none min-w-0" aria-label="Sort">
-                        <option value="relevance" data-i18n="sort_relevance">推薦關聯</option>
-                        <option value="popular" data-i18n="sort_popular">最多人買（熱門暢銷）</option>
-                        <option value="save_desc" data-i18n="sort_save_desc">折扣省最多</option>
+                        <option value="relevance" data-i18n="sort_relevance">依相關度</option>
+                        <option value="popular" data-i18n="sort_popular">依熱門程度</option>
+                        <option value="save_desc" data-i18n="sort_save_desc">依折扣金額</option>
                         <option value="price_asc" data-i18n="sort_price_asc">價格：低至高</option>
                         <option value="price_desc" data-i18n="sort_price_desc">價格：高至低</option>
-                        <option value="unit_asc" data-i18n="sort_unit_asc">每公斤／公升最便宜</option>
+                        <option value="unit_asc" data-i18n="sort_unit_asc">依單位價格（低至高）</option>
                     </select>
                 </div>
             </div>
@@ -256,11 +256,11 @@
                     <span class="notice-icon"><i class="fa-solid fa-bullhorn"></i></span>
                     <span class="min-w-0 flex-1">
                         <span class="flex items-center gap-2 min-w-0">
-                            <span id="announcementTitle" class="text-[14px] font-semibold t-ink truncate">📢 站長的話</span>
-                            <span id="announcementBadge" class="notice-badge">最新公告</span>
+                            <span id="announcementTitle" class="text-[14px] font-semibold t-ink truncate">網站公告</span>
+                            <span id="announcementBadge" class="notice-badge">公告</span>
                         </span>
                         <span class="block text-[12px] t-ink-3 mt-0.5">
-                            <span id="announcementAuthor">站長 Rick</span> · <span id="announcementDate" class="num">2026-09-22</span>
+                            <span id="announcementAuthor">網站管理員 Rick</span> · <span id="announcementDate" class="num">2026-09-22</span>
                         </span>
                     </span>
                     <i class="fa-solid fa-chevron-down text-[12px] notice-chevron"></i>
@@ -272,7 +272,7 @@
             <div class="notice-body">
                 <p id="announcementContent" class="text-[14px] t-ink-2 leading-relaxed whitespace-pre-line">--</p>
                 <a id="announcementLink" href="#" target="_blank" rel="noopener noreferrer" class="hidden mt-3 inline-flex items-center gap-1.5 text-[13px] font-semibold t-accent hover:underline">
-                    <span id="announcementLinkText">💬 交流與反饋</span>
+                    <span id="announcementLinkText">意見回饋與聯繫</span>
                     <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
                 </a>
             </div>
@@ -281,7 +281,7 @@
         <!-- Results header -->
         <div class="flex items-center justify-between gap-3 px-0.5">
             <div class="flex items-center gap-2.5 min-w-0">
-                <span id="resultsCountText" class="text-[15px] font-semibold t-ink">找到 0 項特價品</span>
+                <span id="resultsCountText" class="text-[15px] font-semibold t-ink">共 0 項特價商品</span>
                 <span id="periodIndicatorBadge" data-i18n="current_cycle" class="result-badge hidden sm:inline-block truncate">本週特價</span>
             </div>
             <div class="flex items-center gap-2 shrink-0">
@@ -304,7 +304,7 @@
         <!-- Loading -->
         <div id="loadingState" class="hidden py-24 text-center t-ink-3">
             <i class="fa-solid fa-circle-notch fa-spin text-2xl mb-3"></i>
-            <p class="text-[13px]" data-i18n="updating">正在載入特價商品...</p>
+            <p class="text-[13px]" data-i18n="updating">正在更新型錄...</p>
         </div>
 
         <!-- Empty -->
@@ -312,8 +312,8 @@
             <div class="w-12 h-12 mx-auto rounded-full bg-surface-2 flex items-center justify-center t-ink-3">
                 <i class="fa-solid fa-basket-shopping"></i>
             </div>
-            <h3 id="emptyStateTitle" class="text-[16px] font-semibold t-ink">沒有找到符合的特價商品</h3>
-            <p id="emptyStateSub" class="text-[13px] t-ink-3 max-w-md mx-auto leading-relaxed">試試切換「本週 / 下週預告」或更改類別</p>
+            <h3 id="emptyStateTitle" class="text-[16px] font-semibold t-ink">沒有符合條件的特價商品</h3>
+            <p id="emptyStateSub" class="text-[13px] t-ink-3 max-w-md mx-auto leading-relaxed">請切換本週／下週特價，或選擇其他分類</p>
             <div id="emptyStateAction" class="pt-2">
                 <button onclick="selectPeriod('current')" class="btn-primary">
                     <i class="fa-regular fa-calendar-check"></i>
@@ -325,15 +325,15 @@
         <!-- Feedback -->
         <div class="toolbar p-5 sm:p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4 mt-6">
             <div class="space-y-1">
-                <p class="text-[15px] font-semibold t-ink" data-i18n="feedback_banner_tag">意見反饋</p>
+                <p class="text-[15px] font-semibold t-ink" data-i18n="feedback_banner_tag">意見回饋</p>
                 <p class="text-[13px] t-ink-2">
-                    <span data-i18n="feedback_banner_text">有任何功能建議或超市品項想許願？歡迎隨時寫信至：</span>
+                    <span data-i18n="feedback_banner_text">如對網站功能或商品資訊有任何建議，歡迎來信：</span>
                     <a href="mailto:rick97005109@gmail.com" class="font-medium t-ink underline underline-offset-2">rick97005109@gmail.com</a>
                 </p>
             </div>
-            <a href="mailto:rick97005109@gmail.com?subject=澳洲超市比價網功能建議與反饋" class="btn-ghost shrink-0 self-start sm:self-auto">
+            <a href="mailto:rick97005109@gmail.com?subject=澳洲超市特價資訊－意見回饋" class="btn-ghost shrink-0 self-start sm:self-auto">
                 <i class="fa-regular fa-paper-plane text-[12px]"></i>
-                <span data-i18n="feedback_banner_btn">寫信給站長</span>
+                <span data-i18n="feedback_banner_btn">聯絡我們</span>
             </a>
         </div>
     </main>
@@ -344,8 +344,8 @@
         <button type="button" class="fb-card" onclick="openFeedback()">
             <span class="fb-card-icon"><i class="fa-regular fa-comment-dots"></i></span>
             <span class="min-w-0 text-left">
-                <span class="fb-card-title" data-i18n="fb_entry_title">匿名意見箱</span>
-                <span class="fb-card-sub" data-i18n="fb_entry_sub">有建議、發現價格錯誤？不用留名字，直接告訴站長</span>
+                <span class="fb-card-title" data-i18n="fb_entry_title">意見回饋</span>
+                <span class="fb-card-sub" data-i18n="fb_entry_sub">如有建議或發現價格錯誤，歡迎匿名告知</span>
             </span>
             <i class="fa-solid fa-chevron-right t-ink-3 text-[12px] ml-auto"></i>
         </button>
@@ -356,10 +356,10 @@
             <div class="flex items-center gap-3">
                 <img src="./logo-96.png" alt="" width="28" height="28" class="brand-mark" style="width:28px;height:28px;border-radius:8px">
                 <div>
-                    <p class="t-ink-2 font-medium">澳洲超市特價優惠 · AU Supermarket Specials</p>
+                    <p class="t-ink-2 font-medium">澳洲超市特價資訊 · AU Supermarket Specials</p>
                     <p>
-                        <span data-i18n="contact_admin">聯絡版主</span>:
-                        <a href="mailto:rick97005109@gmail.com?subject=澳洲超市特價優惠-聯絡版主" class="hover:underline t-ink-2">rick97005109@gmail.com</a>
+                        <span data-i18n="contact_admin">聯絡我們</span>:
+                        <a href="mailto:rick97005109@gmail.com?subject=澳洲超市特價資訊－聯絡我們" class="hover:underline t-ink-2">rick97005109@gmail.com</a>
                     </p>
                 </div>
             </div>
@@ -376,7 +376,7 @@
         <div class="px-5 py-4 flex items-center justify-between border-b b-line">
             <div>
                 <h2 class="text-[17px] font-semibold t-ink" data-i18n="shopping_manifest">我的採買清單</h2>
-                <p class="text-[12px] t-ink-3" data-i18n="shopping_subtitle">按超市獨立分組，現場採買不漏買</p>
+                <p class="text-[12px] t-ink-3" data-i18n="shopping_subtitle">依超市分類整理，方便於門市逐項採買</p>
             </div>
             <button onclick="toggleShoppingDrawer()" class="icon-btn" aria-label="Close"><i class="fa-solid fa-xmark text-[14px]"></i></button>
         </div>
@@ -442,7 +442,7 @@
                         <div id="modalProductTranslated" class="hidden text-[14px] t-ink-2 leading-snug"></div>
                         <div class="flex items-center gap-1.5 text-[12px] t-ink-3">
                             <i class="fa-regular fa-calendar"></i>
-                            <span data-i18n="valid_period">特價檔期:</span>
+                            <span data-i18n="valid_period">特價檔期</span>
                             <span id="modalDateRange" class="num t-ink-2">--</span>
                         </div>
                         <div class="flex items-baseline gap-0.5 leading-none t-ink pt-1">
@@ -456,7 +456,7 @@
                             <span id="modalWasPrice" class="text-[12px] t-ink-3 line-through num">Was $0.00</span>
                         </div>
                         <div id="modalUnitPriceBox" class="flex items-center justify-between gap-2 px-3 py-2.5 rounded-xl panel-2">
-                            <span class="text-[12px] t-ink-3" data-i18n="unit_price_label">單位價格 (Unit Price)</span>
+                            <span class="text-[12px] t-ink-3" data-i18n="unit_price_label">單位價格（澳幣）</span>
                             <span id="modalUnitPrice" class="num text-[13px] font-semibold t-ink">--</span>
                         </div>
                     </div>
@@ -466,7 +466,7 @@
                     <div class="flex items-center justify-between">
                         <div class="font-semibold text-[13px] t-ink flex items-center gap-2">
                             <i class="fa-solid fa-scale-balanced t-ink-3"></i>
-                            <span data-i18n="cross_store_title">各大超市同款現場比價</span>
+                            <span data-i18n="cross_store_title">各超市同款商品價格比較</span>
                         </div>
                         <span id="modalCrossStoreBadge" class="tag is-accent">同款比價</span>
                     </div>
@@ -477,7 +477,7 @@
                 <div id="modalAldiCmpBox" class="hidden rounded-2xl p-4 panel-2 space-y-2.5">
                     <div class="font-semibold text-[13px] t-ink flex items-center gap-2">
                         <i class="fa-solid fa-scale-balanced t-ink-3"></i>
-                        <span data-i18n="aldi_cmp_title">和 Coles、Woolworths 同類特價比較</span>
+                        <span data-i18n="aldi_cmp_title">與 Coles、Woolworths 同類特價比較</span>
                     </div>
                     <div id="modalAldiCmpVerdict" class="aldi-verdict"></div>
                     <div id="modalAldiCmpList" class="space-y-2"></div>
@@ -485,7 +485,7 @@
                 </div>
 
                 <div class="rounded-2xl p-4 panel-2 space-y-1.5">
-                    <div class="font-semibold text-[13px] t-ink" data-i18n="whv_advice_title">🎒 背包客採買建議</div>
+                    <div class="font-semibold text-[13px] t-ink" data-i18n="whv_advice_title">選購建議</div>
                     <p id="modalWhvAdvice" class="text-[13px] t-ink-2 leading-relaxed">--</p>
                 </div>
 
@@ -495,7 +495,7 @@
                 </div>
 
                 <button type="button" class="fb-report" onclick="reportCurrentProduct()">
-                    <i class="fa-regular fa-flag text-[11px]"></i><span data-i18n="fb_report_item">回報這個商品資訊有誤</span>
+                    <i class="fa-regular fa-flag text-[11px]"></i><span data-i18n="fb_report_item">回報商品資訊有誤</span>
                 </button>
                 <div id="modalOfficialLinkBox" class="space-y-2.5">
                     <a id="modalOfficialLink" href="#" target="_blank" rel="noopener noreferrer" class="btn-ghost w-full sm:w-auto">
@@ -509,7 +509,7 @@
                 </div>
 
                 <p class="text-[11px] t-ink-3 text-center">
-                    <span data-i18n="disclaimer_short">特價僅供參考，實際狀況依照現場為主</span>
+                    <span data-i18n="disclaimer_short">特價資訊僅供參考，請以門市實際標示為準</span>
                 </p>
             </div>
 
@@ -528,7 +528,7 @@
     <div id="favManagerBackdrop" onclick="closeFavManager()" class="fixed inset-0 bg-black/40 z-50 hidden"></div>
     <div id="favManager" class="panel fixed z-50 hidden left-0 right-0 bottom-0 sm:left-1/2 sm:right-auto sm:bottom-auto sm:top-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2 w-full sm:max-w-md rounded-t-3xl sm:rounded-3xl flex flex-col max-h-[80vh]" style="box-shadow: var(--shadow-lg)" role="dialog" aria-modal="true">
         <div class="px-5 py-4 flex items-center justify-between border-b b-line">
-            <h2 class="text-[17px] font-semibold t-ink"><i class="fa-solid fa-heart t-sale mr-1.5"></i><span data-i18n="fav_title">我的常買</span></h2>
+            <h2 class="text-[17px] font-semibold t-ink"><i class="fa-solid fa-heart t-sale mr-1.5"></i><span data-i18n="fav_title">常購商品</span></h2>
             <button onclick="closeFavManager()" class="icon-btn" aria-label="Close"><i class="fa-solid fa-xmark text-[14px]"></i></button>
         </div>
         <div id="favManagerList" class="flex-1 overflow-y-auto p-4 space-y-2"></div>
@@ -543,30 +543,30 @@
     <div id="feedbackBox" class="panel fixed z-50 hidden left-0 right-0 bottom-0 sm:left-1/2 sm:right-auto sm:bottom-auto sm:top-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2 w-full sm:max-w-md rounded-t-3xl sm:rounded-3xl flex flex-col" style="box-shadow: var(--shadow-lg)" role="dialog" aria-modal="true" aria-labelledby="fbTitle">
         <div class="px-5 py-4 flex items-center justify-between border-b b-line">
             <div class="min-w-0">
-                <h2 id="fbTitle" class="text-[17px] font-semibold t-ink"><i class="fa-regular fa-comment-dots mr-1.5"></i><span data-i18n="fb_entry_title">匿名意見箱</span></h2>
-                <p class="text-[12px] t-ink-3" data-i18n="fb_anon_note">完全匿名：不需要名字或信箱，也不會記錄你是誰</p>
+                <h2 id="fbTitle" class="text-[17px] font-semibold t-ink"><i class="fa-regular fa-comment-dots mr-1.5"></i><span data-i18n="fb_entry_title">意見回饋</span></h2>
+                <p class="text-[12px] t-ink-3" data-i18n="fb_anon_note">本表單完全匿名，無須填寫姓名或電子信箱，亦不記錄個人身分</p>
             </div>
             <button onclick="closeFeedback()" class="icon-btn" aria-label="Close"><i class="fa-solid fa-xmark text-[14px]"></i></button>
         </div>
         <form id="feedbackForm" class="p-4 sm:p-5 space-y-3 overflow-y-auto" onsubmit="event.preventDefault(); sendFeedback();">
             <div class="flex flex-wrap gap-2" role="radiogroup" id="fbTypes">
-                <button type="button" class="fb-type is-active" data-type="suggestion" onclick="pickFeedbackType(this)" data-i18n="fb_type_suggestion">💡 建議</button>
-                <button type="button" class="fb-type" data-type="data_error" onclick="pickFeedbackType(this)" data-i18n="fb_type_error">🏷️ 價格/商品有誤</button>
-                <button type="button" class="fb-type" data-type="bug" onclick="pickFeedbackType(this)" data-i18n="fb_type_bug">🐞 網站問題</button>
-                <button type="button" class="fb-type" data-type="other" onclick="pickFeedbackType(this)" data-i18n="fb_type_other">💬 其他</button>
+                <button type="button" class="fb-type is-active" data-type="suggestion" onclick="pickFeedbackType(this)" data-i18n="fb_type_suggestion">建議</button>
+                <button type="button" class="fb-type" data-type="data_error" onclick="pickFeedbackType(this)" data-i18n="fb_type_error">價格／商品資訊有誤</button>
+                <button type="button" class="fb-type" data-type="bug" onclick="pickFeedbackType(this)" data-i18n="fb_type_bug">網站問題</button>
+                <button type="button" class="fb-type" data-type="other" onclick="pickFeedbackType(this)" data-i18n="fb_type_other">其他</button>
             </div>
-            <textarea id="fbMessage" class="fb-text" rows="5" maxlength="1000" required data-i18n-placeholder="fb_placeholder" placeholder="想對站長說什麼？例如：希望新增某個功能、某個商品價格不對…"></textarea>
+            <textarea id="fbMessage" class="fb-text" rows="5" maxlength="1000" required data-i18n-placeholder="請輸入您的意見，例如：希望新增的功能、價格有誤的商品…" placeholder="請輸入您的意見，例如：希望新增的功能、價格有誤的商品…"></textarea>
             <div class="flex items-center justify-between text-[11.5px] t-ink-3"><span data-i18n="fb_limit">最多 1000 字</span><span id="fbCount" class="num">0 / 1000</span></div>
             <!-- spam trap: real visitors never see or fill this -->
             <input type="checkbox" name="botcheck" id="fbBot" class="hidden" tabindex="-1" autocomplete="off">
             <p id="fbStatus" class="text-[13px] hidden" role="status"></p>
-            <button type="submit" id="fbSend" class="btn-primary w-full"><i class="fa-regular fa-paper-plane mr-1.5"></i><span data-i18n="fb_send">匿名送出</span></button>
+            <button type="submit" id="fbSend" class="btn-primary w-full"><i class="fa-regular fa-paper-plane mr-1.5"></i><span data-i18n="fb_send">送出</span></button>
         </form>
     </div>
 
     <!-- Floating feedback button (always visible) -->
-    <button type="button" class="fb-fab" onclick="openFeedback()" aria-label="匿名意見箱" data-i18n-aria="aria_feedback">
-        <i class="fa-regular fa-comment-dots"></i><span data-i18n="fb_fab">意見箱</span>
+    <button type="button" class="fb-fab" onclick="openFeedback()" aria-label="意見回饋" data-i18n-aria="aria_feedback">
+        <i class="fa-regular fa-comment-dots"></i><span data-i18n="fb_fab">意見回饋</span>
     </button>
 
     <!-- Back to top -->
@@ -580,9 +580,9 @@
         <span id="toastMessage">Action completed</span>
     </div>
 
-    <script src="./i18n.js?v=7.7" defer></script>
+    <script src="./i18n.js?v=7.8" defer></script>
     <script src="./category-icons.js?v=1.1" defer></script>
     <script src="./category-rules.js?v=1.1" defer></script>
-    <script src="./app.js?v=10.1" defer></script>
+    <script src="./app.js?v=10.2" defer></script>
 </body>
 </html>
