@@ -78,8 +78,19 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action Bot"
-          git add data/specials.db data/catalogues.json data/coles_web.json static/data/specials.json static/data/stats.json static/data/translations.json
+          for f in data/specials.db data/catalogues.json data/coles_web.json data/woolies_web.json data/catalogue_items.json.gz static/data/specials.json static/data/stats.json static/data/translations.json; do [ ! -f "$f" ] || git add "$f"; done
           git diff --staged --quiet || (git commit -m "Auto-update weekly specials & translations [skip ci]" && git pull --rebase -X theirs origin main && git push origin main)
+
+      # ---- The scrapers' saved copies (catalogues already downloaded, half-price lists read so far)
+      #      are kept even when the website itself did not change, so the next update does not have
+      #      to download them again ----
+      - name: Save downloaded catalogues for the next update
+        if: always()
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action Bot"
+          for f in data/catalogues.json data/coles_web.json data/woolies_web.json data/catalogue_items.json.gz; do [ ! -f "$f" ] || git add "$f"; done
+          git diff --staged --quiet || (git commit -m "Save scraper memory [skip ci]" && git pull --rebase -X theirs origin main && git push origin main) || echo "memory not saved this time"
 
       - name: Build CSS (pre-built Tailwind, fast on phones)
         if: steps.check.outputs.changed == 'true' && steps.check.outputs.block != 'true'

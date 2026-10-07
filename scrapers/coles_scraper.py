@@ -35,20 +35,10 @@ def _session():
     return s
 
 def _get(url, timeout=20, **kwargs):
-    import time as _t
-    last = None
-    for attempt in range(3):
-        try:
-            r = _session().get(url, timeout=timeout, **kwargs)
-            if r.status_code == 200:
-                return r
-            last = r
-        except Exception as e:
-            last = e
-        _t.sleep(3 * (attempt + 1))
-    if isinstance(last, Exception):
-        raise last
-    return last
+    """Polite GET on the catalogue site (paced, one browser identity, stops when refused).
+    Returns the response, or None when the site is refusing us / unreachable."""
+    from scrapers.polite import request
+    return request('salefinder', lambda: _session().get(url, timeout=timeout, **kwargs))
 
 def pick_current_and_next(catalogues, today=None):
     """Choose this week's and next week's catalogue by their dates (Australian time),
@@ -105,7 +95,7 @@ def clean_date_range(text: str) -> str:
         return m.group(1)
     return text.replace('Offer valid', '').strip()
 
-def discover_coles_catalogues(postcode_id=None, region=None) -> List[Dict[str, Any]]:
+def discover_coles_catalogues(postcode_id=None, region=None, known_dates=None) -> List[Dict[str, Any]]:
     """Discovers available Coles catalogues (this week and next week preview)."""
     catalogues = []
     try:
@@ -115,7 +105,10 @@ def discover_coles_catalogues(postcode_id=None, region=None) -> List[Dict[str, A
             if page is None:
                 return []
         else:
-            page = _get(f"{BASE_URL}/Coles-catalogue").text
+            r0 = _get(f"{BASE_URL}/Coles-catalogue")
+            if r0 is None or r0.status_code != 200:
+                return []
+            page = r0.text
         soup = BeautifulSoup(page, 'html.parser')
         
         # Find catalogue links (only Coles supermarket, exclude liquorland)
@@ -144,7 +137,13 @@ def discover_coles_catalogues(postcode_id=None, region=None) -> List[Dict[str, A
 
             # Check dates from the catalogue page
             list_url = f"{BASE_URL}{href}".replace('/catalogue2', '/list')
+            # a catalogue seen before: its dates are already known, no need to open it again
+            if known_dates and str(cat_id) in known_dates:
+                catalogues.append({'id': int(cat_id), 'url': list_url, 'date_range': known_dates[str(cat_id)], 'soup': None})
+                continue
             cat_r = _get(list_url)
+            if cat_r is None or cat_r.status_code != 200:
+                continue
             cat_soup = BeautifulSoup(cat_r.text, 'html.parser')
             
             date_el = cat_soup.select_one('.sf-catalogue-dates, .sale-dates')
@@ -166,7 +165,8 @@ def discover_coles_catalogues(postcode_id=None, region=None) -> List[Dict[str, A
 
 def scrape_coles_catalogue_items(base_list_url: str, initial_soup: BeautifulSoup, max_pages: int = 50) -> List[Dict[str, Any]]:
     """Scrapes products from a specific catalogue list URL across pages (in-store specials only)."""
-    products = []
+    from scrapers.regions import ItemList
+    products = ItemList()
     seen_ids = set()
 
     for page in range(1, max_pages + 1):
@@ -176,12 +176,13 @@ def scrape_coles_catalogue_items(base_list_url: str, initial_soup: BeautifulSoup
             else:
                 page_url = f"{base_list_url}?qs={page},,,,"
                 r = _get(page_url)
-                if r.status_code != 200:
-                    break
+                if r is None or r.status_code != 200:
+                    break                       # refused / failed: NOT complete, read again next time
                 soup = BeautifulSoup(r.text, 'html.parser')
 
             items = soup.select('.item-landscape')
             if not items:
+                products.complete = True        # past the last page: the whole catalogue was read
                 break
 
             for item in items:

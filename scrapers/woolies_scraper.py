@@ -37,20 +37,10 @@ def _session():
     return s
 
 def _get(url, timeout=20, **kwargs):
-    import time as _t
-    last = None
-    for attempt in range(3):
-        try:
-            r = _session().get(url, timeout=timeout, **kwargs)
-            if r.status_code == 200:
-                return r
-            last = r
-        except Exception as e:
-            last = e
-        _t.sleep(3 * (attempt + 1))
-    if isinstance(last, Exception):
-        raise last
-    return last
+    """Polite GET on the catalogue site (paced, one browser identity, stops when refused).
+    Returns the response, or None when the site is refusing us / unreachable."""
+    from scrapers.polite import request
+    return request('salefinder', lambda: _session().get(url, timeout=timeout, **kwargs))
 
 def pick_current_and_next(catalogues, today=None):
     """Choose this week's and next week's catalogue by their dates (Australian time),
@@ -107,7 +97,7 @@ def clean_date_range(text: str) -> str:
         return m.group(1)
     return text.replace('Offer valid', '').strip()
 
-def discover_woolies_catalogues(postcode_id=None, region=None) -> List[Dict[str, Any]]:
+def discover_woolies_catalogues(postcode_id=None, region=None, known_dates=None) -> List[Dict[str, Any]]:
     """Discovers available Woolworths catalogues (this week and next week preview)."""
     catalogues = []
     try:
@@ -117,7 +107,10 @@ def discover_woolies_catalogues(postcode_id=None, region=None) -> List[Dict[str,
             if page is None:
                 return []
         else:
-            page = _get(f"{BASE_URL}/Woolworths-catalogue").text
+            r0 = _get(f"{BASE_URL}/Woolworths-catalogue")
+            if r0 is None or r0.status_code != 200:
+                return []
+            page = r0.text
         soup = BeautifulSoup(page, 'html.parser')
         
         links = soup.find_all('a', href=re.compile(r'/woolworths-catalogue/.+/\d+/catalogue2'))
@@ -144,7 +137,13 @@ def discover_woolies_catalogues(postcode_id=None, region=None) -> List[Dict[str,
             seen_ids.add(cat_id)
 
             list_url = f"{BASE_URL}{href}".replace('/catalogue2', '/list')
+            # a catalogue seen before: its dates are already known, no need to open it again
+            if known_dates and str(cat_id) in known_dates:
+                catalogues.append({'id': int(cat_id), 'url': list_url, 'date_range': known_dates[str(cat_id)], 'soup': None})
+                continue
             cat_r = _get(list_url)
+            if cat_r is None or cat_r.status_code != 200:
+                continue
             cat_soup = BeautifulSoup(cat_r.text, 'html.parser')
             
             date_el = cat_soup.select_one('.sf-catalogue-dates, .sale-dates')
@@ -165,7 +164,8 @@ def discover_woolies_catalogues(postcode_id=None, region=None) -> List[Dict[str,
 
 def scrape_woolies_catalogue_items(base_list_url: str, initial_soup: BeautifulSoup, max_pages: int = 50) -> List[Dict[str, Any]]:
     """Scrapes products from a specific Woolworths catalogue list URL across pages."""
-    products = []
+    from scrapers.regions import ItemList
+    products = ItemList()
     seen_ids = set()
 
     for page in range(1, max_pages + 1):
@@ -175,12 +175,13 @@ def scrape_woolies_catalogue_items(base_list_url: str, initial_soup: BeautifulSo
             else:
                 page_url = f"{base_list_url}?qs={page},,,,"
                 r = _get(page_url)
-                if r.status_code != 200:
-                    break
+                if r is None or r.status_code != 200:
+                    break                       # refused / failed: NOT complete, read again next time
                 soup = BeautifulSoup(r.text, 'html.parser')
 
             items = soup.select('.item-landscape')
             if not items:
+                products.complete = True        # past the last page: the whole catalogue was read
                 break
 
             for item in items:
@@ -285,7 +286,8 @@ def scrape_woolies_catalogue_items(base_list_url: str, initial_soup: BeautifulSo
 def scrape_woolies_online_half_price(max_pages: int = 100) -> List[Dict[str, Any]]:
     """Fetches ALL real in-store Half Price specials from Woolworths official API, strictly excluding online-only/marketplace."""
     import time
-    products = []
+    from scrapers.regions import ItemList
+    products = ItemList()
     seen_names = set()
     url = 'https://www.woolworths.com.au/apis/ui/Search/products'
     page = 1
@@ -302,7 +304,8 @@ def scrape_woolies_online_half_price(max_pages: int = 100) -> List[Dict[str, Any
         session.headers.update(HEADERS)
         print("Woolies API: curl_cffi not installed, falling back to requests")
     try:
-        session.get('https://www.woolworths.com.au/', timeout=20)  # obtain session cookies first
+        from scrapers.polite import request as _polite
+        _polite('woolworths', lambda: session.get('https://www.woolworths.com.au/', timeout=20))  # session cookies first
     except Exception as e:
         print(f"Woolies homepage warm-up failed: {e}")
     
@@ -321,7 +324,10 @@ def scrape_woolies_online_half_price(max_pages: int = 100) -> List[Dict[str, Any
                     'enableAdReRanking': False, 'groupEdmVariants': False, 'categoryVersion': 'v2',
                     'flags': {'EnableProductBoostExperiment': False},
                 }
-                r = session.post('https://www.woolworths.com.au/apis/ui/browse/category', json=body, timeout=20)
+                r = _polite('woolworths', lambda: session.post('https://www.woolworths.com.au/apis/ui/browse/category', json=body, timeout=20))
+                if r is None:
+                    print('Woolies half-price list: website refused us - stopping (saved list is used)')
+                    break
                 if r.status_code != 200 or not (r.json().get('Bundles') if r.status_code == 200 else None):
                     if page == 1:
                         print(f"Woolies half-price page unavailable (status {r.status_code}), using search instead")
@@ -333,7 +339,10 @@ def scrape_woolies_online_half_price(max_pages: int = 100) -> List[Dict[str, Any
                     'PageSize': 36,
                     'PageNumber': page
                 }
-                r = session.get(url, params=params, timeout=20)
+                r = _polite('woolworths', lambda: session.get(url, params=params, timeout=20))
+                if r is None:
+                    print('Woolies search: website refused us - stopping (saved list is used)')
+                    break
             if r.status_code != 200:
                 print(f"Woolies API status {r.status_code} at page {page}, stopping.")
                 break
@@ -341,6 +350,7 @@ def scrape_woolies_online_half_price(max_pages: int = 100) -> List[Dict[str, Any
             bundles = (data.get('Bundles') if use_category else data.get('Products')) or []
             if not bundles:
                 print(f"Woolies reached end of Half Price specials at page {page - 1}.")
+                products.complete = True
                 break
                 
             page_added = 0
@@ -427,13 +437,50 @@ def scrape_woolies_online_half_price(max_pages: int = 100) -> List[Dict[str, Any
             if page % 5 == 0 or page_added == 0:
                 print(f"Woolies Half Price page {page}: added {page_added} items (Total: {len(products)})")
             page += 1
-            time.sleep(0.15)
         except Exception as e:
             print(f"Error fetching Woolies online half price page {page}: {e}")
             break
             
     print(f"Scraped {len(products)} online Half Price specials from Woolworths API across {page - 1} pages.")
     return products
+
+WOOLIES_MEMORY = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'data', 'woolies_web.json')
+WOOLIES_REFRESH_HOURS = 6
+
+
+def woolies_half_price_remembered():
+    """The Woolworths half-price list for this week, read politely.
+    A complete read is kept for the week and only refreshed every few hours; when a read is
+    interrupted (site refused us), the items read are ADDED to the saved list, nothing is lost."""
+    import json, time as _time
+    from scrapers.coles_web import coles_week_start      # same Wednesday switch-over as Coles
+    week = coles_week_start()
+    mem = {'week': week, 'items': {}, 'last_full': 0}
+    try:
+        with open(WOOLIES_MEMORY, encoding='utf-8') as f:
+            old = json.load(f)
+        if old.get('week') == week:
+            mem = old
+    except Exception:
+        pass
+    now = _time.time()
+    if mem['items'] and now - float(mem.get('last_full') or 0) < WOOLIES_REFRESH_HOURS * 3600:
+        print(f"Woolies half-price list: read completely {int((now - mem['last_full']) / 60)} min ago - using the saved list ({len(mem['items'])} specials)")
+        return list(mem['items'].values())
+    fresh = scrape_woolies_online_half_price(max_pages=100)
+    if getattr(fresh, 'complete', False) and len(fresh) >= 50:
+        mem['items'] = {it['title'].lower(): it for it in fresh}       # full list: replaces the old one
+        mem['last_full'] = now
+        print(f"Woolies half-price list: read completely ({len(fresh)} specials) and saved")
+    else:
+        for it in fresh:
+            mem['items'][it['title'].lower()] = it
+        print(f"Woolies half-price list: read interrupted ({len(fresh)} read) - {len(mem['items'])} specials kept for this week")
+    os.makedirs(os.path.dirname(WOOLIES_MEMORY), exist_ok=True)
+    with open(WOOLIES_MEMORY, 'w', encoding='utf-8') as f:
+        json.dump(mem, f, ensure_ascii=False, indent=0, sort_keys=True)
+    return list(mem['items'].values())
+
 
 def scrape_woolies_all_weeks(max_pages: int = 50) -> Dict[str, Dict[str, Any]]:
     """Scrapes Woolworths specials for both current week and next week (if available)."""
@@ -444,7 +491,7 @@ def scrape_woolies_all_weeks(max_pages: int = 50) -> Dict[str, Dict[str, Any]]:
 
     # Merge online Half Price specials (Kinder Bueno, snacks, confectionery, etc.)
     try:
-        online_half = scrape_woolies_online_half_price(max_pages=100)
+        online_half = woolies_half_price_remembered()
         existing_titles = {it['title'].lower() for it in res['current']['items']}
         added = 0
         for oh in online_half:

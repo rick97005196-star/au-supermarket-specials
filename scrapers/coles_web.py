@@ -7,9 +7,9 @@ only real in-store half-price deals:
   * pricing.onlineSpecial == True  -> online-only deal, skipped
   * price must be <= 55% of the normal price (same strict rule as the Woolworths half-price list)
 
-coles.com.au only allows a few pages per visitor before showing a "Pardon Our Interruption" page,
-so each update reads as many pages as it can (a few minutes at most) and remembers them in
-data/coles_web.json. The website is checked every hour on Wednesday (the day Coles specials change),
+coles.com.au only allows a few pages per visitor before showing a "Pardon Our Interruption" page.
+We respect that: each update reads politely until the site says stop, remembers what it read in
+data/coles_web.json, and the next update continues from the same page. The website is checked every hour on Wednesday (the day Coles specials change),
 so the full list is collected within a few hours of the new week starting. The memory is cleared
 automatically when a new Coles week starts (Wednesday, Sydney time).
 """
@@ -23,7 +23,6 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 MEMORY_FILE = os.path.join(ROOT, 'data', 'coles_web.json')
 LIST_URL = 'https://www.coles.com.au/on-special?filter_Special=halfprice&page={page}'
 IMG_BASE = 'https://productimages.coles.com.au/productimages'
-IMPERSONATIONS = ['chrome', 'safari', 'chrome124', 'safari17_0', 'chrome120', 'safari15_5', 'chrome116', 'edge101']
 NEXT_DATA = re.compile(r'<script id="__NEXT_DATA__"[^>]*>(.*?)</script>', re.S)
 
 
@@ -97,8 +96,15 @@ def product_to_item(p):
     }
 
 
-def scrape_coles_web_half_price(time_budget=None, max_blocked=4):
-    """Returns this week's in-store Half Price specials from coles.com.au (remembered across updates)."""
+REFRESH_HOURS = 6          # after a complete read, the list is only read again every few hours
+
+
+def scrape_coles_web_half_price(time_budget=None, max_blocked=None):
+    """Returns this week's in-store Half Price specials from coles.com.au (remembered across updates).
+
+    Polite: one browser identity per update, ~6-9 seconds between pages. coles.com.au has bot
+    protection that stops a visitor after a few pages; when that happens we STOP for this update
+    (no new identity, no retry) and continue from the same page on the next scheduled update."""
     # Tuesday 11pm – Wednesday 1am Brisbane: the states switch to the new week one after another.
     # Show only the catalogue for these two hours instead of mixing two weeks of website prices.
     now = datetime.datetime.utcnow()
@@ -107,51 +113,41 @@ def scrape_coles_web_half_price(time_budget=None, max_blocked=4):
         return []
     week = coles_week_start()
     mem = _load_memory(week)
+    if mem['items'] and time.time() - float(mem.get('last_full') or 0) < REFRESH_HOURS * 3600:
+        print(f"Coles website half price: whole list read {int((time.time() - mem['last_full']) / 60)} min ago - "
+              f"using the saved list ({len(mem['items'])} specials)")
+        return list(mem['items'].values())
     if time_budget is None:
-        # list not complete yet (e.g. right after the Wednesday reset): read for up to 15 minutes
-        # so the ~1,200 specials come back in one or two updates instead of five or six
-        complete = len(mem['items']) >= 900
-        time_budget = 300 if complete else 900
-        if not complete:
-            max_blocked = 6
+        time_budget = 600
     try:
         from curl_cffi import requests as cffi
     except Exception:
         print('Coles website: curl_cffi not installed, using remembered items only')
         return list(mem['items'].values())
+    from scrapers.polite import request, mark_blocked, is_blocked
 
-    state = {'i': -1, 's': None}
-
-    def fresh():
-        state['i'] += 1
-        state['s'] = cffi.Session(impersonate=IMPERSONATIONS[state['i'] % len(IMPERSONATIONS)])
+    session = cffi.Session(impersonate='chrome')      # ONE identity for the whole update
 
     def get(page):
-        try:
-            r = state['s'].get(LIST_URL.format(page=page), timeout=20)
-        except Exception:
+        r = request('coles', lambda: session.get(LIST_URL.format(page=page), timeout=20))
+        if r is None or r.status_code != 200:
             return None
         m = NEXT_DATA.search(r.text or '')
         if not m:
+            mark_blocked('coles', 'bot-check page')         # "Pardon Our Interruption": stop here
             return None
         try:
             return json.loads(m.group(1))['props']['pageProps'].get('searchResults')
         except Exception:
             return None
 
-    fresh()
-    t0, blocked, read, added = time.time(), 0, 0, 0
+    t0, read, added = time.time(), 0, 0
     page = int(mem.get('cursor') or 1)
-    while time.time() - t0 < time_budget:
+    start_page = page
+    while time.time() - t0 < time_budget and not is_blocked('coles'):
         sr = get(page)
         if not sr:
-            blocked += 1
-            if blocked >= max_blocked:
-                break
-            fresh()
-            time.sleep(15 * blocked)
-            continue
-        blocked = 0
+            break                                       # refused / bot check: continue next update
         read += 1
         mem['pages'] = -(-int(sr.get('noOfResults') or 0) // int(sr.get('pageSize') or 48)) or mem.get('pages') or 1
         for p in sr.get('results') or []:
@@ -160,16 +156,15 @@ def scrape_coles_web_half_price(time_budget=None, max_blocked=4):
                 if it['id'] not in mem['items']:
                     added += 1
                 mem['items'][it['id']] = it
+        mem['pages_done'] = int(mem.get('pages_done') or 0) + 1
         page = page + 1 if page < mem['pages'] else 1
         mem['cursor'] = page
-        if read >= mem['pages']:
-            break                                     # read every page once this run
-        time.sleep(3)
-        if read % 4 == 0:
-            fresh()                                   # a new visitor every few pages
-            time.sleep(5)
+        if mem['pages_done'] >= mem['pages']:
+            mem['last_full'] = time.time()              # every page read at least once: list complete
+            mem['pages_done'] = 0
+            break
     _save_memory(mem)
-    print(f"Coles website half price: read {read} pages this run (+{added} new), "
+    print(f"Coles website half price: read {read} pages this run from page {start_page} (+{added} new), "
           f"{len(mem['items'])} in-store half-price specials remembered for week of {week} "
           f"(website lists {mem['pages']} pages)")
     return list(mem['items'].values())

@@ -50,8 +50,9 @@ def fetch_all_tiles(url: str, max_pages: int = 15) -> list:
     tiles, seen = [], set()
     for page in range(1, max_pages + 1):
         page_url = url if page == 1 else f"{url}{'&' if '?' in url else '?'}page={page}"
-        res = requests.get(page_url, headers=HEADERS, timeout=15)
-        if res.status_code != 200:
+        from scrapers.polite import request as _polite
+        res = _polite('aldi', lambda: requests.get(page_url, headers=HEADERS, timeout=15))
+        if res is None or res.status_code != 200:
             break
         # A listing that redirects to the catalogue of ALL products is not a specials list
         if re.search(r'aldi\.com\.au/products/?(\?|$)', res.url):
@@ -84,8 +85,9 @@ def discover_aldi_endpoints():
     super_savers = SUPER_SAVERS_FALLBACK
 
     try:
-        r = requests.get('https://www.aldi.com.au/special-buys/', headers=HEADERS, timeout=15)
-        if r.status_code == 200:
+        from scrapers.polite import request as _polite
+        r = _polite('aldi', lambda: requests.get('https://www.aldi.com.au/special-buys/', headers=HEADERS, timeout=15))
+        if r is not None and r.status_code == 200:
             soup = BeautifulSoup(r.text, 'html.parser')
             # ALDI moved Super Savers before (the old /groceries/super-savers/ now redirects to ALL products),
             # so take the current link from the site menu whenever possible.

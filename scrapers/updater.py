@@ -11,6 +11,31 @@ from scrapers.coles_scraper import scrape_coles_all_weeks
 from scrapers.woolies_scraper import scrape_woolies_all_weeks
 from scrapers.aldi_scraper import scrape_aldi_specials
 
+class _Skip(Exception):
+    pass
+
+
+def _aldi_recent(hours=3):
+    """ALDI was read successfully within the last few hours, in the same Wednesday-to-Tuesday week
+    (ALDI's own deal dates decide this week / next week, so a new week always reads ALDI again)."""
+    import datetime as _dt
+    try:
+        from database import get_db
+        with get_db() as conn:
+            row = conn.execute("SELECT value FROM metadata WHERE key = 'last_updated_aldi_current'").fetchone()
+        if not row:
+            return False
+        last = _dt.datetime.strptime(row[0], '%Y-%m-%d %H:%M:%S')          # written in UTC on the runner
+        now = _dt.datetime.now()
+        if (now - last).total_seconds() > hours * 3600:
+            return False
+        bne = lambda d: (d + _dt.timedelta(hours=10)).date()
+        wk = lambda day: day - _dt.timedelta(days=(day.weekday() - 2) % 7)
+        return wk(bne(last)) == wk(bne(now))
+    except Exception:
+        return False
+
+
 def update_all_stores(max_catalogue_pages: int = 50) -> Dict[str, Any]:
     """Runs all supermarket scrapers for both current week and next week preview."""
     print("=" * 65)
@@ -92,6 +117,8 @@ def update_all_stores(max_catalogue_pages: int = 50) -> Dict[str, Any]:
 
     # 3. ALDI (Current & Next Week)
     try:
+        if _aldi_recent():
+            raise _Skip('ALDI was read less than 3 hours ago - keeping the saved ALDI specials')
         from scrapers.aldi_scraper import scrape_aldi_all_weeks
         aldi_data = scrape_aldi_all_weeks()
 
@@ -116,9 +143,21 @@ def update_all_stores(max_catalogue_pages: int = 50) -> Dict[str, Any]:
             'next_date': a_next_date,
             'status': 'success'
         }
+    except _Skip as e:
+        print(f" {e}")
+        results['ALDI'] = {'status': 'kept'}
     except Exception as e:
         print(f" ALDI update error: {e}")
         results['ALDI'] = {'status': f'error: {e}'}
+
+    try:
+        from scrapers.polite import summary
+        counts, blocked = summary()
+        names = {'salefinder': '型錄網站', 'woolworths': 'Woolworths', 'coles': 'Coles 官網', 'aldi': 'ALDI'}
+        txt = '、'.join(f"{names.get(k, k)} {v} 次" for k, v in counts.items()) or '0 次'
+        print(f"::notice::本次更新對各網站的請求：{txt}" + (f"（被拒絕而停止：{'、'.join(names.get(k, k) for k in blocked)}）" if blocked else ''))
+    except Exception:
+        pass
 
     stats = get_stats()
     print("=" * 65)
