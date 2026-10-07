@@ -11,6 +11,8 @@ on:
       - 'static/category-rules.js'
       - 'tests/**'
       - 'scripts/check_timer.py'
+      - 'scripts/ai_categorize.py'
+      - 'data/ai_categories.json'
   workflow_dispatch:
 
 permissions:
@@ -31,3 +33,5 @@ jobs:
         run: python tests/test_categories.py
       - name: Timer alarm test
         run: python tests/test_check_timer.py
+      - name: Unknown-product placement test
+        run: python tests/test_category_hints.py

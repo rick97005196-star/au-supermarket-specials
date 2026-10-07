@@ -303,12 +303,15 @@ def scrape_coles_all_weeks(max_pages: int = 50) -> Dict[str, Dict[str, Any]]:
         if res['current']['items']:
             web = scrape_coles_web_half_price()
             existing = {it['title'].lower() for it in res['current']['items']}
+            by_title = {it['title'].lower(): it for it in res['current']['items']}
             added = 0
             for it in web:
                 if it['title'].lower() not in existing:
                     res['current']['items'].append(dict(it))
                     existing.add(it['title'].lower())
                     added += 1
+                elif it.get('store_category') and not by_title.get(it['title'].lower(), {}).get('store_category'):
+                    by_title[it['title'].lower()]['store_category'] = it['store_category']   # catalogue copy learns the aisle
             print(f"Merged {added} Coles website in-store Half Price specials into Coles current week.")
     except Exception as e:
         print(f"Error merging Coles website half price specials: {e}")

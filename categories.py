@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import os
 import re
 import json
 
@@ -110,9 +111,13 @@ def _is_pet(tl):
                 re.search(r"\b(?:purina|whiskas|pedigree|dine\b|felix|fancy\s*feast|supercoat|optimum\s*(?:dog|cat|adult|puppy)|schmackos|my\s*dog|fussy\s*cat|temptations(?=.*\b(?:cat|treats?)\b)|hartz(?!\s*soft\s*drink)|billie'?s\s*bowl|vip\s*petfoods|open\s*paddock|the\s*paw\s*grocer)\b", tl))
 
 
-def classify_product(title: str, raw_cat: str = "", product_url: str = "") -> str:
+def classify_product(title: str, raw_cat: str = "", product_url: str = "", use_hints: bool = True) -> str:
     """
     Logically sound, real-world supermarket department classifier for Australian specials.
+
+    raw_cat = the supermarket's own aisle for this product (e.g. Coles "Skin Care Facial Skincare"),
+    when the supermarket gives one. It is only used when no rule below recognises the product
+    (see "products no rule recognises" at the end of this file). use_hints=False = rules only.
     """
     t = title.strip()
     tl = f" {t.lower()} "
@@ -371,17 +376,144 @@ def classify_product(title: str, raw_cat: str = "", product_url: str = "") -> st
     if re.search(_NON_FOOD, tl):
         return 'household'
 
-    # Fallback to pantry if edible food grocery, else household
-    # (GUESSED is set so the weekly check can list products no rule recognised -> new rules get added)
+    # No rule recognised the product: the AI's answer, then the supermarket's own aisle
+    # (see "products no rule recognises" below)
+    if use_hints:
+        hint, how = category_hint(t, raw_cat, product_url)
+        if hint:
+            HINTED[t] = how
+            return hint
+
+    # Last guess: pantry if it sounds edible, else household
+    # (GUESSED is reported on every update; many guesses email the owner - scripts/check_data.py)
     GUESSED.add(t)
+    if re.search(_GUESS_SWEETS, tl):
+        return 'snacks'
+    if re.search(_GUESS_PERSONAL_CARE, tl):
+        return 'health_vitamins'
     if any(k in tl for k in ['snack', 'food', 'baking', 'flavour', 'sweet', 'organic', 'syrup', 'mix', 'noodle', 'rice', 'meal', 'pasta', 'taco', 'pho']):
         return 'pantry'
 
     return 'household'
 
 
-# Titles that reached the last-resort guess above (no rule recognised them)
+# Words used only for the LAST guess (no rule, no AI answer, no aisle): better than calling
+# everything "household" when the AI is unavailable (e.g. ALDI's seasonal sweets, hair clips)
+_GUESS_SWEETS = re.compile(r"\b(?:choc\w*|lolli\w*|lolly|gumm\w*|candy|candies|sherbet|toffee|fudge|gingerbread|"
+                           r"biscuits?|cookies?|wafers?|marzipan|pralines?|truffles?|caramels?|sour\s*straps?|warheads|"
+                           r"mozartkugeln|baumkuchen|lebkuchen|stollen|zimtsterne|pops|snacks?)\b")
+_GUESS_PERSONAL_CARE = re.compile(r"\b(?:hair|nails?|lip|lashes|brow|skin|facial|face\s*(?:mask|wash)|shampoo|"
+                                  r"conditioner|body\s*wash|makeup|make-up|cosmetic\w*|perfume|fragrance)\b")
+
+
+# Titles that reached the last-resort guess above (no rule, no AI answer, no aisle recognised them)
 GUESSED = set()
+
+
+# ---------------------------------------------------------------------------------------------
+# Products no rule recognises (about 2-3% of each week's new products)
+#
+# The system decides by itself, in this order:
+#   1. data/ai_categories.json: the AI's answer for that product. scripts/ai_categorize.py asks the
+#      AI on every update, giving it the title AND the supermarket's own aisle; the AI may only
+#      answer one of the 13 departments. Entries marked "reviewed" were checked by hand.
+#   2. The supermarket's own aisle (Coles and Woolworths say e.g. "Skin Care Facial Skincare",
+#      "Water Value Added Waters"), translated by _AISLE_RULES below. Used when the AI is unavailable.
+#   3. A last guess from the title's words (above). Reported on every update, and the owner is
+#      emailed when many products had to be guessed (scripts/check_data.py).
+# Rules always come first: a hint is never used for a product that a rule recognises.
+# ---------------------------------------------------------------------------------------------
+PRODUCT_CATEGORIES = [c for c in CATEGORIES if c != 'all']
+HINTED = {}                       # title -> 'ai' | 'aisle'  (filled while classifying, read by the checks)
+AI_CATEGORIES_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'data', 'ai_categories.json')
+_ai_cache = {'data': None}
+
+
+def norm_title(t):
+    return re.sub(r'\s+', ' ', (t or '').strip().lower())
+
+
+def ai_categories(reload=False):
+    """{normalised title: department} from data/ai_categories.json (only valid departments)."""
+    if reload or _ai_cache['data'] is None:
+        data = {}
+        try:
+            with open(AI_CATEGORIES_FILE, encoding='utf-8') as f:
+                raw = json.load(f)
+            for title, entry in (raw or {}).items():
+                if isinstance(entry, dict) and entry.get('category') in PRODUCT_CATEGORIES:
+                    data[norm_title(title)] = entry['category']
+        except FileNotFoundError:
+            pass
+        except Exception as e:
+            print(f"[WARN] {AI_CATEGORIES_FILE} could not be read ({e}) - using the supermarket aisles instead")
+        _ai_cache['data'] = data
+    return _ai_cache['data']
+
+
+# The supermarket's aisle -> our department. First match wins, so the order matters
+# ("Health Foods" is a pantry aisle; "Ice Cream" must not become dairy; "Meat & Seafood" is meat).
+_AISLE_RULES = [
+    ('pet', r"\bpets?\b|\bdog\s*(?:food|treats?)|\bcat\s*(?:food|litter|treats?)"),
+    ('liquor', r"\bliquor\b|\bbeers?\b|\bwines?\b|\bspirits\b|\bciders?\b|\bpremix"),
+    ('pantry', r"\bhealth\s*foods?\b"),
+    ('health_vitamins', r"beauty|personal\s*care|\bhealth\b|wellness|vitamin|supplement|skin\s*care|skincare|"
+                        r"hair\s*care|haircare|hair\s*colou?r|hair\s*styling|cosmetic|make\s*-?up|\bnails?\b|"
+                        r"oral\s*care|dental|toothpaste|deodorant|shav|sun\s*care|sunscreen|tann|first\s*aid|"
+                        r"medicin|pharmacy|pain\s*relief|cold\s*(?:&|and)\s*flu|allergy|sports?\s*nutrition|"
+                        r"bath\s*(?:&|and)?\s*body|body\s*care|body\s*wash|fragrance|feminine|incontinence|toiletries|"
+                        r"infant\s*personal|baby\s*(?:care|wipes|toiletries)|nappies|bone\s*(?:&|and)\s*joint"),
+    ('frozen', r"\bfreezer\b|\bfrozen\b|\bice\s*creams?\b"),
+    ('seafood', r"\bfresh\s*seafood\b|\bfish\b|\bprawns?\b|\bsalmon\b|^(?!.*\bmeat\b).*\bseafood\b"),
+    ('meat', r"\bmeat\b|\bpoultry\b|\bbutcher|\bseafood\b"),
+    ('dairy_eggs', r"\bdairy\b|\beggs?\b|\bfridge\b|\bcheeses?\b|\byogh?urts?\b|\bmilk\b|\bchilled\b|\bdips?\b|\bdeli\b"),
+    ('produce', r"\bfruit\s*(?:&|and)\s*veg|\bfresh\s*(?:fruit|vegetables?|salads?|herbs)\b|\bproduce\b"),
+    ('bakery', r"\bbakery\b|\bbreads?\b"),
+    ('drinks', r"\bdrinks?\b|\bwaters?\b|\bjuices?\b|\bcordials?\b|\bcoffee\b|\btea\b|\bkombucha\b|\bsoda\b"),
+    ('snacks', r"\bsnacks?\b|confectionery|chocolate|\bbiscuits?\b|\bcookies\b|\bchips\b|\bcrisps\b|"
+               r"\blollies\b|\bcrackers\b|\bmuesli\s*bars?\b|\bnuts\b"),
+    ('pantry', r"\bpantry\b|\brice\b|\bpasta\b|\bnoodles?\b|\bsauces?\b|condiments?|\bspreads?\b|breakfast|"
+               r"cereal|\bbaking\b|\bcanned\b|\btinned\b|international|\basian\b|\bindian\b|\bmexican\b|"
+               r"\bready\s*(?:to\s*eat|meals?)\b|\bsoups?\b|\bherbs\b|\bspices?\b|\boils?\b|vinegar|"
+               r"\bbaby\s*food|seasoning|gravy|\bstock\b"),
+    ('household', r"household|cleaning|laundry|dishwash|kitchen|homewares?|\bhome\b|garden|stationery|"
+                  r"\bparty\b|\btoys?\b|electronics|batteries|\btools?\b|outdoor|\bpest\b|storage|"
+                  r"clothing|apparel|\bpaper\b|\bfoil\b|\bwraps?\b|\bbags?\b|front\s*of\s*store|"
+                  r"\bgifts?\b|\bcar\b|automotive"),
+]
+_AISLE_RULES = [(k, re.compile(rx, re.I)) for k, rx in _AISLE_RULES]
+
+
+def aisle_category(raw_cat):
+    """Our department for a supermarket aisle text, or '' when the aisle says nothing useful."""
+    text = re.sub(r'[\[\]"{}]', ' ', str(raw_cat or '')).strip()
+    if not text or text.lower() in INTERNAL_CATEGORY_KEYS:     # our own key, not a real aisle
+        return ''
+    for key, rx in _AISLE_RULES:
+        if rx.search(text):
+            return key
+    return ''
+
+
+def aisle_from_url(product_url):
+    """Catalogue links carry the aisle: salefinder.com.au/<catalogue>/food-and-beverage/groceries/
+    deli-and-chilled/<product>/<id>/ -> "food and beverage groceries deli and chilled"."""
+    url = str(product_url or '')
+    if 'salefinder.com.au/' not in url:
+        return ''
+    parts = [p for p in url.split('salefinder.com.au/', 1)[1].split('?')[0].split('/') if p]
+    return ' '.join(p.replace('-', ' ') for p in parts[1:-2])     # drop the catalogue id, product name and id
+
+
+def category_hint(title, raw_cat='', product_url=''):
+    """(department, 'ai' | 'aisle') for a product no rule recognised, or ('', '')."""
+    ai = ai_categories().get(norm_title(title))
+    if ai:
+        return ai, 'ai'
+    aisle = aisle_category(raw_cat) or aisle_category(aisle_from_url(product_url))
+    if aisle:
+        return aisle, 'aisle'
+    return '', ''
 
 # Everyday non-food words (ALDI Special Buys, Bonds clothing, stationery, car, tools...)
 _NON_FOOD = re.compile(

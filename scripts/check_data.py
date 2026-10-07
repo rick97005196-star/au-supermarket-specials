@@ -108,6 +108,10 @@ def today_au():
         return (dt.datetime.utcnow() + dt.timedelta(hours=10)).date()
 
 
+GUESS_ALERT = 25        # more guessed products than this in one week -> email the owner
+TRANSLATION_ALERT = 30  # more products with translation problems than this -> email the owner
+
+
 def pre():
     items = load(os.path.join(DATA, 'specials.json'))
     stats = load(os.path.join(DATA, 'stats.json'))
@@ -157,20 +161,39 @@ def pre():
         block = True
         problems.append("三家超市都沒有本週特價資料")
 
-    # Category health: new products that no category rule recognised (they were guessed as
-    # 居家日用/雜貨調味). Shown on the run page so a rule can be added; never blocks the update.
+    # Category health. Products no rule recognises are placed by the AI's answer or the supermarket's
+    # own aisle (written by export_static_data.py to data/category_report.json). Only products that
+    # had to be GUESSED (no rule, no AI answer, no aisle) can be misplaced: many of them email the owner.
+    # Never blocks the update.
     try:
-        sys.path.insert(0, ROOT)
-        import categories
-        categories.GUESSED.clear()
-        for it in items:
-            if it.get('period') == 'current':
-                categories.classify_product(it.get('title') or '')
-        guessed = sorted(categories.GUESSED)
-        if guessed:
-            print(f"::notice::{len(guessed)} 件新商品沒有對應的分類規則（暫放居家日用/雜貨調味），例如：" + '；'.join(t[:40] for t in guessed[:8]))
+        rep = load(os.path.join(ROOT, 'data', 'category_report.json'))
+        if isinstance(rep, dict):
+            # both weeks are on the site (this week and the next-week preview)
+            n_ai, n_aisle = len(rep.get('ai') or []), len(rep.get('aisle') or [])
+            guessed = rep.get('guessed') or []
+            msg = f"規則認不出的商品（本週＋下週）：AI 判斷 {n_ai} 件、依超市分區 {n_aisle} 件、只能用猜的 {len(guessed)} 件"
+            if guessed:
+                msg += '，例如：' + '；'.join(f"{r['title'][:35]}→{r['category']}" for r in guessed[:8])
+            print(f"::notice::{msg}")
+            if len(guessed) > GUESS_ALERT:
+                problems.append(f"{len(guessed)} 件新商品的分類只能用猜的（AI 和超市分區都無法判斷），可能放錯分類；"
+                                f"通常是 AI 暫時無法使用，下次更新會自動重試")
     except Exception as e:
         print(f"[WARN] category check skipped: {e}")
+
+    # Translation health: every product on the site should have a clean zh / ja / ko name. A few
+    # leftovers are normal (the AI retries each one twice); many at once means translating broke.
+    try:
+        sys.path.insert(0, os.path.join(ROOT, 'scripts'))
+        from translation_check import problems as tr_problems
+        cur_items = [it for it in items if it.get('period') == 'current']
+        bad_tr = [it['title'] for it in cur_items if tr_problems(it.get('title') or '', it.get('translations'))]
+        print(f"::notice::翻譯檢查：本週 {len(cur_items)} 件中 {len(bad_tr)} 件有問題"
+              + ('，例如：' + '；'.join(t[:35] for t in bad_tr[:5]) if bad_tr else ''))
+        if len(bad_tr) > TRANSLATION_ALERT:
+            problems.append(f"{len(bad_tr)} 件商品的翻譯有問題或沒有翻譯（AI 翻譯可能暫時無法使用）")
+    except Exception as e:
+        print(f"[WARN] translation check skipped: {e}")
 
     # Quick searches (熱門搜尋): how many products each one shows this week, with a few examples,
     # so an odd result can be spotted on the run page. Never blocks the update.

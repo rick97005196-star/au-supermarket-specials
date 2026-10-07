@@ -562,7 +562,7 @@ def run_auto_translate():
     print(f"Translation quality: {len(titles_to_check) - len(remaining)}/{len(titles_to_check)} OK")
     if remaining:
         sample = '; '.join(f"{t[:40]} ({p[0]})" for t, p in list(remaining.items())[:5])
-        gh_warning(f"{len(remaining)} translations still have problems (retried automatically next run): {sample}")
+        gh_warning(f"{len(remaining)} translations still have problems (the AI retries each one up to 2 times; the data check emails the owner when many remain): {sample}")
 
     # 5. Enrich specials.json directly with translations field
     if specials:

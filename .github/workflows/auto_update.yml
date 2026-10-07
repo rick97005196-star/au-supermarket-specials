@@ -69,6 +69,13 @@ jobs:
         run: |
           python -c "from scrapers.updater import update_all_stores; update_all_stores(max_catalogue_pages=50)"
 
+      # Products no category rule recognises: the AI picks the department (it also sees the
+      # supermarket's own aisle). If the AI is unavailable the aisle is used - nothing breaks.
+      - name: Sort new products the rules do not know (AI)
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: python scripts/ai_categorize.py || echo "::warning::AI categories skipped this time (the supermarket aisles are used)"
+
       - name: Generate Multilingual Translations
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
@@ -90,7 +97,7 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action Bot"
-          for f in data/specials.db data/catalogues.json data/coles_web.json data/woolies_web.json data/catalogue_items.json.gz static/data/specials.json static/data/stats.json static/data/translations.json; do [ ! -f "$f" ] || git add "$f"; done
+          for f in data/specials.db data/catalogues.json data/coles_web.json data/woolies_web.json data/catalogue_items.json.gz data/ai_categories.json static/data/specials.json static/data/stats.json static/data/translations.json; do [ ! -f "$f" ] || git add "$f"; done
           git diff --staged --quiet || (git commit -m "Auto-update weekly specials & translations [skip ci]" && git pull --rebase -X theirs origin main && git push origin main)
 
       # ---- The scrapers' saved copies (catalogues already downloaded, half-price lists read so far)
@@ -101,7 +108,7 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action Bot"
-          for f in data/catalogues.json data/coles_web.json data/woolies_web.json data/catalogue_items.json.gz; do [ ! -f "$f" ] || git add "$f"; done
+          for f in data/catalogues.json data/coles_web.json data/woolies_web.json data/catalogue_items.json.gz data/ai_categories.json; do [ ! -f "$f" ] || git add "$f"; done
           git diff --staged --quiet || (git commit -m "Save scraper memory [skip ci]" && git pull --rebase -X theirs origin main && git push origin main) || echo "memory not saved this time"
 
       - name: Build CSS (pre-built Tailwind, fast on phones)

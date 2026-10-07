@@ -433,6 +433,8 @@ def scrape_woolies_online_half_price(max_pages: int = 100) -> List[Dict[str, Any
                     products.append({
                         'store': 'Woolworths',
                         'category': cat,
+                        # Woolworths' own department / aisle: used when no category rule knows the product
+                        'store_category': re.sub(r'[\[\]"]', ' ', raw_cat).strip(),
                         'title': full_title,
                         'price': price,
                         # deli / meat counter items are priced per kg (the unit price equals the price)
@@ -510,11 +512,14 @@ def scrape_woolies_all_weeks(max_pages: int = 50) -> Dict[str, Dict[str, Any]]:
         online_half = woolies_half_price_remembered()
         existing_titles = {it['title'].lower() for it in res['current']['items']}
         added = 0
+        by_title = {it['title'].lower(): it for it in res['current']['items']}
         for oh in online_half:
             if oh['title'].lower() not in existing_titles:
                 res['current']['items'].append(oh)
                 existing_titles.add(oh['title'].lower())
                 added += 1
+            elif oh.get('store_category') and not by_title.get(oh['title'].lower(), {}).get('store_category'):
+                by_title[oh['title'].lower()]['store_category'] = oh['store_category']   # catalogue copy learns the aisle
         print(f"Merged {added} online Half Price specials into Woolworths current week specials.")
     except Exception as e:
         print(f"Error merging online half price specials: {e}")

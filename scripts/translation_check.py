@@ -65,11 +65,12 @@ FOOD_TERMS = [
     (r'\by[o]?gh?urt\b', ['優格', '優酪', '乳']),
     (r'(?<!soy )(?<!oat )(?<!almond )(?<!dairy )\bmilk\b(?!\s*(?:choc|to water|thistle))', ['奶', '乳']),
     (r'\beggs?\b', ['蛋']),
-    (r'\brice\b', ['米', '飯']),
-    (r'\bnoodles?\b', ['麵', '粉絲', '米粉', '冬粉']),
+    (r'\brice\b', ['米', '飯', '河粉', '粿']),                     # rice noodles = 河粉 / 米粉 / 米線
+    (r'\bnoodles?\b', ['麵', '粉絲', '米粉', '冬粉', '河粉', '米線', '粿條']),
     (r'\bbread\b', ['麵包', '吐司', '餅']),
     (r'\bcoffee\b', ['咖啡', '拿鐵', '濃縮']),
-    (r'\bchocolate\b|\bchoc\b', ['巧克力', '可可']),
+    # (a make-up shade such as "Chocolate Brown" is a colour, not an ingredient)
+    (r'\bchocolate\b(?!\s*(?:brown|shade))|\bchoc\b', ['巧克力', '可可']),
     (r'\bshampoo\b', ['洗髮', '洗潤']),
     (r'\btoothpaste\b', ['牙膏']),
 ]

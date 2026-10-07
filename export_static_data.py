@@ -9,10 +9,13 @@ conn = sqlite3.connect('data/specials.db')
 conn.row_factory = sqlite3.Row
 c = conn.cursor()
 
-c.execute("""
+# the supermarket's own aisle (older databases do not have it yet)
+_cols = {r[1] for r in c.execute("PRAGMA table_info(specials)").fetchall()}
+_aisle_col = "store_category" if 'store_category' in _cols else "'' AS store_category"
+c.execute(f"""
     SELECT id, store, period, date_range, category, title, price, price_display,
            unit_price, was_price, save_amount, discount_desc, image_url, product_url,
-           regions, region_prices, sale_from
+           regions, region_prices, sale_from, {_aisle_col}
     FROM specials
     WHERE price > 0 AND ((save_amount > 0 OR was_price > price) OR store = 'ALDI')
     ORDER BY id ASC
@@ -46,6 +49,8 @@ for it in items:
     it['title'] = clean_title(it['title'])
     k = (it['store'], it['period'], it['title'].lower(), round(it['price'] or 0, 2))
     if k in _seen:
+        if it.get('store_category') and not _seen[k].get('store_category'):
+            _seen[k]['store_category'] = it['store_category']     # keep the aisle from either copy
         continue
     _seen[k] = it
     _dedup.append(it)
@@ -100,7 +105,10 @@ if os.path.exists(trans_path):
         except Exception:
             translations = {}
 
+import categories
 from categories import classify_product, is_popular_product, calculate_popularity_score
+categories.HINTED.clear()
+categories.GUESSED.clear()
 
 # translations are also found for slightly renamed products (footnote marks, quote style, spaces)
 _tr_norm = {}
@@ -109,7 +117,8 @@ for _k, _v in translations.items():
 
 for it in items:
     t = it.get('title', '')
-    it['category'] = classify_product(t, it.get('category') or '')
+    # rules first; products no rule knows: the AI's answer, then the supermarket's own aisle
+    it['category'] = classify_product(t, it.pop('store_category', '') or '', it.get('product_url') or '')
     it['is_popular'] = is_popular_product(t)
     it['popularity_score'] = calculate_popularity_score(it)
     tr = translations.get(t) or _tr_norm.get(_re2.sub(r'\s+', ' ', t).strip().lower())
@@ -152,6 +161,18 @@ with open('static/data/specials.json', 'w', encoding='utf-8') as f:
     json.dump(items, f, ensure_ascii=False, separators=(',', ':'))
 
 print(f"Exported {len(items)} specials to static/data/specials.json (with translations)")
+
+# How the products no rule recognised were placed (read by scripts/check_data.py; not published)
+_report = {'ai': [], 'aisle': [], 'guessed': []}
+for it in items:
+    t = it.get('title', '')
+    how = categories.HINTED.get(t) or ('guessed' if t in categories.GUESSED else '')
+    if how:
+        _report[how].append({'title': t, 'store': it.get('store'), 'period': it.get('period'), 'category': it.get('category')})
+with open('data/category_report.json', 'w', encoding='utf-8') as f:
+    json.dump(_report, f, ensure_ascii=False, indent=1)
+print(f"Products no rule recognised: {len(_report['ai'])} placed by the AI, {len(_report['aisle'])} by the "
+      f"supermarket's aisle, {len(_report['guessed'])} guessed")
 
 # Also generate stats.json
 import database

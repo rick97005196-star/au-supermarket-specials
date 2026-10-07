@@ -55,6 +55,10 @@ def init_db():
         # ALDI: the day a Special Buy goes on sale (Wednesday or Saturday), or the first day of a Super Saver week
         if 'sale_from' not in columns:
             cursor.execute("ALTER TABLE specials ADD COLUMN sale_from TEXT DEFAULT ''")
+        # The supermarket's own aisle (e.g. Coles "Skin Care Facial Skincare"): used to place products
+        # that no category rule recognises (see categories.py)
+        if 'store_category' not in columns:
+            cursor.execute("ALTER TABLE specials ADD COLUMN store_category TEXT DEFAULT ''")
 
         cursor.execute("PRAGMA table_info(shopping_list)")
         sl_columns = [row[1] for row in cursor.fetchall()]
@@ -166,8 +170,8 @@ def save_specials(store: str, items: List[Dict[str, Any]], period: str = 'curren
             INSERT INTO specials (
                 store, period, date_range, title, price, price_display, was_price, save_amount,
                 discount_desc, unit_price, image_url, category, product_url, is_popular, popularity_score, updated_at,
-                regions, region_prices, sale_from
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                regions, region_prices, sale_from, store_category
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         '''
         now = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
         rows = []
@@ -214,7 +218,8 @@ def save_specials(store: str, items: List[Dict[str, Any]], period: str = 'curren
             if store != 'ALDI' and save_amount <= 0 and (was_price <= price or was_price == 0):
                 continue
 
-            cat = classify_product(title, item.get('category', ''), item.get('product_url', ''))
+            aisle = (item.get('store_category') or '').strip()
+            cat = classify_product(title, aisle, item.get('product_url', ''))
             is_pop = 1 if is_popular_product(title) else 0
             score = calculate_popularity_score({
                 'title': title, 'price': price, 'was_price': was_price,
@@ -241,7 +246,8 @@ def save_specials(store: str, items: List[Dict[str, Any]], period: str = 'curren
                 now,
                 ','.join(item.get('regions') or []),
                 json.dumps(item['region_prices'], ensure_ascii=False, separators=(',', ':')) if item.get('region_prices') else '',
-                item.get('sale_from') or ''
+                item.get('sale_from') or '',
+                aisle
             ))
         cursor.executemany(insert_sql, rows)
         

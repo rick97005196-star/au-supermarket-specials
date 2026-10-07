@@ -92,11 +92,18 @@ def product_to_item(p):
         'discount_desc': '1/2 PRICE',
         'image_url': f'{IMG_BASE}{img}' if img.startswith('/') else img,
         'category': ' '.join(x for x in (heir.get('category'), heir.get('subCategory')) if x).title(),
+        # Coles' own aisle (e.g. "Skin Care Facial Skincare"): used when no category rule knows the product
+        'store_category': ' '.join(x for x in (heir.get('category'), heir.get('subCategory')) if x).title(),
         'product_url': f'https://www.coles.com.au/product/{slug}-{pid}',
     }
 
 
 REFRESH_HOURS = 6          # after a complete read, the list is only read again every few hours
+
+
+def _with_aisle(items):
+    """Remembered items read before the aisle was kept separately carry it in 'category'."""
+    return [dict(it, store_category=it.get('store_category') or it.get('category') or '') for it in items]
 
 
 def scrape_coles_web_half_price(time_budget=None, max_blocked=None):
@@ -116,14 +123,14 @@ def scrape_coles_web_half_price(time_budget=None, max_blocked=None):
     if mem['items'] and time.time() - float(mem.get('last_full') or 0) < REFRESH_HOURS * 3600:
         print(f"Coles website half price: whole list read {int((time.time() - mem['last_full']) / 60)} min ago - "
               f"using the saved list ({len(mem['items'])} specials)")
-        return list(mem['items'].values())
+        return _with_aisle(mem['items'].values())
     if time_budget is None:
         time_budget = 600
     try:
         from curl_cffi import requests as cffi
     except Exception:
         print('Coles website: curl_cffi not installed, using remembered items only')
-        return list(mem['items'].values())
+        return _with_aisle(mem['items'].values())
     from scrapers.polite import request, mark_blocked, is_blocked
 
     session = cffi.Session(impersonate='chrome')      # ONE identity for the whole update
@@ -167,7 +174,7 @@ def scrape_coles_web_half_price(time_budget=None, max_blocked=None):
     print(f"Coles website half price: read {read} pages this run from page {start_page} (+{added} new), "
           f"{len(mem['items'])} in-store half-price specials remembered for week of {week} "
           f"(website lists {mem['pages']} pages)")
-    return list(mem['items'].values())
+    return _with_aisle(mem['items'].values())
 
 
 if __name__ == '__main__':

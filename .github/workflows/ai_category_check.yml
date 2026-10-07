@@ -1,0 +1,24 @@
+name: 檢查 AI 分類準確度
+
+# Asks the AI about the products whose department was checked by hand (data/ai_categories.json,
+# "reviewed") and reports how often it agrees. Changes nothing. Run by hand when needed.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-24.04   # fixed version: "latest" switches to Ubuntu 26 from 19 Oct 2026
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Compare the AI with the hand-checked departments
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: python scripts/ai_categorize.py --check-reviewed
