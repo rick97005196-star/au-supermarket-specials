@@ -1,0 +1,16 @@
+// Cloudflare Worker that starts the GitHub update on time (see src/index.js).
+// Deployed automatically by .github/workflows/deploy_timer.yml - do not deploy by hand.
+{
+  "name": "au-specials-timer",
+  "main": "src/index.js",
+  "compatibility_date": "2025-09-01",
+  // no public web address: the Worker only runs on its timer
+  "workers_dev": false,
+  "preview_urls": false,
+  "triggers": {
+    // UTC; the code decides which of these minutes really start an update (Brisbane plan)
+    "crons": ["1,17,47 * * * *"]
+  },
+  // keep the Worker's log (what it did each time) in the Cloudflare dashboard
+  "observability": { "enabled": true }
+}

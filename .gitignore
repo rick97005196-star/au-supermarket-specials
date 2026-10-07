@@ -19,3 +19,4 @@ au-supermarket-specials-static.zip
 
 # never commit archives (may contain .env secrets)
 *.zip
+.dev.vars

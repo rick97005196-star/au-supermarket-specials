@@ -10,6 +10,7 @@ on:
       - 'categories.py'
       - 'static/category-rules.js'
       - 'tests/**'
+      - 'scripts/check_timer.py'
   workflow_dispatch:
 
 permissions:
@@ -28,3 +29,5 @@ jobs:
           node-version: '22'
       - name: Category regression test
         run: python tests/test_categories.py
+      - name: Timer alarm test
+        run: python tests/test_check_timer.py

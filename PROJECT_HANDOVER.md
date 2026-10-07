@@ -25,7 +25,7 @@
 - **資料庫**：SQLite3 (`data/specials.db`)。
 - **爬蟲工具**：`requests` + `beautifulsoup4`（高效純 HTTP 爬蟲）+ 備用 `selenium`。
 - **AI 翻譯引擎**：Google Gemini API (`gemini-2.5-flash`) + 本地澳洲超市專業名詞字典修復庫。
-- **CI/CD 自動化**：GitHub Actions 每週固定定時排程爬取與部署 (`.github/workflows/auto_update.yml`)。
+- **CI/CD 自動化**：GitHub Actions 爬取與部署 (`.github/workflows/auto_update.yml`)。準時啟動靠 Cloudflare 定時器 (`cloudflare/update-timer`，週一至週三每 30 分鐘、週三 00:01 換週、週四至週日每天兩次)，GitHub 自己的排程常被略過，只當備援；定時器停擺時會寄信通知 (`scripts/check_timer.py`)。
 - **託管平台**：Cloudflare Pages (Direct Upload / Wrangler)。
 
 ---
@@ -36,7 +36,10 @@
 au-supermarket-specials/
 ├── .github/
 │   └── workflows/
-│       └── auto_update.yml       # GitHub Actions 每週定時排程爬取與自動發布
+│       ├── auto_update.yml       # 爬取、翻譯、檢查與自動發布（由定時器啟動）
+│       └── deploy_timer.yml      # 部署 Cloudflare 定時器
+├── cloudflare/
+│   └── update-timer/             # Cloudflare 定時器：準時啟動 auto_update.yml（沒有公開網址）
 ├── data/
 │   └── specials.db               # SQLite 資料庫 (特價品、購物清單、更新時間元數據)
 ├── scrapers/

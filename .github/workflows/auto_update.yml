@@ -17,7 +17,18 @@ on:
     - cron: '1 14 * * 2'
     # 澳洲週四至週日，每天上午 10:23 與晚上 10:23 例行檢查兩次
     - cron: '23 0,12 * * 0,4,5,6'
-  workflow_dispatch: # 支援在 GitHub 網頁 Actions 標籤上一鍵手動立即執行
+  # 1) Cloudflare 定時器（cloudflare/update-timer）每 30 分鐘準時從這裡啟動更新（主要方式）
+  # 2) 也可以在 GitHub 網頁 Actions 標籤上一鍵手動立即執行
+  # 上面 GitHub 自己的排程保留當備援：它常被略過，但定時器出問題時至少還有它
+  workflow_dispatch:
+    inputs:
+      source:
+        description: '由誰啟動（cloudflare = 定時器；手動執行請保持 manual）'
+        required: false
+        default: 'manual'
+        type: string
+
+run-name: ${{ github.event_name == 'schedule' && '定時更新（GitHub 備援排程）' || (inputs.source == 'cloudflare' && '定時更新（Cloudflare 定時器）' || '手動更新') }}
 
 concurrency:
   group: weekly-specials-update
@@ -25,6 +36,7 @@ concurrency:
 
 permissions:
   contents: write
+  actions: read      # only to check that the Cloudflare timer is still starting updates
 
 jobs:
   update-and-deploy:
@@ -116,3 +128,11 @@ jobs:
         run: |
           echo "::error::需要注意：$ALERT"
           exit 1
+
+      # ---- Is the Cloudflare timer still starting the updates? (checked when GitHub's backup
+      #      schedule ran; emails the owner if the timer stopped, e.g. its key expired) ----
+      - name: Check the Cloudflare update timer
+        if: github.event_name == 'schedule'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python scripts/check_timer.py
