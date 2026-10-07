@@ -1,7 +1,7 @@
 {
-  "name": "澳洲超市特價優惠 (Woolworths · Coles · ALDI)",
-  "short_name": "超市特價",
-  "description": "Woolworths · Coles · ALDI 每週特價比價，澳洲打工度假與生活必備",
+  "name": "澳洲超市特價資訊 (Woolworths · Coles · ALDI)",
+  "short_name": "超市特價資訊",
+  "description": "每週彙整 Woolworths、Coles、ALDI 的店內特價與半價商品",
   "id": "/",
   "start_url": "/?source=pwa",
   "scope": "/",
@@ -10,10 +10,28 @@
   "lang": "zh-TW",
   "background_color": "#f5f5f7",
   "theme_color": "#f5f5f7",
-  "categories": ["shopping", "lifestyle"],
+  "categories": [
+    "shopping",
+    "lifestyle"
+  ],
   "icons": [
-    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
-    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
-    { "src": "/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
   ]
 }
