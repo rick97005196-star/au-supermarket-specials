@@ -65,18 +65,24 @@ jobs:
         if: env.HAS_KEY == 'true'
         env:
           KEY: ${{ secrets.SCHEDULER_GITHUB_TOKEN }}
+          BASE: https://api.github.com/repos/${{ github.repository }}/actions/workflows/auto_update.yml
         run: |
-          code=$(curl -sS -o /tmp/answer.txt -w '%{http_code}' -X POST \
-            -H "Authorization: Bearer $KEY" -H "Accept: application/vnd.github+json" \
-            -H "X-GitHub-Api-Version: 2022-11-28" \
-            "https://api.github.com/repos/${{ github.repository }}/actions/workflows/auto_update.yml/dispatches" \
-            -d '{"ref":"main","inputs":{"source":"key-check"}}')
-          if [ "$code" = 204 ]; then
-            echo "::notice::金鑰正常：用定時器的金鑰成功啟動了一次測試更新"
+          h=(-H "Authorization: Bearer $KEY" -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28")
+          see=$(curl -sS -o /tmp/see.txt -w '%{http_code}' "${h[@]}" "$BASE/runs?per_page=1")
+          start=$(curl -sS -o /tmp/start.txt -w '%{http_code}' -X POST "${h[@]}" "$BASE/dispatches" \
+                  -d '{"ref":"main","inputs":{"source":"key-check"}}')
+          said=$(jq -r '.message // empty' /tmp/start.txt 2>/dev/null | head -c 200)
+          echo "key check: list runs -> HTTP $see, start update -> HTTP $start ($said)"
+          if [ "$start" = 204 ]; then
+            echo "::notice::金鑰正常：用定時器的金鑰成功啟動了一次測試更新"; exit 0
+          elif [ "$see" = 401 ]; then
+            echo "::error::金鑰無效（HTTP 401）：可能複製不完整、已刪除或已過期，請重新建立並貼到 SCHEDULER_GITHUB_TOKEN"
+          elif [ "$see" = 200 ]; then
+            echo "::error::金鑰看得到更新紀錄但不能啟動更新（HTTP $start：$said）：Actions 權限是 Read-only，請改成 Read and write"
           else
-            echo "::error::定時器的金鑰無法啟動更新（HTTP $code）：$(head -c 300 /tmp/answer.txt)。請確認權限是 Actions: Read and write，且只選了 au-supermarket-specials"
-            exit 1
+            echo "::error::金鑰沒有這個專案的 Actions 權限（查看 HTTP $see、啟動 HTTP $start：$said）：請確認 Repository access 選了 au-supermarket-specials，且 Actions 設為 Read and write"
           fi
+          exit 1
 
       - name: No GitHub key yet
         if: env.HAS_KEY != 'true'
