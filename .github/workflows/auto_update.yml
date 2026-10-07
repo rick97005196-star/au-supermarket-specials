@@ -82,6 +82,10 @@ jobs:
         run: |
           python scripts/auto_translate.py
 
+      # What visitors really look at (anonymous counts) helps decide the default order (interest.py)
+      - name: Download visitor interest
+        run: python scripts/fetch_interest.py || echo "::warning::visitor interest skipped this time"
+
       - name: Export Static Data for Cloudflare Pages
         run: |
           python export_static_data.py
@@ -97,7 +101,7 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action Bot"
-          for f in data/specials.db data/catalogues.json data/coles_web.json data/woolies_web.json data/catalogue_items.json.gz data/ai_categories.json static/data/specials.json static/data/stats.json static/data/translations.json; do [ ! -f "$f" ] || git add "$f"; done
+          for f in data/specials.db data/catalogues.json data/coles_web.json data/woolies_web.json data/catalogue_items.json.gz data/ai_categories.json data/interest.json static/data/specials.json static/data/stats.json static/data/translations.json; do [ ! -f "$f" ] || git add "$f"; done
           git diff --staged --quiet || (git commit -m "Auto-update weekly specials & translations [skip ci]" && git pull --rebase -X theirs origin main && git push origin main)
 
       # ---- The scrapers' saved copies (catalogues already downloaded, half-price lists read so far)
