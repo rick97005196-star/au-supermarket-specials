@@ -3652,9 +3652,10 @@
     "reviewed": true
   },
   "Nivea Micellar Water Brightening 400mL": {
-    "zh": "Nivea 妮維雅煥亮淨白深層卸妝潔膚水 (400毫升裝)",
-    "ja": "ニベア ミセラーウォーター ブライトニング クレンジングウォーター（400mL）",
-    "ko": "니베아 미셀라 워터 브라이트닝 클렌징워터 (400mL)"
+    "zh": "Nivea 亮白卸妝水 400毫升",
+    "ja": "Nivea ミセラークレンジングウォーター ブライトニング 400ml",
+    "ko": "Nivea 미셀라 클렌징 워터 브라이트닝 400ml",
+    "src": "ai"
   },
   "Pauls Plus+ Protein Milk 400mL": {
     "zh": "Pauls Plus+ 高蛋白強化鮮乳 (400毫升裝)",
@@ -51746,9 +51747,10 @@
   },
   "Mortein Powergard Diy 2L": {
     "zh": "Mortein Powergard DIY 殺蟲劑 2公升",
-    "ja": "Mortein Powergard DIY 2L",
-    "ko": "Mortein Powergard DIY 2L",
-    "src": "ai"
+    "ja": "Mortein Powergard DIY 殺虫剤 2L",
+    "ko": "Mortein Powergard DIY 살충제 2L",
+    "src": "ai",
+    "qa_tries": 1
   },
   "OGX Coconut Miracle Oil Damage Remedy Hair Mask 300mL": {
     "zh": "OGX 椰子油修護髮膜 300毫升",
@@ -51902,10 +51904,11 @@
     "qa_tries": 1
   },
   "Street Magnum White Chocolate & Cookies Ice Cream Sticks 4 Pack 400mL": {
-    "zh": "Street Magnum 白巧克力餅乾冰淇淋雪糕 4入",
-    "ja": "Street Magnum ホワイトチョコレート＆クッキーアイスクリームバー 4個入",
-    "ko": "Street Magnum 화이트 초콜릿 & 쿠키 아이스크림 바 4개입",
-    "src": "ai"
+    "zh": "Street Magnum 白巧克力餅乾冰淇淋雪糕 400毫升 (4入)",
+    "ja": "Street Magnum ホワイトチョコレート＆クッキー アイスバー 400ml (4個入)",
+    "ko": "Street Magnum 화이트 초콜릿 & 쿠키 아이스크림 바 400ml (4개입)",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Lotus Biscoff Tub 425mL": {
     "zh": "Lotus Biscoff 冰淇淋桶 425毫升",
@@ -51950,16 +51953,18 @@
     "src": "ai"
   },
   "Kellogg's K-time Baked Twists Raspberry & Apple Flavour Filled Snack Bars 5 Pack 185g": {
-    "zh": "Kellogg's K-time 覆盆子蘋果夾心餅乾棒 5入",
-    "ja": "Kellogg's K-time ベイクドツイスト ラズベリー＆アップル味 スナックバー 5個入",
-    "ko": "Kellogg's K-time 베이크드 트위스트 라즈베리 & 애플 맛 스낵바 5개입",
-    "src": "ai"
+    "zh": "Kellogg's 覆盆子蘋果夾心餅乾棒 185克 (5入)",
+    "ja": "Kellogg's K-time ベイクドツイスト ラズベリー＆アップル味 スナックバー 185g (5個入)",
+    "ko": "Kellogg's K-time 베이크드 트위스트 라즈베리 & 사과맛 스낵바 185g (5개입)",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Arnott's Tiny Teddy Chocolate Biscuits Multipack 8 Pack 200g": {
-    "zh": "Arnott's Tiny Teddy 巧克力小熊餅乾 8入",
-    "ja": "Arnott's Tiny Teddy チョコレートビスケット 8個入",
-    "ko": "Arnott's Tiny Teddy 초콜릿 비스킷 8개입",
-    "src": "ai"
+    "zh": "Arnott's 巧克力小熊餅乾 200克 (8入)",
+    "ja": "Arnott's タイニーテディ チョコレートビスケット 200g (8個入)",
+    "ko": "Arnott's 타이니 테디 초콜릿 비스킷 200g (8개입)",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Popcorners Popcorn Chips Share Pack Sea Salt 130g": {
     "zh": "Popcorners 海鹽爆米花脆片 130克",
@@ -51980,10 +51985,11 @@
     "src": "ai"
   },
   "Street Magnum Mini Classic Ice Cream Sticks 6 Pack 360mL": {
-    "zh": "Street Magnum 經典迷你冰淇淋雪糕 6入",
-    "ja": "Street Magnum ミニクラシックアイスクリームバー 6個入",
-    "ko": "Street Magnum 미니 클래식 아이스크림 바 6개입",
-    "src": "ai"
+    "zh": "Street Magnum 經典迷你冰淇淋雪糕 360毫升 (6入)",
+    "ja": "Street Magnum ミニクラシック アイスバー 360ml (6個入)",
+    "ko": "Street Magnum 미니 클래식 아이스크림 바 360ml (6개입)",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Mcvities Jaffa Cakes Biscuits 106g": {
     "zh": "Mcvities 柳橙果醬巧克力餅乾 106克",
@@ -52520,10 +52526,11 @@
     "src": "ai"
   },
   "Bref Deluxe Toilet Cleaner Rim Block Delicate Magnolia 2x50g 100g": {
-    "zh": "Bref Deluxe 木蘭花香馬桶清潔掛球 100克（2入）",
-    "ja": "Bref Deluxe デリケートマグノリアの香りトイレ用洗浄剤 100g（2個入）",
-    "ko": "Bref Deluxe 섬세한 목련 향 변기 세정제 100g（2개입）",
-    "src": "ai"
+    "zh": "Bref Deluxe 馬桶清潔掛架 Delicate Magnolia 香 50克 x 2入",
+    "ja": "Bref Deluxe トイレクリーナー Delicate Magnolia 香り 50g x 2個入",
+    "ko": "Bref Deluxe 변기 세정제 Delicate Magnolia 향 50g x 2개입",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Nivea Lip Balm Strawberry Shine 4.8g": {
     "zh": "Nivea 草莓亮澤護唇膏 4.8克",
@@ -52899,10 +52906,11 @@
     "src": "ai"
   },
   "Table Of Plenty Mini Rice Cakes 100s & 1000s Snack Packs 102g": {
-    "zh": "Table Of Plenty 迷你米餅 102克",
-    "ja": "Table Of Plenty ミニライスケーキ 102g",
-    "ko": "Table Of Plenty 미니 라이스 케이크 102g",
-    "src": "ai"
+    "zh": "Table Of Plenty 迷你米餅 100s & 1000s口味 102克",
+    "ja": "Table Of Plenty ミニライスケーキ 100s & 1000s味 102g",
+    "ko": "Table Of Plenty 미니 라이스 케이크 100s & 1000s맛 102g",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Fulfil Vitamin & Protein Bar Chocolate Hazelnut Whip 55g": {
     "zh": "Fulfil 巧克力榛果蛋白棒 55克",
@@ -52983,10 +52991,11 @@
     "src": "ai"
   },
   "Twinings Sparkling Peach Apple Green Tea 4x250ml 1L": {
-    "zh": "Twinings 蜜桃蘋果氣泡綠茶 250毫升 x 4入",
-    "ja": "Twinings ピーチ＆アップル スパークリング緑茶 250mL x 4本入",
-    "ko": "Twinings 복숭아 사과 스파클링 녹차 250mL x 4개입",
-    "src": "ai"
+    "zh": "Twinings 氣泡蜜桃蘋果綠茶 250毫升 x 4入 (1公升)",
+    "ja": "Twinings スパークリング ピーチアップル緑茶 250ml x 4個入 (1L)",
+    "ko": "Twinings 스파클링 복숭아 사과 녹차 250ml x 4개입 (1L)",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Twinings Lady Grey Tea Bags 100 Pack": {
     "zh": "Twinings 伯爵夫人茶包 100入",
@@ -53055,10 +53064,11 @@
     "src": "ai"
   },
   "Bref Power Active Toilet Cleaner Rim Block Flower 2x50g 100g": {
-    "zh": "Bref Power Active 花香馬桶清潔掛球 50克 x 2入",
-    "ja": "Bref Power Active フローラル トイレ用洗浄剤 50g x 2個入",
-    "ko": "Bref Power Active 꽃향기 변기 세정제 50g x 2개입",
-    "src": "ai"
+    "zh": "Bref Power Active 花香馬桶清潔球 50克 x 2入 (100克)",
+    "ja": "Bref Power Active トイレ用芳香洗浄剤 フラワーの香り 50g x 2個入 (100g)",
+    "ko": "Bref Power Active 변기 세정제 꽃향 50g x 2개입 (100g)",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Farmers Union Greek Style Yoghurt Pouch Passionfruit 130g": {
     "zh": "Farmers Union 百香果希臘優格隨手包 130克",
@@ -53163,10 +53173,11 @@
     "src": "ai"
   },
   "Ostelin Cal-dk2 Calcium + Vitamin D Tablets D3 For Bones 60 Pack": {
-    "zh": "Ostelin 鈣+維生素D3骨骼保健錠 60入",
-    "ja": "Ostelin カルシウム+ビタミンD3サプリメント 60個入",
-    "ko": "Ostelin 칼슘+비타민D3 영양제 60개입",
-    "src": "ai"
+    "zh": "Ostelin Cal-dk2 鈣 + 維生素D3 骨骼保健錠 60入",
+    "ja": "Ostelin Cal-dk2 カルシウム + ビタミンD3 骨用サプリメント 60個入",
+    "ko": "Ostelin Cal-dk2 칼슘 + 비타민 D3 뼈 건강 영양제 60개입",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Twinings Australian Afternoon Tea Bags 100 Pack": {
     "zh": "Twinings 澳洲下午茶茶包 100入",
@@ -53355,10 +53366,11 @@
     "src": "ai"
   },
   "Solo Energy Drink Zero Sugar Lemon Cans Multipack 4x250ml 1L": {
-    "zh": "Solo 無糖檸檬能量飲料 250毫升 x 4入",
-    "ja": "Solo ゼロシュガー レモンエナジードリンク 250ml 4缶入",
-    "ko": "Solo 제로 슈가 레몬 에너지 드링크 250ml 4캔입",
-    "src": "ai"
+    "zh": "Solo 無糖檸檬能量飲料 250毫升 x 4入 (1公升)",
+    "ja": "Solo ゼロシュガー レモンエナジードリンク 250ml x 4個入 (1L)",
+    "ko": "Solo 제로 슈가 레몬 에너지 드링크 250ml x 4개입 (1L)",
+    "src": "ai",
+    "qa_tries": 1
   },
   "OC Naturals Conditioner Normal Balance 725mL": {
     "zh": "OC Naturals 潤髮乳 一般髮質適用 725毫升",
@@ -53457,10 +53469,11 @@
     "src": "ai"
   },
   "Dove Beauty Bar Shea Butter 2 X 90g 180g": {
-    "zh": "Dove 乳木果油滋養皂 180克（2入）",
-    "ja": "Dove ビューティーバー シアバター 180g（2個入）",
-    "ko": "Dove 뷰티바 시어버터 180g（2개입）",
-    "src": "ai"
+    "zh": "Dove 乳木果油美容皂 90克 x 2入 (180克)",
+    "ja": "Dove シアバター ビューティーバー 90g x 2個入 (180g)",
+    "ko": "Dove 시어버터 뷰티바 90g x 2개입 (180g)",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Helga's Wholemeal Wraps 8 Pack 508g": {
     "zh": "Helga's 全麥捲餅皮 508克（8入）",
@@ -53584,10 +53597,11 @@
     "src": "ai"
   },
   "Bref Blue Active Toilet Cleaner Rim Block Flower 2x50g 100g": {
-    "zh": "Bref Blue Active 馬桶清潔掛籃 花香 100克（2入）",
-    "ja": "Bref Blue Active トイレ用芳香洗浄剤 フローラル 100g（2個入）",
-    "ko": "Bref Blue Active 변기 세정제 꽃향 100g（2개입）",
-    "src": "ai"
+    "zh": "Bref Blue Active 花香馬桶清潔球 50克 x 2入 (100克)",
+    "ja": "Bref Blue Active トイレ用芳香洗浄剤 フラワーの香り 50g x 2個入 (100g)",
+    "ko": "Bref Blue Active 변기 세정제 꽃향 50g x 2개입 (100g)",
+    "src": "ai",
+    "qa_tries": 1
   },
   "M&M'S Minis Milk Chocolate Treats Tube 35g": {
     "zh": "M&M'S Minis 牛奶巧克力條 35克",
@@ -53602,10 +53616,11 @@
     "src": "ai"
   },
   "Bref Spa Moments Toilet Cleaner Rim Block Harmony 2x50g 100g": {
-    "zh": "Bref Spa Moments 馬桶清潔掛籃 和諧香 100克（2入）",
-    "ja": "Bref Spa Moments トイレ用芳香洗浄剤 ハーモニーの香り 100g（2個入）",
-    "ko": "Bref Spa Moments 변기 세정제 하모니 향 100g（2개입）",
-    "src": "ai"
+    "zh": "Bref Spa Moments 和諧馬桶清潔球 50克 x 2入 (100克)",
+    "ja": "Bref Spa Moments トイレ用芳香洗浄剤 ハーモニー 50g x 2個入 (100g)",
+    "ko": "Bref Spa Moments 변기 세정제 하모니 50g x 2개입 (100g)",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Milky Way Chocolate Party Share Bag 15 Piece 180g": {
     "zh": "Milky Way 巧克力分享包 180克（15入）",
@@ -53848,10 +53863,11 @@
     "src": "ai"
   },
   "Chobani 16g Flip High Protein Yogurt Caramel Choc Peanut 142g": {
-    "zh": "Chobani Flip 高蛋白優格 焦糖巧克力花生口味 142克",
-    "ja": "Chobani Flip 高タンパクヨーグルト キャラメルチョコピーナッツ味 142g",
-    "ko": "Chobani Flip 고단백 요거트 카라멜 초코 피넛맛 142g",
-    "src": "ai"
+    "zh": "Chobani 16克 Flip 高蛋白優格 Caramel Choc Peanut 142克",
+    "ja": "Chobani 16g Flip 高タンパクヨーグルト Caramel Choc Peanut 142g",
+    "ko": "Chobani 16g Flip 고단백 요거트 Caramel Choc Peanut 142g",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Colgate Advanced Whitening Toothpaste And Tartar Control 200g": {
     "zh": "Colgate 進階美白牙膏 牙結石控制 200克",
@@ -53968,10 +53984,11 @@
     "src": "ai"
   },
   "Twinings Pure Camomile Infusions Tea Bags 80 Pack 96g": {
-    "zh": "Twinings 純洋甘菊茶包 80入",
-    "ja": "Twinings カモミールティー ティーバッグ 80個入",
-    "ko": "Twinings 카모마일 티백 80개입",
-    "src": "ai"
+    "zh": "Twinings 純洋甘菊茶包 96克 (80入)",
+    "ja": "Twinings ピュア カモミールティーバッグ 96g (80個入)",
+    "ko": "Twinings 순수 카모마일 티백 96g (80개입)",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Four'N Twenty Traveller Microwavable Classic Beef Pie 160g": {
     "zh": "Four'N Twenty 微波牛肉派 經典款 160克",
@@ -54274,10 +54291,11 @@
     "src": "ai"
   },
   "Coles Made Easy Slow Cooked Pork Belly Bites In BBQ Honey 500g": {
-    "zh": "Coles Made Easy 蜂蜜烤肉醬慢燉五花肉塊 500克",
-    "ja": "Coles Made Easy スロークックドポークベリーバイツ BBQハニーソース 500g",
-    "ko": "Coles Made Easy 슬로우 쿡 포크 벨리 바이트 BBQ 허니 소스 500g",
-    "src": "ai"
+    "zh": "Coles Made Easy 蜂蜜烤肉醬慢燉豬五花肉塊 500克",
+    "ja": "Coles Made Easy 豚バラ肉のBBQハニーソース煮込み 500g",
+    "ko": "Coles Made Easy BBQ 허니 소스 돼지 삼겹살 조림 500g",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Sunbites Grain Waves Chips Sour Cream & Chives 170g": {
     "zh": "Sunbites Grain Waves 酸奶油洋蔥口味脆片 170克",
@@ -54875,10 +54893,11 @@
     "src": "ai"
   },
   "Bref Blue Active Toilet Cleaner Rim Block Eucalyptus 2x50g 100g": {
-    "zh": "Bref Blue Active 懸掛式馬桶清潔球 尤加利香 100克（2入）",
-    "ja": "Bref Blue Active トイレ用芳香洗浄剤 ユーカリの香り 100g（2個入）",
-    "ko": "Bref Blue Active 변기 세정제 유칼립투스 향 100g（2개입）",
-    "src": "ai"
+    "zh": "Bref Blue Active 尤加利馬桶清潔球 50克 x 2入 (100克)",
+    "ja": "Bref Blue Active トイレ用芳香洗浄剤 ユーカリの香り 50g x 2個入 (100g)",
+    "ko": "Bref Blue Active 변기 세정제 유칼립투스향 50g x 2개입 (100g)",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Gatorade Sports Drink Fierce Grape 600mL": {
     "zh": "Gatorade 運動飲料 葡萄口味 600毫升",
@@ -55049,10 +55068,11 @@
     "src": "ai"
   },
   "Bref Power Active Toilet Cleaner Rim Block Ocean 2x50g 100g": {
-    "zh": "Bref Power Active 馬桶清潔掛球 海洋香 100克（2入）",
-    "ja": "Bref Power Active トイレ用洗浄剤 リムブロック オーシャン 100g (2個入)",
-    "ko": "Bref Power Active 변기 세정제 림 블록 오션 향 100g (2개입)",
-    "src": "ai"
+    "zh": "Bref Power Active 海洋馬桶清潔球 50克 x 2入 (100克)",
+    "ja": "Bref Power Active トイレ用芳香洗浄剤 オーシャンの香り 50g x 2個入 (100g)",
+    "ko": "Bref Power Active 변기 세정제 바다향 50g x 2개입 (100g)",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Street Magnum Almond Ice Cream Sticks 4 Pack 400mL": {
     "zh": "Street Magnum 杏仁巧克力冰淇淋雪糕 400毫升（4入）",
@@ -55186,10 +55206,11 @@
     "src": "ai"
   },
   "Bref Power Active Rimblock Fruitopia 2x50g 100g": {
-    "zh": "Bref 強效懸掛式馬桶清潔球 水果香 50克 x 2入",
-    "ja": "Bref パワーアクティブ トイレ用芳香洗浄剤 フルーツの香り 50g x 2個入",
-    "ko": "Bref 파워 액티브 변기 세정제 과일 향 50g x 2개입",
-    "src": "ai"
+    "zh": "Bref Power Active 水果馬桶清潔球 50克 x 2入 (100克)",
+    "ja": "Bref Power Active トイレ用芳香洗浄剤 フルートピア 50g x 2個入 (100g)",
+    "ko": "Bref Power Active 변기 세정제 프루토피아 50g x 2개입 (100g)",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Maybelline Colossal Washable Mascara Glam Black 8mL": {
     "zh": "Maybelline 巨密睫毛膏 可水洗 魅力黑 8毫升",
@@ -55246,10 +55267,11 @@
     "src": "ai"
   },
   "Bref Spa Moments Toilet Cleaner Rim Block Vitality 2x50g 100g": {
-    "zh": "Bref Spa Moments 懸掛式馬桶清潔球 活力香 50克 x 2入",
-    "ja": "Bref Spa Moments トイレ用芳香洗浄剤 バイタリティの香り 50g x 2個入",
-    "ko": "Bref Spa Moments 변기 세정제 바이탈리티 향 50g x 2개입",
-    "src": "ai"
+    "zh": "Bref Spa Moments 活力馬桶清潔球 50克 x 2入 (100克)",
+    "ja": "Bref Spa Moments トイレ用芳香洗浄剤 バイタリティ 50g x 2個入 (100g)",
+    "ko": "Bref Spa Moments 변기 세정제 바이탈리티 50g x 2개입 (100g)",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Schick Hydro 5 Sensitive Razor Blades Refills 8 Pack": {
     "zh": "Schick Hydro 5 敏感肌刮鬍刀片補充包 8入",
@@ -55354,10 +55376,11 @@
     "src": "ai"
   },
   "Bref Brilliant Gel Toilet Cleaner Rim Block Arctic Ocean 2x42g 84g": {
-    "zh": "Bref 凝膠馬桶清潔掛架 北極海洋香 84克（2入）",
-    "ja": "Bref ジェルトイレクリーナー リムブロック アークティックオーシャン 84g（2個入）",
-    "ko": "Bref 젤 변기 세정제 림 블록 아크틱 오션 84g（2개입）",
-    "src": "ai"
+    "zh": "Bref Brilliant 凝膠馬桶清潔掛架 Arctic Ocean 香 42克 x 2入",
+    "ja": "Bref Brilliant ジェル トイレクリーナー Arctic Ocean 香り 42g x 2個入",
+    "ko": "Bref Brilliant 젤 변기 세정제 Arctic Ocean 향 42g x 2개입",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Wildearth Turmeric Powder 100g": {
     "zh": "Wildearth 薑黃粉 100克",
@@ -55534,10 +55557,11 @@
     "src": "ai"
   },
   "Bref Power Active Rimblock Toilet Cleaner Juicy Lemon Twin Pack 2x50g 100g": {
-    "zh": "Bref 馬桶清潔掛球 檸檬香 50克 x 2入",
-    "ja": "Bref トイレ用芳香洗浄剤 レモンの香り 50g x 2個入",
-    "ko": "Bref 변기 세정제 레몬 향 50g x 2개입",
-    "src": "ai"
+    "zh": "Bref Power Active 檸檬馬桶清潔球 50克 x 2入 (100克)",
+    "ja": "Bref Power Active トイレ用芳香洗浄剤 ジューシーレモン 50g x 2個入 (100g)",
+    "ko": "Bref Power Active 변기 세정제 레몬향 50g x 2개입 (100g)",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Mirabella Globe Led Gls Bc 8w 800lum Warm White 2 Pack": {
     "zh": "Mirabella LED 燈泡 BC 接頭 8瓦 800流明 暖白光 2入",
@@ -55780,10 +55804,11 @@
     "src": "ai"
   },
   "L'Oreal Casting Creme Gloss 316 Hair Colour Prune 1 Pack": {
-    "zh": "L'Oreal 巴黎萊雅 染髮霜 316號 李子色",
-    "ja": "L'Oreal Casting Creme Gloss 316 ヘアカラー プルーン 1個入",
-    "ko": "L'Oreal Casting Creme Gloss 316 헤어 컬러 자두색 1개입",
-    "src": "ai"
+    "zh": "L'Oreal 316號 李子色染髮霜 1入",
+    "ja": "L'Oreal Casting Creme Gloss 316番 ヘアカラー プルーン 1個入",
+    "ko": "L'Oreal Casting Creme Gloss 316호 헤어 컬러 자두색 1개입",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Nivea Q10 Plus Eye Cream Anti Wrinkle 15mL": {
     "zh": "Nivea 妮維雅 Q10 抗皺眼霜 15毫升",
@@ -55840,10 +55865,11 @@
     "src": "ai"
   },
   "Rimmel Scandaleyes Eye Definer #002 Chocolate Brown 0.28g 1 each": {
-    "zh": "Rimmel Scandaleyes 眼線筆 002號 Chocolate Brown 0.28克",
-    "ja": "Rimmel Scandaleyes アイディファイナー #002 Chocolate Brown 0.28g",
-    "ko": "Rimmel Scandaleyes 아이 디파이너 #002 Chocolate Brown 0.28g",
-    "src": "ai"
+    "zh": "Rimmel Scandaleyes 眼線筆 Chocolate Brown 002號 0.28克",
+    "ja": "Rimmel Scandaleyes アイライナー Chocolate Brown #002 0.28g",
+    "ko": "Rimmel Scandaleyes 아이라이너 Chocolate Brown #002 0.28g",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Blackmores Coq10 150mg 90 Pack": {
     "zh": "Blackmores Coq10 輔酶 150毫克 90入",
@@ -56134,10 +56160,11 @@
     "src": "ai"
   },
   "Cosrx Advanced Snail 96 Mucin Power Essence 100mL": {
-    "zh": "Cosrx 蝸牛精華液 100毫升",
-    "ja": "Cosrx スネイルエッセンス 100ml",
-    "ko": "Cosrx 스네일 에센스 100ml",
-    "src": "ai"
+    "zh": "Cosrx Advanced Snail 96 蝸牛精華液 100毫升",
+    "ja": "Cosrx Advanced Snail 96 スネイルエッセンス 100mL",
+    "ko": "Cosrx Advanced Snail 96 스네일 에센스 100mL",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Golden Circle Zero Sugar Cordial Golden Pash 2L": {
     "zh": "Golden Circle 無糖濃縮果汁 Golden Pash 2公升",
@@ -56585,9 +56612,10 @@
   },
   "On The Menu Fresh Veal Tortellini 600g": {
     "zh": "On The Menu 新鮮小牛肉義大利餃 600克",
-    "ja": "On The Menu フレッシュ 仔牛のトルテリーニ 600g",
-    "ko": "On The Menu 신선한 송아지고기 토르텔리니 600g",
-    "src": "ai"
+    "ja": "On The Menu 新鮮な仔牛肉のトルテリーニ 600g",
+    "ko": "On The Menu 신선한 송아지 고기 토르텔리니 600g",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Nivea Men Sensitive Stubble Shave Gel 200mL": {
     "zh": "Nivea Men 敏感肌鬍渣刮鬍凝膠 200毫升",
@@ -56920,10 +56948,11 @@
     "src": "ai"
   },
   "Rimmel Multi Tasker Better Than Filters Light 30mL": {
-    "zh": "Rimmel 多功能妝前乳 Light 30毫升",
-    "ja": "Rimmel Multi Tasker Better Than Filters Light 30mL",
-    "ko": "Rimmel Multi Tasker Better Than Filters Light 30mL",
-    "src": "ai"
+    "zh": "Rimmel Multi Tasker 濾鏡妝前乳 Light色 30毫升",
+    "ja": "Rimmel Multi Tasker ベターザンフィルター ライト 30ml",
+    "ko": "Rimmel Multi Tasker 베터 댄 필터 라이트 30ml",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Taj Classic Basmati Rice 5kg": {
     "zh": "Taj 經典印度香米 5公斤",
@@ -56986,10 +57015,11 @@
     "src": "ai"
   },
   "Twinings Sparkling Immunity Orange Passionfruit & Green Tea 4x250ml 1L": {
-    "zh": "Twinings 氣泡免疫力柳橙百香果綠茶 250毫升 x 4入",
-    "ja": "Twinings スパークリング イミュニティ オレンジ・パッションフルーツ＆緑茶 250ml x 4本",
-    "ko": "Twinings 스파클링 이뮤니티 오렌지 패션후르츠 & 녹차 250ml x 4개입",
-    "src": "ai"
+    "zh": "Twinings 氣泡免疫力柳橙百香果綠茶 250毫升 x 4入 (1公升)",
+    "ja": "Twinings スパークリング イミュニティ オレンジパッションフルーツ＆緑茶 250ml x 4個入 (1L)",
+    "ko": "Twinings 스파클링 이뮤니티 오렌지 패션후르츠 녹차 250ml x 4개입 (1L)",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Maybelline Master Precise Black Liquid Eyeliner 10mL": {
     "zh": "Maybelline 極細黑色液態眼線液 10毫升",
@@ -57514,33 +57544,458 @@
     "src": "ai"
   },
   "Hinata Short Grain Rice 5kg": {
-    "zh": "日向短粒米 5kg",
-    "ja": "日向短粒米 5kg",
-    "ko": "히나타 잡곡밥 5kg"
+    "zh": "Hinata 短粒米 5公斤",
+    "ja": "Hinata 短粒米 5kg",
+    "ko": "Hinata 단립미 5kg",
+    "src": "ai"
   },
   "Nivea Luminous630 Skin Glow Micellar Water Makeup Remover 400mL": {
-    "zh": "妮維雅 Luminous630 肌膚光澤膠束水卸妝 400mL",
-    "ja": "ニベア ルミナス630 スキン グロウ ミセラー ウォーター メイクアップ リムーバー 400mL",
-    "ko": "니베아 루미너스630 스킨 글로우 미셀라 워터 메이크업 리무버 400mL"
+    "zh": "Nivea Luminous630 亮白煥彩卸妝水 400毫升",
+    "ja": "Nivea Luminous630 スキングロウ ミセラークレンジングウォーター 400ml",
+    "ko": "Nivea Luminous630 스킨 글로우 미셀라 클렌징 워터 400ml",
+    "src": "ai"
   },
   "Caltrate Joint Health Uc-ii Collagen 30 Pack": {
-    "zh": "Caltrate 關節健康 Uc-ii 膠原蛋白 30 包",
-    "ja": "Caltrate Joint Health UC-ii コラーゲン 30 パック",
-    "ko": "칼트라이트 조인트 헬스 Uc-ii 콜라겐 30팩"
+    "zh": "Caltrate 關節保健 UC-II 膠原蛋白 30入",
+    "ja": "Caltrate 関節ケア UC-II コラーゲン 30個入",
+    "ko": "Caltrate 관절 건강 UC-II 콜라겐 30개입",
+    "src": "ai"
   },
   "Caltrate Bone Muscle & Joint 60 Pack": {
-    "zh": "Caltrate 骨骼肌肉和關節 60 包",
-    "ja": "Caltrate 骨 筋肉 & 関節 60 パック",
-    "ko": "Caltrate 뼈 근육 및 관절 60 팩"
+    "zh": "Caltrate 骨骼肌肉關節保健錠 60入",
+    "ja": "Caltrate 骨・筋肉・関節用サプリメント 60個入",
+    "ko": "Caltrate 뼈 근육 관절 영양제 60개입",
+    "src": "ai"
   },
   "Sally Hansen Miracle Gel Top Coat 14.7mL": {
-    "zh": "Sally Hansen 奇蹟凝膠面漆 14.7mL",
-    "ja": "サリーハンセン ミラクルジェルトップコート 14.7mL",
-    "ko": "샐리한센 미라클 젤 탑코트 14.7mL"
+    "zh": "Sally Hansen 奇蹟光感指甲油亮甲油 14.7毫升",
+    "ja": "Sally Hansen ミラクルジェル トップコート 14.7ml",
+    "ko": "Sally Hansen 미라클 젤 탑코트 14.7ml",
+    "src": "ai"
   },
   "Maybelline Superstay Lumi Matte 119 Foundation 35mL": {
-    "zh": "美寶蓮 Superstay Lumi 霧面 119 粉底 35mL",
-    "ja": "メイベリン スーパーステイ ルミ マット 119 ファンデーション 35mL",
-    "ko": "메이블린 슈퍼스테이 루미 매트 119 파운데이션 35mL"
+    "zh": "Maybelline 超持久亮澤霧感粉底液 119號 35毫升",
+    "ja": "Maybelline Superstay Lumi Matte ファンデーション 119番 35ml",
+    "ko": "Maybelline Superstay Lumi Matte 파운데이션 119호 35ml",
+    "src": "ai"
+  },
+  "Clio Invisible Band Anklets Natural One Size 2 Pack": {
+    "zh": "Clio 隱形襪 自然色 單一尺寸（2入）",
+    "ja": "Clio インビジブルバンドアンクレット ナチュラル ワンサイズ（2個入）",
+    "ko": "Clio 인비저블 밴드 앵클삭스 내추럴 원사이즈（2개입）",
+    "src": "ai"
+  },
+  "Zinda Cola Crush 250mL": {
+    "zh": "Zinda 可樂汽水 250毫升",
+    "ja": "Zinda コーラクラッシュ 250mL",
+    "ko": "Zinda 콜라 크러쉬 250mL",
+    "src": "ai"
+  },
+  "L'Oreal Paris Panorama All Night Black Mascara 9.9mL": {
+    "zh": "L'Oreal Paris Panorama 睫毛膏 夜黑色 9.9毫升",
+    "ja": "L'Oreal Paris パノラマ マスカラ オールナイトブラック 9.9mL",
+    "ko": "L'Oreal Paris 파노라마 마스카라 올나잇 블랙 9.9mL",
+    "src": "ai"
+  },
+  "Mirabella Globe LED Gls Es 8w 800lum Warm White 2 Pack": {
+    "zh": "Mirabella LED 球型燈泡 ES 8瓦 800流明 暖白光（2入）",
+    "ja": "Mirabella LED電球 Gls ES 8W 800lm ウォームホワイト（2個入）",
+    "ko": "Mirabella LED 전구 Gls ES 8W 800lm 웜화이트（2개입）",
+    "src": "ai"
+  },
+  "Shifu Soft Centered Cookies Blueberry 70g": {
+    "zh": "Shifu 軟心餅乾 藍莓口味 70克",
+    "ja": "Shifu ソフトセンタークッキー ブルーベリー味 70g",
+    "ko": "Shifu 소프트 센터 쿠키 블루베리맛 70g",
+    "src": "ai"
+  },
+  "L'Oreal True Match Serum Foundation Light 30mL": {
+    "zh": "L'Oreal True Match 精華粉底液 明亮色 30毫升",
+    "ja": "L'Oreal True Match セラムファンデーション ライト 30mL",
+    "ko": "L'Oreal True Match 세럼 파운데이션 라이트 30mL",
+    "src": "ai"
+  },
+  "L'Oreal Paris Infallible Auto Liner Brown Denim 5g": {
+    "zh": "L'Oreal Paris Infallible 自動眼線筆 牛仔棕色 5克",
+    "ja": "L'Oreal Paris インファリブル オートライナー ブラウンデニム 5g",
+    "ko": "L'Oreal Paris 인팔리블 오토 라이너 브라운 데님 5g",
+    "src": "ai"
+  },
+  "Clio Eco 40d Opque Tights Black Tall/x Tall 1 each": {
+    "zh": "Clio Eco 40d Opque 緊身褲黑色高/x 高 各 1 件",
+    "ja": "クリオ エコ 40d オプク タイツ ブラック トール/x トール 各 1 枚",
+    "ko": "클리오 에코 40d 오퀴 타이츠 블랙 Tall/x Tall 1각"
+  },
+  "Clio Eco 40d Opque Tights Black Small/medium 1 Pack": {
+    "zh": "Clio Eco 40丹不透明褲襪 黑色 小/中尺寸（1入）",
+    "ja": "Clio Eco 40デニール 不透明タイツ ブラック スモール/ミディアム（1個入）",
+    "ko": "Clio Eco 40데니아 불투명 타이즈 블랙 스몰/미디엄（1개입）",
+    "src": "ai"
+  },
+  "Mirabella Globe Led Gls Es 14w 1500lum Warm White 2 Pack": {
+    "zh": "Mirabella LED 球型燈泡 ES 14瓦 1500流明 暖白光（2入）",
+    "ja": "Mirabella LED電球 Gls ES 14W 1500lm ウォームホワイト（2個入）",
+    "ko": "Mirabella LED 전구 Gls ES 14W 1500lm 웜화이트（2개입）",
+    "src": "ai"
+  },
+  "Maybelline Super Stay Vinyl Ink Lipstick Peachy 4.2mL": {
+    "zh": "Maybelline Super Stay 緞面持久唇釉 蜜桃色 4.2毫升",
+    "ja": "Maybelline Super Stay ビニールインクリップ ピーチ 4.2mL",
+    "ko": "Maybelline Super Stay 바이닐 잉크 립스틱 피치 4.2mL",
+    "src": "ai"
+  },
+  "Rimmel Multitasker Bronzing Stick Light 4.5g": {
+    "zh": "Rimmel Multitasker 修容棒 明亮色 4.5克",
+    "ja": "Rimmel マルチタスカー ブロンジングスティック ライト 4.5g",
+    "ko": "Rimmel 멀티태스커 브론징 스틱 라이트 4.5g",
+    "src": "ai"
+  },
+  "Zinda Mystic Mango 250mL": {
+    "zh": "Zinda 芒果汽水 250毫升",
+    "ja": "Zinda ミスティックマンゴー 250mL",
+    "ko": "Zinda 미스틱 망고 250mL",
+    "src": "ai"
+  },
+  "L'Oreal Paris Plump Ambition Hyaluron Lipoil 601 Worth It 5mL": {
+    "zh": "L'Oreal Paris Plump Ambition 玻尿酸護唇油 601號 5毫升",
+    "ja": "L'Oreal Paris プランプアンビション ヒアルロンリップオイル 601 Worth It 5mL",
+    "ko": "L'Oreal Paris 플럼프 앰비션 히알루론 립오일 601 Worth It 5mL",
+    "src": "ai"
+  },
+  "Mirabella Globe Led Gls Bc 5w 500lum Cool White 2 Pack": {
+    "zh": "Mirabella LED 球型燈泡 BC 5瓦 500流明 冷白光（2入）",
+    "ja": "Mirabella LED電球 Gls BC 5W 500lm クールホワイト（2個入）",
+    "ko": "Mirabella LED 전구 Gls BC 5W 500lm 쿨화이트（2개입）",
+    "src": "ai"
+  },
+  "Maybelline Superstay Teddy Tint Lipstick Knee High 5mL": {
+    "zh": "Maybelline Superstay 霧面唇釉 Knee High色 5毫升",
+    "ja": "Maybelline Superstay テディティントリップ Knee High 5mL",
+    "ko": "Maybelline Superstay 테디 틴트 립스틱 Knee High 5mL",
+    "src": "ai"
+  },
+  "Rimmel Omg Lip Butter Vanilla Frost 15mL": {
+    "zh": "Rimmel Omg 護唇膏 香草霜口味 15毫升",
+    "ja": "Rimmel OMG リップバター バニラフロスト 15mL",
+    "ko": "Rimmel OMG 립 버터 바닐라 프로스트 15mL",
+    "src": "ai"
+  },
+  "Maybelline Superstay 24h Skin Tint 10 30mL": {
+    "zh": "Maybelline Superstay 24小時粉底液 10號 30毫升",
+    "ja": "Maybelline Superstay 24h スキンティント 10 30mL",
+    "ko": "Maybelline Superstay 24h 스킨 틴트 10 30mL",
+    "src": "ai"
+  },
+  "Rimmel Omg Lip Oil Pink Flush 4.5mL": {
+    "zh": "Rimmel Omg 護唇油 粉紅光澤 4.5毫升",
+    "ja": "Rimmel OMG リップオイル ピンクフラッシュ 4.5mL",
+    "ko": "Rimmel OMG 립 오일 핑크 플러시 4.5mL",
+    "src": "ai"
+  },
+  "Rimmel Lasting Finish Lip Pencil 90's Nude 0.25g": {
+    "zh": "Rimmel Lasting Finish 唇線筆 90年代裸色 0.25克",
+    "ja": "Rimmel ラスティングフィニッシュ リップペンシル 90'sヌード 0.25g",
+    "ko": "Rimmel 라스팅 피니쉬 립 펜슬 90's 누드 0.25g",
+    "src": "ai"
+  },
+  "Rimmel Brow This Way Fill & Sculpt Medium Brown 0.4g": {
+    "zh": "Rimmel Brow This Way 眉筆 中棕色 0.4克",
+    "ja": "Rimmel Brow This Way フィル＆スカルプ ミディアムブラウン 0.4g",
+    "ko": "Rimmel Brow This Way 필 & 스컬프 미디엄 브라운 0.4g",
+    "src": "ai"
+  },
+  "Rimmel Brow This Way Fill & Sculpt Dark Brown 0.4g": {
+    "zh": "Rimmel Brow This Way 眉筆 深棕色 0.4克",
+    "ja": "Rimmel Brow This Way フィル＆スカルプ ダークブラウン 0.4g",
+    "ko": "Rimmel Brow This Way 필 & 스컬프 다크 브라운 0.4g",
+    "src": "ai"
+  },
+  "Clio Fashion Cable Cross Knit Tights 150d Black Size T/xt 1 Pack": {
+    "zh": "Clio 針織麻花褲襪 150丹 黑色 T/XT尺寸（1入）",
+    "ja": "Clio ファッションケーブルクロス ニットタイツ 150デニール ブラック T/XTサイズ（1個入）",
+    "ko": "Clio 패션 케이블 크로스 니트 타이즈 150데니아 블랙 T/XT사이즈（1개입）",
+    "src": "ai"
+  },
+  "Sistema Heatables Round Bowl Container 360ml 1 Each": {
+    "zh": "Sistema 微波加熱圓形保鮮盒 360毫升",
+    "ja": "Sistema ヒーテーブル ラウンドボウル容器 360mL",
+    "ko": "Sistema 히터블 원형 보관용기 360mL",
+    "src": "ai"
+  },
+  "Rimmel Brow This Way Fill & Sculpt Eye Definer Blonde 0.4g": {
+    "zh": "Rimmel Brow This Way 眉筆 金棕色 0.4克",
+    "ja": "Rimmel Brow This Way フィル＆スカルプ アイディファイナー ブロンド 0.4g",
+    "ko": "Rimmel Brow This Way 필 & 스컬프 아이 디파이너 블론드 0.4g",
+    "src": "ai"
+  },
+  "Maybelline Superstay Lumi Matte Foundation 337 35mL": {
+    "zh": "Maybelline 超持久亮澤霧感粉底液 337 35毫升",
+    "ja": "Maybelline スーパー ステイ ルミ マット ファンデーション 337 35mL",
+    "ko": "Maybelline 슈퍼스테이 루미 매트 파운데이션 337 35mL",
+    "src": "ai"
+  },
+  "L'Oreal Paris Telescopic Lift Mascara Black 9.9mL": {
+    "zh": "L'Oreal Paris 濃密纖長睫毛膏 黑色 9.9毫升",
+    "ja": "L'Oreal Paris テレスコピック リフト マスカラ ブラック 9.9mL",
+    "ko": "L'Oreal Paris 텔레스코픽 리프트 마스카라 블랙 9.9mL",
+    "src": "ai"
+  },
+  "Mirabella Globe LED Gls BC 8w 800lumens Cool White 2 Pack": {
+    "zh": "Mirabella LED 球泡燈 BC 8瓦 800流明 冷白光 2入",
+    "ja": "Mirabella LED 電球 BC 8W 800ルーメン クールホワイト 2個入",
+    "ko": "Mirabella LED 전구 BC 8W 800루멘 쿨화이트 2개입",
+    "src": "ai"
+  },
+  "Rimmel Match Perfection Loose Powder Transclucent 18g": {
+    "zh": "Rimmel 完美定妝蜜粉 透明色 18克",
+    "ja": "Rimmel マッチ パーフェクション ルースパウダー トランスルーセント 18g",
+    "ko": "Rimmel 매치 퍼펙션 루스 파우더 트랜스루센트 18g",
+    "src": "ai"
+  },
+  "L'Oreal Paris Infallible Gel Autoliner Intense Black 5g": {
+    "zh": "L'Oreal Paris 持久眼線膠筆 濃郁黑 5克",
+    "ja": "L'Oreal Paris インファリブル ジェル オートライナー インテンスブラック 5g",
+    "ko": "L'Oreal Paris 인팔리블 젤 오토라이너 인텐스 블랙 5g",
+    "src": "ai"
+  },
+  "Rimmel Wonder Extension Mascara Black 11mL": {
+    "zh": "Rimmel 纖長睫毛膏 黑色 11毫升",
+    "ja": "Rimmel ワンダー エクステンション マスカラ ブラック 11mL",
+    "ko": "Rimmel 원더 익스텐션 마스카라 블랙 11mL",
+    "src": "ai"
+  },
+  "L'Oreal Paris Matte Resistance Liquid Lipstick Snooze Your Alarm 5mL": {
+    "zh": "L'Oreal Paris 持久霧面唇釉 Snooze Your Alarm 5毫升",
+    "ja": "L'Oreal Paris マット レジスタンス リキッド リップスティック Snooze Your Alarm 5mL",
+    "ko": "L'Oreal Paris 매트 레지스탕스 리퀴드 립스틱 Snooze Your Alarm 5mL",
+    "src": "ai"
+  },
+  "Maybelline Instant Age Rewind Perfector 4-in-1 Glow Medium Deep 30mL": {
+    "zh": "Maybelline 4合1美顏妝前乳 Medium Deep 30毫升",
+    "ja": "Maybelline インスタント エイジ リワインド パーフェクター 4-in-1 グロウ Medium Deep 30mL",
+    "ko": "Maybelline 인스턴트 에이지 리와인드 퍼펙터 4-in-1 글로우 Medium Deep 30mL",
+    "src": "ai"
+  },
+  "Clio Sheer Look Opaque Tights Black 80d Size T/xt 1 Pack": {
+    "zh": "Clio 透膚感不透明褲襪 黑色 80丹尼 T/xt號 1入",
+    "ja": "Clio シアー ルック 不透明タイツ ブラック 80D サイズ T/XT 1足入",
+    "ko": "Clio 시어 룩 불투명 타이즈 블랙 80D 사이즈 T/XT 1개입",
+    "src": "ai"
+  },
+  "L'Oreal Paris Plump Ambition Hyaluron Lip Oil 201 Milky Nu 5mL": {
+    "zh": "L'Oreal Paris 玻尿酸豐盈唇油 201 Milky Nu 5毫升",
+    "ja": "L'Oreal Paris プランプ アンビション ヒアルロン リップオイル 201 Milky Nu 5mL",
+    "ko": "L'Oreal Paris 플럼프 앰비션 히알루론 립 오일 201 Milky Nu 5mL",
+    "src": "ai"
+  },
+  "Maybelline Superstay 24h Skin Tint 30 30mL": {
+    "zh": "Maybelline 24小時持久粉底液 30 30毫升",
+    "ja": "Maybelline スーパー ステイ 24h スキン ティント 30 30mL",
+    "ko": "Maybelline 슈퍼스테이 24h 스킨 틴트 30 30mL",
+    "src": "ai"
+  },
+  "Rimmel Multi Tasker Better Than Filters Light Medium 30mL": {
+    "zh": "Rimmel 多功能妝前乳 Light Medium 30毫升",
+    "ja": "Rimmel マルチ タスカー ベター ザン フィルター Light Medium 30mL",
+    "ko": "Rimmel 멀티 태스커 베터 댄 필터 Light Medium 30mL",
+    "src": "ai"
+  },
+  "L'Oreal Paris Lumi Liquid Blush True Rose 10mL": {
+    "zh": "L'Oreal Paris 亮澤液態腮紅 True Rose 10毫升",
+    "ja": "L'Oreal Paris ルミ リキッド ブラッシュ True Rose 10mL",
+    "ko": "L'Oreal Paris 루미 리퀴드 블러쉬 True Rose 10mL",
+    "src": "ai"
+  },
+  "Maybelline Lifter Lip Liner Leader 5.8g": {
+    "zh": "Maybelline 唇線筆 Leader 5.8克",
+    "ja": "Maybelline リフター リップライナー Leader 5.8g",
+    "ko": "Maybelline 리프터 립 라이너 Leader 5.8g",
+    "src": "ai"
+  },
+  "L'Oreal Paris Telescopic Lift Mascara Waterproof Black 9.9mL": {
+    "zh": "L'Oreal Paris 防水濃密纖長睫毛膏 黑色 9.9毫升",
+    "ja": "L'Oreal Paris テレスコピック リフト マスカラ ウォータープルーフ ブラック 9.9mL",
+    "ko": "L'Oreal Paris 텔레스코픽 리프트 마스카라 워터프루프 블랙 9.9mL",
+    "src": "ai"
+  },
+  "Le Tan Illuminating Face Glow Serum SPF 50+ 40mL": {
+    "zh": "Le Tan 亮澤防曬精華 SPF 50+ 40毫升",
+    "ja": "Le Tan イルミネーティング フェイス グロウ セラム SPF 50+ 40mL",
+    "ko": "Le Tan 일루미네이팅 페이스 글로우 세럼 SPF 50+ 40mL",
+    "src": "ai"
+  },
+  "Maybelline Superstay 24h Skin Tint 03 30mL": {
+    "zh": "Maybelline 24小時持久粉底液 03 30毫升",
+    "ja": "Maybelline スーパー ステイ 24h スキン ティント 03 30mL",
+    "ko": "Maybelline 슈퍼스테이 24h 스킨 틴트 03 30mL",
+    "src": "ai"
+  },
+  "L'Oreal True Match Serum Foundation Very Light 30mL": {
+    "zh": "L'Oreal 特潤精華粉底液 Very Light 30毫升",
+    "ja": "L'Oreal トゥルー マッチ セラム ファンデーション Very Light 30mL",
+    "ko": "L'Oreal 트루 매치 세럼 파운데이션 Very Light 30mL",
+    "src": "ai"
+  },
+  "L'oreal Paris Paradise Big Deal Mascara 9.9mL": {
+    "zh": "L'Oreal Paris 濃密睫毛膏 9.9毫升",
+    "ja": "L'Oreal Paris パラダイス ビッグ ディール マスカラ 9.9mL",
+    "ko": "L'Oreal Paris 파라다이스 빅 딜 마스카라 9.9mL",
+    "src": "ai"
+  },
+  "Maybelline Superstay Teddy Tint Lipstick Skinny Dip 5mL": {
+    "zh": "Maybelline 持久霧面唇釉 Skinny Dip 5毫升",
+    "ja": "Maybelline スーパー ステイ テディ ティント リップスティック Skinny Dip 5mL",
+    "ko": "Maybelline 슈퍼스테이 테디 틴트 립스틱 Skinny Dip 5mL",
+    "src": "ai"
+  },
+  "Maybelline Lash Sensational Firework Mascara 28g": {
+    "zh": "Maybelline 煙火睫毛膏 28克",
+    "ja": "Maybelline ラッシュ センセーショナル ファイヤーワーク マスカラ 28g",
+    "ko": "Maybelline 래쉬 센세이셔널 파이어워크 마스카라 28g",
+    "src": "ai"
+  },
+  "Nivea Derma Skin Clear Scrub 150mL": {
+    "zh": "Nivea 煥膚去角質凝膠 150毫升",
+    "ja": "Nivea ダーマ スキン クリア スクラブ 150mL",
+    "ko": "Nivea 더마 스킨 클리어 스크럽 150mL",
+    "src": "ai"
+  },
+  "L'Oreal Casting Creme Gloss 400 Hair Colour Brown 1 Pack": {
+    "zh": "L'Oreal 護髮染髮霜 400 棕色 1入",
+    "ja": "L'Oreal キャスティング クレーム グロス 400 ヘアカラー ブラウン 1箱入",
+    "ko": "L'Oreal 캐스팅 크렘 글로스 400 헤어 컬러 브라운 1개입",
+    "src": "ai"
+  },
+  "Mirabella Globe Led Gls Es 8w 800lum Cool White 2 Pack": {
+    "zh": "Mirabella LED 球泡燈 ES 8瓦 800流明 冷白光 2入",
+    "ja": "Mirabella LED 電球 ES 8W 800ルーメン クールホワイト 2個入",
+    "ko": "Mirabella LED 전구 ES 8W 800루멘 쿨화이트 2개입",
+    "src": "ai"
+  },
+  "Rimmel Lasting Finish Lip Pencil Cappuccino 0.25g": {
+    "zh": "Rimmel 持久唇線筆 Cappuccino 0.25克",
+    "ja": "Rimmel ラスティング フィニッシュ リップペンシル Cappuccino 0.25g",
+    "ko": "Rimmel 라스팅 피니쉬 립 펜슬 Cappuccino 0.25g",
+    "src": "ai"
+  },
+  "Rimmel Scandaleyes Eye Definer Black 0.25g": {
+    "zh": "Rimmel Scandaleyes 眼線筆 Black 0.25克",
+    "ja": "Rimmel Scandaleyes アイライナー Black 0.25g",
+    "ko": "Rimmel Scandaleyes 아이라이너 Black 0.25g",
+    "src": "ai"
+  },
+  "Maybelline Falsies Surreal Washable Mascara 9mL": {
+    "zh": "Maybelline Falsies Surreal 可水洗睫毛膏 9毫升",
+    "ja": "Maybelline Falsies Surreal ウォッシャブルマスカラ 9mL",
+    "ko": "Maybelline Falsies Surreal 워셔블 마스카라 9mL",
+    "src": "ai"
+  },
+  "Maybelline Superfluff Brow Mousse Deep Brown 5mL": {
+    "zh": "Maybelline Superfluff 染眉慕斯 Deep Brown 5毫升",
+    "ja": "Maybelline Superfluff アイブロウムース Deep Brown 5mL",
+    "ko": "Maybelline Superfluff 아이브로우 무스 Deep Brown 5mL",
+    "src": "ai"
+  },
+  "L'Oreal Paris Matte Resistance Liquid Lipstick Le Rouge 5mL": {
+    "zh": "L'Oreal Paris Matte Resistance 液態唇膏 Le Rouge 5毫升",
+    "ja": "L'Oreal Paris Matte Resistance リキッドリップ Le Rouge 5mL",
+    "ko": "L'Oreal Paris Matte Resistance 리퀴드 립스틱 Le Rouge 5mL",
+    "src": "ai"
+  },
+  "Rimmel Omg Lip Butter Latte Delight 15mL": {
+    "zh": "Rimmel Omg 護唇膏 Latte Delight 15毫升",
+    "ja": "Rimmel Omg リップバター Latte Delight 15mL",
+    "ko": "Rimmel Omg 립 버터 Latte Delight 15mL",
+    "src": "ai"
+  },
+  "Maybelline Superstay 24h Skin Tint 48 30mL": {
+    "zh": "Maybelline Superstay 24小時粉底液 48號 30毫升",
+    "ja": "Maybelline Superstay 24h スキンティント 48 30mL",
+    "ko": "Maybelline Superstay 24h 스킨 틴트 48 30mL",
+    "src": "ai"
+  },
+  "Zinda Jeera Jive 250mL": {
+    "zh": "Zinda Jeera Jive 氣泡飲 250毫升",
+    "ja": "Zinda Jeera Jive スパークリングドリンク 250mL",
+    "ko": "Zinda Jeera Jive 스파클링 음료 250mL",
+    "src": "ai"
+  },
+  "Zinda Native Nimbu Sparkling Drink 250mL": {
+    "zh": "Zinda Native Nimbu 氣泡飲 250毫升",
+    "ja": "Zinda Native Nimbu スパークリングドリンク 250mL",
+    "ko": "Zinda Native Nimbu 스파클링 음료 250mL",
+    "src": "ai"
+  },
+  "Mirabella Globe LED Gls Es 5w 500lum Cool White 2 Pack": {
+    "zh": "Mirabella LED 燈泡 Es 5瓦 500流明 Cool White 2入",
+    "ja": "Mirabella LED電球 Es 5w 500ルーメン Cool White 2個入",
+    "ko": "Mirabella LED 전구 Es 5w 500루멘 Cool White 2개입",
+    "src": "ai"
+  },
+  "Mirabella Globe LED Gls Es 5w 500lumens Warm White 2 Pack": {
+    "zh": "Mirabella LED 燈泡 Es 5瓦 500流明 Warm White 2入",
+    "ja": "Mirabella LED電球 Es 5w 500ルーメン Warm White 2個入",
+    "ko": "Mirabella LED 전구 Es 5w 500루멘 Warm White 2개입",
+    "src": "ai"
+  },
+  "L'Oreal Paris True Match Liquid Foundation C3 Rose Beige 30mL": {
+    "zh": "L'Oreal Paris True Match 粉底液 C3 Rose Beige 30毫升",
+    "ja": "L'Oreal Paris True Match リキッドファンデーション C3 Rose Beige 30mL",
+    "ko": "L'Oreal Paris True Match 리퀴드 파운데이션 C3 Rose Beige 30mL",
+    "src": "ai"
+  },
+  "Maybelline Superfluff Brow Mousse Soft Brown 5mL": {
+    "zh": "Maybelline Superfluff 染眉慕斯 Soft Brown 5毫升",
+    "ja": "Maybelline Superfluff アイブロウムース Soft Brown 5mL",
+    "ko": "Maybelline Superfluff 아이브로우 무스 Soft Brown 5mL",
+    "src": "ai"
+  },
+  "Oral B Vitality Pro D/ C E-toothbrush + Case Mint 1 Pack": {
+    "zh": "Oral B Vitality Pro 電動牙刷 + 收納盒 Mint 1入",
+    "ja": "Oral B Vitality Pro 電動歯ブラシ + ケース Mint 1個入",
+    "ko": "Oral B Vitality Pro 전동 칫솔 + 케이스 Mint 1개입",
+    "src": "ai"
+  },
+  "Rimmel Stay Matte Press Powder Silkybeige #005 14g": {
+    "zh": "Rimmel Stay Matte 蜜粉餅 Silkybeige 005號 14克",
+    "ja": "Rimmel Stay Matte プレストパウダー Silkybeige #005 14g",
+    "ko": "Rimmel Stay Matte 프레스드 파우더 Silkybeige #005 14g",
+    "src": "ai"
+  },
+  "Botanica By Air Wick Air Plug In Diffuser Refill Coconut Milk & Indonesian Patchouli 22mL": {
+    "zh": "Botanica By Air Wick 插電式擴香補充瓶 Coconut Milk & Indonesian Patchouli 香 22毫升",
+    "ja": "Botanica By Air Wick プラグインディフューザー 詰め替え Coconut Milk & Indonesian Patchouli 香り 22mL",
+    "ko": "Botanica By Air Wick 플러그인 디퓨저 리필 Coconut Milk & Indonesian Patchouli 향 22mL",
+    "src": "ai"
+  },
+  "Rimmel Multitasker Bronzing Stick Tan 4.5g": {
+    "zh": "Rimmel Multitasker 修容棒 Tan 4.5克",
+    "ja": "Rimmel Multitasker ブロンザースティック Tan 4.5g",
+    "ko": "Rimmel Multitasker 브론저 스틱 Tan 4.5g",
+    "src": "ai"
+  },
+  "Clio Fashion Cable Cross Knit Tights 150d Black Size S/m 1 Pack": {
+    "zh": "Clio Fashion 麻花針織褲襪 150d Black S/m號 1入",
+    "ja": "Clio Fashion ケーブルニットタイツ 150d Black サイズ S/m 1個入",
+    "ko": "Clio Fashion 케이블 니트 타이즈 150d Black 사이즈 S/m 1개입",
+    "src": "ai"
+  },
+  "Rehydraid Ready To Drink Orange 1L": {
+    "zh": "Rehydraid 電解質飲 Orange 1公升",
+    "ja": "Rehydraid 経口補水液 Orange 1L",
+    "ko": "Rehydraid 경구 수액 Orange 1L",
+    "src": "ai"
+  },
+  "L'oreal Paris True Match Radiant Serum Concealer 1n 10mL": {
+    "zh": "L'oreal Paris True Match 精華遮瑕膏 1n 10毫升",
+    "ja": "L'oreal Paris True Match セラムコンシーラー 1n 10mL",
+    "ko": "L'oreal Paris True Match 세럼 컨실러 1n 10mL",
+    "src": "ai"
+  },
+  "Clio Sheer Look Opaque Tights Black 80d Size S/m 1 Pack": {
+    "zh": "Clio Sheer Look 不透明褲襪 Black 80d S/m號 1入",
+    "ja": "Clio Sheer Look 不透明タイツ Black 80d サイズ S/m 1個入",
+    "ko": "Clio Sheer Look 불투명 타이즈 Black 80d 사이즈 S/m 1개입",
+    "src": "ai"
   }
 }
