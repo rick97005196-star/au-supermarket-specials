@@ -132,7 +132,7 @@ def classify_product(title: str, raw_cat: str = "", product_url: str = "", use_h
     # 1b. CONFECTIONERY: lollies / gummies are always snacks (e.g. "Nesquik Milkshakes Lollies" is not a drink)
     # -------------------------------------------------------------
     is_supplement = bool(re.search(r'\b(?:swisse|metamucil|nature[\'’]?s\s*way|blackmores|cenovis|centrum|vitamins?|multi-?vitamin|probiotic|prebiotic|fibre|fiber|magnesium|iron|melatonin|sleep|collagen|omega)\b', tl))
-    if not is_supplement and re.search(r'\b(?:lollies|lolly|gummies|gummy|jelly\s*beans?|marshmallows?|licorice|liquorice|confectionery)\b', tl):
+    if not is_supplement and re.search(r'\b(?:lollies|lolly|gummies|gummy|jelly\s*beans?|marshmallows?|licorice|liquorice|confectionery|swizzels|squashies)\b', tl):
         return 'snacks'
 
     # -------------------------------------------------------------

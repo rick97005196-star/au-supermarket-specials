@@ -13,6 +13,8 @@ on:
       - 'scripts/check_timer.py'
       - 'scripts/ai_categorize.py'
       - 'data/ai_categories.json'
+      - 'interest.py'
+      - 'functions/**'
   workflow_dispatch:
 
 permissions:
@@ -35,3 +37,5 @@ jobs:
         run: python tests/test_check_timer.py
       - name: Unknown-product placement test
         run: python tests/test_category_hints.py
+      - name: Visitor-interest order test
+        run: python tests/test_interest.py

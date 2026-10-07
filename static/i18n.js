@@ -16,6 +16,7 @@ var safeStore = (function () {
 })();
 const I18N = {
     'zh': {
+        privacy_note: '本網站僅匿名統計各商品的瀏覽、收藏與加入清單次數，用於改善商品排序，不收集任何可識別個人身分的資料。',
         aria_scroll_right: '向右捲動',
         aria_scroll_left: '向左捲動',
         name: '繁體中文',
@@ -176,6 +177,7 @@ const I18N = {
         }
     },
     'en': {
+        privacy_note: 'This website only counts, anonymously, how often each product is viewed, saved and added to a list, to improve the product order. No personally identifiable information is collected.',
         aria_scroll_right: 'Scroll right',
         aria_scroll_left: 'Scroll left',
         name: 'English',
@@ -336,6 +338,7 @@ const I18N = {
         }
     },
     'ja': {
+        privacy_note: '本サイトでは、商品の表示・お気に入り登録・リスト追加の回数のみを匿名で集計し、商品の並び順の改善に利用しています。個人を特定できる情報は収集しません。',
         aria_scroll_right: '右へスクロール',
         aria_scroll_left: '左へスクロール',
         name: '日本語',
@@ -496,6 +499,7 @@ const I18N = {
         }
     },
     'ko': {
+        privacy_note: '본 사이트는 상품 정렬 개선을 위해 각 상품의 조회·관심 등록·목록 추가 횟수만 익명으로 집계하며, 개인을 식별할 수 있는 정보는 수집하지 않습니다.',
         aria_scroll_right: '오른쪽으로 스크롤',
         aria_scroll_left: '왼쪽으로 스크롤',
         name: '한국어',

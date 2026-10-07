@@ -125,6 +125,12 @@ for it in items:
     if tr:
         it['translations'] = {k: tr[k] for k in ('zh', 'ja', 'ko') if tr.get(k)}
 
+# ---- What visitors really look at moves products up (anonymous counts, see interest.py) ----
+from interest import apply_interest, load_interest
+_interest, _interest_total = load_interest()
+_moved = apply_interest(items, _interest, _interest_total)
+print(f"Visitor interest: {len(_interest)} products counted (weighted total {_interest_total:.0f}), {_moved} specials moved up")
+
 # ---- "熱門暢銷" badge: only the top ~10% per category, max 2 per brand, so the badge stays meaningful ----
 import math, re as _re
 HOUSE_BRANDS = {'coles', 'woolworths', 'macro', 'essentials'}

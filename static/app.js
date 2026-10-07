@@ -915,6 +915,7 @@ function toggleFavoriteProduct(item, btn) {
         const tr = getProductTranslation(item, 'zh');
         list.unshift({ type: 'product', key, title: item.title, zh: tr || '', image: item.image_url || '', store: item.store, added: Date.now() });
         showToast(t('fav_added'), 'fa-heart');
+        trackInterest(item, 'f');
     }
     saveFavorites(list);
     document.querySelectorAll(`.p-fav[data-fav-key="${CSS.escape(key)}"]`).forEach(b => setFavButton(b, !exists));
@@ -2704,6 +2705,7 @@ function getOfficialStoreUrl(item) {
 }
 
 function openProductModal(item) {
+    if (item && item !== currentModalItem) trackInterest(item, 'v');
     currentModalItem = item;
     setTimeout(updateModalFavButton, 0);
     const modal = document.getElementById('productModal');
@@ -3460,6 +3462,7 @@ async function loadShoppingList() {
 }
 
 async function addToShoppingList(item) {
+    trackInterest(item, 'a');
     const price = (typeof item.price === 'number') ? item.price : (parseFloat(item.price) || 0);
     let save = (typeof item.save_amount === 'number') ? item.save_amount : (parseFloat(item.save_amount) || 0);
     let was = (typeof item.was_price === 'number') ? item.was_price : (parseFloat(item.was_price) || 0);
@@ -3771,6 +3774,34 @@ function recordVisit() {
         fetch('/api/hit', {
             method: 'POST', keepalive: true, headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ vid, device: window.innerWidth < 768 ? 'mobile' : 'desktop', lang: currentLang, region: currentRegion })
+        }).catch(() => {});
+    } catch (e) {}
+}
+
+// Anonymous product interest (counts only): which specials people open, add to a list or save.
+// It teaches the default order what people really look at (see functions/api/track.js).
+// Nothing about the visitor is sent; each product and action counts once a day per browser;
+// "Do Not Track" is respected.
+function trackInterest(item, ev) {
+    try {
+        if (!item || !item.title || !['v', 'a', 'f'].includes(ev)) return;
+        if (navigator.doNotTrack === '1' || window.doNotTrack === '1') return;
+        if (!/pages\.dev$|^localhost$|^127\.0\.0\.1$/.test(location.hostname)) return;
+        const k = String(item.title).trim().replace(/\s+/g, ' ').toLowerCase().slice(0, 160);
+        const day = new Date(Date.now() + 10 * 3600 * 1000).toISOString().slice(0, 10);
+        let h = 2166136261;                                     // short fingerprint of "action|product"
+        for (const ch of ev + '|' + k) { h ^= ch.codePointAt(0); h = Math.imul(h, 16777619) >>> 0; }
+        const tag = h.toString(36);
+        let seen = {};
+        try { seen = JSON.parse(safeStore.getItem('ti') || '{}') || {}; } catch (e) { seen = {}; }
+        if (seen.d !== day || !Array.isArray(seen.s)) seen = { d: day, s: [] };
+        if (seen.s.includes(tag)) return;
+        seen.s.push(tag);
+        if (seen.s.length > 400) seen.s = seen.s.slice(-400);
+        safeStore.setItem('ti', JSON.stringify(seen));
+        fetch('/api/track', {
+            method: 'POST', keepalive: true, headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ k, e: ev })
         }).catch(() => {});
     } catch (e) {}
 }
