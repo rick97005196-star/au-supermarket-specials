@@ -289,6 +289,7 @@ def scrape_woolies_online_half_price(max_pages: int = 100) -> List[Dict[str, Any
     from scrapers.regions import ItemList
     products = ItemList()
     seen_names = set()
+    raw_seen = set()
     url = 'https://www.woolworths.com.au/apis/ui/Search/products'
     page = 1
     excluded_online_count = 0
@@ -352,6 +353,17 @@ def scrape_woolies_online_half_price(max_pages: int = 100) -> List[Dict[str, Any
                 print(f"Woolies reached end of Half Price specials at page {page - 1}.")
                 products.complete = True
                 break
+            # The list API keeps answering after the last page (it repeats products), so the end is
+            # where a page brings no product we have not seen yet, or the total count is reached.
+            codes = {str(pr.get('Stockcode') or pr.get('Name') or '') for b0 in bundles for pr in (b0.get('Products') or [])}
+            new_codes = codes - raw_seen
+            raw_seen.update(codes)
+            if codes and not new_codes:
+                print(f"Woolies reached end of Half Price specials at page {page - 1} (page {page} repeats earlier products).")
+                products.complete = True
+                break
+            total = data.get('TotalRecordCount') or 0
+            last_page = bool(total) and page * 36 >= int(total)
                 
             page_added = 0
             for b in bundles:
@@ -436,6 +448,10 @@ def scrape_woolies_online_half_price(max_pages: int = 100) -> List[Dict[str, Any
             
             if page % 5 == 0 or page_added == 0:
                 print(f"Woolies Half Price page {page}: added {page_added} items (Total: {len(products)})")
+            if last_page:
+                print(f"Woolies reached the last Half Price page ({page}, {total} products listed).")
+                products.complete = True
+                break
             page += 1
         except Exception as e:
             print(f"Error fetching Woolies online half price page {page}: {e}")
