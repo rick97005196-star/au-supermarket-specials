@@ -47,6 +47,37 @@ jobs:
           KEY: ${{ secrets.SCHEDULER_GITHUB_TOKEN }}
         run: printf '%s' "$KEY" | npx -y wrangler@4 secret put GH_DISPATCH_TOKEN
 
+      - name: Check the timer's schedule on Cloudflare
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: |
+          api() { curl -sS -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" "https://api.cloudflare.com/client/v4/$1"; }
+          acct=$(api accounts | jq -r '.result[0].id // empty')
+          if [ -z "$acct" ]; then echo "::notice::無法讀取 Cloudflare 帳號，略過定時規則檢查"; exit 0; fi
+          crons=$(api "accounts/$acct/workers/scripts/au-specials-timer/schedules" | jq -r '[.result.schedules[]?.cron] | join(" ; ")')
+          if [ "$crons" = "1,17,47 * * * *" ]; then
+            echo "::notice::Cloudflare 上的定時規則正確：$crons（UTC）"
+          else
+            echo "::error::Cloudflare 上的定時規則不對：「$crons」"; exit 1
+          fi
+
+      - name: Check the GitHub key can start an update
+        if: env.HAS_KEY == 'true'
+        env:
+          KEY: ${{ secrets.SCHEDULER_GITHUB_TOKEN }}
+        run: |
+          code=$(curl -sS -o /tmp/answer.txt -w '%{http_code}' -X POST \
+            -H "Authorization: Bearer $KEY" -H "Accept: application/vnd.github+json" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            "https://api.github.com/repos/${{ github.repository }}/actions/workflows/auto_update.yml/dispatches" \
+            -d '{"ref":"main","inputs":{"source":"key-check"}}')
+          if [ "$code" = 204 ]; then
+            echo "::notice::金鑰正常：用定時器的金鑰成功啟動了一次測試更新"
+          else
+            echo "::error::定時器的金鑰無法啟動更新（HTTP $code）：$(head -c 300 /tmp/answer.txt)。請確認權限是 Actions: Read and write，且只選了 au-supermarket-specials"
+            exit 1
+          fi
+
       - name: No GitHub key yet
         if: env.HAS_KEY != 'true'
         run: echo "::notice::定時器已部署，但還沒有 GitHub 金鑰（SCHEDULER_GITHUB_TOKEN），所以暫時不會啟動任何更新"

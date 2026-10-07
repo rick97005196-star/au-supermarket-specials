@@ -23,12 +23,12 @@ on:
   workflow_dispatch:
     inputs:
       source:
-        description: '由誰啟動（cloudflare = 定時器；手動執行請保持 manual）'
+        description: '由誰啟動（cloudflare = 定時器；key-check = 部署定時器時的金鑰測試；手動執行請保持 manual）'
         required: false
         default: 'manual'
         type: string
 
-run-name: ${{ github.event_name == 'schedule' && '定時更新（GitHub 備援排程）' || (inputs.source == 'cloudflare' && '定時更新（Cloudflare 定時器）' || '手動更新') }}
+run-name: ${{ github.event_name == 'schedule' && '定時更新（GitHub 備援排程）' || (inputs.source == 'cloudflare' && '定時更新（Cloudflare 定時器）' || (inputs.source == 'key-check' && '金鑰測試（部署定時器時自動檢查）' || '手動更新')) }}
 
 concurrency:
   group: weekly-specials-update
