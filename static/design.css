@@ -1236,3 +1236,11 @@ html:root .mb-half, html:root .p-aldi-tag, html:root .updated-chip {
 }
 /* the category picture: a small box, and the ring on the selected one follows it */
 html:root .chip-icon, html:root .chip-icon.chip-svg, html:root .chip.is-active .chip-icon.chip-svg { border-radius: 7px; }
+
+/* Stats row on narrow phones: each number keeps the width of its label ("Woolworths" no longer runs into the Coles dot) */
+@media (max-width: 767px) {
+    html:root #statsRow .stat { min-width: max-content; }
+}
+@media (max-width: 400px) {
+    html:root #statsRow { column-gap: 16px; }
+}
