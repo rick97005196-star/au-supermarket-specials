@@ -192,42 +192,67 @@ const CATEGORY_STYLES = {
         emoji: '🐾',
         iconBg: 'bg-lime-50 dark:bg-lime-950/80 border-lime-200/80 dark:border-lime-800/80 text-lime-800 dark:text-lime-300'
     },
-    // Shortcuts for things people buy all the time (they search instead of filtering one department)
-    'sub_icecream': { emoji: '🍦' },
-    'sub_chocolate': { emoji: '🍫' },
-    'sub_chips': { emoji: '🥔' },
-    'sub_coffee': { emoji: '☕' },
-    'sub_noodles': { emoji: '🍜' },
-    'sub_quickmeals': { emoji: '🍛' },
-    'sub_soda': { emoji: '🫧' },
-    'sub_laundry': { emoji: '🧼' },
-    'sub_vitamins': { emoji: '💊' }
+    // Tags (one per product, see category-rules.js). The emoji only shows if a drawn icon is missing.
+    'sub_icecream': { emoji: '🍦' }, 'sub_chocolate': { emoji: '🍫' }, 'sub_chips': { emoji: '🥔' },
+    'sub_coffee': { emoji: '☕' }, 'sub_noodles': { emoji: '🍜' }, 'sub_quickmeals': { emoji: '🍛' },
+    'sub_soda': { emoji: '🫧' }, 'sub_laundry': { emoji: '🧼' }, 'sub_vitamins': { emoji: '💊' },
+    'sub_pasta': { emoji: '🍝' }, 'sub_frozen': { emoji: '🧊' }, 'sub_biscuits': { emoji: '🍪' },
+    'sub_lollies': { emoji: '🍬' }, 'sub_snacks': { emoji: '🥜' }, 'sub_tea': { emoji: '🍵' },
+    'sub_energy': { emoji: '⚡' }, 'sub_drinks': { emoji: '🧃' }, 'sub_milk': { emoji: '🥛' },
+    'sub_dairy': { emoji: '🧀' }, 'sub_rice': { emoji: '🍚' }, 'sub_pantry': { emoji: '🧂' },
+    'sub_canned': { emoji: '🥫' }, 'sub_breakfast': { emoji: '🥣' }, 'sub_cleaning': { emoji: '🧽' },
+    'sub_paper': { emoji: '🧻' }, 'sub_mobile': { emoji: '📱' }, 'sub_home': { emoji: '🏠' },
+    'sub_hair': { emoji: '💇' }, 'sub_body': { emoji: '🛁' }, 'sub_oral': { emoji: '🪥' },
+    'sub_skincare': { emoji: '🧴' }, 'sub_makeup': { emoji: '💄' }, 'sub_feminine': { emoji: '🌸' },
+    'sub_baby': { emoji: '🍼' }
 };
-// Shortcut chips: strict rules (department + what the product is + what it is NOT), checked by hand
-// against every product, so e.g. "維他命" never shows a body lotion "with Vitamin C".
-// Shortcut categories (冰淇淋, 巧克力, 洋芋片…) live in category-rules.js (shared with the automatic tests)
+// Every product has exactly ONE tag (category-rules.js: tagOf), so nothing is listed twice.
 // What the product card shows as its category: "汽水" for a cola rather than "飲料"
 function displayCategoryKey(it) {
-    return subCategoryOf(it) || it.category;
+    return tagOf(it);
 }
+// cat = 'all' | a browse group ('g_drinks') | a tag ('sub_soda', 'meat'…)
 function itemInCategory(it, cat) {
     if (!cat || cat === 'all') return true;
-    if (SUB_CATEGORY_RULES[cat]) return subCategoryOf(it) === cat;
-    return it.category === cat && !subCategoryOf(it);
+    if (cat.startsWith('g_')) return TAG_GROUP_OF[tagOf(it)] === cat;
+    if (TAG_GROUP_OF[cat]) return tagOf(it) === cat;
+    return it.category === cat;          // a plain department key (old links)
+}
+// The group whose tags are shown on the second row ('' = all tags)
+function activeGroupKey() {
+    if (!currentCategory || currentCategory === 'all') return '';
+    if (currentCategory.startsWith('g_')) return currentCategory;
+    return TAG_GROUP_OF[currentCategory] || '';
 }
 
 function getCleanCategoryLabel(catKey) {
     const raw = getCategoryName(catKey);
-    return raw.replace(/^[\p{Emoji}\p{Extended_Pictographic}\u200d\uFE0F\s]+/u, '').trim() || raw;
+    return raw.replace(/^[\p{Emoji}\p{Extended_Pictographic}‍️\s]+/u, '').trim() || raw;
 }
 
-// Render Categories Bar (2 Rows: Row 1 Fresh & Perishables, Row 2 Pantry, Drinks, Liquor, Home & Pet)
+// Category menu, two levels:
+//   row 1 = browse groups (全部 / 快速料理 / 零食甜點 / 飲料 / 生鮮冷藏 / 料理食材 / 居家日用 / 個人保養 / 寵物)
+//   row 2 = the tags of the chosen group (every tag when 全部 is chosen)
 function renderCategoryBar() {
     const bar = document.getElementById('categoryBar');
+    const groupsEl = document.getElementById('categoryGroups');
     if (!bar) return;
+    const group = activeGroupKey();
 
-    const activeClasses = "chip is-active";
-    const inactiveClasses = "chip";
+    if (groupsEl) {
+        groupsEl.innerHTML = '';
+        ['all', ...TAG_GROUPS.map(g => g.key)].forEach(k => {
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            const isActive = k === 'all' ? !group : k === group;
+            btn.className = 'cat-group' + (isActive ? ' is-active' : '');
+            btn.dataset.group = k;
+            btn.textContent = getCleanCategoryLabel(k);
+            btn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+            btn.onclick = () => selectCategory(k);
+            groupsEl.appendChild(btn);
+        });
+    }
 
     const renderBtnContent = (btn, catKey, isActive) => {
         const style = CATEGORY_STYLES[catKey] || { emoji: '🏷️' };
@@ -239,44 +264,35 @@ function renderCategoryBar() {
         btn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
     };
 
-    const existingBtns = bar.querySelectorAll('button');
-    if (existingBtns.length === CATEGORY_KEYS.length + Object.keys(SUB_CATEGORY_TERMS).length) {
-        existingBtns.forEach(btn => {
-            const catKey = btn.dataset.cat;
-            const isActive = currentCategory === catKey;
-            btn.className = isActive ? activeClasses : inactiveClasses;
-            renderBtnContent(btn, catKey, isActive);
-        });
-        return;
+    // Every tag: two rows that scroll sideways. The grid fills column by column, so interleave the
+    // two halves (groups in order: quick meals and snacks first). One group: its few tags on one row.
+    let keys;
+    if (group) {
+        keys = (TAG_GROUPS.find(g => g.key === group) || { tags: [] }).tags;
+    } else {
+        const tags = TAG_GROUPS.flatMap(g => g.tags);
+        const half = Math.ceil(tags.length / 2);
+        keys = [];
+        for (let i = 0; i < half; i++) {
+            keys.push(tags[i]);
+            if (tags[half + i]) keys.push(tags[half + i]);
+        }
     }
-
+    bar.classList.toggle('is-single', !!group);
+    bar.hidden = !!group && keys.length <= 1;     // 寵物 has one tag: the group row says it all
     bar.innerHTML = '';
-    
-    // Arrange into 2 rows: Row 1: All -> 蔬菜水果 -> 肉品 -> 海鮮水產 -> 蛋奶製品 -> 麵包烘焙 -> 冷凍食品 (7 items)
-    // Row 2: 糧油調味 -> 休閒零食 -> 飲料 -> 酒類 -> 美妝保健 -> 日用清潔 -> 寵物用品 (7 items)
-    // Most-used first (left), so the first screen shows them without swiping
-    const row1Keys = ['all', 'meat', 'produce', 'sub_icecream', 'sub_chocolate', 'sub_chips', 'sub_coffee',
-                      'dairy_eggs', 'bakery', 'frozen', 'seafood'];
-    const row2Keys = ['snacks', 'drinks', 'sub_noodles', 'sub_quickmeals', 'sub_soda', 'pantry', 'sub_laundry', 'sub_vitamins',
-                      'health_vitamins', 'household', 'liquor', 'pet'];
-    
-    // Grid fills column by column, so interleave: upper row = row1Keys, lower row = row2Keys
-    const orderedKeys = [];
-    for (let i = 0; i < Math.max(row1Keys.length, row2Keys.length); i++) {
-        if (row1Keys[i]) orderedKeys.push(row1Keys[i]);
-        if (row2Keys[i]) orderedKeys.push(row2Keys[i]);
-    }
-
-    orderedKeys.forEach(catKey => {
+    keys.forEach(catKey => {
         const btn = document.createElement('button');
+        btn.type = 'button';
         const isActive = currentCategory === catKey;
-
         btn.dataset.cat = catKey;
-        btn.className = isActive ? activeClasses : inactiveClasses;
+        btn.className = isActive ? 'chip is-active' : 'chip';
         renderBtnContent(btn, catKey, isActive);
-        btn.onclick = () => selectCategory(catKey);
+        // tapping the chosen tag again goes back to its whole group
+        btn.onclick = () => selectCategory(isActive ? (TAG_GROUP_OF[catKey] || 'all') : catKey);
         bar.appendChild(btn);
     });
+    if (typeof updateCategoryArrows === 'function') setTimeout(updateCategoryArrows, 0);
 }
 
 function selectCategory(catKey) {
@@ -285,8 +301,12 @@ function selectCategory(catKey) {
 
     // Smooth scroll the categoryBar HORIZONTALLY only - NEVER scroll the page window!
     const bar = document.getElementById('categoryBar');
+    const groupsEl = document.getElementById('categoryGroups');
+    const activeGroup = groupsEl && groupsEl.querySelector('.cat-group.is-active');
+    if (activeGroup) groupsEl.scrollTo({ left: activeGroup.offsetLeft - (groupsEl.clientWidth / 2) + (activeGroup.clientWidth / 2), behavior: 'smooth' });
     if (bar) {
         const activeBtn = bar.querySelector(`[data-cat="${catKey}"]`);
+        if (!activeBtn) bar.scrollTo({ left: 0 });
         if (activeBtn) {
             const scrollLeft = activeBtn.offsetLeft - (bar.clientWidth / 2) + (activeBtn.clientWidth / 2);
             bar.scrollTo({ left: scrollLeft, behavior: 'smooth' });
@@ -475,9 +495,14 @@ function getSearchHaystack(item) {
     item._hay = normalizeSearchText([item.title, tr && tr.zh, tr && tr.ja, tr && tr.ko].filter(Boolean).join(' | '));
     const cats = [];
     if (item.category && typeof I18N !== 'undefined') {
+        // department + tag + group names, so typing 微波 / 零食 / snacks finds those products
+        const tag = typeof tagOf === 'function' ? tagOf(item) : '';
+        const keys = [item.category, tag, tag && TAG_GROUP_OF[tag]].filter(Boolean);
         ['zh', 'en', 'ja', 'ko'].forEach(l => {
-            const c = I18N[l] && I18N[l].categories && I18N[l].categories[item.category];
-            if (c) cats.push(normalizeSearchText(c.replace(/^[^\p{L}]+/u, '')));
+            keys.forEach(k => {
+                const c = I18N[l] && I18N[l].categories && I18N[l].categories[k];
+                if (c) cats.push(normalizeSearchText(c.replace(/^[^\p{L}]+/u, '')));
+            });
         });
     }
     item._cat = cats.join(' | ');

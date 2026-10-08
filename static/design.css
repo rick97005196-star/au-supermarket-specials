@@ -1255,3 +1255,27 @@ html:root .chip-icon, html:root .chip-icon.chip-svg, html:root .chip.is-active .
 .mb-wrap .cat-arrow i { width: 34px; height: 34px; font-size: 12px; }
 .mb-wrap .cat-arrow-right:not(.is-hidden) i { animation: none; }
 @media (hover: none) { .mb-wrap .cat-arrow { display: none; } }
+
+/* ---------- Category menu, two levels: groups (text tabs) above, their tags (picture chips) below ---------- */
+.cat-groups {
+    display: flex; gap: 4px; overflow-x: auto; padding: 8px 0 0; margin-bottom: -2px;
+    scroll-padding: 16px; overscroll-behavior-x: contain;
+}
+.cat-group {
+    flex: 0 0 auto; position: relative; height: 34px; padding: 0 12px; border: 0; background: transparent;
+    font-size: 14.5px; font-weight: 500; color: var(--ink-3); white-space: nowrap; cursor: pointer;
+    border-radius: 8px; letter-spacing: -0.01em; transition: color .15s ease, background-color .15s ease;
+}
+.cat-group:hover { color: var(--ink); background: var(--fill, rgba(0,0,0,.04)); }
+.cat-group.is-active { color: var(--ink); font-weight: 650; }
+.cat-group.is-active::after {
+    content: ''; position: absolute; left: 12px; right: 12px; bottom: 1px; height: 2.5px;
+    border-radius: 2px; background: var(--accent);
+}
+.cat-group:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+/* one group chosen: its few tags fit on a single row */
+.cat-grid.is-single { grid-template-rows: auto; }
+.cat-grid[hidden] { display: none; }
+@media (max-width: 767px) {
+    .cat-group { height: 36px; font-size: 15px; padding: 0 11px; }
+}

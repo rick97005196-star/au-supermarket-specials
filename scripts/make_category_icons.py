@@ -68,12 +68,72 @@ I['liquor'] = ('#fff3cf', f'''<path d="M13 17h18v19a4 4 0 0 1-4 4h-10a4 4 0 0 1-
 I['pet'] = ('#f1e8dd', f'''<path d="M11 18l3-9 7 6h6l7-6 3 9c2 4 2 9-1 13-3 5-8 7-13 7s-10-2-13-7c-3-4-3-9 1-13z" {st('#ffb36b')}/>
 <path d="M15 12l1 5M33 12l-1 5" {line(1.4)}/>{face(24,26,8)}<path d="M8 27h5M8 31h5M35 27h5M35 31h5" {line(1.2)}/>''')
 
+# ---- tags added for the one-tag-per-product menu (same sticker style) ----
+# same picture as a department icon where the meaning is the same
+I['sub_frozen'] = I['frozen']
+I['sub_milk'] = I['dairy_eggs']
+I['sub_biscuits'] = I['snacks']
+I['sub_rice'] = I['pantry']
+I['sub_body'] = ('#e8f1ff', f'''<rect x="9" y="17" width="30" height="20" rx="8" {st('#9cc8ff')}/><path d="M14 22q4-3 8-2" fill="none" stroke="#e4f0ff" stroke-width="2.2" stroke-linecap="round"/>
+<circle cx="35" cy="12" r="3.4" {st('#ffffff')}/><circle cx="29" cy="9" r="2.2" {st('#ffffff')}/><circle cx="39.5" cy="18" r="1.8" {st('#ffffff')}/>{face(24,28)}''')
+I['sub_home'] = ('#f1ece4', f'''<path d="M30 15v-5h4v8" {st('#e58b5a')}/><path d="M13 21v17h22V21L24 12z" {st('#ffcf7a')}/>
+<path d="M21 38v-7a3 3 0 0 1 6 0v7" {st('#b5794e')}/><path d="M9 24L24 11l15 13" {line(2.4)}/>{face(24,25,5,s=.85)}''')
+I['sub_pasta'] = ('#fff3d6', f'''<path d="M9 25h30a15 12 0 0 1-30 0z" {st('#ffffff')}/>
+<path d="M12 25c1-7 5-10 12-10s11 3 12 10z" fill="#ffd36b" stroke="{O}" stroke-width="{SW}" stroke-linejoin="round"/>
+<path d="M16 22c2-3 3 1 5-2s3 1 5-2 3 1 5-1" fill="none" stroke="#e8a93a" stroke-width="1.6" stroke-linecap="round"/>
+<circle cx="25" cy="17" r="3" {st('#ff6b5b')}/><path d="M35 6l-7 15M39 9l-9 13" {line(1.8)}/>{face(24,32)}''')
+I['sub_lollies'] = ('#ffe6f3', f'''<path d="M7 18l6 6-6 6zM41 18l-6 6 6 6z" {st('#ffd166')}/>
+<ellipse cx="24" cy="24" rx="12" ry="10" {st('#ff7eb6')}/><path d="M17 17l4 14M24 14l3 19" fill="none" stroke="#ffd0e6" stroke-width="2" stroke-linecap="round"/>{face(24,25)}''')
+I['sub_snacks'] = ('#f6ead9', f'''<path d="M24 9c7 0 11 6 11 14 0 9-5 16-11 16s-11-7-11-16c0-8 4-14 11-14z" {st('#d79a55')}/>
+<path d="M18 15c3-2 9-2 12 0" {line(1.4)}/><path d="M17 33c4 2 10 2 14 0" {line(1.4)}/>{face(24,24)}''')
+I['sub_tea'] = ('#e6f4dc', f'''<path d="M11 21h22v8a10 10 0 0 1-10 10h-2a10 10 0 0 1-10-10z" {st('#ffffff')}/>
+<path d="M33 23h2a4 4 0 0 1 0 8h-2" {line()}/><path d="M11 21h22v3H11z" fill="#8cc56a" stroke="{O}" stroke-width="{SW}" stroke-linejoin="round"/>
+<path d="M27 21V13" {line(1.4)}/><rect x="24" y="9" width="6" height="5" rx="1" {st('#ffd166')}/>{face(22,30)}''')
+I['sub_energy'] = ('#fff6c9', f'''<path d="M16 11h16l1 4v22l-1 4H16l-1-4V15z" {st('#3fb7a3')}/><path d="M16 11h16M15 15h18M15 37h18" {line(1.6)}/>
+<path d="M26 17l-6 9h5l-3 8 7-10h-5l3-7z" fill="#ffe14d" stroke="{O}" stroke-width="1.5" stroke-linejoin="round"/>''')
+I['sub_drinks'] = ('#fff0d6', f'''<path d="M14 15h20v25H14z" {st('#ffb04a')}/><path d="M14 15l3-4h14l3 4" {st('#ffd98e')}/>
+<path d="M28 11l2-6h4" {line()}/><circle cx="24" cy="23" r="4" {st('#ffe14d')}/>{face(24,32,5,s=.85)}''')
+I['sub_dairy'] = ('#fff5d1', f'''<path d="M8 33l26-16 6 6v14H8z" {st('#ffd35c')}/><path d="M8 33h32" {line(1.6)}/>
+<circle cx="31" cy="27" r="2" fill="#e8b23a"/><circle cx="35" cy="33" r="1.6" fill="#e8b23a"/>
+<ellipse cx="15" cy="20" rx="6" ry="7.5" {st('#ffffff')}/>{face(23,35,5,s=.8)}''')
+I['sub_pantry'] = ('#ffe8e0', f'''<path d="M19 6h10v6h-10z" {st('#2f9e6a')}/><path d="M18 12h12l2 6v18a4 4 0 0 1-4 4h-8a4 4 0 0 1-4-4V18z" {st('#ff5a4a')}/>
+<path d="M17 22h14v10H17z" fill="#fff" stroke="none"/>{face(24,27,5,s=.8)}''')
+I['sub_canned'] = ('#e9eef5', f'''<rect x="12" y="10" width="24" height="29" rx="4" {st('#d6dde8')}/>
+<path d="M12 16h24M12 33h24" {line(1.6)}/><path d="M12 18h24v13H12z" fill="#ff8a5c" stroke="none"/>{face(24,25)}''')
+I['sub_breakfast'] = ('#fff1d4', f'''<path d="M8 23h32a16 13 0 0 1-32 0z" {st('#7fb6ff')}/>
+<path d="M10 23c2-5 6-6 9-4 2-4 7-4 9 0 3-2 8-1 10 4z" fill="#ffc861" stroke="{O}" stroke-width="1.8" stroke-linejoin="round"/>
+<path d="M33 6l-4 15" {line(2)}/>{face(24,30)}''')
+I['sub_cleaning'] = ('#e3f5f3', f'''<path d="M18 18h12l2 6v14a3 3 0 0 1-3 3H19a3 3 0 0 1-3-3V24z" {st('#5cc9b9')}/>
+<path d="M18 18v-6h9l6 3v3" {st('#ffffff')}/><path d="M33 15h4" {line(1.6)}/>
+<circle cx="39" cy="11" r="1.3" fill="{O}"/><circle cx="40" cy="16" r="1.3" fill="{O}"/><circle cx="38" cy="20" r="1.1" fill="{O}"/>{face(24,30,5,s=.85)}''')
+I['sub_paper'] = ('#f1f3f7', f'''<path d="M12 14h20v22H12z" {st('#ffffff')}/><ellipse cx="32" cy="25" rx="5" ry="11" {st('#ffffff')}/>
+<ellipse cx="32" cy="25" rx="2" ry="4.5" fill="#d9dde6" stroke="{O}" stroke-width="1.5"/><path d="M12 36l-3 4h18" {line(1.8)}/>{face(21,25,5,s=.85)}''')
+I['sub_mobile'] = ('#e4ecff', f'''<rect x="14" y="7" width="20" height="34" rx="5" {st('#5b7cff')}/>
+<rect x="17" y="12" width="14" height="22" rx="2" fill="#eaf0ff" stroke="{O}" stroke-width="1.6"/>
+<path d="M21 37h6" {line(1.6)}/>{face(24,22,5,s=.85)}''')
+I['sub_hair'] = ('#f2e6ff', f'''<path d="M17 17h14v19a4 4 0 0 1-4 4h-6a4 4 0 0 1-4-4z" {st('#b48cff')}/><path d="M20 11h8v6h-8z" {st('#ffffff')}/>
+<path d="M24 11V7h6" {line()}/><path d="M33 22c3-2 6 0 5 3s3 4 1 7" fill="none" stroke="#b48cff" stroke-width="2.4" stroke-linecap="round"/>{face(24,28,5,s=.85)}''')
+I['sub_oral'] = ('#e3f4ff', f'''<path d="M14 14c3-4 8-3 10-1 2-2 7-3 10 1 3 5 0 10-1 14-1 5-2 11-5 11-2 0-2-6-4-6s-2 6-4 6c-3 0-4-6-5-11-1-4-4-9-1-14z" {st('#ffffff')}/>
+{face(24,22)}<path d="M37 30l5-5" stroke="{O}" stroke-width="4" stroke-linecap="round"/><path d="M37 30l5-5" stroke="#6ec3ff" stroke-width="1.8" stroke-linecap="round"/>''')
+I['sub_skincare'] = ('#fde9e4', f'''<path d="M11 24h26v12a5 5 0 0 1-5 5H16a5 5 0 0 1-5-5z" {st('#ffffff')}/>
+<rect x="10" y="17" width="28" height="7" rx="3" {st('#ff9f8a')}/><path d="M18 14c2-4 10-4 12 0" fill="#fff6f2" stroke="{O}" stroke-width="1.6"/>{face(24,32)}''')
+I['sub_makeup'] = ('#ffe3ea', f'''<path d="M18 23h12v17H18z" {st('#2f2f3a')}/><path d="M19 15h10v8H19z" {st('#d9b36c')}/>
+<path d="M20 15V9l8-3v9z" {st('#ff4f7b')}/><path d="M18 30h12" stroke="#d9b36c" stroke-width="1.6"/>
+<circle cx="22" cy="35" r="1.3" fill="#fff"/><circle cx="26" cy="35" r="1.3" fill="#fff"/>''')
+I['sub_feminine'] = ('#ffe9f1', f'''<circle cx="24" cy="15" r="6" {st('#ffb3cf')}/><circle cx="33" cy="22" r="6" {st('#ffb3cf')}/>
+<circle cx="30" cy="32" r="6" {st('#ffb3cf')}/><circle cx="18" cy="32" r="6" {st('#ffb3cf')}/><circle cx="15" cy="22" r="6" {st('#ffb3cf')}/>
+<circle cx="24" cy="24" r="6.5" {st('#ffe07a')}/>{face(24,23.5,4.5,s=.75)}''')
+I['sub_baby'] = ('#e6f3ff', f'''<path d="M20 10h8l1 4H19z" {st('#ff9fc0')}/><path d="M22 6h4v4h-4z" {st('#ffd0e0')}/>
+<path d="M17 14h14v22a5 5 0 0 1-5 5h-4a5 5 0 0 1-5-5z" {st('#ffffff')}/><path d="M17 24h14v12a5 5 0 0 1-5 5h-4a5 5 0 0 1-5-5z" fill="#cfe7ff" stroke="{O}" stroke-width="{SW}" stroke-linejoin="round"/>
+<path d="M17 20h4M17 28h4" {line(1.4)}/>{face(25.5,31,4.6,s=.8)}''')
+
+
 out = {}
 for k, (bg, body) in I.items():
     out[k] = f'<svg viewBox="0 0 48 48" aria-hidden="true"><rect x="1" y="1" width="46" height="46" rx="15" fill="{bg}"/>{body}</svg>'.replace('\n','')
 js = "// Hand-drawn category icons (cute sticker style). Generated: one SVG per category.\nconst CATEGORY_ICONS = " + json.dumps(out, ensure_ascii=False, indent=0) + ";\n"
 open(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'static', 'category-icons.js'),'w').write(js)
 labels = {'all':'全部特價','meat':'肉品','produce':'蔬果','sub_icecream':'冰淇淋','sub_chocolate':'巧克力','sub_chips':'洋芋片','sub_coffee':'咖啡','dairy_eggs':'乳品蛋類','bakery':'麵包甜點','frozen':'冷凍食品','seafood':'海鮮','snacks':'零食餅乾','drinks':'飲料沖泡','sub_noodles':'泡麵','sub_quickmeals':'微波即食','sub_soda':'汽水','pantry':'米油調味','sub_laundry':'洗衣精','sub_vitamins':'維他命','health_vitamins':'個人清潔保養','household':'居家日用','liquor':'酒類','pet':'寵物用品'}
-html = '<html><body style="font-family:sans-serif;background:#f5f5f7;padding:20px"><div style="display:grid;grid-template-columns:repeat(6,120px);gap:16px">' + ''.join(f'<div style="text-align:center"><div style="width:96px;height:96px;margin:auto">{out[k]}</div><div style="display:flex;align-items:center;gap:6px;justify-content:center;margin-top:8px;background:#fff;border-radius:99px;padding:4px 10px 4px 4px;font-size:13px"><span style="width:26px;height:26px;display:inline-block">{out[k]}</span>{labels[k]}</div></div>' for k in out) + '</div></body></html>'
+html = '<html><body style="font-family:sans-serif;background:#f5f5f7;padding:20px"><div style="display:grid;grid-template-columns:repeat(6,120px);gap:16px">' + ''.join(f'<div style="text-align:center"><div style="width:96px;height:96px;margin:auto">{out[k]}</div><div style="display:flex;align-items:center;gap:6px;justify-content:center;margin-top:8px;background:#fff;border-radius:99px;padding:4px 10px 4px 4px;font-size:13px"><span style="width:26px;height:26px;display:inline-block">{out[k]}</span>{labels.get(k, k)}</div></div>' for k in out) + '</div></body></html>'
 open(os.devnull,'w').write(html)
 print(len(out))
