@@ -1,5 +1,5 @@
 {
-"cursor": 12,
+"cursor": 17,
 "items": {
 "1000301": {
 "category": "Biscuits & Cookies Rice",
@@ -1303,6 +1303,7 @@
 "product_url": "https://www.coles.com.au/product/centrum-for-men-multivitamin-60-pack-1281685",
 "save_amount": 11.25,
 "store": "Coles",
+"store_category": "Vitamins Multi Vitamins",
 "title": "Centrum For Men Multivitamin 60 Pack",
 "unit_price": "$18.75/ 100ea",
 "was_price": 22.5
@@ -2809,6 +2810,7 @@
 "product_url": "https://www.coles.com.au/product/cadbury-dairy-milk-biscoff-chocolate-block-170g-1579519",
 "save_amount": 4.0,
 "store": "Coles",
+"store_category": "Confectionery Block Chocolate",
 "title": "Cadbury Dairy Milk Biscoff Chocolate Block 170g",
 "unit_price": "$2.35/ 100g",
 "was_price": 8.0
@@ -2823,6 +2825,7 @@
 "product_url": "https://www.coles.com.au/product/mars-salted-caramel-chocolate-bar-47g-1579632",
 "save_amount": 2.0,
 "store": "Coles",
+"store_category": "Bars Gum Pocket Pack Bars",
 "title": "Mars Salted Caramel Chocolate Bar 47g",
 "unit_price": "$2.13/ 100g",
 "was_price": 3.0
@@ -2837,6 +2840,7 @@
 "product_url": "https://www.coles.com.au/product/ferrero-collection-rocher-raffaello-rondnoir-chocolate-gift-box-24-pack-269g-1581871",
 "save_amount": 17.5,
 "store": "Coles",
+"store_category": "Boxed Chocolates Premium",
 "title": "Ferrero Collection Rocher Raffaello Rondnoir Chocolate Gift Box 24 Pack 269g",
 "unit_price": "$6.51/ 100g",
 "was_price": 35.0
@@ -2879,6 +2883,7 @@
 "product_url": "https://www.coles.com.au/product/fluffy-fabric-softener-concentrate-lotus-sea-minerals-900ml-1586183",
 "save_amount": 4.75,
 "store": "Coles",
+"store_category": "Laundry Accessories Fabric Conditioners",
 "title": "Fluffy Fabric Softener Concentrate Lotus & Sea Minerals 900mL",
 "unit_price": "$5.28/ 1L",
 "was_price": 9.5
@@ -2936,6 +2941,7 @@
 "product_url": "https://www.coles.com.au/product/nature-s-own-concentrated-fish-oil-omega-triple-180-pack-1590067",
 "save_amount": 44.75,
 "store": "Coles",
+"store_category": "Vitamins General Health",
 "title": "Nature's Own Concentrated Fish Oil Omega Triple 180 Pack",
 "unit_price": "$24.86/ 100ea",
 "was_price": 89.5
@@ -3090,6 +3096,7 @@
 "product_url": "https://www.coles.com.au/product/hismile-toothpaste-watermelon-100g-1608413",
 "save_amount": 6.5,
 "store": "Coles",
+"store_category": "Dental Health Toothpaste",
 "title": "Hismile Toothpaste Watermelon 100g",
 "unit_price": "$6.50/ 100g",
 "was_price": 13.0
@@ -3104,6 +3111,7 @@
 "product_url": "https://www.coles.com.au/product/hismile-toothpaste-grape-bubblegum-100g-1608424",
 "save_amount": 6.5,
 "store": "Coles",
+"store_category": "Dental Health Toothpaste",
 "title": "Hismile Toothpaste Grape Bubblegum 100g",
 "unit_price": "$6.50/ 100g",
 "was_price": 13.0
@@ -3118,6 +3126,7 @@
 "product_url": "https://www.coles.com.au/product/hismile-toothpaste-strawberry-100g-1608435",
 "save_amount": 6.5,
 "store": "Coles",
+"store_category": "Dental Health Toothpaste",
 "title": "Hismile Toothpaste Strawberry 100g",
 "unit_price": "$6.50/ 100g",
 "was_price": 13.0
@@ -3132,6 +3141,7 @@
 "product_url": "https://www.coles.com.au/product/gillette-venus-extra-smooth-disposables-razor-2ct-1-each-1608526",
 "save_amount": 6.25,
 "store": "Coles",
+"store_category": "Womens Deos & Groom Hair Removal",
 "title": "Gillette Venus Extra Smooth Disposables Razor 2ct 1 Each",
 "unit_price": "$6.25/ 1ea",
 "was_price": 12.5
@@ -3146,6 +3156,7 @@
 "product_url": "https://www.coles.com.au/product/oral-b-vitality-pro-d-c-e-toothbrush-case-lilac-1-pack-1610030",
 "save_amount": 45.0,
 "store": "Coles",
+"store_category": "Dental Health Power",
 "title": "Oral B Vitality Pro D/c E-toothbrush + Case Lilac 1 Pack",
 "unit_price": "$45.00/ 1ea",
 "was_price": 90.0
@@ -3160,6 +3171,7 @@
 "product_url": "https://www.coles.com.au/product/oral-b-gum-enamel-daily-protection-clean-toothpaste-200g-1610947",
 "save_amount": 7.5,
 "store": "Coles",
+"store_category": "Dental Health Toothpaste",
 "title": "Oral B Gum & Enamel Daily Protection Clean Toothpaste 200g",
 "unit_price": "$3.75/ 100g",
 "was_price": 15.0
@@ -3189,6 +3201,7 @@
 "product_url": "https://www.coles.com.au/product/listerine-total-care-gum-protect-mouthwash-500ml-1611021",
 "save_amount": 5.0,
 "store": "Coles",
+"store_category": "Dental Health Mouthwash",
 "title": "Listerine Total Care Gum Protect Mouthwash 500mL",
 "unit_price": "$1.00/ 100mL",
 "was_price": 10.0
@@ -3385,6 +3398,7 @@
 "product_url": "https://www.coles.com.au/product/morning-fresh-easy-squeeze-lemon-dishwashing-liquid-600ml-1633658",
 "save_amount": 5.0,
 "store": "Coles",
+"store_category": "Dishwashing Hand",
 "title": "Morning Fresh Easy Squeeze Lemon Dishwashing Liquid 600mL",
 "unit_price": "$0.83/ 100mL",
 "was_price": 10.0
@@ -3399,6 +3413,7 @@
 "product_url": "https://www.coles.com.au/product/morning-fresh-easy-squeeze-raspberry-crisp-apple-dishwashing-liquid-600ml-1633669",
 "save_amount": 5.0,
 "store": "Coles",
+"store_category": "Dishwashing Hand",
 "title": "Morning Fresh Easy Squeeze Raspberry Crisp Apple Dishwashing Liquid 600mL",
 "unit_price": "$0.83/ 100mL",
 "was_price": 10.0
@@ -3567,6 +3582,7 @@
 "product_url": "https://www.coles.com.au/product/maybelline-lash-sensational-body-mascara-9ml-1699929",
 "save_amount": 14.5,
 "store": "Coles",
+"store_category": "Makeup Eye",
 "title": "Maybelline Lash Sensational Body Mascara 9mL",
 "unit_price": "$16.11/ 10mL",
 "was_price": 29.0
@@ -3679,6 +3695,7 @@
 "product_url": "https://www.coles.com.au/product/maybelline-lifter-matte-open-latte-03-lipstick-3-4g-1700052",
 "save_amount": 11.5,
 "store": "Coles",
+"store_category": "Makeup Lip",
 "title": "Maybelline Lifter Matte Open Latte 03 Lipstick 3.4g",
 "unit_price": "$33.82/ 10g",
 "was_price": 23.0
@@ -3693,6 +3710,7 @@
 "product_url": "https://www.coles.com.au/product/maybelline-lifter-lipstick-satin-maybe-its-soft-106-lipstick-3-4g-1700063",
 "save_amount": 11.5,
 "store": "Coles",
+"store_category": "Makeup Lip",
 "title": "Maybelline Lifter Lipstick Satin Maybe Its Soft 106 Lipstick 3.4g",
 "unit_price": "$33.82/ 10g",
 "was_price": 23.0
@@ -3721,6 +3739,7 @@
 "product_url": "https://www.coles.com.au/product/l-oreal-paris-extensionist-mascara-washable-9-9ml-1700788",
 "save_amount": 16.5,
 "store": "Coles",
+"store_category": "Makeup Eye",
 "title": "L'Oreal Paris Extensionist Mascara Washable 9.9mL",
 "unit_price": "$16.67/ 10mL",
 "was_price": 33.0
@@ -3735,6 +3754,7 @@
 "product_url": "https://www.coles.com.au/product/maybelline-lifter-matte-wild-card-04-lipstick-3-4g-1700799",
 "save_amount": 11.5,
 "store": "Coles",
+"store_category": "Makeup Lip",
 "title": "Maybelline Lifter Matte Wild Card 04 Lipstick 3.4g",
 "unit_price": "$33.82/ 10g",
 "was_price": 23.0
@@ -3749,6 +3769,7 @@
 "product_url": "https://www.coles.com.au/product/maybelline-face-lifter-368-foundation-30ml-1700802",
 "save_amount": 17.5,
 "store": "Coles",
+"store_category": "Makeup Face",
 "title": "Maybelline Face Lifter 368 Foundation 30mL",
 "unit_price": "$5.83/ 10mL",
 "was_price": 35.0
@@ -3763,6 +3784,7 @@
 "product_url": "https://www.coles.com.au/product/maybelline-lifter-satin-maybe-intense-104-lipstick-3-4g-1700813",
 "save_amount": 11.5,
 "store": "Coles",
+"store_category": "Makeup Lip",
 "title": "Maybelline Lifter Satin Maybe Intense 104 Lipstick 3.4g",
 "unit_price": "$33.82/ 10g",
 "was_price": 23.0
@@ -4113,6 +4135,7 @@
 "product_url": "https://www.coles.com.au/product/nivea-men-hydrocare-moisturiser-75ml-1737609",
 "save_amount": 7.5,
 "store": "Coles",
+"store_category": "Mens Deos & Grooming Skincare & Aftershav",
 "title": "Nivea Men Hydrocare Moisturiser 75mL",
 "unit_price": "$10.00/ 100mL",
 "was_price": 15.0
@@ -4379,6 +4402,7 @@
 "product_url": "https://www.coles.com.au/product/omo-expert-wonder-wash-laundry-liquid-sensitive-1-18l-1788756",
 "save_amount": 10.5,
 "store": "Coles",
+"store_category": "Laundry Liquid",
 "title": "OMO Expert Wonder Wash Laundry Liquid Sensitive 1.18L",
 "unit_price": "$8.90/ 1L",
 "was_price": 21.0
@@ -4407,6 +4431,7 @@
 "product_url": "https://www.coles.com.au/product/perfect-ted-matcha-powder-original-30g-1789985",
 "save_amount": 9.75,
 "store": "Coles",
+"store_category": "Tea Green",
 "title": "Perfect Ted Matcha Powder Original 30g",
 "unit_price": "$32.50/ 100g",
 "was_price": 19.5
@@ -4421,6 +4446,7 @@
 "product_url": "https://www.coles.com.au/product/perfect-ted-matcha-powder-vanilla-75g-1789996",
 "save_amount": 9.75,
 "store": "Coles",
+"store_category": "Tea Green",
 "title": "Perfect Ted Matcha Powder Vanilla 75g",
 "unit_price": "$13.00/ 100g",
 "was_price": 19.5
@@ -4435,6 +4461,7 @@
 "product_url": "https://www.coles.com.au/product/perfect-ted-matcha-powder-strawberry-75g-1790000",
 "save_amount": 9.75,
 "store": "Coles",
+"store_category": "Tea Green",
 "title": "Perfect Ted Matcha Powder Strawberry 75g",
 "unit_price": "$13.00/ 100g",
 "was_price": 19.5
@@ -4449,6 +4476,7 @@
 "product_url": "https://www.coles.com.au/product/queen-victoria-pure-camomile-tea-80-pack-1794205",
 "save_amount": 6.0,
 "store": "Coles",
+"store_category": "Tea Infusion",
 "title": "Queen Victoria Pure Camomile Tea 80 Pack",
 "unit_price": "$0.08/ 1ea",
 "was_price": 12.0
@@ -4463,6 +4491,7 @@
 "product_url": "https://www.coles.com.au/product/twinings-matcha-green-tea-80-pack-1800294",
 "save_amount": 6.75,
 "store": "Coles",
+"store_category": "Tea Green",
 "title": "Twinings Matcha Green Tea 80 Pack",
 "unit_price": "$0.08/ 1ea",
 "was_price": 13.5
@@ -4477,6 +4506,7 @@
 "product_url": "https://www.coles.com.au/product/twinings-decaf-green-tea-80-pack-1800308",
 "save_amount": 6.75,
 "store": "Coles",
+"store_category": "Tea Green",
 "title": "Twinings Decaf Green Tea 80 Pack",
 "unit_price": "$0.08/ 1ea",
 "was_price": 13.5
@@ -4491,6 +4521,7 @@
 "product_url": "https://www.coles.com.au/product/twinings-sparkling-immunity-orange-passionfruit-green-tea-4x250ml-1l-1800330",
 "save_amount": 6.75,
 "store": "Coles",
+"store_category": "Tea Other",
 "title": "Twinings Sparkling Immunity Orange Passionfruit & Green Tea 4x250ml 1L",
 "unit_price": "$6.75/ 1L",
 "was_price": 13.5
@@ -4505,6 +4536,7 @@
 "product_url": "https://www.coles.com.au/product/twinings-sparkling-peach-apple-green-tea-4x250ml-1l-1800341",
 "save_amount": 6.75,
 "store": "Coles",
+"store_category": "Tea Other",
 "title": "Twinings Sparkling Peach Apple Green Tea 4x250ml 1L",
 "unit_price": "$6.75/ 1L",
 "was_price": 13.5
@@ -4519,6 +4551,7 @@
 "product_url": "https://www.coles.com.au/product/twinings-sparkling-raspberry-lemonade-white-tea-4x250ml-1l-1800374",
 "save_amount": 6.75,
 "store": "Coles",
+"store_category": "Tea Other",
 "title": "Twinings. Sparkling Raspberry Lemonade & White Tea 4x250ml 1L",
 "unit_price": "$6.75/ 1L",
 "was_price": 13.5
@@ -4561,6 +4594,7 @@
 "product_url": "https://www.coles.com.au/product/nescafe-spiced-chai-latte-coffee-sachets-8-pack-1800556",
 "save_amount": 4.0,
 "store": "Coles",
+"store_category": "Coffee Coffee All In One",
 "title": "Nescafe Spiced Chai Latte Coffee Sachets 8 Pack",
 "unit_price": "$0.50/ 1ea",
 "was_price": 8.0
@@ -4575,6 +4609,7 @@
 "product_url": "https://www.coles.com.au/product/nescafe-98-sugar-free-vanilla-latte-coffee-sachets-10-pack-1800603",
 "save_amount": 4.0,
 "store": "Coles",
+"store_category": "Coffee Coffee All In One",
 "title": "Nescafe 98% Sugar Free Vanilla Latte Coffee Sachets 10 Pack",
 "unit_price": "$0.40/ 1ea",
 "was_price": 8.0
@@ -4603,6 +4638,7 @@
 "product_url": "https://www.coles.com.au/product/vittoria-vanilla-affogato-coffee-sachets-8-pack-1800862",
 "save_amount": 4.5,
 "store": "Coles",
+"store_category": "Coffee Coffee All In One",
 "title": "Vittoria Vanilla Affogato Coffee Sachets 8 Pack",
 "unit_price": "$0.50/ 1ea",
 "was_price": 8.5
@@ -5093,6 +5129,7 @@
 "product_url": "https://www.coles.com.au/product/red-tractor-high-protein-high-fibre-granola-choc-nuts-seeds-385g-1869960",
 "save_amount": 4.75,
 "store": "Coles",
+"store_category": "Cereal Muesli",
 "title": "Red Tractor High Protein + High Fibre Granola Choc Nuts & Seeds 385g",
 "unit_price": "$1.23/ 100g",
 "was_price": 9.5
@@ -5107,6 +5144,7 @@
 "product_url": "https://www.coles.com.au/product/red-tractor-high-protein-high-fibre-granola-maple-cashew-almond-385g-1869982",
 "save_amount": 4.75,
 "store": "Coles",
+"store_category": "Cereal Muesli",
 "title": "Red Tractor High Protein + High Fibre Granola Maple Cashew Almond 385g",
 "unit_price": "$1.23/ 100g",
 "was_price": 9.5
@@ -5121,6 +5159,7 @@
 "product_url": "https://www.coles.com.au/product/kellogg-s-crunchy-nut-corn-flakes-hot-honey-flavour-breakfast-cereal-380g-1871260",
 "save_amount": 3.5,
 "store": "Coles",
+"store_category": "Cereal Ready To Eat",
 "title": "Kellogg's Crunchy Nut Corn Flakes Hot Honey Flavour Breakfast Cereal 380g",
 "unit_price": "$0.92/ 100g",
 "was_price": 7.0
@@ -5376,6 +5415,7 @@
 "product_url": "https://www.coles.com.au/product/twix-milk-chocolate-bar-caramel-biscuit-46g-1935395",
 "save_amount": 2.0,
 "store": "Coles",
+"store_category": "Bars Gum Pocket Pack Bars",
 "title": "Twix Milk Chocolate Bar Caramel Biscuit 46g",
 "unit_price": "$2.17/ 100g",
 "was_price": 3.0
@@ -5418,6 +5458,7 @@
 "product_url": "https://www.coles.com.au/product/beauty-of-joseon-glow-deep-serum-rice-arbutin-30ml-1935475",
 "save_amount": 18.0,
 "store": "Coles",
+"store_category": "Skin Care Facial Skincare",
 "title": "Beauty Of Joseon Glow Deep Serum Rice + Arbutin 30mL",
 "unit_price": "$60.00/ 100mL",
 "was_price": 36.0
@@ -5432,6 +5473,7 @@
 "product_url": "https://www.coles.com.au/product/beauty-of-joseon-glow-serum-propolis-niacinamide-30ml-1935486",
 "save_amount": 18.0,
 "store": "Coles",
+"store_category": "Skin Care Facial Skincare",
 "title": "Beauty Of Joseon Glow Serum Propolis + Niacinamide 30mL",
 "unit_price": "$60.00/ 100mL",
 "was_price": 36.0
@@ -5587,6 +5629,7 @@
 "product_url": "https://www.coles.com.au/product/nestle-kit-kat-dark-mint-chocolate-4-finger-42g-1935908",
 "save_amount": 1.5,
 "store": "Coles",
+"store_category": "Bars Gum Pocket Pack Bars",
 "title": "Nestle Kit Kat Dark Mint Chocolate 4 Finger 42g",
 "unit_price": "$3.57/ 100g",
 "was_price": 3.0
@@ -5686,6 +5729,7 @@
 "product_url": "https://www.coles.com.au/product/revlon-all-in-lash-lift-tubing-mascara-brown-8ml-1990134",
 "save_amount": 14.0,
 "store": "Coles",
+"store_category": "Makeup Eye",
 "title": "Revlon All In Lash Lift Tubing Mascara Brown 8mL",
 "unit_price": "$17.50/ 10mL",
 "was_price": 28.0
@@ -5770,6 +5814,7 @@
 "product_url": "https://www.coles.com.au/product/revlon-illuminance-glow-primer-40ml-1990622",
 "save_amount": 18.0,
 "store": "Coles",
+"store_category": "Makeup Face",
 "title": "Revlon Illuminance Glow Primer 40mL",
 "unit_price": "$4.50/ 10mL",
 "was_price": 36.0
@@ -5882,6 +5927,7 @@
 "product_url": "https://www.coles.com.au/product/maybelline-lifter-gel-lip-oil-passion-juice-003-6-6ml-1993711",
 "save_amount": 10.0,
 "store": "Coles",
+"store_category": "Makeup Lip",
 "title": "Maybelline Lifter Gel Lip Oil Passion Juice 003 6.6mL",
 "unit_price": "$15.15/ 10mL",
 "was_price": 20.0
@@ -5896,6 +5942,7 @@
 "product_url": "https://www.coles.com.au/product/maybelline-lifter-gel-lip-oil-sugar-spirit-004-6-6ml-1993755",
 "save_amount": 10.0,
 "store": "Coles",
+"store_category": "Makeup Lip",
 "title": "Maybelline Lifter Gel Lip Oil Sugar Spirit 004 6.6mL",
 "unit_price": "$15.15/ 10mL",
 "was_price": 20.0
@@ -5910,6 +5957,7 @@
 "product_url": "https://www.coles.com.au/product/rimmel-thrill-seeker-mega-lift-mascara-black-10ml-1995863",
 "save_amount": 13.5,
 "store": "Coles",
+"store_category": "Makeup Eye",
 "title": "Rimmel Thrill Seeker Mega Lift Mascara Black 10mL",
 "unit_price": "$13.50/ 10mL",
 "was_price": 27.0
@@ -5952,6 +6000,7 @@
 "product_url": "https://www.coles.com.au/product/rimmel-lip-oil-009-cappuccino-4-5ml-1995896",
 "save_amount": 12.0,
 "store": "Coles",
+"store_category": "Makeup Lip",
 "title": "Rimmel Lip Oil #009 Cappuccino 4.5mL",
 "unit_price": "$26.67/ 10mL",
 "was_price": 24.0
@@ -5966,6 +6015,7 @@
 "product_url": "https://www.coles.com.au/product/sally-hansen-miracle-gel-can-t-beet-royalty-14-7ml-1995900",
 "save_amount": 9.5,
 "store": "Coles",
+"store_category": "Makeup Nail",
 "title": "Sally Hansen Miracle Gel Can't Beet Royalty 14.7mL",
 "unit_price": "$6.46/ 10mL",
 "was_price": 19.0
@@ -5994,6 +6044,7 @@
 "product_url": "https://www.coles.com.au/product/nivea-deo-aero-female-invisible-black-and-white-clear-250ml-1996403",
 "save_amount": 5.25,
 "store": "Coles",
+"store_category": "Womens Deos & Groom Deodorants",
 "title": "Nivea Deo Aero Female Invisible Black And White Clear 250mL",
 "unit_price": "$2.10/ 100mL",
 "was_price": 10.5
@@ -6008,6 +6059,7 @@
 "product_url": "https://www.coles.com.au/product/nivea-deo-aero-female-double-effect-white-senses-250ml-1996414",
 "save_amount": 5.25,
 "store": "Coles",
+"store_category": "Womens Deos & Groom Deodorants",
 "title": "Nivea Deo Aero Female Double Effect White Senses 250mL",
 "unit_price": "$2.10/ 100mL",
 "was_price": 10.5
@@ -6120,6 +6172,7 @@
 "product_url": "https://www.coles.com.au/product/heinz-baked-beans-barbecue-sauce-420g-2006880",
 "save_amount": 1.75,
 "store": "Coles",
+"store_category": "Canned Meals Baked Beans/Spaghett",
 "title": "Heinz Baked Beans Barbecue Sauce 420g",
 "unit_price": "$0.42/ 100g",
 "was_price": 3.5
@@ -6162,6 +6215,7 @@
 "product_url": "https://www.coles.com.au/product/heinz-baked-beanz-tomato-sauce-no-added-sugar-420g-2009141",
 "save_amount": 1.75,
 "store": "Coles",
+"store_category": "Canned Meals Baked Beans/Spaghett",
 "title": "Heinz Baked Beanz Tomato Sauce No Added Sugar 420g",
 "unit_price": "$0.42/ 100g",
 "was_price": 3.5
@@ -6176,6 +6230,7 @@
 "product_url": "https://www.coles.com.au/product/blackmores-base-magnesium-tablets-200-pack-2011584",
 "save_amount": 25.0,
 "store": "Coles",
+"store_category": "Vitamins Muscle Support",
 "title": "Blackmores Base Magnesium Tablets 200 Pack",
 "unit_price": "$12.50/ 100ea",
 "was_price": 50.0
@@ -6512,6 +6567,7 @@
 "product_url": "https://www.coles.com.au/product/blackmores-bio-iron-advanced-energy-tablets-30-pack-2268988",
 "save_amount": 10.0,
 "store": "Coles",
+"store_category": "Vitamins Womens Health",
 "title": "Blackmores Bio Iron Advanced Energy Tablets 30 Pack",
 "unit_price": "$33.33/ 100ea",
 "was_price": 20.0
@@ -6526,6 +6582,7 @@
 "product_url": "https://www.coles.com.au/product/nivea-men-creme-tin-face-body-hands-150ml-2274233",
 "save_amount": 5.25,
 "store": "Coles",
+"store_category": "Mens Deos & Grooming Skincare & Aftershav",
 "title": "Nivea Men Creme Tin Face Body & Hands 150mL",
 "unit_price": "$3.50/ 100mL",
 "was_price": 10.5
@@ -6540,6 +6597,7 @@
 "product_url": "https://www.coles.com.au/product/schick-silk-salon-total-bikini-razor-trimmer-kit-1-refill-blade-1-each-2277300",
 "save_amount": 11.0,
 "store": "Coles",
+"store_category": "Womens Deos & Groom Hair Removal",
 "title": "Schick Silk Salon Total Bikini Razor & Trimmer Kit +1 Refill Blade 1 Each",
 "unit_price": "$11.00/ 1ea",
 "was_price": 22.0
@@ -6708,6 +6766,7 @@
 "product_url": "https://www.coles.com.au/product/l-oreal-true-match-liquid-foundation-vanilla-30ml-2363480",
 "save_amount": 17.0,
 "store": "Coles",
+"store_category": "Makeup Face",
 "title": "L'Oreal True Match Liquid Foundation Vanilla 30mL",
 "unit_price": "$5.67/ 10mL",
 "was_price": 34.0
@@ -6722,6 +6781,7 @@
 "product_url": "https://www.coles.com.au/product/maybelline-fit-me-matte-pore-foundation-310-sunbeige-30ml-2363592",
 "save_amount": 14.0,
 "store": "Coles",
+"store_category": "Makeup Face",
 "title": "Maybelline Fit Me Matte Pore Foundation 310 Sunbeige 30mL",
 "unit_price": "$4.67/ 10mL",
 "was_price": 28.0
@@ -6736,6 +6796,7 @@
 "product_url": "https://www.coles.com.au/product/maybelline-fit-me-matte-pore-foundation-220-natural-beige-30ml-2363606",
 "save_amount": 14.0,
 "store": "Coles",
+"store_category": "Makeup Face",
 "title": "Maybelline Fit Me Matte Pore Foundation 220 Natural Beige 30mL",
 "unit_price": "$4.67/ 10mL",
 "was_price": 28.0
@@ -6750,6 +6811,7 @@
 "product_url": "https://www.coles.com.au/product/maybelline-hyper-sharp-wing-liner-black-0-5g-2363617",
 "save_amount": 10.0,
 "store": "Coles",
+"store_category": "Makeup Eye",
 "title": "Maybelline Hyper Sharp Wing Liner Black 0.5g",
 "unit_price": "$200.00/ 10g",
 "was_price": 20.0
@@ -6876,6 +6938,7 @@
 "product_url": "https://www.coles.com.au/product/nivea-visage-double-effect-eye-makeup-remover-125ml-2458327",
 "save_amount": 6.0,
 "store": "Coles",
+"store_category": "Skin Care Facial Skincare",
 "title": "Nivea Visage Double Effect Eye Makeup Remover 125mL",
 "unit_price": "$4.80/ 100mL",
 "was_price": 12.0
@@ -6905,6 +6968,7 @@
 "product_url": "https://www.coles.com.au/product/nivea-sun-ultra-sport-cooling-spf-50-sunscreen-spray-200ml-2459603",
 "save_amount": 11.75,
 "store": "Coles",
+"store_category": "Skin Care Suncare",
 "title": "Nivea Sun Ultra Sport Cooling SPF 50+ Sunscreen Spray 200mL",
 "unit_price": "$5.88/ 100mL",
 "was_price": 23.5
@@ -6933,6 +6997,7 @@
 "product_url": "https://www.coles.com.au/product/nivea-men-active-clean-shower-gel-500ml-2497817",
 "save_amount": 4.5,
 "store": "Coles",
+"store_category": "Mens Deos & Grooming Shower And Wash",
 "title": "Nivea Men Active Clean Shower Gel 500mL",
 "unit_price": "$0.90/ 100mL",
 "was_price": 9.0
@@ -6961,6 +7026,7 @@
 "product_url": "https://www.coles.com.au/product/bhuja-ancient-grain-twist-140g-2523371",
 "save_amount": 2.25,
 "store": "Coles",
+"store_category": "Snacks Nuts",
 "title": "Bhuja Ancient Grain Twist 140g",
 "unit_price": "$1.61/ 100g",
 "was_price": 4.5
@@ -6975,6 +7041,7 @@
 "product_url": "https://www.coles.com.au/product/biozet-attack-regular-powder-2kg-2597877",
 "save_amount": 12.0,
 "store": "Coles",
+"store_category": "Laundry Powder",
 "title": "Biozet Attack Regular Powder 2kg",
 "unit_price": "$6.00/ 1kg",
 "was_price": 24.0
@@ -7073,6 +7140,7 @@
 "product_url": "https://www.coles.com.au/product/white-wings-cake-in-a-cup-chocolate-220g-2731222",
 "save_amount": 3.0,
 "store": "Coles",
+"store_category": "Desserts (Gr) Cake In A Cup",
 "title": "White Wings Cake In A Cup Chocolate 220g",
 "unit_price": "$1.36/ 100g",
 "was_price": 6.0
@@ -7143,6 +7211,7 @@
 "product_url": "https://www.coles.com.au/product/cadbury-dairy-milk-tropical-pineapple-chocolate-block-180g-2770235",
 "save_amount": 4.0,
 "store": "Coles",
+"store_category": "Confectionery Block Chocolate",
 "title": "Cadbury Dairy Milk Tropical Pineapple Chocolate Block 180g",
 "unit_price": "$2.22/ 100g",
 "was_price": 8.0
@@ -7256,6 +7325,7 @@
 "product_url": "https://www.coles.com.au/product/cenovis-zinc-plus-tablets-for-wellbeing-skin-health-150-pack-2828743",
 "save_amount": 9.75,
 "store": "Coles",
+"store_category": "Vitamins Immunity",
 "title": "Cenovis Zinc Plus Tablets For Wellbeing + Skin Health 150 Pack",
 "unit_price": "$6.50/ 100ea",
 "was_price": 19.5
@@ -7369,6 +7439,7 @@
 "product_url": "https://www.coles.com.au/product/listerine-total-care-zero-mouthwash-500ml-2869285",
 "save_amount": 5.0,
 "store": "Coles",
+"store_category": "Dental Health Mouthwash",
 "title": "Listerine Total Care Zero Mouthwash 500mL",
 "unit_price": "$1.00/ 100mL",
 "was_price": 10.0
@@ -7439,6 +7510,7 @@
 "product_url": "https://www.coles.com.au/product/blackmores-probiotics-immune-defence-capsules-30-pack-2900670",
 "save_amount": 17.5,
 "store": "Coles",
+"store_category": "Vitamins Digestion",
 "title": "Blackmores Probiotics+ Immune Defence Capsules 30 Pack",
 "unit_price": "$58.33/ 100ea",
 "was_price": 35.0
@@ -7952,6 +8024,7 @@
 "product_url": "https://www.coles.com.au/product/l-oreal-true-match-liquid-foundation-creamy-beige-30ml-3032852",
 "save_amount": 17.0,
 "store": "Coles",
+"store_category": "Makeup Face",
 "title": "L'Oreal True Match Liquid Foundation Creamy Beige 30mL",
 "unit_price": "$5.67/ 10mL",
 "was_price": 34.0
@@ -8070,6 +8143,7 @@
 "product_url": "https://www.coles.com.au/product/nivea-deo-roll-on-men-invisible-black-and-white-fresh-50ml-3049006",
 "save_amount": 2.75,
 "store": "Coles",
+"store_category": "Mens Deos & Grooming Deodorants",
 "title": "Nivea Deo Roll On Men Invisible Black And White Fresh 50mL",
 "unit_price": "$5.50/ 100mL",
 "was_price": 5.5
@@ -8316,6 +8390,7 @@
 "product_url": "https://www.coles.com.au/product/duck-fresh-discs-toilet-cleaner-limited-edition-36ml-3229824",
 "save_amount": 4.15,
 "store": "Coles",
+"store_category": "Cleaning Goods Toilet",
 "title": "Duck Fresh Discs Toilet Cleaner Limited Edition 36mL",
 "unit_price": "$11.53/ 100mL",
 "was_price": 8.3
@@ -8460,6 +8535,7 @@
 "product_url": "https://www.coles.com.au/product/le-tan-uber-glow-gradual-tan-250ml-3269829",
 "save_amount": 8.5,
 "store": "Coles",
+"store_category": "Skin Care Tanning",
 "title": "Le Tan Uber Glow Gradual Tan 250mL",
 "unit_price": "$3.40/ 100mL",
 "was_price": 17.0
@@ -8474,6 +8550,7 @@
 "product_url": "https://www.coles.com.au/product/coca-cola-vanilla-zero-sugar-soft-drink-bottle-1-25l-3271060",
 "save_amount": 2.25,
 "store": "Coles",
+"store_category": "Softdrinks Bottles",
 "title": "Coca-Cola Vanilla Zero Sugar Soft Drink Bottle 1.25L",
 "unit_price": "$1.80/ 1L",
 "was_price": 4.5
@@ -8573,6 +8650,7 @@
 "product_url": "https://www.coles.com.au/product/nature-s-gift-adult-all-breeds-wet-dog-food-casserole-gravy-kangaroo-vegetables-700g-3320642",
 "save_amount": 1.75,
 "store": "Coles",
+"store_category": "Dog Food Wet Dog",
 "title": "Nature's Gift Adult All Breeds Wet Dog Food Casserole Gravy Kangaroo & Vegetables 700g",
 "unit_price": "$0.25/ 100g",
 "was_price": 3.5
@@ -8615,6 +8693,7 @@
 "product_url": "https://www.coles.com.au/product/revlon-colorstay-brow-pencil-soft-brown-0-35g-3326467",
 "save_amount": 12.5,
 "store": "Coles",
+"store_category": "Makeup Eye",
 "title": "Revlon Colorstay Brow Pencil Soft Brown 0.35g",
 "unit_price": "$357.14/ 10g",
 "was_price": 25.0
@@ -8671,6 +8750,7 @@
 "product_url": "https://www.coles.com.au/product/nivea-men-deep-face-wash-100ml-3365571",
 "save_amount": 5.25,
 "store": "Coles",
+"store_category": "Mens Deos & Grooming Shower And Wash",
 "title": "Nivea Men Deep Face Wash 100mL",
 "unit_price": "$5.25/ 100mL",
 "was_price": 10.5
@@ -8783,6 +8863,7 @@
 "product_url": "https://www.coles.com.au/product/maybelline-fit-me-matte-poreless-light-beige-foundation-30ml-3447188",
 "save_amount": 14.0,
 "store": "Coles",
+"store_category": "Makeup Face",
 "title": "Maybelline Fit Me Matte + Poreless Light Beige Foundation 30mL",
 "unit_price": "$4.67/ 10mL",
 "was_price": 28.0
@@ -8797,6 +8878,7 @@
 "product_url": "https://www.coles.com.au/product/maybelline-instant-age-rewind-eraser-dark-circles-fair-concealer-6ml-3447304",
 "save_amount": 12.5,
 "store": "Coles",
+"store_category": "Makeup Face",
 "title": "Maybelline Instant Age Rewind Eraser Dark Circles Fair Concealer 6mL",
 "unit_price": "$20.83/ 10mL",
 "was_price": 25.0
@@ -8826,6 +8908,7 @@
 "product_url": "https://www.coles.com.au/product/darrell-lea-milk-chocolate-raspberry-bullets-204g-3448362",
 "save_amount": 3.0,
 "store": "Coles",
+"store_category": "Confectionery Sugar",
 "title": "Darrell Lea Milk Chocolate Raspberry Bullets 204g",
 "unit_price": "$1.47/ 100g",
 "was_price": 6.0
@@ -8840,6 +8923,7 @@
 "product_url": "https://www.coles.com.au/product/darrell-lea-milk-chocolate-liquorice-bullets-204g-3448384",
 "save_amount": 3.0,
 "store": "Coles",
+"store_category": "Confectionery Sugar",
 "title": "Darrell Lea Milk Chocolate Liquorice Bullets 204g",
 "unit_price": "$1.47/ 100g",
 "was_price": 6.0
@@ -8854,6 +8938,7 @@
 "product_url": "https://www.coles.com.au/product/darrell-lea-raspberry-twists-280g-3448839",
 "save_amount": 2.75,
 "store": "Coles",
+"store_category": "Confectionery Sugar",
 "title": "Darrell Lea Raspberry Twists 280g",
 "unit_price": "$0.98/ 100g",
 "was_price": 5.5
@@ -8868,6 +8953,7 @@
 "product_url": "https://www.coles.com.au/product/darrell-lea-allsorts-liquorice-270g-3449081",
 "save_amount": 2.75,
 "store": "Coles",
+"store_category": "Confectionery Sugar",
 "title": "Darrell Lea Allsorts Liquorice 270g",
 "unit_price": "$1.02/ 100g",
 "was_price": 5.5
@@ -8941,6 +9027,7 @@
 "product_url": "https://www.coles.com.au/product/blackmores-glucosamine-sulfate-1500mg-tablets-150-pack-3465929",
 "save_amount": 25.0,
 "store": "Coles",
+"store_category": "Vitamins Bone & Joint",
 "title": "Blackmores Glucosamine Sulfate 1500mg Tablets 150 Pack",
 "unit_price": "$16.67/ 100ea",
 "was_price": 50.0
@@ -8955,6 +9042,7 @@
 "product_url": "https://www.coles.com.au/product/caltrate-bone-muscle-vitamin-d-500iu-50-100-pack-3469464",
 "save_amount": 10.5,
 "store": "Coles",
+"store_category": "Vitamins Bone & Joint",
 "title": "Caltrate Bone & Muscle Vitamin D 500iu 50+ 100 Pack",
 "unit_price": "$10.50/ 100ea",
 "was_price": 21.0
@@ -8969,6 +9057,7 @@
 "product_url": "https://www.coles.com.au/product/nature-s-own-vitamin-b3-500mg-vitamin-b-tablets-for-energy-60-pack-3470292",
 "save_amount": 9.75,
 "store": "Coles",
+"store_category": "Vitamins Energy",
 "title": "Nature's Own Vitamin B3 500mg Vitamin B Tablets For Energy 60 Pack",
 "unit_price": "$16.25/ 100ea",
 "was_price": 19.5
@@ -8997,6 +9086,7 @@
 "product_url": "https://www.coles.com.au/product/nivea-shower-body-wash-aloe-1l-3517374",
 "save_amount": 8.5,
 "store": "Coles",
+"store_category": "Soaps & Body Wash Bodywash",
 "title": "Nivea Shower Body Wash Aloe 1L",
 "unit_price": "$0.85/ 100mL",
 "was_price": 17.0
@@ -9041,6 +9131,7 @@
 "product_url": "https://www.coles.com.au/product/revlon-super-lustrous-lip-gloss-super-natural-215-3-8ml-3537258",
 "save_amount": 13.5,
 "store": "Coles",
+"store_category": "Makeup Lip",
 "title": "Revlon Super Lustrous Lip Gloss Super Natural 215 3.8mL",
 "unit_price": "$35.53/ 10mL",
 "was_price": 27.0
@@ -9055,6 +9146,7 @@
 "product_url": "https://www.coles.com.au/product/revlon-super-lustrous-wine-lipstick-4-2g-3538330",
 "save_amount": 14.5,
 "store": "Coles",
+"store_category": "Makeup Lip",
 "title": "Revlon Super Lustrous Wine Lipstick 4.2g",
 "unit_price": "$34.52/ 10g",
 "was_price": 29.0
@@ -9069,6 +9161,7 @@
 "product_url": "https://www.coles.com.au/product/revlon-super-lustrous-soft-silver-rose-lipstick-4-2g-3538341",
 "save_amount": 14.5,
 "store": "Coles",
+"store_category": "Makeup Lip",
 "title": "Revlon Super Lustrous Soft Silver Rose Lipstick 4.2g",
 "unit_price": "$34.52/ 10g",
 "was_price": 29.0
@@ -9083,6 +9176,7 @@
 "product_url": "https://www.coles.com.au/product/revlon-super-lustrous-blushed-lipstick-4-2-gram-3538352",
 "save_amount": 14.5,
 "store": "Coles",
+"store_category": "Makeup Lip",
 "title": "Revlon Super Lustrous Blushed Lipstick 4.2 GRAM",
 "unit_price": "$34.52/ 10g",
 "was_price": 29.0
@@ -9097,6 +9191,7 @@
 "product_url": "https://www.coles.com.au/product/revlon-super-lustrous-smokey-rose-lipstick-4-2g-3538363",
 "save_amount": 14.5,
 "store": "Coles",
+"store_category": "Makeup Lip",
 "title": "Revlon Super Lustrous Smokey Rose Lipstick 4.2g",
 "unit_price": "$34.52/ 10g",
 "was_price": 29.0
@@ -9111,6 +9206,7 @@
 "product_url": "https://www.coles.com.au/product/revlon-super-lustrous-rum-raisin-lipstick-4-2g-3538669",
 "save_amount": 14.5,
 "store": "Coles",
+"store_category": "Makeup Lip",
 "title": "Revlon Super Lustrous Rum Raisin Lipstick 4.2g",
 "unit_price": "$34.52/ 10g",
 "was_price": 29.0
@@ -9125,6 +9221,7 @@
 "product_url": "https://www.coles.com.au/product/maybelline-superstay-matte-ink-lipstick-120-artist-5ml-3542407",
 "save_amount": 12.5,
 "store": "Coles",
+"store_category": "Makeup Lip",
 "title": "Maybelline Superstay Matte Ink Lipstick #120 Artist 5mL",
 "unit_price": "$25.00/ 10mL",
 "was_price": 25.0
@@ -9181,6 +9278,7 @@
 "product_url": "https://www.coles.com.au/product/l-oreal-paris-paradise-mascara-waterproof-6-4ml-3544617",
 "save_amount": 13.5,
 "store": "Coles",
+"store_category": "Makeup Eye",
 "title": "L'Oreal Paris Paradise Mascara Waterproof 6.4mL",
 "unit_price": "$21.09/ 10mL",
 "was_price": 27.0
@@ -9195,6 +9293,7 @@
 "product_url": "https://www.coles.com.au/product/doritos-cheese-supreme-corn-chips-sharepack-380g-3568331",
 "save_amount": 4.25,
 "store": "Coles",
+"store_category": "Snacks Corn & Dips",
 "title": "Doritos Cheese Supreme Corn Chips Sharepack 380g",
 "unit_price": "$1.12/ 100g",
 "was_price": 8.5
@@ -9209,6 +9308,7 @@
 "product_url": "https://www.coles.com.au/product/smith-s-crinkle-cut-potato-chips-party-bag-salt-vinegar-380g-3568353",
 "save_amount": 4.25,
 "store": "Coles",
+"store_category": "Snacks Mainstream Potato",
 "title": "Smith's Crinkle Cut Potato Chips Party Bag Salt & Vinegar 380g",
 "unit_price": "$1.12/ 100g",
 "was_price": 8.5
@@ -9280,6 +9380,7 @@
 "product_url": "https://www.coles.com.au/product/cadbury-dairy-milk-coconut-rough-chocolate-block-180g-3618564",
 "save_amount": 4.0,
 "store": "Coles",
+"store_category": "Confectionery Block Chocolate",
 "title": "Cadbury Dairy Milk Coconut Rough Chocolate Block 180g",
 "unit_price": "$2.22/ 100g",
 "was_price": 8.0
@@ -9308,6 +9409,7 @@
 "product_url": "https://www.coles.com.au/product/maybelline-brow-ultra-slim-deep-brown-eyebrow-pencil-8-3g-3658401",
 "save_amount": 10.0,
 "store": "Coles",
+"store_category": "Makeup Eye",
 "title": "Maybelline Brow Ultra Slim Deep Brown Eyebrow Pencil 8.3g",
 "unit_price": "$12.05/ 10g",
 "was_price": 20.0
@@ -9546,6 +9648,7 @@
 "product_url": "https://www.coles.com.au/product/botanica-island-rose-african-geranium-reed-diffuser-80ml-3721304",
 "save_amount": 11.0,
 "store": "Coles",
+"store_category": "Aircare Reeds",
 "title": "Botanica Island Rose & African Geranium Reed Diffuser 80mL",
 "unit_price": "$1.38/ 10mL",
 "was_price": 22.0
@@ -9644,6 +9747,7 @@
 "product_url": "https://www.coles.com.au/product/lynx-deodorant-body-spray-africa-165ml-3722089",
 "save_amount": 4.5,
 "store": "Coles",
+"store_category": "Mens Deos & Grooming Deodorants",
 "title": "Lynx Deodorant Body Spray Africa 165mL",
 "unit_price": "$2.73/ 100mL",
 "was_price": 9.0
@@ -9826,6 +9930,7 @@
 "product_url": "https://www.coles.com.au/product/maybelline-fit-me-matte-pore-foundation-warm-honey-30ml-3724142",
 "save_amount": 14.0,
 "store": "Coles",
+"store_category": "Makeup Face",
 "title": "Maybelline Fit Me Matte Pore Foundation Warm Honey 30mL",
 "unit_price": "$4.67/ 10mL",
 "was_price": 28.0
@@ -9840,6 +9945,7 @@
 "product_url": "https://www.coles.com.au/product/maybelline-fit-me-matte-pore-foundation-toffee-30ml-3724164",
 "save_amount": 14.0,
 "store": "Coles",
+"store_category": "Makeup Face",
 "title": "Maybelline Fit Me Matte Pore Foundation Toffee 30mL",
 "unit_price": "$4.67/ 10mL",
 "was_price": 28.0
@@ -9882,6 +9988,7 @@
 "product_url": "https://www.coles.com.au/product/maybelline-fit-me-matte-poreless-foundation-soft-tan-30ml-3724335",
 "save_amount": 14.0,
 "store": "Coles",
+"store_category": "Makeup Face",
 "title": "Maybelline Fit Me Matte Poreless Foundation Soft Tan 30mL",
 "unit_price": "$4.67/ 10mL",
 "was_price": 28.0
@@ -10008,6 +10115,7 @@
 "product_url": "https://www.coles.com.au/product/darrell-lea-twists-milk-chocolate-liquorice-200g-3739490",
 "save_amount": 3.0,
 "store": "Coles",
+"store_category": "Confectionery Sugar",
 "title": "Darrell Lea Twists Milk Chocolate Liquorice 200g",
 "unit_price": "$1.50/ 100g",
 "was_price": 6.0
@@ -10022,6 +10130,7 @@
 "product_url": "https://www.coles.com.au/product/ajishima-japanese-instant-miso-soup-fried-tofu-2-pack-12g-3741152",
 "save_amount": 1.55,
 "store": "Coles",
+"store_category": "Asian Foods Asian Japanese",
 "title": "Ajishima Japanese Instant Miso Soup Fried Tofu 2 Pack 12g",
 "unit_price": "$12.92/ 100g",
 "was_price": 3.1
@@ -10064,6 +10173,7 @@
 "product_url": "https://www.coles.com.au/product/bref-power-active-toilet-cleaner-rim-block-ocean-2x50g-100g-3744682",
 "save_amount": 5.5,
 "store": "Coles",
+"store_category": "Cleaning Goods Toilet",
 "title": "Bref Power Active Toilet Cleaner Rim Block Ocean 2x50g 100g",
 "unit_price": "$5.50/ 100g",
 "was_price": 11.0
@@ -10120,6 +10230,7 @@
 "product_url": "https://www.coles.com.au/product/nature-s-own-calcium-magnesium-vitamin-d-tablets-120-pack-3758520",
 "save_amount": 12.25,
 "store": "Coles",
+"store_category": "Vitamins Muscle Support",
 "title": "Nature's Own Calcium Magnesium & Vitamin D Tablets 120 Pack",
 "unit_price": "$10.21/ 100ea",
 "was_price": 24.5
@@ -10148,6 +10259,7 @@
 "product_url": "https://www.coles.com.au/product/loacker-gardena-hazelnut-wafer-200g-3763541",
 "save_amount": 3.0,
 "store": "Coles",
+"store_category": "Biscuits & Cookies Cream/Plain Biscuits",
 "title": "Loacker Gardena Hazelnut Wafer 200g",
 "unit_price": "$1.50/ 100g",
 "was_price": 6.0
@@ -10544,6 +10656,7 @@
 "product_url": "https://www.coles.com.au/product/ben-s-original-light-flavour-garlic-rice-pouch-250g-3925654",
 "save_amount": 2.0,
 "store": "Coles",
+"store_category": "Rice Ready To Eat",
 "title": "Ben's Original Light Flavour Garlic Rice Pouch 250g",
 "unit_price": "$0.80/ 100g",
 "was_price": 4.0
@@ -10632,6 +10745,7 @@
 "product_url": "https://www.coles.com.au/product/maybelline-lash-sensational-sky-high-washable-mascara-blackest-black-7-2ml-3959190",
 "save_amount": 14.0,
 "store": "Coles",
+"store_category": "Makeup Eye",
 "title": "Maybelline Lash Sensational Sky High Washable Mascara Blackest Black 7.2mL",
 "unit_price": "$19.44/ 10mL",
 "was_price": 28.0
@@ -10999,6 +11113,7 @@
 "product_url": "https://www.coles.com.au/product/nescafe-98-sugar-free-mocha-coffee-sachets-10-pack-3984110",
 "save_amount": 4.0,
 "store": "Coles",
+"store_category": "Coffee Coffee All In One",
 "title": "Nescafe 98% Sugar Free Mocha Coffee Sachets 10 Pack",
 "unit_price": "$0.40/ 1ea",
 "was_price": 8.0
@@ -11442,6 +11557,7 @@
 "product_url": "https://www.coles.com.au/product/nescafe-latte-coffee-sachets-10-pack-4156883",
 "save_amount": 4.0,
 "store": "Coles",
+"store_category": "Coffee Coffee All In One",
 "title": "Nescafe Latte Coffee Sachets 10 Pack",
 "unit_price": "$0.40/ 1ea",
 "was_price": 8.0
@@ -11498,6 +11614,7 @@
 "product_url": "https://www.coles.com.au/product/bref-deluxe-toilet-cleaner-rim-block-delicate-magnolia-2x50g-100g-4224360",
 "save_amount": 5.5,
 "store": "Coles",
+"store_category": "Cleaning Goods Toilet",
 "title": "Bref Deluxe Toilet Cleaner Rim Block Delicate Magnolia 2x50g 100g",
 "unit_price": "$5.50/ 100g",
 "was_price": 11.0
@@ -11638,6 +11755,7 @@
 "product_url": "https://www.coles.com.au/product/bosistos-banksia-flower-lavender-hand-wash-pump-500ml-4309838",
 "save_amount": 5.0,
 "store": "Coles",
+"store_category": "Soaps & Body Wash Handwash",
 "title": "Bosistos Banksia Flower & Lavender Hand Wash Pump 500mL",
 "unit_price": "$1.00/ 100mL",
 "was_price": 10.0
@@ -11652,6 +11770,7 @@
 "product_url": "https://www.coles.com.au/product/gatorade-no-sugar-orange-600ml-4313722",
 "save_amount": 2.2,
 "store": "Coles",
+"store_category": "Energy/Sport/Icedtea Sport Drinks",
 "title": "Gatorade No Sugar Orange 600mL",
 "unit_price": "$3.33/ 1L",
 "was_price": 4.2
@@ -11752,6 +11871,7 @@
 "product_url": "https://www.coles.com.au/product/maybelline-tattoo-studio-eyeliner-kajal-black-2-8-gram-4378455",
 "save_amount": 10.0,
 "store": "Coles",
+"store_category": "Makeup Eye",
 "title": "Maybelline Tattoo Studio Eyeliner Kajal Black 2.8 GRAM",
 "unit_price": "$35.71/ 10g",
 "was_price": 20.0
@@ -11766,6 +11886,7 @@
 "product_url": "https://www.coles.com.au/product/maybelline-master-precise-black-liquid-eyeliner-10ml-4378546",
 "save_amount": 10.0,
 "store": "Coles",
+"store_category": "Makeup Eye",
 "title": "Maybelline Master Precise Black Liquid Eyeliner 10mL",
 "unit_price": "$10.00/ 10mL",
 "was_price": 20.0
@@ -11822,6 +11943,7 @@
 "product_url": "https://www.coles.com.au/product/doritos-original-corn-chips-380g-4382634",
 "save_amount": 4.25,
 "store": "Coles",
+"store_category": "Snacks Corn & Dips",
 "title": "Doritos Original Corn Chips 380g",
 "unit_price": "$1.12/ 100g",
 "was_price": 8.5
@@ -11836,6 +11958,7 @@
 "product_url": "https://www.coles.com.au/product/red-rock-deli-potato-chips-party-bag-sweet-chilli-sour-cream-290g-4382656",
 "save_amount": 4.25,
 "store": "Coles",
+"store_category": "Snacks Premium Potato",
 "title": "Red Rock Deli Potato Chips Party Bag Sweet Chilli & Sour Cream 290g",
 "unit_price": "$1.47/ 100g",
 "was_price": 8.5
@@ -12550,6 +12673,7 @@
 "product_url": "https://www.coles.com.au/product/white-glo-professional-whitening-toothpaste-205g-4847793",
 "save_amount": 4.5,
 "store": "Coles",
+"store_category": "Dental Health Toothpaste",
 "title": "White Glo Professional Whitening Toothpaste 205g",
 "unit_price": "$2.20/ 100g",
 "was_price": 9.0
@@ -12578,6 +12702,7 @@
 "product_url": "https://www.coles.com.au/product/real-foods-corn-thins-sesame-150g-4859996",
 "save_amount": 1.1,
 "store": "Coles",
+"store_category": "Biscuits & Cookies Rice",
 "title": "Real Foods Corn Thins Sesame 150g",
 "unit_price": "$0.73/ 100g",
 "was_price": 2.2
@@ -12663,6 +12788,7 @@
 "product_url": "https://www.coles.com.au/product/scentory-aerosol-desert-lime-coconut-165g-4951605",
 "save_amount": 3.5,
 "store": "Coles",
+"store_category": "Aircare Aerosol",
 "title": "Scentory Aerosol Desert Lime & Coconut 165g",
 "unit_price": "$2.12/ 100g",
 "was_price": 7.0
@@ -12733,6 +12859,7 @@
 "product_url": "https://www.coles.com.au/product/grow-thicker-fuller-thickening-200ml-4963976",
 "save_amount": 8.5,
 "store": "Coles",
+"store_category": "Hair Care Hair Treatments",
 "title": "Grow Thicker Fuller Thickening 200mL",
 "unit_price": "$4.25/ 100mL",
 "was_price": 17.0
@@ -12887,6 +13014,7 @@
 "product_url": "https://www.coles.com.au/product/rimmel-100-waterproof-mascara-black-001-8ml-5076768",
 "save_amount": 7.0,
 "store": "Coles",
+"store_category": "Makeup Eye",
 "title": "Rimmel 100% Waterproof Mascara Black #001 8mL",
 "unit_price": "$8.75/ 10mL",
 "was_price": 14.0
@@ -13041,6 +13169,7 @@
 "product_url": "https://www.coles.com.au/product/revlon-colorstay-combination-oily-longwear-makeup-natural-beige-30ml-5203800",
 "save_amount": 20.5,
 "store": "Coles",
+"store_category": "Makeup Face",
 "title": "Revlon Colorstay Combination/oily Longwear Makeup Natural Beige 30mL",
 "unit_price": "$6.83/ 10mL",
 "was_price": 41.0
@@ -13055,6 +13184,7 @@
 "product_url": "https://www.coles.com.au/product/revlon-colorstay-n-d-longwear-makeup-buff-30ml-5203810",
 "save_amount": 20.5,
 "store": "Coles",
+"store_category": "Makeup Face",
 "title": "Revlon Colorstay N/d Longwear Makeup Buff 30mL",
 "unit_price": "$6.83/ 10mL",
 "was_price": 41.0
@@ -13293,6 +13423,7 @@
 "product_url": "https://www.coles.com.au/product/nivea-men-aerosol-deodorant-intense-protection-sport-250ml-5309560",
 "save_amount": 5.25,
 "store": "Coles",
+"store_category": "Mens Deos & Grooming Niu",
 "title": "Nivea Men Aerosol Deodorant Intense Protection Sport 250mL",
 "unit_price": "$2.10/ 100mL",
 "was_price": 10.5
@@ -13377,6 +13508,7 @@
 "product_url": "https://www.coles.com.au/product/nivea-deo-roll-on-female-pearl-and-beauty-fine-fragrance-black-pearls-50ml-5311289",
 "save_amount": 2.75,
 "store": "Coles",
+"store_category": "Womens Deos & Groom Deodorants",
 "title": "Nivea Deo Roll On Female Pearl And Beauty Fine Fragrance Black Pearls 50mL",
 "unit_price": "$5.50/ 100mL",
 "was_price": 5.5
@@ -13405,6 +13537,7 @@
 "product_url": "https://www.coles.com.au/product/nivea-deo-roll-on-female-pearl-and-beauty-50ml-5312077",
 "save_amount": 2.75,
 "store": "Coles",
+"store_category": "Womens Deos & Groom Deodorants",
 "title": "Nivea Deo Roll On Female Pearl And Beauty 50mL",
 "unit_price": "$5.50/ 100mL",
 "was_price": 5.5
@@ -13573,6 +13706,7 @@
 "product_url": "https://www.coles.com.au/product/nivea-sun-kids-ultra-protect-play-sunscreen-lotion-spf-50-200ml-5498394",
 "save_amount": 10.75,
 "store": "Coles",
+"store_category": "Skin Care Suncare",
 "title": "Nivea Sun Kids Ultra Protect & Play Sunscreen Lotion SPF 50 200mL",
 "unit_price": "$5.38/ 100mL",
 "was_price": 21.5
@@ -13685,6 +13819,7 @@
 "product_url": "https://www.coles.com.au/product/nescafe-strong-cappuccino-coffee-sachets-10-pack-5694097",
 "save_amount": 4.0,
 "store": "Coles",
+"store_category": "Coffee Coffee All In One",
 "title": "Nescafe Strong Cappuccino Coffee Sachets 10 Pack",
 "unit_price": "$0.40/ 1ea",
 "was_price": 8.0
@@ -13979,6 +14114,7 @@
 "product_url": "https://www.coles.com.au/product/finish-rinse-shine-dishwasher-aid-regular-500ml-5870735",
 "save_amount": 6.5,
 "store": "Coles",
+"store_category": "Dishwashing Machine",
 "title": "Finish Rinse & Shine Dishwasher Aid Regular 500mL",
 "unit_price": "$1.30/ 100mL",
 "was_price": 13.0
@@ -14105,6 +14241,7 @@
 "product_url": "https://www.coles.com.au/product/maybelline-superstay-24h-powder-ivory-9g-6011349",
 "save_amount": 15.0,
 "store": "Coles",
+"store_category": "Makeup Face",
 "title": "Maybelline Superstay 24h Powder Ivory 9g",
 "unit_price": "$16.67/ 10g",
 "was_price": 30.0
@@ -14204,6 +14341,7 @@
 "product_url": "https://www.coles.com.au/product/gatorade-sport-drink-blue-bolt-600ml-6157082",
 "save_amount": 2.2,
 "store": "Coles",
+"store_category": "Energy/Sport/Icedtea Sport Drinks",
 "title": "Gatorade Sport Drink Blue Bolt 600mL",
 "unit_price": "$3.33/ 1L",
 "was_price": 4.2
@@ -14232,6 +14370,7 @@
 "product_url": "https://www.coles.com.au/product/twinings-french-earl-grey-tea-bags-80-pack-6253712",
 "save_amount": 6.75,
 "store": "Coles",
+"store_category": "Tea Black",
 "title": "Twinings French Earl Grey Tea Bags 80 Pack",
 "unit_price": "$0.08/ 1ea",
 "was_price": 13.5
@@ -14246,6 +14385,7 @@
 "product_url": "https://www.coles.com.au/product/fluffy-in-wash-laundry-scent-booster-beads-cloud-nine-500g-6261867",
 "save_amount": 15.0,
 "store": "Coles",
+"store_category": "Laundry Accessories Fabric Conditioners",
 "title": "Fluffy In Wash Laundry Scent Booster Beads Cloud Nine 500g",
 "unit_price": "$30.00/ 1kg",
 "was_price": 30.0
@@ -14344,6 +14484,7 @@
 "product_url": "https://www.coles.com.au/product/grow-longer-stronger-anti-breakage-hair-mask-250ml-6342619",
 "save_amount": 9.5,
 "store": "Coles",
+"store_category": "Hair Care Hair Treatments",
 "title": "Grow Longer Stronger Anti Breakage Hair Mask 250mL",
 "unit_price": "$3.80/ 100mL",
 "was_price": 19.0
@@ -14358,6 +14499,7 @@
 "product_url": "https://www.coles.com.au/product/oc-naturals-vanilla-shea-moisturising-body-wash-725ml-6356533",
 "save_amount": 4.0,
 "store": "Coles",
+"store_category": "Soaps & Body Wash Bodywash",
 "title": "OC Naturals Vanilla Shea Moisturising Body Wash 725mL",
 "unit_price": "$0.55/ 100mL",
 "was_price": 8.0
@@ -14372,6 +14514,7 @@
 "product_url": "https://www.coles.com.au/product/oc-naturals-mango-papaya-moisturising-body-wash-725ml-6356544",
 "save_amount": 4.0,
 "store": "Coles",
+"store_category": "Soaps & Body Wash Bodywash",
 "title": "OC Naturals Mango & Papaya Moisturising Body Wash 725mL",
 "unit_price": "$0.55/ 100mL",
 "was_price": 8.0
@@ -14554,6 +14697,7 @@
 "product_url": "https://www.coles.com.au/product/maybelline-superstay-24h-skin-tint-21-30ml-6450462",
 "save_amount": 19.0,
 "store": "Coles",
+"store_category": "Makeup Face",
 "title": "Maybelline Superstay 24h Skin Tint 21 30mL",
 "unit_price": "$6.33/ 10mL",
 "was_price": 38.0
@@ -14638,6 +14782,7 @@
 "product_url": "https://www.coles.com.au/product/l-oreal-paris-telescopic-lift-mascara-black-9-9ml-6450542",
 "save_amount": 16.0,
 "store": "Coles",
+"store_category": "Makeup Eye",
 "title": "L'Oreal Paris Telescopic Lift Mascara Black 9.9mL",
 "unit_price": "$16.16/ 10mL",
 "was_price": 32.0
@@ -14652,6 +14797,7 @@
 "product_url": "https://www.coles.com.au/product/maybelline-falsies-surreal-washable-mascara-9ml-6450553",
 "save_amount": 13.5,
 "store": "Coles",
+"store_category": "Makeup Eye",
 "title": "Maybelline Falsies Surreal Washable Mascara 9mL",
 "unit_price": "$15.00/ 10mL",
 "was_price": 27.0
@@ -14834,6 +14980,7 @@
 "product_url": "https://www.coles.com.au/product/tostitos-restaurant-style-mild-mexican-salsa-165g-6596311",
 "save_amount": 2.6,
 "store": "Coles",
+"store_category": "Snacks Corn & Dips",
 "title": "Tostitos Restaurant Style Mild Mexican Salsa 165g",
 "unit_price": "$1.58/ 100g",
 "was_price": 5.2
@@ -14848,6 +14995,7 @@
 "product_url": "https://www.coles.com.au/product/tostitos-restaurant-style-smoked-chipotle-sour-cream-165g-6596322",
 "save_amount": 2.6,
 "store": "Coles",
+"store_category": "Snacks Corn & Dips",
 "title": "Tostitos Restaurant Style Smoked Chipotle Sour Cream 165g",
 "unit_price": "$1.58/ 100g",
 "was_price": 5.2
@@ -14932,6 +15080,7 @@
 "product_url": "https://www.coles.com.au/product/jordan-baby-toothbrush-0-2-years-1-each-6607600",
 "save_amount": 2.75,
 "store": "Coles",
+"store_category": "Infant Personal Grooming",
 "title": "Jordan Baby Toothbrush 0-2 Years 1 each",
 "unit_price": "$2.75/ 1ea",
 "was_price": 5.5
@@ -15185,6 +15334,7 @@
 "product_url": "https://www.coles.com.au/product/mcvities-healthier-choice-go-ahead-biscuits-apple-4-pack-174g-6845370",
 "save_amount": 2.5,
 "store": "Coles",
+"store_category": "Biscuits & Cookies Cream/Plain Biscuits",
 "title": "Mcvities Healthier Choice Go Ahead Biscuits Apple 4 Pack 174g",
 "unit_price": "$1.44/ 100g",
 "was_price": 5.0
@@ -15199,6 +15349,7 @@
 "product_url": "https://www.coles.com.au/product/mcvities-healthier-choice-go-ahead-biscuits-forest-fruits-4-pack-174g-6845380",
 "save_amount": 2.5,
 "store": "Coles",
+"store_category": "Biscuits & Cookies Cream/Plain Biscuits",
 "title": "Mcvities Healthier Choice Go Ahead Biscuits Forest Fruits 4 Pack 174g",
 "unit_price": "$1.44/ 100g",
 "was_price": 5.0
@@ -15213,6 +15364,7 @@
 "product_url": "https://www.coles.com.au/product/listerine-total-care-antibacterial-mouthwash-500ml-6874072",
 "save_amount": 5.0,
 "store": "Coles",
+"store_category": "Dental Health Mouthwash",
 "title": "Listerine Total Care Antibacterial Mouthwash 500mL",
 "unit_price": "$1.00/ 100mL",
 "was_price": 10.0
@@ -15227,6 +15379,7 @@
 "product_url": "https://www.coles.com.au/product/l-oreal-casting-creme-gloss-hair-colour-dark-chocolate-1-pack-6883299",
 "save_amount": 11.0,
 "store": "Coles",
+"store_category": "Hair Care Colourants",
 "title": "L'Oreal Casting Creme Gloss Hair Colour Dark Chocolate 1 Pack",
 "unit_price": "$11.00/ 1ea",
 "was_price": 22.0
@@ -15269,6 +15422,7 @@
 "product_url": "https://www.coles.com.au/product/kitkat-chunky-gooey-caramel-milk-chocolate-bar-48g-6934607",
 "save_amount": 1.5,
 "store": "Coles",
+"store_category": "Bars Gum Pocket Pack Bars",
 "title": "KitKat Chunky Gooey Caramel Milk Chocolate Bar 48g",
 "unit_price": "$3.13/ 100g",
 "was_price": 3.0
@@ -15297,6 +15451,7 @@
 "product_url": "https://www.coles.com.au/product/oral-b-all-rounder-fresh-clean-soft-toothbrush-1-pack-6988399",
 "save_amount": 1.5,
 "store": "Coles",
+"store_category": "Dental Health Toothbrush",
 "title": "Oral B All Rounder Fresh Clean Soft Toothbrush 1 Pack",
 "unit_price": "$1.50/ 1ea",
 "was_price": 3.0
@@ -15311,6 +15466,7 @@
 "product_url": "https://www.coles.com.au/product/nature-s-gift-kangaroo-rice-and-vegetable-dog-food-700g-7007325",
 "save_amount": 1.75,
 "store": "Coles",
+"store_category": "Dog Food Wet Dog",
 "title": "Nature's Gift Kangaroo Rice And Vegetable Dog Food 700g",
 "unit_price": "$0.25/ 100g",
 "was_price": 3.5
@@ -15381,6 +15537,7 @@
 "product_url": "https://www.coles.com.au/product/uncle-tobys-plus-antioxidant-breakfast-cereal-675g-7019583",
 "save_amount": 4.75,
 "store": "Coles",
+"store_category": "Cereal Ready To Eat",
 "title": "Uncle Tobys Plus Antioxidant Breakfast Cereal 675g",
 "unit_price": "$0.70/ 100g",
 "was_price": 9.5
@@ -15465,6 +15622,7 @@
 "product_url": "https://www.coles.com.au/product/redheads-turbo-gas-match-1-each-7030542",
 "save_amount": 7.0,
 "store": "Coles",
+"store_category": "Picnic Pool Bbq Acc Lighters",
 "title": "Redheads Turbo Gas Match 1 each",
 "unit_price": "$7.00/ 1ea",
 "was_price": 14.0
@@ -15507,6 +15665,7 @@
 "product_url": "https://www.coles.com.au/product/hismile-v34-colour-corrector-serum-30ml-7033416",
 "save_amount": 17.5,
 "store": "Coles",
+"store_category": "Dental Health At Home Whitening",
 "title": "Hismile V34 Colour Corrector Serum 30mL",
 "unit_price": "$58.33/ 100mL",
 "was_price": 35.0
@@ -15731,6 +15890,7 @@
 "product_url": "https://www.coles.com.au/product/cenovis-echinacea-garlic-zinc-vitamin-c-tablets-125-pack-7103770",
 "save_amount": 17.25,
 "store": "Coles",
+"store_category": "Vitamins Immunity",
 "title": "Cenovis Echinacea Garlic Zinc & Vitamin C Tablets 125 Pack",
 "unit_price": "$13.80/ 100ea",
 "was_price": 34.5
@@ -15944,6 +16104,7 @@
 "product_url": "https://www.coles.com.au/product/blackmores-probiotic-daily-health-55-pack-7451100",
 "save_amount": 27.5,
 "store": "Coles",
+"store_category": "Vitamins Digestion",
 "title": "Blackmores Probiotic + Daily Health 55 Pack",
 "unit_price": "$50.00/ 100ea",
 "was_price": 55.0
@@ -15972,6 +16133,7 @@
 "product_url": "https://www.coles.com.au/product/blackmores-super-magnesium-tablets-180-pack-7451223",
 "save_amount": 22.5,
 "store": "Coles",
+"store_category": "Vitamins Muscle Support",
 "title": "Blackmores Super Magnesium+ Tablets 180 Pack",
 "unit_price": "$12.50/ 100ea",
 "was_price": 45.0
@@ -15986,6 +16148,7 @@
 "product_url": "https://www.coles.com.au/product/centrum-advance-multivitamin-100-pack-7471606",
 "save_amount": 12.0,
 "store": "Coles",
+"store_category": "Vitamins Multi Vitamins",
 "title": "Centrum Advance Multivitamin 100 Pack",
 "unit_price": "$12.00/ 100ea",
 "was_price": 24.0
@@ -16000,6 +16163,7 @@
 "product_url": "https://www.coles.com.au/product/centrum-advance-50-multivitamin-100-pack-7473645",
 "save_amount": 12.0,
 "store": "Coles",
+"store_category": "Vitamins Multi Vitamins",
 "title": "Centrum Advance 50+ Multivitamin 100 Pack",
 "unit_price": "$12.00/ 100ea",
 "was_price": 24.0
@@ -16028,6 +16192,7 @@
 "product_url": "https://www.coles.com.au/product/l-oreal-casting-creme-gloss-515-hair-colour-iced-chocolate-1-pack-7499729",
 "save_amount": 11.0,
 "store": "Coles",
+"store_category": "Hair Care Colourants",
 "title": "L'Oreal Casting Creme Gloss 515 Hair Colour Iced Chocolate 1 Pack",
 "unit_price": "$11.00/ 1ea",
 "was_price": 22.0
@@ -16042,6 +16207,7 @@
 "product_url": "https://www.coles.com.au/product/bic-soleil-comfort-scented-disposable-razors-3-pack-7525590",
 "save_amount": 4.35,
 "store": "Coles",
+"store_category": "Womens Deos & Groom Hair Removal",
 "title": "Bic Soleil Comfort Scented Disposable Razors 3 Pack",
 "unit_price": "$1.45/ 1ea",
 "was_price": 8.7
@@ -16112,6 +16278,7 @@
 "product_url": "https://www.coles.com.au/product/nature-s-gift-adult-all-breeds-wet-dog-food-casserole-with-chicken-vegetables-barley-700g-7646663",
 "save_amount": 1.75,
 "store": "Coles",
+"store_category": "Dog Food Wet Dog",
 "title": "Nature's Gift Adult All Breeds Wet Dog Food Casserole With Chicken Vegetables & Barley 700g",
 "unit_price": "$0.25/ 100g",
 "was_price": 3.5
@@ -16294,6 +16461,7 @@
 "product_url": "https://www.coles.com.au/product/colgate-sensitive-pro-relief-whitening-toothpaste-110g-7699193",
 "save_amount": 5.5,
 "store": "Coles",
+"store_category": "Dental Health Toothpaste",
 "title": "Colgate Sensitive Pro Relief Whitening Toothpaste 110g",
 "unit_price": "$5.00/ 100g",
 "was_price": 11.0
@@ -16490,6 +16658,7 @@
 "product_url": "https://www.coles.com.au/product/g-active-electrolyte-water-peach-sports-drink-no-sugar-600ml-7714344",
 "save_amount": 2.2,
 "store": "Coles",
+"store_category": "Water Value Added Waters",
 "title": "G Active Electrolyte Water Peach Sports Drink No Sugar 600mL",
 "unit_price": "$3.33/ 1L",
 "was_price": 4.2
@@ -16859,6 +17028,7 @@
 "product_url": "https://www.coles.com.au/product/maybelline-lash-sensational-firework-mascara-28g-8100086",
 "save_amount": 14.5,
 "store": "Coles",
+"store_category": "Makeup Eye",
 "title": "Maybelline Lash Sensational Firework Mascara 28g",
 "unit_price": "$5.18/ 10g",
 "was_price": 29.0
@@ -17003,6 +17173,7 @@
 "product_url": "https://www.coles.com.au/product/listerine-zero-alcohol-antibacterial-mouthwash-less-intense-taste-500ml-8150277",
 "save_amount": 4.0,
 "store": "Coles",
+"store_category": "Dental Health Mouthwash",
 "title": "Listerine Zero Alcohol Antibacterial Mouthwash Less Intense Taste 500mL",
 "unit_price": "$0.80/ 100mL",
 "was_price": 8.0
@@ -17300,6 +17471,7 @@
 "product_url": "https://www.coles.com.au/product/nivea-deo-roll-on-men-invisible-black-and-white-50ml-8445011",
 "save_amount": 2.75,
 "store": "Coles",
+"store_category": "Mens Deos & Grooming Deodorants",
 "title": "Nivea Deo Roll On Men Invisible Black And White 50mL",
 "unit_price": "$5.50/ 100mL",
 "was_price": 5.5
@@ -17328,6 +17500,7 @@
 "product_url": "https://www.coles.com.au/product/popcorners-popcorn-chips-share-pack-sea-salt-130g-8447287",
 "save_amount": 2.4,
 "store": "Coles",
+"store_category": "Snacks Better For You",
 "title": "Popcorners Popcorn Chips Share Pack Sea Salt 130g",
 "unit_price": "$1.85/ 100g",
 "was_price": 4.8
@@ -17342,6 +17515,7 @@
 "product_url": "https://www.coles.com.au/product/popcorners-popcorn-chips-share-pack-sour-cream-chives-130g-8447356",
 "save_amount": 2.4,
 "store": "Coles",
+"store_category": "Snacks Better For You",
 "title": "Popcorners Popcorn Chips Share Pack Sour Cream & Chives 130g",
 "unit_price": "$1.85/ 100g",
 "was_price": 4.8
@@ -17356,6 +17530,7 @@
 "product_url": "https://www.coles.com.au/product/popcorners-popcorn-chips-share-pack-sweet-salty-130g-8447378",
 "save_amount": 2.4,
 "store": "Coles",
+"store_category": "Snacks Better For You",
 "title": "Popcorners Popcorn Chips Share Pack Sweet & Salty 130g",
 "unit_price": "$1.85/ 100g",
 "was_price": 4.8
@@ -17370,6 +17545,7 @@
 "product_url": "https://www.coles.com.au/product/l-oreal-paris-matte-resistance-liquipd-lipstick-shopping-spree-5ml-8473505",
 "save_amount": 16.0,
 "store": "Coles",
+"store_category": "Makeup Lip",
 "title": "L'Oreal Paris Matte Resistance Liquipd Lipstick Shopping Spree 5mL",
 "unit_price": "$32.00/ 10mL",
 "was_price": 32.0
@@ -17412,6 +17588,7 @@
 "product_url": "https://www.coles.com.au/product/nivea-men-sensitive-skin-shaving-gel-with-vitamin-e-chamomile-200ml-8477914",
 "save_amount": 4.0,
 "store": "Coles",
+"store_category": "Mens Deos & Grooming Hair Removal",
 "title": "Nivea Men Sensitive Skin Shaving Gel With Vitamin E & Chamomile 200mL",
 "unit_price": "$2.00/ 100mL",
 "was_price": 8.0
@@ -17426,6 +17603,7 @@
 "product_url": "https://www.coles.com.au/product/nivea-men-sensitive-post-shave-balm-100ml-8478145",
 "save_amount": 6.75,
 "store": "Coles",
+"store_category": "Mens Deos & Grooming Skincare & Aftershav",
 "title": "Nivea Men Sensitive Post Shave Balm 100mL",
 "unit_price": "$6.75/ 100mL",
 "was_price": 13.5
@@ -17482,6 +17660,7 @@
 "product_url": "https://www.coles.com.au/product/kellogg-s-special-k-original-breakfast-cereal-300g-8491653",
 "save_amount": 3.5,
 "store": "Coles",
+"store_category": "Cereal Ready To Eat",
 "title": "Kellogg's Special K Original Breakfast Cereal 300g",
 "unit_price": "$1.17/ 100g",
 "was_price": 7.0
@@ -17510,6 +17689,7 @@
 "product_url": "https://www.coles.com.au/product/kellogg-s-crunchy-nut-corn-flakes-breakfast-cereal-380g-8492044",
 "save_amount": 3.5,
 "store": "Coles",
+"store_category": "Cereal Ready To Eat",
 "title": "Kellogg's Crunchy Nut Corn Flakes Breakfast Cereal 380g",
 "unit_price": "$0.92/ 100g",
 "was_price": 7.0
@@ -17524,6 +17704,7 @@
 "product_url": "https://www.coles.com.au/product/kellogg-s-froot-loops-breakfast-cereal-285g-8492066",
 "save_amount": 3.5,
 "store": "Coles",
+"store_category": "Cereal Ready To Eat",
 "title": "Kellogg's Froot Loops Breakfast Cereal 285g",
 "unit_price": "$1.23/ 100g",
 "was_price": 7.0
@@ -17552,6 +17733,7 @@
 "product_url": "https://www.coles.com.au/product/cutex-strengthening-nail-polish-remover-100ml-8496646",
 "save_amount": 3.0,
 "store": "Coles",
+"store_category": "Makeup Nail",
 "title": "Cutex Strengthening Nail Polish Remover 100mL",
 "unit_price": "$3.00/ 100mL",
 "was_price": 6.0
@@ -17636,6 +17818,7 @@
 "product_url": "https://www.coles.com.au/product/l-oreal-telescopic-mascara-black-8ml-8551686",
 "save_amount": 16.0,
 "store": "Coles",
+"store_category": "Makeup Eye",
 "title": "L'Oreal Telescopic Mascara Black 8mL",
 "unit_price": "$20.00/ 10mL",
 "was_price": 32.0
@@ -17805,6 +17988,7 @@
 "product_url": "https://www.coles.com.au/product/table-of-plenty-snack-pack-topped-sweet-mini-rice-cakes-yoghurt-mixed-berry-84g-8712526",
 "save_amount": 3.5,
 "store": "Coles",
+"store_category": "Biscuits & Cookies Multipacks",
 "title": "Table Of Plenty Snack Pack Topped Sweet Mini Rice Cakes Yoghurt Mixed Berry 84g",
 "unit_price": "$4.17/ 100g",
 "was_price": 7.0
@@ -17932,6 +18116,7 @@
 "product_url": "https://www.coles.com.au/product/colgate-sensitive-pro-relief-enamel-repair-toothpaste-110g-8939383",
 "save_amount": 5.5,
 "store": "Coles",
+"store_category": "Dental Health Toothpaste",
 "title": "Colgate Sensitive Pro Relief Enamel Repair Toothpaste 110g",
 "unit_price": "$5.00/ 100g",
 "was_price": 11.0
@@ -17960,6 +18145,7 @@
 "product_url": "https://www.coles.com.au/product/nivea-q10-dual-anti-wrinkle-action-serum-30ml-9029362",
 "save_amount": 18.0,
 "store": "Coles",
+"store_category": "Skin Care Facial Skincare",
 "title": "Nivea Q10 Dual Anti Wrinkle Action Serum 30mL",
 "unit_price": "$60.00/ 100mL",
 "was_price": 36.0
@@ -18241,6 +18427,7 @@
 "product_url": "https://www.coles.com.au/product/ostelin-vitamin-d-calcium-250-pack-9113221",
 "save_amount": 24.75,
 "store": "Coles",
+"store_category": "Vitamins Bone & Joint",
 "title": "Ostelin Vitamin D Calcium 250 Pack",
 "unit_price": "$9.90/ 100ea",
 "was_price": 49.5
@@ -18283,6 +18470,7 @@
 "product_url": "https://www.coles.com.au/product/nestle-aero-chocolate-milk-medium-bar-40g-9208113",
 "save_amount": 1.5,
 "store": "Coles",
+"store_category": "Bars Gum Pocket Pack Bars",
 "title": "Nestle Aero Chocolate Milk Medium Bar 40g",
 "unit_price": "$3.75/ 100g",
 "was_price": 3.0
@@ -18552,6 +18740,7 @@
 "product_url": "https://www.coles.com.au/product/gem-skin-loving-shave-kit-queen-dream-1-each-9516239",
 "save_amount": 10.0,
 "store": "Coles",
+"store_category": "Womens Deos & Groom Hair Removal",
 "title": "Gem Skin-loving Shave Kit Queen Dream 1 Each",
 "unit_price": "$10.00/ 1ea",
 "was_price": 20.0
@@ -18580,6 +18769,7 @@
 "product_url": "https://www.coles.com.au/product/gem-skin-loving-shaving-gel-vanilla-macadamia-195g-9536189",
 "save_amount": 5.0,
 "store": "Coles",
+"store_category": "Womens Deos & Groom Hair Removal",
 "title": "Gem Skin-loving Shaving Gel Vanilla Macadamia 195g",
 "unit_price": "$2.56/ 100g",
 "was_price": 10.0
@@ -18924,6 +19114,6 @@
 },
 "last_full": 1791387042.3606088,
 "pages": 30,
-"pages_done": 5,
+"pages_done": 10,
 "week": "2026-10-07"
 }
