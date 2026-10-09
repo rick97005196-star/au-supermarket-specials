@@ -1,5 +1,5 @@
 {
-"cursor": 2,
+"cursor": 7,
 "items": {
 "1000301": {
 "category": "Biscuits & Cookies Rice",
@@ -3506,6 +3506,7 @@
 "product_url": "https://www.coles.com.au/product/bounty-coconut-chocolate-bar-50g-1640904",
 "save_amount": 2.0,
 "store": "Coles",
+"store_category": "Bars Gum Pocket Pack Bars",
 "title": "Bounty Coconut Chocolate Bar 50g",
 "unit_price": "$2.00/ 100g",
 "was_price": 3.0
@@ -3763,6 +3764,7 @@
 "product_url": "https://www.coles.com.au/product/maybelline-sky-high-burgundy-mascara-7-2ml-1700777",
 "save_amount": 14.0,
 "store": "Coles",
+"store_category": "Makeup Eye",
 "title": "Maybelline Sky High Burgundy Mascara 7.2mL",
 "unit_price": "$19.44/ 10mL",
 "was_price": 28.0
@@ -4400,6 +4402,7 @@
 "product_url": "https://www.coles.com.au/product/four-n-twenty-chilli-beef-traveller-pies-160g-1759372",
 "save_amount": 2.25,
 "store": "Coles",
+"store_category": "Protein & Meals Snacks",
 "title": "Four'N Twenty Chilli Beef Traveller Pies 160g",
 "unit_price": "$1.41/ 100g",
 "was_price": 4.5
@@ -4414,6 +4417,7 @@
 "product_url": "https://www.coles.com.au/product/four-n-twenty-traveller-spicy-burrito-pie-160g-1759383",
 "save_amount": 2.25,
 "store": "Coles",
+"store_category": "Protein & Meals Snacks",
 "title": "Four'N Twenty Traveller Spicy Burrito Pie 160g",
 "unit_price": "$1.41/ 100g",
 "was_price": 4.5
@@ -5595,6 +5599,7 @@
 "product_url": "https://www.coles.com.au/product/cosrx-hyaluronic-acid-intensive-cream-100ml-1935544",
 "save_amount": 24.5,
 "store": "Coles",
+"store_category": "Skin Care Facial Skincare",
 "title": "Cosrx Hyaluronic Acid Intensive Cream 100mL",
 "unit_price": "$24.50/ 100mL",
 "was_price": 49.0
@@ -6394,6 +6399,7 @@
 "product_url": "https://www.coles.com.au/product/nivea-sun-uv-face-breathable-sensitive-sunscreen-spf50-40ml-2057712",
 "save_amount": 7.5,
 "store": "Coles",
+"store_category": "Skin Care Suncare",
 "title": "Nivea Sun Uv Face Breathable Sensitive Sunscreen Spf50+ 40mL",
 "unit_price": "$18.75/ 100mL",
 "was_price": 15.0
@@ -6537,6 +6543,7 @@
 "product_url": "https://www.coles.com.au/product/reese-s-peanut-butter-cups-milk-chocolate-2-pack-42g-2137550",
 "save_amount": 1.5,
 "store": "Coles",
+"store_category": "Bars Gum Pocket Pack Bars",
 "title": "Reese's Peanut Butter Cups Milk Chocolate 2 Pack 42g",
 "unit_price": "$3.57/ 100g",
 "was_price": 3.0
@@ -6551,6 +6558,7 @@
 "product_url": "https://www.coles.com.au/product/hershey-s-cookies-n-creme-bar-40g-2140929",
 "save_amount": 1.5,
 "store": "Coles",
+"store_category": "Bars Gum Pocket Pack Bars",
 "title": "Hershey's Cookies N Creme Bar 40g",
 "unit_price": "$3.75/ 100g",
 "was_price": 3.0
@@ -7356,6 +7364,7 @@
 "product_url": "https://www.coles.com.au/product/nivea-sun-protect-moisture-sunscreen-spf-50-400ml-2794164",
 "save_amount": 14.0,
 "store": "Coles",
+"store_category": "Skin Care Suncare",
 "title": "Nivea Sun Protect & Moisture Sunscreen SPF 50+ 400mL",
 "unit_price": "$3.50/ 100mL",
 "was_price": 28.0
@@ -7699,6 +7708,7 @@
 "product_url": "https://www.coles.com.au/product/connoisseur-mint-cookies-ice-cream-tub-1l-2982357",
 "save_amount": 6.5,
 "store": "Coles",
+"store_category": "Ice Cream Premium Tubs",
 "title": "Connoisseur Mint & Cookies Ice Cream Tub 1L",
 "unit_price": "$0.65/ 100mL",
 "was_price": 13.0
@@ -10813,6 +10823,7 @@
 "product_url": "https://www.coles.com.au/product/farmers-union-yoghurt-peach-130g-3830911",
 "save_amount": 1.45,
 "store": "Coles",
+"store_category": "Yoghurt Yoghurt",
 "title": "Farmers Union Yoghurt Peach 130g",
 "unit_price": "$1.12/ 100g",
 "was_price": 2.9
@@ -10842,6 +10853,7 @@
 "product_url": "https://www.coles.com.au/product/connoisseur-matcha-green-tea-white-choc-ice-cream-tub-1l-3880578",
 "save_amount": 6.5,
 "store": "Coles",
+"store_category": "Ice Cream Premium Tubs",
 "title": "Connoisseur Matcha Green Tea & White Choc Ice Cream Tub 1L",
 "unit_price": "$0.65/ 100mL",
 "was_price": 13.0
@@ -12216,6 +12228,7 @@
 "product_url": "https://www.coles.com.au/product/hong-kong-dim-sim-kitchen-pork-chive-dumplings-300g-4406663",
 "save_amount": 4.25,
 "store": "Coles",
+"store_category": "Frozen World Foods Asian",
 "title": "Hong Kong Dim Sim Kitchen Pork & Chive Dumplings 300g",
 "unit_price": "$1.42/ 100g",
 "was_price": 8.5
@@ -12230,6 +12243,7 @@
 "product_url": "https://www.coles.com.au/product/hong-kong-dim-sim-kitchen-pork-prawn-mushroom-siu-mai-300g-4406674",
 "save_amount": 4.25,
 "store": "Coles",
+"store_category": "Frozen World Foods Asian",
 "title": "Hong Kong Dim Sim Kitchen Pork Prawn & Mushroom Siu Mai 300g",
 "unit_price": "$1.42/ 100g",
 "was_price": 8.5
@@ -12244,6 +12258,7 @@
 "product_url": "https://www.coles.com.au/product/hong-kong-dim-sim-kitchen-bbq-pork-buns-300g-4406685",
 "save_amount": 4.25,
 "store": "Coles",
+"store_category": "Frozen World Foods Asian",
 "title": "Hong Kong Dim Sim Kitchen BBQ Pork Buns 300g",
 "unit_price": "$1.42/ 100g",
 "was_price": 8.5
@@ -14098,6 +14113,7 @@
 "product_url": "https://www.coles.com.au/product/connoisseur-classic-vanilla-ice-cream-tub-1l-5615272",
 "save_amount": 6.5,
 "store": "Coles",
+"store_category": "Ice Cream Premium Tubs",
 "title": "Connoisseur Classic Vanilla Ice Cream Tub 1L",
 "unit_price": "$0.65/ 100mL",
 "was_price": 13.0
@@ -15562,6 +15578,7 @@
 "product_url": "https://www.coles.com.au/product/kellogg-s-nutri-grain-original-bars-5-pack-110g-6611459",
 "save_amount": 2.25,
 "store": "Coles",
+"store_category": "Nutritional Snacks Cereal",
 "title": "Kellogg's Nutri-Grain Original Bars 5 Pack 110g",
 "unit_price": "$2.05/ 100g",
 "was_price": 4.5
@@ -15576,6 +15593,7 @@
 "product_url": "https://www.coles.com.au/product/kellogg-s-lcms-rice-bubbles-choc-chip-5-pack-100g-6612021",
 "save_amount": 2.25,
 "store": "Coles",
+"store_category": "Nutritional Snacks Cereal",
 "title": "Kellogg's Lcms Rice Bubbles Choc Chip 5 Pack 100g",
 "unit_price": "$2.25/ 100g",
 "was_price": 4.5
@@ -15590,6 +15608,7 @@
 "product_url": "https://www.coles.com.au/product/kellogg-s-lcms-rice-bubbles-unicorn-5-pack-100g-6612032",
 "save_amount": 2.25,
 "store": "Coles",
+"store_category": "Nutritional Snacks Cereal",
 "title": "Kellogg's Lcms Rice Bubbles Unicorn 5 Pack 100g",
 "unit_price": "$2.25/ 100g",
 "was_price": 4.5
@@ -15604,6 +15623,7 @@
 "product_url": "https://www.coles.com.au/product/kellogg-s-lcms-rice-bubbles-kaleidos-5-pack-100g-6615369",
 "save_amount": 2.25,
 "store": "Coles",
+"store_category": "Nutritional Snacks Cereal",
 "title": "Kellogg's Lcms Rice Bubbles Kaleidos 5 Pack 100g",
 "unit_price": "$2.25/ 100g",
 "was_price": 4.5
@@ -15633,6 +15653,7 @@
 "product_url": "https://www.coles.com.au/product/kellogg-s-lcms-split-stix-yoghurty-5-pack-110g-6696382",
 "save_amount": 2.25,
 "store": "Coles",
+"store_category": "Nutritional Snacks Cereal",
 "title": "Kellogg's Lcms Split Stix Yoghurty 5 Pack 110g",
 "unit_price": "$2.05/ 100g",
 "was_price": 4.5
@@ -15866,6 +15887,7 @@
 "product_url": "https://www.coles.com.au/product/carefree-original-long-unscented-liners-30-pack-6899437",
 "save_amount": 3.25,
 "store": "Coles",
+"store_category": "Sanitary Protection Liners",
 "title": "Carefree Original Long Unscented Liners 30 Pack",
 "unit_price": "$0.11/ 1ea",
 "was_price": 6.5
@@ -15880,6 +15902,7 @@
 "product_url": "https://www.coles.com.au/product/carefree-original-unscented-liners-30-pack-6932962",
 "save_amount": 2.75,
 "store": "Coles",
+"store_category": "Sanitary Protection Liners",
 "title": "Carefree Original Unscented Liners 30 Pack",
 "unit_price": "$0.09/ 1ea",
 "was_price": 5.5
@@ -15995,8 +16018,39 @@
 "product_url": "https://www.coles.com.au/product/uncle-tobys-cheerios-low-sugar-breakfast-cereal-450g-7019368",
 "save_amount": 3.75,
 "store": "Coles",
+"store_category": "Cereal Ready To Eat",
 "title": "Uncle Tobys Cheerios Low Sugar Breakfast Cereal 450g",
 "unit_price": "$0.83/ 100g",
+"was_price": 7.5
+},
+"7019380": {
+"category": "Cereal Ready To Eat",
+"discount_desc": "1/2 PRICE",
+"id": "7019380",
+"image_url": "https://productimages.coles.com.au/productimages/7/7019380.jpg",
+"price": 3.75,
+"price_display": "$3.75",
+"product_url": "https://www.coles.com.au/product/uncle-tobys-cheerios-wholegrain-breakfast-cereal-560g-7019380",
+"save_amount": 3.75,
+"store": "Coles",
+"store_category": "Cereal Ready To Eat",
+"title": "Uncle Tobys Cheerios Wholegrain Breakfast Cereal 560g",
+"unit_price": "$0.67/ 100g",
+"was_price": 7.5
+},
+"7019437": {
+"category": "Cereal Ready To Eat",
+"discount_desc": "1/2 PRICE",
+"id": "7019437",
+"image_url": "https://productimages.coles.com.au/productimages/7/7019437.jpg",
+"price": 3.75,
+"price_display": "$3.75",
+"product_url": "https://www.coles.com.au/product/uncle-tobys-cheerios-honey-breakfast-cereal-520g-7019437",
+"save_amount": 3.75,
+"store": "Coles",
+"store_category": "Cereal Ready To Eat",
+"title": "Uncle Tobys Cheerios Honey Breakfast Cereal 520g",
+"unit_price": "$0.72/ 100g",
 "was_price": 7.5
 },
 "7019583": {
@@ -16024,6 +16078,7 @@
 "product_url": "https://www.coles.com.au/product/uncle-tobys-plus-iron-breakfast-cereal-630g-7019619",
 "save_amount": 4.75,
 "store": "Coles",
+"store_category": "Cereal Ready To Eat",
 "title": "Uncle Tobys Plus Iron Breakfast Cereal 630g",
 "unit_price": "$0.75/ 100g",
 "was_price": 9.5
@@ -16038,6 +16093,7 @@
 "product_url": "https://www.coles.com.au/product/uncle-tobys-plus-fibre-breakfast-cereal-700g-7019620",
 "save_amount": 4.75,
 "store": "Coles",
+"store_category": "Cereal Ready To Eat",
 "title": "Uncle Tobys Plus Fibre Breakfast Cereal 700g",
 "unit_price": "$0.68/ 100g",
 "was_price": 9.5
@@ -16052,6 +16108,7 @@
 "product_url": "https://www.coles.com.au/product/uncle-tobys-plus-protein-breakfast-cereal-620g-7019630",
 "save_amount": 4.75,
 "store": "Coles",
+"store_category": "Cereal Ready To Eat",
 "title": "Uncle Tobys Plus Protein Breakfast Cereal 620g",
 "unit_price": "$0.77/ 100g",
 "was_price": 9.5
@@ -16066,6 +16123,7 @@
 "product_url": "https://www.coles.com.au/product/uncle-tobys-plus-muesli-flakes-705g-7019652",
 "save_amount": 4.75,
 "store": "Coles",
+"store_category": "Cereal Ready To Eat",
 "title": "Uncle Tobys Plus Muesli Flakes 705g",
 "unit_price": "$0.67/ 100g",
 "was_price": 9.5
@@ -16222,6 +16280,7 @@
 "product_url": "https://www.coles.com.au/product/rimmel-lasting-finish-35h-foundation-203-true-beige-30ml-7038840",
 "save_amount": 13.5,
 "store": "Coles",
+"store_category": "Makeup Face",
 "title": "Rimmel Lasting Finish 35h Foundation 203 True Beige 30mL",
 "unit_price": "$4.50/ 10mL",
 "was_price": 27.0
@@ -16236,6 +16295,7 @@
 "product_url": "https://www.coles.com.au/product/rimmel-lasting-finish-35h-foundation-150-rose-vanilla-30ml-7038861",
 "save_amount": 13.5,
 "store": "Coles",
+"store_category": "Makeup Face",
 "title": "Rimmel Lasting Finish 35h Foundation 150 Rose Vanilla 30mL",
 "unit_price": "$4.50/ 10mL",
 "was_price": 27.0
@@ -16250,6 +16310,7 @@
 "product_url": "https://www.coles.com.au/product/rimmel-lasting-finish-35h-foundation-ivory-30ml-7038872",
 "save_amount": 13.5,
 "store": "Coles",
+"store_category": "Makeup Face",
 "title": "Rimmel Lasting Finish 35h Foundation Ivory 30mL",
 "unit_price": "$4.50/ 10mL",
 "was_price": 27.0
@@ -16292,6 +16353,7 @@
 "product_url": "https://www.coles.com.au/product/rimmel-lasting-finish-35h-foundation-400-natural-beige-30ml-7038941",
 "save_amount": 13.5,
 "store": "Coles",
+"store_category": "Makeup Face",
 "title": "Rimmel Lasting Finish 35h Foundation 400 Natural Beige 30mL",
 "unit_price": "$4.50/ 10mL",
 "was_price": 27.0
@@ -16405,6 +16467,7 @@
 "product_url": "https://www.coles.com.au/product/ben-s-original-mexican-style-rice-pouch-250g-7132928",
 "save_amount": 2.0,
 "store": "Coles",
+"store_category": "Rice Ready To Eat",
 "title": "Ben's Original Mexican Style Rice Pouch 250g",
 "unit_price": "$0.80/ 100g",
 "was_price": 4.0
@@ -16591,6 +16654,7 @@
 "product_url": "https://www.coles.com.au/product/blackmores-probiotic-immune-health-55-pack-7451201",
 "save_amount": 27.5,
 "store": "Coles",
+"store_category": "Vitamins Digestion",
 "title": "Blackmores Probiotic + Immune Health 55 Pack",
 "unit_price": "$50.00/ 100ea",
 "was_price": 55.0
@@ -16650,6 +16714,7 @@
 "product_url": "https://www.coles.com.au/product/twinings-pure-peppermint-infusions-tea-bags-160g-7488100",
 "save_amount": 6.75,
 "store": "Coles",
+"store_category": "Tea Infusion",
 "title": "Twinings Pure Peppermint Infusions Tea Bags 160g",
 "unit_price": "$0.08/ 1ea",
 "was_price": 13.5
@@ -16694,6 +16759,7 @@
 "product_url": "https://www.coles.com.au/product/schick-silk-womens-foaming-shave-gel-sensitive-198g-7526504",
 "save_amount": 4.0,
 "store": "Coles",
+"store_category": "Womens Deos & Groom Hair Removal",
 "title": "Schick Silk Womens Foaming Shave Gel Sensitive 198g",
 "unit_price": "$2.02/ 100g",
 "was_price": 8.0
@@ -16708,6 +16774,7 @@
 "product_url": "https://www.coles.com.au/product/sally-hansen-vitamin-e-nail-cuticle-oil-13-3ml-7538263",
 "save_amount": 9.0,
 "store": "Coles",
+"store_category": "Makeup Nail",
 "title": "Sally Hansen Vitamin E Nail & Cuticle Oil 13.3mL",
 "unit_price": "$6.77/ 10mL",
 "was_price": 18.0
@@ -16736,6 +16803,7 @@
 "product_url": "https://www.coles.com.au/product/duracell-coppertop-aaa-alkaline-batteries-14-pack-7628050",
 "save_amount": 14.0,
 "store": "Coles",
+"store_category": "Electrical Batteries",
 "title": "Duracell Coppertop AAA Alkaline Batteries 14 Pack",
 "unit_price": "$1.00/ 1ea",
 "was_price": 28.0
@@ -16779,6 +16847,7 @@
 "product_url": "https://www.coles.com.au/product/violet-crumble-mint-bag-130g-7671682",
 "save_amount": 3.0,
 "store": "Coles",
+"store_category": "Confectionery Bitesize",
 "title": "Violet Crumble Mint Bag 130g",
 "unit_price": "$2.31/ 100g",
 "was_price": 6.0
@@ -16793,6 +16862,7 @@
 "product_url": "https://www.coles.com.au/product/rimmel-multi-tasker-foundation-fair-light-30ml-7674363",
 "save_amount": 15.0,
 "store": "Coles",
+"store_category": "Makeup Face",
 "title": "Rimmel Multi Tasker Foundation Fair Light 30mL",
 "unit_price": "$5.00/ 10mL",
 "was_price": 30.0
@@ -16807,6 +16877,7 @@
 "product_url": "https://www.coles.com.au/product/rimmel-wonder-bond-mascara-black-11ml-7674400",
 "save_amount": 11.5,
 "store": "Coles",
+"store_category": "Makeup Eye",
 "title": "Rimmel Wonder Bond Mascara Black 11mL",
 "unit_price": "$10.45/ 10mL",
 "was_price": 23.0
@@ -16849,6 +16920,7 @@
 "product_url": "https://www.coles.com.au/product/revlon-colorstay-micro-brow-pencil-dark-brown-0-09g-7689430",
 "save_amount": 12.5,
 "store": "Coles",
+"store_category": "Makeup Eye",
 "title": "Revlon Colorstay Micro Brow Pencil Dark Brown 0.09g",
 "unit_price": "$1,388.89/ 10g",
 "was_price": 25.0
@@ -16990,6 +17062,7 @@
 "product_url": "https://www.coles.com.au/product/maybelline-super-stay-vinyl-ink-lipstick-peachy-4-2ml-7704952",
 "save_amount": 13.5,
 "store": "Coles",
+"store_category": "Makeup Lip",
 "title": "Maybelline Super Stay Vinyl Ink Lipstick Peachy 4.2mL",
 "unit_price": "$32.14/ 10mL",
 "was_price": 27.0
@@ -17302,6 +17375,7 @@
 "product_url": "https://www.coles.com.au/product/real-foods-multigrain-corn-thins-150g-8000070",
 "save_amount": 1.1,
 "store": "Coles",
+"store_category": "Biscuits & Cookies Rice",
 "title": "Real Foods Multigrain Corn Thins 150g",
 "unit_price": "$0.73/ 100g",
 "was_price": 2.2
@@ -17402,6 +17476,7 @@
 "product_url": "https://www.coles.com.au/product/maharajah-s-choice-masala-crunch-52g-8062599",
 "save_amount": 1.25,
 "store": "Coles",
+"store_category": "Indian Foods Authentic Indian",
 "title": "Maharajah's Choice Masala Crunch 52g",
 "unit_price": "$2.40/ 100g",
 "was_price": 2.5
@@ -17550,6 +17625,7 @@
 "product_url": "https://www.coles.com.au/product/vanish-napisan-gold-pro-turbo-colours-stain-remover-2kg-8135681",
 "save_amount": 19.0,
 "store": "Coles",
+"store_category": "Laundry Accessories Stain Treatment",
 "title": "Vanish Napisan Gold Pro Turbo Colours Stain Remover 2kg",
 "unit_price": "$9.50/ 1kg",
 "was_price": 38.0
@@ -17578,6 +17654,7 @@
 "product_url": "https://www.coles.com.au/product/vanish-napisan-gold-pro-turbo-white-stain-remover-1kg-8135852",
 "save_amount": 11.0,
 "store": "Coles",
+"store_category": "Laundry Accessories Stain Treatment",
 "title": "Vanish Napisan Gold Pro Turbo White Stain Remover 1kg",
 "unit_price": "$11.00/ 1kg",
 "was_price": 22.0
@@ -17592,6 +17669,7 @@
 "product_url": "https://www.coles.com.au/product/vanish-napisan-gold-pro-turbo-colours-stain-remover-1kg-8135954",
 "save_amount": 11.0,
 "store": "Coles",
+"store_category": "Laundry Accessories Stain Treatment",
 "title": "Vanish Napisan Gold Pro Turbo Colours Stain Remover 1kg",
 "unit_price": "$11.00/ 1kg",
 "was_price": 22.0
@@ -17621,6 +17699,7 @@
 "product_url": "https://www.coles.com.au/product/nivea-lip-balm-ultra-care-sun-protect-spf-50-4-8g-8139220",
 "save_amount": 2.5,
 "store": "Coles",
+"store_category": "Skin Care Suncare",
 "title": "Nivea Lip Balm Ultra Care Sun Protect SPF 50+ 4.8g",
 "unit_price": "$52.08/ 100g",
 "was_price": 5.0
@@ -17990,6 +18069,7 @@
 "product_url": "https://www.coles.com.au/product/popcorners-popcorn-chips-share-pack-cheddar-130g-8447276",
 "save_amount": 2.4,
 "store": "Coles",
+"store_category": "Snacks Better For You",
 "title": "Popcorners Popcorn Chips Share Pack Cheddar 130g",
 "unit_price": "$1.85/ 100g",
 "was_price": 4.8
@@ -18122,6 +18202,7 @@
 "product_url": "https://www.coles.com.au/product/nivea-refreshing-cleansing-wipes-25-pack-8480690",
 "save_amount": 4.25,
 "store": "Coles",
+"store_category": "Skin Care Facial Skincare",
 "title": "Nivea Refreshing Cleansing Wipes 25 Pack",
 "unit_price": "$0.17/ 1ea",
 "was_price": 8.5
@@ -18223,6 +18304,7 @@
 "product_url": "https://www.coles.com.au/product/kellogg-s-just-right-breakfast-cereal-with-whole-grains-apricot-pieces-and-sultanas-460g-8492678",
 "save_amount": 3.5,
 "store": "Coles",
+"store_category": "Cereal Ready To Eat",
 "title": "Kellogg's Just Right Breakfast Cereal With Whole Grains Apricot Pieces And Sultanas 460g",
 "unit_price": "$0.76/ 100g",
 "was_price": 7.0
@@ -18266,6 +18348,7 @@
 "product_url": "https://www.coles.com.au/product/maybelline-superstay-24hr-lip-petal-4-1ml-8505758",
 "save_amount": 13.5,
 "store": "Coles",
+"store_category": "Makeup Lip",
 "title": "Maybelline Superstay 24Hr Lip Petal 4.1mL",
 "unit_price": "$32.93/ 10mL",
 "was_price": 27.0
@@ -18280,6 +18363,7 @@
 "product_url": "https://www.coles.com.au/product/cenovis-guarana-ginseng-energy-support-tablets-60-pack-8528549",
 "save_amount": 9.75,
 "store": "Coles",
+"store_category": "Vitamins Energy",
 "title": "Cenovis Guarana & Ginseng Energy Support Tablets 60 Pack",
 "unit_price": "$16.25/ 100ea",
 "was_price": 19.5
@@ -18294,6 +18378,7 @@
 "product_url": "https://www.coles.com.au/product/cheezels-chicken-snacks-share-pack-125g-8544396",
 "save_amount": 1.75,
 "store": "Coles",
+"store_category": "Snacks Cereals",
 "title": "Cheezels Chicken Snacks Share Pack 125g",
 "unit_price": "$1.40/ 100g",
 "was_price": 3.5
@@ -18380,6 +18465,7 @@
 "product_url": "https://www.coles.com.au/product/golden-circle-cordial-zero-sugar-fruit-cup-2l-8556840",
 "save_amount": 2.85,
 "store": "Coles",
+"store_category": "Juices & Cordials Standard Cordial",
 "title": "Golden Circle Cordial Zero Sugar Fruit Cup 2L",
 "unit_price": "$1.43/ 1L",
 "was_price": 5.7
@@ -18509,6 +18595,7 @@
 "product_url": "https://www.coles.com.au/product/gatorade-sports-drink-fierce-grape-600ml-8729937",
 "save_amount": 2.2,
 "store": "Coles",
+"store_category": "Energy/Sport/Icedtea Sport Drinks",
 "title": "Gatorade Sports Drink Fierce Grape 600mL",
 "unit_price": "$3.33/ 1L",
 "was_price": 4.2
@@ -19147,6 +19234,7 @@
 "product_url": "https://www.coles.com.au/product/viva-paper-towel-white-2-pack-9333523",
 "save_amount": 2.25,
 "store": "Coles",
+"store_category": "Paper Towels Paper Towels",
 "title": "Viva Paper Towel White 2 Pack",
 "unit_price": "$1.88/ 100ea",
 "was_price": 4.5
@@ -19176,6 +19264,7 @@
 "product_url": "https://www.coles.com.au/product/schick-silk-3-sensitive-disposable-razors-4-pack-9387690",
 "save_amount": 3.5,
 "store": "Coles",
+"store_category": "Womens Deos & Groom Hair Removal",
 "title": "Schick Silk 3 Sensitive Disposable Razors 4 Pack",
 "unit_price": "$0.88/ 1ea",
 "was_price": 7.0
@@ -19190,6 +19279,7 @@
 "product_url": "https://www.coles.com.au/product/coca-cola-vanilla-soft-drink-bottle-1-25l-9391600",
 "save_amount": 2.25,
 "store": "Coles",
+"store_category": "Softdrinks Bottles",
 "title": "Coca-Cola Vanilla Soft Drink Bottle 1.25L",
 "unit_price": "$1.80/ 1L",
 "was_price": 4.5
@@ -19204,6 +19294,7 @@
 "product_url": "https://www.coles.com.au/product/lynx-deodorant-48hr-roll-on-antiperspirant-africa-50ml-9467520",
 "save_amount": 2.5,
 "store": "Coles",
+"store_category": "Mens Deos & Grooming Deodorants",
 "title": "Lynx Deodorant 48hr Roll On Antiperspirant Africa 50mL",
 "unit_price": "$5.00/ 100mL",
 "was_price": 5.0
@@ -19262,6 +19353,7 @@
 "product_url": "https://www.coles.com.au/product/gem-skin-loving-shave-kit-sweet-treat-1-each-9515848",
 "save_amount": 10.0,
 "store": "Coles",
+"store_category": "Womens Deos & Groom Hair Removal",
 "title": "Gem Skin-loving Shave Kit Sweet Treat 1 Each",
 "unit_price": "$10.00/ 1ea",
 "was_price": 20.0
@@ -19335,6 +19427,7 @@
 "product_url": "https://www.coles.com.au/product/mortein-powergard-diy-2l-9563997",
 "save_amount": 20.0,
 "store": "Coles",
+"store_category": "Pest Control Crawling Insect",
 "title": "Mortein Powergard Diy 2L",
 "unit_price": "$1.00/ 100mL",
 "was_price": 40.0
@@ -19506,6 +19599,7 @@
 "product_url": "https://www.coles.com.au/product/twinings-assam-bold-tea-bags-80-pack-200g-9896060",
 "save_amount": 6.75,
 "store": "Coles",
+"store_category": "Tea Black",
 "title": "Twinings Assam Bold Tea Bags 80 Pack 200g",
 "unit_price": "$0.08/ 1ea",
 "was_price": 13.5
@@ -19520,6 +19614,7 @@
 "product_url": "https://www.coles.com.au/product/cadbury-bubbly-block-chocolate-mint-160g-9901058",
 "save_amount": 4.0,
 "store": "Coles",
+"store_category": "Confectionery Block Chocolate",
 "title": "Cadbury Bubbly Block Chocolate Mint 160g",
 "unit_price": "$2.50/ 100g",
 "was_price": 8.0
@@ -19534,6 +19629,7 @@
 "product_url": "https://www.coles.com.au/product/ben-s-original-mexican-style-brown-rice-pouch-250g-9946293",
 "save_amount": 2.0,
 "store": "Coles",
+"store_category": "Rice Ready To Eat",
 "title": "Ben's Original Mexican Style Brown Rice Pouch 250g",
 "unit_price": "$0.80/ 100g",
 "was_price": 4.0
@@ -19651,13 +19747,14 @@
 "product_url": "https://www.coles.com.au/product/milo-frothy-instant-hot-chocolate-sachets-8-pack-136g-9991549",
 "save_amount": 4.3,
 "store": "Coles",
+"store_category": "Milk Additives Drinking Chocolate",
 "title": "Milo Frothy Instant Hot Chocolate Sachets 8 Pack 136g",
 "unit_price": "$0.54/ 1ea",
 "was_price": 8.6
 }
 },
-"last_full": 1791387042.3606088,
+"last_full": 1791526915.7283773,
 "pages": 30,
-"pages_done": 25,
+"pages_done": 0,
 "week": "2026-10-07"
 }

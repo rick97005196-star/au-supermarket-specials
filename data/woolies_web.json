@@ -448,6 +448,20 @@
 "unit_price": "$1.72 / 100G",
 "was_price": 5.5
 },
+"arnott's mint slice chocolate biscuits 200g": {
+"category": "snacks",
+"discount_desc": "1/2 PRICE",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/036215.jpg",
+"price": 2.75,
+"price_display": "$2.75 ea",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/36215/arnott-s-mint-slice-chocolate-biscuits",
+"save_amount": 2.75,
+"store": "Woolworths",
+"store_category": "Snacks & Confectionery     Confectionery , Biscuits & Crackers   BISCUITS",
+"title": "Arnott's Mint Slice Chocolate Biscuits 200g",
+"unit_price": "$1.38 / 100G",
+"was_price": 5.5
+},
 "arnott's monte chocolate biscuits 200g": {
 "category": "snacks",
 "discount_desc": "1/2 PRICE",
@@ -770,20 +784,6 @@
 "unit_price": "$2.75 / 100ML",
 "was_price": 19.5
 },
-"b.box tritan drink sipper bottle assorted 600ml each": {
-"category": "household",
-"discount_desc": "1/2 PRICE",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/147577.jpg",
-"price": 10.0,
-"price_display": "$10.00 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/147577/b-box-tritan-drink-sipper-bottle-assorted-600ml",
-"save_amount": 16.0,
-"store": "Woolworths",
-"store_category": "Cleaning & Maintenance , Home & Lifestyle , Back to School , Lunch Box     Kitchen , Kitchenware & Storage , Lunch Accessories , Accessories   DOMESTICWARE",
-"title": "B.Box Tritan Drink Sipper Bottle Assorted 600mL each",
-"unit_price": "$10 / 1EA",
-"was_price": 26.0
-},
 "banana boat spf 50+ kids sunscreen lotion spray 240ml": {
 "category": "health_vitamins",
 "discount_desc": "1/2 PRICE",
@@ -963,7 +963,7 @@
 "store": "Woolworths",
 "store_category": "Personal Care , Beauty     Hair Care , Hair Care   TOILETRIES",
 "title": "Batiste Dry Shampoo Original 200mL",
-"unit_price": "$3.5 / 100ML",
+"unit_price": "",
 "was_price": 14.0
 },
 "batiste dry shampoo sensitive scalp 200ml": {
@@ -1232,18 +1232,18 @@
 "unit_price": "$7 / 1L",
 "was_price": 28.0
 },
-"biozet attack attack plus eliminator 2kg": {
+"biozet attack attack plus eliminator 2l": {
 "category": "household",
 "discount_desc": "1/2 PRICE",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/802923.jpg",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/803466.jpg",
 "price": 14.0,
 "price_display": "$14.00 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/802923/biozet-attack-attack-plus-eliminator",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/803466/biozet-attack-attack-plus-eliminator",
 "save_amount": 14.0,
 "store": "Woolworths",
 "store_category": "Cleaning & Maintenance     Laundry   CLEANSING",
-"title": "Biozet Attack Attack Plus Eliminator 2kg",
-"unit_price": "$7 / 1KG",
+"title": "Biozet Attack Attack Plus Eliminator 2L",
+"unit_price": "$7 / 1L",
 "was_price": 28.0
 },
 "biozet attack attack plus stain power 2l": {
@@ -1652,20 +1652,6 @@
 "unit_price": "$8 / 1EA",
 "was_price": 16.0
 },
-"brunnings organic seaweed garden tonic concentrate 1l": {
-"category": "household",
-"discount_desc": "1/2 PRICE",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/6075875.jpg",
-"price": 6.0,
-"price_display": "$6.00 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/6075875/brunnings-organic-seaweed-garden-tonic-concentrate",
-"save_amount": 6.0,
-"store": "Woolworths",
-"store_category": "Cleaning & Maintenance     Garden & Outdoors   GARDEN AIDS/SEEDS/BULBS",
-"title": "Brunnings Organic Seaweed Garden Tonic Concentrate 1L",
-"unit_price": "",
-"was_price": 12.0
-},
 "brunnings organic seaweed garden tonic hose on 2l": {
 "category": "household",
 "discount_desc": "1/2 PRICE",
@@ -1817,7 +1803,7 @@
 "store": "Woolworths",
 "store_category": "Health & Wellness     Diet & Sports Nutrition   HEALTH CARE",
 "title": "BSc EAA's Hydration Tropical 180g",
-"unit_price": "$8.33 / 100G",
+"unit_price": "",
 "was_price": 30.0
 },
 "bsc electrolyte+ hydration mix watermelon berry 120g": {
@@ -2659,6 +2645,20 @@
 "title": "Cadbury Dairy Milk Biscoff Chocolate Bar 45g",
 "unit_price": "$3.33 / 100G",
 "was_price": 3.0
+},
+"cadbury dairy milk biscoff chocolate mini bars 126g 11 pack": {
+"category": "snacks",
+"discount_desc": "1/2 PRICE",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/6063000.jpg",
+"price": 3.75,
+"price_display": "$3.75 ea",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/6063000/cadbury-dairy-milk-biscoff-chocolate-mini-bars",
+"save_amount": 3.75,
+"store": "Woolworths",
+"store_category": "Halloween , Container Bonus Credits , Snacks & Confectionery     Buckets & Treats , Confectionery   CONFECTIONERY",
+"title": "Cadbury Dairy Milk Biscoff Chocolate Mini Bars 126g 11 pack",
+"unit_price": "$2.98 / 100G",
+"was_price": 7.5
 },
 "cadbury dairy milk breakaway chocolate bar 44g": {
 "category": "snacks",
@@ -3553,7 +3553,7 @@
 "store": "Woolworths",
 "store_category": "Beauty , Personal Care     Hair Colour , Hair Care   TOILETRIES",
 "title": "Clairol Nice 'N Easy Permanent 4 Dark Brown Hair Colour each",
-"unit_price": "$8.5 / 1EA",
+"unit_price": "",
 "was_price": 17.0
 },
 "clairol nice 'n easy permanent 4bg dark burgundy hair colour each": {
@@ -4312,20 +4312,6 @@
 "unit_price": "$3.52 / 100G",
 "was_price": 3.8
 },
-"cottee's apple & raspberry cordial with 40% fruit juice 1l": {
-"category": "drinks",
-"discount_desc": "1/2 PRICE",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/362472.jpg",
-"price": 2.95,
-"price_display": "$2.95 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/362472/cottee-s-apple-raspberry-cordial-with-40-fruit-juice",
-"save_amount": 2.95,
-"store": "Woolworths",
-"store_category": "Back to School , Lunch Box , Drinks     Drinks , Drinks , Cordials, Juices & Iced Teas   CORDIAL / DRINK BASES",
-"title": "Cottee's Apple & Raspberry Cordial With 40% Fruit Juice 1L",
-"unit_price": "$2.95 / 1L",
-"was_price": 5.9
-},
 "cottee's fruit cup cordial with 40% fruit juice 1l": {
 "category": "drinks",
 "discount_desc": "1/2 PRICE",
@@ -4421,6 +4407,20 @@
 "store": "Woolworths",
 "store_category": "Back to School , Lunch Box , Drinks     Drinks , Drinks , Cordials, Juices & Iced Teas   CORDIAL / DRINK BASES",
 "title": "Cottee's Raspberry Cordial Raspberry 1L",
+"unit_price": "$2.95 / 1L",
+"was_price": 5.9
+},
+"cottee's zero sugar apple & raspberry cordial sugar free 1l": {
+"category": "drinks",
+"discount_desc": "1/2 PRICE",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/190931.jpg",
+"price": 2.95,
+"price_display": "$2.95 ea",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/190931/cottee-s-zero-sugar-apple-raspberry-cordial-sugar-free",
+"save_amount": 2.95,
+"store": "Woolworths",
+"store_category": "Back to School , Lunch Box , Drinks     Drinks , Drinks , Cordials, Juices & Iced Teas   CORDIAL / DRINK BASES",
+"title": "Cottee's Zero Sugar Apple & Raspberry Cordial Sugar Free 1L",
 "unit_price": "$2.95 / 1L",
 "was_price": 5.9
 },
@@ -5348,6 +5348,20 @@
 "unit_price": "$0.38 / 100ML",
 "was_price": 4.5
 },
+"earthwise orange & eucalyptus laundry liquid washing detergent 2l": {
+"category": "household",
+"discount_desc": "1/2 PRICE",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/905284.jpg",
+"price": 10.0,
+"price_display": "$10.00 ea",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/905284/earthwise-orange-eucalyptus-laundry-liquid-washing-detergent",
+"save_amount": 10.0,
+"store": "Woolworths",
+"store_category": "Cleaning & Maintenance     Laundry   CLEANSING",
+"title": "Earthwise Orange & Eucalyptus Laundry Liquid Washing Detergent 2L",
+"unit_price": "$5 / 1L",
+"was_price": 20.0
+},
 "earthwise plant powered laundry liquid frangipani 2l": {
 "category": "household",
 "discount_desc": "1/2 PRICE",
@@ -5628,19 +5642,19 @@
 "unit_price": "$3.75 / 100G",
 "was_price": 3.0
 },
-"fairy 5 power action dishwashing tablets lemon 34 pack": {
+"fairy 5 power action dishwashing tablets lemon 70 pack": {
 "category": "household",
 "discount_desc": "1/2 PRICE",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/6051971.jpg",
-"price": 23.0,
-"price_display": "$23.00 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/6051971/fairy-5-power-action-dishwashing-tablets-lemon",
-"save_amount": 23.0,
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/6052000.jpg",
+"price": 38.0,
+"price_display": "$38.00 ea",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/6052000/fairy-5-power-action-dishwashing-tablets-lemon",
+"save_amount": 38.0,
 "store": "Woolworths",
 "store_category": "Cleaning & Maintenance     Kitchen   CLEANSING",
-"title": "Fairy 5 Power Action Dishwashing Tablets Lemon 34 pack",
-"unit_price": "$0.68 / 1EA",
-"was_price": 46.0
+"title": "Fairy 5 Power Action Dishwashing Tablets Lemon 70 pack",
+"unit_price": "$0.54 / 1EA",
+"was_price": 76.0
 },
 "fairy platinum dishwashing tablets 52 pack": {
 "category": "household",
@@ -6129,7 +6143,7 @@
 "store": "Woolworths",
 "store_category": "Dairy, Eggs & Fridge , Back to School , Lunch Box , Dinner     Yoghurt , Snacks , Snacks   DAIRY - YOGHURT",
 "title": "Five:Am Organic Yoghurt Coffee Bean 150g",
-"unit_price": "",
+"unit_price": "$1.13 / 100G",
 "was_price": 3.4
 },
 "five:am organic yoghurt vanilla bean 150g": {
@@ -6143,7 +6157,7 @@
 "store": "Woolworths",
 "store_category": "Dairy, Eggs & Fridge , Back to School , Lunch Box , Dinner     Yoghurt , Snacks , Snacks   DAIRY - YOGHURT",
 "title": "Five:Am Organic Yoghurt Vanilla Bean 150g",
-"unit_price": "$1.13 / 100G",
+"unit_price": "",
 "was_price": 3.4
 },
 "for her ladies slip on clogs assorted each": {
@@ -6332,14 +6346,14 @@
 "category": "drinks",
 "discount_desc": "1/2 PRICE",
 "image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/6056433.jpg",
-"price": 1.0,
-"price_display": "$1.00 ea",
+"price": 0.9,
+"price_display": "$0.90 ea",
 "product_url": "https://www.woolworths.com.au/shop/productdetails/6056433/fruity-burst-batman-mixed-berry-fruit-drink-poppers-bottle",
-"save_amount": 1.0,
+"save_amount": 1.1,
 "store": "Woolworths",
 "store_category": "Dinner , Drinks , Back to School , Lunch Box     Cordials, Juices & Iced Teas , Drinks , Drinks   LONGLIFE JUICE / DRINKS",
 "title": "Fruity Burst Batman Mixed Berry Fruit Drink Poppers Bottle 250mL",
-"unit_price": "$4 / 1L",
+"unit_price": "$3.6 / 1L",
 "was_price": 2.0
 },
 "fruity burst disney princess apple fruit drink poppers bottle 250ml": {
@@ -7518,20 +7532,6 @@
 "unit_price": "$4.17 / 100G",
 "was_price": 5.0
 },
-"grenade oreo milk chocolate protein bar 60g": {
-"category": "snacks",
-"discount_desc": "1/2 PRICE",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/286090.jpg",
-"price": 2.5,
-"price_display": "$2.50 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/286090/grenade-oreo-milk-chocolate-protein-bar",
-"save_amount": 2.5,
-"store": "Woolworths",
-"store_category": "Lunch Box , Health & Wellness     Snacks , Diet & Sports Nutrition   HEALTH CARE",
-"title": "Grenade Oreo Milk Chocolate Protein Bar 60g",
-"unit_price": "$4.17 / 100G",
-"was_price": 5.0
-},
 "grenade protein bar white oreo 60g": {
 "category": "snacks",
 "discount_desc": "1/2 PRICE",
@@ -8176,19 +8176,19 @@
 "unit_price": "$2.14 / 100ML",
 "was_price": 15.0
 },
-"head & shoulders 2-in-1 shampoo & conditioner apple fresh 350ml": {
+"head & shoulders 2-in-1 shampoo & conditioner apple fresh 750ml": {
 "category": "health_vitamins",
 "discount_desc": "1/2 PRICE",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/583287.jpg",
-"price": 7.5,
-"price_display": "$7.50 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/583287/head-shoulders-2-in-1-shampoo-conditioner-apple-fresh",
-"save_amount": 7.5,
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/588292.jpg",
+"price": 13.5,
+"price_display": "$13.50 ea",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/588292/head-shoulders-2-in-1-shampoo-conditioner-apple-fresh",
+"save_amount": 13.5,
 "store": "Woolworths",
-"store_category": "Personal Care , Container Bonus Credits     Hair Care , Personal Care & Household   TOILETRIES",
-"title": "Head & Shoulders 2-in-1 Shampoo & Conditioner Apple Fresh 350mL",
-"unit_price": "$2.14 / 100ML",
-"was_price": 15.0
+"store_category": "Container Bonus Credits , Personal Care     Hair Care , Personal Care & Household   TOILETRIES",
+"title": "Head & Shoulders 2-in-1 Shampoo & Conditioner Apple Fresh 750mL",
+"unit_price": "$1.8 / 100ML",
+"was_price": 27.0
 },
 "head & shoulders 2-in-1 shampoo & conditioner clean & balanced 750ml": {
 "category": "health_vitamins",
@@ -8540,19 +8540,19 @@
 "unit_price": "$1.8 / 100ML",
 "was_price": 27.0
 },
-"head & shoulders ultra men 2 in 1 moisture recharge shampoo & conditioner 400ml": {
+"head & shoulders ultra men 2 in 1 moisture recharge shampoo & conditioner 750ml": {
 "category": "health_vitamins",
 "discount_desc": "1/2 PRICE",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/165291.jpg",
-"price": 8.0,
-"price_display": "$8.00 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/165291/head-shoulders-ultra-men-2-in-1-moisture-recharge-shampoo-conditioner",
-"save_amount": 8.0,
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/587960.jpg",
+"price": 13.5,
+"price_display": "$13.50 ea",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/587960/head-shoulders-ultra-men-2-in-1-moisture-recharge-shampoo-conditioner",
+"save_amount": 13.5,
 "store": "Woolworths",
 "store_category": "Container Bonus Credits , Personal Care     Hair Care , Personal Care & Household   TOILETRIES",
-"title": "Head & Shoulders Ultra Men 2 In 1 Moisture Recharge Shampoo & Conditioner 400mL",
-"unit_price": "$2 / 100ML",
-"was_price": 16.0
+"title": "Head & Shoulders Ultra Men 2 In 1 Moisture Recharge Shampoo & Conditioner 750mL",
+"unit_price": "$1.8 / 100ML",
+"was_price": 27.0
 },
 "head & shoulders ultra men 2 in 1 old spice shampoo & conditioner 750ml": {
 "category": "health_vitamins",
@@ -10598,6 +10598,20 @@
 "unit_price": "$0.88 / 100G",
 "was_price": 11.0
 },
+"latina fresh ham & cheese tortellini 625g": {
+"category": "meat",
+"discount_desc": "1/2 PRICE",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/6078216.jpg",
+"price": 5.5,
+"price_display": "$5.50 ea",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/6078216/latina-fresh-ham-cheese-tortellini",
+"save_amount": 5.5,
+"store": "Woolworths",
+"store_category": "Dairy, Eggs & Fridge , Deli , Dinner     Stove Top Meals , Fresh Pasta & Sauces   DELI CONVENIENCE",
+"title": "Latina Fresh Ham & Cheese Tortellini 625g",
+"unit_price": "$0.88 / 100G",
+"was_price": 11.0
+},
 "latina fresh ricotta & spinach agnolotti pasta 625g": {
 "category": "pantry",
 "discount_desc": "1/2 PRICE",
@@ -10679,7 +10693,7 @@
 "store": "Woolworths",
 "store_category": "Freezer , Dinner     Frozen Meals , Microwave Meals   FROZEN MEALS",
 "title": "Lean Cuisine Sweet & Sour Chicken Bowl With Asian Style Flavoured Rice 350g",
-"unit_price": "",
+"unit_price": "$1.21 / 100G",
 "was_price": 8.5
 },
 "licensed kids hair accessories 8 pack": {
@@ -10905,6 +10919,20 @@
 "title": "Life Savers Twisters Strawberry Lollies 205g",
 "unit_price": "",
 "was_price": 5.0
+},
+"lindt lindor assorted chocolate rose gold cornet 331g": {
+"category": "snacks",
+"discount_desc": "1/2 PRICE",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/6035173.jpg",
+"price": 18.0,
+"price_display": "$18.00 ea",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/6035173/lindt-lindor-assorted-chocolate-rose-gold-cornet",
+"save_amount": 18.0,
+"store": "Woolworths",
+"store_category": "Snacks & Confectionery , Gift Ideas     Christmas , Gifts for Him , Christmas Gifts , Confectionery , Food Gifts   CONFECTIONERY",
+"title": "Lindt Lindor Assorted Chocolate Rose Gold Cornet 331g",
+"unit_price": "$5.44 / 100G",
+"was_price": 36.0
 },
 "listerine freshburst antibacterial mouthwash 500ml": {
 "category": "health_vitamins",
@@ -11716,6 +11744,20 @@
 "store_category": "Personal Care , Beauty     Skincare & Body   TOILETRIES",
 "title": "MCoBeauty Fragrance Mist Cozy Amber 90mL",
 "unit_price": "",
+"was_price": 20.0
+},
+"mcobeauty fragrance mist original sin 90ml": {
+"category": "health_vitamins",
+"discount_desc": "1/2 PRICE",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/6037747.jpg",
+"price": 10.0,
+"price_display": "$10.00 ea",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/6037747/mcobeauty-fragrance-mist-original-sin",
+"save_amount": 10.0,
+"store": "Woolworths",
+"store_category": "Personal Care , Beauty     Skincare & Body   TOILETRIES",
+"title": "MCoBeauty Fragrance Mist Original Sin 90mL",
+"unit_price": "$1.11 / 10ML",
 "was_price": 20.0
 },
 "mcobeauty golden glow lip oil berrybliss each": {
@@ -13073,7 +13115,7 @@
 "store": "Woolworths",
 "store_category": "Health & Wellness     Diet & Sports Nutrition   HEALTH CARE",
 "title": "Musashi Creatine Unflavoured 600g",
-"unit_price": "$4.17 / 100G",
+"unit_price": "",
 "was_price": 50.0
 },
 "musashi crisp protein bar chocolate peanut 60g": {
@@ -13269,7 +13311,7 @@
 "store": "Woolworths",
 "store_category": "Health & Wellness , Lunch Box     Diet & Sports Nutrition , Snacks   HEALTH CARE",
 "title": "Musashi High Protein Bar Lemon Cheesecake 90g",
-"unit_price": "$3.83 / 100G",
+"unit_price": "",
 "was_price": 6.9
 },
 "musashi high protein bar peanut butter low carb 90g": {
@@ -13745,7 +13787,7 @@
 "store": "Woolworths",
 "store_category": "Health & Wellness , Lunch Box     Diet & Sports Nutrition , Snacks   HEALTH CARE",
 "title": "Muscle Nation High Protein Bar Chocolate Raspberry 97g",
-"unit_price": "$3.35 / 100G",
+"unit_price": "",
 "was_price": 6.5
 },
 "muscle nation high protein bar cookies & cream 70g": {
@@ -17063,22 +17105,8 @@
 "store": "Woolworths",
 "store_category": "Cleaning & Maintenance     Kitchen   CLEANSING",
 "title": "Palmolive Ultra Dishwashing Liquid Watermelon Fresh 500mL",
-"unit_price": "$0.55 / 100ML",
+"unit_price": "",
 "was_price": 5.5
-},
-"pantene miracles biotin intense moisture lock hair mask 250ml": {
-"category": "health_vitamins",
-"discount_desc": "1/2 PRICE",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/579099.jpg",
-"price": 7.5,
-"price_display": "$7.50 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/579099/pantene-miracles-biotin-intense-moisture-lock-hair-mask",
-"save_amount": 7.5,
-"store": "Woolworths",
-"store_category": "Beauty , Personal Care     Hair Care , Hair Care   TOILETRIES",
-"title": "Pantene Miracles Biotin Intense Moisture Lock Hair Mask 250mL",
-"unit_price": "$3 / 100ML",
-"was_price": 15.0
 },
 "pantene miracles biotin moisture renewal conditioner 350ml": {
 "category": "health_vitamins",
@@ -17220,20 +17248,6 @@
 "unit_price": "$5.36 / 100ML",
 "was_price": 15.0
 },
-"pantene miracles intensive bond repair mask 300ml": {
-"category": "health_vitamins",
-"discount_desc": "1/2 PRICE",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/6059978.jpg",
-"price": 10.5,
-"price_display": "$10.50 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/6059978/pantene-miracles-intensive-bond-repair-mask",
-"save_amount": 10.5,
-"store": "Woolworths",
-"store_category": "Beauty , Personal Care     Hair Care , Hair Care   TOILETRIES",
-"title": "Pantene Miracles Intensive Bond Repair Mask 300mL",
-"unit_price": "$3.5 / 100ML",
-"was_price": 21.0
-},
 "pantene miracles keratin sleek & smooth conditioner 350ml": {
 "category": "health_vitamins",
 "discount_desc": "1/2 PRICE",
@@ -17332,19 +17346,19 @@
 "unit_price": "$1.33 / 100ML",
 "was_price": 10.0
 },
-"pantene pro-v daily moisture renewal conditioner 290ml": {
+"pantene pro-v daily moisture renewal conditioner 800ml": {
 "category": "health_vitamins",
 "discount_desc": "1/2 PRICE",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/6059971.jpg",
-"price": 5.0,
-"price_display": "$5.00 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/6059971/pantene-pro-v-daily-moisture-renewal-conditioner",
-"save_amount": 5.0,
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/6059974.jpg",
+"price": 10.5,
+"price_display": "$10.50 ea",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/6059974/pantene-pro-v-daily-moisture-renewal-conditioner",
+"save_amount": 10.5,
 "store": "Woolworths",
 "store_category": "Personal Care     Hair Care   TOILETRIES",
-"title": "Pantene Pro-V Daily Moisture Renewal Conditioner 290mL",
-"unit_price": "$1.72 / 100ML",
-"was_price": 10.0
+"title": "Pantene Pro-V Daily Moisture Renewal Conditioner 800mL",
+"unit_price": "$1.31 / 100ML",
+"was_price": 21.0
 },
 "pantene pro-v daily moisture renewal refill conditioner 1.1l": {
 "category": "health_vitamins",
@@ -17401,20 +17415,6 @@
 "title": "Pantene Pro-V Love Your Smooth Leave In Hair Crème 270mL",
 "unit_price": "$2.78 / 100ML",
 "was_price": 15.0
-},
-"pantene pro-v miracles molecular bond repair miracle hair cream 90ml": {
-"category": "health_vitamins",
-"discount_desc": "1/2 PRICE",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/6082291.jpg",
-"price": 12.0,
-"price_display": "$12.00 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/6082291/pantene-pro-v-miracles-molecular-bond-repair-miracle-hair-cream",
-"save_amount": 12.0,
-"store": "Woolworths",
-"store_category": "Beauty , Personal Care     Hair Care , Hair Care   TOILETRIES",
-"title": "Pantene Pro-V Miracles Molecular Bond Repair Miracle Hair Cream 90mL",
-"unit_price": "$13.33 / 100ML",
-"was_price": 24.0
 },
 "pantene pro-v repair & protect miracle oil 90ml": {
 "category": "health_vitamins",
@@ -19432,6 +19432,34 @@
 "unit_price": "$16 / 1EA",
 "was_price": 32.0
 },
+"schwarzkopf creme supreme 7-16 cool ash dark blonde each": {
+"category": "health_vitamins",
+"discount_desc": "1/2 PRICE",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/6064842.jpg",
+"price": 16.0,
+"price_display": "$16.00 ea",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/6064842/schwarzkopf-creme-supreme-7-16-cool-ash-dark-blonde",
+"save_amount": 16.0,
+"store": "Woolworths",
+"store_category": "Beauty , Personal Care     Hair Colour , Hair Care   TOILETRIES",
+"title": "Schwarzkopf Creme Supreme 7-16 Cool Ash Dark Blonde each",
+"unit_price": "$16 / 1EA",
+"was_price": 32.0
+},
+"schwarzkopf creme supreme 8-16 cool ash blonde hair dye each": {
+"category": "health_vitamins",
+"discount_desc": "1/2 PRICE",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/6064840.jpg",
+"price": 16.0,
+"price_display": "$16.00 ea",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/6064840/schwarzkopf-creme-supreme-8-16-cool-ash-blonde-hair-dye",
+"save_amount": 16.0,
+"store": "Woolworths",
+"store_category": "Beauty , Personal Care     Hair Colour , Hair Care   TOILETRIES",
+"title": "Schwarzkopf Creme Supreme 8-16 Cool Ash Blonde Hair Dye each",
+"unit_price": "$16 / 1EA",
+"was_price": 32.0
+},
 "schwarzkopf creme supreme l1 extreme lightener plus hair dye each": {
 "category": "health_vitamins",
 "discount_desc": "1/2 PRICE",
@@ -20381,34 +20409,6 @@
 "store": "Woolworths",
 "store_category": "International Foods , Pantry     Indian & South Asian , International Foods   ETHNIC / GOURMET FOOD",
 "title": "Sharwoods Simmer Sauce Butter Chicken 420g",
-"unit_price": "$0.6 / 100G",
-"was_price": 5.0
-},
-"sharwoods simmer sauce rogan josh 420g": {
-"category": "pantry",
-"discount_desc": "1/2 PRICE",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/222306.jpg",
-"price": 2.5,
-"price_display": "$2.50 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/222306/sharwoods-simmer-sauce-rogan-josh",
-"save_amount": 2.5,
-"store": "Woolworths",
-"store_category": "International Foods , Pantry     Indian & South Asian , International Foods   ETHNIC / GOURMET FOOD",
-"title": "Sharwoods Simmer Sauce Rogan Josh 420g",
-"unit_price": "$0.6 / 100G",
-"was_price": 5.0
-},
-"sharwoods simmer sauce tikka masala 420g": {
-"category": "pantry",
-"discount_desc": "1/2 PRICE",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/222301.jpg",
-"price": 2.5,
-"price_display": "$2.50 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/222301/sharwoods-simmer-sauce-tikka-masala",
-"save_amount": 2.5,
-"store": "Woolworths",
-"store_category": "International Foods , Pantry     Indian & South Asian , International Foods   ETHNIC / GOURMET FOOD",
-"title": "Sharwoods Simmer Sauce Tikka Masala 420g",
 "unit_price": "$0.6 / 100G",
 "was_price": 5.0
 },
@@ -21966,19 +21966,19 @@
 "unit_price": "$24.75 / 100EA",
 "was_price": 49.5
 },
-"swisse ultiboost magnesium calcium + d3 tablets 120 pack": {
+"swisse ultiboost magnesium calcium + d3 tablets 180 pack": {
 "category": "health_vitamins",
 "discount_desc": "1/2 PRICE",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/090409.jpg",
-"price": 14.75,
-"price_display": "$14.75 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/90409/swisse-ultiboost-magnesium-calcium-d3-tablets",
-"save_amount": 14.75,
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/104300.jpg",
+"price": 19.75,
+"price_display": "$19.75 ea",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/104300/swisse-ultiboost-magnesium-calcium-d3-tablets",
+"save_amount": 19.75,
 "store": "Woolworths",
 "store_category": "Health & Wellness     Vitamins   HEALTH CARE",
-"title": "Swisse Ultiboost Magnesium Calcium + D3 Tablets 120 pack",
-"unit_price": "$12.29 / 100EA",
-"was_price": 29.5
+"title": "Swisse Ultiboost Magnesium Calcium + D3 Tablets 180 pack",
+"unit_price": "$10.97 / 100EA",
+"was_price": 39.5
 },
 "swisse ultiboost magnesium glycinate & ashwagandha tablets 60 pack": {
 "category": "health_vitamins",
@@ -22022,19 +22022,19 @@
 "unit_price": "$32.92 / 100EA",
 "was_price": 39.5
 },
-"swisse ultiboost magnesium glycinate tablets 60 pack": {
+"swisse ultiboost magnesium glycinate tablets 120 pack": {
 "category": "health_vitamins",
 "discount_desc": "1/2 PRICE",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/6010212.jpg",
-"price": 14.75,
-"price_display": "$14.75 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/6010212/swisse-ultiboost-magnesium-glycinate-tablets",
-"save_amount": 14.75,
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/6008917.jpg",
+"price": 24.75,
+"price_display": "$24.75 ea",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/6008917/swisse-ultiboost-magnesium-glycinate-tablets",
+"save_amount": 24.75,
 "store": "Woolworths",
 "store_category": "Health & Wellness     Vitamins   HEALTH CARE",
-"title": "Swisse Ultiboost Magnesium Glycinate Tablets 60 pack",
-"unit_price": "$24.58 / 100EA",
-"was_price": 29.5
+"title": "Swisse Ultiboost Magnesium Glycinate Tablets 120 pack",
+"unit_price": "$20.63 / 100EA",
+"was_price": 49.5
 },
 "swisse ultiboost magnesium gummies 60 pack": {
 "category": "health_vitamins",
@@ -22050,19 +22050,19 @@
 "unit_price": "$24.58 / 100EA",
 "was_price": 29.5
 },
-"swisse ultiboost magnesium tablets 60 pack": {
+"swisse ultiboost magnesium tablets 120 pack": {
 "category": "health_vitamins",
 "discount_desc": "1/2 PRICE",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/345785.jpg",
-"price": 12.5,
-"price_display": "$12.50 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/345785/swisse-ultiboost-magnesium-tablets",
-"save_amount": 12.5,
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/725175.jpg",
+"price": 19.75,
+"price_display": "$19.75 ea",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/725175/swisse-ultiboost-magnesium-tablets",
+"save_amount": 19.75,
 "store": "Woolworths",
 "store_category": "Health & Wellness     Vitamins   HEALTH CARE",
-"title": "Swisse Ultiboost Magnesium Tablets 60 pack",
-"unit_price": "$20.83 / 100EA",
-"was_price": 25.0
+"title": "Swisse Ultiboost Magnesium Tablets 120 pack",
+"unit_price": "$16.46 / 100EA",
+"was_price": 39.5
 },
 "swisse ultiboost mega b+ tablets 60 pack": {
 "category": "health_vitamins",
@@ -22218,19 +22218,19 @@
 "unit_price": "$6.82 / 100EA",
 "was_price": 15.0
 },
-"swisse ultiboost vitamin d capsules 250 pack": {
+"swisse ultiboost vitamin d capsules 400 pack": {
 "category": "health_vitamins",
 "discount_desc": "1/2 PRICE",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/705800.jpg",
-"price": 14.75,
-"price_display": "$14.75 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/705800/swisse-ultiboost-vitamin-d-capsules",
-"save_amount": 14.75,
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/243774.jpg",
+"price": 19.75,
+"price_display": "$19.75 ea",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/243774/swisse-ultiboost-vitamin-d-capsules",
+"save_amount": 19.75,
 "store": "Woolworths",
 "store_category": "Health & Wellness     Vitamins   HEALTH CARE",
-"title": "Swisse Ultiboost Vitamin D Capsules 250 pack",
-"unit_price": "$5.9 / 100EA",
-"was_price": 29.5
+"title": "Swisse Ultiboost Vitamin D Capsules 400 pack",
+"unit_price": "$4.94 / 100EA",
+"was_price": 39.5
 },
 "swisse ultiboost vitamin k2 capsules 30 pack": {
 "category": "health_vitamins",
@@ -22372,19 +22372,19 @@
 "unit_price": "$41.25 / 100EA",
 "was_price": 49.5
 },
-"swisse ultivite women's multivitamin tablets 60 pack": {
+"swisse ultivite women's multivitamin tablets 100 pack": {
 "category": "health_vitamins",
 "discount_desc": "1/2 PRICE",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/307061.jpg",
-"price": 19.75,
-"price_display": "$19.75 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/307061/swisse-ultivite-women-s-multivitamin-tablets",
-"save_amount": 19.75,
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/306612.jpg",
+"price": 29.75,
+"price_display": "$29.75 ea",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/306612/swisse-ultivite-women-s-multivitamin-tablets",
+"save_amount": 29.75,
 "store": "Woolworths",
 "store_category": "Health & Wellness     Vitamins   HEALTH CARE",
-"title": "Swisse Ultivite Women's Multivitamin Tablets 60 pack",
-"unit_price": "$32.92 / 100EA",
-"was_price": 39.5
+"title": "Swisse Ultivite Women's Multivitamin Tablets 100 pack",
+"unit_price": "$29.75 / 100EA",
+"was_price": 59.5
 },
 "swisse vaginal health gummies 60 pack": {
 "category": "health_vitamins",
@@ -23394,20 +23394,6 @@
 "unit_price": "",
 "was_price": 24.0
 },
-"toni & guy bamboo scalp massage brush each": {
-"category": "household",
-"discount_desc": "1/2 PRICE",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/229740.jpg",
-"price": 12.5,
-"price_display": "$12.50 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/229740/toni-guy-bamboo-scalp-massage-brush",
-"save_amount": 12.5,
-"store": "Woolworths",
-"store_category": "Personal Care , Beauty     Hair Care , Hair Care   TOILETRIES",
-"title": "Toni & Guy Bamboo Scalp Massage Brush each",
-"unit_price": "",
-"was_price": 25.0
-},
 "toni & guy blow dry brush each": {
 "category": "household",
 "discount_desc": "1/2 PRICE",
@@ -23993,7 +23979,7 @@
 "store": "Woolworths",
 "store_category": "Health & Wellness     Diet & Sports Nutrition   HEALTH CARE",
 "title": "True Hot Chocolate Protein Collagen Drink 200g",
-"unit_price": "$7.5 / 100G",
+"unit_price": "",
 "was_price": 30.0
 },
 "true protein bar cookies & cream 63g": {
@@ -24318,20 +24304,6 @@
 "unit_price": "$1.9 / 100G",
 "was_price": 5.5
 },
-"uncle tobys muesli bar crunch 5 pack 145g": {
-"category": "snacks",
-"discount_desc": "1/2 PRICE",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/6004360.jpg",
-"price": 2.75,
-"price_display": "$2.75 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/6004360/uncle-tobys-muesli-bar-crunch-5-pack",
-"save_amount": 2.75,
-"store": "Woolworths",
-"store_category": "Lunch Box , Snacks & Confectionery , Pantry , Back to School     Snacks , Snacks , Muesli Bars & Snack Bars , Snacks   BISCUITS",
-"title": "Uncle Tobys Muesli Bar Crunch 5 Pack 145g",
-"unit_price": "",
-"was_price": 5.5
-},
 "uncle tobys muesli bar milkybar cookies 145g 5 pack": {
 "category": "snacks",
 "discount_desc": "1/2 PRICE",
@@ -24386,20 +24358,6 @@
 "store_category": "Lunch Box , Snacks & Confectionery , Pantry , Back to School     Snacks , Snacks , Muesli Bars & Snack Bars , Snacks   BISCUITS",
 "title": "Uncle Tobys Muesli Bars Chewy White Choc Chip 6 pack",
 "unit_price": "$1.49 / 100G",
-"was_price": 5.5
-},
-"uncle tobys muesli bars inspired by golden rough 5 pack 145g": {
-"category": "snacks",
-"discount_desc": "1/2 PRICE",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/6004124.jpg",
-"price": 2.75,
-"price_display": "$2.75 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/6004124/uncle-tobys-muesli-bars-inspired-by-golden-rough-5-pack",
-"save_amount": 2.75,
-"store": "Woolworths",
-"store_category": "Lunch Box , Snacks & Confectionery , Pantry , Back to School     Snacks , Snacks , Muesli Bars & Snack Bars , Snacks   BISCUITS",
-"title": "Uncle Tobys Muesli Bars Inspired By Golden Rough 5 Pack 145g",
-"unit_price": "$1.9 / 100G",
 "was_price": 5.5
 },
 "uncle tobys muesli bars yoghurt & honeycomb 185g": {
@@ -24780,20 +24738,6 @@
 "unit_price": "$10 / 1KG",
 "was_price": 20.0
 },
-"vege chips sweet potato nibbles salt & vinegar flavour 75g": {
-"category": "snacks",
-"discount_desc": "1/2 PRICE",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/107983.jpg",
-"price": 2.95,
-"price_display": "$2.95 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/107983/vege-chips-sweet-potato-nibbles-salt-vinegar-flavour",
-"save_amount": 2.95,
-"store": "Woolworths",
-"store_category": "Snacks & Confectionery , Lunch Box , Back to School , Health & Wellness     Chips , Dietary Needs , Dietary Needs , Health Foods   HEALTH FOODS",
-"title": "Vege Chips Sweet Potato Nibbles Salt & Vinegar Flavour 75g",
-"unit_price": "",
-"was_price": 5.9
-},
 "vileda flex & catch duster each": {
 "category": "household",
 "discount_desc": "1/2 PRICE",
@@ -24945,7 +24889,7 @@
 "store": "Woolworths",
 "store_category": "Health & Wellness     Diet & Sports Nutrition   HEALTH CARE",
 "title": "Waterdrop Vitamin Drink Cubes Ice Tea Peach 2.1g x 12 pack",
-"unit_price": "$33.73 / 100G",
+"unit_price": "",
 "was_price": 17.0
 },
 "weet-bix bites apricot breakfast cereal 500g": {
@@ -25215,6 +25159,6 @@
 "was_price": 3.5
 }
 },
-"last_full": 1791485714.46724,
+"last_full": 1791527031.9925907,
 "week": "2026-10-07"
 }
