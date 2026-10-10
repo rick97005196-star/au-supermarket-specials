@@ -1,5 +1,5 @@
 {
-"cursor": 2,
+"cursor": 7,
 "items": {
 "1000301": {
 "category": "Biscuits & Cookies Rice",
@@ -6044,6 +6044,7 @@
 "product_url": "https://www.coles.com.au/product/lotus-biscoff-sandwiches-4-pack-320ml-1951937",
 "save_amount": 5.75,
 "store": "Coles",
+"store_category": "Ice Cream Novelty Multi",
 "title": "Lotus Biscoff Sandwiches 4 Pack 320mL",
 "unit_price": "$1.80/ 100mL",
 "was_price": 11.5
@@ -10376,6 +10377,7 @@
 "product_url": "https://www.coles.com.au/product/lynx-deodorant-body-spray-black-night-165ml-3722103",
 "save_amount": 4.5,
 "store": "Coles",
+"store_category": "Mens Deos & Grooming Deodorants",
 "title": "Lynx Deodorant Body Spray Black Night 165mL",
 "unit_price": "$2.73/ 100mL",
 "was_price": 9.0
@@ -10390,6 +10392,7 @@
 "product_url": "https://www.coles.com.au/product/lynx-women-deodorant-body-spray-anarchy-for-her-165ml-3722136",
 "save_amount": 4.5,
 "store": "Coles",
+"store_category": "Mens Deos & Grooming Deodorants",
 "title": "Lynx Women Deodorant Body Spray Anarchy For Her 165mL",
 "unit_price": "$2.73/ 100mL",
 "was_price": 9.0
@@ -10404,6 +10407,7 @@
 "product_url": "https://www.coles.com.au/product/lynx-deodorant-body-spray-anarchy-for-him-165ml-3722180",
 "save_amount": 4.5,
 "store": "Coles",
+"store_category": "Mens Deos & Grooming Deodorants",
 "title": "Lynx Deodorant Body Spray Anarchy For Him 165mL",
 "unit_price": "$2.73/ 100mL",
 "was_price": 9.0
@@ -10418,6 +10422,7 @@
 "product_url": "https://www.coles.com.au/product/lynx-deodorant-body-spray-48hr-black-165ml-3722191",
 "save_amount": 4.5,
 "store": "Coles",
+"store_category": "Mens Deos & Grooming Deodorants",
 "title": "Lynx Deodorant Body Spray 48hr Black 165mL",
 "unit_price": "$2.73/ 100mL",
 "was_price": 9.0
@@ -10432,6 +10437,7 @@
 "product_url": "https://www.coles.com.au/product/lynx-deodorant-body-spray-dark-temptation-165ml-3722205",
 "save_amount": 4.5,
 "store": "Coles",
+"store_category": "Mens Deos & Grooming Deodorants",
 "title": "Lynx Deodorant Body Spray Dark Temptation 165mL",
 "unit_price": "$2.73/ 100mL",
 "was_price": 9.0
@@ -10446,6 +10452,7 @@
 "product_url": "https://www.coles.com.au/product/lynx-deodorant-body-spray-72hr-antiperspirant-ice-165ml-3722318",
 "save_amount": 4.5,
 "store": "Coles",
+"store_category": "Mens Deos & Grooming Deodorants",
 "title": "Lynx Deodorant Body Spray 72hr Antiperspirant Ice 165mL",
 "unit_price": "$2.73/ 100mL",
 "was_price": 9.0
@@ -10460,6 +10467,7 @@
 "product_url": "https://www.coles.com.au/product/lynx-deodorant-body-spray-72hr-antiperspirant-black-165ml-3722420",
 "save_amount": 4.5,
 "store": "Coles",
+"store_category": "Mens Deos & Grooming Deodorants",
 "title": "Lynx Deodorant Body Spray 72hr Antiperspirant Black 165mL",
 "unit_price": "$2.73/ 100mL",
 "was_price": 9.0
@@ -10474,6 +10482,7 @@
 "product_url": "https://www.coles.com.au/product/lynx-deodorant-body-spray-72hr-antiperspirant-africa-165ml-3722453",
 "save_amount": 4.5,
 "store": "Coles",
+"store_category": "Mens Deos & Grooming Deodorants",
 "title": "Lynx Deodorant Body Spray 72hr Antiperspirant Africa 165mL",
 "unit_price": "$2.73/ 100mL",
 "was_price": 9.0
@@ -13243,6 +13252,21 @@
 "unit_price": "$25.00/ 100ea",
 "was_price": 30.0
 },
+"4790889": {
+"category": "Vitamins Sleep",
+"discount_desc": "1/2 PRICE",
+"id": "4790889",
+"image_url": "https://productimages.coles.com.au/productimages/4/4790889.jpg",
+"price": 15.0,
+"price_display": "$15.00",
+"product_url": "https://www.coles.com.au/product/haircarebear-sweet-dreams-gummies-60-pack-4790889",
+"save_amount": 15.0,
+"store": "Coles",
+"store_category": "Vitamins Sleep",
+"title": "Haircarebear Sweet Dreams Gummies 60 Pack",
+"unit_price": "$25.00/ 100ea",
+"was_price": 30.0
+},
 "4804225": {
 "category": "Makeup Face",
 "discount_desc": "1/2 PRICE",
@@ -13577,6 +13601,7 @@
 "product_url": "https://www.coles.com.au/product/grow-thicker-fuller-250ml-4963353",
 "save_amount": 7.5,
 "store": "Coles",
+"store_category": "Hair Care Shampoo/Conditioner",
 "title": "Grow Thicker Fuller 250mL",
 "unit_price": "$3.00/ 100mL",
 "was_price": 15.0
@@ -16251,6 +16276,7 @@
 "product_url": "https://www.coles.com.au/product/europe-summer-roll-chocolate-bar-40g-67861",
 "save_amount": 1.5,
 "store": "Coles",
+"store_category": "Bars Gum Pocket Pack Bars",
 "title": "Europe Summer Roll Chocolate Bar 40g",
 "unit_price": "$3.75/ 100g",
 "was_price": 3.0
@@ -16488,6 +16514,7 @@
 "product_url": "https://www.coles.com.au/product/nivea-deo-roll-on-men-silver-protect-50ml-6981710",
 "save_amount": 2.75,
 "store": "Coles",
+"store_category": "Mens Deos & Grooming Deodorants",
 "title": "Nivea Deo Roll On Men Silver Protect 50mL",
 "unit_price": "$5.50/ 100mL",
 "was_price": 5.5
@@ -16924,6 +16951,7 @@
 "product_url": "https://www.coles.com.au/product/qv-baby-moisturising-cream-500g-7061615",
 "save_amount": 13.0,
 "store": "Coles",
+"store_category": "Infant Personal Infant Toiletries",
 "title": "QV Baby Moisturising Cream 500g",
 "unit_price": "$2.60/ 100g",
 "was_price": 26.0
@@ -16938,6 +16966,7 @@
 "product_url": "https://www.coles.com.au/product/qv-baby-bath-oil-500ml-7062822",
 "save_amount": 9.25,
 "store": "Coles",
+"store_category": "Infant Personal Infant Toiletries",
 "title": "QV Baby Bath Oil 500mL",
 "unit_price": "$1.85/ 100mL",
 "was_price": 18.5
@@ -16952,6 +16981,7 @@
 "product_url": "https://www.coles.com.au/product/qv-baby-gentle-wash-500g-7062866",
 "save_amount": 10.25,
 "store": "Coles",
+"store_category": "Infant Personal Infant Toiletries",
 "title": "QV Baby Gentle Wash 500g",
 "unit_price": "$2.05/ 100g",
 "was_price": 20.5
@@ -16966,6 +16996,7 @@
 "product_url": "https://www.coles.com.au/product/qv-baby-barrier-cream-125g-7062946",
 "save_amount": 7.25,
 "store": "Coles",
+"store_category": "Infant Personal Medicinal",
 "title": "QV Baby Barrier Cream 125g",
 "unit_price": "$5.80/ 100g",
 "was_price": 14.5
@@ -17009,6 +17040,7 @@
 "product_url": "https://www.coles.com.au/product/real-foods-original-corn-thins-150g-7112308",
 "save_amount": 1.1,
 "store": "Coles",
+"store_category": "Biscuits & Cookies Rice",
 "title": "Real Foods Original Corn Thins 150g",
 "unit_price": "$0.73/ 100g",
 "was_price": 2.2
@@ -17083,6 +17115,7 @@
 "product_url": "https://www.coles.com.au/product/nivea-body-lotion-rich-250ml-7199500",
 "save_amount": 3.5,
 "store": "Coles",
+"store_category": "Skin Care Hand & Body",
 "title": "Nivea Body Lotion Rich 250mL",
 "unit_price": "$1.40/ 100mL",
 "was_price": 7.0
@@ -17097,6 +17130,7 @@
 "product_url": "https://www.coles.com.au/product/nivea-body-lotion-express-hydration-250ml-7199554",
 "save_amount": 3.5,
 "store": "Coles",
+"store_category": "Skin Care Hand & Body",
 "title": "Nivea Body Lotion Express Hydration 250mL",
 "unit_price": "$1.40/ 100mL",
 "was_price": 7.0
@@ -17126,6 +17160,7 @@
 "product_url": "https://www.coles.com.au/product/m-m-s-milk-chocolate-snack-bag-49g-7251224",
 "save_amount": 2.0,
 "store": "Coles",
+"store_category": "Bars Gum Pocket Pack Bars",
 "title": "M&M's Milk Chocolate Snack Bag 49g",
 "unit_price": "$2.04/ 100g",
 "was_price": 3.0
@@ -17154,6 +17189,7 @@
 "product_url": "https://www.coles.com.au/product/fluffy-fabric-softener-concentrate-summer-breeze-1l-7318835",
 "save_amount": 4.75,
 "store": "Coles",
+"store_category": "Laundry Accessories Fabric Conditioners",
 "title": "Fluffy Fabric Softener Concentrate Summer Breeze 1L",
 "unit_price": "$4.75/ 1L",
 "was_price": 9.5
@@ -17203,6 +17239,21 @@
 "unit_price": "$25.00/ 100ea",
 "was_price": 30.0
 },
+"7449684": {
+"category": "Vitamins Muscle Support",
+"discount_desc": "1/2 PRICE",
+"id": "7449684",
+"image_url": "https://productimages.coles.com.au/productimages/7/7449684.jpg",
+"price": 15.0,
+"price_display": "$15.00",
+"product_url": "https://www.coles.com.au/product/haircarebear-magnesium-gummies-60-pack-7449684",
+"save_amount": 15.0,
+"store": "Coles",
+"store_category": "Vitamins Muscle Support",
+"title": "Haircarebear Magnesium Gummies 60 Pack",
+"unit_price": "$25.00/ 100ea",
+"was_price": 30.0
+},
 "7451100": {
 "category": "Vitamins Digestion",
 "discount_desc": "1/2 PRICE",
@@ -17247,6 +17298,21 @@
 "title": "Blackmores Super Magnesium+ Tablets 180 Pack",
 "unit_price": "$12.50/ 100ea",
 "was_price": 45.0
+},
+"7465410": {
+"category": "Skin Care Hand & Body",
+"discount_desc": "1/2 PRICE",
+"id": "7465410",
+"image_url": "https://productimages.coles.com.au/productimages/7/7465410.jpg",
+"price": 6.5,
+"price_display": "$6.50",
+"product_url": "https://www.coles.com.au/product/aveeno-intense-relief-soothing-fragrance-free-hand-cream-24-hour-moisture-protect-dry-rough-chapped-sensitive-skin-100g-7465410",
+"save_amount": 6.5,
+"store": "Coles",
+"store_category": "Skin Care Hand & Body",
+"title": "Aveeno Intense Relief Soothing Fragrance Free Hand Cream 24-hour Moisture Protect Dry Rough Chapped Sensitive Skin 100g",
+"unit_price": "$6.50/ 100g",
+"was_price": 13.0
 },
 "7471606": {
 "category": "Vitamins Multi Vitamins",
@@ -17408,6 +17474,7 @@
 "product_url": "https://www.coles.com.au/product/nature-s-gift-adult-all-breeds-wet-dog-food-loaf-puppy-mince-with-chicken-700g-7647010",
 "save_amount": 1.75,
 "store": "Coles",
+"store_category": "Dog Food Wet Dog",
 "title": "Nature's Gift Adult All Breeds Wet Dog Food Loaf Puppy Mince With Chicken 700g",
 "unit_price": "$0.25/ 100g",
 "was_price": 3.5
@@ -17467,6 +17534,7 @@
 "product_url": "https://www.coles.com.au/product/revlon-colorstay-micro-liquid-liner-blackout-1-7ml-7689360",
 "save_amount": 14.0,
 "store": "Coles",
+"store_category": "Makeup Eye",
 "title": "Revlon Colorstay Micro Liquid Liner Blackout 1.7mL",
 "unit_price": "$82.35/ 10mL",
 "was_price": 28.0
@@ -17481,6 +17549,7 @@
 "product_url": "https://www.coles.com.au/product/revlon-colorstay-micro-brow-pencil-soft-brown-0-09g-7689429",
 "save_amount": 12.5,
 "store": "Coles",
+"store_category": "Makeup Eye",
 "title": "Revlon Colorstay Micro Brow Pencil Soft Brown 0.09g",
 "unit_price": "$1,388.89/ 10g",
 "was_price": 25.0
@@ -17630,6 +17699,7 @@
 "product_url": "https://www.coles.com.au/product/maybelline-falsies-sureal-wp-mascara-10ml-7704828",
 "save_amount": 14.0,
 "store": "Coles",
+"store_category": "Makeup Eye",
 "title": "Maybelline Falsies Sureal Wp Mascara 10mL",
 "unit_price": "$14.00/ 10mL",
 "was_price": 28.0
@@ -17779,6 +17849,7 @@
 "product_url": "https://www.coles.com.au/product/l-oreal-paris-million-lashes-panorama-brown-9-9ml-7707134",
 "save_amount": 16.5,
 "store": "Coles",
+"store_category": "Makeup Eye",
 "title": "L'oreal Paris Million Lashes Panorama Brown 9.9mL",
 "unit_price": "$16.67/ 10mL",
 "was_price": 33.0
@@ -17883,6 +17954,7 @@
 "product_url": "https://www.coles.com.au/product/cheezels-cheese-snacks-share-pack-125g-7879468",
 "save_amount": 1.75,
 "store": "Coles",
+"store_category": "Snacks Cereals",
 "title": "Cheezels Cheese Snacks Share Pack 125g",
 "unit_price": "$1.40/ 100g",
 "was_price": 3.5
@@ -17912,6 +17984,7 @@
 "product_url": "https://www.coles.com.au/product/fluffy-fabric-softener-concentrate-spice-allure-1l-7945008",
 "save_amount": 4.75,
 "store": "Coles",
+"store_category": "Laundry Accessories Fabric Conditioners",
 "title": "Fluffy Fabric Softener Concentrate Spice Allure 1L",
 "unit_price": "$4.75/ 1L",
 "was_price": 9.5
@@ -18509,6 +18582,7 @@
 "product_url": "https://www.coles.com.au/product/blackmores-folate-500mg-folic-acid-vitamin-tablets-90-pack-8297322",
 "save_amount": 6.0,
 "store": "Coles",
+"store_category": "Vitamins Womens Health",
 "title": "Blackmores Folate 500mg Folic Acid Vitamin Tablets 90 Pack",
 "unit_price": "$6.67/ 100ea",
 "was_price": 12.0
@@ -18523,6 +18597,7 @@
 "product_url": "https://www.coles.com.au/product/blackmores-lyp-sine-cold-sore-relief-tablets-30-pack-8297650",
 "save_amount": 7.5,
 "store": "Coles",
+"store_category": "Vitamins Immunity",
 "title": "Blackmores Lyp-sine Cold Sore Relief Tablets 30 Pack",
 "unit_price": "$25.00/ 100ea",
 "was_price": 15.0
@@ -18537,6 +18612,7 @@
 "product_url": "https://www.coles.com.au/product/blackmores-mega-b-complex-energy-vitamin-tablets-75-pack-8297661",
 "save_amount": 17.5,
 "store": "Coles",
+"store_category": "Vitamins Energy",
 "title": "Blackmores Mega B Complex Energy Vitamin Tablets 75 Pack",
 "unit_price": "$23.33/ 100ea",
 "was_price": 35.0
@@ -18551,6 +18627,7 @@
 "product_url": "https://www.coles.com.au/product/blackmores-milk-thistle-liver-health-tablets-1-pack-8299703",
 "save_amount": 10.0,
 "store": "Coles",
+"store_category": "Vitamins Detox",
 "title": "Blackmores Milk Thistle Liver Health Tablets 1 Pack",
 "unit_price": "$23.81/ 100ea",
 "was_price": 20.0
@@ -19115,6 +19192,7 @@
 "product_url": "https://www.coles.com.au/product/golden-circle-cordial-zero-sugar-lime-2l-8557241",
 "save_amount": 2.85,
 "store": "Coles",
+"store_category": "Juices & Cordials Standard Cordial",
 "title": "Golden Circle Cordial Zero Sugar Lime 2L",
 "unit_price": "$1.43/ 1L",
 "was_price": 5.7
@@ -19174,6 +19252,7 @@
 "product_url": "https://www.coles.com.au/product/table-of-plenty-snack-pack-topped-sweet-mini-rice-cakes-milk-choc-84g-8712504",
 "save_amount": 3.5,
 "store": "Coles",
+"store_category": "Biscuits & Cookies Multipacks",
 "title": "Table Of Plenty Snack Pack Topped Sweet Mini Rice Cakes Milk Choc 84g",
 "unit_price": "$4.17/ 100g",
 "was_price": 7.0
@@ -19188,6 +19267,7 @@
 "product_url": "https://www.coles.com.au/product/table-of-plenty-snack-pack-topped-sweet-mini-rice-cakes-dark-choc-84g-8712515",
 "save_amount": 3.5,
 "store": "Coles",
+"store_category": "Biscuits & Cookies Multipacks",
 "title": "Table Of Plenty Snack Pack Topped Sweet Mini Rice Cakes Dark Choc 84g",
 "unit_price": "$4.17/ 100g",
 "was_price": 7.0
@@ -20085,6 +20165,7 @@
 "product_url": "https://www.coles.com.au/product/nescafe-cappuccino-coffee-sachets-10-pack-9577540",
 "save_amount": 4.0,
 "store": "Coles",
+"store_category": "Coffee Coffee All In One",
 "title": "Nescafe Cappuccino Coffee Sachets 10 Pack",
 "unit_price": "$0.40/ 1ea",
 "was_price": 8.0
@@ -20159,6 +20240,7 @@
 "product_url": "https://www.coles.com.au/product/schick-hydro-silk-blade-refill-4-pack-9851700",
 "save_amount": 13.0,
 "store": "Coles",
+"store_category": "Womens Deos & Groom Hair Removal",
 "title": "Schick Hydro Silk Blade Refill 4 Pack",
 "unit_price": "$3.25/ 1ea",
 "was_price": 26.0
@@ -20293,6 +20375,7 @@
 "product_url": "https://www.coles.com.au/product/shifu-soft-centered-cookies-chocolate-70g-9955476",
 "save_amount": 2.0,
 "store": "Coles",
+"store_category": "Asian Foods Asian Sweet Snacks",
 "title": "Shifu Soft Centered Cookies Chocolate 70g",
 "unit_price": "$2.86/ 100g",
 "was_price": 4.0
@@ -20307,6 +20390,7 @@
 "product_url": "https://www.coles.com.au/product/shifu-soft-centered-cookies-blueberry-70g-9956763",
 "save_amount": 2.0,
 "store": "Coles",
+"store_category": "Asian Foods Asian Sweet Snacks",
 "title": "Shifu Soft Centered Cookies Blueberry 70g",
 "unit_price": "$2.86/ 100g",
 "was_price": 4.0
@@ -20402,8 +20486,8 @@
 "was_price": 8.6
 }
 },
-"last_full": 1791526915.7283773,
+"last_full": 1791654045.487493,
 "pages": 30,
-"pages_done": 25,
+"pages_done": 0,
 "week": "2026-10-07"
 }
