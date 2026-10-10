@@ -1,5 +1,5 @@
 {
-"cursor": 22,
+"cursor": 27,
 "items": {
 "1000301": {
 "category": "Biscuits & Cookies Rice",
@@ -867,6 +867,7 @@
 "product_url": "https://www.coles.com.au/product/le-tan-gradual-face-tanning-night-repair-serum-30ml-1112531",
 "save_amount": 12.5,
 "store": "Coles",
+"store_category": "Skin Care Tanning",
 "title": "Le Tan Gradual Face Tanning Night Repair Serum 30mL",
 "unit_price": "$41.67/ 100mL",
 "was_price": 25.0
@@ -1358,6 +1359,7 @@
 "product_url": "https://www.coles.com.au/product/m-m-s-milk-chocolate-party-share-bag-11-piece-148g-1261010",
 "save_amount": 3.75,
 "store": "Coles",
+"store_category": "Confectionery Sharepacks",
 "title": "M&M'S Milk Chocolate Party Share Bag 11 Piece 148g",
 "unit_price": "$2.53/ 100g",
 "was_price": 7.5
@@ -1447,6 +1449,7 @@
 "product_url": "https://www.coles.com.au/product/revlon-illuminance-hydrating-smoothing-primer-28ml-1324380",
 "save_amount": 17.0,
 "store": "Coles",
+"store_category": "Makeup Face",
 "title": "Revlon Illuminance Hydrating + Smoothing Primer 28mL",
 "unit_price": "$6.07/ 10mL",
 "was_price": 34.0
@@ -1461,6 +1464,7 @@
 "product_url": "https://www.coles.com.au/product/revlon-illuminance-glow-filter-light-30ml-1324405",
 "save_amount": 18.0,
 "store": "Coles",
+"store_category": "Makeup Face",
 "title": "Revlon Illuminance Glow Filter Light 30mL",
 "unit_price": "$6.00/ 10mL",
 "was_price": 36.0
@@ -1595,6 +1599,7 @@
 "product_url": "https://www.coles.com.au/product/revlon-all-in-tubing-mascara-blackest-black-12-9ml-1324551",
 "save_amount": 14.0,
 "store": "Coles",
+"store_category": "Makeup Eye",
 "title": "Revlon All In Tubing Mascara Blackest Black 12.9mL",
 "unit_price": "$10.85/ 10mL",
 "was_price": 28.0
@@ -1609,6 +1614,7 @@
 "product_url": "https://www.coles.com.au/product/revlon-all-in-tubing-mascara-brown-12-9ml-1324562",
 "save_amount": 14.0,
 "store": "Coles",
+"store_category": "Makeup Eye",
 "title": "Revlon All In Tubing Mascara Brown 12.9mL",
 "unit_price": "$10.85/ 10mL",
 "was_price": 28.0
@@ -1713,6 +1719,7 @@
 "product_url": "https://www.coles.com.au/product/revlon-age-defying-3x-foundation-bare-buff-30ml-1324664",
 "save_amount": 22.5,
 "store": "Coles",
+"store_category": "Makeup Face",
 "title": "Revlon Age Defying 3x Foundation Bare Buff 30mL",
 "unit_price": "$7.50/ 10mL",
 "was_price": 45.0
@@ -1996,6 +2003,7 @@
 "product_url": "https://www.coles.com.au/product/l-oreal-paris-plump-ambition-hyaluron-lip-oil-201-milky-nu-5ml-1339071",
 "save_amount": 15.0,
 "store": "Coles",
+"store_category": "Makeup Lip",
 "title": "L'Oreal Paris Plump Ambition Hyaluron Lip Oil 201 Milky Nu 5mL",
 "unit_price": "$30.00/ 10mL",
 "was_price": 30.0
@@ -2010,6 +2018,7 @@
 "product_url": "https://www.coles.com.au/product/l-oreal-paris-plump-ambition-hyaluron-lipoil-601-worth-it-5ml-1339082",
 "save_amount": 15.0,
 "store": "Coles",
+"store_category": "Makeup Lip",
 "title": "L'Oreal Paris Plump Ambition Hyaluron Lipoil 601 Worth It 5mL",
 "unit_price": "$30.00/ 10mL",
 "was_price": 30.0
@@ -2039,6 +2048,7 @@
 "product_url": "https://www.coles.com.au/product/maybelline-new-york-grippy-serum-primer-30ml-1341415",
 "save_amount": 14.0,
 "store": "Coles",
+"store_category": "Makeup Face",
 "title": "Maybelline New York Grippy Serum Primer 30mL",
 "unit_price": "$4.67/ 10mL",
 "was_price": 28.0
@@ -2098,6 +2108,7 @@
 "product_url": "https://www.coles.com.au/product/l-oreal-paris-true-match-liquid-foundation-n5-sand-30ml-1357620",
 "save_amount": 17.0,
 "store": "Coles",
+"store_category": "Makeup Face",
 "title": "L'Oreal Paris True Match Liquid Foundation N5 Sand 30mL",
 "unit_price": "$5.67/ 10mL",
 "was_price": 34.0
@@ -2112,6 +2123,7 @@
 "product_url": "https://www.coles.com.au/product/l-oreal-paris-true-match-liquid-foundation-n6-honey-30ml-1357630",
 "save_amount": 17.0,
 "store": "Coles",
+"store_category": "Makeup Face",
 "title": "L'oreal Paris True Match Liquid Foundation N6 Honey 30mL",
 "unit_price": "$5.67/ 10mL",
 "was_price": 34.0
@@ -2126,6 +2138,7 @@
 "product_url": "https://www.coles.com.au/product/l-oreal-paris-true-match-radiant-serum-concealer-2c-10ml-1357641",
 "save_amount": 15.0,
 "store": "Coles",
+"store_category": "Makeup Face",
 "title": "L'Oreal Paris True Match Radiant Serum Concealer 2c 10mL",
 "unit_price": "$15.00/ 10mL",
 "was_price": 30.0
@@ -2140,6 +2153,7 @@
 "product_url": "https://www.coles.com.au/product/l-oreal-paris-true-match-liquid-foundation-c2-rose-vanilla-30ml-1357856",
 "save_amount": 17.0,
 "store": "Coles",
+"store_category": "Makeup Face",
 "title": "L'Oreal Paris True Match Liquid Foundation C2 Rose Vanilla 30mL",
 "unit_price": "$5.67/ 10mL",
 "was_price": 34.0
@@ -2408,6 +2422,7 @@
 "product_url": "https://www.coles.com.au/product/fairy-complete-clean-dishwashing-liquid-lemon-495ml-1420566",
 "save_amount": 4.0,
 "store": "Coles",
+"store_category": "Dishwashing Hand",
 "title": "Fairy Complete Clean Dishwashing Liquid Lemon 495mL",
 "unit_price": "$0.81/ 100mL",
 "was_price": 8.0
@@ -2677,6 +2692,7 @@
 "product_url": "https://www.coles.com.au/product/rimmel-multitasker-bronzing-stick-light-4-5g-1441680",
 "save_amount": 12.5,
 "store": "Coles",
+"store_category": "Makeup Face",
 "title": "Rimmel Multitasker Bronzing Stick Light 4.5g",
 "unit_price": "$27.78/ 10g",
 "was_price": 25.0
@@ -2691,6 +2707,7 @@
 "product_url": "https://www.coles.com.au/product/rimmel-multitasker-bronzing-stick-tan-4-5g-1441704",
 "save_amount": 12.5,
 "store": "Coles",
+"store_category": "Makeup Face",
 "title": "Rimmel Multitasker Bronzing Stick Tan 4.5g",
 "unit_price": "$27.78/ 10g",
 "was_price": 25.0
@@ -2735,6 +2752,7 @@
 "product_url": "https://www.coles.com.au/product/rimmel-wonderbond-lashfiller-black-11ml-1441748",
 "save_amount": 11.5,
 "store": "Coles",
+"store_category": "Makeup Eye",
 "title": "Rimmel Wonderbond Lashfiller Black 11mL",
 "unit_price": "$10.45/ 10mL",
 "was_price": 23.0
@@ -2749,6 +2767,7 @@
 "product_url": "https://www.coles.com.au/product/rimmel-wonder-ink-eyeliner-black-1ml-1441759",
 "save_amount": 10.5,
 "store": "Coles",
+"store_category": "Makeup Eye",
 "title": "Rimmel Wonder Ink Eyeliner Black 1mL",
 "unit_price": "$105.00/ 10mL",
 "was_price": 21.0
@@ -2808,6 +2827,7 @@
 "product_url": "https://www.coles.com.au/product/hbaf-popcorn-creamy-caramel-80g-1466793",
 "save_amount": 2.5,
 "store": "Coles",
+"store_category": "Asian Foods Asian Savoury Snacks",
 "title": "HBAF Popcorn Creamy Caramel 80g",
 "unit_price": "$3.13/ 100g",
 "was_price": 5.0
@@ -2837,6 +2857,7 @@
 "product_url": "https://www.coles.com.au/product/palmers-skin-therapy-facial-cleansing-oil-190ml-1500643",
 "save_amount": 10.0,
 "store": "Coles",
+"store_category": "Skin Care Facial Skincare",
 "title": "Palmers Skin Therapy Facial Cleansing Oil 190mL",
 "unit_price": "$5.26/ 100mL",
 "was_price": 20.0
@@ -3830,6 +3851,7 @@
 "product_url": "https://www.coles.com.au/product/maybelline-cloud-matte-moonlit-rose-blush-5g-1700020",
 "save_amount": 12.5,
 "store": "Coles",
+"store_category": "Makeup Face",
 "title": "Maybelline Cloud Matte Moonlit Rose Blush 5g",
 "unit_price": "$25.00/ 10g",
 "was_price": 25.0
@@ -3949,6 +3971,7 @@
 "product_url": "https://www.coles.com.au/product/sour-patch-kids-mini-xtreme-sour-heads-80g-1710169",
 "save_amount": 1.5,
 "store": "Coles",
+"store_category": "Bars Gum Pocket Pack Kids Confectionery",
 "title": "Sour Patch Kids Mini Xtreme Sour Heads 80g",
 "unit_price": "$1.88/ 100g",
 "was_price": 3.0
@@ -3963,6 +3986,7 @@
 "product_url": "https://www.coles.com.au/product/the-natural-confec-co-soft-jellies-mini-gummy-bears-80g-1710680",
 "save_amount": 1.5,
 "store": "Coles",
+"store_category": "Bars Gum Pocket Pack Kids Confectionery",
 "title": "The Natural Confec Co. Soft Jellies Mini Gummy Bears 80g",
 "unit_price": "$1.88/ 100g",
 "was_price": 3.0
@@ -4392,6 +4416,7 @@
 "product_url": "https://www.coles.com.au/product/biozet-attack-power-laundry-capsules-eliminator-50-pack-1743022",
 "save_amount": 20.0,
 "store": "Coles",
+"store_category": "Laundry Capsules",
 "title": "Biozet Attack Power Laundry Capsules + Eliminator 50 Pack",
 "unit_price": "$0.40/ 1ea",
 "was_price": 40.0
@@ -4406,6 +4431,7 @@
 "product_url": "https://www.coles.com.au/product/ritz-snackz-crackers-tasty-chedder-cheese-100g-1743215",
 "save_amount": 1.0,
 "store": "Coles",
+"store_category": "Biscuits & Cookies Crackers/Crispbrea",
 "title": "Ritz Snackz Crackers Tasty Chedder Cheese 100g",
 "unit_price": "$1.00/ 100g",
 "was_price": 2.0
@@ -4420,6 +4446,7 @@
 "product_url": "https://www.coles.com.au/product/gym-bod-protein-powder-salted-caramel-270g-1748478",
 "save_amount": 15.0,
 "store": "Coles",
+"store_category": "Health Foods Sports & Diet",
 "title": "Gym Bod Protein Powder Salted Caramel 270g",
 "unit_price": "$5.56/ 100g",
 "was_price": 30.0
@@ -4449,6 +4476,7 @@
 "product_url": "https://www.coles.com.au/product/nivea-men-power-shower-gel-500ml-1749914",
 "save_amount": 4.5,
 "store": "Coles",
+"store_category": "Mens Deos & Grooming Shower And Wash",
 "title": "Nivea Men Power Shower Gel 500mL",
 "unit_price": "$0.90/ 100mL",
 "was_price": 9.0
@@ -4463,6 +4491,7 @@
 "product_url": "https://www.coles.com.au/product/sunrice-australian-medium-grain-brown-rice-5kg-1751530",
 "save_amount": 10.5,
 "store": "Coles",
+"store_category": "Rice Wholegrain",
 "title": "Sunrice Australian Medium Grain Brown Rice 5kg",
 "unit_price": "$0.21/ 100g",
 "was_price": 21.0
@@ -4477,6 +4506,7 @@
 "product_url": "https://www.coles.com.au/product/cadbury-oreo-vanilla-block-chocolate-162g-1752170",
 "save_amount": 4.0,
 "store": "Coles",
+"store_category": "Confectionery Block Chocolate",
 "title": "Cadbury Oreo Vanilla Block Chocolate 162g",
 "unit_price": "$2.47/ 100g",
 "was_price": 8.0
@@ -4506,6 +4536,7 @@
 "product_url": "https://www.coles.com.au/product/reese-s-pieces-pouch-50g-1754991",
 "save_amount": 1.5,
 "store": "Coles",
+"store_category": "Bars Gum Pocket Pack Bars",
 "title": "Reese's Pieces Pouch 50g",
 "unit_price": "$3.00/ 100g",
 "was_price": 3.0
@@ -5057,6 +5088,7 @@
 "product_url": "https://www.coles.com.au/product/blackmores-evening-primrose-oil-skin-capsules-125-pack-1847141",
 "save_amount": 17.5,
 "store": "Coles",
+"store_category": "Vitamins Womens Health",
 "title": "Blackmores Evening Primrose Oil Skin Capsules 125 Pack",
 "unit_price": "$14.00/ 100ea",
 "was_price": 35.0
@@ -5071,6 +5103,7 @@
 "product_url": "https://www.coles.com.au/product/gillette-venus-intimate-hair-skin-razor-kit-with-2-refill-blades-1-each-1850011",
 "save_amount": 11.5,
 "store": "Coles",
+"store_category": "Womens Deos & Groom Hair Removal",
 "title": "Gillette Venus Intimate Hair & Skin Razor Kit With 2 Refill Blades 1 Each",
 "unit_price": "$11.50/ 1ea",
 "was_price": 23.0
@@ -5907,6 +5940,21 @@
 "unit_price": "$24.12/ 10g",
 "was_price": 41.0
 },
+"1989973": {
+"category": "Makeup Face",
+"discount_desc": "1/2 PRICE",
+"id": "1989973",
+"image_url": "https://productimages.coles.com.au/productimages/1/1989973.jpg",
+"price": 20.5,
+"price_display": "$20.50",
+"product_url": "https://www.coles.com.au/product/revlon-age-defying-cream-compact-makeup-medium-beige-8-5g-1989973",
+"save_amount": 20.5,
+"store": "Coles",
+"store_category": "Makeup Face",
+"title": "Revlon Age Defying Cream Compact Makeup Medium Beige 8.5g",
+"unit_price": "$24.12/ 10g",
+"was_price": 41.0
+},
 "1989984": {
 "category": "Makeup Eye",
 "discount_desc": "1/2 PRICE",
@@ -5997,6 +6045,21 @@
 "unit_price": "$22.50/ 10g",
 "was_price": 36.0
 },
+"1990214": {
+"category": "Makeup Lip",
+"discount_desc": "1/2 PRICE",
+"id": "1990214",
+"image_url": "https://productimages.coles.com.au/productimages/1/1990214.jpg",
+"price": 15.5,
+"price_display": "$15.50",
+"product_url": "https://www.coles.com.au/product/revlon-super-lustrous-ultra-lipstick-cosmos-4-2g-1990214",
+"save_amount": 15.5,
+"store": "Coles",
+"store_category": "Makeup Lip",
+"title": "Revlon Super Lustrous Ultra Lipstick Cosmos 4.2g",
+"unit_price": "$36.90/ 10g",
+"was_price": 31.0
+},
 "1990350": {
 "category": "Vitamins Energy",
 "discount_desc": "1/2 PRICE",
@@ -6082,6 +6145,7 @@
 "product_url": "https://www.coles.com.au/product/l-oreal-paris-infaillible-24h-brow-lamination-gel-15g-1993370",
 "save_amount": 15.0,
 "store": "Coles",
+"store_category": "Makeup Eye",
 "title": "L'Oreal Paris Infaillible 24h Brow Lamination Gel 15g",
 "unit_price": "$10.00/ 10g",
 "was_price": 30.0
@@ -6096,6 +6160,7 @@
 "product_url": "https://www.coles.com.au/product/l-oreal-paris-haute-precision-liquid-eyeliner-noir-silk-6-5g-1993380",
 "save_amount": 14.0,
 "store": "Coles",
+"store_category": "Makeup Eye",
 "title": "L'Oreal Paris Haute Precision Liquid Eyeliner Noir Silk 6.5g",
 "unit_price": "$21.54/ 10g",
 "was_price": 28.0
@@ -6125,6 +6190,7 @@
 "product_url": "https://www.coles.com.au/product/maybelline-lash-sensational-body-mascara-waterproof-black-9ml-1993405",
 "save_amount": 14.5,
 "store": "Coles",
+"store_category": "Makeup Eye",
 "title": "Maybelline Lash Sensational Body Mascara Waterproof Black 9mL",
 "unit_price": "$16.11/ 10mL",
 "was_price": 29.0
@@ -6139,6 +6205,7 @@
 "product_url": "https://www.coles.com.au/product/maybelline-brow-insert-soft-brown-1-25ml-1993449",
 "save_amount": 14.5,
 "store": "Coles",
+"store_category": "Makeup Eye",
 "title": "Maybelline Brow Insert Soft Brown 1.25mL",
 "unit_price": "$116.00/ 10mL",
 "was_price": 29.0
@@ -6153,6 +6220,7 @@
 "product_url": "https://www.coles.com.au/product/maybelline-brow-insert-deep-brown-1-25ml-1993507",
 "save_amount": 14.5,
 "store": "Coles",
+"store_category": "Makeup Eye",
 "title": "Maybelline Brow Insert Deep Brown 1.25mL",
 "unit_price": "$116.00/ 10mL",
 "was_price": 29.0
@@ -6167,6 +6235,7 @@
 "product_url": "https://www.coles.com.au/product/maybelline-lifter-gel-lip-oil-mintini-001-6-6ml-1993595",
 "save_amount": 10.0,
 "store": "Coles",
+"store_category": "Makeup Lip",
 "title": "Maybelline Lifter Gel Lip Oil Mintini 001 6.6mL",
 "unit_price": "$15.15/ 10mL",
 "was_price": 20.0
@@ -6226,6 +6295,7 @@
 "product_url": "https://www.coles.com.au/product/rimmel-thrill-seeker-mega-lift-mascara-black-brown-10ml-1995874",
 "save_amount": 13.5,
 "store": "Coles",
+"store_category": "Makeup Eye",
 "title": "Rimmel Thrill Seeker Mega Lift Mascara Black Brown 10mL",
 "unit_price": "$13.50/ 10mL",
 "was_price": 27.0
@@ -6240,6 +6310,7 @@
 "product_url": "https://www.coles.com.au/product/rimmel-lip-butter-007-cappuccino-15ml-1995885",
 "save_amount": 13.0,
 "store": "Coles",
+"store_category": "Makeup Lip",
 "title": "Rimmel Lip Butter #007 Cappuccino 15mL",
 "unit_price": "$8.67/ 10mL",
 "was_price": 26.0
@@ -6284,6 +6355,7 @@
 "product_url": "https://www.coles.com.au/product/sally-hansen-miracle-gel-sweet-home-14-7ml-1995910",
 "save_amount": 9.5,
 "store": "Coles",
+"store_category": "Makeup Nail",
 "title": "Sally Hansen Miracle Gel Sweet Home 14.7mL",
 "unit_price": "$6.46/ 10mL",
 "was_price": 19.0
@@ -8316,6 +8388,7 @@
 "product_url": "https://www.coles.com.au/product/revlon-colorstay-001-addictive-quad-eyeshadow-4-8g-3024210",
 "save_amount": 14.5,
 "store": "Coles",
+"store_category": "Makeup Eye",
 "title": "Revlon Colorstay #001 Addictive Quad Eyeshadow 4.8g",
 "unit_price": "$30.21/ 10g",
 "was_price": 29.0
@@ -20169,6 +20242,6 @@
 },
 "last_full": 1791526915.7283773,
 "pages": 30,
-"pages_done": 15,
+"pages_done": 20,
 "week": "2026-10-07"
 }
