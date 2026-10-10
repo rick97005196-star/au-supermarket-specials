@@ -1,5 +1,5 @@
 {
-"cursor": 27,
+"cursor": 2,
 "items": {
 "1000301": {
 "category": "Biscuits & Cookies Rice",
@@ -56,6 +56,7 @@
 "product_url": "https://www.coles.com.au/product/dynamo-professional-oxi-laundry-discs-29-pack-1012956",
 "save_amount": 14.5,
 "store": "Coles",
+"store_category": "Laundry Capsules",
 "title": "Dynamo Professional Oxi Laundry Discs 29 Pack",
 "unit_price": "$0.50/ 1ea",
 "was_price": 29.0
@@ -175,6 +176,7 @@
 "product_url": "https://www.coles.com.au/product/zinda-jeera-jive-250ml-1031699",
 "save_amount": 1.25,
 "store": "Coles",
+"store_category": "Indian Foods Authentic Indian",
 "title": "Zinda Jeera Jive 250mL",
 "unit_price": "$0.50/ 100mL",
 "was_price": 2.5
@@ -248,6 +250,7 @@
 "product_url": "https://www.coles.com.au/product/maybelline-superstay-lumi-matte-foundation-337-35ml-1041080",
 "save_amount": 17.5,
 "store": "Coles",
+"store_category": "Makeup Face",
 "title": "Maybelline Superstay Lumi Matte Foundation 337 35mL",
 "unit_price": "$5.00/ 10mL",
 "was_price": 35.0
@@ -307,6 +310,7 @@
 "product_url": "https://www.coles.com.au/product/maybelline-lash-sensation-firework-mascara-electro-black-10ml-1041150",
 "save_amount": 14.5,
 "store": "Coles",
+"store_category": "Makeup Eye",
 "title": "Maybelline Lash Sensation Firework Mascara Electro Black 10mL",
 "unit_price": "$14.50/ 10mL",
 "was_price": 29.0
@@ -321,6 +325,7 @@
 "product_url": "https://www.coles.com.au/product/maybelline-superfluff-brow-mousse-soft-brown-5ml-1041230",
 "save_amount": 13.5,
 "store": "Coles",
+"store_category": "Makeup Eye",
 "title": "Maybelline Superfluff Brow Mousse Soft Brown 5mL",
 "unit_price": "$27.00/ 10mL",
 "was_price": 27.0
@@ -365,6 +370,7 @@
 "product_url": "https://www.coles.com.au/product/l-oreal-paris-lumi-liquid-blush-true-rose-10ml-1045638",
 "save_amount": 15.0,
 "store": "Coles",
+"store_category": "Makeup Face",
 "title": "L'Oreal Paris Lumi Liquid Blush True Rose 10mL",
 "unit_price": "$15.00/ 10mL",
 "was_price": 30.0
@@ -379,6 +385,7 @@
 "product_url": "https://www.coles.com.au/product/maybelline-lifter-lip-liner-on-it-5-8g-1045649",
 "save_amount": 10.0,
 "store": "Coles",
+"store_category": "Makeup Lip",
 "title": "Maybelline Lifter Lip Liner On It 5.8g",
 "unit_price": "$17.24/ 10g",
 "was_price": 20.0
@@ -393,6 +400,7 @@
 "product_url": "https://www.coles.com.au/product/maybelline-lifter-lip-liner-leader-5-8g-1045650",
 "save_amount": 10.0,
 "store": "Coles",
+"store_category": "Makeup Lip",
 "title": "Maybelline Lifter Lip Liner Leader 5.8g",
 "unit_price": "$17.24/ 10g",
 "was_price": 20.0
@@ -407,6 +415,7 @@
 "product_url": "https://www.coles.com.au/product/maybelline-lifter-lip-liner-big-lift-5-8g-1045660",
 "save_amount": 10.0,
 "store": "Coles",
+"store_category": "Makeup Lip",
 "title": "Maybelline Lifter Lip Liner Big Lift 5.8g",
 "unit_price": "$17.24/ 10g",
 "was_price": 20.0
@@ -421,6 +430,7 @@
 "product_url": "https://www.coles.com.au/product/nescafe-white-choc-mocha-coffee-sachets-8-pack-1049297",
 "save_amount": 4.0,
 "store": "Coles",
+"store_category": "Coffee Coffee All In One",
 "title": "Nescafe White Choc Mocha Coffee Sachets 8 Pack",
 "unit_price": "$0.50/ 1ea",
 "was_price": 8.0
@@ -450,6 +460,7 @@
 "product_url": "https://www.coles.com.au/product/vittoria-cappuccino-coffee-sachets-8-pack-1049457",
 "save_amount": 4.5,
 "store": "Coles",
+"store_category": "Coffee Coffee All In One",
 "title": "Vittoria Cappuccino Coffee Sachets 8 Pack",
 "unit_price": "$0.50/ 1ea",
 "was_price": 8.5
@@ -554,6 +565,7 @@
 "product_url": "https://www.coles.com.au/product/g-active-electrolyte-water-coconut-sports-drink-no-sugar-600ml-1056587",
 "save_amount": 2.2,
 "store": "Coles",
+"store_category": "Water Value Added Waters",
 "title": "G Active Electrolyte Water Coconut Sports Drink No Sugar 600mL",
 "unit_price": "$3.33/ 1L",
 "was_price": 4.2
@@ -693,6 +705,21 @@
 "unit_price": "$3.30/ 100g",
 "was_price": 16.5
 },
+"1081799": {
+"category": "Vitamins Stress",
+"discount_desc": "1/2 PRICE",
+"id": "1081799",
+"image_url": "https://productimages.coles.com.au/productimages/1/1081799.jpg",
+"price": 15.0,
+"price_display": "$15.00",
+"product_url": "https://www.coles.com.au/product/healthcarebear-ashwagandha-gummies-50-pack-1081799",
+"save_amount": 15.0,
+"store": "Coles",
+"store_category": "Vitamins Stress",
+"title": "Healthcarebear Ashwagandha Gummies 50 Pack",
+"unit_price": "$30.00/ 100ea",
+"was_price": 30.0
+},
 "1081813": {
 "category": "Vitamins Diet",
 "discount_desc": "1/2 PRICE",
@@ -707,6 +734,51 @@
 "title": "Life Botanics Shred Gummies 60 Pack",
 "unit_price": "$20.00/ 100ea",
 "was_price": 24.0
+},
+"1081824": {
+"category": "Vitamins Beauty",
+"discount_desc": "1/2 PRICE",
+"id": "1081824",
+"image_url": "https://productimages.coles.com.au/productimages/1/1081824.jpg",
+"price": 12.0,
+"price_display": "$12.00",
+"product_url": "https://www.coles.com.au/product/life-botanics-energy-hair-gummies-60-pack-1081824",
+"save_amount": 12.0,
+"store": "Coles",
+"store_category": "Vitamins Beauty",
+"title": "Life Botanics Energy + Hair Gummies 60 Pack",
+"unit_price": "$20.00/ 100ea",
+"was_price": 24.0
+},
+"1081846": {
+"category": "Vitamins Kids",
+"discount_desc": "1/2 PRICE",
+"id": "1081846",
+"image_url": "https://productimages.coles.com.au/productimages/1/1081846.jpg",
+"price": 15.0,
+"price_display": "$15.00",
+"product_url": "https://www.coles.com.au/product/life-botanics-kids-iron-gummies-90-pack-1081846",
+"save_amount": 15.0,
+"store": "Coles",
+"store_category": "Vitamins Kids",
+"title": "Life Botanics Kids Iron Gummies 90 Pack",
+"unit_price": "$16.67/ 100ea",
+"was_price": 30.0
+},
+"1081857": {
+"category": "Vitamins Kids",
+"discount_desc": "1/2 PRICE",
+"id": "1081857",
+"image_url": "https://productimages.coles.com.au/productimages/1/1081857.jpg",
+"price": 15.0,
+"price_display": "$15.00",
+"product_url": "https://www.coles.com.au/product/life-botanics-kids-fibre-gummies-70-pack-1081857",
+"save_amount": 15.0,
+"store": "Coles",
+"store_category": "Vitamins Kids",
+"title": "Life Botanics Kids Fibre Gummies 70 Pack",
+"unit_price": "$21.43/ 100ea",
+"was_price": 30.0
 },
 "1082044": {
 "category": "Vitamins General Health",
@@ -793,6 +865,7 @@
 "product_url": "https://www.coles.com.au/product/sungold-indian-basmati-rice-5kg-1083717",
 "save_amount": 15.0,
 "store": "Coles",
+"store_category": "Rice Basmati",
 "title": "Sungold Indian Basmati Rice 5kg",
 "unit_price": "$0.30/ 100g",
 "was_price": 30.0
@@ -811,6 +884,21 @@
 "title": "Cenovis Chewable Sugarless Vitamin C 320 Pack",
 "unit_price": "$4.61/ 100ea",
 "was_price": 29.5
+},
+"1088969": {
+"category": "Vitamins Immunity",
+"discount_desc": "1/2 PRICE",
+"id": "1088969",
+"image_url": "https://productimages.coles.com.au/productimages/1/1088969.jpg",
+"price": 12.0,
+"price_display": "$12.00",
+"product_url": "https://www.coles.com.au/product/life-botanics-vitamin-c-gummies-120-pack-1088969",
+"save_amount": 12.0,
+"store": "Coles",
+"store_category": "Vitamins Immunity",
+"title": "Life Botanics Vitamin C Gummies 120 Pack",
+"unit_price": "$10.00/ 100ea",
+"was_price": 24.0
 },
 "1105886": {
 "category": "Vitamins Muscle Support",
@@ -912,6 +1000,7 @@
 "product_url": "https://www.coles.com.au/product/le-tan-invisible-face-serum-spf-50-40ml-1112586",
 "save_amount": 10.0,
 "store": "Coles",
+"store_category": "Skin Care Suncare",
 "title": "Le Tan Invisible Face Serum SPF 50+ 40mL",
 "unit_price": "$25.00/ 100mL",
 "was_price": 20.0
@@ -3041,6 +3130,66 @@
 "unit_price": "$6.00/ 1ea",
 "was_price": 12.0
 },
+"1589590": {
+"category": "Vitamins Digestion",
+"discount_desc": "1/2 PRICE",
+"id": "1589590",
+"image_url": "https://productimages.coles.com.au/productimages/1/1589590.jpg",
+"price": 15.0,
+"price_display": "$15.00",
+"product_url": "https://www.coles.com.au/product/haircarebear-triple-strength-probiotic-gummies-50-pack-1589590",
+"save_amount": 15.0,
+"store": "Coles",
+"store_category": "Vitamins Digestion",
+"title": "Haircarebear Triple Strength Probiotic Gummies 50 Pack",
+"unit_price": "$30.00/ 100ea",
+"was_price": 30.0
+},
+"1589636": {
+"category": "Vitamins Energy",
+"discount_desc": "1/2 PRICE",
+"id": "1589636",
+"image_url": "https://productimages.coles.com.au/productimages/1/1589636.jpg",
+"price": 15.0,
+"price_display": "$15.00",
+"product_url": "https://www.coles.com.au/product/healthcarebear-cellular-energy-vitamin-b3-gummies-60-pack-1589636",
+"save_amount": 15.0,
+"store": "Coles",
+"store_category": "Vitamins Energy",
+"title": "Healthcarebear Cellular Energy Vitamin B3 + Gummies 60 Pack",
+"unit_price": "$25.00/ 100ea",
+"was_price": 30.0
+},
+"1589716": {
+"category": "Vitamins Womens Health",
+"discount_desc": "1/2 PRICE",
+"id": "1589716",
+"image_url": "https://productimages.coles.com.au/productimages/1/1589716.jpg",
+"price": 15.0,
+"price_display": "$15.00",
+"product_url": "https://www.coles.com.au/product/healthcarebear-pms-relief-gummies-60-pack-1589716",
+"save_amount": 15.0,
+"store": "Coles",
+"store_category": "Vitamins Womens Health",
+"title": "Healthcarebear Pms Relief Gummies 60 Pack",
+"unit_price": "$25.00/ 100ea",
+"was_price": 30.0
+},
+"1589782": {
+"category": "Vitamins Muscle Support",
+"discount_desc": "1/2 PRICE",
+"id": "1589782",
+"image_url": "https://productimages.coles.com.au/productimages/1/1589782.jpg",
+"price": 20.0,
+"price_display": "$20.00",
+"product_url": "https://www.coles.com.au/product/life-botanics-magnesium-creatine-150g-1589782",
+"save_amount": 20.0,
+"store": "Coles",
+"store_category": "Vitamins Muscle Support",
+"title": "Life Botanics Magnesium + Creatine 150g",
+"unit_price": "$13.33/ 100g",
+"was_price": 40.0
+},
 "1589910": {
 "category": "Vitamins Diet",
 "discount_desc": "1/2 PRICE",
@@ -4195,6 +4344,7 @@
 "product_url": "https://www.coles.com.au/product/schick-5-refill-blades-4-pack-1724458",
 "save_amount": 10.0,
 "store": "Coles",
+"store_category": "Mens Deos & Grooming Hair Removal",
 "title": "Schick 5 Refill Blades 4 Pack",
 "unit_price": "$2.50/ 1ea",
 "was_price": 20.0
@@ -4209,6 +4359,7 @@
 "product_url": "https://www.coles.com.au/product/schick-5-large-card-refill-blades-8-pack-1724469",
 "save_amount": 17.5,
 "store": "Coles",
+"store_category": "Mens Deos & Grooming Hair Removal",
 "title": "Schick 5 Large Card Refill Blades 8 Pack",
 "unit_price": "$2.19/ 1ea",
 "was_price": 35.0
@@ -4237,6 +4388,7 @@
 "product_url": "https://www.coles.com.au/product/schick-silk-salon-6-razor-kit-with-2-refill-blades-1-each-1724888",
 "save_amount": 13.0,
 "store": "Coles",
+"store_category": "Womens Deos & Groom Hair Removal",
 "title": "Schick Silk Salon 6 Razor Kit With 2 Refill Blades 1 Each",
 "unit_price": "$13.00/ 1ea",
 "was_price": 26.0
@@ -6811,6 +6963,7 @@
 "product_url": "https://www.coles.com.au/product/fluffy-concentrate-liquid-fabric-softener-conditioner-divine-blends-warm-vanilla-creamy-coconut-900ml-2223662",
 "save_amount": 4.75,
 "store": "Coles",
+"store_category": "Laundry Accessories Fabric Conditioners",
 "title": "Fluffy Concentrate Liquid Fabric Softener Conditioner Divine Blends Warm Vanilla & Creamy Coconut 900mL",
 "unit_price": "$5.28/ 1L",
 "was_price": 9.5
@@ -8613,6 +8766,7 @@
 "product_url": "https://www.coles.com.au/product/farmers-union-greek-style-yoghurt-pouch-natural-130g-3087071",
 "save_amount": 1.45,
 "store": "Coles",
+"store_category": "Yoghurt Yoghurt",
 "title": "Farmers Union Greek Style Yoghurt Pouch Natural 130g",
 "unit_price": "$1.12/ 100g",
 "was_price": 2.9
@@ -8627,6 +8781,7 @@
 "product_url": "https://www.coles.com.au/product/street-magnum-mini-dulce-de-leche-ice-cream-sticks-6-pack-360ml-3123459",
 "save_amount": 6.0,
 "store": "Coles",
+"store_category": "Ice Cream Family Milk Multi",
 "title": "Street Magnum Mini Dulce De Leche Ice Cream Sticks 6 Pack 360mL",
 "unit_price": "$1.67/ 100mL",
 "was_price": 12.0
@@ -10538,6 +10693,7 @@
 "product_url": "https://www.coles.com.au/product/sistema-stainless-steel-doubled-walled-bottle-650ml-1-each-3736980",
 "save_amount": 15.0,
 "store": "Coles",
+"store_category": "Homewares Otg Hydration",
 "title": "Sistema Stainless Steel Doubled Walled Bottle 650ml 1 each",
 "unit_price": "$15.00/ 1ea",
 "was_price": 30.0
@@ -14882,6 +15038,7 @@
 "product_url": "https://www.coles.com.au/product/connoisseur-caramel-honey-macadamia-ice-cream-tub-1l-5863864",
 "save_amount": 6.5,
 "store": "Coles",
+"store_category": "Ice Cream Premium Tubs",
 "title": "Connoisseur Caramel Honey Macadamia Ice Cream Tub 1L",
 "unit_price": "$0.65/ 100mL",
 "was_price": 13.0
@@ -15885,6 +16042,7 @@
 "product_url": "https://www.coles.com.au/product/farmers-union-no-added-sugar-kids-yogurt-pouch-vanilla-130g-6600678",
 "save_amount": 1.45,
 "store": "Coles",
+"store_category": "Yoghurt Yoghurt",
 "title": "Farmers Union No Added Sugar Kids Yogurt Pouch Vanilla 130g",
 "unit_price": "$1.12/ 100g",
 "was_price": 2.9
@@ -17665,6 +17823,7 @@
 "product_url": "https://www.coles.com.au/product/coles-made-easy-slow-cooked-pork-belly-bites-in-bbq-honey-500g-7848420",
 "save_amount": 7.5,
 "store": "Coles",
+"store_category": "Value Added Slow Cook",
 "title": "Coles Made Easy Slow Cooked Pork Belly Bites In BBQ Honey 500g",
 "unit_price": "$15.00/ 1kg",
 "was_price": 15.0
@@ -19463,6 +19622,7 @@
 "product_url": "https://www.coles.com.au/product/street-magnum-mini-classic-ice-cream-sticks-6-pack-360ml-9091344",
 "save_amount": 6.0,
 "store": "Coles",
+"store_category": "Ice Cream Premium Multi",
 "title": "Street Magnum Mini Classic Ice Cream Sticks 6 Pack 360mL",
 "unit_price": "$1.67/ 100mL",
 "was_price": 12.0
@@ -19477,6 +19637,7 @@
 "product_url": "https://www.coles.com.au/product/street-magnum-mini-almond-ice-cream-sticks-6-pack-360ml-9091672",
 "save_amount": 6.0,
 "store": "Coles",
+"store_category": "Ice Cream Premium Multi",
 "title": "Street Magnum Mini Almond Ice Cream Sticks 6 Pack 360mL",
 "unit_price": "$1.67/ 100mL",
 "was_price": 12.0
@@ -19626,6 +19787,7 @@
 "product_url": "https://www.coles.com.au/product/connoisseur-roasted-hazelnut-chocolate-ice-cream-tub-1l-9263224",
 "save_amount": 6.5,
 "store": "Coles",
+"store_category": "Ice Cream Premium Tubs",
 "title": "Connoisseur Roasted Hazelnut & Chocolate Ice Cream Tub 1L",
 "unit_price": "$0.65/ 100mL",
 "was_price": 13.0
@@ -20242,6 +20404,6 @@
 },
 "last_full": 1791526915.7283773,
 "pages": 30,
-"pages_done": 20,
+"pages_done": 25,
 "week": "2026-10-07"
 }
