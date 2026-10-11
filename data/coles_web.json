@@ -1,5 +1,5 @@
 {
-"cursor": 17,
+"cursor": 22,
 "items": {
 "1000301": {
 "category": "Biscuits & Cookies Rice",
@@ -2018,6 +2018,7 @@
 "product_url": "https://www.coles.com.au/product/maybelline-new-york-colossal-bubble-mascara-washable-10ml-1338953",
 "save_amount": 14.0,
 "store": "Coles",
+"store_category": "Makeup Eye",
 "title": "Maybelline New York Colossal Bubble Mascara Washable 10mL",
 "unit_price": "$14.00/ 10mL",
 "was_price": 28.0
@@ -5944,6 +5945,7 @@
 "product_url": "https://www.coles.com.au/product/cosrx-bha-blackhead-power-liquid-100ml-1935599",
 "save_amount": 19.5,
 "store": "Coles",
+"store_category": "Skin Care Facial Skincare",
 "title": "Cosrx Bha Blackhead Power Liquid 100mL",
 "unit_price": "$19.50/ 100mL",
 "was_price": 39.0
@@ -6080,6 +6082,21 @@
 "title": "Nivea Lip Balm Strawberry Shine 4.8g",
 "unit_price": "$52.08/ 100g",
 "was_price": 5.0
+},
+"1970807": {
+"category": "Snacks Cereals",
+"discount_desc": "1/2 PRICE",
+"id": "1970807",
+"image_url": "https://productimages.coles.com.au/productimages/1/1970807.jpg",
+"price": 1.75,
+"price_display": "$1.75",
+"product_url": "https://www.coles.com.au/product/thins-wedges-sweet-chilli-sour-cream-120g-1970807",
+"save_amount": 1.75,
+"store": "Coles",
+"store_category": "Snacks Cereals",
+"title": "Thins Wedges Sweet Chilli & Sour Cream 120g",
+"unit_price": "$1.46/ 100g",
+"was_price": 3.5
 },
 "1989940": {
 "category": "Makeup Face",
@@ -9349,6 +9366,7 @@
 "product_url": "https://www.coles.com.au/product/nivea-men-deep-after-shave-splash-100ml-3365582",
 "save_amount": 6.75,
 "store": "Coles",
+"store_category": "Mens Deos & Grooming Skincare & Aftershav",
 "title": "Nivea Men Deep After Shave Splash 100mL",
 "unit_price": "$6.75/ 100mL",
 "was_price": 13.5
@@ -9588,6 +9606,7 @@
 "product_url": "https://www.coles.com.au/product/darrell-lea-twists-milk-chocolate-raspberry-200g-3449263",
 "save_amount": 3.0,
 "store": "Coles",
+"store_category": "Confectionery Sugar",
 "title": "Darrell Lea Twists Milk Chocolate Raspberry 200g",
 "unit_price": "$1.50/ 100g",
 "was_price": 6.0
@@ -11581,6 +11600,21 @@
 "store_category": "Dishwashing Machine",
 "title": "Fairy Platinum Dishwashing Tablets 52 Pack",
 "unit_price": "$0.44/ 1ea",
+"was_price": 46.0
+},
+"3967392": {
+"category": "Dishwashing Machine",
+"discount_desc": "1/2 PRICE",
+"id": "3967392",
+"image_url": "https://productimages.coles.com.au/productimages/3/3967392.jpg",
+"price": 23.0,
+"price_display": "$23.00",
+"product_url": "https://www.coles.com.au/product/fairy-platinum-plus-lemon-dishwashing-tablets-42-pack-3967392",
+"save_amount": 23.0,
+"store": "Coles",
+"store_category": "Dishwashing Machine",
+"title": "Fairy Platinum Plus Lemon Dishwashing Tablets 42 Pack",
+"unit_price": "$0.55/ 1ea",
 "was_price": 46.0
 },
 "3975641": {
@@ -14700,6 +14734,7 @@
 "product_url": "https://www.coles.com.au/product/blackmores-pregnancy-breastfeeding-gold-capsules-120-pack-5678410",
 "save_amount": 25.0,
 "store": "Coles",
+"store_category": "Vitamins Womens Health",
 "title": "Blackmores Pregnancy + Breastfeeding Gold Capsules 120 Pack",
 "unit_price": "$20.83/ 100ea",
 "was_price": 50.0
@@ -18963,6 +18998,7 @@
 "product_url": "https://www.coles.com.au/product/kellogg-s-sultana-bran-high-fibre-breakfast-cereal-420g-8491212",
 "save_amount": 3.5,
 "store": "Coles",
+"store_category": "Cereal Ready To Eat",
 "title": "Kellogg's Sultana Bran High Fibre Breakfast Cereal 420g",
 "unit_price": "$0.83/ 100g",
 "was_price": 7.0
@@ -20525,6 +20561,6 @@
 },
 "last_full": 1791654045.487493,
 "pages": 30,
-"pages_done": 10,
+"pages_done": 15,
 "week": "2026-10-07"
 }
