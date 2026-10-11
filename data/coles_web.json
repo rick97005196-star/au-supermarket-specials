@@ -1,5 +1,5 @@
 {
-"cursor": 2,
+"cursor": 7,
 "items": {
 "1000301": {
 "category": "Biscuits & Cookies Rice",
@@ -4192,6 +4192,7 @@
 "product_url": "https://www.coles.com.au/product/table-of-plenty-mini-rice-cakes-100s-1000s-snack-packs-102g-1713484",
 "save_amount": 3.5,
 "store": "Coles",
+"store_category": "Biscuits & Cookies Multipacks",
 "title": "Table Of Plenty Mini Rice Cakes 100s & 1000s Snack Packs 102g",
 "unit_price": "$3.43/ 100g",
 "was_price": 7.0
@@ -13425,6 +13426,7 @@
 "product_url": "https://www.coles.com.au/product/rimmel-multi-tasker-concealer-sand-10ml-4819448",
 "save_amount": 9.5,
 "store": "Coles",
+"store_category": "Makeup Face",
 "title": "Rimmel Multi Tasker Concealer Sand 10mL",
 "unit_price": "$9.50/ 10mL",
 "was_price": 19.0
@@ -13439,6 +13441,7 @@
 "product_url": "https://www.coles.com.au/product/rimmel-multi-tasker-concealer-fair-10ml-4819460",
 "save_amount": 9.5,
 "store": "Coles",
+"store_category": "Makeup Face",
 "title": "Rimmel Multi Tasker Concealer Fair 10mL",
 "unit_price": "$9.50/ 10mL",
 "was_price": 19.0
@@ -13453,6 +13456,7 @@
 "product_url": "https://www.coles.com.au/product/rimmel-multi-tasker-concealer-ivory-10ml-4819470",
 "save_amount": 9.5,
 "store": "Coles",
+"store_category": "Makeup Face",
 "title": "Rimmel Multi Tasker Concealer Ivory 10mL",
 "unit_price": "$9.50/ 10mL",
 "was_price": 19.0
@@ -13469,6 +13473,21 @@
 "store": "Coles",
 "store_category": "Makeup Lip",
 "title": "Maybelline Lifter Gloss Lip Gloss Reef 5.4mL",
+"unit_price": "$19.44/ 10mL",
+"was_price": 21.0
+},
+"4825236": {
+"category": "Makeup Lip",
+"discount_desc": "1/2 PRICE",
+"id": "4825236",
+"image_url": "https://productimages.coles.com.au/productimages/4/4825236.jpg",
+"price": 10.5,
+"price_display": "$10.50",
+"product_url": "https://www.coles.com.au/product/maybelline-lifter-gloss-lip-gloss-petal-5-4ml-4825236",
+"save_amount": 10.5,
+"store": "Coles",
+"store_category": "Makeup Lip",
+"title": "Maybelline Lifter Gloss Lip Gloss Petal 5.4mL",
 "unit_price": "$19.44/ 10mL",
 "was_price": 21.0
 },
@@ -13823,6 +13842,7 @@
 "product_url": "https://www.coles.com.au/product/nescafe-decaf-cappuccino-coffee-sachets-10-pack-4976956",
 "save_amount": 4.0,
 "store": "Coles",
+"store_category": "Coffee Coffee All In One",
 "title": "Nescafe Decaf Cappuccino Coffee Sachets 10 Pack",
 "unit_price": "$0.40/ 1ea",
 "was_price": 8.0
@@ -16835,6 +16855,7 @@
 "product_url": "https://www.coles.com.au/product/nivea-rich-firming-q10-vitamin-c-body-lotion-400ml-7026283",
 "save_amount": 5.75,
 "store": "Coles",
+"store_category": "Skin Care Hand & Body",
 "title": "Nivea Rich Firming Q10 + Vitamin C Body Lotion 400mL",
 "unit_price": "$1.44/ 100mL",
 "was_price": 11.5
@@ -16878,6 +16899,7 @@
 "product_url": "https://www.coles.com.au/product/revlon-colorstay-xtensionnaire-lengthening-blackest-black-mascara-8ml-7032989",
 "save_amount": 13.0,
 "store": "Coles",
+"store_category": "Makeup Eye",
 "title": "Revlon Colorstay Xtensionnaire Lengthening Blackest Black Mascara 8mL",
 "unit_price": "$16.25/ 10mL",
 "was_price": 26.0
@@ -19033,6 +19055,7 @@
 "product_url": "https://www.coles.com.au/product/skittles-fruits-chewy-lollies-snack-tube-30g-8484884",
 "save_amount": 2.0,
 "store": "Coles",
+"store_category": "Bars Gum Pocket Pack Kids Confectionery",
 "title": "Skittles Fruits Chewy Lollies Snack Tube 30g",
 "unit_price": "$3.33/ 100g",
 "was_price": 3.0
@@ -19077,6 +19100,7 @@
 "product_url": "https://www.coles.com.au/product/kellogg-s-nutri-grain-protein-breakfast-cereal-290g-8491755",
 "save_amount": 3.5,
 "store": "Coles",
+"store_category": "Cereal Ready To Eat",
 "title": "Kellogg's Nutri-Grain Protein Breakfast Cereal 290g",
 "unit_price": "$1.21/ 100g",
 "was_price": 7.0
@@ -19300,6 +19324,7 @@
 "product_url": "https://www.coles.com.au/product/golden-circle-cordial-zero-sugar-raspberry-2l-8557208",
 "save_amount": 2.85,
 "store": "Coles",
+"store_category": "Juices & Cordials Standard Cordial",
 "title": "Golden Circle Cordial Zero Sugar Raspberry 2L",
 "unit_price": "$1.43/ 1L",
 "was_price": 5.7
@@ -20608,8 +20633,8 @@
 "was_price": 8.6
 }
 },
-"last_full": 1791654045.487493,
+"last_full": 1791743753.9409099,
 "pages": 30,
-"pages_done": 25,
+"pages_done": 0,
 "week": "2026-10-07"
 }
