@@ -1,5 +1,5 @@
 {
-"cursor": 7,
+"cursor": 12,
 "items": {
 "1000301": {
 "category": "Biscuits & Cookies Rice",
@@ -4988,6 +4988,7 @@
 "product_url": "https://www.coles.com.au/product/vittoria-hazelnut-cappuccino-coffee-sachets-8-pack-1800830",
 "save_amount": 4.5,
 "store": "Coles",
+"store_category": "Coffee Coffee All In One",
 "title": "Vittoria Hazelnut Cappuccino Coffee Sachets 8 Pack",
 "unit_price": "$0.50/ 1ea",
 "was_price": 8.5
@@ -5017,6 +5018,7 @@
 "product_url": "https://www.coles.com.au/product/fanta-fantasies-blissful-hibiscus-berries-soft-drink-1-25l-1801978",
 "save_amount": 2.25,
 "store": "Coles",
+"store_category": "Softdrinks Bottles",
 "title": "Fantasies Blissful Hibiscus & Berries Soft Drink 1.25L",
 "unit_price": "$1.80/ 1L",
 "was_price": 4.5
@@ -5031,6 +5033,7 @@
 "product_url": "https://www.coles.com.au/product/fanta-fantasies-dreamy-cream-lemon-soft-drink-1-25l-1802019",
 "save_amount": 2.25,
 "store": "Coles",
+"store_category": "Softdrinks Bottles",
 "title": "Fantasies Dreamy Cream & Lemon Soft Drink 1.25L",
 "unit_price": "$1.80/ 1L",
 "was_price": 4.5
@@ -7024,6 +7027,7 @@
 "product_url": "https://www.coles.com.au/product/twinings-english-breakfast-extra-strong-tea-bags-80-pack-200g-2236788",
 "save_amount": 6.75,
 "store": "Coles",
+"store_category": "Tea Black",
 "title": "Twinings English Breakfast Extra Strong Tea Bags 80 Pack 200g",
 "unit_price": "$0.08/ 1ea",
 "was_price": 13.5
@@ -7038,6 +7042,7 @@
 "product_url": "https://www.coles.com.au/product/twinings-lemon-ginger-infusions-tea-bags-80-pack-120g-2245563",
 "save_amount": 6.75,
 "store": "Coles",
+"store_category": "Tea Infusion",
 "title": "Twinings Lemon & Ginger Infusions Tea Bags 80 Pack 120g",
 "unit_price": "$0.08/ 1ea",
 "was_price": 13.5
@@ -7052,6 +7057,7 @@
 "product_url": "https://www.coles.com.au/product/blackmores-omega-mini-double-concentrate-200-pack-2268955",
 "save_amount": 22.5,
 "store": "Coles",
+"store_category": "Vitamins General Health",
 "title": "Blackmores Omega Mini Double Concentrate 200 Pack",
 "unit_price": "$11.25/ 100ea",
 "was_price": 45.0
@@ -7140,6 +7146,7 @@
 "product_url": "https://www.coles.com.au/product/cadbury-dairy-milk-snack-chocolate-block-180g-2351618",
 "save_amount": 4.0,
 "store": "Coles",
+"store_category": "Confectionery Block Chocolate",
 "title": "Cadbury Dairy Milk Snack Chocolate Block 180g",
 "unit_price": "$2.22/ 100g",
 "was_price": 8.0
@@ -8514,6 +8521,7 @@
 "product_url": "https://www.coles.com.au/product/revlon-colorstay-lipliner-blush-0-28g-3023035",
 "save_amount": 13.0,
 "store": "Coles",
+"store_category": "Makeup Lip",
 "title": "Revlon Colorstay Lipliner Blush 0.28g",
 "unit_price": "$464.29/ 10g",
 "was_price": 26.0
@@ -8528,6 +8536,7 @@
 "product_url": "https://www.coles.com.au/product/revlon-colorstay-lipliner-mauve-0-28g-3023057",
 "save_amount": 13.0,
 "store": "Coles",
+"store_category": "Makeup Lip",
 "title": "Revlon Colorstay Lipliner Mauve 0.28g",
 "unit_price": "$464.29/ 10g",
 "was_price": 26.0
@@ -8857,6 +8866,7 @@
 "product_url": "https://www.coles.com.au/product/red-rock-deli-potato-chips-party-bag-honey-soy-chicken-290g-3168639",
 "save_amount": 4.25,
 "store": "Coles",
+"store_category": "Snacks Premium Potato",
 "title": "Red Rock Deli Potato Chips Party Bag Honey Soy & Chicken 290g",
 "unit_price": "$1.47/ 100g",
 "was_price": 8.5
@@ -9978,6 +9988,7 @@
 "product_url": "https://www.coles.com.au/product/maybelline-brow-ultra-slim-soft-brown-eyebrow-pencil-8-3g-3658387",
 "save_amount": 10.0,
 "store": "Coles",
+"store_category": "Makeup Eye",
 "title": "Maybelline Brow Ultra Slim Soft Brown Eyebrow Pencil 8.3g",
 "unit_price": "$12.05/ 10g",
 "was_price": 20.0
@@ -10021,6 +10032,7 @@
 "product_url": "https://www.coles.com.au/product/revlon-colorstay-soft-blonde-brow-pencil-0-35g-3695496",
 "save_amount": 12.5,
 "store": "Coles",
+"store_category": "Makeup Eye",
 "title": "Revlon Colorstay Soft Blonde Brow Pencil 0.35g",
 "unit_price": "$357.14/ 10g",
 "was_price": 25.0
@@ -10777,6 +10789,7 @@
 "product_url": "https://www.coles.com.au/product/bref-power-active-rimblock-toilet-cleaner-juicy-lemon-twin-pack-2x50g-100g-3744660",
 "save_amount": 5.5,
 "store": "Coles",
+"store_category": "Cleaning Goods Toilet",
 "title": "Bref Power Active Rimblock Toilet Cleaner Juicy Lemon Twin Pack 2x50g 100g",
 "unit_price": "$5.50/ 100g",
 "was_price": 11.0
@@ -12050,6 +12063,7 @@
 "product_url": "https://www.coles.com.au/product/scentory-fragrance-diffuser-desert-lime-and-coconut-120ml-3996481",
 "save_amount": 11.0,
 "store": "Coles",
+"store_category": "Aircare Reeds",
 "title": "Scentory Fragrance Diffuser Desert Lime And Coconut 120mL",
 "unit_price": "$0.92/ 10mL",
 "was_price": 22.0
@@ -16306,6 +16320,7 @@
 "product_url": "https://www.coles.com.au/product/duracell-coppertop-aa-alkaline-batteries-16-pack-6806866",
 "save_amount": 14.0,
 "store": "Coles",
+"store_category": "Electrical Batteries",
 "title": "Duracell Coppertop AA Alkaline Batteries 16 Pack",
 "unit_price": "$0.88/ 1ea",
 "was_price": 28.0
@@ -16320,6 +16335,7 @@
 "product_url": "https://www.coles.com.au/product/twinings-pure-green-tea-bags-100-pack-150g-6816666",
 "save_amount": 6.75,
 "store": "Coles",
+"store_category": "Tea Green",
 "title": "Twinings Pure Green Tea Bags 100 Pack 150g",
 "unit_price": "$0.07/ 1ea",
 "was_price": 13.5
@@ -16587,6 +16603,7 @@
 "product_url": "https://www.coles.com.au/product/nestle-milo-duo-breakfast-cereal-580g-7019335",
 "save_amount": 4.75,
 "store": "Coles",
+"store_category": "Cereal Ready To Eat",
 "title": "Nestle Milo Duo Breakfast Cereal 580g",
 "unit_price": "$0.82/ 100g",
 "was_price": 9.5
@@ -20488,6 +20505,6 @@
 },
 "last_full": 1791654045.487493,
 "pages": 30,
-"pages_done": 0,
+"pages_done": 5,
 "week": "2026-10-07"
 }
