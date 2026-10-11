@@ -1,5 +1,5 @@
 {
-"cursor": 27,
+"cursor": 2,
 "items": {
 "1000301": {
 "category": "Biscuits & Cookies Rice",
@@ -1030,6 +1030,7 @@
 "product_url": "https://www.coles.com.au/product/rafferty-s-garden-nurture-immunity-blueberry-star-puffs-12m-12g-1115198",
 "save_amount": 1.2,
 "store": "Coles",
+"store_category": "Infant Food Snack Non Organic",
 "title": "Rafferty's Garden Nurture Immunity Blueberry Star Puffs 12m+ 12g",
 "unit_price": "$8.33/ 100g",
 "was_price": 2.2
@@ -1074,6 +1075,7 @@
 "product_url": "https://www.coles.com.au/product/cadbury-favourites-chocolate-gift-box-265g-1115573",
 "save_amount": 7.0,
 "store": "Coles",
+"store_category": "Boxed Chocolates Everyday",
 "title": "Cadbury Favourites Chocolate Gift Box 265g",
 "unit_price": "$2.64/ 100g",
 "was_price": 14.0
@@ -3775,6 +3777,21 @@
 "unit_price": "$0.91/ 100mL",
 "was_price": 10.0
 },
+"1633749": {
+"category": "Dishwashing Machine",
+"discount_desc": "1/2 PRICE",
+"id": "1633749",
+"image_url": "https://productimages.coles.com.au/productimages/1/1633749.jpg",
+"price": 10.0,
+"price_display": "$10.00",
+"product_url": "https://www.coles.com.au/product/fairy-platinum-dishwashing-tablets-15-pack-1633749",
+"save_amount": 10.0,
+"store": "Coles",
+"store_category": "Dishwashing Machine",
+"title": "Fairy Platinum Dishwashing Tablets 15 Pack",
+"unit_price": "$0.67/ 1ea",
+"was_price": 20.0
+},
 "1633771": {
 "category": "Dishwashing Machine",
 "discount_desc": "1/2 PRICE",
@@ -3785,6 +3802,7 @@
 "product_url": "https://www.coles.com.au/product/skipper-naked-dishwashing-tablets-lemon-50-pack-1633771",
 "save_amount": 14.5,
 "store": "Coles",
+"store_category": "Dishwashing Machine",
 "title": "Skipper Naked Dishwashing Tablets Lemon 50 Pack",
 "unit_price": "$0.29/ 1ea",
 "was_price": 29.0
@@ -9139,6 +9157,7 @@
 "product_url": "https://www.coles.com.au/product/oreo-ice-cream-cones-4-pack-475ml-3251437",
 "save_amount": 5.75,
 "store": "Coles",
+"store_category": "Ice Cream Novelty Multi",
 "title": "Oreo Ice Cream Cones 4 Pack 475mL",
 "unit_price": "$1.21/ 100mL",
 "was_price": 11.5
@@ -14297,6 +14316,7 @@
 "product_url": "https://www.coles.com.au/product/hong-kong-dim-sim-kitchen-pork-dim-sims-480g-5292231",
 "save_amount": 4.25,
 "store": "Coles",
+"store_category": "Frozen World Foods Asian",
 "title": "Hong Kong Dim Sim Kitchen Pork Dim Sims 480g",
 "unit_price": "$0.89/ 100g",
 "was_price": 8.5
@@ -14971,6 +14991,7 @@
 "product_url": "https://www.coles.com.au/product/connoisseur-ice-cream-cookies-cream-1l-5832850",
 "save_amount": 6.5,
 "store": "Coles",
+"store_category": "Ice Cream Premium Tubs",
 "title": "Connoisseur Ice Cream Cookies & Cream 1L",
 "unit_price": "$0.65/ 100mL",
 "was_price": 13.0
@@ -15405,6 +15426,7 @@
 "product_url": "https://www.coles.com.au/product/connoisseur-laneway-sweets-baked-choc-chip-cookie-ice-cream-tub-1l-6143689",
 "save_amount": 6.5,
 "store": "Coles",
+"store_category": "Ice Cream Premium Tubs",
 "title": "Connoisseur Laneway Sweets Baked Choc Chip Cookie Ice Cream Tub 1L",
 "unit_price": "$0.65/ 100mL",
 "was_price": 13.0
@@ -20588,6 +20610,6 @@
 },
 "last_full": 1791654045.487493,
 "pages": 30,
-"pages_done": 20,
+"pages_done": 25,
 "week": "2026-10-07"
 }
