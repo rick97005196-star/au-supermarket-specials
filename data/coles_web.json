@@ -1,5 +1,5 @@
 {
-"cursor": 12,
+"cursor": 17,
 "items": {
 "1000301": {
 "category": "Biscuits & Cookies Rice",
@@ -6878,6 +6878,7 @@
 "product_url": "https://www.coles.com.au/product/golden-fields-australian-canola-oil-4l-2103650",
 "save_amount": 17.0,
 "store": "Coles",
+"store_category": "Oils Canola",
 "title": "Golden Fields Australian Canola Oil 4L",
 "unit_price": "$0.43/ 100mL",
 "was_price": 34.0
@@ -7640,6 +7641,7 @@
 "product_url": "https://www.coles.com.au/product/biozet-attack-regular-liquid-2l-2688214",
 "save_amount": 12.0,
 "store": "Coles",
+"store_category": "Laundry Liquid",
 "title": "Biozet Attack Regular Liquid 2L",
 "unit_price": "$6.00/ 1L",
 "was_price": 24.0
@@ -7654,6 +7656,7 @@
 "product_url": "https://www.coles.com.au/product/ambi-pur-mini-clip-thai-dragon-fruit-car-air-freshener-2ml-2709857",
 "save_amount": 3.0,
 "store": "Coles",
+"store_category": "Auto Car Care",
 "title": "Ambi Pur Mini Clip Thai Dragon Fruit Car Air Freshener 2mL",
 "unit_price": "$15.00/ 10mL",
 "was_price": 6.0
@@ -7698,6 +7701,7 @@
 "product_url": "https://www.coles.com.au/product/fussy-cat-grain-free-adult-dry-cat-food-with-salmon-whitefish-olive-oil-2-5kg-2739960",
 "save_amount": 13.25,
 "store": "Coles",
+"store_category": "Cat Food Dry Cat",
 "title": "Fussy Cat Grain Free Adult Dry Cat Food With Salmon Whitefish & Olive Oil 2.5kg",
 "unit_price": "$0.53/ 100g",
 "was_price": 26.5
@@ -10018,6 +10022,7 @@
 "product_url": "https://www.coles.com.au/product/sally-hansen-miracle-gel-pinky-promise-14-7ml-3680568",
 "save_amount": 9.5,
 "store": "Coles",
+"store_category": "Makeup Nail",
 "title": "Sally Hansen Miracle Gel Pinky Promise 14.7mL",
 "unit_price": "$6.46/ 10mL",
 "was_price": 19.0
@@ -10509,6 +10514,7 @@
 "product_url": "https://www.coles.com.au/product/maybelline-instant-age-rewind-eraser-dark-circles-honey-6ml-3723740",
 "save_amount": 12.5,
 "store": "Coles",
+"store_category": "Makeup Face",
 "title": "Maybelline Instant Age Rewind Eraser Dark Circles Honey 6mL",
 "unit_price": "$20.83/ 10mL",
 "was_price": 25.0
@@ -10523,6 +10529,7 @@
 "product_url": "https://www.coles.com.au/product/maybelline-age-rewind-eraser-concealer-ivory-6ml-3723820",
 "save_amount": 12.5,
 "store": "Coles",
+"store_category": "Makeup Face",
 "title": "Maybelline Age Rewind Eraser Concealer Ivory 6mL",
 "unit_price": "$20.83/ 10mL",
 "was_price": 25.0
@@ -10537,6 +10544,7 @@
 "product_url": "https://www.coles.com.au/product/maybelline-fit-me-matte-pore-foundation-natural-ivory-30ml-3724051",
 "save_amount": 14.0,
 "store": "Coles",
+"store_category": "Makeup Face",
 "title": "Maybelline Fit Me Matte Pore Foundation Natural Ivory 30mL",
 "unit_price": "$4.67/ 10mL",
 "was_price": 28.0
@@ -10551,6 +10559,7 @@
 "product_url": "https://www.coles.com.au/product/maybelline-fit-me-matte-pore-foundation-natural-tan-30ml-3724095",
 "save_amount": 14.0,
 "store": "Coles",
+"store_category": "Makeup Face",
 "title": "Maybelline Fit Me Matte Pore Foundation Natural Tan 30mL",
 "unit_price": "$4.67/ 10mL",
 "was_price": 28.0
@@ -13291,6 +13300,7 @@
 "product_url": "https://www.coles.com.au/product/revlon-photoready-rose-glow-primer-30ml-4804225",
 "save_amount": 17.0,
 "store": "Coles",
+"store_category": "Makeup Face",
 "title": "Revlon Photoready Rose Glow Primer 30mL",
 "unit_price": "$5.67/ 10mL",
 "was_price": 34.0
@@ -13320,6 +13330,7 @@
 "product_url": "https://www.coles.com.au/product/l-oreal-paris-infallible-auto-liner-brown-denim-5g-4810567",
 "save_amount": 12.5,
 "store": "Coles",
+"store_category": "Makeup Eye",
 "title": "L'Oreal Paris Infallible Auto Liner Brown Denim 5g",
 "unit_price": "$25.00/ 10g",
 "was_price": 25.0
@@ -16575,6 +16586,7 @@
 "product_url": "https://www.coles.com.au/product/nestle-milo-protein-breakfast-cereal-535g-7019313",
 "save_amount": 4.75,
 "store": "Coles",
+"store_category": "Cereal Ready To Eat",
 "title": "Nestle Milo Protein Breakfast Cereal 535g",
 "unit_price": "$0.89/ 100g",
 "was_price": 9.5
@@ -16589,6 +16601,7 @@
 "product_url": "https://www.coles.com.au/product/nestle-milo-breakfast-cereal-620g-7019324",
 "save_amount": 4.75,
 "store": "Coles",
+"store_category": "Cereal Ready To Eat",
 "title": "Nestle Milo Breakfast Cereal 620g",
 "unit_price": "$0.77/ 100g",
 "was_price": 9.5
@@ -16810,6 +16823,7 @@
 "product_url": "https://www.coles.com.au/product/dynamo-professional-laundry-7-in-1-liquid-2l-7035604",
 "save_amount": 14.5,
 "store": "Coles",
+"store_category": "Laundry Liquid",
 "title": "Dynamo Professional Laundry 7 In 1 Liquid 2L",
 "unit_price": "$7.25/ 1L",
 "was_price": 29.0
@@ -16824,6 +16838,7 @@
 "product_url": "https://www.coles.com.au/product/dynamo-professional-odour-eliminating-laundry-liquid-2l-7035626",
 "save_amount": 14.5,
 "store": "Coles",
+"store_category": "Laundry Liquid",
 "title": "Dynamo Professional Odour Eliminating Laundry Liquid 2L",
 "unit_price": "$7.25/ 1L",
 "was_price": 29.0
@@ -16838,6 +16853,7 @@
 "product_url": "https://www.coles.com.au/product/dynamo-professional-oxi-plus-laundry-liquid-2l-7035648",
 "save_amount": 14.5,
 "store": "Coles",
+"store_category": "Laundry Liquid",
 "title": "Dynamo Professional Oxi Plus Laundry Liquid 2L",
 "unit_price": "$7.25/ 1L",
 "was_price": 29.0
@@ -16852,6 +16868,7 @@
 "product_url": "https://www.coles.com.au/product/dynamo-professional-clean-fresh-machine-laundry-liquid-2l-7035670",
 "save_amount": 14.5,
 "store": "Coles",
+"store_category": "Laundry Liquid",
 "title": "Dynamo Professional Clean & Fresh Machine Laundry Liquid 2L",
 "unit_price": "$7.25/ 1L",
 "was_price": 29.0
@@ -16866,6 +16883,7 @@
 "product_url": "https://www.coles.com.au/product/optimum-pro-adult-dry-dog-food-sensitive-skin-vitality-turkey-with-ancient-wholegrains-2-5kg-7037097",
 "save_amount": 13.25,
 "store": "Coles",
+"store_category": "Dog Food Dry Dog",
 "title": "Optimum Pro Adult Dry Dog Food Sensitive Skin & Vitality Turkey With Ancient Wholegrains 2.5kg",
 "unit_price": "$0.53/ 100g",
 "was_price": 26.5
@@ -16925,6 +16943,7 @@
 "product_url": "https://www.coles.com.au/product/rimmel-lasting-finish-35h-foundation-200-soft-beige-30ml-7038883",
 "save_amount": 13.5,
 "store": "Coles",
+"store_category": "Makeup Face",
 "title": "Rimmel Lasting Finish 35h Foundation 200 Soft Beige 30mL",
 "unit_price": "$4.50/ 10mL",
 "was_price": 27.0
@@ -16939,6 +16958,7 @@
 "product_url": "https://www.coles.com.au/product/rimmel-lasting-finish-35h-foundation-103-true-ivory-30ml-7038930",
 "save_amount": 13.5,
 "store": "Coles",
+"store_category": "Makeup Face",
 "title": "Rimmel Lasting Finish 35h Foundation 103 True Ivory 30mL",
 "unit_price": "$4.50/ 10mL",
 "was_price": 27.0
@@ -20505,6 +20525,6 @@
 },
 "last_full": 1791654045.487493,
 "pages": 30,
-"pages_done": 5,
+"pages_done": 10,
 "week": "2026-10-07"
 }
