@@ -1,5 +1,5 @@
 {
-"cursor": 7,
+"cursor": 12,
 "items": {
 "1000301": {
 "category": "Biscuits & Cookies Rice",
@@ -5870,6 +5870,7 @@
 "product_url": "https://www.coles.com.au/product/beauty-of-joseon-ginseng-cleansing-oil-210ml-1935453",
 "save_amount": 21.0,
 "store": "Coles",
+"store_category": "Skin Care Facial Skincare",
 "title": "Beauty Of Joseon Ginseng Cleansing Oil 210mL",
 "unit_price": "$10.00/ 100mL",
 "was_price": 42.0
@@ -6661,6 +6662,7 @@
 "product_url": "https://www.coles.com.au/product/ajishima-freeze-dried-miso-soup-with-tofu-12g-2005388",
 "save_amount": 1.55,
 "store": "Coles",
+"store_category": "Asian Foods Asian Japanese",
 "title": "Ajishima Freeze Dried Miso Soup With Tofu 12g",
 "unit_price": "$12.92/ 100g",
 "was_price": 3.1
@@ -6883,6 +6885,7 @@
 "product_url": "https://www.coles.com.au/product/sunrice-australian-medium-grain-white-rice-5kg-206560",
 "save_amount": 10.5,
 "store": "Coles",
+"store_category": "Rice Short Grain",
 "title": "Sunrice Australian Medium Grain White Rice 5kg",
 "unit_price": "$0.21/ 100g",
 "was_price": 21.0
@@ -10685,6 +10688,7 @@
 "product_url": "https://www.coles.com.au/product/maybelline-superstay-matte-ink-amazonian-lipstick-5ml-3724299",
 "save_amount": 12.5,
 "store": "Coles",
+"store_category": "Makeup Lip",
 "title": "Maybelline Superstay Matte Ink Amazonian Lipstick 5mL",
 "unit_price": "$25.00/ 10mL",
 "was_price": 25.0
@@ -18277,6 +18281,7 @@
 "product_url": "https://www.coles.com.au/product/maharajah-s-choice-masala-twists-90g-8062577",
 "save_amount": 1.25,
 "store": "Coles",
+"store_category": "Indian Foods Authentic Indian",
 "title": "Maharajah's Choice Masala Twists 90g",
 "unit_price": "$1.39/ 100g",
 "was_price": 2.5
@@ -18381,6 +18386,7 @@
 "product_url": "https://www.coles.com.au/product/ben-s-original-one-pan-indonesian-style-nasi-goreng-rice-250g-8093377",
 "save_amount": 2.0,
 "store": "Coles",
+"store_category": "Rice Long Grain",
 "title": "Ben's Original One Pan Indonesian Style Nasi Goreng Rice 250g",
 "unit_price": "$0.80/ 100g",
 "was_price": 4.0
@@ -20089,6 +20095,7 @@
 "product_url": "https://www.coles.com.au/product/lynx-deodorant-body-spray-sunset-fresh-165ml-9317378",
 "save_amount": 4.5,
 "store": "Coles",
+"store_category": "Mens Deos & Grooming Deodorants",
 "title": "Lynx Deodorant Body Spray Sunset Fresh 165mL",
 "unit_price": "$2.73/ 100mL",
 "was_price": 9.0
@@ -20208,6 +20215,7 @@
 "product_url": "https://www.coles.com.au/product/blackmores-executive-b-stress-formula-support-tablets-125-pack-9506814",
 "save_amount": 20.0,
 "store": "Coles",
+"store_category": "Vitamins Stress",
 "title": "Blackmores Executive B Stress Formula Support Tablets 125 Pack",
 "unit_price": "$16.00/ 100ea",
 "was_price": 40.0
@@ -20635,6 +20643,6 @@
 },
 "last_full": 1791743753.9409099,
 "pages": 30,
-"pages_done": 0,
+"pages_done": 5,
 "week": "2026-10-07"
 }
