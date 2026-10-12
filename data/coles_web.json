@@ -1,5 +1,5 @@
 {
-"cursor": 18,
+"cursor": 23,
 "items": {
 "1000301": {
 "category": "Biscuits & Cookies Rice",
@@ -6812,6 +6812,7 @@
 "product_url": "https://www.coles.com.au/product/sally-hansen-miracle-gel-top-coat-14-7ml-2050881",
 "save_amount": 8.0,
 "store": "Coles",
+"store_category": "Makeup Nail",
 "title": "Sally Hansen Miracle Gel Top Coat 14.7mL",
 "unit_price": "$5.44/ 10mL",
 "was_price": 16.0
@@ -6856,6 +6857,7 @@
 "product_url": "https://www.coles.com.au/product/nivea-sun-protect-moisture-trigger-spray-sunscreen-spf50-270ml-2057701",
 "save_amount": 14.0,
 "store": "Coles",
+"store_category": "Skin Care Suncare",
 "title": "Nivea Sun Protect & Moisture Trigger Spray Sunscreen Spf50+ 270mL",
 "unit_price": "$5.19/ 100mL",
 "was_price": 28.0
@@ -6930,6 +6932,7 @@
 "product_url": "https://www.coles.com.au/product/hismile-tooth-armour-toothpaste-serum-20ml-2066553",
 "save_amount": 12.5,
 "store": "Coles",
+"store_category": "Dental Health Toothpaste",
 "title": "Hismile Tooth Armour Toothpaste Serum 20mL",
 "unit_price": "$62.50/ 100mL",
 "was_price": 25.0
@@ -19936,6 +19939,21 @@
 "unit_price": "$25.00/ 100ea",
 "was_price": 30.0
 },
+"9104683": {
+"category": "Vitamins Beauty",
+"discount_desc": "1/2 PRICE",
+"id": "9104683",
+"image_url": "https://productimages.coles.com.au/productimages/9/9104683.jpg",
+"price": 25.0,
+"price_display": "$25.00",
+"product_url": "https://www.coles.com.au/product/life-botanics-pure-collagen-peptides-300g-9104683",
+"save_amount": 25.0,
+"store": "Coles",
+"store_category": "Vitamins Beauty",
+"title": "Life Botanics Pure Collagen Peptides 300g",
+"unit_price": "$8.33/ 100g",
+"was_price": 50.0
+},
 "9105868": {
 "category": "Vitamins Energy",
 "discount_desc": "1/2 PRICE",
@@ -20704,6 +20722,6 @@
 },
 "last_full": 1791791299.5980318,
 "pages": 30,
-"pages_done": 11,
+"pages_done": 16,
 "week": "2026-10-07"
 }
