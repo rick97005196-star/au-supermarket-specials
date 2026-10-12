@@ -336,6 +336,7 @@ html.dark .p-media { background: #f4f3ef; border-bottom-color: transparent; }
 .p-was { font-size: 11px; color: var(--ink-3); display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; }
 .p-was s { text-decoration-thickness: 1px; }
 .p-save { font-weight: 600; color: var(--sale); }
+.p-everyday { font-weight: 600; color: var(--accent-text); }
 .p-unit { font-size: 11px; color: var(--ink-3); }
 .p-add {
     width: 38px; height: 38px; border-radius: 999px; flex-shrink: 0;
@@ -378,6 +379,7 @@ html.dark .p-media { background: #f4f3ef; border-bottom-color: transparent; }
 .tag { font-size: 10px; font-weight: 600; padding: 2px 7px; border-radius: 999px; background: var(--surface-2); color: var(--ink-2); white-space: nowrap; }
 .tag.is-next { background: var(--next-soft); color: var(--next); }
 .tag.is-sale { background: var(--sale-soft); color: var(--sale); }
+.tag.is-sale.is-everyday { background: var(--accent-soft); color: var(--accent-text); }
 .tag.is-accent { background: var(--accent-soft); color: var(--accent-text); }
 .to-top {
     position: fixed; bottom: 22px; right: 18px; z-index: 40; width: 44px; height: 44px; border-radius: 999px;

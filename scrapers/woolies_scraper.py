@@ -164,7 +164,7 @@ def discover_woolies_catalogues(postcode_id=None, region=None, known_dates=None)
 
 def scrape_woolies_catalogue_items(base_list_url: str, initial_soup: BeautifulSoup, max_pages: int = 50) -> List[Dict[str, Any]]:
     """Scrapes products from a specific Woolworths catalogue list URL across pages."""
-    from scrapers.regions import ItemList
+    from scrapers.regions import ItemList, is_everyday_price, everyday_desc
     products = ItemList()
     seen_ids = set()
 
@@ -226,9 +226,11 @@ def scrape_woolies_catalogue_items(base_list_url: str, initial_soup: BeautifulSo
                 was_price = 0.0
                 save_amount = 0.0
                 price = 0.0
+                everyday = False
 
                 if price_box:
                     full_text = price_box.get_text(separator=' ', strip=True)
+                    everyday = is_everyday_price(full_text)
                     price_elem = price_box.select_one('.price')
                     price_text = price_elem.get_text(strip=True) if price_elem else ""
                     price = parse_price(price_text) if price_text else parse_price(full_text)
@@ -259,9 +261,12 @@ def scrape_woolies_catalogue_items(base_list_url: str, initial_soup: BeautifulSo
                     was_price = round(price * 2, 2)
                     save_amount = price
 
-                # Only include products with real discounts (exclude non-discounted catalogue items)
+                # Only include products with real discounts, plus the "Everyday Low Price" items
+                # - other non-discounted catalogue items are left out
                 if save_amount <= 0 and (was_price <= price or was_price == 0):
-                    continue
+                    if not (everyday and price > 0):
+                        continue
+                    discount_desc = everyday_desc(discount_desc)
 
                 products.append({
                     'store': 'Woolworths',

@@ -1510,7 +1510,8 @@ function clusterItemsBySeries(items) {
 // so the first screen shows snacks, drinks, meat, pantry… instead of one category; then the rest.
 function popularFirst(items) {
     const top = createDiverseBestSellers(items) || [];
-    if (!top.length) return clusterItemsBySeries(items);
+    if (!top.length) return [...clusterItemsBySeries(items.filter(it => !isEverydayPrice(it))),
+                             ...clusterItemsBySeries(items.filter(isEverydayPrice))];
     const queues = new Map();
     top.forEach(it => {
         const c = it.category || 'other';
@@ -1532,7 +1533,10 @@ function popularFirst(items) {
         }
     }
     const topSet = new Set(top);
-    return [...mixed, ...clusterItemsBySeries(items.filter(it => !topSet.has(it)))];
+    const rest = items.filter(it => !topSet.has(it));
+    // everyday low prices are not specials: after all the specials
+    return [...mixed, ...clusterItemsBySeries(rest.filter(it => !isEverydayPrice(it))),
+            ...clusterItemsBySeries(rest.filter(isEverydayPrice))];
 }
 
 // Sort items by comparator while clustering identical product lines together
@@ -1663,6 +1667,13 @@ function getCrossStoreBadgeText(item) {
     }
 }
 
+
+// Everyday low price (Coles "Every Day", Woolworths "Everyday Low Price"): not a discount but the
+// lasting shelf price, e.g. the supermarkets' own bread. Shown with a "天天低價" label, after the specials.
+function isEverydayPrice(it) {
+    if (!it || it.store === 'ALDI' || (it.save_amount || 0) > 0) return false;
+    return /^Everyday Low Price/.test(it.discount_desc || '');
+}
 
 // Robust Australian Supermarket 1/2 Price (Half Price) Detection
 function isItemHalfPrice(it) {
@@ -1808,8 +1819,9 @@ async function loadSpecials() {
             if (!itemInCategory(it, currentCategory)) {
                 return false;
             }
-            // Strictly only show items with genuine discounts (or ALDI Super Savers & Special Buys)
-            if (it.store !== 'ALDI' && (!it.save_amount || it.save_amount <= 0)) return false;
+            // Strictly only show items with genuine discounts (or ALDI Super Savers & Special Buys),
+            // plus the everyday low prices
+            if (it.store !== 'ALDI' && (!it.save_amount || it.save_amount <= 0) && !isEverydayPrice(it)) return false;
             if (discountOnly) {
                 if (!isItemHalfPrice(it)) return false;
             }
@@ -2609,6 +2621,7 @@ function createProductCardElement(item) {
                     <div class="p-was num mt-1.5">
                         ${effectiveWas > 0 ? `<s>${t('was_price')} $${effectiveWas.toFixed(2)}</s>` : ''}
                         ${effectiveSave > 0 ? `<span class="p-save">${t('save_badge', { amount: effectiveSave.toFixed(2) })}</span>` : ''}
+                        ${isEverydayPrice(item) ? `<span class="p-everyday">${t('everyday_badge')}</span>` : ''}
                     </div>`}
                     ${unitPriceClean && !showNormUnit ? `<div class="p-unit num mt-0.5 truncate" title="${escAttr(unitPriceClean)}">${unitPriceClean}</div>` : ''}
                 </div>
@@ -2839,8 +2852,12 @@ function openProductModal(item) {
     }
 
     const saveBadge = document.getElementById('modalSaveBadge');
+    saveBadge.classList.toggle('is-everyday', isEverydayPrice(item));
     if (effectiveSave > 0) {
         saveBadge.textContent = t('save_badge', { amount: effectiveSave.toFixed(2) });
+        saveBadge.classList.remove('hidden');
+    } else if (isEverydayPrice(item)) {
+        saveBadge.textContent = t('everyday_badge');
         saveBadge.classList.remove('hidden');
     } else {
         saveBadge.classList.add('hidden');

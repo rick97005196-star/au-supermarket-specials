@@ -77,6 +77,7 @@ au-supermarket-specials/
 - `period` 欄位區分：
   - `'current'`：當期特價（本週三生效）。
   - `'next'`：下週預告（下週三即將生效，通常於週一或週二釋出型錄）。
+- **天天低價**：型錄上沒有折扣、但標示 Coles「Every Day」或 Woolworths「Everyday Low Price」的商品（例如 Coles 自有品牌吐司）也會收錄，`discount_desc` 統一為 `Everyday Low Price`、`save_amount` 為 0。網頁上以綠色「天天低價」標示，預設排在所有特價商品之後，不計入特價件數、熱門暢銷、這週必買與收藏通知。規則在 `scrapers/regions.py`（`is_everyday_price`），測試在 `tests/test_everyday.py`。
 
 ### ② ALDI 爬蟲特殊處理
 - ALDI 網址採動態日期（如 `/special-buys/2026-09-23`）及主題分頁（如 `?theme=Kids+Toys`）。

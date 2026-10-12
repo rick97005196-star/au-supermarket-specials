@@ -3,6 +3,8 @@ import datetime
 import json
 import os
 
+from scrapers.regions import EVERYDAY_DESC, is_everyday
+
 os.makedirs('static/data', exist_ok=True)
 
 conn = sqlite3.connect('data/specials.db')
@@ -17,9 +19,9 @@ c.execute(f"""
            unit_price, was_price, save_amount, discount_desc, image_url, product_url,
            regions, region_prices, sale_from, {_aisle_col}
     FROM specials
-    WHERE price > 0 AND ((save_amount > 0 OR was_price > price) OR store = 'ALDI')
+    WHERE price > 0 AND ((save_amount > 0 OR was_price > price) OR store = 'ALDI' OR discount_desc LIKE ?)
     ORDER BY id ASC
-""")
+""", (EVERYDAY_DESC + '%',))
 rows = c.fetchall()
 items = [dict(r) for r in rows]
 
@@ -130,6 +132,15 @@ from interest import apply_interest, load_interest
 _interest, _interest_total = load_interest()
 _moved = apply_interest(items, _interest, _interest_total)
 print(f"Visitor interest: {len(_interest)} products counted (weighted total {_interest_total:.0f}), {_moved} specials moved up")
+
+# Everyday low prices are not specials: never "熱門暢銷", never in the best-sellers at the top
+# (-1, not 0: the website recomputes a score of 0 itself)
+_everyday = 0
+for it in items:
+    if is_everyday(it):
+        it['popularity_score'] = -1
+        _everyday += 1
+print(f"Everyday low prices: {_everyday} items")
 
 # ---- "熱門暢銷" badge: only the top ~10% per category, max 2 per brand, so the badge stays meaningful ----
 import math, re as _re

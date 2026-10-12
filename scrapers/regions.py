@@ -108,6 +108,28 @@ def filter_region_links(slugs_ids, region, exact_prefix=None):
     return []
 
 
+# ---------------------------------------------------------------- everyday low prices
+
+# Coles prints "Every Day $3.30", Woolworths "Everyday Low Price $4.50": not a discount, but the
+# lasting shelf price (e.g. the supermarkets' own bread). Kept and shown with a "天天低價" label.
+EVERYDAY_DESC = 'Everyday Low Price'
+_EVERYDAY = re.compile(r'\bevery\s*day\b(?!\s*market)', re.I)
+
+
+def is_everyday_price(price_text):
+    return bool(_EVERYDAY.search(price_text or ''))
+
+
+def everyday_desc(desc):
+    """The one description every everyday-price item gets (keeps the "selected stores" note)."""
+    return EVERYDAY_DESC + (' (selected stores only)' if 'selected stores' in (desc or '').lower() else '')
+
+
+def is_everyday(item):
+    """An everyday-price item: no discount, marked by the scraper with EVERYDAY_DESC."""
+    return (item.get('discount_desc') or '').startswith(EVERYDAY_DESC) and not (item.get('save_amount') or 0) > 0
+
+
 # ---------------------------------------------------------------- merging
 
 def _norm_desc(item):
@@ -214,6 +236,7 @@ class ItemList(list):
 # "next week" catalogue that was already downloaded on Monday/Tuesday.
 CACHE_FILE = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'data', 'catalogue_items.json.gz')
 VERIFY_HOURS = 24          # a stored catalogue is read again once a day, to catch late changes
+CACHE_VERSION = 2          # raise when the scrapers keep different items (2 = everyday low prices too)
 FULL_DISCOVERY_HOURS = 6   # every state's catalogue list is checked at least this often
 
 
@@ -258,7 +281,7 @@ def _range_dates(rng):
 def _needs_download(entry, cat, now):
     """Download (again) only when: never read completely, read more than a day ago, or the
     catalogue starts today/has started since it was read (the Wednesday "anything missing?" check)."""
-    if not entry or not entry.get('complete'):
+    if not entry or not entry.get('complete') or entry.get('v', 1) != CACHE_VERSION:
         return True
     if now - float(entry.get('fetched_at') or 0) > VERIFY_HOURS * 3600:
         return True
@@ -357,7 +380,8 @@ def scrape_all_regions(store, discover_fn, scrape_items_fn, pick_fn, max_pages=5
                     new = {x.get('title') for x in items}
                     if old != new:
                         print(f"{store} catalogue {cid}: re-check found changes (+{len(new - old)} / -{len(old - new)})")
-                sc[cid] = {'date_range': cat.get('date_range', ''), 'items': list(items), 'complete': True, 'fetched_at': now}
+                sc[cid] = {'date_range': cat.get('date_range', ''), 'items': list(items), 'complete': True, 'fetched_at': now,
+                           'v': CACHE_VERSION}
                 items_by_id[cat['id']] = list(items)
                 stats['downloaded'] += 1
                 print(f"{store} catalogue {cid}: {len(items)} specials (read completely and saved)")

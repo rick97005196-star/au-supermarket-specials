@@ -15,6 +15,10 @@ on:
       - 'data/ai_categories.json'
       - 'interest.py'
       - 'functions/**'
+      - 'scrapers/regions.py'
+      - 'scrapers/coles_scraper.py'
+      - 'scrapers/woolies_scraper.py'
+      - 'database.py'
   workflow_dispatch:
 
 permissions:
@@ -39,3 +43,5 @@ jobs:
         run: python tests/test_category_hints.py
       - name: Visitor-interest order test
         run: python tests/test_interest.py
+      - name: Everyday low price test
+        run: python tests/test_everyday.py

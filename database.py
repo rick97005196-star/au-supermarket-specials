@@ -6,6 +6,8 @@ import re
 from datetime import datetime
 from typing import List, Dict, Any, Optional
 
+from scrapers.regions import EVERYDAY_DESC
+
 DB_DIR = os.path.join(os.path.dirname(__file__), 'data')
 DB_PATH = os.path.join(DB_DIR, 'specials.db')
 
@@ -62,11 +64,12 @@ def init_db():
 
         cursor.execute("PRAGMA table_info(shopping_list)")
         sl_columns = [row[1] for row in cursor.fetchall()]
-        if 'period' not in sl_columns:
+        # (a new database has no shopping_list yet: it is created below with all its columns)
+        if sl_columns and 'period' not in sl_columns:
             cursor.execute("ALTER TABLE shopping_list ADD COLUMN period TEXT DEFAULT 'current'")
-        if 'date_range' not in sl_columns:
+        if sl_columns and 'date_range' not in sl_columns:
             cursor.execute("ALTER TABLE shopping_list ADD COLUMN date_range TEXT")
-        if 'was_price' not in sl_columns:
+        if sl_columns and 'was_price' not in sl_columns:
             cursor.execute("ALTER TABLE shopping_list ADD COLUMN was_price REAL DEFAULT 0.0")
 
         cursor.execute('''
@@ -215,7 +218,9 @@ def save_specials(store: str, items: List[Dict[str, Any]], period: str = 'curren
                 discount_desc = f"Save ${save_amount:.2f}"
 
             # Only keep products that have a real discount (ALDI Super Savers & Special Buys are included)
-            if store != 'ALDI' and save_amount <= 0 and (was_price <= price or was_price == 0):
+            # or an everyday low price (Coles "Every Day" / Woolworths "Everyday Low Price")
+            if store != 'ALDI' and save_amount <= 0 and (was_price <= price or was_price == 0) \
+                    and not discount_desc.startswith(EVERYDAY_DESC):
                 continue
 
             aisle = (item.get('store_category') or '').strip()
@@ -226,6 +231,8 @@ def save_specials(store: str, items: List[Dict[str, Any]], period: str = 'curren
                 'save_amount': save_amount, 'discount_desc': discount_desc,
                 'category': cat, 'is_popular': bool(is_pop)
             })
+            if save_amount <= 0 and discount_desc.startswith(EVERYDAY_DESC):
+                is_pop, score = 0, 0      # not a special: never in "熱門暢銷"
 
             rows.append((
                 store,
@@ -354,7 +361,7 @@ def get_specials(
 ) -> Dict[str, Any]:
     with get_db() as conn:
         cursor = conn.cursor()
-        where_clauses = ['period = ?', '(save_amount > 0 OR was_price > price OR store = "ALDI")']
+        where_clauses = ['period = ?', f'(save_amount > 0 OR was_price > price OR store = "ALDI" OR discount_desc LIKE "{EVERYDAY_DESC}%")']
         params = [period]
 
         if store and store.lower() != 'all':
