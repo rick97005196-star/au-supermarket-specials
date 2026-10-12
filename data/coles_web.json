@@ -1,5 +1,5 @@
 {
-"cursor": 7,
+"cursor": 8,
 "items": {
 "1000301": {
 "category": "Biscuits & Cookies Rice",
@@ -19904,6 +19904,21 @@
 "unit_price": "$1.67/ 100mL",
 "was_price": 12.0
 },
+"9104617": {
+"category": "Vitamins Womens Health",
+"discount_desc": "1/2 PRICE",
+"id": "9104617",
+"image_url": "https://productimages.coles.com.au/productimages/9/9104617.jpg",
+"price": 15.0,
+"price_display": "$15.00",
+"product_url": "https://www.coles.com.au/product/healthcarebear-iron-gummies-60-pack-9104617",
+"save_amount": 15.0,
+"store": "Coles",
+"store_category": "Vitamins Womens Health",
+"title": "Healthcarebear Iron Gummies 60 Pack",
+"unit_price": "$25.00/ 100ea",
+"was_price": 30.0
+},
 "9105868": {
 "category": "Vitamins Energy",
 "discount_desc": "1/2 PRICE",
@@ -20672,6 +20687,6 @@
 },
 "last_full": 1791791299.5980318,
 "pages": 30,
-"pages_done": 0,
+"pages_done": 1,
 "week": "2026-10-07"
 }
