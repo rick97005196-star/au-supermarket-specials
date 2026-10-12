@@ -10687,11 +10687,11 @@
     "ko": "콘티넨탈 클래식 컵 어 수프 중화풍 치킨 & 콘 수프 (66g)"
   },
   "Spam Canned Ham 340g": {
-    "zh": "Spam 午餐肉罐頭 340克",
-    "ja": "Spam 缶詰ハム 340g",
+    "zh": "Spam 火腿罐頭 340克",
+    "ja": "Spam ハム缶詰 340g",
     "ko": "Spam 햄 통조림 340g",
     "src": "ai",
-    "qa_tries": 1
+    "qa_tries": 2
   },
   "Moro Extra Virgin Olive Oil 1 Litre": {
     "zh": "Moro 特級初榨橄欖油 (1公升)",
@@ -59236,10 +59236,11 @@
     "src": "ai"
   },
   "Just Cook Gyoza or Hargow 750g": {
-    "zh": "Just Cook 餃子 或 蝦餃 750克",
-    "ja": "Just Cook 餃子 または 海老蒸し餃子 750g",
+    "zh": "Just Cook 餃子或粉粿 750克",
+    "ja": "Just Cook 餃子またはハーガウ 750g",
     "ko": "Just Cook 교자 또는 하가우 750g",
-    "src": "ai"
+    "src": "ai",
+    "qa_tries": 1
   },
   "Aunt Betty's Pudding 2 Pack 190g-220g": {
     "zh": "Aunt Betty's 布丁 190-220克（2入）",
@@ -59410,10 +59411,11 @@
     "src": "ai"
   },
   "Nice & Natural Deluxe Protein Bars 200g Pk 5 or Nut Butter Bars 175g Pk 5": {
-    "zh": "Nice & Natural 豪華高蛋白棒 200克 5入 或 堅果醬棒 175克 5入",
-    "ja": "Nice & Natural デラックス プロテインバー 200g 5個入 または ナッツバターバー 175g 5個入",
-    "ko": "Nice & Natural 디럭스 프로틴 바 200g 5개입 또는 넛 버터 바 175g 5개입",
-    "src": "ai"
+    "zh": "Nice & Natural 豪華高蛋白棒 200克 5入或堅果奶油棒 175克 5入",
+    "ja": "Nice & Natural デラックスプロテインバー 200g 5個入またはナッツバターバー 175g 5個入",
+    "ko": "Nice & Natural 디럭스 단백질 바 200g 5개입 또는 견과류 버터 바 175g 5개입",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Kettle Firemasters or Ridge Cut Potato Chips 150g-165g": {
     "zh": "Kettle 火焰大師 或 波浪切片洋芋片 150-165克",
@@ -59854,10 +59856,11 @@
     "src": "ai"
   },
   "Panadol Rapid Paracetamol 500mg Tablets Pk 16Δ – Limit 2 per customer": {
-    "zh": "Panadol 速效普拿疼 500毫克錠劑 16入",
-    "ja": "Panadol ラピッド パラセタモール 500mg タブレット 16個入",
-    "ko": "Panadol 래피드 파라세타몰 500mg 타블렛 16개입",
-    "src": "ai"
+    "zh": "Panadol Rapid 乙醯胺酚錠 500毫克 16入（每人限購2件）",
+    "ja": "Panadol Rapid パラセタモール錠 500mg 16個入（1人2点まで）",
+    "ko": "Panadol Rapid 아세트아미노펜 정제 500mg 16개입（1인당 2개 제한）",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Slape & Sons Old English Pork Sausages 480g": {
     "zh": "Slape & Sons 老英國風豬肉香腸 480克",
@@ -60106,9 +60109,9 @@
     "src": "ai"
   },
   "Telstra T-Pro 2¥": {
-    "zh": "Telstra T-Pro 2¥",
-    "ja": "Telstra T-Pro 2¥",
-    "ko": "Telstra T-Pro 2¥",
+    "zh": "Telstra T-Pro 2",
+    "ja": "Telstra T-Pro 2",
+    "ko": "Telstra T-Pro 2",
     "src": "ai"
   },
   "La Fournee Doree Brioche Burger Buns 4 Pack 250g": {
@@ -60130,10 +60133,11 @@
     "src": "ai"
   },
   "Anzac Biscuits, Choc Chip or Funfetti Cookies Pk 24# – Excludes Mixed Cookies & Biscuits Pk 24": {
-    "zh": "Anzac 餅乾、巧克力豆或繽紛彩糖餅乾 24入# – 排除綜合餅乾 24入",
-    "ja": "Anzac ビスケット、チョコチップ または ファンフェッティクッキー 24個入# – ミックスクッキー＆ビスケット 24個入を除く",
-    "ko": "Anzac 비스킷, 초코칩 또는 펀페티 쿠키 24개입# – 모둠 쿠키 및 비스킷 24개입 제외",
-    "src": "ai"
+    "zh": "Anzac 餅乾、巧克力豆或彩色糖珠餅乾 24入（排除綜合餅乾）",
+    "ja": "Anzac ビスケット、チョコチップまたはファンフェッティクッキー 24個入（ミックスクッキー＆ビスケットを除く）",
+    "ko": "Anzac 비스킷, 초코칩 또는 펀페티 쿠키 24개입（혼합 쿠키 및 비스킷 제외）",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Green's Deluxe Triple Choc Brownie Mix 500g or Choc Chunk Cookie Mix 400g": {
     "zh": "Green's 豪華三倍巧克力布朗尼預拌粉 500克 或 巧克力塊餅乾預拌粉 400克",
@@ -60328,10 +60332,11 @@
     "src": "ai"
   },
   "Kellogg's Coco Pops Protein Bites 530g": {
-    "zh": "Kellogg's 可可脆片高蛋白球 530克",
-    "ja": "Kellogg's ココポックス プロテイン バ이트 530g",
-    "ko": "Kellogg's 코코 팝스 프로틴 바이츠 530g",
-    "src": "ai"
+    "zh": "Kellogg's Coco Pops 高蛋白脆球 530克",
+    "ja": "Kellogg's Coco Pops プロテインバイト 530g",
+    "ko": "Kellogg's Coco Pops 단백질 바이트 530g",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Mutti Passata 700g": {
     "zh": "Mutti 番茄糊 700克",
@@ -61258,10 +61263,11 @@
     "src": "ai"
   },
   "Haldiram's Tandoori Naan 1.28 kg Pk 16 – From the Freezer": {
-    "zh": "Haldiram's 印度窯烤拿安餅 1.28公斤 16入",
-    "ja": "Haldiram's 탄두리 난 1.28kg 16개입",
-    "ko": "Haldiram's Tandoori Naan 1.28 kg Pk 16 – From the Freezer",
-    "src": "ai"
+    "zh": "Haldiram's 坦都里烤餅 1.28公斤 16入（冷凍區）",
+    "ja": "Haldiram's タンドリーナン 1.28kg 16個入（冷凍食品）",
+    "ko": "Haldiram's 탄두리 난 1.28kg 16개입（냉동식품）",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Vodafone $40 Starter Pack": {
     "zh": "Vodafone 40元新手包",
