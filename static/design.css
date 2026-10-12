@@ -1281,3 +1281,54 @@ html:root .chip-icon, html:root .chip-icon.chip-svg, html:root .chip.is-active .
 @media (max-width: 767px) {
     .cat-group { height: 36px; font-size: 15px; padding: 0 11px; }
 }
+
+
+/* ==========================================================================
+   v11 – Warm light theme (matches the 澳洲打工度假資訊平台 family):
+   warm cream canvas, white cards, charcoal text, warm yellow for the main buttons.
+   Light mode only (html:not(.dark)) – colours change here, layout and functions stay the same.
+   ========================================================================== */
+html:not(.dark) {
+    --bg: #fbf8f2;
+    --surface: #ffffff;
+    --surface-2: #f6f1e7;
+    --surface-3: #ede6d8;
+    --ink: #2a2f36;
+    --ink-2: #4b5059;
+    --ink-3: #6b6760;
+    --line: #ece5d8;
+    --line-strong: #ddd3c2;
+    --fill: rgba(150, 115, 55, 0.10);
+    --glass: rgba(251, 248, 242, 0.86);
+    --accent: #2a2f36;
+    --accent-ink: #ffffff;
+    --accent-soft: #fff4d6;
+    --next-soft: #fff4dc;
+    --woolies: #137b3b;   /* a touch deeper than #178841 so the green text stays readable on cream */
+    --shadow-sm: 0 1px 2px rgba(90, 65, 25, 0.05);
+    --shadow-md: 0 2px 6px rgba(90, 65, 25, 0.06), 0 8px 24px -10px rgba(90, 65, 25, 0.12);
+    --shadow-lg: 0 4px 12px rgba(90, 65, 25, 0.07), 0 22px 44px -16px rgba(90, 65, 25, 0.22);
+    --ctl-ring: rgba(90, 65, 25, 0.12);
+    --ctl-ring-strong: rgba(90, 65, 25, 0.22);
+    --ctl-shadow: 0 1px 1px rgba(90, 65, 25, 0.04), 0 3px 8px -3px rgba(90, 65, 25, 0.12);
+    --ctl-shadow-hover: 0 1px 1px rgba(90, 65, 25, 0.05), 0 8px 18px -8px rgba(90, 65, 25, 0.24);
+    --ctl-track: rgba(160, 125, 65, 0.11);
+    --ctl-track-inset: inset 0 1px 2px rgba(90, 65, 25, 0.07);
+    --ctl-thumb-shadow: 0 0 0 0.5px rgba(90, 65, 25, 0.12), 0 1px 1px rgba(90, 65, 25, 0.04), 0 3px 8px -2px rgba(90, 65, 25, 0.16);
+    /* main buttons: warm yellow with charcoal text (contrast about 9:1) */
+    --pebble-top: #ffdc70;
+    --pebble-bottom: #ffcd47;
+    --pebble-text: #2a2f36;
+    --pebble-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.55), inset 0 -1px 0 rgba(150, 95, 0, 0.22),
+                     0 1px 2px rgba(150, 95, 0, 0.14), 0 6px 14px -6px rgba(170, 110, 0, 0.42);
+    --pebble-shadow-hover: inset 0 1px 0 rgba(255, 255, 255, 0.6), inset 0 -1px 0 rgba(150, 95, 0, 0.22),
+                     0 1px 2px rgba(150, 95, 0, 0.16), 0 10px 20px -8px rgba(170, 110, 0, 0.5);
+}
+html:not(.dark) ::selection { background: #ffe79e; color: var(--ink); }
+html:not(.dark) .search-field:focus, html:not(.dark) .fb-text:focus { box-shadow: 0 0 0 1px var(--ctl-ring-strong), 0 0 0 4px rgba(255, 212, 92, 0.35); }
+/* the selected category's picture: a white ring reads better on yellow than a dark one */
+html:not(.dark) .chip.is-active .chip-icon.chip-svg { box-shadow: 0 0 0 2px #fff, 0 2px 5px rgba(150, 95, 0, 0.28); }
+/* the list count on the yellow button: a charcoal badge with white digits */
+html:not(.dark) .cart-count { background: var(--ink); color: #fff; box-shadow: none; }
+/* group tabs: the underline under the chosen group in warm yellow-orange, still clearly visible on cream */
+html:not(.dark) .cat-group.is-active::after { background: #f2a900; }

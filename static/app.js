@@ -351,36 +351,12 @@ function initCategoryArrows() {
     } catch (e) {}
 }
 
-// Theme Management (Dark / Light Mode)
+// Theme: the site is light only (no dark mode, the phone's dark setting is not followed).
+// Clears the dark-mode choice older versions saved, so it never comes back.
 function initTheme() {
-    const savedTheme = safeStore.getItem('theme');
-    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-    
-    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
-        applyTheme('dark');
-    } else {
-        applyTheme('light');
-    }
-}
-
-function toggleDarkMode() {
-    const isDark = document.documentElement.classList.contains('dark');
-    applyTheme(isDark ? 'light' : 'dark');
-}
-
-function applyTheme(theme) {
-    const icon = document.getElementById('themeIcon');
-    if (theme === 'dark') {
-        document.documentElement.classList.add('dark');
-        document.documentElement.classList.remove('light');
-        safeStore.setItem('theme', 'dark');
-        if (icon) icon.className = 'fa-solid fa-sun text-[13px]';
-    } else {
-        document.documentElement.classList.remove('dark');
-        document.documentElement.classList.add('light');
-        safeStore.setItem('theme', 'light');
-        if (icon) icon.className = 'fa-solid fa-moon text-[13px]';
-    }
+    document.documentElement.classList.remove('dark');
+    document.documentElement.classList.add('light');
+    try { localStorage.removeItem('theme'); localStorage.removeItem('themeChoice'); } catch (e) {}
 }
 
 // Toast notification
