@@ -1,5 +1,5 @@
 {
-"cursor": 27,
+"cursor": 2,
 "items": {
 "1000301": {
 "category": "Biscuits & Cookies Rice",
@@ -672,6 +672,21 @@
 "store": "Coles",
 "store_category": "Homewares Otg Coffee",
 "title": "Wiltshire Reusable Coffee Cup 340mL",
+"unit_price": "$6.00/ 1ea",
+"was_price": 12.0
+},
+"1073917": {
+"category": "Homewares Otg Lunch",
+"discount_desc": "1/2 PRICE",
+"id": "1073917",
+"image_url": "https://productimages.coles.com.au/productimages/1/1073917.jpg",
+"price": 6.0,
+"price_display": "$6.00",
+"product_url": "https://www.coles.com.au/product/sistema-to-go-lunch-cube-2l-1-each-1073917",
+"save_amount": 6.0,
+"store": "Coles",
+"store_category": "Homewares Otg Lunch",
+"title": "Sistema To Go Lunch Cube 2l 1 Each",
 "unit_price": "$6.00/ 1ea",
 "was_price": 12.0
 },
@@ -6900,6 +6915,7 @@
 "product_url": "https://www.coles.com.au/product/hismile-stain-id-mouthwash-strong-mint-237ml-2066520",
 "save_amount": 12.5,
 "store": "Coles",
+"store_category": "Dental Health Mouthwash",
 "title": "Hismile Stain iD Mouthwash Strong Mint 237mL",
 "unit_price": "$5.27/ 100mL",
 "was_price": 25.0
@@ -20652,6 +20668,6 @@
 },
 "last_full": 1791743753.9409099,
 "pages": 30,
-"pages_done": 20,
+"pages_done": 25,
 "week": "2026-10-07"
 }
