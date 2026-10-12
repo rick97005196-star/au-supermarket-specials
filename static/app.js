@@ -117,7 +117,7 @@ function applyLanguage(lang) {
 
     updatePeriodBadges();
     renderSearchSuggestions();
-    try { renderFavPanel(); renderFavSearchButton(); renderMustBuy(); } catch (e) {}
+    try { renderFavPanel(); renderFavSearchButton(); } catch (e) {}
     renderRegionSelect();
 }
 
@@ -1644,10 +1644,10 @@ function getCrossStoreBadgeText(item) {
 }
 
 
-// Everyday low price (Coles "Every Day", Woolworths "Everyday Low Price"): not a discount but the
-// lasting shelf price, e.g. the supermarkets' own bread. Shown with a "天天低價" label, after the specials.
+// Everyday low price (Coles "Every Day", Woolworths "Everyday Low Price", ALDI "Lower Prices"): not a discount
+// but the lasting shelf price, e.g. the supermarkets' own bread. Shown with a "天天低價" label, after the specials.
 function isEverydayPrice(it) {
-    if (!it || it.store === 'ALDI' || (it.save_amount || 0) > 0) return false;
+    if (!it || (it.save_amount || 0) > 0) return false;
     return /^Everyday Low Price/.test(it.discount_desc || '');
 }
 
@@ -1656,6 +1656,7 @@ function isItemHalfPrice(it) {
     if (!it) return false;
     const desc = (it.discount_desc || '').toLowerCase();
     if (desc.includes('1/2') || desc.includes('half price') || desc.includes('50%')) return true;
+    if (/^\d+\s*for\s*\$/.test(desc)) return false;   // multi-buy ("2 for $10"): only cheaper when buying several
 
     const price = typeof it.price === 'number' ? it.price : parseFloat(it.price) || 0;
     const was = typeof it.was_price === 'number' ? it.was_price : parseFloat(it.was_price) || 0;
@@ -1765,7 +1766,8 @@ async function loadSpecials() {
             loading.classList.add('hidden');
             currentLoadedItems = data.items || [];
             lastResultCount = data.total || 0;
-            resultsCountText.textContent = t('found_targets', { n: lastResultCount });
+            lastEverydayCount = 0;
+            resultsCountText.textContent = resultsCountLabel();
 
             if (!currentLoadedItems || currentLoadedItems.length === 0) {
                 empty.classList.remove('hidden');
@@ -1846,10 +1848,10 @@ async function loadSpecials() {
         loading.classList.add('hidden');
         currentLoadedItems = filtered;
         lastResultCount = filtered.length;
-        resultsCountText.textContent = t('found_targets', { n: lastResultCount });
+        lastEverydayCount = filtered.filter(isEverydayPrice).length;
+        resultsCountText.textContent = resultsCountLabel();
         renderFavPanel();
         renderFavSearchButton();
-        try { renderMustBuy(); } catch (e) { console.error('must-buy', e); }
         const notice = document.getElementById('activeFilterNotice');
         if (notice) notice.innerHTML = favOnly ? `<button type="button" class="tag is-accent" onclick="toggleFavOnly()"><i class="fa-solid fa-heart text-[9px]"></i> ${t('fav_filter_on')} ✕</button>` : '';
         // Wednesday–Sunday: only ALDI has announced next week yet -> say when the others come
@@ -1912,11 +1914,17 @@ async function loadSpecials() {
 }
 
 let lastResultCount = null;
+let lastEverydayCount = 0;
+// "N specials", plus the everyday low prices on their own: they are listed too but are not specials
+function resultsCountLabel() {
+    const n = (lastResultCount || 0) - lastEverydayCount;
+    return t('found_targets', { n }) + (lastEverydayCount ? t('found_everyday', { n: lastEverydayCount }) : '');
+}
 
 function renderProductsCurrent() {
     // keep the result count in the selected language when switching languages
     const countEl = document.getElementById('resultsCountText');
-    if (countEl && lastResultCount !== null) countEl.textContent = t('found_targets', { n: lastResultCount });
+    if (countEl && lastResultCount !== null) countEl.textContent = resultsCountLabel();
     if (currentLoadedItems && currentLoadedItems.length > 0) {
         renderProducts(currentLoadedItems);
     } else {
@@ -1931,7 +1939,10 @@ function parseSupermarketPrice(priceDisplay, price) {
 
     if (priceDisplay && typeof priceDisplay === 'string') {
         const text = priceDisplay.toLowerCase().trim();
-        if (text.includes('/kg') || text.includes('per kg') || text.includes(' kg')) {
+        const multi = text.match(/^(\d+)\s*for\s*\$/);          // multi-buy "2 for $12.00": the price is the deal
+        if (multi) {
+            unit = t('multi_unit', { n: multi[1] });
+        } else if (text.includes('/kg') || text.includes('per kg') || text.includes(' kg')) {
             unit = '/kg';
         } else if (text.includes('pk') || text.includes('pack')) {
             unit = 'pk';
@@ -2294,141 +2305,6 @@ function aldiCompareBadgeText(cmp) {
     if (cmp.verdict === 'cheaper') return t('aldi_cmp_cheaper', { store: s, amount: cmp.diff.toFixed(2), u: cmp.basis });
     if (cmp.verdict === 'dearer') return t('aldi_cmp_dearer', { store: s, price: cmp.cheapest.up.value.toFixed(2), u: cmp.basis });
     return t('aldi_cmp_same', { store: s });
-}
-
-// ---------------- 這週必買: the cheapest special for each everyday staple ----------------
-// Supermarkets rarely discount eggs or plain milk, so a staple only shows in the weeks it is on special.
-// Strict: the same rules as the per-kg comparison (no "peanut butter" as butter, no "egg mayo" as eggs).
-function _countIn(title, words) {           // "12 pack", "Pk 20", "x 12", "dozen"
-    const t = String(title || '').toLowerCase();
-    if (/\bdozen\b/.test(t)) return 12;
-    const re = new RegExp(`(?:\\b(\\d{1,3})\\s*(?:pack|pk|${words})\\b|\\bpk\\s*(\\d{1,3})\\b|\\bx\\s*(\\d{1,3})\\b)`);
-    const m = t.match(re);
-    const n = m ? parseInt(m[1] || m[2] || m[3], 10) : 0;
-    return n > 0 && n <= 200 ? n : 0;
-}
-const MUST_BUY_SLOTS = [
-    { k: 'mb_rice', icon: '🍚', type: /^rice\|/ },
-    { k: 'mb_chicken', icon: '🍗', type: /^chicken_(?:breast|thigh|drum|wing|whole)\|/ },
-    { k: 'mb_mince', icon: '🥩', type: /^(?:beef|pork|lamb|chicken)_mince\|/ },
-    { k: 'mb_eggs', icon: '🥚', cats: ['dairy_eggs'], re: /\beggs\b/i, not: /\b(?:mayo\w*|aioli|noodles?|easter|chocolate|kinder|scotch|custard)\b/i, per: 'egg' },
-    { k: 'mb_milk', icon: '🥛', type: /^milk\|/ },
-    { k: 'mb_bread', icon: '🍞', cats: ['bakery'], re: /\b(?:bread|loaf|sandwich|toast|wholemeal|sourdough|multigrain)\b/i,
-      not: /\b(?:garlic|fruit|banana|raisin|brioche|muffins?|crumpets?|wraps?|roti|pita|naan|rolls?|buns?|scrolls?|cake|bake|gluten)\b/i },
-    { k: 'mb_noodles', icon: '🍜', sub: 'sub_noodles' },
-    { k: 'mb_pasta', icon: '🍝', cats: ['pantry'], re: /\b(?:pasta|spaghetti|penne|fusilli|spirals|linguine|fettuccine|rigatoni|macaroni)\b/i,
-      not: /\b(?:sauce|filled|ravioli|tortellini|gnocchi|salad|meals?|feast|kit|heinz|spc|beans|tin|canned|cheesy|bake|soup|sugo)\b/i },
-    { k: 'mb_oil', icon: '🫒', type: /^(?:olive_oil|veg_oil)\|/ },
-    { k: 'mb_butter', icon: '🧈', type: /^butter\|/ },
-    { k: 'mb_cheese', icon: '🧀', cats: ['dairy_eggs'], re: /\b(?:tasty|cheddar|colby|mozzarella|parmesan|grated|shredded|cheese\s*(?:block|slices?))\b/i, not: /\b(?:cream\s*cheese|crackers?|dip|cheesecake|snack|sticks?|bites)\b/i },
-    { k: 'mb_toilet', icon: '🧻', cats: ['household'], re: /\btoilet\s*(?:paper|tissue|rolls?)\b/i, not: /\b(?:wipes|holder|cleaner|gel|brush)\b/i, per: 'roll' },
-    { k: 'mb_laundry', icon: '🧺', sub: 'sub_laundry', re: /\b(?:liquid|powder)\b/i, not: /\b(?:softener|conditioner|stain|soaker|booster|sanitiser|capsules?|pods?|sheets|vanish|napisan|oxi)\b/i },
-    { k: 'mb_dish', icon: '🍽️', cats: ['household'], re: /\bdish(?:washing)?\s*liquid\b/i, not: /\b(?:tablets?|capsules?|sheets|dishwasher)\b/i },
-];
-// price used to pick the best one: $/kg or $/L, $ per egg / roll, else the item price
-function _mustBuyMetric(it, slot) {
-    if (slot.per) {
-        const n = _countIn(it.title, slot.per === 'egg' ? 'eggs?' : 'rolls?');
-        const p = _perItemPrice(it);
-        return n && p > 0 ? { value: p / n, label: `$${(p / n).toFixed(2)}${t(slot.per === 'egg' ? 'mb_per_egg' : 'mb_per_roll')}` } : null;
-    }
-    const up = unitPriceOf(it);
-    if (up) return { value: up.value, label: fmtUnitPrice(up), basis: up.basis };
-    return null;
-}
-function _inMustBuySlot(it, slot) {
-    if (slot.type) return slot.type.test(cmpTypeOf(it) || '');
-    if (slot.sub && subCategoryOf(it) !== slot.sub) return false;
-    if (slot.cats && !slot.cats.includes(it.category)) return false;
-    if (slot.re && !slot.re.test(it.title || '')) return false;
-    if (slot.not && slot.not.test(it.title || '')) return false;
-    return true;
-}
-let _mustBuyCache = { list: null, period: '', res: [] };
-function computeMustBuy() {
-    const list = staticSpecials;
-    if (_mustBuyCache.list === list && _mustBuyCache.period === currentPeriod) return _mustBuyCache.res;
-    const pool = (list || []).filter(it => it.period === currentPeriod && (it.store === 'ALDI' || (it.save_amount || 0) > 0));
-    const res = [];
-    for (const slot of MUST_BUY_SLOTS) {
-        const cands = pool.filter(it => _inMustBuySlot(it, slot));
-        if (!cands.length) continue;
-        // compare like with like: items with a per-unit price first (same basis as the cheapest), else by item price
-        const scored = cands.map(it => ({ it, m: _mustBuyMetric(it, slot) }));
-        const withM = scored.filter(s => s.m);
-        let best;
-        if (withM.length) {
-            const basis = withM.sort((a, b) => a.m.value - b.m.value)[0].m.basis;
-            best = withM.filter(s => s.m.basis === basis).sort((a, b) => a.m.value - b.m.value)[0];
-        } else {
-            best = scored.sort((a, b) => _perItemPrice(a.it) - _perItemPrice(b.it))[0];
-        }
-        res.push({ slot, item: best.it, metric: best.m, count: cands.length });
-    }
-    _mustBuyCache = { list, period: currentPeriod, res };
-    return res;
-}
-function renderMustBuy() {
-    const box = document.getElementById('mustBuy');
-    if (!box) return;
-    const show = isStaticMode && currentCategory === 'all' && !currentSearch && !favOnly && currentStore === 'All';
-    const picks = show ? computeMustBuy() : [];
-    if (picks.length < 3) { box.classList.add('hidden'); box.innerHTML = ''; return; }
-    const cards = picks.map(({ slot, item, metric }, i) => {
-        const tr = getProductTranslation(item, currentLang);
-        const name = (tr && currentLang !== 'en') ? tr : item.title;
-        const p = parseSupermarketPrice(item.price_display, item.price);
-        const dot = item.store === 'Coles' ? 'dot-coles' : (item.store === 'ALDI' ? 'dot-aldi' : 'dot-woolies');
-        const half = isItemHalfPrice(item);
-        return `
-            <button type="button" class="mb-card" data-mb="${i}" aria-label="${escHTML(t(slot.k) + ' · ' + name)}">
-                <span class="mb-slot"><span aria-hidden="true">${slot.icon}</span>${escHTML(t(slot.k))}</span>
-                <span class="mb-img"><img src="${escHTML(item.image_url || DEFAULT_FALLBACK_IMG)}" alt="" loading="lazy" decoding="async" onerror="this.onerror=null;this.src=DEFAULT_FALLBACK_IMG">${half ? `<span class="mb-half">½</span>` : ''}</span>
-                <span class="mb-name">${escHTML(name)}</span>
-                <span class="mb-price num">$${p.dollars}.${p.cents}${p.unit === '/kg' ? '<small>/kg</small>' : ''}</span>
-                ${metric && !(p.unit === '/kg' && metric.basis === 'kg') ? `<span class="mb-unit num">${escHTML(metric.label)}</span>` : ''}
-                <span class="mb-store"><i class="store-dot ${dot}"></i>${escHTML(item.store)}</span>
-            </button>`;
-    }).join('');
-    box.innerHTML = `
-        <div class="mb-head">
-            <h2 id="mustBuyTitle" class="mb-title">${escHTML(t('mb_title'))}</h2>
-            <p class="mb-sub">${escHTML(t('mb_sub'))}</p>
-        </div>
-        <div class="mb-wrap">
-            <div class="mb-row">${cards}</div>
-            <button type="button" class="cat-arrow cat-arrow-left mb-arrow is-hidden" data-dir="-1" aria-label="${escHTML(t('aria_scroll_left'))}"><i class="fa-solid fa-chevron-left"></i></button>
-            <button type="button" class="cat-arrow cat-arrow-right mb-arrow is-hidden" data-dir="1" aria-label="${escHTML(t('aria_scroll_right'))}"><i class="fa-solid fa-chevron-right"></i></button>
-        </div>`;
-    box.querySelectorAll('.mb-card').forEach(btn => {
-        btn.onclick = () => { const pick = picks[+btn.dataset.mb]; if (pick) openProductModal(pick.item); };
-    });
-    box.classList.remove('hidden');
-    initMustBuyArrows(box);
-}
-
-// 這週必買 row on computers: a mouse cannot swipe sideways, so left / right arrows scroll it
-function initMustBuyArrows(box) {
-    const row = box.querySelector('.mb-row');
-    const prev = box.querySelector('.mb-arrow[data-dir="-1"]');
-    const next = box.querySelector('.mb-arrow[data-dir="1"]');
-    if (!row || !prev || !next) return;
-    const update = () => {
-        const max = row.scrollWidth - row.clientWidth;
-        const pad = parseFloat(getComputedStyle(row).paddingLeft) || 0;   // the row may rest on its own padding
-        prev.classList.toggle('is-hidden', row.scrollLeft <= pad + 4);
-        next.classList.toggle('is-hidden', max <= 4 || row.scrollLeft >= max - 4);
-    };
-    [prev, next].forEach(b => {
-        b.onclick = () => row.scrollBy({ left: (+b.dataset.dir) * Math.max(220, row.clientWidth * 0.8), behavior: 'smooth' });
-    });
-    row.addEventListener('scroll', update, { passive: true });
-    box._mbUpdate = update;
-    if (!window._mbResizeHooked) {
-        window._mbResizeHooked = true;
-        window.addEventListener('resize', () => { const b = document.getElementById('mustBuy'); if (b && b._mbUpdate) b._mbUpdate(); }, { passive: true });
-    }
-    requestAnimationFrame(update);
 }
 
 function renderAldiCompare(item) {

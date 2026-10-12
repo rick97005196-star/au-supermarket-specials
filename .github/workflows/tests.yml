@@ -45,3 +45,5 @@ jobs:
         run: python tests/test_interest.py
       - name: Everyday low price test
         run: python tests/test_everyday.py
+      - name: Woolworths specials lists test
+        run: python tests/test_woolies_groups.py

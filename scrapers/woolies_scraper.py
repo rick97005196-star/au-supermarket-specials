@@ -505,6 +505,185 @@ def woolies_half_price_remembered():
     return list(mem['items'].values())
 
 
+# ---- The other Woolworths specials lists (beyond Half Price) ----
+# Woolworths' own specials page has more lists than Half Price. These add fresh food, multi-buys and
+# everyday low prices, which the half-price list and the printed catalogue mostly miss:
+#   slug on woolworths.com.au, list id, list name, kind
+WOOLIES_GROUPS = [
+    ('seasonal-price', 'specialsgroup.3721', 'Seasonal Price', 'was'),          # e.g. fruit & veg in season ("Was $4")
+    ('lower-shelf-price', 'specialsgroup.3694', 'Lower Shelf Price', 'was'),    # lasting price cuts ("Was $3.30 - 25/08")
+    ('buy-more-save-more', 'specialsgroup.3668', 'Buy More Save More', 'multi'),  # "2 for $12.00"
+    ('everyday-low-price', 'specialsgroup.3673', 'Everyday Low Price', 'everyday'),
+]
+WOOLIES_GROUP_REFRESH_HOURS = 12      # these lists change slowly: read each one at most twice a day
+
+_WAS_TAG = re.compile(r'was\s*\$\s*(\d+(?:\.\d{1,2})?)', re.I)
+_MULTI_TAG = re.compile(r'\b(\d+)\s*for\s*\$\s*(\d+(?:\.\d{1,2})?)', re.I)
+
+
+def _woolies_tag_text(pr):
+    """The offer text Woolworths prints on a product ("Was $3.30 - 25/08/2026", "2 for $12.00")."""
+    parts = []
+    for key in ('CentreTag', 'HeaderTag', 'FooterTag'):
+        tag = pr.get(key)
+        if isinstance(tag, dict):
+            parts += [str(tag.get('TagContent') or ''), str(tag.get('Content') or '')]
+    text = html.unescape(' '.join(parts))
+    m = re.search(r'title="([^"]+)"', text)           # multi-buys keep the offer in a link title
+    return (m.group(1) + ' ' if m else '') + re.sub(r'<[^>]+>', ' ', text)
+
+
+def scrape_woolies_specials_group(slug, group_id, name, kind, max_pages=150):
+    """One Woolworths specials list, in-store prices only (same rules as the Half Price list)."""
+    from scrapers.regions import ItemList, EVERYDAY_DESC
+    from scrapers.polite import request as _polite
+    products = ItemList()
+    seen_names, raw_seen = set(), set()
+    try:
+        from curl_cffi import requests as cffi_requests
+        session = cffi_requests.Session(impersonate='chrome')
+    except Exception:
+        session = requests.Session()
+        session.headers.update(HEADERS)
+    _polite('woolworths', lambda: session.get('https://www.woolworths.com.au/', timeout=20))  # session cookies first
+
+    page = 1
+    while page <= max_pages:
+        body = {
+            'categoryId': group_id, 'pageNumber': page, 'pageSize': 36,
+            'sortType': 'TraderRelevance', 'url': f'/shop/browse/specials/{slug}',
+            'location': f'/shop/browse/specials/{slug}', 'formatObject': '{"name":"%s"}' % name,
+            'isSpecial': True, 'isBundle': False, 'isMobile': False, 'filters': [], 'token': '',
+            'gpBoost': 0, 'isHideUnavailableProducts': False, 'isRegisteredRewardCardPromotion': False,
+            'enableAdReRanking': False, 'groupEdmVariants': False, 'categoryVersion': 'v2',
+            'flags': {'EnableProductBoostExperiment': False},
+        }
+        r = _polite('woolworths', lambda: session.post('https://www.woolworths.com.au/apis/ui/browse/category', json=body, timeout=20))
+        if r is None or r.status_code != 200:
+            print(f"Woolies {name}: stopped at page {page} ({'refused' if r is None else r.status_code}) - saved list is used")
+            break
+        try:
+            data = r.json()
+        except Exception:
+            print(f"Woolies {name}: unreadable answer at page {page} - stopping")
+            break
+        bundles = data.get('Bundles') or []
+        codes = {str(pr.get('Stockcode') or pr.get('Name') or '') for b0 in bundles for pr in (b0.get('Products') or [])}
+        if not bundles or (codes and not (codes - raw_seen)):
+            products.complete = True                      # the end (the API repeats products after the last page)
+            break
+        raw_seen.update(codes)
+        total = int(data.get('TotalRecordCount') or 0)
+
+        for b in bundles:
+            for pr in b.get('Products', []):
+                if pr.get('IsOnlineOnly') is True or pr.get('IsMarketProduct') is True or pr.get('ThirdPartyProductInfo'):
+                    continue
+                name_ = (pr.get('Name') or '').strip()
+                if not name_ or name_.lower() in seen_names or 'online only' in name_.lower() or 'everyday market' in name_.lower():
+                    continue
+                if pr.get('InstorePrice') is None:            # not sold in the reference store today
+                    continue
+                price = float(pr.get('InstorePrice') or 0)
+                if price <= 0:
+                    continue
+                tag = _woolies_tag_text(pr)
+                pkg = (pr.get('PackageSize') or '').strip()
+                full_title = f"{name_} {pkg}".strip() if pkg and pkg not in name_ else name_
+                unit_p, unit_m = pr.get('CupPrice'), pr.get('CupMeasure')
+                per_kg = str(unit_m or '').upper() == '1KG' and unit_p and abs(float(unit_p) - price) < 0.01
+                price_display = f"${price:.2f} kg" if per_kg else f"${price:.2f} ea"
+
+                if kind == 'was':
+                    was = float(pr.get('InstoreWasPrice') or 0)
+                    if not was > price:
+                        m = _WAS_TAG.search(tag)
+                        was = float(m.group(1)) if m else 0.0
+                    if not was > price:
+                        continue                              # no real saving: not a special
+                    desc = name
+                elif kind == 'multi':
+                    m = _MULTI_TAG.search(tag)
+                    if not m:
+                        continue
+                    n, deal = int(m.group(1)), float(m.group(2))
+                    if not (n >= 2 and 0 < deal < n * price - 0.009):
+                        continue
+                    # a multi-buy is priced as the deal: "$12.00 for 2", was = 2 x the single price
+                    was, price, price_display, desc = round(n * price, 2), deal, f"{n} for ${deal:.2f}", f"{n} for ${deal:.2f}"
+                else:
+                    was, desc = 0.0, EVERYDAY_DESC
+
+                seen_names.add(name_.lower())
+                code = str(pr.get('Stockcode', ''))
+                slug_ = re.sub(r'[^a-zA-Z0-9]+', '-', name_).strip('-').lower()
+                prod_url = f"https://www.woolworths.com.au/shop/productdetails/{code}/{slug_}" if code else f"https://www.woolworths.com.au/shop/search/products?searchTerm={requests.utils.quote(name_)}"
+                attrs = pr.get('AdditionalAttributes', {}) or {}
+                raw_cat = f"{attrs.get('piesdepartmentnamesjson', '')} {attrs.get('piescategorynamesjson', '')} {attrs.get('sapcategoryname', '')}".strip()
+                products.append({
+                    'store': 'Woolworths',
+                    'category': classify_product(full_title, raw_cat, prod_url),
+                    'store_category': re.sub(r'[\[\]"]', ' ', raw_cat).strip(),
+                    'title': full_title,
+                    'price': price,
+                    'price_display': price_display,
+                    'unit_price': f"${unit_p} / {unit_m}" if unit_p and unit_m else "",
+                    'was_price': was,
+                    'save_amount': round(was - price, 2) if was else 0.0,
+                    'discount_desc': desc,
+                    'image_url': pr.get('LargeImageFile') or pr.get('MediumImageFile') or '',
+                    'product_url': prod_url,
+                })
+        if total and page * 36 >= total:
+            products.complete = True
+            break
+        page += 1
+    print(f"Woolies {name}: {len(products)} in-store specials from {min(page, max_pages)} pages{'' if getattr(products, 'complete', False) else ' (incomplete)'}")
+    return products
+
+
+def woolies_groups_remembered():
+    """Every extra Woolworths specials list for this week, read politely and kept between updates
+    (same memory file as the Half Price list). Each list is re-read at most every 12 hours; an
+    interrupted read is added to what was kept, nothing is lost."""
+    import json, time as _time
+    from scrapers.coles_web import coles_week_start
+    week = coles_week_start()
+    try:
+        with open(WOOLIES_MEMORY, encoding='utf-8') as f:
+            mem = json.load(f)
+    except Exception:
+        mem = {}
+    groups = mem.get('groups') if mem.get('week') == week else None
+    groups = groups if isinstance(groups, dict) else {}
+    now = _time.time()
+    out = []
+    for slug, gid, name, kind in WOOLIES_GROUPS:
+        g = groups.setdefault(slug, {'items': {}, 'last_full': 0})
+        if not (g['items'] and now - float(g.get('last_full') or 0) < WOOLIES_GROUP_REFRESH_HOURS * 3600):
+            fresh = scrape_woolies_specials_group(slug, gid, name, kind)
+            if getattr(fresh, 'complete', False) and len(fresh) >= 20:
+                g['items'] = {it['title'].lower(): it for it in fresh}
+                g['last_full'] = now
+            else:
+                for it in fresh:
+                    g['items'][it['title'].lower()] = it
+        out += list(g['items'].values())
+    # re-read the file: the Half Price reader may have written it meanwhile
+    try:
+        with open(WOOLIES_MEMORY, encoding='utf-8') as f:
+            mem = json.load(f)
+    except Exception:
+        mem = {}
+    if mem.get('week') != week:
+        mem = {'week': week, 'items': {}, 'last_full': 0}
+    mem['groups'] = groups
+    os.makedirs(os.path.dirname(WOOLIES_MEMORY), exist_ok=True)
+    with open(WOOLIES_MEMORY, 'w', encoding='utf-8') as f:
+        json.dump(mem, f, ensure_ascii=False, indent=0, sort_keys=True)
+    return out
+
+
 def scrape_woolies_all_weeks(max_pages: int = 50) -> Dict[str, Dict[str, Any]]:
     """Scrapes Woolworths specials for both current week and next week (if available)."""
     from scrapers.regions import scrape_all_regions
@@ -528,6 +707,20 @@ def scrape_woolies_all_weeks(max_pages: int = 50) -> Dict[str, Dict[str, Any]]:
         print(f"Merged {added} online Half Price specials into Woolworths current week specials.")
     except Exception as e:
         print(f"Error merging online half price specials: {e}")
+
+    # Then the other specials lists (seasonal, lower shelf price, multi-buys, everyday low prices):
+    # a product already listed (catalogue or Half Price) keeps that entry
+    try:
+        existing_titles = {it['title'].lower() for it in res['current']['items']}
+        added = 0
+        for it in woolies_groups_remembered():
+            if it['title'].lower() not in existing_titles:
+                res['current']['items'].append(it)
+                existing_titles.add(it['title'].lower())
+                added += 1
+        print(f"Merged {added} more Woolworths specials (seasonal, lower shelf price, multi-buys, everyday low prices).")
+    except Exception as e:
+        print(f"Error merging the other Woolworths specials lists: {e}")
 
     return res
 

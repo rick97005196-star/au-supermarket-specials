@@ -36,6 +36,28 @@ def _aldi_recent(hours=3):
         return False
 
 
+def _aldi_special_buys_kept(new_items):
+    """ALDI takes a Special Buys day off its website a few days after it starts, while the products stay
+    on sale until sold out. Keeps this week's earlier Special Buys that the website no longer lists
+    (a day that is still listed is taken as the website shows it)."""
+    from scrapers.aldi_scraper import get_australian_supermarket_cycle
+    from database import get_db
+    week_start = get_australian_supermarket_cycle()[0].isoformat()
+    have = {it['title'].lower() for it in new_items}
+    listed_days = {it.get('sale_from') for it in new_items if it.get('discount_desc') == 'Special Buys'}
+    try:
+        with get_db() as conn:
+            rows = conn.execute(
+                "SELECT title, price, price_display, was_price, save_amount, discount_desc, unit_price, image_url, "
+                "category, product_url, sale_from, store_category FROM specials "
+                "WHERE store = 'ALDI' AND period = 'current' AND discount_desc = 'Special Buys' AND sale_from >= ?",
+                (week_start,)).fetchall()
+    except Exception as e:
+        print(f" Could not read the saved ALDI Special Buys: {e}")
+        return []
+    return [dict(r) for r in rows if r['title'].lower() not in have and r['sale_from'] not in listed_days]
+
+
 def update_all_stores(max_catalogue_pages: int = 50) -> Dict[str, Any]:
     """Runs all supermarket scrapers for both current week and next week preview."""
     print("=" * 65)
@@ -123,6 +145,10 @@ def update_all_stores(max_catalogue_pages: int = 50) -> Dict[str, Any]:
         aldi_data = scrape_aldi_all_weeks()
 
         a_curr_items = aldi_data['current']['items']
+        kept = _aldi_special_buys_kept(a_curr_items)
+        if kept:
+            a_curr_items = a_curr_items + kept
+            print(f" Kept {len(kept)} ALDI Special Buys from earlier this week (no longer listed on the website, still on sale while stocks last).")
         a_curr_date = aldi_data['current']['date_range']
         saved_a_curr = save_specials('ALDI', a_curr_items, period='current', date_range=a_curr_date)
         print(f" Saved {saved_a_curr} ALDI current week specials ({a_curr_date}).")

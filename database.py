@@ -437,6 +437,8 @@ def is_half_price(price, was_price, save_amount, discount_desc) -> bool:
     desc = (discount_desc or '').lower()
     if '1/2' in desc or 'half price' in desc or '50%' in desc:
         return True
+    if re.match(r'\d+\s*for\s*\$', desc):      # multi-buy ("2 for $10"): only cheaper when buying several
+        return False
     price = float(price or 0); was = float(was_price or 0); save = float(save_amount or 0)
     eff_was = was if was > 0 else (price + save if save > 0 else 0)
     if eff_was > 0 and price > 0 and (eff_was - price) / eff_was >= 0.495:

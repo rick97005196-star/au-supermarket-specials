@@ -478,6 +478,11 @@ def run_auto_translate():
         print(f"Non-AI translations waiting for AI upgrade: {len(upgrade_titles)}")
 
     # 4. Translate missing items
+    # The word-by-word fallback (used when the AI is not available or its share for this run is used up)
+    # is slow - three requests per product - so it does a limited number per run; the rest wait (shown in
+    # English) for the next update, which tries the AI first again. Matters when a new list adds thousands.
+    fallback_max = int(os.environ.get('FALLBACK_MAX_PER_RUN', '300'))
+    fallback_done = 0
     if missing_titles or upgrade_titles or qa_notes:
         if gemini_key:
             BATCH_SIZE = 25
@@ -507,12 +512,16 @@ def run_auto_translate():
                             continue
                         translations[t] = new
                         ai_ok += 1
-                    elif is_new:
+                    elif is_new and fallback_done < fallback_max:
                         translations[t] = translate_single_fallback(t)  # retried by AI on a later run
+                        fallback_done += 1
                 if calls >= max_calls and all(not is_new for t, is_new in queue[i + BATCH_SIZE:]):
                     break
             print(f"Gemini AI translated {ai_ok} titles using {calls} requests.")
         else:
+            if len(missing_titles) > fallback_max:
+                print(f"{len(missing_titles) - fallback_max} new items wait for the next update")
+                missing_titles = missing_titles[:fallback_max]
             print(f"Translating {len(missing_titles)} new items concurrently via fallback...")
             workers = min(8, len(missing_titles))
             with ThreadPoolExecutor(max_workers=workers) as executor:

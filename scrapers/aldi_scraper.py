@@ -10,6 +10,7 @@ import sys
 # Ensure root directory is in sys.path
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from categories import classify_product
+from scrapers.regions import EVERYDAY_DESC
 
 HEADERS = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
@@ -42,6 +43,9 @@ def get_australian_supermarket_cycle():
     return current_cycle_wed, current_cycle_tue, next_cycle_wed, next_cycle_tue
 
 SUPER_SAVERS_FALLBACK = 'https://www.aldi.com.au/products/super-savers/k/1588161426952145'
+# "Lower Prices": ALDI's lasting price cuts (about 500 products, mostly food). Not a weekly deal, so they
+# are listed as everyday low prices (no sale date, shown after the specials).
+LOWER_PRICES_FALLBACK = 'https://www.aldi.com.au/products/lower-prices/k/1588161425841179'
 TILE_SELECTOR = 'a.product-tile__link, [data-qa="product-tile"]'
 
 
@@ -83,6 +87,7 @@ def discover_aldi_endpoints():
     endpoints = []
     seen_urls = set()
     super_savers = SUPER_SAVERS_FALLBACK
+    lower_prices = LOWER_PRICES_FALLBACK
 
     try:
         from scrapers.polite import request as _polite
@@ -94,6 +99,9 @@ def discover_aldi_endpoints():
             ss = soup.find('a', href=re.compile(r'/products/super-savers/k/\d+'))
             if ss:
                 super_savers = f"https://www.aldi.com.au{ss['href']}" if ss['href'].startswith('/') else ss['href']
+            lp = soup.find('a', href=re.compile(r'/products/lower-prices/k/\d+'))
+            if lp:
+                lower_prices = f"https://www.aldi.com.au{lp['href']}" if lp['href'].startswith('/') else lp['href']
             for a in soup.find_all('a', href=True):
                 href = a['href']
                 if '/special-buys/' in href:
@@ -122,6 +130,7 @@ def discover_aldi_endpoints():
         print(f"Warning: Failed to discover ALDI Special Buys endpoints: {e}")
 
     endpoints.insert(0, ('Super Savers', super_savers, 'current', current_wed.isoformat()))
+    endpoints.append(('Lower Prices', lower_prices, 'current', ''))   # last: a Super Saver keeps its weekly label
     return endpoints, (current_wed, current_tue, next_wed, next_tue)
 
 def scrape_aldi_all_weeks() -> Dict[str, Any]:
@@ -138,7 +147,8 @@ def scrape_aldi_all_weeks() -> Dict[str, Any]:
     
     for label, url, period, sale_from in endpoints:
         try:
-            tiles = fetch_all_tiles(url)
+            is_lower = 'lower-prices' in url
+            tiles = fetch_all_tiles(url, max_pages=25 if is_lower else 15)
             print(f"ALDI {label}: {len(tiles)} products")
 
             for tile in tiles:
@@ -188,7 +198,7 @@ def scrape_aldi_all_weeks() -> Dict[str, Any]:
                 badge_el = tile.select_one('[data-test="product-tile__on-sale-label"]')
                 # The kind decides how the website shows the date: Super Savers = a weekly price (Wed–Tue),
                 # Special Buys = on sale from a Wednesday or Saturday while stocks last
-                badge = "Super Savers" if "super-savers" in url else "Special Buys"
+                badge = EVERYDAY_DESC if is_lower else ("Super Savers" if "super-savers" in url else "Special Buys")
                 
                 # 5. Image URL (High-res)
                 img = tile.select_one('img')
