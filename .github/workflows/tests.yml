@@ -46,4 +46,6 @@ jobs:
       - name: Everyday low price test
         run: python tests/test_everyday.py
       - name: Woolworths specials lists test
-        run: python tests/test_woolies_groups.py
+        run: |
+          pip install -q requests beautifulsoup4   # the Woolworths reader imports them
+          python tests/test_woolies_groups.py

@@ -1,7 +1,7 @@
 """Checks for reading the extra Woolworths specials lists (seasonal, lower shelf price, multi-buys):
 the offer text printed on a product is understood, and a multi-buy is never taken for half price.
 
-    python tests/test_woolies_groups.py
+    python tests/test_woolies_groups.py      (needs requests and beautifulsoup4, like the scrapers)
 """
 import os
 import sys
