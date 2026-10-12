@@ -1,5 +1,5 @@
 {
-"cursor": 8,
+"cursor": 13,
 "items": {
 "1000301": {
 "category": "Biscuits & Cookies Rice",
@@ -17201,6 +17201,7 @@
 "product_url": "https://www.coles.com.au/product/blackmores-odourless-fish-oil-1000mg-capsules-400-pack-7109880",
 "save_amount": 35.0,
 "store": "Coles",
+"store_category": "Vitamins General Health",
 "title": "Blackmores Odourless Fish Oil 1000mg Capsules 400 Pack",
 "unit_price": "$8.75/ 100ea",
 "was_price": 70.0
@@ -18044,6 +18045,21 @@
 "title": "G Active Electrolyte Water Peach Sports Drink No Sugar 600mL",
 "unit_price": "$3.33/ 1L",
 "was_price": 4.2
+},
+"7739662": {
+"category": "Dishwashing Machine",
+"discount_desc": "1/2 PRICE",
+"id": "7739662",
+"image_url": "https://productimages.coles.com.au/productimages/7/7739662.jpg",
+"price": 20.0,
+"price_display": "$20.00",
+"product_url": "https://www.coles.com.au/product/fairy-platinum-plus-lemon-dishwashing-tablets-31-pack-7739662",
+"save_amount": 20.0,
+"store": "Coles",
+"store_category": "Dishwashing Machine",
+"title": "Fairy Platinum Plus Lemon Dishwashing Tablets 31 Pack",
+"unit_price": "$0.65/ 1ea",
+"was_price": 40.0
 },
 "7844339": {
 "category": "Bars Gum Pocket Pack Bars",
@@ -20687,6 +20703,6 @@
 },
 "last_full": 1791791299.5980318,
 "pages": 30,
-"pages_done": 1,
+"pages_done": 6,
 "week": "2026-10-07"
 }
