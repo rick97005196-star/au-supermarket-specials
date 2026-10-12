@@ -1,5 +1,5 @@
 {
-"cursor": 17,
+"cursor": 22,
 "items": {
 "1000301": {
 "category": "Biscuits & Cookies Rice",
@@ -7198,6 +7198,7 @@
 "product_url": "https://www.coles.com.au/product/cadbury-dairy-milk-top-deck-chocolate-block-180g-2351607",
 "save_amount": 4.0,
 "store": "Coles",
+"store_category": "Confectionery Block Chocolate",
 "title": "Cadbury Dairy Milk Top Deck Chocolate Block 180g",
 "unit_price": "$2.22/ 100g",
 "was_price": 8.0
@@ -10121,6 +10122,7 @@
 "product_url": "https://www.coles.com.au/product/cutex-ultra-powerful-nail-polish-remover-100ml-3699635",
 "save_amount": 5.75,
 "store": "Coles",
+"store_category": "Makeup Nail",
 "title": "Cutex Ultra Powerful Nail Polish Remover 100mL",
 "unit_price": "$5.75/ 100mL",
 "was_price": 11.5
@@ -10149,6 +10151,7 @@
 "product_url": "https://www.coles.com.au/product/maybelline-brow-ultra-slim-blonde-eyebrow-pencil-8-3g-3700745",
 "save_amount": 10.0,
 "store": "Coles",
+"store_category": "Makeup Eye",
 "title": "Maybelline Brow Ultra Slim Blonde Eyebrow Pencil 8.3g",
 "unit_price": "$12.05/ 10g",
 "was_price": 20.0
@@ -13818,6 +13821,7 @@
 "product_url": "https://www.coles.com.au/product/l-oreal-true-match-serum-foundation-light-30ml-4969597",
 "save_amount": 22.5,
 "store": "Coles",
+"store_category": "Makeup Face",
 "title": "L'Oreal True Match Serum Foundation Light 30mL",
 "unit_price": "$7.50/ 10mL",
 "was_price": 45.0
@@ -13832,6 +13836,7 @@
 "product_url": "https://www.coles.com.au/product/l-oreal-true-match-serum-foundation-light-medium-30ml-4969611",
 "save_amount": 22.5,
 "store": "Coles",
+"store_category": "Makeup Face",
 "title": "L'Oreal True Match Serum Foundation Light - Medium 30mL",
 "unit_price": "$7.50/ 10mL",
 "was_price": 45.0
@@ -17322,6 +17327,7 @@
 "product_url": "https://www.coles.com.au/product/m-m-s-peanut-milk-chocolate-snack-bag-46g-7251359",
 "save_amount": 2.0,
 "store": "Coles",
+"store_category": "Bars Gum Pocket Pack Bars",
 "title": "M&M's Peanut Milk Chocolate Snack Bag 46g",
 "unit_price": "$2.17/ 100g",
 "was_price": 3.0
@@ -20643,6 +20649,6 @@
 },
 "last_full": 1791743753.9409099,
 "pages": 30,
-"pages_done": 10,
+"pages_done": 15,
 "week": "2026-10-07"
 }
