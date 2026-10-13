@@ -117,7 +117,7 @@ function applyLanguage(lang) {
 
     updatePeriodBadges();
     renderSearchSuggestions();
-    try { renderFavPanel(); renderFavSearchButton(); } catch (e) {}
+    try { renderFavPanel(); renderFavSearchButton(); renderAccountBox(); } catch (e) {}
     renderRegionSelect();
 }
 
@@ -979,10 +979,31 @@ function initAccount() {
     if (!o) return;
     moveOldFavorites();
     o.onChange(onFavoritesChanged);
+    renderAccountButton();
     if (o.ready && o.ready.then) o.ready.then(() => { moveOldFavorites(); onFavoritesChanged(); });
 }
 // The sign-in box in "常購商品 › 管理": Google sign-in, or who is signed in, plus the hub's "我的收藏"
+function renderAccountButton() {
+    const btn = document.getElementById('accountBtn');
+    if (!btn) return;
+    const o = ozwh();
+    btn.classList.toggle('hidden', !o);
+    if (!o) return;
+    const u = o.user;
+    const label = t(u ? 'acct_head_account' : 'acct_head_login');
+    const txt = document.getElementById('accountBtnText');
+    if (txt) txt.textContent = label;
+    btn.title = label;
+    btn.setAttribute('aria-label', label);
+    btn.classList.toggle('is-signed-in', !!u);
+    const icon = btn.querySelector('.acct-head-icon');
+    if (icon) {
+        const pic = u && /^https:\/\//.test(u.picture || '') ? u.picture : '';
+        icon.innerHTML = pic ? `<img src="${pic.replace(/"/g, '&quot;')}" alt="" referrerpolicy="no-referrer">` : '<i class="fa-regular fa-user"></i>';
+    }
+}
 function renderAccountBox() {
+    renderAccountButton();
     const box = document.getElementById('favAccount');
     if (!box) return;
     const o = ozwh();
@@ -1112,6 +1133,7 @@ function renderFavPanel() {
             <div class="fav-hint">
                 <i class="fa-regular fa-heart"></i>
                 <span>${t('fav_hint')}</span>
+                ${ozwh() && !ozwh().user ? `<button type="button" class="toggle-pill shrink-0" onclick="openFavManager()">${t('acct_hint_btn')}</button>` : ''}
                 <button type="button" class="icon-btn border-0" aria-label="${t('aria_close')}" onclick="try{safeStore.setItem('fav_hint_dismissed','1')}catch(e){}; renderFavPanel()"><i class="fa-solid fa-xmark text-[12px]"></i></button>
             </div>`;
         panel.classList.remove('hidden');

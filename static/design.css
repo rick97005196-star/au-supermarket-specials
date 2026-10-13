@@ -1392,3 +1392,16 @@ html:root :is(.stat-label, #statsRow .stat-label, .seg-btn .seg-meta, .eyebrow) 
 .fav-account .acct-link { display: inline-flex; align-items: center; min-height: 40px; color: var(--ink); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
 .fav-account .acct-link i { font-size: 11px; margin-left: 4px; }
 .fav-account .acct-btn { min-height: 40px; padding: 0 14px; font-size: 13px; }
+
+/* Header: sign-in / account (opens 常購商品 with the sign-in box) */
+html:root .acct-head {
+    display: inline-flex; align-items: center; gap: 6px; height: 38px; min-width: 38px; padding: 0 10px;
+    justify-content: center; border-radius: var(--r-box); background: var(--ctl-surface); color: var(--ink);
+    box-shadow: 0 0 0 1px var(--ctl-ring), var(--ctl-shadow); font-size: 13px; font-weight: 500; white-space: nowrap;
+}
+html:root .acct-head.hidden { display: none; }
+html:root .acct-head:hover { box-shadow: 0 0 0 1px var(--ctl-ring-strong), var(--ctl-shadow-hover); }
+.acct-head-icon { display: inline-flex; width: 20px; height: 20px; align-items: center; justify-content: center; font-size: 14px; }
+.acct-head-icon img { width: 20px; height: 20px; border-radius: 999px; object-fit: cover; }
+@media (max-width: 639px) { html:root .acct-head { padding: 0; width: 38px; } }
+html:root .fav-hint .toggle-pill { min-height: 40px; }
