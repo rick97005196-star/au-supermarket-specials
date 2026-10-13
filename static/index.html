@@ -42,7 +42,7 @@
 
     <!-- Pre-built styles (no in-browser compiling = faster on phones) -->
     <link rel="stylesheet" href="./tw.css?v=6.1">
-    <link rel="stylesheet" href="./design.css?v=12.1">
+    <link rel="stylesheet" href="./design.css?v=13.2">
 
     <!-- Non-blocking fonts & icons: text shows immediately with the phone's own fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -334,27 +334,34 @@
     </section>
 
     <footer class="border-t b-line mt-4">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col md:flex-row md:items-start md:justify-between gap-6 text-[12px] t-ink-3">
-            <div class="flex items-center gap-3">
+        <div class="site-footer max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <!-- 1. the site and what it does -->
+            <div class="ft-brand">
                 <img src="./logo-96.png?v=3" alt="" width="28" height="28" class="brand-mark" style="width:28px;height:28px">
                 <div>
-                    <p class="t-ink-2 font-medium">澳洲超市特價資訊 · AU Supermarket Specials</p>
-                    <p>
-                        <span data-i18n="contact_admin">聯絡我們</span>:
-                        <a href="mailto:rick97005109@gmail.com?subject=澳洲超市特價資訊－聯絡我們" class="hover:underline t-ink-2">rick97005109@gmail.com</a>
-                    </p>
-                    <!-- Part of the 澳洲打工度假資訊平台 family of websites -->
-                    <p class="mt-1">
-                        <span data-i18n="family_note">本站為「澳洲打工度假資訊平台」系列網站</span> ·
-                        <a href="https://au-working-holiday.pages.dev/" target="_blank" rel="noopener" class="hover:underline t-ink-2 font-medium" style="white-space:nowrap"><span data-i18n="family_link">瀏覽其他網站</span><i class="fa-solid fa-arrow-up-right-from-square text-[10px]" style="margin-left:4px" aria-hidden="true"></i></a>
-                    </p>
+                    <p class="ft-name">澳洲超市特價資訊 · AU Supermarket Specials</p>
+                    <p data-i18n="footer_desc">每週彙整 Woolworths、Coles、ALDI 的店內特價與半價商品。</p>
                 </div>
             </div>
-            <div class="max-w-xl md:text-right space-y-1">
-                <p class="font-semibold t-ink-2" data-i18n="disclaimer_title">免責聲明</p>
-                <p data-i18n="disclaimer_text" class="leading-relaxed">本網站特價資訊僅供參考，實際商品售價、優惠檔期與庫存狀況均以各超市實體門市現場及官方最新公告為準。</p>
-                <p data-i18n="privacy_note" class="leading-relaxed">本網站僅匿名統計各商品的瀏覽、收藏與加入清單次數，用於改善商品排序，不收集任何可識別個人身分的資料。</p>
+            <!-- 2. part of the 澳洲打工度假資訊平台 family of websites -->
+            <p class="ft-family">
+                <span data-i18n="family_note">本站為「澳洲打工度假資訊平台」系列網站</span> ·
+                <a href="https://au-working-holiday.pages.dev/" target="_blank" rel="noopener" class="ft-link"><span data-i18n="family_link">瀏覽其他網站</span><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+            </p>
+            <!-- 3. feedback (shared suggestion page) and e-mail -->
+            <p class="ft-feedback">
+                <span data-i18n="footer_feedback_note">資料有誤或想要新功能？</span>
+                <a href="https://au-working-holiday.pages.dev/?from=supermarket#suggest" target="_blank" rel="noopener" class="ft-link"><span data-i18n="footer_feedback_link">告訴我們</span><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+                <span class="ft-email">Email <a href="mailto:rick97005109@gmail.com?subject=澳洲超市特價資訊－聯絡我們">rick97005109@gmail.com</a></span>
+            </p>
+            <!-- 4. disclaimer -->
+            <div class="ft-legal">
+                <p class="ft-title" data-i18n="disclaimer_title">免責聲明</p>
+                <p data-i18n="disclaimer_text">本網站特價資訊僅供參考，實際商品售價、優惠檔期與庫存狀況均以各超市實體門市現場及官方最新公告為準。</p>
+                <p data-i18n="privacy_note">本網站僅匿名統計各商品的瀏覽、收藏與加入清單次數，用於改善商品排序，不收集任何可識別個人身分的資料。</p>
             </div>
+            <!-- 5. copyright -->
+            <p class="ft-copy" data-i18n="footer_copyright">© 2026 澳洲打工度假資訊平台・澳洲超市特價</p>
         </div>
     </footer>
 
@@ -568,7 +575,7 @@
         <span id="toastMessage">Action completed</span>
     </div>
 
-    <script src="./i18n.js?v=8.4" defer></script>
+    <script src="./i18n.js?v=8.5" defer></script>
     <script src="./category-icons.js?v=2.0" defer></script>
     <script src="./category-rules.js?v=2.0" defer></script>
     <script src="./app.js?v=11.4" defer></script>

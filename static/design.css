@@ -1331,3 +1331,52 @@ html:root .p-add::after, html:root .p-fav::after {
 
 /* The logo is a cut-out drawing (transparent background): shown as it is, no rounded box, frame or shadow */
 html:root .brand-mark { border-radius: 0; box-shadow: none; object-fit: contain; background: none; }
+
+
+/* ==========================================================================
+   v13 – Shared interface rules: no text below 12px; the shared footer
+   ========================================================================== */
+/* Text: smallest labels 12px, secondary information 13px (icons keep their own size) */
+html:root :is(.text-\[8px\], .text-\[9px\], .text-\[10px\], .text-\[11px\]):not(i) { font-size: 12px; }
+html:root :is(.p-meta, .p-store, .p-cat, .p-was, .p-unit, .p-save, .p-compare, .p-aldi, .p-price .unit,
+              .p-flag, .p-aldi-tag, .notice-badge, .tag, .seg-btn .seg-tag, .cart-count, .qty-btn,
+              .aldi-cmp-price, .aldi-cmp-store) { font-size: 12px; }
+html:root :is(.stat-label, #statsRow .stat-label, .seg-btn .seg-meta, .eyebrow) { font-size: 13px; }
+/* five numbers with 13px labels: two rows up to 420px wide (totals above, the three stores below) */
+@media (max-width: 420px) {
+    html:root #statsRow {
+        display: grid; grid-template-columns: repeat(6, minmax(0, 1fr));
+        row-gap: 12px; column-gap: 8px; justify-content: stretch;
+    }
+    html:root #statsRow .stat { min-width: 0; }
+    html:root #statsRow > .stat:nth-child(-n+2) { grid-column: span 3; }
+    html:root #statsRow > .stat:nth-child(n+4) { grid-column: span 2; }
+    html:root #statsRow .stat-divider { display: none; }
+}
+
+/* Footer: name and line, platform link, feedback and e-mail, disclaimer, copyright */
+.site-footer { display: grid; gap: 14px; font-size: 13px; line-height: 1.6; color: var(--ink-3); }
+.site-footer a { color: var(--ink-2); font-weight: 500; }
+.site-footer a:hover { text-decoration: underline; }
+.ft-brand { display: flex; align-items: flex-start; gap: 10px; }
+.ft-brand .brand-mark { margin-top: 2px; flex-shrink: 0; }
+.ft-name { color: var(--ink-2); font-weight: 600; font-size: 14px; }
+.ft-link { white-space: nowrap; }
+.ft-link i { font-size: 11px; margin-left: 4px; }
+.ft-email { display: block; white-space: nowrap; }
+.ft-legal p + p { margin-top: 4px; }
+.ft-title { color: var(--ink-2); font-weight: 600; }
+.ft-copy { border-top: 1px solid var(--line); padding-top: 14px; }
+@media (min-width: 768px) {
+    .site-footer { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: 48px;
+        grid-template-areas: "brand legal" "family legal" "feedback legal" "copy copy"; }
+    .ft-brand { grid-area: brand; } .ft-family { grid-area: family; } .ft-feedback { grid-area: feedback; }
+    .ft-legal { grid-area: legal; } .ft-copy { grid-area: copy; }
+}
+/* room under the copyright line for the floating feedback and back-to-top buttons */
+.site-footer { padding-bottom: 88px; }
+/* 320px: "Woolworths" at 13px needs the full column */
+@media (max-width: 374px) {
+    html:root #statsRow { column-gap: 4px; }
+    html:root #statsRow .stat-label { gap: 4px; }
+}
