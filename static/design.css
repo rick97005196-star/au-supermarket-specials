@@ -1380,3 +1380,6 @@ html:root :is(.stat-label, #statsRow .stat-label, .seg-btn .seg-meta, .eyebrow) 
     html:root #statsRow { column-gap: 4px; }
     html:root #statsRow .stat-label { gap: 4px; }
 }
+
+/* Top disclaimer: link to the full disclaimer (shared rule 5) */
+.top-disclaimer .disc-more { margin-left: 4px; white-space: nowrap; color: var(--ink); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
