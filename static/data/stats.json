@@ -2,9 +2,9 @@
   "current": {
     "total": 4120,
     "by_store": {
+      "ALDI": 169,
       "Coles": 289,
-      "Woolworths": 3662,
-      "ALDI": 169
+      "Woolworths": 3662
     },
     "by_category": {
       "bakery": 103,
@@ -45,16 +45,16 @@
     "date_range": "Wed 21 Oct 2026 - Tue 27 Oct 2026",
     "everyday_count": 0
   },
-  "last_updated": "2026-10-13 14:05:18",
+  "last_updated": "2026-10-13 14:48:31",
   "base_region": "QLD",
   "regions": {
     "QLD": {
       "current": {
         "total": 4120,
         "by_store": {
+          "ALDI": 169,
           "Coles": 289,
-          "Woolworths": 3662,
-          "ALDI": 169
+          "Woolworths": 3662
         },
         "half_price_count": 2021,
         "everyday_count": 3434
@@ -72,9 +72,9 @@
       "current": {
         "total": 4126,
         "by_store": {
+          "ALDI": 169,
           "Coles": 288,
-          "Woolworths": 3669,
-          "ALDI": 169
+          "Woolworths": 3669
         },
         "half_price_count": 2023,
         "everyday_count": 3436
@@ -92,9 +92,9 @@
       "current": {
         "total": 4119,
         "by_store": {
+          "ALDI": 169,
           "Coles": 288,
-          "Woolworths": 3662,
-          "ALDI": 169
+          "Woolworths": 3662
         },
         "half_price_count": 2021,
         "everyday_count": 3436
@@ -112,9 +112,9 @@
       "current": {
         "total": 4127,
         "by_store": {
+          "ALDI": 169,
           "Coles": 289,
-          "Woolworths": 3669,
-          "ALDI": 169
+          "Woolworths": 3669
         },
         "half_price_count": 2023,
         "everyday_count": 3436
@@ -132,9 +132,9 @@
       "current": {
         "total": 4136,
         "by_store": {
+          "ALDI": 169,
           "Coles": 305,
-          "Woolworths": 3662,
-          "ALDI": 169
+          "Woolworths": 3662
         },
         "half_price_count": 2023,
         "everyday_count": 3437
@@ -152,9 +152,9 @@
       "current": {
         "total": 4133,
         "by_store": {
+          "ALDI": 169,
           "Coles": 302,
-          "Woolworths": 3662,
-          "ALDI": 169
+          "Woolworths": 3662
         },
         "half_price_count": 2021,
         "everyday_count": 3439
@@ -172,9 +172,9 @@
       "current": {
         "total": 4139,
         "by_store": {
+          "ALDI": 169,
           "Coles": 309,
-          "Woolworths": 3661,
-          "ALDI": 169
+          "Woolworths": 3661
         },
         "half_price_count": 2022,
         "everyday_count": 3440
@@ -192,9 +192,9 @@
       "current": {
         "total": 4118,
         "by_store": {
+          "ALDI": 169,
           "Coles": 286,
-          "Woolworths": 3663,
-          "ALDI": 169
+          "Woolworths": 3663
         },
         "half_price_count": 2021,
         "everyday_count": 3434
@@ -209,5 +209,5 @@
       }
     }
   },
-  "data_updated_at": "2026-10-13T14:08:56Z"
+  "data_updated_at": "2026-10-13T14:48:55Z"
 }

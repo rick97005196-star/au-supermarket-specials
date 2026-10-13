@@ -94963,10 +94963,11 @@
     "src": "ai"
   },
   "FOOD CRAFT Food Craft Cape Herb and Spice Meal Solution Butter Chicken 50 g": {
-    "zh": "FOOD CRAFT Cape Herb and Spice 咖哩燉煮調味粉 Butter Chicken 50克",
-    "ja": "FOOD CRAFT Cape Herb and Spice ミールソリューション Butter Chicken 50g",
-    "ko": "FOOD CRAFT Cape Herb and Spice 밀 솔루션 Butter Chicken 50g",
-    "src": "ai"
+    "zh": "FOOD CRAFT 奶油雞肉咖哩料理包 50克",
+    "ja": "FOOD CRAFT バターチキンカレーの素 50g",
+    "ko": "FOOD CRAFT 버터 치킨 커리 양념 50g",
+    "src": "ai",
+    "qa_tries": 1
   },
   "POWER FORCE Genie Wand Bulk 9 Pack": {
     "zh": "POWER FORCE 清潔魔棒 9入",
@@ -95491,68 +95492,84 @@
     "src": "ai"
   },
   "STEP2 Splash Table": {
-    "zh": "STEP2 啟動表",
-    "ja": "STEP2 スプラッシュテーブル",
-    "ko": "STEP2 스플래시 테이블"
+    "zh": "STEP2 戲水桌",
+    "ja": "STEP2 水遊びテーブル",
+    "ko": "STEP2 물놀이 테이블",
+    "src": "ai"
   },
   "POWER FORCE Baking Paper 90m": {
-    "zh": "POWER FORCE 烘焙紙 90m",
-    "ja": "パワーフォース ベーキングペーパー 90m",
-    "ko": "파워포스 베이킹페이퍼 90m"
+    "zh": "POWER FORCE 烘焙紙 90公尺",
+    "ja": "POWER FORCE クッキングシート 90m",
+    "ko": "POWER FORCE 베이킹 페이퍼 90m",
+    "src": "ai"
   },
   "FELDSCHLÖSSCHEN Beer Bottle 500ml": {
-    "zh": "FELDSCHLÖSSCHEN 啤酒瓶 500ml",
-    "ja": "FELDSCHLÖSSCHEN ビール瓶 500ml",
-    "ko": "FELSCHLÖSSCHEN 맥주병 500ml"
+    "zh": "FELDSCHLÖSSCHEN 啤酒瓶裝 500毫升",
+    "ja": "FELDSCHLÖSSCHEN ビール 500ml",
+    "ko": "FELDSCHLÖSSCHEN 맥주 500ml",
+    "src": "ai"
   },
   "Bird Feeders": {
     "zh": "餵鳥器",
-    "ja": "鳥の餌箱",
-    "ko": "새 모이통"
+    "ja": "給餌器",
+    "ko": "새 모이통",
+    "src": "ai"
   },
   "GARDENLINE Packet Seeds": {
-    "zh": "GARDENLINE 包種子",
-    "ja": "GARDENLINE パケットシード",
-    "ko": "GARDENLINE 패킷 씨앗"
+    "zh": "GARDENLINE 種子包",
+    "ja": "GARDENLINE 種子パック",
+    "ko": "GARDENLINE 씨앗 패킷",
+    "src": "ai"
   },
   "POWER FORCE Pool Cleaning Chemical Water Clarifier 1L": {
-    "zh": "POWER FORCE 泳池清潔化學淨水劑 1L",
-    "ja": "POWER FORCE プール洗浄用ケミカル浄水器 1L",
-    "ko": "POWER FORCE 수영장 청소 화학 정수기 1L"
+    "zh": "POWER FORCE 泳池水質澄清劑 1公升",
+    "ja": "POWER FORCE プール用浄化剤 1L",
+    "ko": "POWER FORCE 수영장 정화제 1L",
+    "src": "ai"
   },
   "FOOD CRAFT Food Craft Cape Herb and Spice Meal Solution Vindaloo 50g": {
-    "zh": "FOOD CRAFT Food Craft Cape Herb and Spice Meal Solution Vindaloo 50g",
-    "ja": "FOOD CRAFT フードクラフト ケープ ハーブ＆スパイス ミールソリューション ビンダルー 50g",
-    "ko": "FOOD CRAFT 푸드크래프트 케이프허브앤스파이스밀솔루션 빈달루 50g"
+    "zh": "FOOD CRAFT 溫達盧咖哩料理包 50克",
+    "ja": "FOOD CRAFT ビンダルーカレーの素 50g",
+    "ko": "FOOD CRAFT 빈달루 커리 양념 50g",
+    "src": "ai",
+    "qa_tries": 1
   },
   "FERREX Hammer Drill and Impact Driver Kit 20V": {
-    "zh": "FERREX 衝擊鑽和衝擊起子套件 20V",
-    "ja": "FERREX ハンマードリル＆インパクトドライバーキット 20V",
-    "ko": "FERREX 해머 드릴 및 임팩트 드라이버 키트 20V"
+    "zh": "FERREX 震動電鑽與衝擊起子機套組 20V",
+    "ja": "FERREX ハンマードリル・インパクトドライバーキット 20V",
+    "ko": "FERREX 해머 드릴 및 임팩트 드라이버 키트 20V",
+    "src": "ai"
   },
   "CHEF'S CHOICE Indian Cumin Ground Spice 200g": {
-    "zh": "CHEF'S CHOICE 印度孜然粉香料 200g",
-    "ja": "CHEF'S CHOICE インディアン クミン グラウンド スパイス 200g",
-    "ko": "CHEF'S CHOICE 인디언 커민 그라운드 스파이스 200g"
+    "zh": "CHEF'S CHOICE 印度孜然粉 200克",
+    "ja": "CHEF'S CHOICE クミンパウダー 200g",
+    "ko": "CHEF'S CHOICE 큐민 가루 200g",
+    "src": "ai"
   },
   "Basmati Rice 5kg": {
-    "zh": "印度香米 5 公斤",
+    "zh": "印度香米 5公斤",
     "ja": "バスマティライス 5kg",
-    "ko": "바스마티 쌀 5kg"
+    "ko": "바스마티 쌀 5kg",
+    "src": "ai"
   },
   "FELDSCHLÖSSCHEN Wheat Beer Bottle 500ml": {
-    "zh": "FELDSCHLÖSSCHEN 小麥啤酒瓶 500ml",
-    "ja": "FELDSCHLÖSSCHEN 小麦ビール瓶 500ml",
-    "ko": "FELDSCHLÖSSCHEN 밀 맥주병 500ml"
+    "zh": "FELDSCHLÖSSCHEN 小麥啤酒瓶裝 500毫升",
+    "ja": "FELDSCHLÖSSCHEN 小麦ビール 500ml",
+    "ko": "FELDSCHLÖSSCHEN 밀맥주 500ml",
+    "src": "ai"
   },
   "VILEDA Ultramax XL Mop and Bucket": {
-    "zh": "VILEDA Ultramax XL Mop and Bucket",
-    "ja": "VILEDA ウルトラマックス XL モップとバケツ",
-    "ko": "VILEDA Ultramax XL 걸레 및 버킷"
+    "zh": "VILEDA Ultramax XL 平板拖把與水桶組",
+    "ja": "VILEDA Ultramax XL フラットモップ・バケツセット",
+    "ko": "VILEDA Ultramax XL 플랫 밀대걸레 및 양동이 세트",
+    "src": "ai",
+    "qa_tries": 1
   },
   "BRUEMAR Gochujang Style Glaze Pork Belly Rashers": {
-    "zh": "BRUEMAR 辣椒醬風格釉五花肉刨絲器",
-    "ja": "ブルーマー コチュジャン風グレーズ豚バララッシャー",
-    "ko": "BRUEMAR 고추장 스타일 글레이즈 삼겹살 래셔"
+    "zh": "BRUEMAR 韓式辣醬風味豬五花肉片",
+    "ja": "BRUEMAR コチュジャン風ソース漬け豚バラ肉",
+    "ko": "BRUEMAR 고추장 스타일 소스 돼지 삼겹살",
+    "src": "ai",
+    "qa_tries": 1
   }
 }
