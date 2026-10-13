@@ -44,6 +44,18 @@ check(not database.is_half_price(32.0, 64.0, 32.0, '2 for $32.00'), 'buy-one-get
 check(database.is_half_price(2.75, 5.5, 2.75, '1/2 PRICE'), 'a real half price still is')
 check(database.is_half_price(5.0, 10.0, 5.0, 'Seasonal Price'), 'a 50% seasonal cut still is')
 
+# --- before Wednesday: lasting prices are added to next week's preview, only once it exists ---
+from scrapers.updater import with_lasting_prices  # noqa: E402
+cur = [{'title': 'Bread 650g', 'discount_desc': 'Everyday Low Price'},
+       {'title': 'Sour Cream 300mL', 'discount_desc': 'Lower Shelf Price'},
+       {'title': 'Chips 170g', 'discount_desc': '1/2 PRICE'},
+       {'title': 'Milk 2L', 'discount_desc': 'Everyday Low Price'}]
+nxt = [{'title': 'Milk 2L', 'discount_desc': 'Save $1.00'}]
+got = {it['title']: it['discount_desc'] for it in with_lasting_prices(nxt, cur)}
+check(got == {'Milk 2L': 'Save $1.00', 'Bread 650g': 'Everyday Low Price', 'Sour Cream 300mL': 'Lower Shelf Price'},
+      f'lasting prices join the preview, the weekly half price does not, the preview entry wins: {got}')
+check(with_lasting_prices([], cur) == [], 'no preview published yet: nothing is added')
+
 for b in bad:
     print('FAIL', b)
 print(f'{total - len(bad)}/{total} Woolworths list checks passed')

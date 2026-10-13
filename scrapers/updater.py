@@ -36,6 +36,30 @@ def _aldi_recent(hours=3):
         return False
 
 
+LASTING_DESCS = ('Lower Shelf Price',)      # Woolworths' lasting price cuts (besides the everyday low prices)
+
+
+def _is_lasting(item):
+    """A price that does not end with the week: everyday low prices, Woolworths' lower shelf prices."""
+    from scrapers.regions import EVERYDAY_DESC
+    desc = item.get('discount_desc') or ''
+    return desc.startswith(EVERYDAY_DESC) or desc in LASTING_DESCS
+
+
+def with_lasting_prices(next_items, current_items):
+    """Next week's preview gets this week's lasting prices too (only once the supermarket has published
+    next week's catalogue), so the site already shows them before Wednesday instead of dropping to the
+    catalogue preview at the switch-over. Wednesday's read then checks them: a price that changed or
+    ended is replaced by what the website lists. A product already in the preview keeps that entry."""
+    if not next_items:
+        return next_items
+    have = {it['title'].lower() for it in next_items}
+    lasting = [dict(it) for it in current_items if _is_lasting(it) and it['title'].lower() not in have]
+    if lasting:
+        print(f" Next week's preview: {len(lasting)} lasting prices from this week added (checked again on Wednesday).")
+    return list(next_items) + lasting
+
+
 def _aldi_special_buys_kept(new_items):
     """ALDI takes a Special Buys day off its website a few days after it starts, while the products stay
     on sale until sold out. Keeps this week's earlier Special Buys that the website no longer lists
@@ -86,7 +110,7 @@ def update_all_stores(max_catalogue_pages: int = 50) -> Dict[str, Any]:
         print(f" Saved {saved_c_curr} Coles current week specials ({curr_date}).")
 
         # Save next week (if available)
-        next_items = coles_data['next']['items']
+        next_items = with_lasting_prices(coles_data['next']['items'], curr_items)
         next_date = coles_data['next']['date_range']
         saved_c_next = 0
         if next_items:
@@ -117,7 +141,7 @@ def update_all_stores(max_catalogue_pages: int = 50) -> Dict[str, Any]:
         print(f" Saved {saved_w_curr} Woolworths current week specials ({w_curr_date}).")
 
         # Save next week (if available)
-        w_next_items = woolies_data['next']['items']
+        w_next_items = with_lasting_prices(woolies_data['next']['items'], w_curr_items)
         w_next_date = woolies_data['next']['date_range']
         saved_w_next = 0
         if w_next_items:
