@@ -15,11 +15,11 @@
       "household": 522,
       "liquor": 55,
       "meat": 280,
-      "pantry": 788,
+      "pantry": 787,
       "pet": 84,
       "produce": 63,
       "seafood": 35,
-      "snacks": 699
+      "snacks": 700
     },
     "half_price_count": 2021,
     "date_range": "Wed 14 Oct 2026 - Tue 20 Oct 2026",
@@ -44,7 +44,7 @@
     "date_range": "Wed 21 Oct 2026 - Tue 27 Oct 2026",
     "everyday_count": 0
   },
-  "last_updated": "2026-10-13 13:33:23",
+  "last_updated": "2026-10-13 13:48:03",
   "base_region": "QLD",
   "regions": {
     "QLD": {
@@ -208,5 +208,5 @@
       }
     }
   },
-  "data_updated_at": "2026-10-13T13:37:23Z"
+  "data_updated_at": "2026-10-13T13:48:36Z"
 }
