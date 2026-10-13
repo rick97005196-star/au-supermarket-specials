@@ -1328,3 +1328,6 @@ html:root .notice .icon-btn::after, html:root .fav-hint .icon-btn::after,
 html:root .p-add::after, html:root .p-fav::after {
     content: ''; position: absolute; inset: -6px; border-radius: inherit;   /* bigger tap area, same look */
 }
+
+/* The logo is a cut-out drawing (transparent background): shown as it is, no rounded box, frame or shadow */
+html:root .brand-mark { border-radius: 0; box-shadow: none; object-fit: contain; background: none; }

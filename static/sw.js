@@ -6,7 +6,7 @@
  * - Product photos from the supermarkets' servers are not stored (they can't be cached safely);
  *   the page shows a placeholder for them while offline.
  */
-const VERSION = 'v4';
+const VERSION = 'v5';   // v5: new logo and icons
 const SHELL_CACHE = `shell-${VERSION}`;
 const DATA_CACHE = `data-${VERSION}`;
 const ASSET_CACHE = `assets-${VERSION}`;
@@ -15,9 +15,9 @@ const SHELL = [
     '/',
     '/index.html',
     '/manifest.json',
-    '/logo-96.png',
-    '/favicon-48.png',
-    '/icon-192.png',
+    '/logo-96.png?v=3',
+    '/favicon-48.png?v=3',
+    '/icon-192.png?v=3',
     '/woolworths_half_price_badge.png',
     '/coles_half_price_badge.png',
 ];
