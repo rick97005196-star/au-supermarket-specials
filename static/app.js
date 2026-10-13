@@ -878,19 +878,135 @@ function renderLastUpdated() {
 setInterval(renderLastUpdated, 60000);
 
 // =====================================================================
-//  我的常買 (regular items): saved on this phone, matched against every week's specials
+//  我的常買 (regular items): matched against every week's specials.
+//  Saved with the 澳洲打工度假資訊平台 account service (window.OZWH, loaded from the hub):
+//  in this browser while signed out, in the Google account once signed in (the first sign-in
+//  moves this browser's list into the account). If the service cannot load, this browser keeps
+//  the list as before (FAV_KEY).
 // =====================================================================
 const FAV_KEY = 'favorites_v1';
+const FAV_MOVED_KEY = 'favorites_v1_moved';       // the old list has been handed to OZWH
+const SITE_URL = 'https://au-supermarket-specials.pages.dev/';
 let favOnly = false;
+let _favCache = null;
 
-function loadFavorites() {
+function ozwh() {
+    return (window.OZWH && typeof window.OZWH.list === 'function') ? window.OZWH : null;
+}
+function _localFavorites() {
     try {
         const v = JSON.parse(safeStore.getItem(FAV_KEY) || '[]');
         return Array.isArray(v) ? v.filter(f => f && typeof f === 'object') : [];
     } catch (e) { return []; }
 }
+// A stable id for the account service (letters, digits and -_.:/ only, at most 120 characters)
+function _favHash(s) {
+    let a = 0x811c9dc5, b = 0x01000193;
+    for (let i = 0; i < s.length; i++) {
+        const c = s.charCodeAt(i);
+        a = Math.imul(a ^ c, 16777619) >>> 0;
+        b = Math.imul(b ^ c, 2246822519) >>> 0;
+    }
+    return a.toString(36) + b.toString(36);
+}
+function favId(f) {
+    if (f.type === 'product') {
+        const slug = String(f.key || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+        return 'p:' + (slug.length <= 100 && slug === String(f.key).replace(/\s+/g, '-') ? slug : slug.slice(0, 80) + '.' + _favHash(String(f.key)));
+    }
+    return 'q:' + _favHash(normalizeSearchText(f.q || ''));
+}
+function favToItem(f) {
+    const isProduct = f.type === 'product';
+    const img = isProduct && /^https:\/\//.test(f.image || '') ? f.image : undefined;
+    return {
+        id: favId(f),
+        title: isProduct ? (f.zh || f.title) : `搜尋「${f.q}」`,
+        url: SITE_URL + '?q=' + encodeURIComponent(isProduct ? f.title : f.q),
+        meta: { sub: isProduct ? `${f.store || '超市'}・常購商品` : '超市特價・收藏的搜尋', img, fav: f },
+    };
+}
+function loadFavorites() {
+    if (!_favCache) {
+        const o = ozwh();
+        _favCache = o ? o.list('save').map(it => it.meta && it.meta.fav).filter(f => f && typeof f === 'object')
+                      : _localFavorites();
+    }
+    return _favCache.slice();
+}
 function saveFavorites(list) {
-    try { safeStore.setItem(FAV_KEY, JSON.stringify(list)); } catch (e) {}
+    _favCache = null;
+    const o = ozwh();
+    if (!o) { try { safeStore.setItem(FAV_KEY, JSON.stringify(list)); } catch (e) {} return; }
+    const want = new Map(list.map(f => [favId(f), f]));
+    const have = new Set(o.list('save').map(it => it.id));
+    for (const id of have) if (!want.has(id)) o.remove('save', id);
+    // added oldest first, so the newest ends up first in the list (the service lists newest first)
+    [...want.entries()].reverse().forEach(([id, f]) => { if (!have.has(id)) o.add('save', favToItem(f)); });
+    _favCache = null;
+}
+// First visit with the account service: the list this browser kept so far moves into it, once
+function moveOldFavorites() {
+    const o = ozwh();
+    if (!o) return;
+    try {
+        if (safeStore.getItem(FAV_MOVED_KEY) === '1') return;
+        const old = _localFavorites();
+        old.slice().reverse().forEach(f => { const it = favToItem(f); if (!o.has('save', it.id)) o.add('save', it); });
+        safeStore.setItem(FAV_MOVED_KEY, '1');
+    } catch (e) {}
+    _favCache = null;
+}
+// Signed in / out, or the list changed (also on another tab of this site): draw everything again
+let _favRedrawTimer = null;
+function onFavoritesChanged() {
+    _favCache = null;
+    clearTimeout(_favRedrawTimer);
+    _favRedrawTimer = setTimeout(() => {
+        const keys = new Set(loadFavorites().filter(f => f.type === 'product').map(f => f.key));
+        document.querySelectorAll('.p-fav[data-fav-key]').forEach(b => setFavButton(b, keys.has(b.dataset.favKey)));
+        updateModalFavButton();
+        renderFavPanel();
+        renderFavSearchButton();
+        renderAccountBox();
+        const box = document.getElementById('favManager');
+        if (box && !box.classList.contains('hidden')) openFavManager();
+        if (favOnly) loadSpecials();
+    }, 50);
+}
+function initAccount() {
+    const o = ozwh();
+    if (!o) return;
+    moveOldFavorites();
+    o.onChange(onFavoritesChanged);
+    if (o.ready && o.ready.then) o.ready.then(() => { moveOldFavorites(); onFavoritesChanged(); });
+}
+// The sign-in box in "常購商品 › 管理": Google sign-in, or who is signed in, plus the hub's "我的收藏"
+function renderAccountBox() {
+    const box = document.getElementById('favAccount');
+    if (!box) return;
+    const o = ozwh();
+    if (!o) { box.classList.add('hidden'); return; }
+    box.classList.remove('hidden');
+    const esc = (v) => String(v || '').replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
+    const mySaves = `<a class="acct-link" href="https://au-working-holiday.pages.dev/account/" target="_blank" rel="noopener">${t('acct_my_saves')}<i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>`;
+    if (o.user) {
+        box.innerHTML = `
+            <p class="acct-text">${esc(t('acct_signed_in', { name: o.user.name || o.user.email || '' }))}</p>
+            <div class="acct-actions">${mySaves}<button type="button" class="btn-ghost acct-btn" onclick="window.OZWH && OZWH.logout()">${t('acct_logout')}</button></div>`;
+    } else {
+        box.innerHTML = `
+            <p class="acct-text">${t('acct_sync_hint')}</p>
+            <div class="acct-actions"><div id="favLoginBtn" class="acct-login"></div>${mySaves}</div>`;
+        try { o.renderLoginButton(document.getElementById('favLoginBtn')); } catch (e) {}
+    }
+}
+// Links from the hub's "我的收藏" page open the site with that search: ?q=...
+function applyUrlSearch() {
+    try {
+        const q = (new URLSearchParams(location.search).get('q') || '').trim().slice(0, 100);
+        if (q) setSearch(q);
+    } catch (e) {}
 }
 function favProductKey(item) {
     return getCoreProductKey(item);
@@ -1084,6 +1200,7 @@ function openFavManager() {
             </div>
             <button type="button" class="icon-btn shrink-0" aria-label="${t('fav_remove')}" onclick="removeFavoriteAt(${i})"><i class="fa-regular fa-trash-can text-[13px]"></i></button>
         </div>`).join('') : `<p class="text-[14px] t-ink-3 text-center py-10">${t('fav_empty')}</p>`;
+    renderAccountBox();
     const wasHidden = box.classList.contains('hidden');
     box.classList.remove('hidden');
     document.getElementById('favManagerBackdrop').classList.remove('hidden');
@@ -3638,6 +3755,7 @@ function initApp() {
                    !window.location.port;
 
     initTheme();
+    initAccount();
     initLanguage();
     renderCategoryBar();
     initCategoryArrows();
@@ -3645,6 +3763,7 @@ function initApp() {
     loadStats();
     loadAnnouncement();
     loadSpecials();
+    applyUrlSearch();
     loadShoppingList();
     checkUpdateStatus();
     setTimeout(loadTranslations, 1500);

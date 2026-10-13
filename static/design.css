@@ -1383,3 +1383,12 @@ html:root :is(.stat-label, #statsRow .stat-label, .seg-btn .seg-meta, .eyebrow) 
 
 /* Top disclaimer: link to the full disclaimer (shared rule 5) */
 .top-disclaimer .disc-more { margin-left: 4px; white-space: nowrap; color: var(--ink); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
+
+/* Sign-in box in 常購商品 › 管理 (Google sign-in from the 澳洲打工度假資訊平台 account service) */
+.fav-account { margin: 12px 16px 0; padding: 12px 14px; border-radius: 12px; background: var(--surface-2); font-size: 13px; line-height: 1.6; color: var(--ink-2); }
+.fav-account .acct-text { margin-bottom: 8px; }
+.fav-account .acct-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; }
+.fav-account .acct-login { min-height: 40px; display: flex; align-items: center; }
+.fav-account .acct-link { display: inline-flex; align-items: center; min-height: 40px; color: var(--ink); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
+.fav-account .acct-link i { font-size: 11px; margin-left: 4px; }
+.fav-account .acct-btn { min-height: 40px; padding: 0 14px; font-size: 13px; }

@@ -42,7 +42,7 @@
 
     <!-- Pre-built styles (no in-browser compiling = faster on phones) -->
     <link rel="stylesheet" href="./tw.css?v=6.1">
-    <link rel="stylesheet" href="./design.css?v=13.3">
+    <link rel="stylesheet" href="./design.css?v=13.4">
 
     <!-- Non-blocking fonts & icons: text shows immediately with the phone's own fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -358,7 +358,8 @@
             <div class="ft-legal">
                 <p class="ft-title" data-i18n="disclaimer_title">免責聲明</p>
                 <p data-i18n="disclaimer_text">本網站特價資訊僅供參考，實際商品售價、優惠檔期與庫存狀況均以各超市實體門市現場及官方最新公告為準。</p>
-                <p data-i18n="privacy_note">本網站僅匿名統計各商品的瀏覽、收藏與加入清單次數，用於改善商品排序，不收集任何可識別個人身分的資料。</p>
+                <p><span data-i18n="privacy_note">本網站匿名統計各商品的瀏覽、收藏與加入清單次數，用於改善商品排序。您可選擇以 Google 帳戶登入以同步常購商品，帳號與清單依主網站隱私權政策處理。</span>
+                    <a href="https://au-working-holiday.pages.dev/privacy/" target="_blank" rel="noopener" class="ft-link"><span data-i18n="privacy_link">隱私權政策</span><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a></p>
             </div>
             <!-- 5. copyright -->
             <p class="ft-copy" data-i18n="footer_copyright">© 2026 澳洲打工度假資訊平台・澳洲超市特價</p>
@@ -526,6 +527,8 @@
             <h2 class="text-[17px] font-semibold t-ink"><i class="fa-solid fa-heart t-sale mr-1.5"></i><span data-i18n="fav_title">常購商品</span></h2>
             <button onclick="closeFavManager()" class="icon-btn" aria-label="Close"><i class="fa-solid fa-xmark text-[14px]"></i></button>
         </div>
+        <!-- Sign in with Google (澳洲打工度假資訊平台 account): the list follows the visitor to other devices -->
+        <div id="favAccount" class="fav-account hidden"></div>
         <div id="favManagerList" class="flex-1 overflow-y-auto p-4 space-y-2"></div>
         <div class="p-4 border-t b-line flex gap-2" style="padding-bottom: max(16px, env(safe-area-inset-bottom))">
             <button type="button" class="btn-ghost" onclick="clearAllFavorites()" data-i18n="fav_clear_all">全部清除</button>
@@ -575,9 +578,11 @@
         <span id="toastMessage">Action completed</span>
     </div>
 
-    <script src="./i18n.js?v=8.7" defer></script>
+    <!-- 澳洲打工度假資訊平台 sign-in and saved items (window.OZWH) -->
+    <script src="https://au-working-holiday.pages.dev/api/sdk.js" data-site="supermarket" defer></script>
+    <script src="./i18n.js?v=8.8" defer></script>
     <script src="./category-icons.js?v=2.0" defer></script>
     <script src="./category-rules.js?v=2.0" defer></script>
-    <script src="./app.js?v=11.4" defer></script>
+    <script src="./app.js?v=11.5" defer></script>
 </body>
 </html>

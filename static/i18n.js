@@ -16,7 +16,12 @@ var safeStore = (function () {
 })();
 const I18N = {
     'zh': {
-        privacy_note: '本網站僅匿名統計各商品的瀏覽、收藏與加入清單次數，用於改善商品排序，不收集任何可識別個人身分的資料。',
+        privacy_note: '本網站匿名統計各商品的瀏覽、收藏與加入清單次數，用於改善商品排序。您可選擇以 Google 帳戶登入以同步常購商品，帳號與清單依主網站隱私權政策處理。',
+        privacy_link: '隱私權政策',
+        acct_sync_hint: '登入 Google 帳戶，常購商品就能在其他手機、電腦同步（未登入時只存在這個瀏覽器）。',
+        acct_signed_in: '已登入：{name}',
+        acct_my_saves: '我的收藏',
+        acct_logout: '登出',
         family_note: '本站為「澳洲打工度假資訊平台」系列網站',
         family_link: '瀏覽其他網站',
         footer_desc: '每週彙整 Woolworths、Coles、ALDI 的店內特價與半價商品。',
@@ -210,7 +215,12 @@ const I18N = {
         }
     },
     'en': {
-        privacy_note: 'This website only counts, anonymously, how often each product is viewed, saved and added to a list, to improve the product order. No personally identifiable information is collected.',
+        privacy_note: 'This website counts, anonymously, how often each product is viewed, saved and added to a list, to improve the product order. You can choose to sign in with Google to sync your saved items; your account and list are handled under the Australia Working Holiday Hub privacy policy.',
+        privacy_link: 'Privacy policy',
+        acct_sync_hint: 'Sign in with Google to keep your saved items on your other phones and computers (signed out, they stay in this browser only).',
+        acct_signed_in: 'Signed in: {name}',
+        acct_my_saves: 'My saved items',
+        acct_logout: 'Sign out',
         family_note: 'Part of the Australia Working Holiday Hub',
         family_link: 'Visit our other websites',
         footer_desc: 'Weekly in-store specials and half-price deals from Woolworths, Coles and ALDI.',
@@ -404,7 +414,12 @@ const I18N = {
         }
     },
     'ja': {
-        privacy_note: '本サイトでは、商品の表示・お気に入り登録・リスト追加の回数のみを匿名で集計し、商品の並び順の改善に利用しています。個人を特定できる情報は収集しません。',
+        privacy_note: '本サイトでは、商品の表示・お気に入り登録・リスト追加の回数を匿名で集計し、商品の並び順の改善に利用しています。Google アカウントでログインしてお気に入りを同期することもでき、アカウントとリストはプラットフォームのプライバシーポリシーに従って取り扱います。',
+        privacy_link: 'プライバシーポリシー',
+        acct_sync_hint: 'Google アカウントでログインすると、お気に入り商品をほかのスマホやパソコンと同期できます（ログインしない場合はこのブラウザにのみ保存されます）。',
+        acct_signed_in: 'ログイン中：{name}',
+        acct_my_saves: 'マイお気に入り',
+        acct_logout: 'ログアウト',
         family_note: '本サイトは「オーストラリア ワーキングホリデー情報プラットフォーム」のシリーズサイトです',
         family_link: 'ほかのサイトを見る',
         footer_desc: 'Woolworths・Coles・ALDI の店頭特売と半額商品を毎週まとめています。',
@@ -598,7 +613,12 @@ const I18N = {
         }
     },
     'ko': {
-        privacy_note: '본 사이트는 상품 정렬 개선을 위해 각 상품의 조회·관심 등록·목록 추가 횟수만 익명으로 집계하며, 개인을 식별할 수 있는 정보는 수집하지 않습니다.',
+        privacy_note: '본 사이트는 상품 정렬 개선을 위해 각 상품의 조회·관심 등록·목록 추가 횟수를 익명으로 집계합니다. Google 계정으로 로그인해 관심 상품을 동기화할 수 있으며, 계정과 목록은 플랫폼의 개인정보 처리방침에 따라 처리됩니다.',
+        privacy_link: '개인정보 처리방침',
+        acct_sync_hint: 'Google 계정으로 로그인하면 관심 상품을 다른 휴대폰·컴퓨터에서도 볼 수 있습니다 (로그인하지 않으면 이 브라우저에만 저장됩니다).',
+        acct_signed_in: '로그인됨: {name}',
+        acct_my_saves: '내 저장 목록',
+        acct_logout: '로그아웃',
         family_note: '본 사이트는 「호주 워킹홀리데이 정보 플랫폼」 시리즈 사이트입니다',
         family_link: '다른 사이트 보기',
         footer_desc: 'Woolworths, Coles, ALDI의 매장 특가와 반값 상품을 매주 모아 드립니다.',
