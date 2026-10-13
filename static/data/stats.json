@@ -1,27 +1,27 @@
 {
   "current": {
-    "total": 4221,
+    "total": 4259,
     "by_store": {
       "ALDI": 169,
-      "Coles": 289,
+      "Coles": 327,
       "Woolworths": 3763
     },
     "by_category": {
       "bakery": 98,
       "dairy_eggs": 297,
-      "drinks": 402,
-      "frozen": 210,
-      "health_vitamins": 1166,
+      "drinks": 413,
+      "frozen": 211,
+      "health_vitamins": 1191,
       "household": 557,
       "liquor": 50,
       "meat": 291,
-      "pantry": 825,
+      "pantry": 823,
       "pet": 82,
       "produce": 62,
-      "seafood": 34,
-      "snacks": 810
+      "seafood": 35,
+      "snacks": 815
     },
-    "half_price_count": 1885,
+    "half_price_count": 1923,
     "date_range": "Wed 14 Oct 2026 - Tue 20 Oct 2026",
     "everyday_count": 3434
   },
@@ -45,18 +45,18 @@
     "date_range": "Wed 21 Oct 2026 - Tue 27 Oct 2026",
     "everyday_count": 0
   },
-  "last_updated": "2026-10-13 15:23:10",
+  "last_updated": "2026-10-13 15:45:03",
   "base_region": "QLD",
   "regions": {
     "QLD": {
       "current": {
-        "total": 4221,
+        "total": 4259,
         "by_store": {
           "ALDI": 169,
-          "Coles": 289,
+          "Coles": 327,
           "Woolworths": 3763
         },
-        "half_price_count": 1885,
+        "half_price_count": 1923,
         "everyday_count": 3434
       },
       "next": {
@@ -70,13 +70,13 @@
     },
     "NSW": {
       "current": {
-        "total": 4227,
+        "total": 4265,
         "by_store": {
           "ALDI": 169,
-          "Coles": 288,
+          "Coles": 326,
           "Woolworths": 3770
         },
-        "half_price_count": 1887,
+        "half_price_count": 1925,
         "everyday_count": 3436
       },
       "next": {
@@ -90,13 +90,13 @@
     },
     "ACT": {
       "current": {
-        "total": 4220,
+        "total": 4258,
         "by_store": {
           "ALDI": 169,
-          "Coles": 288,
+          "Coles": 326,
           "Woolworths": 3763
         },
-        "half_price_count": 1885,
+        "half_price_count": 1923,
         "everyday_count": 3436
       },
       "next": {
@@ -110,13 +110,13 @@
     },
     "VIC": {
       "current": {
-        "total": 4228,
+        "total": 4266,
         "by_store": {
           "ALDI": 169,
-          "Coles": 289,
+          "Coles": 327,
           "Woolworths": 3770
         },
-        "half_price_count": 1887,
+        "half_price_count": 1925,
         "everyday_count": 3436
       },
       "next": {
@@ -130,13 +130,13 @@
     },
     "SA": {
       "current": {
-        "total": 4237,
+        "total": 4275,
         "by_store": {
           "ALDI": 169,
-          "Coles": 305,
+          "Coles": 343,
           "Woolworths": 3763
         },
-        "half_price_count": 1887,
+        "half_price_count": 1925,
         "everyday_count": 3437
       },
       "next": {
@@ -150,13 +150,13 @@
     },
     "WA": {
       "current": {
-        "total": 4234,
+        "total": 4272,
         "by_store": {
           "ALDI": 169,
-          "Coles": 302,
+          "Coles": 340,
           "Woolworths": 3763
         },
-        "half_price_count": 1885,
+        "half_price_count": 1923,
         "everyday_count": 3439
       },
       "next": {
@@ -170,13 +170,13 @@
     },
     "TAS": {
       "current": {
-        "total": 4240,
+        "total": 4278,
         "by_store": {
           "ALDI": 169,
-          "Coles": 309,
+          "Coles": 347,
           "Woolworths": 3762
         },
-        "half_price_count": 1886,
+        "half_price_count": 1924,
         "everyday_count": 3440
       },
       "next": {
@@ -190,13 +190,13 @@
     },
     "NT": {
       "current": {
-        "total": 4219,
+        "total": 4257,
         "by_store": {
           "ALDI": 169,
-          "Coles": 286,
+          "Coles": 324,
           "Woolworths": 3764
         },
-        "half_price_count": 1885,
+        "half_price_count": 1923,
         "everyday_count": 3434
       },
       "next": {
@@ -209,5 +209,5 @@
       }
     }
   },
-  "data_updated_at": "2026-10-13T15:42:10Z"
+  "data_updated_at": "2026-10-13T15:50:31Z"
 }
