@@ -1297,3 +1297,34 @@ html:not(.dark) .chip.is-active .chip-icon.chip-svg { box-shadow: 0 0 0 2px #fff
 html:not(.dark) .cart-count { background: var(--ink); color: #fff; box-shadow: none; }
 /* group tabs: the underline under the chosen group in warm yellow-orange, still clearly visible on cream */
 html:not(.dark) .cat-group.is-active::after { background: #f2a900; }
+
+
+/* ==========================================================================
+   v12 – Small phones (320–374px) and touch targets
+   ========================================================================== */
+/* Stats: five numbers in two rows on narrow phones (totals above, the three stores below), never cut off */
+@media (max-width: 374px) {
+    html:root #statsRow {
+        display: grid; grid-template-columns: repeat(6, minmax(0, 1fr));
+        row-gap: 12px; column-gap: 8px; justify-content: stretch;
+    }
+    html:root #statsRow .stat { min-width: 0; }
+    html:root #statsRow > .stat:nth-child(-n+2) { grid-column: span 3; }
+    html:root #statsRow > .stat:nth-child(n+4) { grid-column: span 2; }
+    html:root #statsRow .stat-value { font-size: 18px; }
+    html:root #statsRow .stat-label { font-size: 11.5px; gap: 5px; }
+    /* the week's dates on one line */
+    html:root .hero-title { font-size: min(34px, 8.6vw); }
+}
+/* Small text: nothing below 11px */
+html:root .p-flag, html:root .notice-badge { font-size: 11px; }
+/* Touch targets: about 40px wherever a finger has to hit */
+@media (max-width: 640px) {
+    html:root .region-chip { height: 40px; }
+    html:root .region-select { height: 100%; }
+}
+html:root .notice .icon-btn, html:root .fav-hint .icon-btn, html:root .p-add { position: relative; }
+html:root .notice .icon-btn::after, html:root .fav-hint .icon-btn::after,
+html:root .p-add::after, html:root .p-fav::after {
+    content: ''; position: absolute; inset: -6px; border-radius: inherit;   /* bigger tap area, same look */
+}
