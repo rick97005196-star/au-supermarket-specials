@@ -744,20 +744,6 @@
 "unit_price": "$4.4 / 100G",
 "was_price": 22.0
 },
-"bega colby cheese & crackers 38g": {
-"category": "snacks",
-"discount_desc": "2 for $5.00",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/901658.jpg",
-"price": 5.0,
-"price_display": "2 for $5.00",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/901658/bega-colby-cheese-crackers",
-"save_amount": 1.0,
-"store": "Woolworths",
-"store_category": "Dairy, Eggs & Fridge , Back to School , Lunch Box     Cheese , Snacks , Snacks   CHEESE EVERYDAY",
-"title": "Bega Colby Cheese & Crackers 38g",
-"unit_price": "$78.95 / 1KG",
-"was_price": 6.0
-},
 "bega tasty cheese & crackers crackers 38g": {
 "category": "snacks",
 "discount_desc": "2 for $5.00",
@@ -2113,20 +2099,6 @@
 "store": "Woolworths",
 "store_category": "Dairy, Eggs & Fridge , Deli     Dips & Pate , Deli Specialties   DAIRY - ENTERTAINING",
 "title": "Chris' Hommus Dip Reduced Fat 200g",
-"unit_price": "$2.25 / 100G",
-"was_price": 9.0
-},
-"chris' red capsicum & cashew dip & spread 200g": {
-"category": "dairy_eggs",
-"discount_desc": "2 for $7.00",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/082072.jpg",
-"price": 7.0,
-"price_display": "2 for $7.00",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/82072/chris-red-capsicum-cashew-dip-spread",
-"save_amount": 2.0,
-"store": "Woolworths",
-"store_category": "Dairy, Eggs & Fridge , Deli     Dips & Pate , Deli Specialties   DAIRY - ENTERTAINING",
-"title": "Chris' Red Capsicum & Cashew Dip & Spread 200g",
 "unit_price": "$2.25 / 100G",
 "was_price": 9.0
 },
@@ -4342,6 +4314,20 @@
 "unit_price": "$2.92 / 100ML",
 "was_price": 35.0
 },
+"herbal essences bio renew shampoo strawberry mint 600ml": {
+"category": "health_vitamins",
+"discount_desc": "2 for $23.00",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/202587.jpg",
+"price": 23.0,
+"price_display": "2 for $23.00",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/202587/herbal-essences-bio-renew-shampoo-strawberry-mint",
+"save_amount": 12.0,
+"store": "Woolworths",
+"store_category": "Personal Care     Hair Care   TOILETRIES",
+"title": "Herbal Essences Bio Renew Shampoo Strawberry Mint 600mL",
+"unit_price": "$2.92 / 100ML",
+"was_price": 35.0
+},
 "herbal essences bio renew white strawberry & mint clean conditioner 400ml": {
 "category": "health_vitamins",
 "discount_desc": "2 for $17.00",
@@ -4468,19 +4454,19 @@
 "unit_price": "$2.92 / 100ML",
 "was_price": 35.0
 },
-"herbal essences calm frizz lavender shampoo 400ml": {
+"herbal essences calm frizz lavender shampoo 600ml": {
 "category": "health_vitamins",
-"discount_desc": "2 for $17.00",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/6064953.jpg",
-"price": 17.0,
-"price_display": "2 for $17.00",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/6064953/herbal-essences-calm-frizz-lavender-shampoo",
-"save_amount": 8.0,
+"discount_desc": "2 for $23.00",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/6064915.jpg",
+"price": 23.0,
+"price_display": "2 for $23.00",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/6064915/herbal-essences-calm-frizz-lavender-shampoo",
+"save_amount": 12.0,
 "store": "Woolworths",
 "store_category": "Personal Care     Hair Care   TOILETRIES",
-"title": "Herbal Essences Calm Frizz Lavender Shampoo 400mL",
-"unit_price": "$3.13 / 100ML",
-"was_price": 25.0
+"title": "Herbal Essences Calm Frizz Lavender Shampoo 600mL",
+"unit_price": "$2.92 / 100ML",
+"was_price": 35.0
 },
 "herbal essences deep treatment hydrate mask aloe & coconut milk 300ml": {
 "category": "health_vitamins",
@@ -5280,6 +5266,20 @@
 "unit_price": "$3 / 100G",
 "was_price": 9.0
 },
+"macro free range lean pork mince 500g": {
+"category": "meat",
+"discount_desc": "2 for $15.00",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/666554.jpg",
+"price": 15.0,
+"price_display": "2 for $15.00",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/666554/macro-free-range-lean-pork-mince",
+"save_amount": 2.0,
+"store": "Woolworths",
+"store_category": "Poultry, Meat & Seafood     Meat   MEAT CONVENIENCE",
+"title": "Macro Free Range Lean Pork Mince 500g",
+"unit_price": "$17 / 1KG",
+"was_price": 17.0
+},
 "maggi bolognese with tomato & herbs 26g": {
 "category": "pantry",
 "discount_desc": "3 for $4.95",
@@ -5756,20 +5756,6 @@
 "unit_price": "$0.92 / 10G",
 "was_price": 7.0
 },
-"masterfoods all purpose pepper seasoning 50g": {
-"category": "pantry",
-"discount_desc": "2 for $6.00",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/355478.jpg",
-"price": 6.0,
-"price_display": "2 for $6.00",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/355478/masterfoods-all-purpose-pepper-seasoning",
-"save_amount": 1.0,
-"store": "Woolworths",
-"store_category": "Pantry     Herbs & Spices   COOKING NEEDS",
-"title": "MasterFoods All Purpose Pepper Seasoning 50g",
-"unit_price": "$0.7 / 10G",
-"was_price": 7.0
-},
 "masterfoods all purpose seasoning 65g": {
 "category": "pantry",
 "discount_desc": "2 for $6.00",
@@ -5908,20 +5894,6 @@
 "store_category": "Pantry     Herbs & Spices   COOKING NEEDS",
 "title": "MasterFoods Cafe Style Everything Eggs Spice Blend 30g",
 "unit_price": "$1.17 / 10G",
-"was_price": 7.0
-},
-"masterfoods cajun seasoning 35g": {
-"category": "pantry",
-"discount_desc": "2 for $6.00",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/044765.jpg",
-"price": 6.0,
-"price_display": "2 for $6.00",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/44765/masterfoods-cajun-seasoning",
-"save_amount": 1.0,
-"store": "Woolworths",
-"store_category": "Pantry     Herbs & Spices   COOKING NEEDS",
-"title": "MasterFoods Cajun Seasoning 35g",
-"unit_price": "$1 / 10G",
 "was_price": 7.0
 },
 "masterfoods carbonara recipe base 170g": {
@@ -6257,20 +6229,6 @@
 "store": "Woolworths",
 "store_category": "Pantry     Herbs & Spices   COOKING NEEDS",
 "title": "MasterFoods Dill Leaf Tips 10g",
-"unit_price": "$3.5 / 10G",
-"was_price": 7.0
-},
-"masterfoods dried italian herbs 10g": {
-"category": "pantry",
-"discount_desc": "2 for $6.00",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/092156.jpg",
-"price": 6.0,
-"price_display": "2 for $6.00",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/92156/masterfoods-dried-italian-herbs",
-"save_amount": 1.0,
-"store": "Woolworths",
-"store_category": "Pantry     Herbs & Spices   COOKING NEEDS",
-"title": "MasterFoods Dried Italian Herbs 10g",
 "unit_price": "$3.5 / 10G",
 "was_price": 7.0
 },
@@ -6693,20 +6651,6 @@
 "title": "MasterFoods Mild Chicken Curry Slow Cook Sauce 490g",
 "unit_price": "$1 / 100G",
 "was_price": 9.8
-},
-"masterfoods mixed herb blend 13g": {
-"category": "pantry",
-"discount_desc": "2 for $6.00",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/6010628.jpg",
-"price": 6.0,
-"price_display": "2 for $6.00",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/6010628/masterfoods-mixed-herb-blend",
-"save_amount": 1.0,
-"store": "Woolworths",
-"store_category": "Pantry     Herbs & Spices   COOKING NEEDS",
-"title": "MasterFoods Mixed Herb Blend 13g",
-"unit_price": "$2.69 / 10G",
-"was_price": 7.0
 },
 "masterfoods mixed spice 30g": {
 "category": "pantry",
@@ -7459,7 +7403,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/808121/mersey-valley-classic-cheddar-cheese-block",
 "save_amount": 2.1,
 "store": "Woolworths",
-"store_category": "Deli , Dairy, Eggs & Fridge     Deli Specialties , Cheese   CHEESE ENTERTAINING",
+"store_category": "Deli , Dairy, Eggs & Fridge     Cheese , Deli Specialties   CHEESE ENTERTAINING",
 "title": "Mersey Valley Classic Cheddar Cheese Block 80g",
 "unit_price": "$62.5 / 1KG",
 "was_price": 15.0
@@ -7473,7 +7417,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/808130/mersey-valley-pickled-onion-cheddar-cheese-block",
 "save_amount": 2.1,
 "store": "Woolworths",
-"store_category": "Deli , Dairy, Eggs & Fridge     Deli Specialties , Cheese   CHEESE ENTERTAINING",
+"store_category": "Deli , Dairy, Eggs & Fridge     Cheese , Deli Specialties   CHEESE ENTERTAINING",
 "title": "Mersey Valley Pickled Onion Cheddar Cheese Block 80g",
 "unit_price": "$62.5 / 1KG",
 "was_price": 15.0
@@ -7935,7 +7879,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/238284/moondarra-honey-fig-macadamia-soft-cheese",
 "save_amount": 1.4,
 "store": "Woolworths",
-"store_category": "Deli , Dairy, Eggs & Fridge     Deli Specialties , Cheese   CHEESE ENTERTAINING",
+"store_category": "Deli , Dairy, Eggs & Fridge     Cheese , Deli Specialties   CHEESE ENTERTAINING",
 "title": "Moondarra Honey Fig Macadamia Soft Cheese 120g",
 "unit_price": "$35 / 1KG",
 "was_price": 8.4
@@ -8290,20 +8234,6 @@
 "unit_price": "$5.4 / 100G",
 "was_price": 5.4
 },
-"nobby's pre-peeled peanuts party bag salted 375g": {
-"category": "snacks",
-"discount_desc": "2 for $6.50",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/095889.jpg",
-"price": 6.5,
-"price_display": "2 for $6.50",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/95889/nobby-s-pre-peeled-peanuts-party-bag-salted",
-"save_amount": 1.5,
-"store": "Woolworths",
-"store_category": "Lunch Box , Snacks & Confectionery     Healthier Lunch Box , Snacks   SNACKS",
-"title": "Nobby's Pre-Peeled Peanuts Party Bag Salted 375g",
-"unit_price": "$10.67 / 1KG",
-"was_price": 8.0
-},
 "nobby's salted beer nuts 375g": {
 "category": "liquor",
 "discount_desc": "2 for $6.50",
@@ -8495,7 +8425,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/780071/obela-hommus-to-go-classic-sakata-crackers",
 "save_amount": 1.5,
 "store": "Woolworths",
-"store_category": "Dairy, Eggs & Fridge , Deli , Back to School , Lunch Box     High Protein , Dips & Pate , Deli Specialties , Snacks , Snacks   DAIRY - ENTERTAINING",
+"store_category": "Dairy, Eggs & Fridge , Deli , Back to School , Lunch Box     High Protein , Dips & Pate , Snacks , Snacks , Deli Specialties   DAIRY - ENTERTAINING",
 "title": "Obela Hommus To Go Classic & Sakata Crackers 125g",
 "unit_price": "$3.2 / 100G",
 "was_price": 8.0
@@ -9116,19 +9046,19 @@
 "unit_price": "$3.5 / 100ML",
 "was_price": 42.0
 },
-"pantene miracles biotin moisture renewal silicone-free shampoo 375ml": {
+"pantene miracles biotin moisture renewal silicone-free shampoo 650ml": {
 "category": "health_vitamins",
-"discount_desc": "2 for $17.00",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/571593.jpg",
-"price": 17.0,
-"price_display": "2 for $17.00",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/571593/pantene-miracles-biotin-moisture-renewal-silicone-free-shampoo",
-"save_amount": 9.0,
+"discount_desc": "2 for $25.00",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/574475.jpg",
+"price": 25.0,
+"price_display": "2 for $25.00",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/574475/pantene-miracles-biotin-moisture-renewal-silicone-free-shampoo",
+"save_amount": 17.0,
 "store": "Woolworths",
 "store_category": "Personal Care     Hair Care   TOILETRIES",
-"title": "Pantene Miracles Biotin Moisture Renewal Silicone-Free Shampoo 375mL",
-"unit_price": "$3.47 / 100ML",
-"was_price": 26.0
+"title": "Pantene Miracles Biotin Moisture Renewal Silicone-Free Shampoo 650mL",
+"unit_price": "$3.23 / 100ML",
+"was_price": 42.0
 },
 "pantene miracles collagen repair & protect conditioner 350ml": {
 "category": "health_vitamins",
@@ -10250,20 +10180,6 @@
 "unit_price": "$12.8 / 1L",
 "was_price": 6.4
 },
-"red bull energy drink zero 250ml": {
-"category": "drinks",
-"discount_desc": "2 for $5.70",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/766988.jpg",
-"price": 5.7,
-"price_display": "2 for $5.70",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/766988/red-bull-energy-drink-zero",
-"save_amount": 0.7,
-"store": "Woolworths",
-"store_category": "Drinks     Sports & Energy Drinks   LIFESTYLE/WATER NON CARBONATED",
-"title": "Red Bull Energy Drink Zero 250mL",
-"unit_price": "$12.8 / 1L",
-"was_price": 6.4
-},
 "red bull lilac sugar free energy drink grapefruit & blossom can 250ml": {
 "category": "drinks",
 "discount_desc": "2 for $5.70",
@@ -10768,6 +10684,20 @@
 "unit_price": "$4 / 100G",
 "was_price": 4.8
 },
+"shan seasoning mix special bombay biryani 60g": {
+"category": "pantry",
+"discount_desc": "2 for $3.00",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/437355.jpg",
+"price": 3.0,
+"price_display": "2 for $3.00",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/437355/shan-seasoning-mix-special-bombay-biryani",
+"save_amount": 1.8,
+"store": "Woolworths",
+"store_category": "Pantry , International Foods     International Foods , Indian & South Asian   ETHNIC / GOURMET FOOD",
+"title": "Shan Seasoning Mix Special Bombay Biryani 60g",
+"unit_price": "$4 / 100G",
+"was_price": 4.8
+},
 "shan seasoning mix tandoori masala 50g": {
 "category": "pantry",
 "discount_desc": "2 for $3.00",
@@ -11127,7 +11057,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/178960/south-cape-cream-cheese-apricot-almond-with-sweet-papaya",
 "save_amount": 2.1,
 "store": "Woolworths",
-"store_category": "Deli , Dairy, Eggs & Fridge     Deli Specialties , Cheese   CHEESE ENTERTAINING",
+"store_category": "Deli , Dairy, Eggs & Fridge     Cheese , Deli Specialties   CHEESE ENTERTAINING",
 "title": "South Cape Cream Cheese Apricot & Almond With Sweet Papaya 80g",
 "unit_price": "$62.5 / 1KG",
 "was_price": 15.0
@@ -11589,7 +11519,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/527275/tasmanian-heritage-camembert-cheese",
 "save_amount": 2.1,
 "store": "Woolworths",
-"store_category": "Deli , Dairy, Eggs & Fridge     Deli Specialties , Cheese   CHEESE ENTERTAINING",
+"store_category": "Deli , Dairy, Eggs & Fridge     Cheese , Deli Specialties   CHEESE ENTERTAINING",
 "title": "Tasmanian Heritage Camembert Cheese 80g",
 "unit_price": "$62.5 / 1KG",
 "was_price": 15.0
@@ -11617,7 +11547,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/527179/tasmanian-heritage-double-brie-cheese",
 "save_amount": 2.1,
 "store": "Woolworths",
-"store_category": "Deli , Dairy, Eggs & Fridge     Deli Specialties , Cheese   CHEESE ENTERTAINING",
+"store_category": "Deli , Dairy, Eggs & Fridge     Cheese , Deli Specialties   CHEESE ENTERTAINING",
 "title": "Tasmanian Heritage Double Brie Cheese 80g",
 "unit_price": "$62.5 / 1KG",
 "was_price": 15.0
@@ -11631,7 +11561,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/322486/tasmanian-heritage-havarti-cheese",
 "save_amount": 2.1,
 "store": "Woolworths",
-"store_category": "Deli , Dairy, Eggs & Fridge     Deli Specialties , Cheese   CHEESE ENTERTAINING",
+"store_category": "Deli , Dairy, Eggs & Fridge     Cheese , Deli Specialties   CHEESE ENTERTAINING",
 "title": "Tasmanian Heritage Havarti Cheese 80g",
 "unit_price": "$62.5 / 1KG",
 "was_price": 15.0
@@ -12532,20 +12462,6 @@
 "unit_price": "$11.82 / 1KG",
 "was_price": 13.0
 },
-"woolworths 10 pack chicken sausages 550g": {
-"category": "meat",
-"discount_desc": "2 for $12.00",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/901682.jpg",
-"price": 12.0,
-"price_display": "2 for $12.00",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/901682/woolworths-10-pack-chicken-sausages",
-"save_amount": 1.0,
-"store": "Woolworths",
-"store_category": "Dinner , Poultry, Meat & Seafood     Meat , Ready to Cook Meats , BBQ Meat   MEAT CONVENIENCE",
-"title": "Woolworths 10 Pack Chicken Sausages 550g",
-"unit_price": "$11.82 / 1KG",
-"was_price": 13.0
-},
 "woolworths 10 pack herb & garlic beef sausages 550g": {
 "category": "meat",
 "discount_desc": "2 for $12.00",
@@ -12921,20 +12837,6 @@
 "store": "Woolworths",
 "store_category": "Dairy, Eggs & Fridge , Lunch Box , International Foods , Deli , Dinner     Microwave Meals , Ready to Go Meals , Sandwich Ingredients , Asian   DELI CONVENIENCE",
 "title": "Woolworths Asian Teriyaki Chicken With Jasmine Rice 350g",
-"unit_price": "$2.29 / 100G",
-"was_price": 16.0
-},
-"woolworths asian thai green chicken curry with jasmine rice 350g": {
-"category": "pantry",
-"discount_desc": "2 for $15.00",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/504792.jpg",
-"price": 15.0,
-"price_display": "2 for $15.00",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/504792/woolworths-asian-thai-green-chicken-curry-with-jasmine-rice",
-"save_amount": 1.0,
-"store": "Woolworths",
-"store_category": "Lunch Box , Dairy, Eggs & Fridge , International Foods , Deli , Dinner     Microwave Meals , Ready to Go Meals , Sandwich Ingredients , Asian   DELI CONVENIENCE",
-"title": "Woolworths Asian Thai Green Chicken Curry With Jasmine Rice 350g",
 "unit_price": "$2.29 / 100G",
 "was_price": 16.0
 },
@@ -14843,7 +14745,7 @@
 "was_price": 4.0
 }
 },
-"last_full": 1791948333.2684026
+"last_full": 1791992189.1228213
 },
 "everyday-low-price": {
 "items": {
@@ -16373,6 +16275,20 @@
 "unit_price": "$0.15 / 1EA",
 "was_price": 0.0
 },
+"armada paper side plates white 20 pack": {
+"category": "household",
+"discount_desc": "Everyday Low Price",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/806042.jpg",
+"price": 1.5,
+"price_display": "$1.50 ea",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/806042/armada-paper-side-plates-white",
+"save_amount": 0.0,
+"store": "Woolworths",
+"store_category": "Home & Lifestyle     Party Supplies   DOMESTICWARE",
+"title": "Armada Paper Side Plates White 20 pack",
+"unit_price": "$0.08 / 1EA",
+"was_price": 0.0
+},
 "armada paper straws striped 100 pack": {
 "category": "household",
 "discount_desc": "Everyday Low Price",
@@ -16917,20 +16833,6 @@
 "store_category": "Health & Wellness     First Aid & Medicinal   HEALTH CARE",
 "title": "Band-Aid Tough Strips Extra Large Fabric Bandages 10 pack",
 "unit_price": "$0.38 / 1EA",
-"was_price": 0.0
-},
-"band-aid tough strips regular 20 pack": {
-"category": "health_vitamins",
-"discount_desc": "Everyday Low Price",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/225621.jpg",
-"price": 3.5,
-"price_display": "$3.50 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/225621/band-aid-tough-strips-regular",
-"save_amount": 0.0,
-"store": "Woolworths",
-"store_category": "Health & Wellness     First Aid & Medicinal   HEALTH CARE",
-"title": "Band-Aid Tough Strips Regular 20 pack",
-"unit_price": "$0.18 / 1EA",
 "was_price": 0.0
 },
 "bare essentials borax 500g": {
@@ -17703,6 +17605,20 @@
 "unit_price": "$60 / 100G",
 "was_price": 0.0
 },
+"betadine antiseptic topical solution 100ml": {
+"category": "health_vitamins",
+"discount_desc": "Everyday Low Price",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/087408.jpg",
+"price": 25.0,
+"price_display": "$25.00 ea",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/87408/betadine-antiseptic-topical-solution",
+"save_amount": 0.0,
+"store": "Woolworths",
+"store_category": "Health & Wellness     First Aid & Medicinal   None",
+"title": "Betadine Antiseptic Topical Solution 100mL",
+"unit_price": "$25 / 100ML",
+"was_price": 0.0
+},
 "betadine antiseptic topical solution liquid 15ml": {
 "category": "health_vitamins",
 "discount_desc": "Everyday Low Price",
@@ -18051,6 +17967,20 @@
 "store_category": "Freezer     Frozen Seafood   FREEZER - FISH",
 "title": "Blueline Seafood Classic Crumbed Fish Fillets 1kg",
 "unit_price": "$8.5 / 1KG",
+"was_price": 0.0
+},
+"blueline seafood classic crumbed prawns 360g": {
+"category": "frozen",
+"discount_desc": "Everyday Low Price",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/372617.jpg",
+"price": 6.4,
+"price_display": "$6.40 ea",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/372617/blueline-seafood-classic-crumbed-prawns",
+"save_amount": 0.0,
+"store": "Woolworths",
+"store_category": "Freezer     Frozen Seafood   FREEZER - FISH",
+"title": "Blueline Seafood Classic Crumbed Prawns 360g",
+"unit_price": "$17.78 / 1KG",
 "was_price": 0.0
 },
 "blueline seafood classic crumbed whiting fillets 1kg": {
@@ -18767,20 +18697,6 @@
 "unit_price": "$2.25 / 100G",
 "was_price": 0.0
 },
-"bulla rainbow ice cream cake 1.5l": {
-"category": "frozen",
-"discount_desc": "Everyday Low Price",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/858754.jpg",
-"price": 16.0,
-"price_display": "$16.00 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/858754/bulla-rainbow-ice-cream-cake",
-"save_amount": 0.0,
-"store": "Woolworths",
-"store_category": "Dinner , Freezer     Ice Cream , Frozen Desserts   FREEZER - DESSERTS & PASTRY",
-"title": "Bulla Rainbow Ice Cream Cake 1.5L",
-"unit_price": "$1.07 / 100ML",
-"was_price": 0.0
-},
 "bulla sour cream 400ml": {
 "category": "frozen",
 "discount_desc": "Everyday Low Price",
@@ -19131,6 +19047,20 @@
 "unit_price": "$1.78 / 100G",
 "was_price": 0.0
 },
+"cadbury freddo & caramello milk chocolate variety 234g 18 pack": {
+"category": "snacks",
+"discount_desc": "Everyday Low Price",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/180111.jpg",
+"price": 7.5,
+"price_display": "$7.50 ea",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/180111/cadbury-freddo-caramello-milk-chocolate-variety",
+"save_amount": 0.0,
+"store": "Woolworths",
+"store_category": "Halloween , Container Bonus Credits , Snacks & Confectionery     Buckets & Treats , Confectionery   CONFECTIONERY",
+"title": "Cadbury Freddo & Caramello Milk Chocolate Variety 234g 18 pack",
+"unit_price": "$3.21 / 100G",
+"was_price": 0.0
+},
 "cadbury freddo cake 1.5l": {
 "category": "frozen",
 "discount_desc": "Everyday Low Price",
@@ -19157,6 +19087,20 @@
 "store_category": "Halloween , Container Bonus Credits , Lunch Box , Snacks & Confectionery     Buckets & Treats , Snacks , Confectionery   CONFECTIONERY",
 "title": "Cadbury Furry Friends Chocolate Bar Assorted 20g",
 "unit_price": "$5 / 100G",
+"was_price": 0.0
+},
+"cadbury old gold jamaica rum n raisin dark chocolate block large 315g": {
+"category": "snacks",
+"discount_desc": "Everyday Low Price",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/153341.jpg",
+"price": 8.5,
+"price_display": "$8.50 ea",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/153341/cadbury-old-gold-jamaica-rum-n-raisin-dark-chocolate-block-large",
+"save_amount": 0.0,
+"store": "Woolworths",
+"store_category": "Container Bonus Credits , Snacks & Confectionery     Confectionery   CONFECTIONERY",
+"title": "Cadbury Old Gold Jamaica Rum N Raisin Dark Chocolate Block Large 315g",
+"unit_price": "$2.7 / 100G",
 "was_price": 0.0
 },
 "cadbury pascall eclairs chocolate lollies 300g": {
@@ -19647,6 +19591,20 @@
 "store_category": "Lunch Box , Pantry , Back to School , Dinner     Breakfast & Spreads , Breakfast   BREAKFAST FOODS",
 "title": "Carman's Protein Rich Granola Almond & Hazelnut 800g",
 "unit_price": "$1.56 / 100G",
+"was_price": 0.0
+},
+"carman's toasted muesli classic fruit & nut 1.5kg": {
+"category": "pantry",
+"discount_desc": "Everyday Low Price",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/342557.jpg",
+"price": 16.0,
+"price_display": "$16.00 ea",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/342557/carman-s-toasted-muesli-classic-fruit-nut",
+"save_amount": 0.0,
+"store": "Woolworths",
+"store_category": "Lunch Box , Pantry , Back to School     Breakfast & Spreads , Breakfast   BREAKFAST FOODS",
+"title": "Carman's Toasted Muesli Classic Fruit & Nut 1.5kg",
+"unit_price": "$1.07 / 100G",
 "was_price": 0.0
 },
 "carman's toasted muesli original fruit free 1.5kg": {
@@ -21329,18 +21287,18 @@
 "unit_price": "$0.38 / 100ML",
 "was_price": 0.0
 },
-"cornwell's white vinegar white 375ml": {
+"cornwell's white vinegar white 2l": {
 "category": "pantry",
 "discount_desc": "Everyday Low Price",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/091367.jpg",
-"price": 2.8,
-"price_display": "$2.80 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/91367/cornwell-s-white-vinegar-white",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/025671.jpg",
+"price": 5.0,
+"price_display": "$5.00 ea",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/25671/cornwell-s-white-vinegar-white",
 "save_amount": 0.0,
 "store": "Woolworths",
 "store_category": "Pantry     Condiments , Oil & Vinegar , Cooking Sauces & Recipe Bases   CONDIMENTS",
-"title": "Cornwell's White Vinegar White 375mL",
-"unit_price": "$0.75 / 100ML",
+"title": "Cornwell's White Vinegar White 2L",
+"unit_price": "$0.25 / 100ML",
 "was_price": 0.0
 },
 "cottee's apricot jam 375g": {
@@ -23917,6 +23875,20 @@
 "store_category": "Snacks & Confectionery     Confectionery   CONFECTIONERY",
 "title": "Frankly Milk Chocolate Jelly & Popping Candy Block 160g",
 "unit_price": "$2.5 / 100G",
+"was_price": 0.0
+},
+"frantelle australian spring water bottles 600ml x 24 pack": {
+"category": "drinks",
+"discount_desc": "Everyday Low Price",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/219582.jpg",
+"price": 13.0,
+"price_display": "$13.00 ea",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/219582/frantelle-australian-spring-water-bottles",
+"save_amount": 0.0,
+"store": "Woolworths",
+"store_category": "Lunch Box , Drinks , Back to School     Drinks , Water , Drinks   LIFESTYLE/WATER NON CARBONATED",
+"title": "Frantelle Australian Spring Water Bottles 600mL x 24 pack",
+"unit_price": "$0.9 / 1L",
 "was_price": 0.0
 },
 "fresh & crisp resealable storage bags medium 10 pack": {
@@ -26705,18 +26677,18 @@
 "unit_price": "$0.85 / 100G",
 "was_price": 0.0
 },
-"just caught classic crumbed calamari rings 1kg": {
+"just caught classic crumbed calamari rings 400g": {
 "category": "frozen",
 "discount_desc": "Everyday Low Price",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/6080224.jpg",
-"price": 14.0,
-"price_display": "$14.00 kg",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/6080224/just-caught-classic-crumbed-calamari-rings",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/6080343.jpg",
+"price": 6.5,
+"price_display": "$6.50 ea",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/6080343/just-caught-classic-crumbed-calamari-rings",
 "save_amount": 0.0,
 "store": "Woolworths",
 "store_category": "Freezer     Frozen Seafood   FREEZER - FISH",
-"title": "Just Caught Classic Crumbed Calamari Rings 1kg",
-"unit_price": "$14 / 1KG",
+"title": "Just Caught Classic Crumbed Calamari Rings 400g",
+"unit_price": "$16.25 / 1KG",
 "was_price": 0.0
 },
 "just caught salt & pepper squid 300g": {
@@ -29757,6 +29729,20 @@
 "unit_price": "$1.32 / 100G",
 "was_price": 0.0
 },
+"lucky kitchen vegie spring rolls 270g": {
+"category": "frozen",
+"discount_desc": "Everyday Low Price",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/6029688.jpg",
+"price": 2.0,
+"price_display": "$2.00 ea",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/6029688/lucky-kitchen-vegie-spring-rolls",
+"save_amount": 0.0,
+"store": "Woolworths",
+"store_category": "Freezer , International Foods     Frozen Party Food   FROZEN MEALS",
+"title": "Lucky Kitchen Vegie Spring Rolls 270g",
+"unit_price": "$0.74 / 100G",
+"was_price": 0.0
+},
 "lux body wash evenly gorgeous 400ml": {
 "category": "health_vitamins",
 "discount_desc": "Everyday Low Price",
@@ -30525,20 +30511,6 @@
 "store_category": "Snacks & Confectionery     Confectionery   CONFECTIONERY",
 "title": "Maltesers Milk Chocolate Snack & Share Party Bag 480g",
 "unit_price": "$2.71 / 100G",
-"was_price": 0.0
-},
-"maltesers milk chocolate snack party bag 280g": {
-"category": "snacks",
-"discount_desc": "Everyday Low Price",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/105115.jpg",
-"price": 8.0,
-"price_display": "$8.00 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/105115/maltesers-milk-chocolate-snack-party-bag",
-"save_amount": 0.0,
-"store": "Woolworths",
-"store_category": "Snacks & Confectionery     Confectionery   CONFECTIONERY",
-"title": "Maltesers Milk Chocolate Snack Party Bag 280g",
-"unit_price": "$2.86 / 100G",
 "was_price": 0.0
 },
 "manicare nail grooming set manicure & pedicure 4 pack": {
@@ -32851,18 +32823,18 @@
 "unit_price": "$23.26 / 1KG",
 "was_price": 0.0
 },
-"morning fresh advanced clean dishwasher tablets lemon 94 pack": {
+"morning fresh advanced clean dishwasher tablets lemon 20 pack": {
 "category": "household",
 "discount_desc": "Everyday Low Price",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/6064196.jpg",
-"price": 29.0,
-"price_display": "$29.00 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/6064196/morning-fresh-advanced-clean-dishwasher-tablets-lemon",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/6063979.jpg",
+"price": 9.5,
+"price_display": "$9.50 ea",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/6063979/morning-fresh-advanced-clean-dishwasher-tablets-lemon",
 "save_amount": 0.0,
 "store": "Woolworths",
 "store_category": "Cleaning & Maintenance     Kitchen   CLEANSING",
-"title": "Morning Fresh Advanced Clean Dishwasher Tablets Lemon 94 pack",
-"unit_price": "$0.31 / 1EA",
+"title": "Morning Fresh Advanced Clean Dishwasher Tablets Lemon 20 pack",
+"unit_price": "$0.48 / 1EA",
 "was_price": 0.0
 },
 "morning sun apricot & almond breakfast cereal 650g": {
@@ -34223,20 +34195,6 @@
 "unit_price": "$2.35 / 100G",
 "was_price": 0.0
 },
-"nestle soothers butter menthol throat lozenge 3 pack": {
-"category": "dairy_eggs",
-"discount_desc": "Everyday Low Price",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/002867.jpg",
-"price": 6.5,
-"price_display": "$6.50 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/2867/nestle-soothers-butter-menthol-throat-lozenge",
-"save_amount": 0.0,
-"store": "Woolworths",
-"store_category": "Snacks & Confectionery     Confectionery , Gum, Mints & Lozenges   CONFECTIONERY",
-"title": "Nestle Soothers Butter Menthol Throat Lozenge 3 pack",
-"unit_price": "$0.22 / 1EA",
-"was_price": 0.0
-},
 "nestle soothers throat lozenge eucalyptus & menthol 3 pack": {
 "category": "health_vitamins",
 "discount_desc": "Everyday Low Price",
@@ -35047,6 +35005,20 @@
 "store_category": "Bakery     Packaged Bread & Bakery   PROPRIETARY BAKERY",
 "title": "Old Time Bakery Gluten Free Pizza Bases 2 pack",
 "unit_price": "$2.17 / 100G",
+"was_price": 0.0
+},
+"olina's bakehouse entertainers selection artisan & wafer crackers 300g": {
+"category": "snacks",
+"discount_desc": "Everyday Low Price",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/6037182.jpg",
+"price": 9.5,
+"price_display": "$9.50 ea",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/6037182/olina-s-bakehouse-entertainers-selection-artisan-wafer-crackers",
+"save_amount": 0.0,
+"store": "Woolworths",
+"store_category": "Snacks & Confectionery     Biscuits & Crackers   BISCUITS",
+"title": "Olina's Bakehouse Entertainers Selection Artisan & Wafer Crackers 300g",
+"unit_price": "$3.17 / 100G",
 "was_price": 0.0
 },
 "olina's bakehouse gluten free wafer crackers original 90g": {
@@ -38325,6 +38297,20 @@
 "unit_price": "$2.62 / 1L",
 "was_price": 0.0
 },
+"pepsi soft drink cans 375ml x 30 pack": {
+"category": "drinks",
+"discount_desc": "Everyday Low Price",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/6033016.jpg",
+"price": 29.5,
+"price_display": "$29.50 ea",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/6033016/pepsi-soft-drink-cans",
+"save_amount": 0.0,
+"store": "Woolworths",
+"store_category": "Drinks , Container Bonus Credits     Soft Drinks , Drinks   CARBONATED SOFT DRINKS",
+"title": "Pepsi Soft Drink Cans 375mL x 30 pack",
+"unit_price": "$2.62 / 1L",
+"was_price": 0.0
+},
 "perfect italiano parmesan cheese grated 250g": {
 "category": "dairy_eggs",
 "discount_desc": "Everyday Low Price",
@@ -39076,7 +39062,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/973392/primo-corned-beef-silverside",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Poultry, Meat & Seafood , Deli     Deli Meats , Meat , Ham, Bacon & Smallgoods   DELI CONVENIENCE",
+"store_category": "Poultry, Meat & Seafood , Deli     Meat , Ham, Bacon & Smallgoods , Deli Meats   DELI CONVENIENCE",
 "title": "Primo Corned Beef Silverside 500g - 1.1kg",
 "unit_price": "$25.5 / 1KG",
 "was_price": 0.0
@@ -39137,18 +39123,18 @@
 "unit_price": "$5.93 / 1L",
 "was_price": 0.0
 },
-"pump spring water bottle 1.25l": {
+"pump spring water bottle 750ml": {
 "category": "household",
 "discount_desc": "Everyday Low Price",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/148409.jpg",
-"price": 3.45,
-"price_display": "$3.45 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/148409/pump-spring-water-bottle",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/153622.jpg",
+"price": 3.4,
+"price_display": "$3.40 ea",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/153622/pump-spring-water-bottle",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Lunch Box , Drinks , Back to School     Drinks , Water , Drinks   LIFESTYLE/WATER NON CARBONATED",
-"title": "Pump Spring Water Bottle 1.25L",
-"unit_price": "$2.76 / 1L",
+"store_category": "Lunch Box , Dairy, Eggs & Fridge , Drinks     Healthier Lunch Box , Water , Chilled Juices & Drinks , Chilled Drinks   CARBONATED SOFT DRINKS",
+"title": "Pump Spring Water Bottle 750mL",
+"unit_price": "$4.53 / 1L",
 "was_price": 0.0
 },
 "pureau pure water 2l": {
@@ -39473,18 +39459,18 @@
 "unit_price": "$1.43 / 100G",
 "was_price": 0.0
 },
-"raid max cockroach baits 12 pack": {
+"raid max cockroach baits 6 pack": {
 "category": "household",
 "discount_desc": "Everyday Low Price",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/729792.jpg",
-"price": 11.8,
-"price_display": "$11.80 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/729792/raid-max-cockroach-baits",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/756037.jpg",
+"price": 7.0,
+"price_display": "$7.00 ea",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/756037/raid-max-cockroach-baits",
 "save_amount": 0.0,
 "store": "Woolworths",
 "store_category": "Cleaning & Maintenance     Pest Control   CLEANSING",
-"title": "Raid Max Cockroach Baits 12 pack",
-"unit_price": "$0.98 / 1EA",
+"title": "Raid Max Cockroach Baits 6 pack",
+"unit_price": "$1.17 / 1EA",
 "was_price": 0.0
 },
 "raid multi insect killer spray odourless 350g": {
@@ -39977,18 +39963,18 @@
 "unit_price": "$24 / 1KG",
 "was_price": 0.0
 },
-"safcol red salmon 415g": {
+"safcol red salmon 210g": {
 "category": "pantry",
 "discount_desc": "Everyday Low Price",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/333413.jpg",
-"price": 12.6,
-"price_display": "$12.60 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/333413/safcol-red-salmon",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/333350.jpg",
+"price": 7.9,
+"price_display": "$7.90 ea",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/333350/safcol-red-salmon",
 "save_amount": 0.0,
 "store": "Woolworths",
 "store_category": "Back to School , Lunch Box , Pantry     Sandwich Ingredients , Sandwich Ingredients , Canned Food & Instant Meals   CANNED FISH",
-"title": "Safcol Red Salmon 415g",
-"unit_price": "$30.36 / 1KG",
+"title": "Safcol Red Salmon 210g",
+"unit_price": "$37.62 / 1KG",
 "was_price": 0.0
 },
 "safcol salmon in spring water 95g": {
@@ -42915,6 +42901,20 @@
 "store_category": "Personal Care     Period Care , Continence Care   TOILETRIES",
 "title": "TENA Incontinence Pads Extra Standard Length 24 pack",
 "unit_price": "$0.46 / 1EA",
+"was_price": 0.0
+},
+"tena incontinence pads instadry standard length 20 pack": {
+"category": "health_vitamins",
+"discount_desc": "Everyday Low Price",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/226189.jpg",
+"price": 11.0,
+"price_display": "$11.00 ea",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/226189/tena-incontinence-pads-instadry-standard-length",
+"save_amount": 0.0,
+"store": "Woolworths",
+"store_category": "Personal Care     Continence Care , Period Care   TOILETRIES",
+"title": "TENA Incontinence Pads Instadry Standard Length 20 pack",
+"unit_price": "$0.55 / 1EA",
 "was_price": 0.0
 },
 "tena incontinence pads maxi night extra long length 14 pack": {
@@ -46300,7 +46300,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/240587/willow-farm-snacking-hommus-dip",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Dairy, Eggs & Fridge , Deli , Back to School , Lunch Box     Dips & Pate , Deli Specialties , Snacks , Snacks   DAIRY - ENTERTAINING",
+"store_category": "Dairy, Eggs & Fridge , Deli , Back to School , Lunch Box     Dips & Pate , Snacks , Snacks , Deli Specialties   DAIRY - ENTERTAINING",
 "title": "Willow Farm Snacking Hommus Dip 3 pack",
 "unit_price": "$1.08 / 100G",
 "was_price": 0.0
@@ -46879,18 +46879,18 @@
 "unit_price": "$4.63 / 1KG",
 "was_price": 0.0
 },
-"woolworths baby peppers with cream cheese & fetta 280g": {
+"woolworths banana yoghurt pouch banana 70g": {
 "category": "dairy_eggs",
 "discount_desc": "Everyday Low Price",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/290355.jpg",
-"price": 7.2,
-"price_display": "$7.20 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/290355/woolworths-baby-peppers-with-cream-cheese-fetta",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/6010720.jpg",
+"price": 0.75,
+"price_display": "$0.75 ea",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/6010720/woolworths-banana-yoghurt-pouch-banana",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Deli     Deli Specialties   DELI CONVENIENCE",
-"title": "Woolworths Baby Peppers With Cream Cheese & Fetta 280g",
-"unit_price": "$25.71 / 1KG",
+"store_category": "Dinner , Dairy, Eggs & Fridge , Back to School , Lunch Box     Lunch Accessories , Yoghurt , Snacks , Snacks   DAIRY - YOGHURT",
+"title": "Woolworths Banana Yoghurt Pouch Banana 70g",
+"unit_price": "$1.07 / 100G",
 "was_price": 0.0
 },
 "woolworths barbecue sauce squeeze 500ml": {
@@ -47143,20 +47143,6 @@
 "store_category": "Freezer     Latest in Ice Cream , Ice Cream   ICE CREAM",
 "title": "Woolworths Boysenberry Classic Cones 4 pack",
 "unit_price": "$0.78 / 100ML",
-"was_price": 0.0
-},
-"woolworths brazil nut kernels 400g": {
-"category": "snacks",
-"discount_desc": "Everyday Low Price",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/613706.jpg",
-"price": 16.0,
-"price_display": "$16.00 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/613706/woolworths-brazil-nut-kernels",
-"save_amount": 0.0,
-"store": "Woolworths",
-"store_category": "Pantry , Health & Wellness , Snacks & Confectionery     Health Foods , Snacks   VEG / FRESHCUTS / HARD PRODUCE",
-"title": "Woolworths Brazil Nut Kernels 400g",
-"unit_price": "$40 / 1KG",
 "was_price": 0.0
 },
 "woolworths bread & butter pickles 500g": {
@@ -47675,6 +47661,20 @@
 "store_category": "Freezer     Latest in Ice Cream , Ice Cream   ICE CREAM",
 "title": "Woolworths Chocolate Classic Cones 475mL 4 pack",
 "unit_price": "$0.78 / 100ML",
+"was_price": 0.0
+},
+"woolworths chocolate milk poppers 200ml x 6 pack": {
+"category": "snacks",
+"discount_desc": "Everyday Low Price",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/739730.jpg",
+"price": 4.9,
+"price_display": "$4.90 ea",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/739730/woolworths-chocolate-milk-poppers",
+"save_amount": 0.0,
+"store": "Woolworths",
+"store_category": "Lunch Box , Back to School , Drinks     Dietary Needs , Healthier Lunch Box , Drinks , Drinks , Flavoured Milk   LONGLIFE JUICE / DRINKS",
+"title": "Woolworths Chocolate Milk Poppers 200mL x 6 pack",
+"unit_price": "$4.08 / 1L",
 "was_price": 0.0
 },
 "woolworths chocolate mudcake slices 24 pack": {
@@ -48825,6 +48825,20 @@
 "unit_price": "$0.4 / 100G",
 "was_price": 0.0
 },
+"woolworths essentials ironing board cover assorted each": {
+"category": "household",
+"discount_desc": "Everyday Low Price",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/829325.jpg",
+"price": 10.0,
+"price_display": "$10.00 ea",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/829325/woolworths-essentials-ironing-board-cover-assorted",
+"save_amount": 0.0,
+"store": "Woolworths",
+"store_category": "Cleaning & Maintenance     Laundry   HOUSEHOLD CLEANING",
+"title": "Woolworths Essentials Ironing Board Cover Assorted each",
+"unit_price": "$10 / 1EA",
+"was_price": 0.0
+},
 "woolworths essentials kitchen scissors each": {
 "category": "household",
 "discount_desc": "Everyday Low Price",
@@ -49553,20 +49567,6 @@
 "unit_price": "",
 "was_price": 0.0
 },
-"woolworths evaporated milk 385ml": {
-"category": "pantry",
-"discount_desc": "Everyday Low Price",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/084764.jpg",
-"price": 2.0,
-"price_display": "$2.00 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/84764/woolworths-evaporated-milk",
-"save_amount": 0.0,
-"store": "Woolworths",
-"store_category": "Drinks , Pantry     Long Life Milk , Long Life Milk   BEVERAGES",
-"title": "Woolworths Evaporated Milk 385mL",
-"unit_price": "$5.19 / 1L",
-"was_price": 0.0
-},
 "woolworths extra tasty cheese block 1kg": {
 "category": "dairy_eggs",
 "discount_desc": "Everyday Low Price",
@@ -50279,6 +50279,20 @@
 "store_category": "Pantry     Cooking Sauces & Recipe Bases   COOKING NEEDS",
 "title": "Woolworths Gravy Traditional 120g",
 "unit_price": "$1.75 / 100G",
+"was_price": 0.0
+},
+"woolworths great start reduced sugar multigrain cereal 400g": {
+"category": "pantry",
+"discount_desc": "Everyday Low Price",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/858634.jpg",
+"price": 4.0,
+"price_display": "$4.00 ea",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/858634/woolworths-great-start-reduced-sugar-multigrain-cereal",
+"save_amount": 0.0,
+"store": "Woolworths",
+"store_category": "Lunch Box , Back to School , Pantry     Breakfast , Breakfast & Spreads   BREAKFAST FOODS",
+"title": "Woolworths Great Start Reduced Sugar Multigrain Cereal 400g",
+"unit_price": "$1 / 100G",
 "was_price": 0.0
 },
 "woolworths greek style yoghurt 2kg": {
@@ -54327,6 +54341,20 @@
 "unit_price": "$0.78 / 100G",
 "was_price": 0.0
 },
+"yopro high protein yoghurt salted caramel 700g": {
+"category": "dairy_eggs",
+"discount_desc": "Everyday Low Price",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/204716.jpg",
+"price": 8.0,
+"price_display": "$8.00 ea",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/204716/yopro-high-protein-yoghurt-salted-caramel",
+"save_amount": 0.0,
+"store": "Woolworths",
+"store_category": "Dairy, Eggs & Fridge     Yoghurt , High Protein   DAIRY - YOGHURT",
+"title": "YoPRO High Protein Yoghurt Salted Caramel 700g",
+"unit_price": "$1.14 / 100G",
+"was_price": 0.0
+},
 "yopro protein yoghurt strawberry 700g": {
 "category": "dairy_eggs",
 "discount_desc": "Everyday Low Price",
@@ -54664,7 +54692,7 @@
 "was_price": 0.0
 }
 },
-"last_full": 1791948333.2684026
+"last_full": 1791992189.1228213
 },
 "lower-shelf-price": {
 "items": {
@@ -56259,7 +56287,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/546295/d-orsogna-prosciutto",
 "save_amount": 0.8,
 "store": "Woolworths",
-"store_category": "Deli     Deli Meats , Entertaining Meats & Platters   DELI CONVENIENCE",
+"store_category": "Deli     Entertaining Meats & Platters , Deli Meats   DELI CONVENIENCE",
 "title": "D'Orsogna Prosciutto 100g",
 "unit_price": "$69 / 1KG",
 "was_price": 7.7
@@ -57146,6 +57174,20 @@
 "unit_price": "$1.33 / 100G",
 "was_price": 1.8
 },
+"felix cat food doubly delicious meat selection 85g x 24 pack": {
+"category": "pet",
+"discount_desc": "Lower Shelf Price",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/6039822.jpg",
+"price": 18.9,
+"price_display": "$18.90 ea",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/6039822/felix-cat-food-doubly-delicious-meat-selection",
+"save_amount": 2.1,
+"store": "Woolworths",
+"store_category": "Pet     Cat & Kitten   PET FOOD",
+"title": "Felix Cat Food Doubly Delicious Meat Selection 85g x 24 pack",
+"unit_price": "$0.93 / 100G",
+"was_price": 21.0
+},
 "felix gravy lover fish selection wet cat food 85g x 24 pack": {
 "category": "pet",
 "discount_desc": "Lower Shelf Price",
@@ -57185,6 +57227,20 @@
 "store": "Woolworths",
 "store_category": "Pet     Cat & Kitten   PET FOOD",
 "title": "Felix Ocean Menus In Jelly Cat Food Tuna Salmon & Sardine 85g x 24 pack",
+"unit_price": "$0.93 / 100G",
+"was_price": 21.0
+},
+"felix sensations jellies fish selection wet cat food 85g x 24 pack": {
+"category": "pet",
+"discount_desc": "Lower Shelf Price",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/239668.jpg",
+"price": 18.9,
+"price_display": "$18.90 ea",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/239668/felix-sensations-jellies-fish-selection-wet-cat-food",
+"save_amount": 2.1,
+"store": "Woolworths",
+"store_category": "Pet     Cat & Kitten   PET FOOD",
+"title": "Felix Sensations Jellies Fish Selection Wet Cat Food 85g x 24 pack",
 "unit_price": "$0.93 / 100G",
 "was_price": 21.0
 },
@@ -58177,7 +58233,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/6034852/hans-middle-bacon",
 "save_amount": 1.5,
 "store": "Woolworths",
-"store_category": "Dinner , Deli , Poultry, Meat & Seafood     Ham, Bacon & Smallgoods , Meat   DELI CONVENIENCE",
+"store_category": "Dinner , Deli , Poultry, Meat & Seafood     Meat , Ham, Bacon & Smallgoods   DELI CONVENIENCE",
 "title": "Hans Middle Bacon 1kg",
 "unit_price": "$13.5 / 1KG",
 "was_price": 15.0
@@ -58191,7 +58247,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/6034158/hans-shortcut-rindless-bacon",
 "save_amount": 1.5,
 "store": "Woolworths",
-"store_category": "Dinner , Deli , Poultry, Meat & Seafood     Ham, Bacon & Smallgoods , Meat   DELI CONVENIENCE",
+"store_category": "Dinner , Deli , Poultry, Meat & Seafood     Meat , Ham, Bacon & Smallgoods   DELI CONVENIENCE",
 "title": "Hans Shortcut Rindless Bacon 1kg",
 "unit_price": "$13.5 / 1KG",
 "was_price": 15.0
@@ -58251,20 +58307,6 @@
 "title": "Harpic Fresh Power Tropical Blossom Toilet Cleaner 700mL",
 "unit_price": "$0.5 / 100ML",
 "was_price": 7.0
-},
-"harris coffee ground smooth 200g": {
-"category": "drinks",
-"discount_desc": "Lower Shelf Price",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/092218.jpg",
-"price": 9.0,
-"price_display": "$9.00 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/92218/harris-coffee-ground-smooth",
-"save_amount": 2.0,
-"store": "Woolworths",
-"store_category": "Pantry , Drinks     Tea & Coffee , Coffee   BEVERAGES",
-"title": "Harris Coffee Ground Smooth 200g",
-"unit_price": "$4.5 / 100G",
-"was_price": 11.0
 },
 "harris coffee ground very strong 200g": {
 "category": "drinks",
@@ -60669,7 +60711,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/6033336/mayfair-cocktail-frankfurts",
 "save_amount": 0.2,
 "store": "Woolworths",
-"store_category": "Deli     Deli Meats , Sausages & Frankfurts   DELI CONVENIENCE",
+"store_category": "Deli     Sausages & Frankfurts , Deli Meats   DELI CONVENIENCE",
 "title": "Mayfair Cocktail Frankfurts 500g",
 "unit_price": "$5.6 / 1KG",
 "was_price": 3.0
@@ -60683,7 +60725,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/6033334/mayfair-thin-frankfurts",
 "save_amount": 0.2,
 "store": "Woolworths",
-"store_category": "Deli     Deli Meats , Sausages & Frankfurts   DELI CONVENIENCE",
+"store_category": "Deli     Sausages & Frankfurts , Deli Meats   DELI CONVENIENCE",
 "title": "Mayfair Thin Frankfurts 500g",
 "unit_price": "$5.6 / 1KG",
 "was_price": 3.0
@@ -61341,7 +61383,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/664036/obela-hommus",
 "save_amount": 0.5,
 "store": "Woolworths",
-"store_category": "Deli , Dairy, Eggs & Fridge     Deli Specialties , Dips & Pate   DAIRY - ENTERTAINING",
+"store_category": "Deli , Dairy, Eggs & Fridge     Dips & Pate , Deli Specialties   DAIRY - ENTERTAINING",
 "title": "Obela Hommus 1kg",
 "unit_price": "$0.75 / 100G",
 "was_price": 8.0
@@ -61369,7 +61411,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/925093/obela-smooth-classic-hommus-to-go-singles",
 "save_amount": 0.3,
 "store": "Woolworths",
-"store_category": "Dairy, Eggs & Fridge , Deli , Back to School , Lunch Box     High Protein , Dips & Pate , Deli Specialties , Snacks , Snacks   DAIRY - ENTERTAINING",
+"store_category": "Dairy, Eggs & Fridge , Deli , Back to School , Lunch Box     High Protein , Dips & Pate , Snacks , Snacks , Deli Specialties   DAIRY - ENTERTAINING",
 "title": "Obela Smooth Classic Hommus To Go Singles 60g x 3 pack",
 "unit_price": "$1.94 / 100G",
 "was_price": 3.8
@@ -62437,6 +62479,20 @@
 "title": "Quilton Gold King Size 4 Ply Toilet Paper 20 pack",
 "unit_price": "$0.56 / 100 sheets",
 "was_price": 15.0
+},
+"radiant whites or colours laundry detergent washing powder 4kg": {
+"category": "household",
+"discount_desc": "Lower Shelf Price",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/143356.jpg",
+"price": 20.0,
+"price_display": "$20.00 ea",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/143356/radiant-whites-or-colours-laundry-detergent-washing-powder",
+"save_amount": 5.0,
+"store": "Woolworths",
+"store_category": "Cleaning & Maintenance     Laundry   CLEANSING",
+"title": "Radiant Whites Or Colours Laundry Detergent Washing Powder 4kg",
+"unit_price": "$5 / 1KG",
+"was_price": 25.0
 },
 "radiant whites or colours laundry liquid detergent washing 4l": {
 "category": "household",
@@ -64197,7 +64253,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/311844/thomas-dux-brie-cheese",
 "save_amount": 0.3,
 "store": "Woolworths",
-"store_category": "Deli , Dairy, Eggs & Fridge     Deli Specialties , Cheese   CHEESE ENTERTAINING",
+"store_category": "Deli , Dairy, Eggs & Fridge     Cheese , Deli Specialties   CHEESE ENTERTAINING",
 "title": "Thomas Dux Brie Cheese 125g",
 "unit_price": "$21.6 / 1KG",
 "was_price": 3.0
@@ -64211,7 +64267,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/311843/thomas-dux-camembert-cheese",
 "save_amount": 0.3,
 "store": "Woolworths",
-"store_category": "Deli , Dairy, Eggs & Fridge     Deli Specialties , Cheese   CHEESE ENTERTAINING",
+"store_category": "Deli , Dairy, Eggs & Fridge     Cheese , Deli Specialties   CHEESE ENTERTAINING",
 "title": "Thomas Dux Camembert Cheese 125g",
 "unit_price": "$21.6 / 1KG",
 "was_price": 3.0
@@ -64734,20 +64790,6 @@
 "unit_price": "$17.6 / 1KG",
 "was_price": 7.4
 },
-"vicks baby balsam 100g": {
-"category": "health_vitamins",
-"discount_desc": "Lower Shelf Price",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/091549.jpg",
-"price": 12.7,
-"price_display": "$12.70 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/91549/vicks-baby-balsam",
-"save_amount": 2.2,
-"store": "Woolworths",
-"store_category": "Gift Ideas , Baby     Baby Shower Gifts , Health & Safety   BABY NEEDS",
-"title": "Vicks Baby Balsam 100g",
-"unit_price": "$12.7 / 100G",
-"was_price": 14.9
-},
 "vicks vapodrop & cough sore throat lozenges honey lemon 36 pack": {
 "category": "pantry",
 "discount_desc": "Lower Shelf Price",
@@ -65121,7 +65163,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/6070090/woolworths-almond-ice-cream-sticks",
 "save_amount": 1.0,
 "store": "Woolworths",
-"store_category": "Dinner , Freezer     Latest in Ice Cream , Ice Cream , Frozen Desserts   FREEZER - DESSERTS & PASTRY",
+"store_category": "Dinner , Freezer     Latest in Ice Cream , Ice Cream   FREEZER - DESSERTS & PASTRY",
 "title": "Woolworths Almond Ice Cream Sticks 440mL 4 pack",
 "unit_price": "$1.38 / 100ML",
 "was_price": 6.5
@@ -65475,20 +65517,6 @@
 "title": "Woolworths Chicken Satay With Jasmine Rice 350g",
 "unit_price": "$1.14 / 100G",
 "was_price": 4.5
-},
-"woolworths chicken schnitzels garlic & herb 600g": {
-"category": "meat",
-"discount_desc": "Lower Shelf Price",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/134082.jpg",
-"price": 7.6,
-"price_display": "$7.60 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/134082/woolworths-chicken-schnitzels-garlic-herb",
-"save_amount": 0.9,
-"store": "Woolworths",
-"store_category": "Dinner , Poultry, Meat & Seafood     Ready to Cook Meats , Oven Ready Meals , Poultry   None",
-"title": "Woolworths Chicken Schnitzels Garlic & Herb 600g",
-"unit_price": "$12.67 / 1KG",
-"was_price": 8.5
 },
 "woolworths choc chip muffin bar 10 pack": {
 "category": "bakery",
@@ -66031,7 +66059,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/6070110/woolworths-honeycomb-crunch-ice-cream-sticks",
 "save_amount": 1.0,
 "store": "Woolworths",
-"store_category": "Dinner , Freezer     Latest in Ice Cream , Ice Cream , Frozen Desserts   FREEZER - DESSERTS & PASTRY",
+"store_category": "Dinner , Freezer     Latest in Ice Cream , Ice Cream   FREEZER - DESSERTS & PASTRY",
 "title": "Woolworths Honeycomb Crunch Ice Cream Sticks 440mL 4 pack",
 "unit_price": "$1.38 / 100ML",
 "was_price": 6.5
@@ -66255,7 +66283,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/6058495/woolworths-middle-bacon",
 "save_amount": 0.5,
 "store": "Woolworths",
-"store_category": "Dinner , Deli , Poultry, Meat & Seafood     Ham, Bacon & Smallgoods , Meat   DELI CONVENIENCE",
+"store_category": "Dinner , Deli , Poultry, Meat & Seafood     Meat , Ham, Bacon & Smallgoods   DELI CONVENIENCE",
 "title": "Woolworths Middle Bacon 500g",
 "unit_price": "$15 / 1KG",
 "was_price": 8.0
@@ -66647,7 +66675,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/85588/woolworths-shaved-parmesan",
 "save_amount": 0.3,
 "store": "Woolworths",
-"store_category": "Deli , Dairy, Eggs & Fridge     Deli Specialties , Cheese   CHEESE COOKING",
+"store_category": "Deli , Dairy, Eggs & Fridge     Cheese , Deli Specialties   CHEESE COOKING",
 "title": "Woolworths Shaved Parmesan 250g",
 "unit_price": "$21.6 / 1KG",
 "was_price": 5.7
@@ -66675,7 +66703,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/55374/woolworths-shortcut-bacon",
 "save_amount": 0.5,
 "store": "Woolworths",
-"store_category": "Dinner , Deli , Poultry, Meat & Seafood     Ham, Bacon & Smallgoods , Meat   DELI CONVENIENCE",
+"store_category": "Dinner , Deli , Poultry, Meat & Seafood     Meat , Ham, Bacon & Smallgoods   DELI CONVENIENCE",
 "title": "Woolworths Shortcut Bacon 500g",
 "unit_price": "$15 / 1KG",
 "was_price": 8.0
@@ -66703,7 +66731,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/85587/woolworths-shredded-parmesan-cheese",
 "save_amount": 0.3,
 "store": "Woolworths",
-"store_category": "Deli , Dairy, Eggs & Fridge     Deli Specialties , Cheese   CHEESE COOKING",
+"store_category": "Deli , Dairy, Eggs & Fridge     Cheese , Deli Specialties   CHEESE COOKING",
 "title": "Woolworths Shredded Parmesan Cheese 250g",
 "unit_price": "$21.6 / 1KG",
 "was_price": 5.7
@@ -66969,7 +66997,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/6070113/woolworths-vanilla-ice-cream-sticks",
 "save_amount": 1.0,
 "store": "Woolworths",
-"store_category": "Dinner , Freezer     Latest in Ice Cream , Ice Cream , Frozen Desserts   FREEZER - DESSERTS & PASTRY",
+"store_category": "Dinner , Freezer     Latest in Ice Cream , Ice Cream   FREEZER - DESSERTS & PASTRY",
 "title": "Woolworths Vanilla Ice Cream Sticks 440mL 4 pack",
 "unit_price": "$1.38 / 100ML",
 "was_price": 6.5
@@ -67227,7 +67255,7 @@
 "was_price": 9.0
 }
 },
-"last_full": 1791948333.2684026
+"last_full": 1791992189.1228213
 },
 "seasonal-price": {
 "items": {
@@ -67483,20 +67511,6 @@
 "unit_price": "$1.56 / 100G",
 "was_price": 8.9
 },
-"carman's granola low carb peanut butter 425g": {
-"category": "pantry",
-"discount_desc": "Seasonal Price",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/272313.jpg",
-"price": 7.0,
-"price_display": "$7.00 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/272313/carman-s-granola-low-carb-peanut-butter",
-"save_amount": 1.9,
-"store": "Woolworths",
-"store_category": "Lunch Box , Pantry , Back to School , Dinner     Breakfast & Spreads , Breakfast   BREAKFAST FOODS",
-"title": "Carman's Granola Low Carb Peanut Butter 425g",
-"unit_price": "$1.65 / 100G",
-"was_price": 8.9
-},
 "carman's granola protein rich almond & hazelnut 450g": {
 "category": "pantry",
 "discount_desc": "Seasonal Price",
@@ -67730,7 +67744,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/932567/chris-dips-french-onion",
 "save_amount": 0.5,
 "store": "Woolworths",
-"store_category": "Dairy, Eggs & Fridge , Deli , Back to School , Lunch Box     Dips & Pate , Deli Specialties , Snacks , Snacks   DAIRY - ENTERTAINING",
+"store_category": "Dairy, Eggs & Fridge , Deli , Back to School , Lunch Box     Dips & Pate , Snacks , Snacks , Deli Specialties   DAIRY - ENTERTAINING",
 "title": "Chris' Dips French Onion 60g x 3 pack",
 "unit_price": "$2.22 / 100G",
 "was_price": 4.5
@@ -67744,22 +67758,8 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/248117/chris-homestyle-corn-relish",
 "save_amount": 0.5,
 "store": "Woolworths",
-"store_category": "Dairy, Eggs & Fridge , Deli , Back to School , Lunch Box     Dips & Pate , Deli Specialties , Snacks , Snacks   DAIRY - ENTERTAINING",
+"store_category": "Dairy, Eggs & Fridge , Deli , Back to School , Lunch Box     Dips & Pate , Snacks , Snacks , Deli Specialties   DAIRY - ENTERTAINING",
 "title": "Chris' Homestyle Corn Relish 60g x 3 pack",
-"unit_price": "$2.22 / 100G",
-"was_price": 4.5
-},
-"chris' homestyle dip & spread tzatziki 3 pack": {
-"category": "dairy_eggs",
-"discount_desc": "Seasonal Price",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/210823.jpg",
-"price": 4.0,
-"price_display": "$4.00 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/210823/chris-homestyle-dip-spread-tzatziki",
-"save_amount": 0.5,
-"store": "Woolworths",
-"store_category": "Dairy, Eggs & Fridge , Deli , Back to School , Lunch Box     Dips & Pate , Deli Specialties , Snacks , Snacks   DAIRY - ENTERTAINING",
-"title": "Chris' Homestyle Dip & Spread Tzatziki 3 pack",
 "unit_price": "$2.22 / 100G",
 "was_price": 4.5
 },
@@ -67772,38 +67772,10 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/385384/chris-homestyle-dips-sweet-chilli",
 "save_amount": 0.5,
 "store": "Woolworths",
-"store_category": "Dairy, Eggs & Fridge , Deli , Back to School , Lunch Box     Dips & Pate , Deli Specialties , Snacks , Snacks   DAIRY - ENTERTAINING",
+"store_category": "Dairy, Eggs & Fridge , Deli , Back to School , Lunch Box     Dips & Pate , Snacks , Snacks , Deli Specialties   DAIRY - ENTERTAINING",
 "title": "Chris' Homestyle Dips Sweet Chilli 60g x 3 pack",
 "unit_price": "$2.22 / 100G",
 "was_price": 4.5
-},
-"claratyne children's hayfever allergy relief antihistamine tablets 10 pack": {
-"category": "health_vitamins",
-"discount_desc": "Seasonal Price",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/681628.jpg",
-"price": 12.0,
-"price_display": "$12.00 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/681628/claratyne-children-s-hayfever-allergy-relief-antihistamine-tablets",
-"save_amount": 3.4,
-"store": "Woolworths",
-"store_category": "Health & Wellness     First Aid & Medicinal   HEALTH CARE",
-"title": "Claratyne Children's Hayfever Allergy Relief Antihistamine Tablets 10 pack",
-"unit_price": "$1.2 / 1EA",
-"was_price": 15.4
-},
-"claratyne hayfever allergy relief antihistamine tablets 10 pack": {
-"category": "health_vitamins",
-"discount_desc": "Seasonal Price",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/600461.jpg",
-"price": 10.5,
-"price_display": "$10.50 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/600461/claratyne-hayfever-allergy-relief-antihistamine-tablets",
-"save_amount": 3.75,
-"store": "Woolworths",
-"store_category": "Health & Wellness     First Aid & Medicinal   HEALTH CARE",
-"title": "Claratyne Hayfever Allergy Relief Antihistamine Tablets 10 pack",
-"unit_price": "$1.05 / 1EA",
-"was_price": 14.25
 },
 "clearblue pregnancy test ultra early 3 pack": {
 "category": "health_vitamins",
@@ -68029,6 +68001,20 @@
 "unit_price": "$42.5 / 1KG",
 "was_price": 4.2
 },
+"dairy farmers protein smoothie coffee 400ml": {
+"category": "drinks",
+"discount_desc": "Seasonal Price",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/6074204.jpg",
+"price": 3.4,
+"price_display": "$3.40 ea",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/6074204/dairy-farmers-protein-smoothie-coffee",
+"save_amount": 1.15,
+"store": "Woolworths",
+"store_category": "Container Bonus Credits , Dinner , Dairy, Eggs & Fridge , Lunch Box     High Protein , Milk , Drinks   DAIRY - MILK",
+"title": "Dairy Farmers Protein Smoothie Coffee 400mL",
+"unit_price": "$8.5 / 1L",
+"was_price": 4.55
+},
 "dairy farmers protein smoothie mango 400ml": {
 "category": "drinks",
 "discount_desc": "Seasonal Price",
@@ -68071,6 +68057,48 @@
 "unit_price": "$8.5 / 1L",
 "was_price": 4.55
 },
+"dairy farmers protein smoothie+ drink banana honey 400ml": {
+"category": "drinks",
+"discount_desc": "Seasonal Price",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/6021341.jpg",
+"price": 3.4,
+"price_display": "$3.40 ea",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/6021341/dairy-farmers-protein-smoothie-drink-banana-honey",
+"save_amount": 1.15,
+"store": "Woolworths",
+"store_category": "Container Bonus Credits , Dairy, Eggs & Fridge , Lunch Box , Dinner     High Protein , Milk , Drinks   DAIRY - MILK",
+"title": "Dairy Farmers Protein Smoothie+ Drink Banana Honey 400mL",
+"unit_price": "$8.5 / 1L",
+"was_price": 4.55
+},
+"dairy farmers protein smoothie+ drink chocolate 400ml": {
+"category": "drinks",
+"discount_desc": "Seasonal Price",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/6021370.jpg",
+"price": 3.4,
+"price_display": "$3.40 ea",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/6021370/dairy-farmers-protein-smoothie-drink-chocolate",
+"save_amount": 1.15,
+"store": "Woolworths",
+"store_category": "Container Bonus Credits , Dairy, Eggs & Fridge , Lunch Box , Dinner     High Protein , Milk , Drinks   DAIRY - MILK",
+"title": "Dairy Farmers Protein Smoothie+ Drink Chocolate 400mL",
+"unit_price": "$8.5 / 1L",
+"was_price": 4.55
+},
+"dairy farmers protein smoothie+ drink mixed berry 400ml": {
+"category": "drinks",
+"discount_desc": "Seasonal Price",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/6021351.jpg",
+"price": 3.4,
+"price_display": "$3.40 ea",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/6021351/dairy-farmers-protein-smoothie-drink-mixed-berry",
+"save_amount": 1.15,
+"store": "Woolworths",
+"store_category": "Container Bonus Credits , Dairy, Eggs & Fridge , Lunch Box , Dinner     Milk , Drinks   DAIRY - MILK",
+"title": "Dairy Farmers Protein Smoothie+ Drink Mixed Berry 400mL",
+"unit_price": "$8.5 / 1L",
+"was_price": 4.55
+},
 "deep heat original heat rub 100g": {
 "category": "health_vitamins",
 "discount_desc": "Seasonal Price",
@@ -68084,6 +68112,20 @@
 "title": "Deep Heat Original Heat Rub 100g",
 "unit_price": "$7.3 / 100G",
 "was_price": 9.2
+},
+"demazin hayfever allergy relief tablets 10 pack": {
+"category": "health_vitamins",
+"discount_desc": "Seasonal Price",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/918902.jpg",
+"price": 6.5,
+"price_display": "$6.50 ea",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/918902/demazin-hayfever-allergy-relief-tablets",
+"save_amount": 3.5,
+"store": "Woolworths",
+"store_category": "Health & Wellness     First Aid & Medicinal   HEALTH CARE",
+"title": "Demazin Hayfever Allergy Relief Tablets 10 pack",
+"unit_price": "$0.65 / 1EA",
+"was_price": 10.0
 },
 "dettol multipurpose cleaner surface spray disinfectant apple 750ml": {
 "category": "household",
@@ -68155,6 +68197,20 @@
 "unit_price": "$2.96 / 100G",
 "was_price": 6.0
 },
+"duo penotti hazelnut vanilla spread 350g": {
+"category": "pantry",
+"discount_desc": "Seasonal Price",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/6025985.jpg",
+"price": 6.5,
+"price_display": "$6.50 ea",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/6025985/duo-penotti-hazelnut-vanilla-spread",
+"save_amount": 1.0,
+"store": "Woolworths",
+"store_category": "Back to School , Lunch Box , Pantry     Sandwich Ingredients , Sandwich Ingredients , Breakfast & Spreads   JAMS / SPREADS",
+"title": "Duo Penotti Hazelnut Vanilla Spread 350g",
+"unit_price": "$1.86 / 100G",
+"was_price": 7.5
+},
 "duo penotti milk choc & cookie dough spread 370g": {
 "category": "snacks",
 "discount_desc": "Seasonal Price",
@@ -68167,20 +68223,6 @@
 "store_category": "Back to School , Lunch Box , Pantry     Sandwich Ingredients , Sandwich Ingredients , Breakfast & Spreads   JAMS / SPREADS",
 "title": "Duo Penotti Milk Choc & Cookie Dough Spread 370g",
 "unit_price": "$1.76 / 100G",
-"was_price": 7.5
-},
-"eastcoast aussie apple juice 2l": {
-"category": "drinks",
-"discount_desc": "Seasonal Price",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/273752.jpg",
-"price": 6.8,
-"price_display": "$6.80 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/273752/eastcoast-aussie-apple-juice",
-"save_amount": 0.7,
-"store": "Woolworths",
-"store_category": "Dinner , Drinks , Dairy, Eggs & Fridge , Back to School , Lunch Box     Cordials, Juices & Iced Teas , Chilled Drinks , Chilled Juices & Drinks , Drinks , Drinks   DAIRY - CHILLED JUICES & DRINKS",
-"title": "Eastcoast Aussie Apple Juice 2L",
-"unit_price": "$3.4 / 1L",
 "was_price": 7.5
 },
 "eastcoast country style lemonade 2l": {
@@ -68379,19 +68421,19 @@
 "unit_price": "$4.88 / 1KG",
 "was_price": 2.2
 },
-"fairy platinum plus lemon dishwashing tablets 42 pack": {
+"fairy 5 power action dishwashing tablets lemon 52 pack": {
 "category": "household",
 "discount_desc": "Seasonal Price",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/154893.jpg",
-"price": 28.0,
-"price_display": "$28.00 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/154893/fairy-platinum-plus-lemon-dishwashing-tablets",
-"save_amount": 18.0,
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/6052004.jpg",
+"price": 31.8,
+"price_display": "$31.80 ea",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/6052004/fairy-5-power-action-dishwashing-tablets-lemon",
+"save_amount": 28.2,
 "store": "Woolworths",
 "store_category": "Cleaning & Maintenance     Kitchen   CLEANSING",
-"title": "Fairy Platinum Plus Lemon Dishwashing Tablets 42 pack",
-"unit_price": "$0.67 / 1EA",
-"was_price": 46.0
+"title": "Fairy 5 Power Action Dishwashing Tablets Lemon 52 pack",
+"unit_price": "$0.61 / 1EA",
+"was_price": 60.0
 },
 "grove juice orange pulp free 1.5l": {
 "category": "drinks",
@@ -68542,7 +68584,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/930992/jarlsberg-original-cheese-block",
 "save_amount": 1.5,
 "store": "Woolworths",
-"store_category": "Deli , Dairy, Eggs & Fridge     Deli Specialties , Cheese   CHEESE ENTERTAINING",
+"store_category": "Deli , Dairy, Eggs & Fridge     Cheese , Deli Specialties   CHEESE ENTERTAINING",
 "title": "Jarlsberg Original Cheese Block 250g",
 "unit_price": "$36 / 1KG",
 "was_price": 10.5
@@ -68612,7 +68654,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/384962/le-dauphin-double-creme-cheese",
 "save_amount": 22.0,
 "store": "Woolworths",
-"store_category": "Deli , Dairy, Eggs & Fridge     Deli Specialties , Cheese   DELI SERVICE",
+"store_category": "Deli , Dairy, Eggs & Fridge     Cheese , Deli Specialties   DELI SERVICE",
 "title": "Le Dauphin Double Creme Cheese per 100g",
 "unit_price": "$88 / 1KG",
 "was_price": 110.0
@@ -69032,7 +69074,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/97995/mil-lel-extra-sharp-parmesan-pecorino",
 "save_amount": 2.0,
 "store": "Woolworths",
-"store_category": "Deli , Dairy, Eggs & Fridge     Deli Specialties , Cheese   CHEESE COOKING",
+"store_category": "Deli , Dairy, Eggs & Fridge     Cheese , Deli Specialties   CHEESE COOKING",
 "title": "Mil Lel Extra Sharp Parmesan & Pecorino 170g",
 "unit_price": "$30.59 / 1KG",
 "was_price": 7.2
@@ -69046,7 +69088,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/98063/mil-lel-shaved-parmesan",
 "save_amount": 2.0,
 "store": "Woolworths",
-"store_category": "Deli , Dairy, Eggs & Fridge     Deli Specialties , Cheese   CHEESE COOKING",
+"store_category": "Deli , Dairy, Eggs & Fridge     Cheese , Deli Specialties   CHEESE COOKING",
 "title": "Mil Lel Shaved Parmesan 170g",
 "unit_price": "$30.59 / 1KG",
 "was_price": 7.2
@@ -69060,7 +69102,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/97106/mil-lel-shredded-parmesan",
 "save_amount": 2.0,
 "store": "Woolworths",
-"store_category": "Deli , Dairy, Eggs & Fridge     Deli Specialties , Cheese   CHEESE COOKING",
+"store_category": "Deli , Dairy, Eggs & Fridge     Cheese , Deli Specialties   CHEESE COOKING",
 "title": "Mil Lel Shredded Parmesan 170g",
 "unit_price": "$30.59 / 1KG",
 "was_price": 7.2
@@ -69737,20 +69779,6 @@
 "unit_price": "$0.16 / 1EA",
 "was_price": 13.0
 },
-"royal duck boneless roasted half duck 350g": {
-"category": "frozen",
-"discount_desc": "Seasonal Price",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/6050186.jpg",
-"price": 11.0,
-"price_display": "$11.00 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/6050186/royal-duck-boneless-roasted-half-duck",
-"save_amount": 3.5,
-"store": "Woolworths",
-"store_category": "International Foods , Freezer     Asian , Frozen Meals   FROZEN MEALS",
-"title": "Royal Duck Boneless Roasted Half Duck 350g",
-"unit_price": "$3.14 / 100G",
-"was_price": 14.5
-},
 "salts & co. sleeping beauty magnesium bath flakes 750g": {
 "category": "health_vitamins",
 "discount_desc": "Seasonal Price",
@@ -69886,7 +69914,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/312793/south-cape-apricot-almond-cream-cheese",
 "save_amount": 0.8,
 "store": "Woolworths",
-"store_category": "Poultry, Meat & Seafood , Deli , Dairy, Eggs & Fridge     Dips & Pate , Deli Specialties , Cheese   CHEESE ENTERTAINING",
+"store_category": "Poultry, Meat & Seafood , Deli , Dairy, Eggs & Fridge     Dips & Pate , Cheese , Deli Specialties   CHEESE ENTERTAINING",
 "title": "South Cape Apricot & Almond Cream Cheese 200g",
 "unit_price": "$30 / 1KG",
 "was_price": 6.8
@@ -69900,7 +69928,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/312798/south-cape-herb-garlic-cream-cheese",
 "save_amount": 0.8,
 "store": "Woolworths",
-"store_category": "Poultry, Meat & Seafood , Deli , Dairy, Eggs & Fridge     Dips & Pate , Deli Specialties , Cheese   CHEESE ENTERTAINING",
+"store_category": "Poultry, Meat & Seafood , Deli , Dairy, Eggs & Fridge     Dips & Pate , Cheese , Deli Specialties   CHEESE ENTERTAINING",
 "title": "South Cape Herb & Garlic Cream Cheese 200g",
 "unit_price": "$30 / 1KG",
 "was_price": 6.8
@@ -69914,7 +69942,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/312799/south-cape-onion-chives-cream-cheese",
 "save_amount": 0.8,
 "store": "Woolworths",
-"store_category": "Poultry, Meat & Seafood , Deli , Dairy, Eggs & Fridge     Dips & Pate , Deli Specialties , Cheese   CHEESE ENTERTAINING",
+"store_category": "Poultry, Meat & Seafood , Deli , Dairy, Eggs & Fridge     Dips & Pate , Cheese , Deli Specialties   CHEESE ENTERTAINING",
 "title": "South Cape Onion & Chives Cream Cheese 200g",
 "unit_price": "$30 / 1KG",
 "was_price": 6.8
@@ -69928,7 +69956,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/677235/south-cape-sweet-chilli-cream-cheese",
 "save_amount": 0.8,
 "store": "Woolworths",
-"store_category": "Deli , Dairy, Eggs & Fridge     Deli Specialties , Cheese   CHEESE ENTERTAINING",
+"store_category": "Deli , Dairy, Eggs & Fridge     Cheese , Deli Specialties   CHEESE ENTERTAINING",
 "title": "South Cape Sweet Chilli Cream Cheese 200g",
 "unit_price": "$30 / 1KG",
 "was_price": 6.8
@@ -70026,7 +70054,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/326553/tasmanian-heritage-club-cheddar-cheese-trilogy-herbs-vintage-sun-dried-tomato",
 "save_amount": 1.75,
 "store": "Woolworths",
-"store_category": "Deli , Dairy, Eggs & Fridge     Deli Specialties , Cheese   CHEESE ENTERTAINING",
+"store_category": "Deli , Dairy, Eggs & Fridge     Cheese , Deli Specialties   CHEESE ENTERTAINING",
 "title": "Tasmanian Heritage Club Cheddar Cheese Trilogy Herbs Vintage Sun Dried Tomato 140g",
 "unit_price": "$48.21 / 1KG",
 "was_price": 8.5
@@ -70040,7 +70068,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/322330/tasmanian-heritage-vintage-club-cheddar-cheese",
 "save_amount": 1.75,
 "store": "Woolworths",
-"store_category": "Deli , Dairy, Eggs & Fridge     Deli Specialties , Cheese   CHEESE ENTERTAINING",
+"store_category": "Deli , Dairy, Eggs & Fridge     Cheese , Deli Specialties   CHEESE ENTERTAINING",
 "title": "Tasmanian Heritage Vintage Club Cheddar Cheese 140g",
 "unit_price": "$48.21 / 1KG",
 "was_price": 8.5
@@ -70054,7 +70082,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/325870/tasmanian-heritage-vintage-smoked-club-cheddar-cheese",
 "save_amount": 1.75,
 "store": "Woolworths",
-"store_category": "Deli , Dairy, Eggs & Fridge     Deli Specialties , Cheese   CHEESE ENTERTAINING",
+"store_category": "Deli , Dairy, Eggs & Fridge     Cheese , Deli Specialties   CHEESE ENTERTAINING",
 "title": "Tasmanian Heritage Vintage Smoked Club Cheddar Cheese 140g",
 "unit_price": "$48.21 / 1KG",
 "was_price": 8.5
@@ -70297,20 +70325,6 @@
 "unit_price": "$1.04 / 100G",
 "was_price": 6.0
 },
-"ultimate yoghurt smooth caramel 115g x 4 pack": {
-"category": "dairy_eggs",
-"discount_desc": "Seasonal Price",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/6038843.jpg",
-"price": 4.8,
-"price_display": "$4.80 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/6038843/ultimate-yoghurt-smooth-caramel",
-"save_amount": 1.2,
-"store": "Woolworths",
-"store_category": "Back to School , Dairy, Eggs & Fridge     Lunch Accessories , Yoghurt   DAIRY - YOGHURT",
-"title": "Ultimate Yoghurt Smooth Caramel 115g x 4 pack",
-"unit_price": "$1.04 / 100G",
-"was_price": 6.0
-},
 "western star original spreadable butter blend tub 500g": {
 "category": "dairy_eggs",
 "discount_desc": "Seasonal Price",
@@ -70336,20 +70350,6 @@
 "store": "Woolworths",
 "store_category": "Dairy, Eggs & Fridge , Back to School , Lunch Box     Eggs, Butter & Margarine , Sandwich Ingredients , Sandwich Ingredients   DAIRY - BUTTER & MARGARINE",
 "title": "Western Star Spreadable Butter Blend Tub Soft 'n' Less Salt 500g",
-"unit_price": "$1.4 / 100G",
-"was_price": 7.9
-},
-"western star spreadable butter blend tub supersoft 500g": {
-"category": "dairy_eggs",
-"discount_desc": "Seasonal Price",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/199420.jpg",
-"price": 7.0,
-"price_display": "$7.00 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/199420/western-star-spreadable-butter-blend-tub-supersoft",
-"save_amount": 0.9,
-"store": "Woolworths",
-"store_category": "Dairy, Eggs & Fridge , Back to School , Lunch Box     Eggs, Butter & Margarine , Sandwich Ingredients , Sandwich Ingredients   DAIRY - BUTTER & MARGARINE",
-"title": "Western Star Spreadable Butter Blend Tub Supersoft 500g",
 "unit_price": "$1.4 / 100G",
 "was_price": 7.9
 },
@@ -70600,13 +70600,13 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/182017/yumi-s-traditional-middle-eastern-hommus",
 "save_amount": 0.7,
 "store": "Woolworths",
-"store_category": "Deli , Dairy, Eggs & Fridge     Deli Specialties , Dips & Pate   DAIRY - ENTERTAINING",
+"store_category": "Deli , Dairy, Eggs & Fridge     Dips & Pate , Deli Specialties   DAIRY - ENTERTAINING",
 "title": "Yumi's Traditional Middle Eastern Hommus 500g",
 "unit_price": "$1.16 / 100G",
 "was_price": 6.5
 }
 },
-"last_full": 1791948333.2684026
+"last_full": 1791992189.1228213
 }
 },
 "items": {
