@@ -1,27 +1,27 @@
 {
   "current": {
-    "total": 4517,
+    "total": 4687,
     "by_store": {
       "ALDI": 171,
-      "Coles": 1259,
+      "Coles": 1429,
       "Woolworths": 3087
     },
     "by_category": {
       "bakery": 107,
       "dairy_eggs": 314,
-      "drinks": 427,
+      "drinks": 444,
       "frozen": 251,
-      "health_vitamins": 1447,
-      "household": 596,
+      "health_vitamins": 1565,
+      "household": 615,
       "liquor": 59,
       "meat": 295,
-      "pantry": 841,
-      "pet": 78,
+      "pantry": 848,
+      "pet": 80,
       "produce": 65,
       "seafood": 34,
-      "snacks": 737
+      "snacks": 752
     },
-    "half_price_count": 2179,
+    "half_price_count": 2349,
     "date_range": "Wed 14 Oct 2026 - Tue 20 Oct 2026",
     "everyday_count": 3433
   },
@@ -46,18 +46,18 @@
     "date_range": "Wed 21 Oct 2026 - Tue 27 Oct 2026",
     "everyday_count": 0
   },
-  "last_updated": "2026-10-14 01:18:54",
+  "last_updated": "2026-10-14 01:49:09",
   "base_region": "QLD",
   "regions": {
     "QLD": {
       "current": {
-        "total": 4517,
+        "total": 4687,
         "by_store": {
           "ALDI": 171,
-          "Coles": 1259,
+          "Coles": 1429,
           "Woolworths": 3087
         },
-        "half_price_count": 2179,
+        "half_price_count": 2349,
         "everyday_count": 3433
       },
       "next": {
@@ -71,13 +71,13 @@
     },
     "NSW": {
       "current": {
-        "total": 4523,
+        "total": 4693,
         "by_store": {
           "ALDI": 171,
-          "Coles": 1258,
+          "Coles": 1428,
           "Woolworths": 3094
         },
-        "half_price_count": 2181,
+        "half_price_count": 2351,
         "everyday_count": 3435
       },
       "next": {
@@ -91,13 +91,13 @@
     },
     "ACT": {
       "current": {
-        "total": 4516,
+        "total": 4686,
         "by_store": {
           "ALDI": 171,
-          "Coles": 1258,
+          "Coles": 1428,
           "Woolworths": 3087
         },
-        "half_price_count": 2179,
+        "half_price_count": 2349,
         "everyday_count": 3435
       },
       "next": {
@@ -111,13 +111,13 @@
     },
     "VIC": {
       "current": {
-        "total": 4524,
+        "total": 4694,
         "by_store": {
           "ALDI": 171,
-          "Coles": 1259,
+          "Coles": 1429,
           "Woolworths": 3094
         },
-        "half_price_count": 2181,
+        "half_price_count": 2351,
         "everyday_count": 3435
       },
       "next": {
@@ -131,13 +131,13 @@
     },
     "SA": {
       "current": {
-        "total": 4533,
+        "total": 4703,
         "by_store": {
           "ALDI": 171,
-          "Coles": 1275,
+          "Coles": 1445,
           "Woolworths": 3087
         },
-        "half_price_count": 2181,
+        "half_price_count": 2351,
         "everyday_count": 3436
       },
       "next": {
@@ -151,13 +151,13 @@
     },
     "WA": {
       "current": {
-        "total": 4530,
+        "total": 4700,
         "by_store": {
           "ALDI": 171,
-          "Coles": 1272,
+          "Coles": 1442,
           "Woolworths": 3087
         },
-        "half_price_count": 2179,
+        "half_price_count": 2349,
         "everyday_count": 3438
       },
       "next": {
@@ -171,13 +171,13 @@
     },
     "TAS": {
       "current": {
-        "total": 4536,
+        "total": 4706,
         "by_store": {
           "ALDI": 171,
-          "Coles": 1279,
+          "Coles": 1449,
           "Woolworths": 3086
         },
-        "half_price_count": 2180,
+        "half_price_count": 2350,
         "everyday_count": 3439
       },
       "next": {
@@ -191,13 +191,13 @@
     },
     "NT": {
       "current": {
-        "total": 4515,
+        "total": 4685,
         "by_store": {
           "ALDI": 171,
-          "Coles": 1256,
+          "Coles": 1426,
           "Woolworths": 3088
         },
-        "half_price_count": 2179,
+        "half_price_count": 2349,
         "everyday_count": 3433
       },
       "next": {
@@ -210,5 +210,5 @@
       }
     }
   },
-  "data_updated_at": "2026-10-14T01:20:10Z"
+  "data_updated_at": "2026-10-14T01:50:15Z"
 }
