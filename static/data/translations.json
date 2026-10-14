@@ -103287,9 +103287,11 @@
     "src": "ai"
   },
   "Woolworths Crusty Cob Loaf Crusty Cobb each": {
-    "zh": "Woolworths Crusty Cob Loaf Crusty Cobb each",
-    "ja": "Woolworths Crusty Cob Loaf Crusty Cobb each",
-    "ko": "Woolworths Crusty Cob Loaf Crusty Cobb each"
+    "zh": "Woolworths 歐式脆皮麵包",
+    "ja": "Woolworths クリスティコブローフ",
+    "ko": "Woolworths 크러스티 콥 브레드",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Dettol Multipurpose Disinfectant Cleaning Spray Lime & Mint 500mL": {
     "zh": "Dettol 多功能殺菌清潔噴霧 萊姆薄荷香 500毫升",
@@ -104180,10 +104182,11 @@
     "src": "ai"
   },
   "Sunrice Microwave Brown Rice Pouch Medium Grain Brown Rice In 90 250g": {
-    "zh": "Sunrice 微波中粒糙米調理包 250克",
-    "ja": "Sunrice 電子レンジ用 中粒玄米 パウチ 250g",
-    "ko": "Sunrice 즉석 현미밥 파우치 250g",
-    "src": "ai"
+    "zh": "Sunrice 微波糙米調理包 中粒糙米 90秒 250克",
+    "ja": "Sunrice 電子レンジ用 玄米 パウチ 中粒玄米 90秒 250g",
+    "ko": "Sunrice 전자레인지용 현미 파우치 중립 현미 90초 250g",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Vaalia Kids Probiotic Yoghurt Pouch Strawberry 140g": {
     "zh": "Vaalia 兒童益生菌優格擠壓包 草莓口味 140克",
@@ -104207,6 +104210,174 @@
     "zh": "Jarrah 濃郁卡布奇諾咖啡隨身包 10入",
     "ja": "Jarrah ストロング カプチーノ スティック 10個入",
     "ko": "Jarrah 스트롱 카푸치노 스틱 10개입",
+    "src": "ai"
+  },
+  "Glen 20 Original Disinfectant Spray 375g": {
+    "zh": "Glen 20 經典款消毒噴霧 375克",
+    "ja": "Glen 20 オリジナル除菌スプレー 375g",
+    "ko": "Glen 20 오리지널 살균 스프레이 375g",
+    "src": "ai"
+  },
+  "Neutrogena Ultra Sheer Body Sunscreen SPF 50 85mL": {
+    "zh": "Neutrogena 露得清 極透氣防曬乳 SPF 50 85毫升",
+    "ja": "Neutrogena ウルトラシアー ボディ日焼け止め SPF 50 85ml",
+    "ko": "Neutrogena 울트라 쉬어 바디 선크림 SPF 50 85ml",
+    "src": "ai"
+  },
+  "Slick Hair Dream Cream 135mL": {
+    "zh": "Slick Hair 夢幻護髮霜 135毫升",
+    "ja": "Slick Hair ドリームクリーム 135ml",
+    "ko": "Slick Hair 드림 크림 135ml",
+    "src": "ai"
+  },
+  "Well Naturally No Sugar Added Milk Chocolate Coconut Delight 90g": {
+    "zh": "Well Naturally 無加糖牛奶巧克力椰子口味 90克",
+    "ja": "Well Naturally 砂糖不使用 ミルクチョコレートココナッツ 90g",
+    "ko": "Well Naturally 무설탕 밀크 초콜릿 코코넛 90g",
+    "src": "ai"
+  },
+  "Cocobella Chocolate Flavoured Coconut Water 1L": {
+    "zh": "Cocobella 巧克力風味椰子水 1公升",
+    "ja": "Cocobella チョコレート風味ココナッツウォーター 1L",
+    "ko": "Cocobella 초콜릿 맛 코코넛 워터 1L",
+    "src": "ai"
+  },
+  "Garnier Fructis Normal Shampoo 315mL": {
+    "zh": "Garnier Fructis 一般髮質洗髮精 315毫升",
+    "ja": "Garnier Fructis ノーマルヘア用シャンプー 315ml",
+    "ko": "Garnier Fructis 일반 모발용 샴푸 315ml",
+    "src": "ai"
+  },
+  "Palmolive Naturals Active Nourishment Shampoo 700mL": {
+    "zh": "Palmolive Naturals 滋養洗髮精 700毫升",
+    "ja": "Palmolive Naturals アクティブナリッシュメントシャンプー 700ml",
+    "ko": "Palmolive Naturals 액티브 너리쉬먼트 샴푸 700ml",
+    "src": "ai"
+  },
+  "Twist Large Claw Clip Assorted Colours 1 Pack": {
+    "zh": "Twist 大號鯊魚夾 綜合色 1入",
+    "ja": "Twist 大型ヘアクリップ アソートカラー 1個入",
+    "ko": "Twist 대형 집게핀 모음 색상 1개입",
+    "src": "ai"
+  },
+  "Rexona Men Deodorant 48hr Aerosol Quantum 250mL": {
+    "zh": "Rexona Men 男士48小時噴霧止汗劑 Quantum 250毫升",
+    "ja": "Rexona Men 男性用デオドラント 48時間スプレー Quantum 250ml",
+    "ko": "Rexona Men 남성용 데오도란트 48시간 스프레이 Quantum 250ml",
+    "src": "ai"
+  },
+  "Olay Complete Lotion Uv Normal/dry 150mL": {
+    "zh": "Olay 全效防曬乳液 一般/乾性肌 150毫升",
+    "ja": "Olay コンプリートローション UV ノーマル/ドライ肌用 150ml",
+    "ko": "Olay 컴플리트 로션 UV 일반/건성 피부용 150ml",
+    "src": "ai"
+  },
+  "Palmolive Ultra Strength Concentrate Dishwashing Liquid Original 950mL": {
+    "zh": "Palmolive Ultra 強效濃縮洗碗精 經典款 950毫升",
+    "ja": "Palmolive Ultra 強力濃縮食器用洗剤 オリジナル 950ml",
+    "ko": "Palmolive Ultra 강력 농축 주방세제 오리지널 950ml",
+    "src": "ai"
+  },
+  "Olay Luminous Niacinamide Super Serum 30mL": {
+    "zh": "Olay 光感亮白菸鹼醯胺精華液 30毫升",
+    "ja": "Olay ルミナス ナイアシンアミド スーパーセラム 30ml",
+    "ko": "Olay 루미너스 나이아신아마이드 슈퍼 세럼 30ml",
+    "src": "ai"
+  },
+  "Nature's Own High Strength Magnesium Muscle Health Capsules 150 Pack": {
+    "zh": "Nature's Own 高濃度鎂膠囊 150入",
+    "ja": "Nature's Own 高濃度マグネシウム カプセル 150個入",
+    "ko": "Nature's Own 고농축 마그네슘 캡슐 150개입",
+    "src": "ai"
+  },
+  "Ultralife Effervescent Energy Tropical Tablets 20 Pack": {
+    "zh": "Ultralife 發泡能量錠 熱帶水果口味 20入",
+    "ja": "Ultralife 発泡エナジータブレット トロピカル 20個入",
+    "ko": "Ultralife 발포 에너지 정제 트로피컬 20개입",
+    "src": "ai"
+  },
+  "Fudge Professional Clean Blonde Damage Rewind Violet Purple Toning Shampoo 250mL": {
+    "zh": "Fudge Professional 矯色洗髮精 250毫升",
+    "ja": "Fudge Professional クリーンブロンド ダメージリワインド 紫色トーニングシャンプー 250ml",
+    "ko": "Fudge Professional 클린 블론드 데미지 리와인드 보라색 토닝 샴푸 250ml",
+    "src": "ai"
+  },
+  "Garnier Fructis Normal Conditioner 315mL": {
+    "zh": "Garnier Fructis 一般髮質潤髮乳 315毫升",
+    "ja": "Garnier Fructis ノーマルヘア用コンディショナー 315ml",
+    "ko": "Garnier Fructis 일반 모발용 컨디셔너 315ml",
+    "src": "ai"
+  },
+  "Toni & Guy Conditioner Purple 600mL": {
+    "zh": "Toni & Guy 矯色潤髮乳 600毫升",
+    "ja": "Toni & Guy コンディショナー パープル 600ml",
+    "ko": "Toni & Guy 컨디셔너 퍼플 600ml",
+    "src": "ai"
+  },
+  "Vaseline Gluta - Hya Body Lotion Moisturiser Restore 200mL": {
+    "zh": "Vaseline 穀胱甘肽玻尿酸身體乳 修護款 200毫升",
+    "ja": "Vaseline グルタ-ヒアルロン酸 ボディローション リストア 200ml",
+    "ko": "Vaseline 글루타-히알루론산 바디 로션 리스토어 200ml",
+    "src": "ai"
+  },
+  "Vaseline Gluta - Hya Body Lotion Moisturiser Bright 200mL": {
+    "zh": "Vaseline 穀胱甘肽玻尿酸身體乳 亮白款 200毫升",
+    "ja": "Vaseline グルタ-ヒアルロン酸 ボディローション ブライト 200ml",
+    "ko": "Vaseline 글루타-히알루론산 바디 로션 브라이트 200ml",
+    "src": "ai"
+  },
+  "OMO Active Clean 3 in 1 Laundry Capsules 28 Washes 28 Pack": {
+    "zh": "OMO 強效潔淨三合一洗衣膠囊 28入",
+    "ja": "OMO アクティブクリーン 3in1 洗濯カプセル 28回分 28個入",
+    "ko": "OMO 액티브 클린 3in1 세탁 캡슐 28회분 28개입",
+    "src": "ai"
+  },
+  "Celebrity Slim 7 Day Assorted Pack Meal Replacement Shakes 14 Pack 770g": {
+    "zh": "Celebrity Slim 7日代餐奶昔 綜合口味 14入 770克",
+    "ja": "Celebrity Slim 7日間置き換えダイエットシェイク アソートパック 14個入 770g",
+    "ko": "Celebrity Slim 7일 식사대용 쉐이크 모음 14개입 770g",
+    "src": "ai"
+  },
+  "Slick Hair Anti Flyaway Gel 100mL": {
+    "zh": "Slick Hair 抗毛躁定型膠 100毫升",
+    "ja": "Slick Hair アホ毛直しジェル 100ml",
+    "ko": "Slick Hair 잔머리 정리 젤 100ml",
+    "src": "ai"
+  },
+  "Ogx Extra Strength Hydrate & Repair + Argan Oil Of Morocco Shampoo For Damaged Hair 385mL": {
+    "zh": "Ogx 強效保濕修護摩洛哥堅果油洗髮精 受損髮質 385毫升",
+    "ja": "Ogx エクストラストレングス モロッカンアルガンオイル シャンプー ダメージヘア用 385ml",
+    "ko": "Ogx 엑스트라 스트렝스 모로칸 아르간 오일 샴푸 손상 모발용 385ml",
+    "src": "ai"
+  },
+  "OMO Sensitive 3 in 1 Laundry Capsules 28 Washes 28 Pack": {
+    "zh": "OMO 敏感肌專用三合一洗衣膠囊 28入",
+    "ja": "OMO センシティブ 3in1 洗濯カプセル 28回分 28個入",
+    "ko": "OMO 센시티브 3in1 세탁 캡슐 28회분 28개입",
+    "src": "ai"
+  },
+  "L'Oreal Garnier Good 7.12 Sweet Latte 1 Pack": {
+    "zh": "L'Oreal Garnier Good 7.12 拿鐵甜心染髮霜 1入",
+    "ja": "L'Oreal Garnier Good 7.12 スウィートラテ ヘアカラー 1個入",
+    "ko": "L'Oreal Garnier Good 7.12 스위트 라떼 염색약 1개입",
+    "src": "ai"
+  },
+  "Rascals Premium Sensitive Wipes Plastic Free Cloth 80 Pack": {
+    "zh": "Rascals 極致敏感無塑環保濕紙巾 80入",
+    "ja": "Rascals プレミアム センシティブ ワイプ プラフリー クロス 80個入",
+    "ko": "Rascals 프리미엄 센서티브 물티슈 플라스틱 프리 클로스 80개입",
+    "src": "ai"
+  },
+  "Nature's Gift Adult All Breeds Dry Dog Food With Beef 2.5kg": {
+    "zh": "Nature's Gift 成犬全犬種牛肉乾狗糧 2.5公斤",
+    "ja": "Nature's Gift 成犬 オールブリード ドライ ドッグフード ビーフ 2.5kg",
+    "ko": "Nature's Gift 어덜트 올 브리즈 건식 강아지 사료 비프 2.5kg",
+    "src": "ai"
+  },
+  "Aveeno Fresh Greens Conditioner 354mL": {
+    "zh": "Aveeno 植萃清新潤髮乳 354毫升",
+    "ja": "Aveeno フレッシュグリーン コンディショナー 354ml",
+    "ko": "Aveeno 프레시 그린 컨디셔너 354ml",
     "src": "ai"
   }
 }
