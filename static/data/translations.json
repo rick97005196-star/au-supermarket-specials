@@ -104441,10 +104441,11 @@
     "src": "ai"
   },
   "Garnier Nutrisse 6 Acorn Permanent Hair Colour 1 Pack": {
-    "zh": "Garnier Nutrisse 6號 橡子色持久染髮劑",
-    "ja": "Garnier Nutrisse 6 エイコーン 永久染毛剤 1個入",
-    "ko": "Garnier Nutrisse 6 에이콘 새치 및 멋내기용 염색약 1개입",
-    "src": "ai"
+    "zh": "Garnier Nutrisse 6號 Acorn 持久染髮劑 1入",
+    "ja": "Garnier Nutrisse 6番 Acorn 永久染毛剤 1個入",
+    "ko": "Garnier Nutrisse 6번 Acorn 영구 염색약 1개입",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Head & Shoulders Anti-dandruff Shampoo Apple Fresh 660mL": {
     "zh": "Head & Shoulders 去屑洗髮精 蘋果清香 660毫升",
@@ -104822,6 +104823,312 @@
     "zh": "Jordans 野生莓果香脆燕麥穀片 500克",
     "ja": "Jordans クランチー オーツクラスター ワイルド アバウト ベリー 500g",
     "ko": "Jordans 크런치 오트 클러스터 와일드 어바웃 베리 500g",
+    "src": "ai"
+  },
+  "Lipton Black Tea Bags 100 Pack": {
+    "zh": "Lipton 紅茶包 100入",
+    "ja": "Lipton 紅茶ティーバッグ 100個入",
+    "ko": "Lipton 홍차 티백 100개입",
+    "src": "ai"
+  },
+  "Rexona Men Deodorant 48hr Aerosol Sport Fresh 250mL": {
+    "zh": "Rexona Men 48小時運動清新噴霧止汗劑 250毫升",
+    "ja": "Rexona Men 48時間デオドラントスプレー スポーツフレッシュ 250mL",
+    "ko": "Rexona Men 48시간 데오도란트 스프레이 스포츠 프레시 250mL",
+    "src": "ai"
+  },
+  "Hellmann's Squeeze Real Mayonnaise 400g": {
+    "zh": "Hellmann's 擠壓式原味美乃滋 400克",
+    "ja": "Hellmann's リアルマヨネーズ 400g",
+    "ko": "Hellmann's 리얼 마요네즈 400g",
+    "src": "ai"
+  },
+  "Everblue Aspire Repair & Hydrate Conditioner 400mL": {
+    "zh": "Everblue Aspire 修護保濕潤髮乳 400毫升",
+    "ja": "Everblue Aspire リペア＆ハイドレート コンディショナー 400mL",
+    "ko": "Everblue Aspire 리페어 & 하이드레이트 컨디셔너 400mL",
+    "src": "ai"
+  },
+  "Rexona Women Deodorant 96hr Clinical Aerosol Shower Clean 180mL": {
+    "zh": "Rexona Women 96小時臨床級沐浴清新噴霧止汗劑 180毫升",
+    "ja": "Rexona Women 96時間クリニカルデオドラントスプレー シャワークリーン 180mL",
+    "ko": "Rexona Women 96시간 임상용 데오도란트 스프레이 샤워 클린 180mL",
+    "src": "ai"
+  },
+  "Hask Keratin Shampoo 355mL": {
+    "zh": "Hask 角蛋白洗髮精 355毫升",
+    "ja": "Hask ケラチン シャンプー 355mL",
+    "ko": "Hask 케라틴 샴푸 355mL",
+    "src": "ai"
+  },
+  "Harpic Fresh Power Rimblock Tropical Blossom Toilet Cleaner 39g": {
+    "zh": "Harpic 熱帶花香馬桶清潔掛球 39克",
+    "ja": "Harpic トロピカルブロッサム トイレ用芳香洗浄剤 39g",
+    "ko": "Harpic 트로피컬 블라썸 변기 세정제 39g",
+    "src": "ai"
+  },
+  "Head & Shoulders Anti-dandruff Conditioner Smooth & Silky 660mL": {
+    "zh": "Head & Shoulders 絲滑柔順去屑潤髮乳 660毫升",
+    "ja": "Head & Shoulders スムース＆シルキー フケ防止コンディショナー 660mL",
+    "ko": "Head & Shoulders 스무스 & 실키 비듬 방지 컨디셔너 660mL",
+    "src": "ai"
+  },
+  "Red Rock Deli Cheddar & Parmesan Deli Style Crackers 135g": {
+    "zh": "Red Rock Deli 切達帕瑪森起司風味餅乾 135克",
+    "ja": "Red Rock Deli チェダー＆パルメザン クラッカー 135g",
+    "ko": "Red Rock Deli 체다 & 파마산 크래커 135g",
+    "src": "ai"
+  },
+  "Rexona Women Deodorant 96hr Clinical Roll On Summer Strength 50mL": {
+    "zh": "Rexona Women 96小時臨床級夏季強效滾珠止汗劑 50毫升",
+    "ja": "Rexona Women 96時間クリニカルロールオン サマーストレングス 50mL",
+    "ko": "Rexona Women 96시간 임상용 데오도란트 롤온 서머 스트렝스 50mL",
+    "src": "ai"
+  },
+  "Shockwaves Ultra Hold Gel 180mL": {
+    "zh": "Shockwaves 超強定型髮膠 180毫升",
+    "ja": "Shockwaves ウルトラホールド ジェル 180mL",
+    "ko": "Shockwaves 울트라 홀드 젤 180mL",
+    "src": "ai"
+  },
+  "Hask Keratin Sachet Conditioner 50g": {
+    "zh": "Hask 角蛋白潤髮乳隨身包 50克",
+    "ja": "Hask ケラチン コンディショナー サシェ 50g",
+    "ko": "Hask 케라틴 컨디셔너 파우치 50g",
+    "src": "ai"
+  },
+  "Neutrogena Sun Beach Defence Sunscreen Spray SPF 50 184g": {
+    "zh": "Neutrogena 露得清 海灘防護防曬噴霧 SPF 50 184克",
+    "ja": "Neutrogena ビーチディフェンス 日焼け止めスプレー SPF 50 184g",
+    "ko": "Neutrogena 비치 디펜스 선스크린 스프레이 SPF 50 184g",
+    "src": "ai"
+  },
+  "Dettol Profresh Shower Gel Body Wash Peach And Raspberry 950mL": {
+    "zh": "Dettol 蜜桃覆盆子沐浴乳 950毫升",
+    "ja": "Dettol ピーチ＆ラズベリー ボディソープ 950mL",
+    "ko": "Dettol 피치 & 라즈베리 바디워시 950mL",
+    "src": "ai"
+  },
+  "Clairol Blonde It Up Platinum Blonde 1 Pack": {
+    "zh": "Clairol 白金金髮染髮劑 1入",
+    "ja": "Clairol プラチナブロンド ヘアカラー 1個入",
+    "ko": "Clairol 플래티넘 블론드 염색약 1개입",
+    "src": "ai"
+  },
+  "Ogx Extra Strength Damage Remedy + Hydrating & Repairing Coconut Miracle Oil Shampoo For Damaged & Dry Hair 385mL": {
+    "zh": "Ogx 強效修護保濕椰子油洗髮精 385毫升",
+    "ja": "Ogx エクストラストレングス ココナッツミラクルオイル シャンプー 385mL",
+    "ko": "Ogx 엑스트라 스트렝스 코코넛 미라클 오일 샴푸 385mL",
+    "src": "ai"
+  },
+  "Hask Monoi Coconut Shampoo 355mL": {
+    "zh": "Hask 莫諾伊椰子洗髮精 355毫升",
+    "ja": "Hask モノイココナッツ シャンプー 355mL",
+    "ko": "Hask 모노이 코코넛 샴푸 355mL",
+    "src": "ai"
+  },
+  "OC Naturals Coconut Repair Conditioner 400mL": {
+    "zh": "OC Naturals 椰子修護潤髮乳 400毫升",
+    "ja": "OC Naturals ココナッツリペア コンディショナー 400mL",
+    "ko": "OC Naturals 코코넛 리페어 컨디셔너 400mL",
+    "src": "ai"
+  },
+  "Hask Argan Oil Vial Treatment 18mL": {
+    "zh": "Hask 摩洛哥堅果油護髮精華 18毫升",
+    "ja": "Hask アルガンオイル ヘアトリートメント 18mL",
+    "ko": "Hask 아르간 오일 헤어 트리트먼트 18mL",
+    "src": "ai"
+  },
+  "Herbal Essences Potent Aloe + Eucalyptus Conditioner 400mL": {
+    "zh": "Herbal Essences 蘆薈尤加利潤髮乳 400毫升",
+    "ja": "Herbal Essences アロエ＆ユーカリ コンディショナー 400mL",
+    "ko": "Herbal Essences 알로에 & 유칼립투스 컨디셔너 400mL",
+    "src": "ai"
+  },
+  "Hask Argan Oil Shampoo 355mL": {
+    "zh": "Hask 摩洛哥堅果油洗髮精 355毫升",
+    "ja": "Hask アルガンオイル シャンプー 355mL",
+    "ko": "Hask 아르간 오일 샴푸 355mL",
+    "src": "ai"
+  },
+  "Harpic Turquoise Power Rimblock Tropical Lagoon Toilet Cleaner 39g": {
+    "zh": "Harpic 熱帶潟湖馬桶清潔掛球 39克",
+    "ja": "Harpic トロピカルラグーン トイレ用芳香洗浄剤 39g",
+    "ko": "Harpic 트로피컬 라군 변기 세정제 39g",
+    "src": "ai"
+  },
+  "The Kimchi Company Original Baechu Kimchi 160g": {
+    "zh": "The Kimchi Company 經典白菜泡菜 160克",
+    "ja": "The Kimchi Company オリジナル白菜キムチ 160g",
+    "ko": "The Kimchi Company 오리지널 배추김치 160g",
+    "src": "ai"
+  },
+  "Fudge Professional Clean Blonde Damage Rewind Violet Purple Toning Conditioner 250mL": {
+    "zh": "Fudge Professional 矯色紫護髮乳 250毫升",
+    "ja": "Fudge Professional クリーンブロンド 紫色トナーコンディショナー 250mL",
+    "ko": "Fudge Professional 클린 블론드 보라색 토닝 컨디셔너 250mL",
+    "src": "ai"
+  },
+  "Golden Circle Tetra Drink Tropical Punch 1L": {
+    "zh": "Golden Circle 熱帶水果風味果汁 1公升",
+    "ja": "Golden Circle トロピカルパンチ ドリンク 1L",
+    "ko": "Golden Circle 트로피컬 펀치 음료 1L",
+    "src": "ai"
+  },
+  "The Kimchi Company Vegan Baechu Kimchi 160g": {
+    "zh": "The Kimchi Company 純素白菜泡菜 160克",
+    "ja": "The Kimchi Company ヴィーガン白菜キムチ 160g",
+    "ko": "The Kimchi Company 비건 배추김치 160g",
+    "src": "ai"
+  },
+  "Klorane Dry Shampoo Oil Control With Nettle And Vit E 150mL": {
+    "zh": "Klorane 蕁麻維他命E控油乾洗髮噴霧 150毫升",
+    "ja": "Klorane ドライシャンプー オイルコントロール ネトル＆ビタミンE 150mL",
+    "ko": "Klorane 드라이 샴푸 오일 컨트롤 네틀 & 비타민 E 150mL",
+    "src": "ai"
+  },
+  "Olay Regenerist Retinol24 Overnight Wrinkle Concentrate 10mL": {
+    "zh": "Olay Regenerist A醇24夜間抗皺精華 10毫升",
+    "ja": "Olay Regenerist レチノール24 夜用リンクル集中美容液 10mL",
+    "ko": "Olay Regenerist 레티놀24 나이트 주름 개선 농축 세럼 10mL",
+    "src": "ai"
+  },
+  "Olay Retinol Body Wash 591mL": {
+    "zh": "Olay A醇沐浴乳 591毫升",
+    "ja": "Olay レチノール ボディウォッシュ 591mL",
+    "ko": "Olay 레티놀 바디워시 591mL",
+    "src": "ai"
+  },
+  "OC Naturals Coconut Repair Shampoo 400mL": {
+    "zh": "OC Naturals 椰子修護洗髮精 400毫升",
+    "ja": "OC Naturals ココナッツ リペアシャンプー 400mL",
+    "ko": "OC Naturals 코코넛 리페어 샴푸 400mL",
+    "src": "ai"
+  },
+  "Red Rock Deli Honey Soy Chicken Deli Style Crackers 135g": {
+    "zh": "Red Rock Deli 蜂蜜醬油雞肉風味脆餅 135克",
+    "ja": "Red Rock Deli ハニーソイチキン風味 クラッカー 135g",
+    "ko": "Red Rock Deli 허니소이 치킨맛 크래커 135g",
+    "src": "ai"
+  },
+  "Monday Shampoo Moisture 354mL": {
+    "zh": "Monday 保濕洗髮精 354毫升",
+    "ja": "Monday モイスチャーシャンプー 354mL",
+    "ko": "Monday 모이스처 샴푸 354mL",
+    "src": "ai"
+  },
+  "Monday Shampoo Moisture 798mL": {
+    "zh": "Monday 保濕洗髮精 798毫升",
+    "ja": "Monday モイスチャーシャンプー 798mL",
+    "ko": "Monday 모이스처 샴푸 798mL",
+    "src": "ai"
+  },
+  "Ogx Extra Strength Damage Remedy + Hydrating & Repairing Coconut Miracle Oil Penetrating Oil For Dry & Damaged Hair 100mL": {
+    "zh": "Ogx 強效修護椰子奇蹟護髮油 100毫升",
+    "ja": "Ogx エクストラストレングス ダメージレメディ ココナッツミラクルオイル 100mL",
+    "ko": "Ogx 엑스트라 스트렝스 데미지 레미디 코코넛 미라클 오일 100mL",
+    "src": "ai"
+  },
+  "Fudge Professional Clean Blonde Violet Purple Toning Conditioner 250mL": {
+    "zh": "Fudge Professional 矯色紫護髮乳 250毫升",
+    "ja": "Fudge Professional クリーンブロンド バイオレット紫トーニングコンディショナー 250mL",
+    "ko": "Fudge Professional 클린 블론드 바이올렛 퍼플 토닝 컨디셔너 250mL",
+    "src": "ai"
+  },
+  "Garnier Olia B+++ Max Bleach 1 Each": {
+    "zh": "Garnier Olia B+++ 強效漂髮劑 1入",
+    "ja": "Garnier Olia B+++ マックスブリーチ 1個入",
+    "ko": "Garnier Olia B+++ 맥스 블리치 1개입",
+    "src": "ai"
+  },
+  "Batiste Eden Bloom Instant Refresh Dry Shampoo 200mL": {
+    "zh": "Batiste Eden Bloom 乾洗髮噴霧 200毫升",
+    "ja": "Batiste Eden Bloom インスタントリフレッシュ ドライシャンプー 200mL",
+    "ko": "Batiste Eden Bloom 인스턴트 리프레시 드라이 샴푸 200mL",
+    "src": "ai"
+  },
+  "Ogx Extra Strength Damage Remedy + Hydrating & Repairing Coconut Miracle Oil Conditioner For Damaged & Dry Hair 385mL": {
+    "zh": "Ogx 強效修護椰子奇蹟護髮乳 385毫升",
+    "ja": "Ogx エクストラストレングス ダメージレメディ ココナッツミラクルオイル コンディショナー 385mL",
+    "ko": "Ogx 엑스트라 스트렝스 데미지 레미디 코코넛 미라클 오일 컨디셔너 385mL",
+    "src": "ai"
+  },
+  "Vanish Napisan Gold Colours Stain Remover 2kg": {
+    "zh": "Vanish Napisan Gold 彩色衣物去漬粉 2公斤",
+    "ja": "Vanish Napisan Gold カラー用衣類漂白剤 2kg",
+    "ko": "Vanish Napisan Gold 컬러 의류용 얼룩제거제 2kg",
+    "src": "ai"
+  },
+  "Cocobella Chocolate Hazelnut 1L": {
+    "zh": "Cocobella 巧克力榛果椰子水 1公升",
+    "ja": "Cocobella チョコレートヘーゼルナッツ 1L",
+    "ko": "Cocobella 초콜릿 헤이즐넛 1L",
+    "src": "ai"
+  },
+  "Golden Circle Tetra Drink Apple 1L": {
+    "zh": "Golden Circle 蘋果汁 1公升",
+    "ja": "Golden Circle アップルジュース 1L",
+    "ko": "Golden Circle 사과 주스 1L",
+    "src": "ai"
+  },
+  "Botanica Origins Scented Candle Pine & Spanish Sage 1 Each": {
+    "zh": "Botanica Origins 松木與西班牙鼠尾草香氛蠟燭 1入",
+    "ja": "Botanica Origins 香り付きキャンドル パイン＆スパニッシュセージ 1個入",
+    "ko": "Botanica Origins 향초 파인 & 스페니쉬 세이지 1개입",
+    "src": "ai"
+  },
+  "L'Oreal Elvive Extraordinary Oil Nourishing Masque Dry Hair Mask 300mL": {
+    "zh": "L'Oreal Elvive 金緻護髮油滋養髮膜 300毫升",
+    "ja": "L'Oreal Elvive エクストラオーディナリーオイル 栄養ヘアマスク 300mL",
+    "ko": "L'Oreal Elvive 엑스트라오디네리 오일 영양 헤어 마스크 300mL",
+    "src": "ai"
+  },
+  "Lady Jayne Gemtip Rainbow Brush Large 1 Each": {
+    "zh": "Lady Jayne 彩虹髮梳 大號 1入",
+    "ja": "Lady Jayne ジェムチップ レインボーブラシ Lサイズ 1個入",
+    "ko": "Lady Jayne 젬팁 레인보우 브러시 대형 1개입",
+    "src": "ai"
+  },
+  "Olay Regenerist Retinol24 Max Night Serum 30mL": {
+    "zh": "Olay Regenerist A醇24夜間精華 30毫升",
+    "ja": "Olay Regenerist レチノール24 マックス ナイトセラム 30mL",
+    "ko": "Olay Regenerist 레티놀24 맥스 나이트 세럼 30mL",
+    "src": "ai"
+  },
+  "Hask Monoi Coconut Conditioner 355mL": {
+    "zh": "Hask 莫諾伊椰子護髮乳 355毫升",
+    "ja": "Hask モノイココナッツ コンディショナー 355mL",
+    "ko": "Hask 모노이 코코넛 컨디셔너 355mL",
+    "src": "ai"
+  },
+  "Rexona Women Deodorant 96hr Clinical Roll On Shower Clean 50mL": {
+    "zh": "Rexona 女性長效96小時止汗滾珠 清新沐浴香 50毫升",
+    "ja": "Rexona 女性用制汗剤 96時間クリニカル ロールオン シャワークリーン 50mL",
+    "ko": "Rexona 여성용 데오도란트 96시간 클리니컬 롤온 샤워 클린 50mL",
+    "src": "ai"
+  },
+  "Zooper Dooper 8 Cosmic Flavours Water Ice 70mL Tubes 24 Pack": {
+    "zh": "Zooper Dooper 8種風味冰棒 70毫升 x 24入",
+    "ja": "Zooper Dooper 8種のフレーバー アイスキャンディー 70mL 24個入",
+    "ko": "Zooper Dooper 8가지 맛 아이스바 70mL 24개입",
+    "src": "ai"
+  },
+  "Quick Screen Facial Sunscreen Spray SPF 50+ 90mL": {
+    "zh": "Quick Screen 臉部防曬噴霧 SPF 50+ 90毫升",
+    "ja": "Quick Screen フェイシャル日焼け止めスプレー SPF 50+ 90mL",
+    "ko": "Quick Screen 페이셜 선스크린 스프레이 SPF 50+ 90mL",
+    "src": "ai"
+  },
+  "Ostelin Vitamin D 1000iu D3 Capsules For Bones + Immunity 130 Pack": {
+    "zh": "Ostelin 維生素D3 1000iu 膠囊 130入",
+    "ja": "Ostelin ビタミンD 1000iu D3 カプセル 130個入",
+    "ko": "Ostelin 비타민 D 1000iu D3 캡슐 130개입",
+    "src": "ai"
+  },
+  "Voost Energy Orange & Mango Effervescent Vitamins 20 Pack": {
+    "zh": "Voost 能量發泡錠 柳橙芒果口味 20入",
+    "ja": "Voost エナジー発泡ビタミン オレンジ＆マンゴー味 20個入",
+    "ko": "Voost 에너지 발포 비타민 오렌지&망고맛 20개입",
     "src": "ai"
   }
 }
