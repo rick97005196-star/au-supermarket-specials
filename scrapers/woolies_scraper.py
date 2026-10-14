@@ -467,6 +467,16 @@ def scrape_woolies_online_half_price(max_pages: int = 100) -> List[Dict[str, Any
     print(f"Scraped {len(products)} online Half Price specials from Woolworths API across {page - 1} pages.")
     return products
 
+def woolies_switching(now=None):
+    """Wednesday midnight to 6am Brisbane: Woolworths' website still lists LAST week's specials for a
+    few hours after the new week starts (seen 14 Oct 2026: at 1am the Half Price list was last week's,
+    by 7am it was the new one). The website lists are not read in these hours; the site keeps showing
+    the new week's catalogue with the lasting prices prepared before Wednesday."""
+    import datetime as _dt
+    local = (now or _dt.datetime.utcnow()) + _dt.timedelta(hours=10)
+    return local.weekday() == 2 and local.hour < 6
+
+
 WOOLIES_MEMORY = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'data', 'woolies_web.json')
 WOOLIES_REFRESH_HOURS = 6
 
@@ -477,6 +487,9 @@ def woolies_half_price_remembered():
     interrupted (site refused us), the items read are ADDED to the saved list, nothing is lost."""
     import json, time as _time
     from scrapers.coles_web import coles_week_start      # same Wednesday switch-over as Coles
+    if woolies_switching():
+        print('Woolies half-price list: Wednesday before 6am, the website may still list last week - not read this run')
+        return []
     week = coles_week_start()
     mem = {'week': week, 'items': {}, 'last_full': 0}
     try:
@@ -648,6 +661,9 @@ def woolies_groups_remembered():
     interrupted read is added to what was kept, nothing is lost."""
     import json, time as _time
     from scrapers.coles_web import coles_week_start
+    if woolies_switching():
+        print('Woolies specials lists: Wednesday before 6am, the website may still list last week - not read this run')
+        return []
     week = coles_week_start()
     try:
         with open(WOOLIES_MEMORY, encoding='utf-8') as f:

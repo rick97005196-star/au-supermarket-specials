@@ -56,6 +56,16 @@ check(got == {'Milk 2L': 'Save $1.00', 'Bread 650g': 'Everyday Low Price', 'Sour
       f'lasting prices join the preview, the weekly half price does not, the preview entry wins: {got}')
 check(with_lasting_prices([], cur) == [], 'no preview published yet: nothing is added')
 
+# --- Wednesday before 6am Brisbane the Woolworths website lists are not read (they may still be last week's) ---
+import datetime  # noqa: E402
+from scrapers.woolies_scraper import woolies_switching  # noqa: E402
+utc = lambda s: datetime.datetime.strptime(s, '%Y-%m-%d %H:%M')
+check(woolies_switching(utc('2026-10-13 14:05')), 'Wednesday 00:05 Brisbane: not read')
+check(woolies_switching(utc('2026-10-13 19:59')), 'Wednesday 05:59 Brisbane: not read')
+check(not woolies_switching(utc('2026-10-13 20:00')), 'Wednesday 06:00 Brisbane: read again')
+check(not woolies_switching(utc('2026-10-13 13:55')), 'Tuesday 23:55 Brisbane: read as usual')
+check(not woolies_switching(utc('2026-10-14 15:00')), 'Thursday 01:00 Brisbane: read as usual')
+
 for b in bad:
     print('FAIL', b)
 print(f'{total - len(bad)}/{total} Woolworths list checks passed')

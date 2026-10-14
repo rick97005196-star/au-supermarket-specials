@@ -8,7 +8,7 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from database import init_db, save_specials, get_stats, clear_stale_next
 from scrapers.coles_scraper import scrape_coles_all_weeks
-from scrapers.woolies_scraper import scrape_woolies_all_weeks
+from scrapers.woolies_scraper import scrape_woolies_all_weeks, woolies_switching
 from scrapers.aldi_scraper import scrape_aldi_specials
 
 class _Skip(Exception):
@@ -58,6 +58,22 @@ def with_lasting_prices(next_items, current_items):
     if lasting:
         print(f" Next week's preview: {len(lasting)} lasting prices from this week added (checked again on Wednesday).")
     return list(next_items) + lasting
+
+
+def _saved_items(store, period):
+    """The specials already saved for a store and period, in the form the scrapers return."""
+    import json
+    from database import get_db
+    cols = ('title', 'price', 'price_display', 'was_price', 'save_amount', 'discount_desc', 'unit_price', 'image_url',
+            'category', 'product_url', 'regions', 'region_prices', 'sale_from', 'store_category')
+    out = []
+    with get_db() as conn:
+        for r in conn.execute(f"SELECT {', '.join(cols)} FROM specials WHERE store = ? AND period = ?", (store, period)):
+            d = dict(r)
+            d['regions'] = [x for x in (d.get('regions') or '').split(',') if x]
+            d['region_prices'] = json.loads(d['region_prices']) if d.get('region_prices') else None
+            out.append(d)
+    return out
 
 
 def _aldi_special_buys_kept(new_items):
@@ -137,6 +153,9 @@ def update_all_stores(max_catalogue_pages: int = 50) -> Dict[str, Any]:
         # Save current week
         w_curr_items = woolies_data['current']['items']
         w_curr_date = woolies_data['current']['date_range']
+        if woolies_switching() and w_curr_items:
+            # Wednesday before 6am: the website lists were not read, keep the lasting prices moved in at midnight
+            w_curr_items = with_lasting_prices(w_curr_items, _saved_items('Woolworths', 'current'))
         saved_w_curr = save_specials('Woolworths', w_curr_items, period='current', date_range=w_curr_date)
         print(f" Saved {saved_w_curr} Woolworths current week specials ({w_curr_date}).")
 
