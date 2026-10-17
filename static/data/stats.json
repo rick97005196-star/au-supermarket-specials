@@ -1,8 +1,8 @@
 {
   "current": {
-    "total": 5632,
+    "total": 5633,
     "by_store": {
-      "Coles": 2063,
+      "Coles": 2064,
       "Woolworths": 3392,
       "ALDI": 177
     },
@@ -11,17 +11,17 @@
       "dairy_eggs": 343,
       "drinks": 565,
       "frozen": 249,
-      "health_vitamins": 2073,
-      "household": 729,
+      "health_vitamins": 2074,
+      "household": 728,
       "liquor": 59,
       "meat": 291,
       "pantry": 869,
       "pet": 92,
       "produce": 65,
       "seafood": 31,
-      "snacks": 920
+      "snacks": 921
     },
-    "half_price_count": 2998,
+    "half_price_count": 2999,
     "date_range": "Wed 14 Oct 2026 - Tue 20 Oct 2026",
     "everyday_count": 3399
   },
@@ -46,18 +46,18 @@
     "date_range": "Wed 21 Oct 2026 - Tue 27 Oct 2026",
     "everyday_count": 0
   },
-  "last_updated": "2026-10-17 04:43:01",
+  "last_updated": "2026-10-17 12:26:16",
   "base_region": "QLD",
   "regions": {
     "QLD": {
       "current": {
-        "total": 5632,
+        "total": 5633,
         "by_store": {
-          "Coles": 2063,
+          "Coles": 2064,
           "Woolworths": 3392,
           "ALDI": 177
         },
-        "half_price_count": 2998,
+        "half_price_count": 2999,
         "everyday_count": 3399
       },
       "next": {
@@ -71,13 +71,13 @@
     },
     "NSW": {
       "current": {
-        "total": 5638,
+        "total": 5639,
         "by_store": {
-          "Coles": 2062,
+          "Coles": 2063,
           "Woolworths": 3399,
           "ALDI": 177
         },
-        "half_price_count": 3000,
+        "half_price_count": 3001,
         "everyday_count": 3401
       },
       "next": {
@@ -91,13 +91,13 @@
     },
     "ACT": {
       "current": {
-        "total": 5631,
+        "total": 5632,
         "by_store": {
-          "Coles": 2062,
+          "Coles": 2063,
           "Woolworths": 3392,
           "ALDI": 177
         },
-        "half_price_count": 2998,
+        "half_price_count": 2999,
         "everyday_count": 3401
       },
       "next": {
@@ -111,13 +111,13 @@
     },
     "VIC": {
       "current": {
-        "total": 5639,
+        "total": 5640,
         "by_store": {
-          "Coles": 2063,
+          "Coles": 2064,
           "Woolworths": 3399,
           "ALDI": 177
         },
-        "half_price_count": 3000,
+        "half_price_count": 3001,
         "everyday_count": 3401
       },
       "next": {
@@ -131,13 +131,13 @@
     },
     "SA": {
       "current": {
-        "total": 5648,
+        "total": 5649,
         "by_store": {
-          "Coles": 2079,
+          "Coles": 2080,
           "Woolworths": 3392,
           "ALDI": 177
         },
-        "half_price_count": 3000,
+        "half_price_count": 3001,
         "everyday_count": 3402
       },
       "next": {
@@ -151,13 +151,13 @@
     },
     "WA": {
       "current": {
-        "total": 5645,
+        "total": 5646,
         "by_store": {
-          "Coles": 2076,
+          "Coles": 2077,
           "Woolworths": 3392,
           "ALDI": 177
         },
-        "half_price_count": 2998,
+        "half_price_count": 2999,
         "everyday_count": 3404
       },
       "next": {
@@ -171,13 +171,13 @@
     },
     "TAS": {
       "current": {
-        "total": 5651,
+        "total": 5652,
         "by_store": {
-          "Coles": 2083,
+          "Coles": 2084,
           "Woolworths": 3391,
           "ALDI": 177
         },
-        "half_price_count": 2999,
+        "half_price_count": 3000,
         "everyday_count": 3405
       },
       "next": {
@@ -191,13 +191,13 @@
     },
     "NT": {
       "current": {
-        "total": 5630,
+        "total": 5631,
         "by_store": {
-          "Coles": 2060,
+          "Coles": 2061,
           "Woolworths": 3393,
           "ALDI": 177
         },
-        "half_price_count": 2998,
+        "half_price_count": 2999,
         "everyday_count": 3399
       },
       "next": {
@@ -210,5 +210,5 @@
       }
     }
   },
-  "data_updated_at": "2026-10-17T04:43:21Z"
+  "data_updated_at": "2026-10-17T12:26:46Z"
 }
