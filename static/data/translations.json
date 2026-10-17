@@ -17008,9 +17008,10 @@
     "src": "ai"
   },
   "VOOST Effervescent Mega B Complex Tablets 20 pack": {
-    "zh": "VOOST 強效維他命B群活力發泡錠 (20錠裝)",
-    "ja": "VOOST メガビタミンBコンプレックス 発泡錠（20粒入）",
-    "ko": "부스트 고함량 메가 B 콤플렉스 활력 발포 비타민정 (20정)"
+    "zh": "VOOST 發泡錠 高單位維生素B群 20入",
+    "ja": "VOOST 発泡錠 メガBコンプレックス 20個入",
+    "ko": "VOOST 발포정 메가 B 콤플렉스 20개입",
+    "src": "ai"
   },
   "Vaseline Gluta-Hya Serum Burst Lotion Flawless Glow 70mL": {
     "zh": "Vaseline 凡士林雙重精華潤膚乳 菸鹼醯胺透亮凝乳 (無瑕煥亮) (70毫升裝)",
@@ -106547,10 +106548,11 @@
     "src": "ai"
   },
   "Schwarzkopf Brilliance 68 Chocolate Rush 1 each": {
-    "zh": "Schwarzkopf Brilliance 染髮劑 68號 Chocolate Rush 1入",
-    "ja": "Schwarzkopf Brilliance ヘアカラー 68 Chocolate Rush 1個入",
-    "ko": "Schwarzkopf Brilliance 염색약 68 Chocolate Rush 1개입",
-    "src": "ai"
+    "zh": "Schwarzkopf Brilliance 68 巧克力狂熱染髮劑",
+    "ja": "Schwarzkopf Brilliance 68 チョコレートラッシュ ヘアカラー",
+    "ko": "Schwarzkopf Brilliance 68 초콜릿 러시 헤어 컬러",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Garnier Nutrisse 9.13 Light Ash Beige Blonde Permanent Hair Colour 1 Pack": {
     "zh": "Garnier Nutrisse 永久染髮劑 9.13號 Light Ash Beige Blonde 1入",
@@ -106595,9 +106597,82 @@
     "src": "ai"
   },
   "Schwarzkopf Brilliance 89 Bitter Sweet Chocolate 1 each": {
-    "zh": "Schwarzkopf Brilliance 染髮劑 89號 Bitter Sweet Chocolate 1入",
-    "ja": "Schwarzkopf Brilliance ヘアカラー 89 Bitter Sweet Chocolate 1個入",
-    "ko": "Schwarzkopf Brilliance 염색약 89 Bitter Sweet Chocolate 1개입",
+    "zh": "Schwarzkopf Brilliance 89 苦甜巧克力染髮劑",
+    "ja": "Schwarzkopf Brilliance 89 ビタースイートチョコレート ヘアカラー",
+    "ko": "Schwarzkopf Brilliance 89 비터 스위트 초콜릿 헤어 컬러",
+    "src": "ai",
+    "qa_tries": 1
+  },
+  "Churu Stew Wet Cat Food Chicken Variety 30g x 5 pack": {
+    "zh": "Churu 燉湯濕貓糧 雞肉綜合款 30克 x 5入",
+    "ja": "Churu シチュー ウェットキャットフード チキンバラエティ 30g x 5個入",
+    "ko": "Churu 스튜 습식 캣푸드 치킨 버라이어티 30g x 5개입",
+    "src": "ai"
+  },
+  "Herbal Essences Shampoo Potent Aloe + Eucalyptus 400mL": {
+    "zh": "Herbal Essences 洗髮精 蘆薈+尤加利葉 400毫升",
+    "ja": "Herbal Essences シャンプー アロエ+ユーカリ 400mL",
+    "ko": "Herbal Essences 샴푸 알로에+유칼립투스 400mL",
+    "src": "ai"
+  },
+  "Churu Stew Wet Cat Food Chicken & Salmon 30g x 5 pack": {
+    "zh": "Churu 燉湯濕貓糧 雞肉+鮭魚 30克 x 5入",
+    "ja": "Churu シチュー ウェットキャットフード チキン&サーモン 30g x 5個入",
+    "ko": "Churu 스튜 습식 캣푸드 치킨&연어 30g x 5개입",
+    "src": "ai"
+  },
+  "Quick Flick Winged Eyeliner Stamp Intense Black Modest 10mm 8mL": {
+    "zh": "Quick Flick 眼線印章 濃黑 Modest 10毫米 8毫升",
+    "ja": "Quick Flick アイライナー スタンプ インテンスブラック Modest 10mm 8mL",
+    "ko": "Quick Flick 아이라이너 스탬프 인텐스 블랙 Modest 10mm 8mL",
+    "src": "ai"
+  },
+  "Easy Off Bam Bathroom Cleaning Spray 750mL": {
+    "zh": "Easy Off Bam 浴室清潔噴霧 750毫升",
+    "ja": "Easy Off Bam バスルーム用クリーニングスプレー 750mL",
+    "ko": "Easy Off Bam 욕실용 세정 스프레이 750mL",
+    "src": "ai"
+  },
+  "Neutrogena Hydro Boost Face Sunscreen Spf50 85mL": {
+    "zh": "Neutrogena 露得清 水活保濕臉部防曬乳 SPF50 85毫升",
+    "ja": "Neutrogena ハイドロブースト フェイスサンスクリーン SPF50 85mL",
+    "ko": "Neutrogena 하이드로 부스트 페이스 선스크린 SPF50 85mL",
+    "src": "ai"
+  },
+  "Churu Broth Wet Cat Food Chicken & Salmon 30g x 5 pack": {
+    "zh": "Churu 高湯濕貓糧 雞肉+鮭魚 30克 x 5入",
+    "ja": "Churu ブロス ウェットキャットフード チキン&サーモン 30g x 5個入",
+    "ko": "Churu 브로스 습식 캣푸드 치킨&연어 30g x 5개입",
+    "src": "ai"
+  },
+  "Fab Gold Absolute Laundry Liquid 3.6L": {
+    "zh": "Fab Gold Absolute 洗衣精 3.6公升",
+    "ja": "Fab Gold Absolute 液体洗濯洗剤 3.6L",
+    "ko": "Fab Gold Absolute 액체 세탁세제 3.6L",
+    "src": "ai"
+  },
+  "Churu Broth Wet Cat Food Chicken & Tuna 30g x 5 pack": {
+    "zh": "Churu 高湯濕貓糧 雞肉+鮪魚 30克 x 5入",
+    "ja": "Churu ブロス ウェットキャットフード チキン&ツナ 30g x 5個入",
+    "ko": "Churu 브로스 습식 캣푸드 치킨&참치 30g x 5개입",
+    "src": "ai"
+  },
+  "L'Oreal Preference 1.0 Napoli Hair Colour 1 Pack": {
+    "zh": "L'Oreal Preference 1.0 Napoli 染髮劑 1入",
+    "ja": "L'Oreal Preference 1.0 Napoli ヘアカラー 1個入",
+    "ko": "L'Oreal Preference 1.0 Napoli 헤어 컬러 1개입",
+    "src": "ai"
+  },
+  "Baxter's Dental Sticks For Large Dogs 7 pack": {
+    "zh": "Baxter's 大型犬潔牙棒 7入",
+    "ja": "Baxter's 大型犬用デンタルスティック 7個入",
+    "ko": "Baxter's 대형견용 덴탈 스틱 7개입",
+    "src": "ai"
+  },
+  "Nature's Way Adult Vita Gummies Hair Skin & Nails 60 pack": {
+    "zh": "Nature's Way 成人軟糖 護髮護膚護甲 60入",
+    "ja": "Nature's Way アダルト ビタグミ ヘア・スキン・ネイル 60個入",
+    "ko": "Nature's Way 성인용 비타 구미 헤어·스킨·네일 60개입",
     "src": "ai"
   }
 }
