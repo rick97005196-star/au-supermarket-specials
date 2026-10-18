@@ -1,5 +1,5 @@
 {
-"cursor": 1,
+"cursor": 6,
 "items": {
 "1012796": {
 "category": "Laundry Accessories Laundry Sanitisers",
@@ -1920,6 +1920,21 @@
 "title": "Rokeby Protein Snack Banana Honey 160g",
 "unit_price": "$0.97/ 100g",
 "was_price": 3.15
+},
+"1338589": {
+"category": "Ice Cream Premium Multi",
+"discount_desc": "1/2 PRICE",
+"id": "1338589",
+"image_url": "https://productimages.coles.com.au/productimages/1/1338589.jpg",
+"price": 6.0,
+"price_display": "$6.00",
+"product_url": "https://www.coles.com.au/product/connoisseur-almond-biscotti-gelato-sticks-4-pack-360ml-1338589",
+"save_amount": 6.0,
+"store": "Coles",
+"store_category": "Ice Cream Premium Multi",
+"title": "Connoisseur Almond Biscotti Gelato Sticks 4 Pack 360mL",
+"unit_price": "$1.67/ 100mL",
+"was_price": 12.0
 },
 "1338590": {
 "category": "Boxed Chocolates Everyday",
@@ -5266,6 +5281,21 @@
 "unit_price": "$2.50/ 100mL",
 "was_price": 15.0
 },
+"1710840": {
+"category": "Ice Cream Premium Multi",
+"discount_desc": "1/2 PRICE",
+"id": "1710840",
+"image_url": "https://productimages.coles.com.au/productimages/1/1710840.jpg",
+"price": 6.0,
+"price_display": "$6.00",
+"product_url": "https://www.coles.com.au/product/connoisseur-connoissuer-pistachio-gelato-sticks-4-pack-320ml-1710840",
+"save_amount": 6.0,
+"store": "Coles",
+"store_category": "Ice Cream Premium Multi",
+"title": "Connoisseur Connoissuer Pistachio Gelato Sticks 4 Pack 320mL",
+"unit_price": "$1.88/ 100mL",
+"was_price": 12.0
+},
 "1713870": {
 "category": "Biscuits & Cookies Chocolate Biscuits",
 "discount_desc": "1/2 PRICE",
@@ -6313,6 +6343,21 @@
 "store": "Coles",
 "store_category": "Frozen Snacks Entertainment",
 "title": "Patties Bites Firecracker Chicken 300g",
+"unit_price": "$1.32/ 100g",
+"was_price": 7.9
+},
+"1839937": {
+"category": "Frozen Snacks Entertainment",
+"discount_desc": "1/2 PRICE",
+"id": "1839937",
+"image_url": "https://productimages.coles.com.au/productimages/1/1839937.jpg",
+"price": 3.95,
+"price_display": "$3.95",
+"product_url": "https://www.coles.com.au/product/patties-southern-style-popcorn-chicken-bites-300g-1839937",
+"save_amount": 3.95,
+"store": "Coles",
+"store_category": "Frozen Snacks Entertainment",
+"title": "Patties Southern Style Popcorn Chicken Bites 300g",
 "unit_price": "$1.32/ 100g",
 "was_price": 7.9
 },
@@ -20116,6 +20161,21 @@
 "unit_price": "$2.30/ 100mL",
 "was_price": 23.0
 },
+"6313483": {
+"category": "Hair Care Hair Treatments",
+"discount_desc": "1/2 PRICE",
+"id": "6313483",
+"image_url": "https://productimages.coles.com.au/productimages/6/6313483.jpg",
+"price": 15.0,
+"price_display": "$15.00",
+"product_url": "https://www.coles.com.au/product/l-oreal-paris-elvive-bond-repair-serum-150ml-6313483",
+"save_amount": 15.0,
+"store": "Coles",
+"store_category": "Hair Care Hair Treatments",
+"title": "L'Oreal Paris Elvive Bond Repair Serum 150mL",
+"unit_price": "$10.00/ 100mL",
+"was_price": 30.0
+},
 "6313508": {
 "category": "Hair Care Hair Treatments",
 "discount_desc": "1/2 PRICE",
@@ -22979,6 +23039,21 @@
 "store_category": "Hair Care Hair Treatments",
 "title": "L'Oreal Elvive Glycolic Gloss 5 Minute Lamination 200mL",
 "unit_price": "$7.50/ 100mL",
+"was_price": 30.0
+},
+"7563169": {
+"category": "Hair Care Hair Treatments",
+"discount_desc": "1/2 PRICE",
+"id": "7563169",
+"image_url": "https://productimages.coles.com.au/productimages/7/7563169.jpg",
+"price": 15.0,
+"price_display": "$15.00",
+"product_url": "https://www.coles.com.au/product/l-oreal-elvive-glycolic-gloss-leave-in-serum-150ml-7563169",
+"save_amount": 15.0,
+"store": "Coles",
+"store_category": "Hair Care Hair Treatments",
+"title": "L'Oreal Elvive Glycolic Gloss Leave-in Serum 150mL",
+"unit_price": "$10.00/ 100mL",
 "was_price": 30.0
 },
 "7563409": {
@@ -27799,6 +27874,6 @@
 },
 "last_full": 1792282660.1411254,
 "pages": 41,
-"pages_done": 0,
+"pages_done": 5,
 "week": "2026-10-14"
 }
