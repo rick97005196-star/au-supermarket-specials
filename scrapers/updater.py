@@ -226,7 +226,8 @@ def update_all_stores(max_catalogue_pages: int = 50) -> Dict[str, Any]:
         saved_a_curr = save_specials('ALDI', a_curr_items, period='current', date_range=a_curr_date)
         print(f" Saved {saved_a_curr} ALDI current week specials ({a_curr_date}).")
 
-        a_next_items = aldi_data['next']['items']
+        # ALDI's everyday range is read for this week only: carry it into next week's preview like Coles and Woolworths
+        a_next_items = with_lasting_prices(aldi_data['next']['items'], a_curr_items)
         a_next_date = aldi_data['next']['date_range']
         saved_a_next = 0
         if a_next_items:
