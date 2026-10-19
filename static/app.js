@@ -1068,7 +1068,7 @@ function _matchFavoritesNow(items, favs) {
     const productKeys = new Set(favs.filter(f => f.type === 'product').map(f => f.key));
     const keywords = favs.filter(f => f.type === 'keyword').map(f => f.q);
     return (items || []).filter(it => {
-        if (it.store !== 'ALDI' && (!it.save_amount || it.save_amount <= 0)) return false;
+        if (it.store !== 'ALDI' && (!it.save_amount || it.save_amount <= 0) && !isPlainSpecial(it)) return false;
         if (productKeys.has(favProductKey(it))) return true;
         return keywords.some(q => favKeywordMatch(it, q));
     });
@@ -1703,7 +1703,9 @@ function getCompareKey(item) {
     return item._cmpKey;
 }
 
-// Enriches list with cross-store comparison metadata (once per loaded list)
+// Enriches list with cross-store comparison metadata (once per loaded list): the same product at each other
+// store, one per store, by its exact name first, else worded differently (compare.js findSameProducts).
+// Prices are per item ("5 for $10.00" is $2.00).
 function enrichCrossStoreComparisons(list) {
     if (!list || list.length === 0 || list._enriched) return;
     list._enriched = true;
@@ -1715,15 +1717,24 @@ function enrichCrossStoreComparisons(list) {
     });
 
     list.forEach(it => {
-        const k = getCompareKey(it);
-        const matches = (keyMap.get(k) || []).filter(other => other.store !== it.store);
+        const byStore = {}, loose = new Set();
+        for (const o of keyMap.get(getCompareKey(it)) || []) {
+            if (o.store !== it.store && (!byStore[o.store] || _perItemPrice(o) < _perItemPrice(byStore[o.store]))) byStore[o.store] = o;
+        }
+        const found = findSameProducts(it, list);
+        for (const st in found) {
+            // only when both products point at each other, so the two cards always agree
+            if (!byStore[st] && findSameProducts(found[st], list)[it.store] === it) { byStore[st] = found[st]; loose.add(st); }
+        }
+        const matches = Object.values(byStore);
         if (matches.length > 0) {
             it.cross_store_matches = matches.map(other => ({
                 ref: other,      // the full product, so tapping it opens the real item (week, dates, translations)
                 id: other.id,
                 store: other.store,
                 title: other.title,
-                price: (typeof other.price === 'number') ? other.price : (parseFloat(other.price) || 0),
+                loose: loose.has(other.store),      // worded differently from this one
+                price: _perItemPrice(other),
                 was_price: (typeof other.was_price === 'number') ? other.was_price : (parseFloat(other.was_price) || 0),
                 save_amount: (typeof other.save_amount === 'number') ? other.save_amount : (parseFloat(other.save_amount) || 0),
                 price_display: other.price_display || '',
@@ -1733,7 +1744,7 @@ function enrichCrossStoreComparisons(list) {
                 category: other.category || 'other'
             })).sort((a, b) => a.price - b.price);      // [0] = the cheapest other store
             const other = it.cross_store_matches[0];
-            const priceDiff = Math.round((it.price - other.price) * 100) / 100;
+            const priceDiff = Math.round((_perItemPrice(it) - other.price) * 100) / 100;
             if (priceDiff < -0.05) {
                 it.cross_store_cheaper = true;
                 it.cross_store_diff = Math.abs(priceDiff);
@@ -1754,11 +1765,16 @@ function getCrossStoreBadgeText(item) {
     if (!item.cross_store_matches || item.cross_store_matches.length === 0) return '';
     const other = item.cross_store_matches[0];
     if (item.cross_store_cheaper && item.cross_store_diff > 0) {
+        // 「三家中最便宜」 only when all three supermarkets have a price for it
+        if (item.cross_store_matches.length >= 2) return t('cmp3_cheapest_of3');
         return t('cross_store_badge_cheaper', { store: other.store, amount: item.cross_store_diff.toFixed(2) });
     } else if (item.cross_store_diff > 0) {
         return t('cross_store_badge_other', { store: other.store, price: other.price.toFixed(2) });
+    } else if (item.cross_store_matches.length >= 2) {
+        return t('cross_store_badge_both', { price: _perItemPrice(item).toFixed(2) });
     } else {
-        return t('cross_store_badge_both', { price: item.price.toFixed(2) });
+        // the third supermarket has no price for it, so not 「各超市」
+        return t('aldi_cmp_same', { store: other.store });
     }
 }
 
@@ -1768,6 +1784,12 @@ function getCrossStoreBadgeText(item) {
 function isEverydayPrice(it) {
     if (!it || (it.save_amount || 0) > 0) return false;
     return /^Everyday Low Price/.test(it.discount_desc || '');
+}
+
+// Coles' website "SPECIAL" (mostly its own fresh produce): on special, but with no "was" price or saving.
+// Shown with a "特價" label; never half price, never copied into next week (scrapers/regions.py SPECIAL_DESC).
+function isPlainSpecial(it) {
+    return !!it && it.discount_desc === 'Special' && !((it.save_amount || 0) > 0);
 }
 
 // Robust Australian Supermarket 1/2 Price (Half Price) Detection
@@ -1912,7 +1934,7 @@ async function loadSpecials() {
         // Enrich with cross-supermarket comparison info (before filtering: 比價 needs it)
         enrichCrossStoreComparisons(staticSpecials);
         const isComparable = (it) => (it.cross_store_matches && it.cross_store_matches.length) || valueCompare(it, staticSpecials);
-        const isListed = (it) => it.store === 'ALDI' || it.save_amount > 0 || isEverydayPrice(it);
+        const isListed = (it) => it.store === 'ALDI' || it.save_amount > 0 || isEverydayPrice(it) || isPlainSpecial(it);
 
         const favMatchIds = favOnly ? new Set(matchFavorites(staticSpecials).map(x => x.id)) : null;
         let filtered = staticSpecials.filter(it => {
@@ -1972,8 +1994,10 @@ async function loadSpecials() {
         if (cmpOnly) {
             // the filters (store, half price, category, search...) pick WHICH kinds to show, in their sorted order;
             // each kind then lists all three supermarkets' items of that week, cheapest per unit first
-            const keyOf = (it) => (valueCompare(it, staticSpecials) ? `k:${cmpTypeOf(it)}` : `p:${getCompareKey(it)}`);
-            const valOf = (it) => { const vc = valueCompare(it, staticSpecials); return vc ? vc.mine.value : (it.price || 0); };
+            // the same product worded differently at another store joins the same group (the lowest name key of the pair)
+            const keyOf = (it) => (valueCompare(it, staticSpecials) ? `k:${cmpTypeOf(it)}`
+                : `p:${[it, ...(it.cross_store_matches || []).map(m => m.ref)].map(getCompareKey).sort()[0]}`);
+            const valOf = (it) => { const vc = valueCompare(it, staticSpecials); return vc ? vc.mine.value : _perItemPrice(it); };
             const half = discountOnly ? filtered.filter(isItemHalfPrice) : [];
             const groups = new Map();
             for (const it of (half.length ? half : filtered)) {
@@ -2314,20 +2338,77 @@ function valueCompareBadgeText(cmp) {
     return t('aldi_cmp_same', { store: s });
 }
 
-// Same kind of product at the other supermarkets (per kg / litre / item), for every store
+// 本週三家價格: one row per supermarket for the SAME product (price per item, special or regular price,
+// unit price), the cheapest marked; a supermarket without it this week says so. Shown when one other has it.
+function renderSameProducts(item) {
+    const box = document.getElementById('modalCrossStoreBox');
+    const list = document.getElementById('modalCrossStoreList');
+    if (!box || !list) return;
+    const matches = (item && item.cross_store_matches) || [];
+    if (!matches.length) { box.classList.add('hidden'); return; }
+    const nx = item.period === 'next' ? '_next' : '';
+    const byStore = { [item.store]: item };
+    matches.forEach(m => { byStore[m.store] = m.ref; });
+    const prices = Object.values(byStore).map(_perItemPrice);
+    const low = Math.min(...prices), high = Math.max(...prices);
+    const row = (st) => {
+        const it = byStore[st], isThis = it === item;
+        const color = st === 'Coles' ? 'var(--coles)' : (st === 'ALDI' ? 'var(--aldi)' : 'var(--woolies)');
+        const head = `<div class="aldi-cmp-store" style="color:${color}">${st}${isThis ? ` · ${escHTML(t('aldi_cmp_this'))}` : ''}</div>`;
+        if (!it) return `<div class="aldi-cmp-row is-none"><div class="min-w-0">${head}<div class="aldi-cmp-name">${escHTML(t('cmp3_none' + nx))}</div></div></div>`;
+        const tr = getProductTranslation(it, currentLang);
+        const name = (tr && currentLang !== 'en') ? tr : it.title;
+        const each = _perItemPrice(it), up = unitPriceOf(it);
+        const pd = String(it.price_display || '').replace(/\s+/g, ' ').trim();
+        // ALDI's listed items are its Special Buys and Super Savers, apart from its everyday low prices
+        const status = isEverydayPrice(it) ? t('everyday_badge')
+            : (it.save_amount > 0 || isPlainSpecial(it) || it.store === 'ALDI') ? t('special_badge') : t('cmp3_regular');
+        const cheapest = high - low > 0.05 && each - low < 0.005;
+        return `
+            <div class="aldi-cmp-row ${isThis ? 'is-this' : ''}" ${isThis ? '' : 'role="button" tabindex="0"'} data-cmp-store="${st}">
+                <div class="min-w-0">
+                    ${head}
+                    <div class="aldi-cmp-name">${escHTML(name)}</div>
+                    <div class="cmp3-tags"><span class="tag">${escHTML(status)}</span>${cheapest ? `<span class="tag is-accent">${escHTML(t('cmp3_cheapest' + nx))}</span>` : ''}</div>
+                </div>
+                <div class="text-right shrink-0">
+                    <div class="aldi-cmp-up num">$${each.toFixed(2)}</div>
+                    ${/\d+\s*for\s*\$/i.test(pd) ? `<div class="aldi-cmp-price num">${escHTML(pd)}</div>` : ''}
+                    ${up ? `<div class="aldi-cmp-price num">${fmtUnitPrice(up)}</div>` : ''}
+                </div>
+            </div>`;
+    };
+    list.innerHTML = ['Coles', 'Woolworths', 'ALDI'].map(row).join('');
+    list.querySelectorAll('.aldi-cmp-row[data-cmp-store]:not(.is-this)').forEach(el => {
+        const open = (e) => { e.stopPropagation(); openProductModal(byStore[el.dataset.cmpStore]); };
+        el.onclick = open;
+        el.onkeydown = (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(e); } };
+    });
+    document.getElementById('modalCrossStoreTitle').textContent = t('cross_store_title' + nx);
+    document.getElementById('modalCrossStoreBadge').textContent = t('cmp_same_item');
+    box.classList.remove('hidden');
+}
+
+// Same kind of product at the other supermarkets (per kg / litre / item), for every store.
+// Listed under the same product's prices, without the same products themselves.
 function renderValueCompare(item) {
     const box = document.getElementById('modalAldiCmpBox');
     if (!box) return;
     const cmp = (item && typeof staticSpecials !== 'undefined') ? valueCompare(item, staticSpecials) : null;
-    if (!cmp) { box.classList.add('hidden'); return; }
+    const same = new Set(((item && item.cross_store_matches) || []).map(m => m.ref));
+    const rows = cmp ? cmp.rows.filter(r => !same.has(r.item)) : [];
+    if (!rows.length) { box.classList.add('hidden'); return; }
     const verdict = document.getElementById('modalAldiCmpVerdict');
     const list = document.getElementById('modalAldiCmpList');
     const u = _cmpUnit(cmp.basis);
-    verdict.className = `aldi-verdict is-${cmp.verdict}`;
-    verdict.textContent = cmp.verdict === 'cheaper'
-        ? t('aldi_cmp_verdict_cheaper', { amount: cmp.diff.toFixed(2), u })
-        : cmp.verdict === 'dearer'
-            ? t('aldi_cmp_verdict_dearer', { store: cmp.cheapest.item.store, amount: cmp.diff.toFixed(2), u })
+    // against the listed rows only (as compare.js valueCompare: >= 3% apart)
+    const d = Math.round((rows[0].up.value - cmp.mine.value) * 100) / 100, rel = d / cmp.mine.value;
+    const v = rel >= 0.03 ? 'cheaper' : (rel <= -0.03 ? 'dearer' : 'same');
+    verdict.className = `aldi-verdict is-${v}`;
+    verdict.textContent = v === 'cheaper'
+        ? t('aldi_cmp_verdict_cheaper', { amount: Math.abs(d).toFixed(2), u })
+        : v === 'dearer'
+            ? t('aldi_cmp_verdict_dearer', { store: rows[0].item.store, amount: Math.abs(d).toFixed(2), u })
             : t('aldi_cmp_verdict_same');
     const row = (it, up, isThis) => {
         const tr = getProductTranslation(it, currentLang);
@@ -2341,13 +2422,13 @@ function renderValueCompare(item) {
                 </div>
                 <div class="text-right shrink-0">
                     <div class="aldi-cmp-up num">${fmtUnitPrice(up, true)}</div>
-                    <div class="aldi-cmp-price num">${escHTML(String(it.price_display || `$${_perItemPrice(it).toFixed(2)}`).replace(/\s+/g, ' ').trim())}${isThis ? '' : (it.save_amount > 0 ? ` · ${escHTML(t('aldi_cmp_special'))}` : (isEverydayPrice(it) ? ` · ${escHTML(t('everyday_badge'))}` : ''))}</div>
+                    <div class="aldi-cmp-price num">${escHTML(String(it.price_display || `$${_perItemPrice(it).toFixed(2)}`).replace(/\s+/g, ' ').trim())}${isThis ? '' : (it.save_amount > 0 || isPlainSpecial(it) ? ` · ${escHTML(t('aldi_cmp_special'))}` : (isEverydayPrice(it) ? ` · ${escHTML(t('everyday_badge'))}` : ''))}</div>
                 </div>
             </div>`;
     };
-    list.innerHTML = row(item, cmp.mine, true) + cmp.rows.map(r => row(r.item, r.up, false)).join('');
+    list.innerHTML = row(item, cmp.mine, true) + rows.map(r => row(r.item, r.up, false)).join('');
     list.querySelectorAll('.aldi-cmp-row[data-cmp-id]:not(.is-this)').forEach(el => {
-        const target = cmp.rows.find(r => String(r.item.id) === el.dataset.cmpId);
+        const target = rows.find(r => String(r.item.id) === el.dataset.cmpId);
         if (!target) return;
         const open = (e) => { e.stopPropagation(); openProductModal(target.item); };
         el.onclick = open;
@@ -2414,7 +2495,8 @@ function createProductCardElement(item) {
     const crossStoreBadgeText = exactText || valueCompareBadgeText(valueCmp);
     const compareIsGood = exactText ? !!item.cross_store_cheaper : !!(valueCmp && valueCmp.verdict === 'cheaper');
     // 「最便宜」: nothing the same (or of the same kind) is cheaper this week at any of the three supermarkets
-    const isCheapest = exactText ? !!item.cross_store_cheaper : !!(valueCmp && valueCmp.verdict === 'cheaper' && valueCmp.lowest);
+    // (the same product says it in its own text: 「三家中最便宜」 or 「較 Woolworths 低 $2.50」)
+    const isCheapest = exactText ? false : !!(valueCmp && valueCmp.verdict === 'cheaper' && valueCmp.lowest);
     // unit price: ALDI always as $/kg or $/L (that's how ALDI shows value); others when sorting by unit price
     const sortVal = (document.getElementById('sortSelect') || {}).value;
     // 比價: the unit it is compared in (per kg / litre / item / 100 sheets), the same for the whole group
@@ -2487,6 +2569,7 @@ function createProductCardElement(item) {
                         ${effectiveWas > 0 ? `<s>${t('was_price')} $${effectiveWas.toFixed(2)}</s>` : ''}
                         ${effectiveSave > 0 ? `<span class="p-save">${t('save_badge', { amount: effectiveSave.toFixed(2) })}</span>` : ''}
                         ${isEverydayPrice(item) ? `<span class="p-everyday">${t('everyday_badge')}</span>` : ''}
+                        ${isPlainSpecial(item) ? `<span class="p-save">${t('special_badge')}</span>` : ''}
                     </div>`}
                     ${unitPriceClean && !showNormUnit ? `<div class="p-unit num mt-0.5 truncate" title="${escAttr(unitPriceClean)}">${unitPriceClean}</div>` : ''}
                 </div>
@@ -2724,6 +2807,9 @@ function openProductModal(item) {
     } else if (isEverydayPrice(item)) {
         saveBadge.textContent = t('everyday_badge');
         saveBadge.classList.remove('hidden');
+    } else if (isPlainSpecial(item)) {
+        saveBadge.textContent = t('special_badge');
+        saveBadge.classList.remove('hidden');
     } else {
         saveBadge.classList.add('hidden');
     }
@@ -2743,88 +2829,8 @@ function openProductModal(item) {
         unitPriceBox.classList.add('hidden');
     }
 
-    // Cross-store comparison in modal (各大超市現場同款比價)
-    const crossStoreBox = document.getElementById('modalCrossStoreBox');
-    const crossStoreList = document.getElementById('modalCrossStoreList');
-    const crossStoreBadge = document.getElementById('modalCrossStoreBadge');
-
-    if (crossStoreBox && crossStoreList) {
-        if (item.cross_store_matches && item.cross_store_matches.length > 0) {
-            crossStoreList.innerHTML = '';
-            
-            // Render this store's price row
-            const thisStoreRow = document.createElement('div');
-            thisStoreRow.className = "list-item justify-between";
-            thisStoreRow.innerHTML = `
-                <div class="flex items-center gap-2">
-                    <span class="px-2 py-0.5 rounded-lg text-[10px] font-bold ${item.store === 'Coles' ? 'bg-[#e01a22]' : (item.store === 'ALDI' ? 'bg-[#00205b]' : 'bg-[#007a3d]')} text-white">
-                        ${item.store} (${currentLang === 'zh' ? '當前' : (currentLang === 'ja' ? '現在' : (currentLang === 'ko' ? '현재' : 'Current'))})
-                    </span>
-                    <span class="text-xs font-semibold text-slate-800 dark:text-zinc-200 truncate max-w-[180px] sm:max-w-xs" title="${escHTML(item.title)}">
-                        ${item.title}
-                    </span>
-                </div>
-                <div class="text-right leading-tight">
-                    <span class="font-mono font-black text-sm text-slate-900 dark:text-white">$${effectivePrice.toFixed(2)}</span>
-                    ${effectiveSave > 0 ? `<span class="block text-[10px] text-amber-600 dark:text-amber-400 font-bold">${t('save_badge', { amount: effectiveSave.toFixed(2) })}</span>` : ''}
-                </div>
-            `;
-            crossStoreList.appendChild(thisStoreRow);
-
-            // Render other matching stores
-            item.cross_store_matches.forEach(other => {
-                const otherPrice = (typeof other.price === 'number') ? other.price : (parseFloat(other.price) || 0);
-                const otherSave = (typeof other.save_amount === 'number') ? other.save_amount : (parseFloat(other.save_amount) || 0);
-                const diff = Math.round((otherPrice - effectivePrice) * 100) / 100;
-                
-                let diffBadge = '';
-                if (diff > 0.05) {
-                    diffBadge = `<span class="text-[10px] font-bold text-rose-600 dark:text-rose-400 bg-rose-50 dark:bg-rose-950/60 px-1.5 py-0.5 rounded">+$${diff.toFixed(2)}</span>`;
-                } else if (diff < -0.05) {
-                    diffBadge = `<span class="text-[10px] font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/60 px-1.5 py-0.5 rounded">−$${Math.abs(diff).toFixed(2)}</span>`;
-                } else {
-                    diffBadge = `<span class="text-[10px] font-bold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/60 px-1.5 py-0.5 rounded">${t('cross_store_same_price')}</span>`;
-                }
-
-                const otherRow = document.createElement('div');
-                otherRow.className = "list-item justify-between cursor-pointer transition hover:opacity-80";
-                otherRow.onclick = (e) => {
-                    e.stopPropagation();
-                    openProductModal(other.ref || other);
-                };
-                otherRow.innerHTML = `
-                    <div class="flex items-center gap-2">
-                        <span class="px-2 py-0.5 rounded-lg text-[10px] font-bold ${other.store === 'Coles' ? 'bg-[#e01a22]' : (other.store === 'ALDI' ? 'bg-[#00205b]' : 'bg-[#007a3d]')} text-white">
-                            ${other.store}
-                        </span>
-                        <div class="space-y-0.5">
-                            <span class="text-xs font-semibold text-slate-800 dark:text-zinc-200 truncate max-w-[180px] sm:max-w-xs block" title="${escHTML(other.title)}">
-                                ${other.title}
-                            </span>
-                            <span class="text-[10px] text-blue-600 dark:text-blue-400 font-medium">
-                                <i class="fa-solid fa-arrow-right text-[8px]"></i> ${t('cross_store_view_other', { store: other.store })}
-                            </span>
-                        </div>
-                    </div>
-                    <div class="text-right leading-tight">
-                        <div class="flex items-center gap-1 justify-end">
-                            <span class="font-mono font-black text-sm text-slate-900 dark:text-white">$${otherPrice.toFixed(2)}</span>
-                            ${diffBadge}
-                        </div>
-                        ${otherSave > 0 ? `<span class="block text-[10px] text-amber-600 dark:text-amber-400 font-bold">${t('save_badge', { amount: otherSave.toFixed(2) })}</span>` : ''}
-                    </div>
-                `;
-                crossStoreList.appendChild(otherRow);
-            });
-
-            if (crossStoreBadge) {
-                crossStoreBadge.textContent = t('cross_store_title');
-            }
-            crossStoreBox.classList.remove('hidden');
-        } else {
-            crossStoreBox.classList.add('hidden');
-        }
-    }
+    // the same product at Coles, Woolworths and ALDI this week (本週三家價格)
+    renderSameProducts(item);
 
     // same kind of product at the other supermarkets (per kg / litre / item)
     renderValueCompare(item);

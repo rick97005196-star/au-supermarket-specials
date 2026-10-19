@@ -262,4 +262,103 @@ function valueCompare(item, list) {
     item._vc = res;
     return res;
 }
-if (typeof module !== 'undefined') module.exports = { unitPriceOf, eachPriceOf, sheetPriceOf, cmpPriceOf, cmpTypeOf, valueCompare, CMP_TYPES };
+// ---------------- The same product at another supermarket, worded differently ----------------
+// Beyond the exact name (app.js getCompareKey): same brand, same size and pack count, the same variant words
+// (flavour, light, spread, pouch...) on both sides, and the rest of the name mostly the same.
+// A wrong match is worse than none, so anything unclear is left unmatched.
+const _OWN_BRANDS = new Set(['coles', 'woolworth', 'macro', 'essential', 'homebrand', 'aldi']);
+// filler: added by one shop and left out by another ("Iced Tea Bottle" / "Mango Flavour Iced Tea")
+const _NAME_STOP = new Set('the and with in of for a an x pack pk each ea selected variety flavour flavoured bottle bag haircare lolly'.split(' '));
+const _VARIANT_WORDS = new Set(('spread light lite zero diet max sugar free low fat skim reduced lactose gluten organic range decaf ' +
+    'unsalted salted salt chunky smooth crunchy crispy mild hot spicy extra double triple mini kid baby protein multipack ' +
+    'pouch tray can tin sachet stick bar cup oil springwater brine water sauce gravy jelly senior adult puppy kitten ' +
+    'chocolate choc vanilla strawberry banana caramel honey mint lemon lime orange berry blueberry raspberry mango coconut ' +
+    'apple peach cherry passionfruit tropical hazelnut almond peanut coffee bbq barbecue sour cream onion chicken beef lamb ' +
+    'pork tuna salmon fish cheese cheddar tomato garlic chilli pepper herb sweet vinegar sesame smoked ' +
+    'red green blue black white pink purple yellow gold silver wholemeal multigrain wholegrain rye').split(' '));
+const _singular = (w) => (w.length > 3 && w.endsWith('ies') ? w.slice(0, -3) + 'y' : /(ch|sh|x)es$/.test(w) ? w.slice(0, -2) :
+    (w.length > 3 && w.endsWith('s') && !/(ss|us|is)$/.test(w) ? w.slice(0, -1) : w));
+// "250g" / "6 x 250mL" / "85g x 24 pack" -> size of one item + how many, or null (no size, a range, a choice)
+function _sizePackKey(t) {
+    const s = _titleSize(t);
+    if (!s) return null;
+    const nx = t.match(/(\d+)\s*[x×]\s*\d+(?:\.\d+)?\s*(?:kg|g|ml|l|litres?|liters?)\b/);
+    let pack = nx ? parseInt(nx[1], 10) : 1;
+    if (!nx) {
+        const counts = [...t.matchAll(/[x×]\s*(\d+)\b(?!\s*(?:kg|g|ml|l)\b)|\b(\d+)\s*(?:pk|packs?|multipack)\b|\b(?:pk|pack of)\s*(\d+)\b/g)]
+            .map(m => parseInt(m[1] || m[2] || m[3], 10));
+        if (counts.some(c => c !== counts[0])) return null;
+        if (counts.length) pack = counts[0];
+    }
+    return `${s.basis}${Math.round(s.qty / (nx ? pack : 1) * 1e5)}x${pack}`;
+}
+function _sameInfo(item) {      // brand + size key, name words, variant words; null = never matched loosely
+    if (item._sp !== undefined && item._spSig === item.title) return item._sp;
+    item._spSig = item.title;
+    const t = String(item.title || '').toLowerCase().replace(/['’]/g, '').replace(/[–—]/g, '-')
+        .replace(/(\d),(\d{3})\b/g, '$1$2').replace(/\s*-\s*from the [a-z ]+$/, '');
+    const size = _sizePackKey(t);
+    const words = t.replace(/[^a-z0-9.]+/g, ' ').trim().split(' ').filter(Boolean).map(_singular);
+    let r = null;
+    if (size && words[0] && !_OWN_BRANDS.has(words[0]) && !/\d/.test(words[0])) {
+        const name = new Set(words.slice(1).filter(w => !/\d/.test(w) && !_NAME_STOP.has(w)));
+        r = { key: `${item.period || 'current'}|${words[0]}|${size}`, name, variant: [...name].filter(w => _VARIANT_WORDS.has(w)).sort().join(' ') };
+    }
+    item._sp = r;
+    return r;
+}
+function _sameIndexOf(list) {      // brand + size -> products, built once per list (a new list per state)
+    if (!list._sameIndex) {
+        list._sameIndex = new Map();
+        for (const o of list) {
+            const k = _sameInfo(o) && o._sp.key;
+            if (!k) continue;
+            if (!list._sameIndex.has(k)) list._sameIndex.set(k, []);
+            list._sameIndex.get(k).push(o);
+        }
+    }
+    return list._sameIndex;
+}
+const _within = (s, t) => [...s].every(w => t.has(w));
+// 0 = not the same product; otherwise how alike the names are (over 0.5, up to 1).
+// list (the week's products) lets it spot a shop listing a whole range under a short name.
+function isSameProduct(a, b, list) {
+    if (!a || !b || a.store === b.store) return 0;
+    const x = _sameInfo(a), y = _sameInfo(b);
+    if (!x || !y || x.key !== y.key || x.variant !== y.variant) return 0;
+    // one name must contain the other: words only one side has ("Sensitive" / "Original") mean another product
+    const aInB = _within(x.name, y.name), bInA = _within(y.name, x.name);
+    if (!aInB && !bInA) return 0;
+    const sim = Math.min(x.name.size, y.name.size) / (Math.max(x.name.size, y.name.size) || 1);
+    // price per item ("5 for $10.00" is $2.00 each): far apart means a different product behind a similar name
+    const pa = _perItemPrice(a), pb = _perItemPrice(b);
+    if (sim <= 0.5 || !(pa > 0 && pb > 0) || Math.max(pa, pb) / Math.min(pa, pb) > 2.5) return 0;
+    // "John West Tuna 95g" when the other shop sells several 95g John West tunas: a range, not one product
+    if (list && aInB !== bInA) {
+        const [short, other] = aInB ? [x, b] : [y, a];
+        const kinds = new Set();
+        for (const o of _sameIndexOf(list).get(x.key) || []) {
+            if (o.store === other.store && _within(short.name, o._sp.name)) kinds.add([...o._sp.name].sort().join(' '));
+        }
+        if (kinds.size > 1) return 0;
+    }
+    return sim;
+}
+// { Coles: item, Woolworths: item, ALDI: item }: the one same product at each OTHER store, same week.
+// Two equally good candidates with different prices -> that store is left out (unclear).
+function findSameProducts(item, list) {
+    const out = {};
+    const x = item && list && _sameInfo(item);
+    if (!x) return out;
+    const best = {};
+    for (const o of _sameIndexOf(list).get(x.key) || []) {
+        const s = isSameProduct(item, o, list);
+        if (!s) continue;
+        const b = best[o.store];
+        if (!b || s > b.s) best[o.store] = { s, o, tie: false };
+        else if (s === b.s && _perItemPrice(o) !== _perItemPrice(b.o)) b.tie = true;
+    }
+    for (const st in best) if (!best[st].tie) out[st] = best[st].o;
+    return out;
+}
+if (typeof module !== 'undefined') module.exports = { unitPriceOf, eachPriceOf, sheetPriceOf, cmpPriceOf, cmpTypeOf, valueCompare, CMP_TYPES, isSameProduct, findSameProducts, perItemPrice: _perItemPrice };

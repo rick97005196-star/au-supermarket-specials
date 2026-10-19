@@ -1062,8 +1062,11 @@ html:root .p-card.is-cmp-anchor { box-shadow: 0 0 0 2px color-mix(in srgb, var(-
     display: flex; align-items: center; justify-content: space-between; gap: 10px;
     padding: 9px 10px; border-radius: 10px; background: var(--surface); border: 1px solid var(--line);
 }
-.aldi-cmp-row:not(.is-this) { cursor: pointer; }
-.aldi-cmp-row:not(.is-this):hover { border-color: var(--line-strong); }
+.aldi-cmp-row[role="button"] { cursor: pointer; }
+.aldi-cmp-row[role="button"]:hover { border-color: var(--line-strong); }
+.aldi-cmp-row.is-none { border-style: dashed; background: transparent; }
+.aldi-cmp-row.is-none .aldi-cmp-name { color: var(--ink-3); }
+.cmp3-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 4px; }
 .aldi-cmp-row:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 .aldi-cmp-row.is-this { border-color: var(--aldi); }
 .aldi-cmp-store { font-size: 11px; font-weight: 700; }

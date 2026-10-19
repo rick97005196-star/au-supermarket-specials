@@ -25,7 +25,12 @@ const base = { title: 'Lodge Farms Barn Eggs 12 Pack 700g', price: 5.29, store: 
 c.cmpTypeOf(base);
 const copy = Object.assign({}, base, { price: 7 });
 c.cmpTypeOf(copy);
-process.stdout.write(JSON.stringify({ calls, vc, copy: copy._cmpUp.value }));
+// the same product at another supermarket under another wording (the week's list is q.same)
+const same = q.same;
+const pairs = q.pairs.map(([i, j]) => c.isSameProduct(same[i], same[j], same));
+const found = q.found.map(i => Object.fromEntries(Object.entries(c.findSameProducts(same[i], same)).map(([st, o]) => [st, same.indexOf(o)])));
+const each = same.map(x => c.perItemPrice(x));
+process.stdout.write(JSON.stringify({ calls, vc, copy: copy._cmpUp.value, pairs, found, each }));
 """
 
 bad = []
@@ -159,11 +164,74 @@ TP = [
     {'store': 'Woolworths', 'title': 'Quilton Gold King Size 4 Ply Toilet Paper 20 pack', 'price': 13.50, 'unit_price': '$0.56 / 100 sheets'},  # 2  4 ply
 ]
 
+# the same product under another shop's wording: real titles and prices from the week of 15 Oct 2026
+SAME = [
+    {'store': 'Coles', 'title': 'Dine Classic Collection Cat Food 85g', 'price': 0.95},                                   # 0
+    {'store': 'Woolworths', 'title': 'Dine Classic Gravy Collection Wet Cat Food 85g x 24 pack', 'price': 26.00},         # 1
+    {'store': 'Coles', 'title': 'Vaalia Kids Probiotics Yoghurt Pouch 140g', 'price': 1.50},                              # 2
+    {'store': 'Woolworths', 'title': 'Vaalia Kids Probiotic Yoghurt Pouch Vanilla 140g', 'price': 10, 'price_display': '5 for $10.00'},  # 3
+    {'store': 'Woolworths', 'title': 'Vaalia Kids Probiotic Yoghurt Pouch Limited Edition Honeycomb 140g', 'price': 10, 'price_display': '5 for $10.00'},  # 4
+    {'store': 'Woolworths', 'title': 'Vaalia Kids Probiotic Yoghurt Pouch Banana 140g', 'price': 10, 'price_display': '5 for $10.00'},  # 5
+    {'store': 'Coles', 'title': 'John West Tuna 95g', 'price': 2.00},                                                     # 6
+    {'store': 'Woolworths', 'title': 'John West Tuna In Sesame Oil 95g', 'price': 1.45},                                  # 7
+    {'store': 'Woolworths', 'title': 'John West Tuna Spread 95g', 'price': 2.85},                                         # 8
+    {'store': 'Woolworths', 'title': 'John West Tuna With Tangy Jalapenos Jalapeno Tuna 95g', 'price': 1.45},             # 9
+    {'store': 'Coles', 'title': 'Batiste Sensitive Dry Shampoo 200mL', 'price': 7.00},                                    # 10
+    {'store': 'Woolworths', 'title': 'Batiste Dry Shampoo Original 200mL', 'price': 7.00},                                # 11
+    {'store': 'Coles', 'title': 'Batiste Original Instant Refresh Dry Shampoo 200mL', 'price': 7.00},                     # 12
+    {'store': 'Woolworths', 'title': 'White Wings Plain Flour 2kg', 'price': 4.40},                                       # 13
+    {'store': 'ALDI', 'title': 'WHITE MILL Plain Flour 2kg', 'price': 2.39},                                              # 14
+    {'store': 'Coles', 'title': 'Rexona Women Deodorant 48hr Aerosol Hypoallergenic 250mL', 'price': 4.25},               # 15
+    {'store': 'Woolworths', 'title': 'Rexona Women 48hr Deodorant Aerosol Classic 250mL', 'price': 5.00},                 # 16
+    {'store': 'Coles', 'title': 'Rexona Women Deodorant 48hr Aerosol Classic 250mL', 'price': 4.25},                      # 17
+    {'store': 'Woolworths', 'title': 'Head & Shoulders Cool Menthol Anti Dandruff Shampoo for Irritated Scalp 660mL', 'price': 11.50},  # 18
+    {'store': 'Coles', 'title': 'Head & Shoulders Anti-dandruff Shampoo Dry Scalp Care 660mL', 'price': 11.50},           # 19
+    {'store': 'Woolworths', 'title': 'Head & Shoulders Dry Scalp Care Anti Dandruff Shampoo 660mL', 'price': 11.50},      # 20
+    {'store': 'ALDI', 'title': "PRINGLES Mini's Sour Cream & Onion Potato Chips 5 Pack 19g", 'price': 3.49},              # 21
+    {'store': 'Woolworths', 'title': 'Pringles Minis Sour Cream & Onion Potato Chips 19g x 5 pack', 'price': 7, 'price_display': '2 for $7.00'},  # 22
+    {'store': 'Woolworths', 'title': 'Pringles Minis Original Potato Chips 19g x 5 pack', 'price': 7, 'price_display': '2 for $7.00'},  # 23
+    {'store': 'Coles', 'title': 'Schweppes Natural Mineral Water 300ml 4 Pack', 'price': 4.00},                           # 24
+    {'store': 'Woolworths', 'title': 'Schweppes Natural Mineral Water Glass Bottle 300mL x 4 pack', 'price': 11, 'price_display': '2 for $11.00'},  # 25
+    {'store': 'Coles', 'title': 'Schweppes Natural Mineral Water Bottle 1.1L', 'price': 1.65},                            # 26
+    {'store': 'Coles', 'title': 'Lipton Ice Tea Peach Tea Iced Tea Bottle 1.5L', 'price': 2.95},                          # 27
+    {'store': 'Woolworths', 'title': 'Lipton Ice Tea Peach Flavour Iced Tea Peach 1.5L', 'price': 7.90, 'price_display': '2 for $7.90'},  # 28
+    {'store': 'Coles', 'title': 'Coles Plain Flour 2kg', 'price': 2.60},                                                  # 29
+    {'store': 'Woolworths', 'title': 'Woolworths Plain Flour 2kg', 'price': 2.60},                                        # 30
+    {'store': 'Coles', 'title': 'Head & Shoulders Anti-dandruff Shampoo Smooth & Silky 660mL', 'price': 11.50},           # 31
+    {'store': 'Woolworths', 'title': 'Head & Shoulders Smooth & Silky Anti Dandruff Shampoo 660mL', 'price': 11.50},      # 32
+    {'store': 'Coles', 'title': 'Lipton Ice Tea Peach Tea Iced Tea Bottle 1.5L', 'price': 2.95, 'period': 'next'},        # 33
+]
+PAIRS = [
+    (0, 1, False, 'one 85g tin is not a 24 pack'),
+    (2, 3, False, 'unflavoured Vaalia is not vanilla'),
+    (2, 4, False, 'Coles "Vaalia Kids ... Pouch" names the whole Woolworths range, not one flavour'),
+    (6, 7, False, 'tuna is not tuna in sesame oil'),
+    (6, 8, False, 'tuna is not tuna spread'),
+    (6, 9, False, 'tuna is not jalapeno tuna'),
+    (10, 11, False, 'Batiste Sensitive is not Original'),
+    (11, 12, True, 'Batiste Original, worded differently'),
+    (13, 14, False, 'White Wings is not WHITE MILL'),
+    (15, 16, False, 'Rexona Hypoallergenic is not Classic'),
+    (16, 17, True, 'Rexona Women Classic 250mL'),
+    (18, 19, False, 'H&S Cool Menthol is not Dry Scalp Care'),
+    (19, 20, True, 'H&S Dry Scalp Care shampoo 660mL'),
+    (21, 22, True, 'Pringles Minis sour cream & onion 5 x 19g'),
+    (21, 23, False, 'sour cream & onion is not original'),
+    (24, 25, True, 'Schweppes mineral water 300mL 4 pack'),
+    (25, 26, False, '4 x 300mL is not 1.1L'),
+    (27, 28, True, 'Lipton peach iced tea 1.5L'),
+    (29, 30, False, "shops' own brands are never paired on the words"),
+    (31, 32, True, 'H&S Smooth & Silky shampoo 660mL'),
+    (33, 28, False, 'next week is never paired with this week'),
+]
+FOUND = [(21, {'Woolworths': 22}), (2, {}), (6, {}), (0, {})]
+
 res = subprocess.run(['node', '-e', JS, os.path.join(ROOT, 'static', 'compare.js')],
                      input=json.dumps({'calls': CALLS + [('cmpTypeOf', k[0]) for k in KINDS] + [('sheetPriceOf', x[0]) for x in SHEETS],
                                        'lists': {'eggs': EGGS, 'tabs': TABS, 'tp': TP},
                                        'vc': [['eggs', 0], ['eggs', 1], ['eggs', 3], ['eggs', 6],
-                                              ['tabs', 0], ['tabs', 1], ['tabs', 3], ['tp', 1]]}),
+                                              ['tabs', 0], ['tabs', 1], ['tabs', 3], ['tp', 1]],
+                                       'same': SAME, 'pairs': [p[:2] for p in PAIRS], 'found': [f[0] for f in FOUND]}),
                      capture_output=True, text=True, encoding='utf-8')
 if res.returncode != 0:
     print(res.stderr)
@@ -214,6 +282,13 @@ check(cleaner is None, f'dishwasher cleaner: {cleaner}')
 check(sorbent and sorbent['verdict'] == 'dearer' and sorbent['stores'] == ['ALDI'] and sorbent['basis'] == 'sh'
       and near(sorbent['diff'], 0.05), f'Woolworths 3 ply toilet paper: {sorbent}')
 
+for (i, j, want, why), got in zip(PAIRS, out['pairs']):
+    check(bool(got) == want, f'same product? {why}: {SAME[i]["title"]} / {SAME[j]["title"]} -> {got}')
+for (i, want), got in zip(FOUND, out['found']):
+    check(got == want, f'same product elsewhere for {SAME[i]["title"]}: {got}, want {want}')
+check(near(out['each'][3], 2.0) and near(out['each'][22], 3.5) and near(out['each'][2], 1.5),
+      f'"5 for $10.00" is $2.00 each, "2 for $7.00" $3.50: {[out["each"][k] for k in (2, 3, 22)]}')
+
 # every kind compared gets a group name in all four languages (三家比價 group headers)
 I18N_JS = r'''
 const fs = require('fs'), vm = require('vm');
@@ -225,13 +300,18 @@ const { CMP_TYPES } = require(process.argv[2]);
 const out = [];
 for (const lang of ['zh', 'en', 'ja', 'ko'])
     for (const ty of CMP_TYPES) if (!(ctx.I18N[lang].cmp_kind || {})[ty.k]) out.push(lang + ':' + ty.k);
+// the product window's 本週三家價格 box (app.js renderSameProducts) in all four languages too
+for (const lang of ['zh', 'en', 'ja', 'ko'])
+    for (const k of ['cross_store_title', 'cross_store_title_next', 'cmp3_cheapest', 'cmp3_cheapest_next', 'cmp3_none',
+                     'cmp3_none_next', 'cmp3_regular', 'cmp3_cheapest_of3', 'aldi_cmp_title', 'cmp_same_item'])
+        if (!ctx.I18N[lang][k]) out.push(lang + ':' + k);
 console.log(JSON.stringify(out));
 '''
 r = subprocess.run(['node', '-e', I18N_JS, os.path.join(ROOT, 'static', 'i18n.js'), os.path.join(ROOT, 'static', 'compare.js')],
                    capture_output=True, text=True, encoding='utf-8')
 check(r.returncode == 0, 'i18n.js loads in node: ' + r.stderr[-300:])
 missing = json.loads(r.stdout or '[]') if r.returncode == 0 else []
-check(not missing, f'compare kinds without a group name: {missing}')
+check(not missing, f'compare kinds without a group name, or 三家價格 text missing: {missing}')
 
 for b in bad:
     print('FAIL', b)
