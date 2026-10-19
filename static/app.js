@@ -833,6 +833,10 @@ function updateStatsDisplay() {
     document.getElementById('statWoolies').textContent = byStore['Woolworths'] || 0;
     document.getElementById('statColes').textContent = byStore['Coles'] || 0;
     document.getElementById('statAldi').textContent = byStore['ALDI'] || 0;
+    // the numbers above count specials only; without this ALDI's few specials read as its whole range
+    const note = document.getElementById('statsNote');
+    note.hidden = !activeInfo.everyday_count;
+    note.textContent = t('stat_everyday_note', { n: activeInfo.everyday_count || 0 });
 }
 
 // "Wed 23 Sep 2026 - Tue 29 Sep 2026" -> "9月23日 – 9月29日" / "23 Sep – 29 Sep"

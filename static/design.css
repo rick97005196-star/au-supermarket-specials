@@ -862,6 +862,7 @@ html.dark .site-header, html.dark .cat-nav { box-shadow: 0 0.5px 0 rgba(255,255,
 .stat-value { font-size: 20px; font-weight: 600; }
 .stat-label { font-size: 11.5px; color: var(--ink-3); }
 .store-dot { width: 6px; height: 6px; }
+.stats-note { margin: 8px 4px 0; font-size: 12px; color: var(--ink-3); }
 @media (max-width: 640px) { .stats-row .stat-value, .stat-value { font-size: 18px; } }
 
 /* Segmented control: slimmer */
