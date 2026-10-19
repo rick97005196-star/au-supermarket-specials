@@ -257,14 +257,14 @@
     "url": "https://www.salefinder.com.au/woolworths-catalogue/weekly-catalogue-vic/68295/list"
    },
    {
-    "date_range": "Wed 14 Oct 2026 - Tue 20 Oct 2026",
-    "id": 68341,
-    "url": "https://www.salefinder.com.au/woolworths-catalogue/weekly-catalogue-vic/68341/list"
-   },
-   {
     "date_range": "Wed 21 Oct 2026 - Tue 27 Oct 2026",
     "id": 68436,
     "url": "https://www.salefinder.com.au/woolworths-catalogue/weekly-catalogue-vic/68436/list"
+   },
+   {
+    "date_range": "Wed 14 Oct 2026 - Tue 20 Oct 2026",
+    "id": 68341,
+    "url": "https://www.salefinder.com.au/woolworths-catalogue/weekly-catalogue-vic/68341/list"
    },
    {
     "date_range": "Wed 21 Oct 2026 - Tue 27 Oct 2026",
@@ -297,10 +297,10 @@
  },
  "_meta": {
   "Coles": {
-   "full_discovery": 1792389927.336809
+   "full_discovery": 1792415856.8664112
   },
   "Woolworths": {
-   "full_discovery": 1792390945.638552
+   "full_discovery": 1792415948.4845357
   }
  }
 }
