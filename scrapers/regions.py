@@ -113,6 +113,9 @@ def filter_region_links(slugs_ids, region, exact_prefix=None):
 # Coles prints "Every Day $3.30", Woolworths "Everyday Low Price $4.50": not a discount, but the
 # lasting shelf price (e.g. the supermarkets' own bread). Kept and shown with a "天天低價" label.
 EVERYDAY_DESC = 'Everyday Low Price'
+# Coles' website marks some specials (mostly its own fresh produce) "SPECIAL" with no "was" price:
+# kept and shown with a "特價" label, without a saving.
+SPECIAL_DESC = 'Special'
 _EVERYDAY = re.compile(r'\bevery\s*day\b(?!\s*market)', re.I)
 
 

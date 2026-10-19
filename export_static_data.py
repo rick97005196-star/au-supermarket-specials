@@ -3,7 +3,7 @@ import datetime
 import json
 import os
 
-from scrapers.regions import EVERYDAY_DESC, is_everyday
+from scrapers.regions import EVERYDAY_DESC, SPECIAL_DESC, is_everyday
 
 os.makedirs('static/data', exist_ok=True)
 
@@ -19,9 +19,9 @@ c.execute(f"""
            unit_price, was_price, save_amount, discount_desc, image_url, product_url,
            regions, region_prices, sale_from, {_aisle_col}
     FROM specials
-    WHERE price > 0 AND ((save_amount > 0 OR was_price > price) OR store = 'ALDI' OR discount_desc LIKE ?)
+    WHERE price > 0 AND ((save_amount > 0 OR was_price > price) OR store = 'ALDI' OR discount_desc LIKE ? OR discount_desc = ?)
     ORDER BY id ASC
-""", (EVERYDAY_DESC + '%',))
+""", (EVERYDAY_DESC + '%', SPECIAL_DESC))
 rows = c.fetchall()
 items = [dict(r) for r in rows]
 
@@ -90,7 +90,10 @@ for it in _dedup:
                 continue                      # different size / pack
             if len(ta & tb) / len(ta | tb) >= 0.6 or ta <= tb:
                 dup = True
-                break
+                if w.get('discount_desc') == SPECIAL_DESC and (it.get('was_price') or 0) > (it['price'] or 0):
+                    # the website's "SPECIAL" shows no saving; the catalogue line for the same deal does
+                    w.update(was_price=it['was_price'], discount_desc=it['discount_desc'],
+                             save_amount=it.get('save_amount') or round(it['was_price'] - it['price'], 2))
         if dup:
             _dropped += 1
             continue

@@ -320,6 +320,22 @@ def scrape_coles_all_weeks(max_pages: int = 50) -> Dict[str, Dict[str, Any]]:
             print(f"Merged {added} Coles website in-store Half Price specials into Coles current week.")
     except Exception as e:
         print(f"Error merging Coles website half price specials: {e}")
+
+    # Then the website's other specials (multi-buys, price cuts, "SPECIAL"s): a product already listed
+    # (catalogue or Half Price) keeps that entry
+    try:
+        from scrapers.coles_web import scrape_coles_web_more
+        if res['current']['items']:
+            existing = {it['title'].lower() for it in res['current']['items']}
+            added = 0
+            for it in scrape_coles_web_more():
+                if it['title'].lower() not in existing:
+                    res['current']['items'].append(dict(it))
+                    existing.add(it['title'].lower())
+                    added += 1
+            print(f"Merged {added} more Coles website in-store specials (multi-buys, price cuts, 'SPECIAL's) into Coles current week.")
+    except Exception as e:
+        print(f"Error merging the other Coles website specials: {e}")
     return res
 
 if __name__ == '__main__':
