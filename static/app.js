@@ -1236,6 +1236,15 @@ function toggleHalfPricePill() {
     loadSpecials();
 }
 
+// 比價: only what at least one other supermarket has too (the same product, or the same kind per kg / litre / item)
+let cmpOnly = false;
+function toggleCmpOnly() {
+    cmpOnly = !cmpOnly;
+    const pill = document.getElementById('cmpPill');
+    if (pill) { pill.classList.toggle('is-on-accent', cmpOnly); pill.setAttribute('aria-pressed', String(cmpOnly)); }
+    loadSpecials();
+}
+
 function updateHalfPricePillStyle() {
     const checkbox = document.getElementById('halfPriceOnly');
     const pill = document.getElementById('halfPricePill');
@@ -1892,6 +1901,10 @@ async function loadSpecials() {
     try {
         await getStaticSpecials();
 
+        // Enrich with cross-supermarket comparison info (before filtering: 比價 needs it)
+        enrichCrossStoreComparisons(staticSpecials);
+        const isComparable = (it) => (it.cross_store_matches && it.cross_store_matches.length) || valueCompare(it, staticSpecials);
+
         const favMatchIds = favOnly ? new Set(matchFavorites(staticSpecials).map(x => x.id)) : null;
         let filtered = staticSpecials.filter(it => {
             if (it.period !== currentPeriod) return false;
@@ -1905,6 +1918,7 @@ async function loadSpecials() {
             // ALDI never marks prices down (no "was" price), its prices are its lowest: kept, after the half-price items
             if (discountOnly && it.store !== 'ALDI' && !isItemHalfPrice(it)) return false;
             if (favOnly && !favMatchIds.has(it.id)) return false;
+            if (cmpOnly && !isComparable(it)) return false;
             if (currentSearch) {
                 const sc = scoreSearchMatch(it, currentSearch);
                 if (!sc) return false;
@@ -1912,9 +1926,6 @@ async function loadSpecials() {
             }
             return true;
         });
-
-        // Enrich with cross-supermarket comparison info
-        enrichCrossStoreComparisons(staticSpecials);
 
         // Sorting & Series Clustering
         if (sortBy === 'popular') {
@@ -1945,6 +1956,17 @@ async function loadSpecials() {
             filtered = popularFirst(filtered);
         }
         if (discountOnly) filtered = [...filtered.filter(isItemHalfPrice), ...filtered.filter(it => !isItemHalfPrice(it))];
+        if (cmpOnly) {
+            // the same kind (or the same product) side by side, where its first one sorted; cheapest per unit first
+            const groups = new Map();
+            for (const it of filtered) {
+                const vc = valueCompare(it, staticSpecials);
+                const k = vc ? `k:${cmpTypeOf(it)}` : `p:${getCompareKey(it)}`;
+                if (!groups.has(k)) groups.set(k, []);
+                groups.get(k).push({ it, v: vc ? vc.mine.value : (it.price || 0) });
+            }
+            filtered = [...groups.values()].flatMap(g => g.sort((a, b) => a.v - b.v).map(x => x.it));
+        }
 
         loading.classList.add('hidden');
         currentLoadedItems = filtered;
@@ -1954,9 +1976,10 @@ async function loadSpecials() {
         renderFavPanel();
         renderFavSearchButton();
         const notice = document.getElementById('activeFilterNotice');
-        if (notice) notice.innerHTML = favOnly ? `<button type="button" class="tag is-accent" onclick="toggleFavOnly()"><i class="fa-solid fa-heart text-[9px]"></i> ${t('fav_filter_on')} ✕</button>` : '';
+        if (notice) notice.innerHTML = (favOnly ? `<button type="button" class="tag is-accent" onclick="toggleFavOnly()"><i class="fa-solid fa-heart text-[9px]"></i> ${t('fav_filter_on')} ✕</button>` : '') +
+            (cmpOnly ? `<button type="button" class="tag is-accent" onclick="toggleCmpOnly()"><i class="fa-solid fa-scale-balanced text-[9px]"></i> ${t('cmp_filter_on')} ✕</button>` : '');
         // Wednesday–Sunday: only ALDI has announced next week yet -> say when the others come
-        if (notice && !favOnly && currentPeriod === 'next' &&
+        if (notice && !favOnly && !cmpOnly && currentPeriod === 'next' &&
             !staticSpecials.some(x => x.period === 'next' && (x.store === 'Coles' || x.store === 'Woolworths'))) {
             notice.innerHTML = `<span class="tag is-next">${t('next_cw_pending')}</span>`;
         }
@@ -1984,6 +2007,10 @@ async function loadSpecials() {
             } else if (favOnly) {
                 if (emptyTitle) emptyTitle.textContent = t('fav_none_title');
                 if (emptySub) emptySub.textContent = t('fav_none_sub');
+                if (emptyAction) emptyAction.classList.add('hidden');
+            } else if (cmpOnly) {
+                if (emptyTitle) emptyTitle.textContent = t('cmp_none_title');
+                if (emptySub) emptySub.textContent = t('cmp_none_sub');
                 if (emptyAction) emptyAction.classList.add('hidden');
             } else if (currentPeriod === 'next') {
                 if (emptyTitle) {
@@ -2201,11 +2228,12 @@ function aldiDateInfo(item) {
     return { kind: 'buy', upcoming: false, text: t('aldi_since_short', { d }), long: t('aldi_on_sale_since', { d }) };
 }
 
-const _cmpUnit = (basis) => (basis === 'ea' ? t('unit_each') : basis);
-function fmtUnitPrice(up) {
+const _cmpUnit = (basis) => (basis === 'ea' ? t('unit_each') : (basis === 'sh' ? t('unit_100sheets') : basis));
+// keepBase: always per kg / litre, so products compared side by side use one unit
+function fmtUnitPrice(up, keepBase) {
     if (!up) return '';
     // expensive small things (make-up, spices) read better per 100g / 100mL, like the shelf labels
-    if (up.value >= 100 && up.basis !== 'ea') return `$${(up.value / 10).toFixed(2)}/100${up.basis === 'kg' ? 'g' : 'mL'}`;
+    if (!keepBase && up.value >= 100 && (up.basis === 'kg' || up.basis === 'L')) return `$${(up.value / 10).toFixed(2)}/100${up.basis === 'kg' ? 'g' : 'mL'}`;
     return `$${up.value.toFixed(2)}/${_cmpUnit(up.basis)}`;
 }
 
@@ -2243,7 +2271,7 @@ function renderValueCompare(item) {
                     <div class="aldi-cmp-name">${escHTML(name)}</div>
                 </div>
                 <div class="text-right shrink-0">
-                    <div class="aldi-cmp-up num">${fmtUnitPrice(up)}</div>
+                    <div class="aldi-cmp-up num">${fmtUnitPrice(up, true)}</div>
                     <div class="aldi-cmp-price num">${escHTML(String(it.price_display || `$${_perItemPrice(it).toFixed(2)}`).replace(/\s+/g, ' ').trim())}${isThis ? '' : (it.save_amount > 0 ? ` · ${escHTML(t('aldi_cmp_special'))}` : (isEverydayPrice(it) ? ` · ${escHTML(t('everyday_badge'))}` : ''))}</div>
                 </div>
             </div>`;
@@ -2320,8 +2348,9 @@ function createProductCardElement(item) {
     const isCheapest = exactText ? !!item.cross_store_cheaper : !!(valueCmp && valueCmp.verdict === 'cheaper' && valueCmp.lowest);
     // unit price: ALDI always as $/kg or $/L (that's how ALDI shows value); others when sorting by unit price
     const sortVal = (document.getElementById('sortSelect') || {}).value;
-    const up = unitPriceOf(item);
-    const showNormUnit = !!up && (item.store === 'ALDI' || sortVal === 'unit_asc');
+    // 比價: the unit it is compared in (per kg / litre / item / 100 sheets), the same for the whole group
+    const up = (cmpOnly && valueCmp) ? valueCmp.mine : unitPriceOf(item);
+    const showNormUnit = !!up && (item.store === 'ALDI' || sortVal === 'unit_asc' || cmpOnly);
     const cartPayload = {
         id: item.id,
         store: item.store,
@@ -2383,7 +2412,7 @@ function createProductCardElement(item) {
                     <div class="p-price num">
                         <span class="cur">$</span><span class="dol">${p.dollars}</span><span class="cts">${p.cents}</span><span class="unit">${p.unit}</span>
                     </div>
-                    ${showNormUnit ? `<div class="p-unit-strong num" title="${escAttr(unitPriceClean || fmtUnitPrice(up))}">${fmtUnitPrice(up)}</div>` : ''}
+                    ${showNormUnit ? `<div class="p-unit-strong num" title="${escAttr(unitPriceClean || fmtUnitPrice(up, cmpOnly))}">${fmtUnitPrice(up, cmpOnly)}</div>` : ''}
                     ${aldiInfo ? `<div class="p-aldi ${aldiInfo.upcoming ? 'is-upcoming' : ''} ${aldiInfo.kind === 'saver' ? 'is-saver' : ''}"><i class="fa-regular ${aldiInfo.upcoming ? 'fa-calendar' : (aldiInfo.kind === 'saver' ? 'fa-clock' : 'fa-box-open')}"></i>${aldiInfo.text}</div>` : `
                     <div class="p-was num mt-1.5">
                         ${effectiveWas > 0 ? `<s>${t('was_price')} $${effectiveWas.toFixed(2)}</s>` : ''}

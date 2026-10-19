@@ -102,8 +102,16 @@ function eachPriceOf(item) {
     if (fromStr && fromTitle && !(fromStr / fromTitle > 0.8 && fromStr / fromTitle < 1.25)) v = 0;   // unclear -> nothing rather than a wrong number
     return (v >= 0.01 && v <= 1000) ? { basis: 'ea', value: v } : null;
 }
+// Toilet paper: the shop's own price per 100 sheets ("$0.24 / 100 sheets"; Coles writes "$0.32/ 100ea").
+// Rolls differ a lot in length (double / triple length), so a price per roll would mislead.
+function sheetPriceOf(item) {
+    const m = String((item && item.unit_price) || '').replace(/A\$/gi, '$').match(/\$\s*(\d+(?:\.\d+)?)\s*(?:\/|per)\s*100\s*(?:sheets?|ea)\b/i);
+    const v = m ? parseFloat(m[1]) : 0;
+    return (v >= 0.01 && v <= 100) ? { basis: 'sh', value: v } : null;
+}
 function cmpPriceOf(item, basis) {
     if (basis === 'ea') return eachPriceOf(item);
+    if (basis === 'sh') return sheetPriceOf(item);
     const up = unitPriceOf(item);
     return (up && up.basis === basis) ? up : null;
 }
@@ -111,8 +119,8 @@ function cmpPriceOf(item, basis) {
 // ---------------- Same kind of product at the three supermarkets: per kg / litre / item ----------------
 // Strict on purpose: only plain everyday cuts and staples, never marinated / crumbed / cooked / flavoured,
 // and fresh vs frozen, free range and organic must match. Brands can differ (that is the point with ALDI).
-const _CMP_MEAT_EXC = /\b(crumbed|schnitzels?|kiev|nuggets?|munchies|tenders|tenderloins?|popcorn|marinated|marinade|seasoned|stuffed|smoked|cooked|roasted|carved|shaved|sliced|deli|bbq|peri|garlic|herbs?|honey|teriyaki|satay|lemon|lime|zesty|pepper|chilli|spicy|hot|flaming|buffalo|smoky|sticky|sweet|maple|mint|tikka|southern|flavou?r(ed)?|style|kebabs?|skewers?|burgers?|patties|sausages?|chipolatas?|rissoles?|meatballs?|kofta|pies?|dumplings?|wraps?|sandwich|soup|stir ?fry|strips|sous vide|ready|made easy|capers|butter|crispy|crunchy|glazed|bulgogi|korean|mexican|indian|thai|chinese|italian|greek|portuguese|cajun|tandoori|gravy|sauce|wellington|rolls?|bites|pieces?|cubes?|diced|stuffing|baby food|pet|dog|cat)\b/;
-const _CMP_FISH_EXC = /\b(crumbed|battered|tempura|smoked|cooked|marinated|seasoned|flavou?r(ed)?|tinned|canned|in oil|springwater|capers|butter|sauce|cakes?|patties|pie|pet|cat|dog|sushi|sashimi|style|lemon|lime|zesty|pepper|garlic|chilli|herbs?|teriyaki|bites|pieces?)\b/;
+const _CMP_MEAT_EXC = /\b(crumbed|schnitzels?|kiev|kyiv|shredded|pulled|recipe|nuggets?|munchies|tenders|tenderloins?|popcorn|marinated|marinade|seasoned|stuffed|smoked|cooked|roasted|carved|shaved|sliced|deli|bbq|peri|garlic|herbs?|honey|teriyaki|satay|lemon|lime|zesty|pepper|chilli|spicy|hot|flaming|buffalo|smoky|sticky|sweet|maple|mint|tikka|southern|flavou?r(ed)?|style|kebabs?|skewers?|burgers?|patties|sausages?|chipolatas?|rissoles?|meatballs?|kofta|pies?|dumplings?|wraps?|sandwich|soup|stir ?fry|strips|sous vide|ready|made easy|capers|butter|crispy|crunchy|glazed|bulgogi|korean|mexican|indian|thai|chinese|italian|greek|portuguese|cajun|tandoori|gravy|sauce|wellington|rolls?|bites|pieces?|cubes?|diced|stuffing|baby food|pet|dog|cat)\b/;
+const _CMP_FISH_EXC = /\b(with|rice|meals?|crumbed|battered|tempura|smoked|cooked|marinated|seasoned|flavou?r(ed)?|tinned|canned|in oil|springwater|capers|butter|sauce|cakes?|patties|pie|pet|cat|dog|sushi|sashimi|style|lemon|lime|zesty|pepper|garlic|chilli|herbs?|teriyaki|bites|pieces?)\b/;
 // Per-type details that must also match (a different cut / variety / grade is a different price class)
 const _fxSkin = (f) => (/\bskin ?off\b|\bskinless\b/.test(f) ? 'S' : '');
 const _fxMince = (f) => (/\b(extra lean|heart smart|premium|5 star|4 star)\b/.test(f) ? 'x' : (/\blean\b/.test(f) ? 'l' : 'r'));
@@ -122,8 +130,13 @@ const _fxLambLeg = (f) => (/\bsteaks?\b/.test(f) ? 'T' : (/\bboneless|easy carve
 const _fxRice = (f) => (f.match(/\b(basmati|jasmine|brown|sushi|arborio|medium grain|calrose|long grain|white)\b/) || [''])[0].replace('calrose', 'medium grain');
 const _fxOil = (f) => (f.match(/\b(canola|vegetable|sunflower)\b/) || [''])[0];
 const _fxFlour = (f) => (f.match(/\b(plain|self raising|self-raising|bread)\b/) || [''])[0].replace('-', ' ');
-const _fxSugar = (f) => (f.match(/\b(white|raw|caster|brown)\b/) || [''])[0];
+const _fxSugar = (f) => (f.match(/\b(white|raw|caster|brown) sugar\b/) || ['', ''])[1];
 const _fxMilk = (f) => (/\b(lite|light|skim|reduced fat)\b/.test(f) ? 'lo' : 'full');
+// cheese: block / shredded / slices, and the variety (tasty, extra tasty and cheddar count as one)
+const _fxCheese = (f) => (/\b(shredded|grated)\b/.test(f) ? 'sh' : (/\bslices?\b/.test(f) ? 'sl' : 'bl')) +
+    (/\bmozzarella\b/.test(f) ? 'mozz' : /\bparmesan\b/.test(f) ? 'parm' : /\bcolby\b/.test(f) ? 'colby' :
+        /\b(light|lite|reduced fat|less fat)\b/.test(f) ? 'lite' : /\b(vintage|extra sharp|bitey)\b/.test(f) ? 'vint' : 'tasty');
+const _fxBread = (f) => (/\bwholemeal\b/.test(f) ? 'M' : /\brye\b/.test(f) ? 'R' : /\b(multigrain|grains?|seeds?|wholegrain|linseed)\b/.test(f) ? 'G' : 'W');
 const CMP_TYPES = [
     { k: 'chicken_breast', re: /\bchicken breasts?\b/, exc: _CMP_MEAT_EXC },
     { k: 'chicken_thigh', re: /\bchicken thighs?\b/, exc: _CMP_MEAT_EXC },
@@ -131,7 +144,7 @@ const CMP_TYPES = [
     { k: 'chicken_wing', re: /\bchicken wings?\b/, exc: _CMP_MEAT_EXC },
     { k: 'chicken_whole', re: /\bwhole (?:fresh |free range |rspca approved |australian )*chicken\b/, exc: _CMP_MEAT_EXC },
     { k: 'chicken_mince', re: /\bchicken mince\b/, exc: _CMP_MEAT_EXC, fx: _fxMince },
-    { k: 'beef_mince', re: /\bbeef mince\b|\bmince beef\b/, exc: _CMP_MEAT_EXC, fx: _fxMince },
+    { k: 'beef_mince', re: /\bbeef mince\b|\bmince beef\b/, exc: /\b(pork|lamb|veal|chicken)\b|&/, exc2: _CMP_MEAT_EXC, fx: _fxMince },
     { k: 'pork_mince', re: /\bpork mince\b/, exc: _CMP_MEAT_EXC, fx: _fxMince },
     { k: 'lamb_mince', re: /\blamb mince\b/, exc: _CMP_MEAT_EXC, fx: _fxMince },
     { k: 'pork_chops', re: /\bpork (?:loin |cutlet |forequarter )?chops?\b|\bpork cutlets?\b/, exc: _CMP_MEAT_EXC, fx: _fxChops },
@@ -146,19 +159,33 @@ const CMP_TYPES = [
     { k: 'lamb_chops', re: /\blamb (?:loin |forequarter |chump )?chops?\b/, exc: _CMP_MEAT_EXC, fx: _fxChops },
     { k: 'salmon', re: /\bsalmon (?:fillets?|portions?)\b/, exc: _CMP_FISH_EXC, fx: _fxSkin },
     { k: 'barramundi', re: /\bbarramundi (?:fillets?|portions?)\b/, exc: _CMP_FISH_EXC, fx: _fxSkin },
-    { k: 'prawns', re: /\bprawns?\b/, exc: /\b(tempura|crumbed|battered|cooked|marinated|seasoned|garlic|chilli|siu mai|dim sims?|dumplings?|har gow|gyoza|wontons?|spring rolls?|toast|cutlets|cakes?|pork|chicken|mushroom|crackers?|chips|noodles?|soup|laksa|sauce|skewers?|bacon|pet|cat|dog|treats?)\b/ },
+    { k: 'prawns', re: /\bprawns?\b/, exc: /\b(fried|rice|tempura|crumbed|battered|cooked|marinated|seasoned|garlic|chilli|siu mai|dim sims?|dumplings?|har gow|gyoza|wontons?|spring rolls?|toast|cutlets|cakes?|pork|chicken|mushroom|crackers?|chips|noodles?|soup|laksa|sauce|skewers?|bacon|pet|cat|dog|treats?)\b/ },
     { k: 'milk', re: /\b(full cream|whole|lite|light|skim|reduced fat) milk\b/, basis: 'L', fx: _fxMilk, exc: /\b(flavou?red|chocolate|strawberry|banana|coffee|iced|powder|powdered|condensed|evaporated|lactose|a2|protein|almond|oat|soy|rice|coconut|macadamia|kids|toddler|formula|goat|body|lotion|wash|soap|bath|cleanser)\b/ },
-    { k: 'butter', re: /\bbutter\b/, exc: /\b(peanut|almond|nut|cashew|cocoa|shea|mango|coconut|body|lotion|scrub|wash|gel|soap|balm|lip|gloss|deodorant|spray|diffuser|garlic|herb|biscuits?|cookies?|chicken|popcorn|cake|croissants?|shortbread|chocolate|blend|spreadable|soft|ghee|light|salmon|sauce|paste|caramel|beans?|lettuce|menthol|scotch|chips|crisps|seaweed|kombu|cups|pieces|chicken|steak|porterhouse|capers|me up)\b/ },
-    { k: 'rice', re: /\b(jasmine|basmati|long grain|medium grain|white|brown|calrose|sushi) rice\b/, fx: _fxRice, exc: /\b(microwave|cups?|pouch|express|cakes?|crackers?|noodles?|flour|bran|milk|pudding|paper|vinegar|wine|chips|ready|instant|fried|seasoned|flavou?r(ed)?|risotto|mexican|coconut|garlic|chicken|tomato)\b/ },
-    { k: 'pasta', re: /\b(spaghetti|penne|fusilli|spirals|linguine|fettuccine|rigatoni|macaroni|farfalle|shells)\b/, exc: /\b(sauce|fresh|filled|ravioli|tortellini|gnocchi|ready|meals?|feast|menu|cups?|bake|kit|tinned|canned|tin|heinz|spc|beanz|beans|cheesy|cheese|beef|bacon|chicken|tomato|bolognese|carbonara|microwave|soup|salad|gluten|protein|wholemeal|lentil|chickpea|kids|snack|pot|loaded)\b|&/ },
+    { k: 'peanut_butter', re: /\bpeanut butter\b/, fx: (f) => (/\b(natural|simply nuts)\b|100% peanuts?/.test(f) ? 'N' : ''), exc: /\b(bars?|cookies?|biscuits?|treats?|dog|cat|pet|clusters?|granola|muesli|pieces|cups?|choc|chocolate|ice cream|whisky|wafers?|pretzels?|protein|light|lite|powder|sauce|chicken|satay|brownie|caramel|crackers?|balls|bites|smoothie|milk|honey|jelly|jam|cereal|oats?|squares|filled|dark roast(?:ed)?)\b|\bor\b/ },
+    { k: 'butter', re: /\bbutter\b/, exc: /\b(bread|cucumbers?|pickles?|puff|pastry|lemon|spread|everything|peanut|almond|nut|cashew|cocoa|shea|mango|coconut|body|lotion|scrub|wash|gel|soap|balm|lip|gloss|deodorant|spray|diffuser|garlic|herb|biscuits?|cookies?|chicken|popcorn|cake|croissants?|shortbread|chocolate|blend|spreadable|soft|ghee|light|salmon|sauce|paste|caramel|beans?|lettuce|menthol|scotch|chips|crisps|seaweed|kombu|cups|pieces|chicken|steak|porterhouse|capers|me up)\b/ },
+    { k: 'rice', re: /\b(jasmine|basmati|long grain|medium grain|white|brown|calrose|sushi) rice\b/, fx: _fxRice, exc: /\b(with|curry|dahl|microwave|cups?|pouch|express|cakes?|crackers?|noodles?|flour|bran|milk|pudding|paper|vinegar|wine|chips|ready|instant|fried|seasoned|flavou?r(ed)?|risotto|mexican|coconut|garlic|chicken|tomato)\b/ },
+    { k: 'pasta', re: /\b(spaghetti|penne|fusilli|spirals|linguine|fettuccine|rigatoni|macaroni|farfalle|shells)\b/, exc: /\b(taco|sauce|fresh|filled|ravioli|tortellini|gnocchi|ready|meals?|feast|menu|cups?|bake|kit|tinned|canned|tin|heinz|spc|beanz|beans|cheesy|cheese|beef|bacon|chicken|tomato|bolognese|carbonara|microwave|soup|salad|gluten|protein|wholemeal|lentil|chickpea|kids|snack|pot|loaded)\b|&/ },
     { k: 'flour', re: /\b(plain|self raising|self-raising|bread) flour\b/, fx: _fxFlour, exc: /\b(almond|coconut|rice|gluten|corn|wholemeal|spelt|mix|pizza)\b/ },
-    { k: 'sugar', re: /\b(white|raw|caster|brown) sugar\b/, fx: _fxSugar, exc: /\b(icing|free|no added|lollies|syrup|coconut|cinnamon|doughnuts?|cookies?|biscuits?|cereal|gum|oreo|pancake|hair|dye|scrub|body|polish|candle)\b/ },
-    { k: 'olive_oil', re: /\bolive oil\b/, basis: 'L', fx: (f) => (/\bextra virgin\b/.test(f) ? 'V' : ''), exc: /\b(spray|tuna|sardines|in olive oil|with olive oil|blend|mayo|mayonnaise|spread|chips|crackers|soap|body|hair|skin|cat|dog|food)\b/ },
+    { k: 'sugar', re: /\b(white|raw|caster|brown) sugar\b/, fx: _fxSugar, exc: /\b(sticks|sachets|icing|free|no added|lollies|syrup|coconut|cinnamon|doughnuts?|cookies?|biscuits?|cereal|gum|oreo|pancake|hair|dye|scrub|body|polish|candle)\b/ },
+    { k: 'olive_oil', re: /\bolive oil\b/, basis: 'L', fx: (f) => (/\bextra virgin\b/.test(f) ? 'V' : ''), exc: /\b(truffle|infused|spray|tuna|sardines|in olive oil|with olive oil|blend|mayo|mayonnaise|spread|chips|crackers|soap|body|hair|skin|cat|dog|food)\b/ },
     { k: 'veg_oil', re: /\b(canola|vegetable|sunflower) oil\b/, basis: 'L', fx: _fxOil, exc: /\b(spray|tuna|sardines|in |with |mayo|spread|chips|soap|body|hair|cat|dog)\b/ },
     // eggs by weight (a 700g dozen vs a 900g pack of 18); cage / barn (cage free) / free range (flag R) never mixed
     { k: 'eggs', re: /\beggs\b/, fx: (f) => (/\bbarn\b|\bcage[ -]free\b/.test(f) ? 'B' : (/\bcage\b/.test(f) ? 'C' : '')), exc: /\b(mayo|mayonnaise|noodles?|pasta|chocolate|choc|kinder|cadbury|lindt|easter|hollow|surprise|spice|seasoning|blend|whites?|scrambled|liquid|custard|lice|treatment|toy)\b/ },
     { k: 'dish_tabs', re: /\bdish(?:washer|washing)\b.*\b(tablets?|capsules?|pods?|tabs)\b|\b(tablets?|capsules?|pods?|tabs)\b.*\bdish(?:washer|washing)\b/, basis: 'ea', exc: /\b(cleaner|freshener|deodoriser|salt|rinse)\b/ },
     { k: 'laundry_caps', re: /\blaundry\b.*\b(capsules?|pods?)\b|\b(capsules?|pods?)\b.*\blaundry\b/, basis: 'ea', exc: /\b(sheets?|soaker|stain|softener|freshener|booster)\b/ },
+    { k: 'laundry_liquid', re: /\blaundry (?:liquid|detergent)\b|\bliquid laundry\b|\bwashing liquid\b/, basis: 'L', exc: /\b(capsules?|pods?|sheets?|softener|conditioner|stain|soaker|booster|wool|delicates|hand ?wash|powder|sanitiser|sanitizer|rinse|beads|freshener|or)\b/ },
+    { k: 'laundry_powder', re: /\blaundry (?:detergent )?powder\b|\bwashing powder\b|\bpowder laundry\b/, exc: /\b(capsules?|pods?|sheets?|softener|stain|soaker|booster|wool|sanitiser|sanitizer|liquid|or)\b/ },
+    { k: 'dish_liquid', re: /\bdish(?:washing)? liquid\b|\bwashing up liquid\b/, basis: 'L', exc: /\b(dishwasher|tablets?|capsules?|pods?|powder|rinse|cleaner|brush|scrubber|sponges?|cloths?|gloves|rack|dispenser|machine|or)\b/ },
+    { k: 'toilet_paper', re: /\btoilet (?:paper|tissues?|rolls?)\b/, basis: 'sh', fx: (f) => (f.match(/\b([1-6]) ?ply\b/) || ['', ''])[1], exc: /\b(wipes?|flushable|moist|holder|brush|cleaner|freshener|spray|seat|bowl|block|kitchen|facial|towels?|or)\b/ },
+    // cheese: a variety and a form (block / shredded / slices) both named, never snacks, spreads or flavoured
+    { k: 'cheese', re: /^(?=.*\b(tasty|cheddar|vintage|colby|mozzarella|parmesan)\b)(?=.*\b(cheese|block|shredded|grated|slices?)\b)/, fx: _fxCheese, exc: /\b(dairy free|plant|plants|vegan|crackers?|cracker cuts|snacks?|chips|crisps|lunch|on the go|spread|cream cheese|cream|pickled|smoked|flavou?r(ed)?|sticks?|babybel|portions?|bites|minis?|biscuits?|pizza|pasta|sauce|bread|rolls?|scrolls?|twists?|puffs?|balls|sausages?|kabana|kransky|toasties?|jalapeno|chilli|garlic|herbs?|onion|bacon|ham|chicken|beef|dip|soup|mac|macaroni|burgers?|pies?|quiche|pet|dog|cat|treats?|string|grater|knife|board|slicer|blend|mix|popcorn|corn|thins|rice cakes?|club|trilogy|classic|long[ -]life|and|with)\b|&/ },
+    { k: 'yoghurt_greek', re: /^(?=.*\bgreek\b)(?=.*\byogh?urt\b)/, fx: (f) => (/\b(light|lite|low fat|no fat|fat free|skim)\b/.test(f) ? 'L' : ''), exc: /\b(lactose|vanilla|strawberry|mango|berry|berries|blueberry|cherry|honey|passionfruit|peach|banana|raspberry|caramel|choc|chocolate|coconut|lemon|fig|tropical|mixed|fruit|swirl|protein|kids|pouch|pouches|baby|bars?|nuts?|frozen|ice cream|flip|smoothie|trail|dip|dressing|tzatziki|granola|muesli|bites|coated|flavou?r(ed)?|or)\b/ },
+    // sandwich loaves only (white / wholemeal / grain / rye), never sourdough, wraps, rolls or sweet breads
+    { k: 'bread', re: /^(?=.*\bbread\b)(?=.*\b(white|wholemeal|rye|multigrain|grains?|seeds?|wholegrain|linseed|sandwich|toast)\b)/, fx: _fxBread, exc: /\b(banana|fruit|raisin|sultana|spiced|garlic|cheese|naan|pita|pitta|lebanese|turkish|wraps?|tortillas?|flatbread|flat|mix|premix|improver|flour|crumbs?|maker|machine|bin|box|knife|board|tin|pan|rolls?|buns?|thins|cake|sticks|croutons|bagels?|muffins?|crumpets?|english|gluten|keto|low carb|protein|sourdough|brioche|panini|pudding|sauce|soup|pizza|crackers?|chips|crisps|corn|soda|damper|gingerbread|shortbread|zucchini|pumpkin|dates?|walnut|olive|tomato|onion|herbs?|bao|steamed|dog|cat|pet|bird|half|mini|or)\b/ },
+    // frozen only: the title says frozen or the shop files it under frozen (ALDI's "Baby Peas 1kg" does not say it)
+    { k: 'peas', re: /\bpeas\b/, fz: true, exc: /\b(chick|snow|sugar ?snap|split|wasabi|crunchy|seasoned|bhuja|snacks?|corn|carrots?|mixed|vegetables|veg|soup|pies?|mushy|dried|sprouts?|pods|rice|pasta|ham|mint|dog|cat|pet)\b|&/ },
+    { k: 'coffee_instant', re: /\binstant coffee\b|\bcoffee\b.*\b(?:instant|freeze dried)\b|\bfreeze dried coffee\b/, fx: (f) => (/\b(freeze dried|gold|espresso|barista|crema|premium)\b/.test(f) ? 'P' : ''), exc: /\b(latte|cappuccino|mocha|flavou?r(ed)?|vanilla|caramel|hazelnut|sachets?|sticks?|mix|decaf|decaffeinated|machine|capsules?|pods?|beans|ground|cold brew|iced|protein|chicory|dandelion|sugar free|skinny|frothy|or)\b/ },
+    { k: 'coffee_caps', re: /\bcoffee\b.*\b(?:capsules?|pods)\b|\b(?:capsules?|pods)\b.*\bcoffee\b/, basis: 'ea', fx: (f) => (/\bespressotoria\b/.test(f) ? 'E' : ''), exc: /\b(flavou?r(ed)?|vanilla|caramel|hazelnut|machine|descaler|holder|drawer|stand|rack|tea|chai|hot chocolate|milk|dolce gusto|tassimo|caddy|storage|or)\b/ },
 ];
 // Things that change the price a lot whatever the product: both sides must be the same
 // (fresh vs frozen — "From the Seafood Freezer" counts as frozen — free range, organic, long life, boneless)
@@ -186,8 +213,9 @@ function cmpTypeOf(item) {
         if (ty.not && ty.not.test(tl)) continue;
         if (ty.exc && ty.exc.test(tl)) break;               // first matching type decides; an excluded one is not compared
         if (ty.exc2 && ty.exc2.test(tl)) break;
+        if (ty.fz && !/\bfrozen\b|\bfreezer\b/.test(full) && item.category !== 'frozen') break;
         p = cmpPriceOf(item, ty.basis || 'kg');
-        if (p) r = `${ty.k}|${_cmpFlags(full)}|${ty.fx ? ty.fx(full) : ''}`;
+        if (p) r = `${ty.k}|${_cmpFlags(ty.fz ? `${full} frozen` : full)}|${ty.fx ? ty.fx(full) : ''}`;
         break;
     }
     item._cmpType = r;
@@ -234,4 +262,4 @@ function valueCompare(item, list) {
     item._vc = res;
     return res;
 }
-if (typeof module !== 'undefined') module.exports = { unitPriceOf, eachPriceOf, cmpPriceOf, cmpTypeOf, valueCompare, CMP_TYPES };
+if (typeof module !== 'undefined') module.exports = { unitPriceOf, eachPriceOf, sheetPriceOf, cmpPriceOf, cmpTypeOf, valueCompare, CMP_TYPES };

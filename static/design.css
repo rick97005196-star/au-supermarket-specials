@@ -289,6 +289,7 @@ button, a, input, select { -webkit-tap-highlight-color: transparent; }
     cursor: pointer;
 }
 .select-pill:focus { outline: none; border-color: var(--accent); }
+#sortSelect { min-width: 8.5rem; }   /* on phones it drops below the 半價 / 比價 pills instead of shrinking */
 .result-badge { font-size: 12px; font-weight: 500; padding: 3px 10px; border-radius: 999px; background: var(--accent-soft); color: var(--accent-text); }
 .result-badge.is-next { background: var(--next-soft); color: var(--next); }
 
