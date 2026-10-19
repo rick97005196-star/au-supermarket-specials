@@ -199,20 +199,22 @@ from scrapers.regions import ALL_REGIONS, BASE_REGION
 def _region_stats(region):
     out = {}
     for period in ('current', 'next'):
-        total, by_store, half, everyday = 0, {}, 0, 0
+        total, by_store, half, everyday, everyday_by_store = 0, {}, 0, 0, {}
         for it in items:
             if it.get('period') != period or ('rg' in it and region not in it['rg']):
                 continue
             p = dict(it, **(it.get('rp', {}).get(region) or {}))
             if is_everyday(p):
                 everyday += 1          # listed on the site, but not a special: not in the specials numbers
+                everyday_by_store[p['store']] = everyday_by_store.get(p['store'], 0) + 1
                 continue
             total += 1
             by_store[p['store']] = by_store.get(p['store'], 0) + 1
             if (p['store'] == 'ALDI' or (p.get('save_amount') or 0) > 0) and database.is_half_price(
                     p.get('price'), p.get('was_price'), p.get('save_amount'), p.get('discount_desc')):
                 half += 1
-        out[period] = {'total': total, 'by_store': by_store, 'half_price_count': half, 'everyday_count': everyday}
+        out[period] = {'total': total, 'by_store': by_store, 'half_price_count': half, 'everyday_count': everyday,
+                       'everyday_by_store': everyday_by_store}
     return out
 # "Next week" must never show this week's dates (happens when only ALDI has published next week)
 def _shift_week(rng, days=7):

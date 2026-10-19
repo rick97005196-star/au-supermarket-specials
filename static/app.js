@@ -830,13 +830,15 @@ function updateStatsDisplay() {
     document.getElementById('statHalfPrice').textContent = activeInfo.half_price_count || 0;
     
     const byStore = activeInfo.by_store || {};
-    document.getElementById('statWoolies').textContent = byStore['Woolworths'] || 0;
-    document.getElementById('statColes').textContent = byStore['Coles'] || 0;
-    document.getElementById('statAldi').textContent = byStore['ALDI'] || 0;
-    // the numbers above count specials only; without this ALDI's few specials read as its whole range
-    const note = document.getElementById('statsNote');
-    note.hidden = !activeInfo.everyday_count;
-    note.textContent = t('stat_everyday_note', { n: activeInfo.everyday_count || 0 });
+    // big number = everything listed for the store, bar = the specials' share: ALDI is mostly everyday low prices
+    const everyday = activeInfo.everyday_by_store;
+    [['Woolworths', 'Woolies'], ['Coles', 'Coles'], ['ALDI', 'Aldi']].forEach(([store, id]) => {
+        const sp = byStore[store] || 0, all = sp + ((everyday && everyday[store]) || 0);
+        document.getElementById('stat' + id).textContent = all;
+        document.getElementById('statBar' + id).style.width = all ? (sp / all * 100) + '%' : '0';
+        document.getElementById('statSub' + id).textContent = t('stat_store_specials', { n: sp });
+    });
+    document.getElementById('statsNote').hidden = !everyday;
 }
 
 // "Wed 23 Sep 2026 - Tue 29 Sep 2026" -> "9月23日 – 9月29日" / "23 Sep – 29 Sep"

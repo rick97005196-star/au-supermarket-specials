@@ -862,7 +862,16 @@ html.dark .site-header, html.dark .cat-nav { box-shadow: 0 0.5px 0 rgba(255,255,
 .stat-value { font-size: 20px; font-weight: 600; }
 .stat-label { font-size: 11.5px; color: var(--ink-3); }
 .store-dot { width: 6px; height: 6px; }
-.stats-note { margin: 8px 4px 0; font-size: 12px; color: var(--ink-3); }
+/* store bars: dark part = specials, light part = everyday low prices */
+.stat-bar { display: block; height: 4px; margin-top: 5px; border-radius: 2px; overflow: hidden;
+    background: color-mix(in srgb, var(--bar) 22%, transparent); }
+.stat-bar i { display: block; height: 100%; width: 0; background: var(--bar); }
+.bar-woolies { --bar: var(--woolies); } .bar-coles { --bar: var(--coles); } .bar-aldi { --bar: var(--aldi); }
+.stat-sub { font-size: 12px; color: var(--ink-3); white-space: nowrap; }
+.stats-note { display: flex; align-items: center; gap: 6px; margin: 8px 4px 0; font-size: 12px; color: var(--ink-3); }
+.stats-note[hidden] { display: none; }
+.stats-note i { width: 14px; height: 4px; border-radius: 2px; background: var(--ink-3); }
+.stats-note .key-ev { margin-left: 8px; background: color-mix(in srgb, var(--ink-3) 25%, transparent); }
 @media (max-width: 640px) { .stats-row .stat-value, .stat-value { font-size: 18px; } }
 
 /* Segmented control: slimmer */
