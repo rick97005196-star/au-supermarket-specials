@@ -9,6 +9,7 @@ on:
     paths:
       - 'categories.py'
       - 'static/category-rules.js'
+      - 'static/compare.js'
       - 'tests/**'
       - 'scripts/check_timer.py'
       - 'scripts/ai_categorize.py'
@@ -45,6 +46,8 @@ jobs:
         run: python tests/test_interest.py
       - name: Everyday low price test
         run: python tests/test_everyday.py
+      - name: Price comparison test
+        run: python tests/test_compare.py
       - name: Woolworths specials lists test
         run: |
           pip install -q requests beautifulsoup4   # the Woolworths reader imports them
