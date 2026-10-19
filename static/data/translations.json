@@ -111748,11 +111748,11 @@
     "src": "ai"
   },
   "White Lunch Napkins 1ply 75 Pack": {
-    "zh": "白色餐巾紙 單層 75入",
-    "ja": "ホワイトランチナプキン 1枚重ね 75枚入",
+    "zh": "白色午餐餐巾紙 1層 75入",
+    "ja": "ホワイト ランチナプキン 1枚重ね 75枚入",
     "ko": "화이트 런치 냅킨 1겹 75개입",
     "src": "ai",
-    "qa_tries": 1
+    "qa_tries": 2
   },
   "WHITWORTHS Soft & Juicy Apricots 250g": {
     "zh": "WHITWORTHS 軟嫩杏桃乾 250克",
@@ -115915,9 +115915,10 @@
     "src": "ai"
   },
   "REMANO Free Range Egg Fettuccine 375g": {
-    "zh": "REMANO 放養蛋寬麵 375g",
-    "ja": "REMANO 平飼い卵フェットチーネ 375g",
-    "ko": "REMANO 방목 계란 페투치니 375g"
+    "zh": "REMANO 放牧雞蛋寬扁麵 375克",
+    "ja": "REMANO 放し飼い卵フェットチーネ 375g",
+    "ko": "REMANO 방목 달걀 페투치네 375g",
+    "src": "ai"
   },
   "PURE VALLEY Unsalted Butter 250g": {
     "zh": "PURE VALLEY 無鹽奶油 250克",
@@ -115970,9 +115971,10 @@
     "qa_tries": 1
   },
   "Red Onions 1kg": {
-    "zh": "紅洋蔥1公斤",
+    "zh": "紅洋蔥 1公斤",
     "ja": "赤玉ねぎ 1kg",
-    "ko": "적양파 1kg"
+    "ko": "적양파 1kg",
+    "src": "ai"
   },
   "PRINCE Men's Shower Gel Active Clean 1L": {
     "zh": "PRINCE 男性活力淨爽沐浴乳 1公升",
@@ -116007,9 +116009,10 @@
     "qa_tries": 1
   },
   "MARS Mars Fun Size Share Pack Chocolate 12 Pack 192g": {
-    "zh": "MARS 火星趣味大小分享裝巧克力 12 包 192g",
-    "ja": "MARS マース ファンサイズシェアパックチョコレート 12個パック 192g",
-    "ko": "MARS 화성 펀 사이즈 쉐어 팩 초콜릿 12팩 192g"
+    "zh": "MARS 迷你巧克力棒分享包 192克（12入）",
+    "ja": "MARS マース ファンサイズ シェアパック チョコレート 192g（12個入）",
+    "ko": "MARS 마스 펀사이즈 쉐어팩 초콜릿 192g（12개입）",
+    "src": "ai"
   },
   "SWEET VINE Yogurt Coated Sultanas 6 Pack 180g": {
     "zh": "SWEET VINE 優格覆蓋無核白葡萄乾 6入 180克",
@@ -116189,10 +116192,11 @@
     "src": "ai"
   },
   "BLACKSTONE GOURMET SNACK CO. Biltong Original 100g": {
-    "zh": "BLACKSTONE GOURMET SNACK CO. 經典款風乾牛肉 100克",
-    "ja": "BLACKSTONE GOURMET SNACK CO. ビルトンオリジナル 100g",
+    "zh": "BLACKSTONE GOURMET SNACK CO. 經典風味風乾肉片 100克",
+    "ja": "BLACKSTONE GOURMET SNACK CO. ビルトン オリジナル 100g",
     "ko": "BLACKSTONE GOURMET SNACK CO. 빌통 오리지널 100g",
-    "src": "ai"
+    "src": "ai",
+    "qa_tries": 1
   },
   "BERG Devon 1kg": {
     "zh": "BERG 德文火腿 1公斤",
@@ -116735,9 +116739,10 @@
     "src": "ai"
   },
   "MARS Mars 2 Pack 64g": {
-    "zh": "MARS 火星 2 包 64g",
-    "ja": "MARS マース 2パック 64g",
-    "ko": "MARS 화성 2 팩 64g"
+    "zh": "MARS 巧克力棒 64克（2入）",
+    "ja": "MARS マース 64g（2個入）",
+    "ko": "MARS 마스 초콜릿 64g（2개입）",
+    "src": "ai"
   },
   "ARNOTT'S Shapes Chicken Crimpy Cracker Biscuits 250g": {
     "zh": "ARNOTT'S Shapes 雞汁脆餅 250克",
@@ -116933,10 +116938,11 @@
     "qa_tries": 1
   },
   "WHITE MILL Banana Bread Mix 400g": {
-    "zh": "WHITE MILL 香蕉蛋糕粉 400克",
+    "zh": "WHITE MILL 香蕉麵包預拌粉 400克",
     "ja": "WHITE MILL バナナブレッドミックス 400g",
     "ko": "WHITE MILL 바나나 브레드 믹스 400g",
-    "src": "ai"
+    "src": "ai",
+    "qa_tries": 1
   },
   "READY, SET…COOK! Southern Style RSPCA Approved Chicken Portions per kg": {
     "zh": "READY, SET…COOK! 美式南方風味 RSPCA 認證雞肉塊 每公斤",
@@ -117072,11 +117078,11 @@
     "src": "ai"
   },
   "BERG Pastrami Sliced 100g": {
-    "zh": "BERG 煙燻牛肉切片 100克",
-    "ja": "BERG パストラミスライス 100g",
+    "zh": "BERG 煙燻香料醃肉片 100克",
+    "ja": "BERG パストラミ スライス 100g",
     "ko": "BERG 파스트라미 슬라이스 100g",
     "src": "ai",
-    "qa_tries": 1
+    "qa_tries": 2
   },
   "WHITE MILL Blueberry Muffin Mix 500g": {
     "zh": "WHITE MILL 藍莓馬芬蛋糕粉 500克",
@@ -118003,10 +118009,11 @@
     "src": "ai"
   },
   "HILLCREST Nut Butter Bars Peanut Butter 5 Pack 175g": {
-    "zh": "HILLCREST 花生醬堅果棒 5入 175克",
-    "ja": "HILLCREST ピーナッツバターナッツバー 5個入 175g",
-    "ko": "HILLCREST 땅콩버터 견과류바 5개입 175g",
-    "src": "ai"
+    "zh": "HILLCREST 堅果花生醬能量棒 175克（5入）",
+    "ja": "HILLCREST ナッツバターバー ピーナッツバター 175g（5個入）",
+    "ko": "HILLCREST 견과류 땅콩버터 바 175g（5개입）",
+    "src": "ai",
+    "qa_tries": 1
   },
   "PICKD Breakfast Juice 2L": {
     "zh": "PICKD 早餐果汁 2公升",
@@ -118183,10 +118190,11 @@
     "src": "ai"
   },
   "BLACKSTONE GOURMET SNACK CO. Biltong Chilli 100g": {
-    "zh": "BLACKSTONE GOURMET SNACK CO. 風乾牛肉片 辣椒口味 100克",
-    "ja": "BLACKSTONE GOURMET SNACK CO. ビルトン チリ味 100g",
-    "ko": "BLACKSTONE GOURMET SNACK CO. 빌통 칠리맛 100g",
-    "src": "ai"
+    "zh": "BLACKSTONE GOURMET SNACK CO. 辣椒風味風乾肉片 100克",
+    "ja": "BLACKSTONE GOURMET SNACK CO. ビルトン チリ 100g",
+    "ko": "BLACKSTONE GOURMET SNACK CO. 빌통 칠리 100g",
+    "src": "ai",
+    "qa_tries": 1
   },
   "THE SOUP CO. Soup in a Cup Hearty Italian Style Minestrone 2 Pack 60g": {
     "zh": "THE SOUP CO. 杯湯 義式蔬菜口味 60克（2入）",
@@ -118783,10 +118791,11 @@
     "src": "ai"
   },
   "HILLCREST Nut Butter Bars Peanut Butter & Almond 5 Pack 175g": {
-    "zh": "HILLCREST 花生杏仁堅果棒 5入 175克",
-    "ja": "HILLCREST ナッツバターバー ピーナッツ＆アーモンド 5個入 175g",
-    "ko": "HILLCREST 너트 버터 바 피넛 & 아몬드 5개입 175g",
-    "src": "ai"
+    "zh": "HILLCREST 堅果花生醬與杏仁能量棒 175克（5入）",
+    "ja": "HILLCREST ナッツバターバー ピーナッツバター＆アーモンド 175g（5個入）",
+    "ko": "HILLCREST 견과류 땅콩버터 및 아몬드 바 175g（5개입）",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Whole Butternut Pumpkins per kg": {
     "zh": "奶油南瓜 每公斤",
@@ -118891,10 +118900,11 @@
     "src": "ai"
   },
   "BLACKSTONE GOURMET SNACK CO. Biltong Smoked 100g": {
-    "zh": "BLACKSTONE GOURMET SNACK CO. 煙燻牛肉乾 100克",
+    "zh": "BLACKSTONE GOURMET SNACK CO. 煙燻風味風乾肉片 100克",
     "ja": "BLACKSTONE GOURMET SNACK CO. ビルトン スモーク 100g",
     "ko": "BLACKSTONE GOURMET SNACK CO. 빌통 훈제 100g",
-    "src": "ai"
+    "src": "ai",
+    "qa_tries": 1
   },
   "DELI ORIGINALS FRESH Multipack Hommus Dip 3 Pack 65g": {
     "zh": "DELI ORIGINALS FRESH 鷹嘴豆泥沾醬 3入 65克",
@@ -119497,10 +119507,11 @@
     "src": "ai"
   },
   "IMPERIAL GRAIN Microwave Brown Rice Cups 2 pack (2 x 125g) 250g": {
-    "zh": "IMPERIAL GRAIN 微波糙米飯 250克（2入）",
-    "ja": "IMPERIAL GRAIN 電子レンジ用玄米カップ 250g（2個入）",
-    "ko": "IMPERIAL GRAIN 전자레인지용 현미밥 250g（2개입）",
-    "src": "ai"
+    "zh": "IMPERIAL GRAIN 微波糙米飯 125克 x 2入",
+    "ja": "IMPERIAL GRAIN 電子レンジ用玄米カップ 125g x 2個入",
+    "ko": "IMPERIAL GRAIN 전자레인지용 현미밥 컵 125g x 2개입",
+    "src": "ai",
+    "qa_tries": 1
   },
   "FORRESTERS On The Go Smokey BBQ Mix 5 pack 225g": {
     "zh": "FORRESTERS 煙燻烤肉風味綜合零食 225克（5入）",
