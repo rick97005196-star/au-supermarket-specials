@@ -1,27 +1,27 @@
 {
   "current": {
-    "total": 5692,
+    "total": 5693,
     "by_store": {
       "ALDI": 177,
       "Coles": 2107,
-      "Woolworths": 3408
+      "Woolworths": 3409
     },
     "by_category": {
       "bakery": 108,
       "dairy_eggs": 346,
       "drinks": 559,
       "frozen": 253,
-      "health_vitamins": 2100,
-      "household": 732,
+      "health_vitamins": 2098,
+      "household": 733,
       "liquor": 59,
       "meat": 296,
       "pantry": 887,
       "pet": 92,
       "produce": 67,
       "seafood": 31,
-      "snacks": 922
+      "snacks": 924
     },
-    "half_price_count": 3038,
+    "half_price_count": 3039,
     "date_range": "Wed 14 Oct 2026 - Tue 20 Oct 2026",
     "everyday_count": 3421
   },
@@ -51,18 +51,18 @@
     "date_range": "Wed 21 Oct 2026 - Tue 27 Oct 2026",
     "everyday_count": 2910
   },
-  "last_updated": "2026-10-19 06:48:46",
+  "last_updated": "2026-10-19 07:21:58",
   "base_region": "QLD",
   "regions": {
     "QLD": {
       "current": {
-        "total": 5692,
+        "total": 5693,
         "by_store": {
           "ALDI": 177,
           "Coles": 2107,
-          "Woolworths": 3408
+          "Woolworths": 3409
         },
-        "half_price_count": 3038,
+        "half_price_count": 3039,
         "everyday_count": 3421
       },
       "next": {
@@ -78,13 +78,13 @@
     },
     "NSW": {
       "current": {
-        "total": 5698,
+        "total": 5699,
         "by_store": {
           "ALDI": 177,
           "Coles": 2106,
-          "Woolworths": 3415
+          "Woolworths": 3416
         },
-        "half_price_count": 3040,
+        "half_price_count": 3041,
         "everyday_count": 3423
       },
       "next": {
@@ -100,13 +100,13 @@
     },
     "ACT": {
       "current": {
-        "total": 5691,
+        "total": 5692,
         "by_store": {
           "ALDI": 177,
           "Coles": 2106,
-          "Woolworths": 3408
+          "Woolworths": 3409
         },
-        "half_price_count": 3038,
+        "half_price_count": 3039,
         "everyday_count": 3423
       },
       "next": {
@@ -122,13 +122,13 @@
     },
     "VIC": {
       "current": {
-        "total": 5699,
+        "total": 5700,
         "by_store": {
           "ALDI": 177,
           "Coles": 2107,
-          "Woolworths": 3415
+          "Woolworths": 3416
         },
-        "half_price_count": 3040,
+        "half_price_count": 3041,
         "everyday_count": 3423
       },
       "next": {
@@ -144,13 +144,13 @@
     },
     "SA": {
       "current": {
-        "total": 5708,
+        "total": 5709,
         "by_store": {
           "ALDI": 177,
           "Coles": 2123,
-          "Woolworths": 3408
+          "Woolworths": 3409
         },
-        "half_price_count": 3040,
+        "half_price_count": 3041,
         "everyday_count": 3424
       },
       "next": {
@@ -166,13 +166,13 @@
     },
     "WA": {
       "current": {
-        "total": 5705,
+        "total": 5706,
         "by_store": {
           "ALDI": 177,
           "Coles": 2120,
-          "Woolworths": 3408
+          "Woolworths": 3409
         },
-        "half_price_count": 3038,
+        "half_price_count": 3039,
         "everyday_count": 3426
       },
       "next": {
@@ -188,13 +188,13 @@
     },
     "TAS": {
       "current": {
-        "total": 5711,
+        "total": 5712,
         "by_store": {
           "ALDI": 177,
           "Coles": 2127,
-          "Woolworths": 3407
+          "Woolworths": 3408
         },
-        "half_price_count": 3039,
+        "half_price_count": 3040,
         "everyday_count": 3427
       },
       "next": {
@@ -210,13 +210,13 @@
     },
     "NT": {
       "current": {
-        "total": 5690,
+        "total": 5691,
         "by_store": {
           "ALDI": 177,
           "Coles": 2104,
-          "Woolworths": 3409
+          "Woolworths": 3410
         },
-        "half_price_count": 3038,
+        "half_price_count": 3039,
         "everyday_count": 3421
       },
       "next": {
@@ -231,5 +231,5 @@
       }
     }
   },
-  "data_updated_at": "2026-10-19T06:49:09Z"
+  "data_updated_at": "2026-10-19T07:22:20Z"
 }
