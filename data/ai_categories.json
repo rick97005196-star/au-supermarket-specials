@@ -180,6 +180,11 @@
   "aisle": "Pantry     Canned Food & Instant Meals   CANNED FISH",
   "date": "2026-10-12"
  },
+ "Always Fresh Roasted Pepper Strips 310g": {
+  "category": "pantry",
+  "aisle": "Pickled Vegetables Capsicums",
+  "date": "2026-10-19"
+ },
  "Anchor Margaret River Verjuice 375mL": {
   "category": "pantry",
   "aisle": "food and beverage groceries drinks",
@@ -611,6 +616,11 @@
   "aisle": "Sauces & Dressings Relish",
   "date": "2026-10-19"
  },
+ "Beerenberg Mango Chutney 280g": {
+  "category": "pantry",
+  "aisle": "Sauces & Dressings Asian",
+  "date": "2026-10-19"
+ },
  "Bell Farms Potato Wedges 750g": {
   "category": "frozen",
   "aisle": "Freezer     Chips & Wedges   FREEZER - VEGETABLES",
@@ -783,6 +793,11 @@
   "category": "pantry",
   "aisle": "Pantry     Herbs & Spices   COOKING NEEDS",
   "date": "2026-10-12"
+ },
+ "Buderim Ginger Naked Ginger 175g": {
+  "category": "pantry",
+  "aisle": "Dried Fruit/Nuts Preserved",
+  "date": "2026-10-19"
  },
  "Bundaberg Passionfruit Sparkling Drink 200mL x 6 pack": {
   "category": "drinks",
@@ -1318,6 +1333,16 @@
   "aisle": "Antip/Olive/Dip/Pate Pre Packed Olvs Anti",
   "date": "2026-10-19"
  },
+ "Coles Finest By Laurent 7 Seed And Grain Vienna 1 Each": {
+  "category": "bakery",
+  "aisle": "Instore Bread Premium Continental",
+  "date": "2026-10-19"
+ },
+ "Coles Finest By Laurent Black Olive And Chilli Vienna 1 Each": {
+  "category": "bakery",
+  "aisle": "Instore Bread Premium Continental",
+  "date": "2026-10-19"
+ },
  "Coles Finest Truffled Potato Croquettes 200g": {
   "category": "frozen",
   "aisle": "Frozen Snacks Entertainment",
@@ -1366,6 +1391,11 @@
  "Coles Green Olives Chilli & Garlic 110g": {
   "category": "pantry",
   "aisle": "Antip/Olive/Dip/Pate Pre Packed Olvs Anti",
+  "date": "2026-10-19"
+ },
+ "Coles Hawaiian Tear And Share 1 each": {
+  "category": "bakery",
+  "aisle": "Instore Bread Savoury Impulse",
   "date": "2026-10-19"
  },
  "Coles Herb Punnets Chives 10g": {
@@ -1958,6 +1988,11 @@
   "aisle": "Snacks & Confectionery     Confectionery   CONFECTIONERY",
   "date": "2026-10-12"
  },
+ "Double D Smart Sweets Sour Bears 35g": {
+  "category": "snacks",
+  "aisle": "Bars Gum Pocket Pack Pocket Packs",
+  "date": "2026-10-19"
+ },
  "Downy Fabric Enhancer Mystique Liquid 800mL": {
   "category": "household",
   "aisle": "Laundry Accessories Fabric Conditioners",
@@ -1982,6 +2017,11 @@
   "category": "household",
   "aisle": "Laundry Accessories Fabric Conditioners",
   "date": "2026-10-14"
+ },
+ "Dr Beckmann Colour Run Remover 2 Pack": {
+  "category": "household",
+  "aisle": "Laundry Accessories Inwash Additives",
+  "date": "2026-10-19"
  },
  "Drano Universal Unblocker 1.2L": {
   "category": "household",
@@ -2766,6 +2806,11 @@
   "category": "health_vitamins",
   "aisle": "Hair Care Shampoo/Conditioner",
   "date": "2026-10-13"
+ },
+ "Guzzi's Traditional Potato Gnocchi 500g": {
+  "category": "dairy_eggs",
+  "aisle": "Pasta Specialty",
+  "date": "2026-10-19"
  },
  "H2COCO Coconut & Lychee 1L": {
   "category": "drinks",
@@ -4573,6 +4618,11 @@
   "aisle": "Indian Foods Authentic Indian",
   "date": "2026-10-19"
  },
+ "Maharajah's Choice Chilli Powder 500g": {
+  "category": "pantry",
+  "aisle": "Indian Foods Authentic Indian",
+  "date": "2026-10-19"
+ },
  "Maharajah's Choice Cumin Seed 500g": {
   "category": "pantry",
   "aisle": "Indian Foods Authentic Indian",
@@ -4634,6 +4684,11 @@
   "date": "2026-10-12"
  },
  "Marion's Kitchen Pad Thai Cooking Kit 358g": {
+  "category": "pantry",
+  "aisle": "Asian Foods Asian Meal Solutions",
+  "date": "2026-10-19"
+ },
+ "Marion's Kitchen Sichuan Chilli Stir Fry Kit 188g": {
   "category": "pantry",
   "aisle": "Asian Foods Asian Meal Solutions",
   "date": "2026-10-19"
@@ -4784,10 +4839,20 @@
   "aisle": "Pantry     Herbs & Spices   COOKING NEEDS",
   "date": "2026-10-12"
  },
+ "McKenzie's Pink Rock Salt Grinder 410g": {
+  "category": "pantry",
+  "aisle": "Spices/Herbs Salt",
+  "date": "2026-10-19"
+ },
  "McKenzie's Red Lentils 1kg": {
   "category": "pantry",
   "aisle": "Pantry     Canned Food & Instant Meals   CANNED VEGETABLES",
   "date": "2026-10-12"
+ },
+ "McKenzie's Sea Salt Grinder 410g": {
+  "category": "pantry",
+  "aisle": "Spices/Herbs Salt",
+  "date": "2026-10-19"
  },
  "McKenzie's Whole Black Peppercorn Grinder 200g": {
   "category": "pantry",
@@ -5490,6 +5555,11 @@
   "aisle": "Biscuits & Cookies Crackers/Crispbrea",
   "date": "2026-10-19"
  },
+ "Orgran Protein Crispbread 125g": {
+  "category": "snacks",
+  "aisle": "Biscuits & Cookies Crackers/Crispbrea",
+  "date": "2026-10-19"
+ },
  "Orgran Sweet Potato Crispibread 125g": {
   "category": "snacks",
   "aisle": "Biscuits & Cookies Crackers/Crispbrea",
@@ -5710,6 +5780,11 @@
   "aisle": "Health Foods Sports & Diet",
   "date": "2026-10-19"
  },
+ "Oxyshred Ultra Passionfruit 8x5.5g 44g": {
+  "category": "health_vitamins",
+  "aisle": "Health Foods Sports & Diet",
+  "date": "2026-10-19"
+ },
  "PATAK'S Tandoori Paste 295g": {
   "category": "pantry",
   "aisle": "",
@@ -5853,6 +5928,11 @@
  "Pak Choy Each": {
   "category": "produce",
   "aisle": "ALDI Fruits Vegetables",
+  "date": "2026-10-19"
+ },
+ "Pana Organic Block Mint Crisp Dark 80g": {
+  "category": "snacks",
+  "aisle": "Confectionery Block Chocolate",
   "date": "2026-10-19"
  },
  "Panadol Extra Paracetamol Pain Relief Caplets 16 Pack": {
@@ -6223,6 +6303,11 @@
   "category": "health_vitamins",
   "aisle": "Beauty , Personal Care     Skincare & Body , Sun Protection   TOILETRIES",
   "date": "2026-10-12"
+ },
+ "Poonsin Stir-fry Mixed Vegetables 425g": {
+  "category": "pantry",
+  "aisle": "Asian Foods Asian Dry Ingredient",
+  "date": "2026-10-19"
  },
  "Pop Tops 6x250mL": {
   "category": "drinks",
@@ -6944,6 +7029,11 @@
   "aisle": "Personal Care , Beauty     Hair Care , Hair Care   TOILETRIES",
   "date": "2026-10-13"
  },
+ "Shan R & S Mix Bombay Biryani 60g": {
+  "category": "pantry",
+  "aisle": "Indian Foods Authentic Indian",
+  "date": "2026-10-19"
+ },
  "Shan Spice Mix 50g-60g": {
   "category": "pantry",
   "aisle": "food and beverage groceries cooking seasoning and gravy",
@@ -7146,6 +7236,11 @@
   "date": "2026-10-19"
  },
  "Swisspers Cotton Round Make Up Pads 80 Pack": {
+  "category": "health_vitamins",
+  "aisle": "Beauty/Trial Travel Personal Products",
+  "date": "2026-10-19"
+ },
+ "Swisspers Cotton Tips Paperstems 400 Pack": {
   "category": "health_vitamins",
   "aisle": "Beauty/Trial Travel Personal Products",
   "date": "2026-10-19"
@@ -7688,6 +7783,11 @@
  "Vitasoy Soy Milky Regular Chilled 1L": {
   "category": "dairy_eggs",
   "aisle": "Dy Milk Plant",
+  "date": "2026-10-19"
+ },
+ "Vitasoy Soy Milky Uht Lite 1L": {
+  "category": "drinks",
+  "aisle": "Grocery Milk Soy",
   "date": "2026-10-19"
  },
  "Vitasoy Soy Milky Uht Regular 1L": {
@@ -8852,6 +8952,11 @@
  "Yellow Flesh Nectarines per kg": {
   "category": "produce",
   "aisle": "ALDI Fruits Vegetables",
+  "date": "2026-10-19"
+ },
+ "Yeo's Sesame Oil 150mL": {
+  "category": "pantry",
+  "aisle": "Asian Foods Asian Wet Ingredient",
   "date": "2026-10-19"
  },
  "Youfoodz Fuel'd Meal 335g-475g": {
