@@ -46,6 +46,12 @@ SUPER_SAVERS_FALLBACK = 'https://www.aldi.com.au/products/super-savers/k/1588161
 # "Lower Prices": ALDI's lasting price cuts (about 500 products, mostly food). Not a weekly deal, so they
 # are listed as everyday low prices (no sale date, shown after the specials).
 LOWER_PRICES_FALLBACK = 'https://www.aldi.com.au/products/lower-prices/k/1588161425841179'
+# ALDI's everyday range: the grocery aisles of the online shop (~3,000 products). ALDI sells nearly everything
+# at one lasting low price, so these are listed as everyday low prices, like Lower Prices. Left out: the seasonal
+# and Special Buys aisles (christmas, limited-time-only, front-of-store), liquor (sold in some states only) and
+# the curated picks (people's picks, higher protein), which only repeat products from these aisles.
+RANGE_AISLES = ('fruits-vegetables', 'meat-seafood', 'deli-chilled-meats', 'dairy-eggs-fridge', 'pantry', 'bakery',
+                'freezer', 'drinks', 'snacks-confectionery', 'health-beauty', 'baby', 'cleaning-household', 'pets')
 TILE_SELECTOR = 'a.product-tile__link, [data-qa="product-tile"]'
 
 
@@ -88,6 +94,7 @@ def discover_aldi_endpoints():
     seen_urls = set()
     super_savers = SUPER_SAVERS_FALLBACK
     lower_prices = LOWER_PRICES_FALLBACK
+    range_urls = []
 
     try:
         from scrapers.polite import request as _polite
@@ -102,6 +109,10 @@ def discover_aldi_endpoints():
             lp = soup.find('a', href=re.compile(r'/products/lower-prices/k/\d+'))
             if lp:
                 lower_prices = f"https://www.aldi.com.au{lp['href']}" if lp['href'].startswith('/') else lp['href']
+            for slug in RANGE_AISLES:
+                a = soup.find('a', href=re.compile(rf'/products/{slug}/k/\d+'))
+                if a:
+                    range_urls.append((slug, f"https://www.aldi.com.au{a['href']}" if a['href'].startswith('/') else a['href']))
             for a in soup.find_all('a', href=True):
                 href = a['href']
                 if '/special-buys/' in href:
@@ -131,6 +142,9 @@ def discover_aldi_endpoints():
 
     endpoints.insert(0, ('Super Savers', super_savers, 'current', current_wed.isoformat()))
     endpoints.append(('Lower Prices', lower_prices, 'current', ''))   # last: a Super Saver keeps its weekly label
+    if len(range_urls) < len(RANGE_AISLES):
+        print(f"::warning::ALDI: found {len(range_urls)} of {len(RANGE_AISLES)} grocery aisles in the site menu")
+    endpoints += [(f"Range {slug}", u, 'current', '') for slug, u in range_urls]   # after the deals: a deal keeps its label
     return endpoints, (current_wed, current_tue, next_wed, next_tue)
 
 def scrape_aldi_all_weeks() -> Dict[str, Any]:
@@ -143,12 +157,15 @@ def scrape_aldi_all_weeks() -> Dict[str, Any]:
     print(f"ALDI: Discovered {len(endpoints)} endpoints to scrape.")
     
     current_items_map = {}
+    current_titles = set()
     next_items_map = {}
     
     for label, url, period, sale_from in endpoints:
         try:
             is_lower = 'lower-prices' in url
-            tiles = fetch_all_tiles(url, max_pages=25 if is_lower else 15)
+            # the aisle as a category hint; "ALDI " keeps one-word aisles ("Pantry") apart from our own category keys
+            aisle = 'ALDI ' + label[6:].replace('-', ' ').title() if label.startswith('Range ') else ''
+            tiles = fetch_all_tiles(url, max_pages=40 if aisle else 25 if is_lower else 15)   # pantry has ~35 pages
             print(f"ALDI {label}: {len(tiles)} products")
 
             for tile in tiles:
@@ -198,7 +215,7 @@ def scrape_aldi_all_weeks() -> Dict[str, Any]:
                 badge_el = tile.select_one('[data-test="product-tile__on-sale-label"]')
                 # The kind decides how the website shows the date: Super Savers = a weekly price (Wed–Tue),
                 # Special Buys = on sale from a Wednesday or Saturday while stocks last
-                badge = EVERYDAY_DESC if is_lower else ("Super Savers" if "super-savers" in url else "Special Buys")
+                badge = EVERYDAY_DESC if is_lower or aisle else ("Super Savers" if "super-savers" in url else "Special Buys")
                 
                 # 5. Image URL (High-res)
                 img = tile.select_one('img')
@@ -213,7 +230,7 @@ def scrape_aldi_all_weeks() -> Dict[str, Any]:
                 prod_url = f"https://www.aldi.com.au{href}" if href.startswith('/') else (href or url)
                 
                 # Department categorization
-                cat = classify_product(title, badge, prod_url)
+                cat = classify_product(title, aisle or badge, prod_url)
                 
                 date_range_str = f"本週特價 ({c_wed.strftime('%m/%d')} - {c_tue.strftime('%m/%d')})" if period == 'current' else f"下週預告 ({n_wed.strftime('%m/%d')} - {n_tue.strftime('%m/%d')})"
                 
@@ -232,13 +249,17 @@ def scrape_aldi_all_weeks() -> Dict[str, Any]:
                     'period': period,
                     'date_range': date_range_str,
                     'sale_from': sale_from,
+                    'store_category': aisle,
                 }
                 
                 # Same title + price = colour/size variants of one Special Buy; list it once
                 dedup_key = (title.lower(), price)
                 if period == 'current':
+                    if aisle and title.lower() in current_titles:
+                        continue   # already listed as a deal or lower price: keep that label
                     if dedup_key not in current_items_map:
                         current_items_map[dedup_key] = item_data
+                        current_titles.add(title.lower())
                 else:
                     if dedup_key not in next_items_map:
                         next_items_map[dedup_key] = item_data

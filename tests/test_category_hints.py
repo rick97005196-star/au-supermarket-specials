@@ -30,6 +30,9 @@ AISLES = [
     ('food and beverage groceries beer wine and spirit', 'liquor'), ('food and beverage groceries pet care', 'pet'),
     ('food and beverage groceries stationery and media', 'household'), ('food and beverage groceries toiletries', 'health_vitamins'),
     ('food and beverage groceries cooking seasoning and gravy', 'pantry'), ('food and beverage groceries frozen food', 'frozen'),
+    # ALDI online shop aisles (the reader adds "ALDI " so one-word aisles are not taken for our own keys)
+    ('ALDI Fruits Vegetables', 'produce'), ('ALDI Pantry', 'pantry'), ('ALDI Bakery', 'bakery'), ('ALDI Drinks', 'drinks'),
+    ('ALDI Deli Chilled Meats', 'dairy_eggs'), ('ALDI Meat Seafood', 'meat'), ('ALDI Freezer', 'frozen'), ('ALDI Baby', ''),
     # nothing useful: no hint
     ('Groceries', ''), ('household', ''), ('pantry', ''), ('', ''), ('food and beverage groceries baby', ''),
 ]

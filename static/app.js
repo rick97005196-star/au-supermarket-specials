@@ -1947,8 +1947,9 @@ async function loadSpecials() {
             // While searching: best matches first
             filtered = strictSort(filtered, (a, b) => (b._searchScore || 0) - (a._searchScore || 0));
         } else if (currentStore === 'ALDI') {
-            // ALDI: in the order they go on sale (Super Savers, then Wednesday, then Saturday)
-            filtered = strictSort(filtered, (a, b) => (a.sf || '').localeCompare(b.sf || '') ||
+            // ALDI: in the order they go on sale (Super Savers, then Wednesday, then Saturday); its everyday
+            // range (no sale date) after the specials
+            filtered = strictSort(filtered, (a, b) => isEverydayPrice(a) - isEverydayPrice(b) || (a.sf || '').localeCompare(b.sf || '') ||
                 (/super/i.test(b.discount_desc || '') - /super/i.test(a.discount_desc || '')));
         } else {
             // Default & relevance: this week's best sellers first (what people come for), mixed across

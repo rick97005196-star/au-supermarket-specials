@@ -467,7 +467,7 @@ _AISLE_RULES = [
     ('seafood', r"\bfresh\s*seafood\b|\bfish\b|\bprawns?\b|\bsalmon\b|^(?!.*\bmeat\b).*\bseafood\b"),
     ('meat', r"\bmeat\b|\bpoultry\b|\bbutcher|\bseafood\b"),
     ('dairy_eggs', r"\bdairy\b|\beggs?\b|\bfridge\b|\bcheeses?\b|\byogh?urts?\b|\bmilk\b|\bchilled\b|\bdips?\b|\bdeli\b"),
-    ('produce', r"\bfruit\s*(?:&|and)\s*veg|\bfresh\s*(?:fruit|vegetables?|salads?|herbs)\b|\bproduce\b"),
+    ('produce', r"\bfruits?\s*(?:&|and)?\s*veg|\bfresh\s*(?:fruit|vegetables?|salads?|herbs)\b|\bproduce\b"),
     ('bakery', r"\bbakery\b|\bbreads?\b"),
     ('drinks', r"\bdrinks?\b|\bwaters?\b|\bjuices?\b|\bcordials?\b|\bcoffee\b|\btea\b|\bkombucha\b|\bsoda\b"),
     ('snacks', r"\bsnacks?\b|confectionery|chocolate|\bbiscuits?\b|\bcookies\b|\bchips\b|\bcrisps\b|"
