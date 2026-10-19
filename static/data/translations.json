@@ -107434,9 +107434,10 @@
   },
   "Ocean Spray 1.5 Litre": {
     "zh": "Ocean Spray 果汁 1.5公升",
-    "ja": "Ocean Spray 1.5L",
-    "ko": "Ocean Spray 1.5L",
-    "src": "ai"
+    "ja": "Ocean Spray ジュース 1.5L",
+    "ko": "Ocean Spray 주스 1.5L",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Coles Australian Roasted & Salted Peanuts 400g Pack": {
     "zh": "Coles 澳洲烘烤鹽味花生 400克",
@@ -107595,10 +107596,11 @@
     "src": "ai"
   },
   "Dove Butter Boy Exfoliating Body Polish Black Forest Cookie 298g": {
-    "zh": "Dove 身體磨砂膏 黑森林餅乾香 298克",
-    "ja": "Dove ボディスクラブ ブラックフォレストクッキーの香り 298g",
-    "ko": "Dove 바디 스크럽 블랙 포레스트 쿠키 향 298g",
-    "src": "ai"
+    "zh": "Dove Butter Boy 去角質身體磨砂膏 黑森林餅乾香 298克",
+    "ja": "Dove Butter Boy ボディスクラブ ブラックフォレストクッキーの香り 298g",
+    "ko": "Dove Butter Boy 바디 스크럽 블랙 포레스트 쿠키 향 298g",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Ar FÜM 5 In 1 Laundry Capsules Pk 36": {
     "zh": "Ar FÜM 5合1 洗衣膠囊 36入",
@@ -107667,129 +107669,179 @@
     "src": "ai"
   },
   "Halloween Headband – Assorted": {
-    "zh": "Halloween Headband – Assorted",
-    "ja": "Halloween Headband – Assorted",
-    "ko": "Halloween Headband – Assorted"
+    "zh": "萬聖節髮箍 綜合款",
+    "ja": "ハロウィン ヘッドバンド アソート",
+    "ko": "할로윈 머리띠 모음",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Carman's Granola 425-450g": {
-    "zh": "Carman's Granola 425-450g",
-    "ja": "Carman's Granola 425-450g",
-    "ko": "Carman's Granola 425-450g"
+    "zh": "Carman's 燕麥脆片 425-450克",
+    "ja": "Carman's グラノーラ 425-450g",
+    "ko": "Carman's 그래놀라 425-450g",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Australian Thawed Green King Prawns": {
-    "zh": "Australian Thawed Green King Prawns",
-    "ja": "Australian Thawed Green King Prawns",
-    "ko": "Australian Thawed Green King Prawns"
+    "zh": "澳洲解凍生國王蝦",
+    "ja": "オーストラリア産 解凍生キングプロウン",
+    "ko": "호주산 해동 생 킹프론",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Swisse Ultiboost Vitamin D Capsules Pk 400": {
-    "zh": "Swisse Ultiboost Vitamin D Capsules Pk 400",
-    "ja": "Swisse Ultiboost Vitamin D Capsules Pk 400",
-    "ko": "Swisse Ultiboost Vitamin D Capsules Pk 400"
+    "zh": "Swisse Ultiboost 維生素D膠囊 400入",
+    "ja": "Swisse Ultiboost ビタミンDカプセル 400個入",
+    "ko": "Swisse Ultiboost 비타민 D 캡슐 400개입",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Coles RSPCA Approved Chicken Schnitzel": {
-    "zh": "Coles RSPCA Approved Chicken Schnitzel",
-    "ja": "Coles RSPCA Approved Chicken Schnitzel",
-    "ko": "Coles RSPCA Approved Chicken Schnitzel"
+    "zh": "Coles RSPCA認證雞肉炸排",
+    "ja": "Coles RSPCA認証 チキンシュニッツェル",
+    "ko": "Coles RSPCA 인증 치킨 슈니첼",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Uncle Tobys Roll-Ups Value Pack 234g Pk 15": {
-    "zh": "Uncle Tobys Roll-Ups Value Pack 234g Pk 15",
-    "ja": "Uncle Tobys Roll-Ups Value Pack 234g Pk 15",
-    "ko": "Uncle Tobys Roll-Ups Value Pack 234g Pk 15"
+    "zh": "Uncle Tobys 水果捲超值包 234克 15入",
+    "ja": "Uncle Tobys フルーツロールアップ バリューパック 234g 15個入",
+    "ko": "Uncle Tobys 과일 롤업 가치팩 234g 15개입",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Golden Circle Fruit Drink 1 Litre – Excludes Nectar Varieties": {
-    "zh": "Golden Circle Fruit Drink 1 Litre – Excludes Nectar Varieties",
-    "ja": "Golden Circle Fruit Drink 1 Litre – Excludes Nectar Varieties",
-    "ko": "Golden Circle Fruit Drink 1 Litre – Excludes Nectar Varieties"
+    "zh": "Golden Circle 果汁飲料 1公升（不含花蜜系列）",
+    "ja": "Golden Circle フルーツドリンク 1L（ネクターを除く）",
+    "ko": "Golden Circle 과일 음료 1L (넥타 종류 제외)",
+    "src": "ai",
+    "qa_tries": 1
   },
   "NEW Passiona or Solo Ice Pops 560ml Pk 8": {
-    "zh": "NEW Passiona or Solo Ice Pops 560ml Pk 8",
-    "ja": "NEW Passiona or Solo Ice Pops 560ml Pk 8",
-    "ko": "NEW Passiona or Solo Ice Pops 560ml Pk 8"
+    "zh": "新品 Passiona 或 Solo 冰棒 560毫升 8入",
+    "ja": "新商品 Passiona または Solo アイスキャンディー 560ml 8個入",
+    "ko": "신상품 Passiona 또는 Solo 아이스바 560ml 8개입",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Sharwood's Simmer Sauce 420g": {
-    "zh": "Sharwood's Simmer Sauce 420g",
-    "ja": "Sharwood's Simmer Sauce 420g",
-    "ko": "Sharwood's Simmer Sauce 420g"
+    "zh": "Sharwood's 燉煮醬 420克",
+    "ja": "Sharwood's シマーソース 420g",
+    "ko": "Sharwood's 심머 소스 420g",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Golden Circle Cordial 2 Litre": {
-    "zh": "Golden Circle Cordial 2 Litre",
-    "ja": "Golden Circle Cordial 2 Litre",
-    "ko": "Golden Circle Cordial 2 Litre"
+    "zh": "Golden Circle 濃縮果汁 2公升",
+    "ja": "Golden Circle コーディアル 2L",
+    "ko": "Golden Circle 코디얼 2L",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Blackmores Pregnancy & Breast-Feeding Gold Capsules Pk 120": {
-    "zh": "Blackmores Pregnancy & Breast-Feeding Gold Capsules Pk 120",
-    "ja": "Blackmores Pregnancy & Breast-Feeding Gold Capsules Pk 120",
-    "ko": "Blackmores Pregnancy & Breast-Feeding Gold Capsules Pk 120"
+    "zh": "Blackmores 孕哺多種維生素膠囊 120入",
+    "ja": "Blackmores 妊娠・授乳期用マルチビタミンカプセル 120個入",
+    "ko": "Blackmores 임산부 및 수유부용 종합비타민 캡슐 120개입",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Sanitarium Weet-Bix Bites 500g-510g": {
-    "zh": "Sanitarium Weet-Bix Bites 500g-510g",
-    "ja": "Sanitarium Weet-Bix Bites 500g-510g",
-    "ko": "Sanitarium Weet-Bix Bites 500g-510g"
+    "zh": "Sanitarium Weet-Bix 麥片脆塊 500-510克",
+    "ja": "Sanitarium Weet-Bix シリアルバイト 500-510g",
+    "ko": "Sanitarium Weet-Bix 시리얼 바이트 500-510g",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Cadbury Cake Bar or Mini Rolls Varieties Pk 5": {
-    "zh": "Cadbury Cake Bar or Mini Rolls Varieties Pk 5",
-    "ja": "Cadbury Cake Bar or Mini Rolls Varieties Pk 5",
-    "ko": "Cadbury Cake Bar or Mini Rolls Varieties Pk 5"
+    "zh": "Cadbury 蛋糕棒 或 迷你蛋糕捲 多款口味 5入",
+    "ja": "Cadbury ケーキバー または ミニロール アソート 5個入",
+    "ko": "Cadbury 케이크 바 또는 미니 롤 모음 5개입",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Tamar Valley Dairy The Creamery Greek Style Yoghurt 170g": {
-    "zh": "Tamar Valley Dairy The Creamery Greek Style Yoghurt 170g",
-    "ja": "Tamar Valley Dairy The Creamery Greek Style Yoghurt 170g",
-    "ko": "Tamar Valley Dairy The Creamery Greek Style Yoghurt 170g"
+    "zh": "Tamar Valley Dairy The Creamery 希臘式優格 170克",
+    "ja": "Tamar Valley Dairy The Creamery ギリシャ風ヨーグルト 170g",
+    "ko": "Tamar Valley Dairy The Creamery 그릭 스타일 요거트 170g",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Reese's Peanut Butter Chocolate Cones 472ml Pk 4": {
-    "zh": "Reese's Peanut Butter Chocolate Cones 472ml Pk 4",
-    "ja": "Reese's Peanut Butter Chocolate Cones 472ml Pk 4",
-    "ko": "Reese's Peanut Butter Chocolate Cones 472ml Pk 4"
+    "zh": "Reese's 花生醬巧克力甜筒冰淇淋 472毫升 4入",
+    "ja": "Reese's ピーナッツバターチョコレートコーンアイス 472ml 4個入",
+    "ko": "Reese's 피넛버터 초콜릿 콘 아이스크림 472ml 4개입",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Sistema Hydrate Active Bottle 800mL": {
-    "zh": "Sistema Hydrate Active Bottle 800mL",
-    "ja": "Sistema Hydrate Active Bottle 800mL",
-    "ko": "Sistema Hydrate Active Bottle 800mL"
+    "zh": "Sistema 運動水壺 800毫升",
+    "ja": "Sistema アクティブボトル 800ml",
+    "ko": "Sistema 액티브 보틀 800ml",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Vege Deli Crisps 100g": {
-    "zh": "Vege Deli Crisps 100g",
-    "ja": "Vege Deli Crisps 100g",
-    "ko": "Vege Deli Crisps 100g"
+    "zh": "Vege Deli 蔬菜脆片 100克",
+    "ja": "Vege Deli ベジタブルチップス 100g",
+    "ko": "Vege Deli 야채 칩 100g",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Halloween Disposable Cups Character Pk 8": {
-    "zh": "Halloween Disposable Cups Character Pk 8",
-    "ja": "Halloween Disposable Cups Character Pk 8",
-    "ko": "Halloween Disposable Cups Character Pk 8"
+    "zh": "萬聖節卡通免洗杯 8入",
+    "ja": "ハロウィン キャラクター使い捨てカップ 8個入",
+    "ko": "할로윈 캐릭터 일회용 컵 8개입",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Centrum Advance 50+ Multivitamin Tablets Pk 120": {
-    "zh": "Centrum Advance 50+ Multivitamin Tablets Pk 120",
-    "ja": "Centrum Advance 50+ Multivitamin Tablets Pk 120",
-    "ko": "Centrum Advance 50+ Multivitamin Tablets Pk 120"
+    "zh": "Centrum 50歲以上綜合維他命錠 120入",
+    "ja": "Centrum 50歳以上用マルチビタミン錠 120個入",
+    "ko": "Centrum 50세 이상 종합비타민 정 120개입",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Halloween Plush Mini – Assorted": {
-    "zh": "Halloween Plush Mini – Assorted",
-    "ja": "Halloween Plush Mini – Assorted",
-    "ko": "Halloween Plush Mini – Assorted"
+    "zh": "萬聖節迷你絨毛玩偶 綜合款",
+    "ja": "ハロウィン ミニぬいぐるみ アソート",
+    "ko": "할로윈 미니 봉제 인형 모음",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Halloween Licensed Melamine Cup Bluey": {
-    "zh": "Halloween Licensed Melamine Cup Bluey",
-    "ja": "Halloween Licensed Melamine Cup Bluey",
-    "ko": "Halloween Licensed Melamine Cup Bluey"
+    "zh": "萬聖節授權 Bluey美耐皿杯",
+    "ja": "ハロウィン ライセンス商品 メラミンカップ Bluey",
+    "ko": "할로윈 라이선스 멜라민 컵 Bluey",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Bunjie Probiotic Baby Wipes Fragrance & Toxin-Free Pk 480": {
-    "zh": "Bunjie Probiotic Baby Wipes Fragrance & Toxin-Free Pk 480",
-    "ja": "Bunjie Probiotic Baby Wipes Fragrance & Toxin-Free Pk 480",
-    "ko": "Bunjie Probiotic Baby Wipes Fragrance & Toxin-Free Pk 480"
+    "zh": "Bunjie 益生菌嬰兒濕紙巾 無香精無毒 480入",
+    "ja": "Bunjie プロバイオティクス ベビーワイプ 無香料・無毒 480個入",
+    "ko": "Bunjie 프로바이오틱스 아기 물티슈 무향·무독성 480개입",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Halloween Disposable Plates Pk 8 – Assorted": {
-    "zh": "Halloween Disposable Plates Pk 8 – Assorted",
-    "ja": "Halloween Disposable Plates Pk 8 – Assorted",
-    "ko": "Halloween Disposable Plates Pk 8 – Assorted"
+    "zh": "萬聖節免洗盤 8入 綜合款",
+    "ja": "ハロウィン 使い捨てプレート 8個入 アソート",
+    "ko": "할로윈 일회용 접시 8개입 모음",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Uncle Tobys Plus 620-705g or Nestlé Milo Cereal 535-620g": {
-    "zh": "Uncle Tobys Plus 620-705g or Nestlé Milo Cereal 535-620g",
-    "ja": "Uncle Tobys Plus 620-705g or Nestlé Milo Cereal 535-620g",
-    "ko": "Uncle Tobys Plus 620-705g or Nestlé Milo Cereal 535-620g"
+    "zh": "Uncle Tobys Plus 麥片 620-705克 或 Nestlé Milo 麥片 535-620克",
+    "ja": "Uncle Tobys Plus シリアル 620-705g または Nestlé Milo シリアル 535-620g",
+    "ko": "Uncle Tobys Plus 시리얼 620-705g 또는 Nestlé Milo 시리얼 535-620g",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Applaws Wet Cat Food Tins 70g": {
-    "zh": "Applaws Wet Cat Food Tins 70g",
-    "ja": "Applaws Wet Cat Food Tins 70g",
-    "ko": "Applaws Wet Cat Food Tins 70g"
+    "zh": "Applaws 貓用濕糧罐頭 70克",
+    "ja": "Applaws 猫用ウェットフード缶 70g",
+    "ko": "Applaws 고양이 습식 사료 캔 70g",
+    "src": "ai",
+    "qa_tries": 1
   },
   "NEW Streets Solero Mini 300ml Pk 6": {
     "zh": "Streets Solero 迷你冰棒 300毫升（6入）",
@@ -107930,10 +107982,11 @@
     "src": "ai"
   },
   "Bega Cheese Stringers 160g Pk 8 – From the Fridge": {
-    "zh": "Bega 條狀起司 160克（8入，冷藏）",
-    "ja": "Bega ストリングチーズ 160g（8個入・要冷蔵）",
-    "ko": "Bega 스트링 치즈 160g（8개입・냉장）",
-    "src": "ai"
+    "zh": "Bega 條狀起司 160克（8入）- 冷藏區",
+    "ja": "Bega ストリングチーズ 160g 8個入 - 冷蔵コーナー",
+    "ko": "Bega 스트링 치즈 160g 8개입 - 냉장 코너",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Mayver's Upside Down Smooth or Crunchy Peanut Butter 450g": {
     "zh": "Mayver's 花生醬 滑順 或 顆粒 450克",
@@ -108284,10 +108337,11 @@
     "src": "ai"
   },
   "Dove Butter Boy 72h Antiperspirant Deodorant 250ml": {
-    "zh": "Dove Butter Boy 72小時止汗噴霧 250毫升",
+    "zh": "Dove Butter Boy 72小時長效止汗噴霧 250毫升",
     "ja": "Dove Butter Boy 72時間制汗スプレー 250ml",
     "ko": "Dove Butter Boy 72시간 데오도란트 스프레이 250ml",
-    "src": "ai"
+    "src": "ai",
+    "qa_tries": 1
   },
   "Maltesers 360g or Celebrations Gift Box 290g": {
     "zh": "Maltesers 巧克力球 360克 或 Celebrations 禮盒 290克",
@@ -108470,10 +108524,11 @@
     "src": "ai"
   },
   "Just Cook Hargow or Gyoza 750g": {
-    "zh": "Just Cook 蝦餃 或 煎餃 750克",
-    "ja": "Just Cook 海老蒸し餃子 または 焼き餃子 750g",
+    "zh": "Just Cook 蝦餃或煎餃 750克",
+    "ja": "Just Cook ハーガオまたは餃子 750g",
     "ko": "Just Cook 하가우 또는 교자 750g",
-    "src": "ai"
+    "src": "ai",
+    "qa_tries": 1
   },
   "Coles Australian Made Champagne Ham": {
     "zh": "Coles 澳洲製香檳火腿",
@@ -108932,10 +108987,11 @@
     "src": "ai"
   },
   "Coles Entertaining Pigs in Blankets 360g, Pork Kransky Bites 400g or Beef Burger Sliders 500g": {
-    "zh": "Coles 派對點心 培根捲小香腸 360克 或 德式香腸切片 400克 或 牛肉小漢堡 500克",
-    "ja": "Coles パーティー用 ピッグ・イン・ブランケット 360g または ポーククランスキー一口サイズ 400g または ビーフスライダー 500g",
-    "ko": "Coles 파티용 피그 인 블랭킷 360g 또는 포크 크란스키 한입 크기 400g 또는 비프 슬라이더 500g",
-    "src": "ai"
+    "zh": "Coles 培根捲小香腸 360克、豬肉起司香腸切片 400克或牛肉漢堡小堡 500克",
+    "ja": "Coles ピッグスインブランケット 360g、ポーククランスキーバイト 400gまたはビーフバーガースライダー 500g",
+    "ko": "Coles 피그스 인 블랭킷 360g, 돼지고기 크란스키 바이트 400g 또는 소고기 버거 슬라이더 500g",
+    "src": "ai",
+    "qa_tries": 1
   },
   "On The Menu Frozen Meals 260g": {
     "zh": "On The Menu 冷凍餐盒 260克",
@@ -108962,10 +109018,11 @@
     "src": "ai"
   },
   "Luxury MSC Certified Thawed Raw Lobster Tail": {
-    "zh": "MSC認證頂級解凍生龍蝦尾",
-    "ja": "MSC認証 高級解凍生ロブスターテール",
-    "ko": "MSC 인증 고급 해동 생 랍스터 테일",
-    "src": "ai"
+    "zh": "Luxury MSC認證 解凍生龍蝦尾",
+    "ja": "Luxury MSC認証 解凍生ロブスターテール",
+    "ko": "Luxury MSC인증 해동 생 랍스터 테일",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Toscano High Fibre Protein Pizza Base 360g": {
     "zh": "Toscano 高纖高蛋白披薩餅皮 360克",

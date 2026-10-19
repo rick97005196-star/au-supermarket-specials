@@ -34,24 +34,24 @@
     },
     "by_category": {
       "bakery": 51,
-      "dairy_eggs": 99,
+      "dairy_eggs": 98,
       "drinks": 180,
       "frozen": 123,
-      "health_vitamins": 240,
+      "health_vitamins": 241,
       "household": 251,
       "liquor": 30,
-      "meat": 90,
-      "pantry": 253,
+      "meat": 91,
+      "pantry": 251,
       "pet": 35,
       "produce": 26,
       "seafood": 21,
-      "snacks": 184
+      "snacks": 185
     },
     "half_price_count": 268,
     "date_range": "Wed 21 Oct 2026 - Tue 27 Oct 2026",
     "everyday_count": 2910
   },
-  "last_updated": "2026-10-19 06:38:24",
+  "last_updated": "2026-10-19 06:43:25",
   "base_region": "QLD",
   "regions": {
     "QLD": {
@@ -231,5 +231,5 @@
       }
     }
   },
-  "data_updated_at": "2026-10-19T06:41:36Z"
+  "data_updated_at": "2026-10-19T06:43:53Z"
 }
