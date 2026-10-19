@@ -19,6 +19,8 @@ on:
       - 'scrapers/regions.py'
       - 'scrapers/coles_scraper.py'
       - 'scrapers/woolies_scraper.py'
+      - 'scrapers/woolies_regular.py'
+      - 'scripts/regular_match.cjs'
       - 'database.py'
   workflow_dispatch:
 
@@ -54,3 +56,5 @@ jobs:
           python tests/test_woolies_groups.py
       - name: ALDI everyday range test
         run: python tests/test_aldi_range.py   # needs the packages installed in the step above
+      - name: Woolworths regular price test
+        run: python tests/test_regular.py

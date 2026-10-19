@@ -9,6 +9,7 @@ let isUpdating = false;
 let globalStats = null;
 let isStaticMode = false;
 let staticSpecials = [];
+let staticRegular = [];      // Woolworths regular prices, only for the price compare (regularPrices)
 const DEFAULT_FALLBACK_IMG = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300' width='300' height='300'%3E%3Crect width='300' height='300' fill='%23f8fafc'/%3E%3Cpath d='M100 110 h100 v12 h-100 z M90 135 h120 v90 c0 10 -8 18 -18 18 h-84 c-10 0 -18 -8 -18 -18 z' fill='%23e2e8f0'/%3E%3Cpath d='M130 110 v-20 c0 -11 9 -20 20 -20 s20 9 20 20 v20' fill='none' stroke='%2394a3b8' stroke-width='8' stroke-linecap='round'/%3E%3Ctext x='150' y='270' font-family='system-ui, -apple-system, sans-serif' font-size='13' font-weight='600' fill='%2394a3b8' text-anchor='middle'%3EAU Specials%3C/text%3E%3C/svg%3E";
 
 // Categories definition (Aligned with Australian Supermarket Departments)
@@ -686,11 +687,21 @@ function sanitizeProduct(it) {
     return it;
 }
 
+// Woolworths regular prices (static/data/regular.json, read every Wednesday by scrapers/woolies_regular.py) for
+// Coles / ALDI products Woolworths has no special for. Only shown in the price compare, never listed as products;
+// a file not refreshed for over two weeks is ignored.
+function regularPrices(reg) {
+    if (!reg || !Array.isArray(reg.items) || !(Date.now() - Date.parse(reg.updated_at) < 15 * 864e5)) return [];
+    return reg.items.map(sanitizeProduct).filter(it => it && it.price > 0)
+        .map(it => Object.assign(it, { period: 'current', _regular: true }));
+}
+
 async function getStaticSpecials() {
     if (!rawSpecials) {
-        const data = await fetchStaticJson('specials.json');
+        const [data, reg] = await Promise.all([fetchStaticJson('specials.json'), fetchStaticJson('regular.json')]);
         if (Array.isArray(data) && data.length) rawSpecials = data.map(sanitizeProduct).filter(Boolean);
         else return [];        // failed load: try again next time instead of remembering "no specials"
+        staticRegular = regularPrices(reg);
     }
     if (!staticSpecials || staticSpecials._region !== currentRegion || !staticSpecials.length) {
         staticSpecials = regionize(rawSpecials);
@@ -1726,6 +1737,12 @@ function enrichCrossStoreComparisons(list) {
             // only when both products point at each other, so the two cards always agree
             if (!byStore[st] && findSameProducts(found[st], list)[it.store] === it) { byStore[st] = found[st]; loose.add(st); }
         }
+        // no Woolworths special for it: the Woolworths regular price, by the same both-ways rule (this week only)
+        if (!byStore.Woolworths && it.store !== 'Woolworths' && staticRegular.length) {
+            const pool = list._regPool || (list._regPool = list.concat(staticRegular));
+            const w = findSameProducts(it, pool).Woolworths;
+            if (w && w._regular && findSameProducts(w, pool)[it.store] === it) { byStore.Woolworths = w; loose.add('Woolworths'); }
+        }
         const matches = Object.values(byStore);
         if (matches.length > 0) {
             it.cross_store_matches = matches.map(other => ({
@@ -1933,7 +1950,8 @@ async function loadSpecials() {
 
         // Enrich with cross-supermarket comparison info (before filtering: 比價 needs it)
         enrichCrossStoreComparisons(staticSpecials);
-        const isComparable = (it) => (it.cross_store_matches && it.cross_store_matches.length) || valueCompare(it, staticSpecials);
+        // a Woolworths regular price alone does not make a 比價 group: it is no card of its own
+        const isComparable = (it) => (it.cross_store_matches || []).some(m => !m.ref._regular) || valueCompare(it, staticSpecials);
         const isListed = (it) => it.store === 'ALDI' || it.save_amount > 0 || isEverydayPrice(it) || isPlainSpecial(it);
 
         const favMatchIds = favOnly ? new Set(matchFavorites(staticSpecials).map(x => x.id)) : null;
@@ -1996,7 +2014,7 @@ async function loadSpecials() {
             // each kind then lists all three supermarkets' items of that week, cheapest per unit first
             // the same product worded differently at another store joins the same group (the lowest name key of the pair)
             const keyOf = (it) => (valueCompare(it, staticSpecials) ? `k:${cmpTypeOf(it)}`
-                : `p:${[it, ...(it.cross_store_matches || []).map(m => m.ref)].map(getCompareKey).sort()[0]}`);
+                : `p:${[it, ...(it.cross_store_matches || []).map(m => m.ref).filter(r => !r._regular)].map(getCompareKey).sort()[0]}`);
             const valOf = (it) => { const vc = valueCompare(it, staticSpecials); return vc ? vc.mine.value : _perItemPrice(it); };
             const half = discountOnly ? filtered.filter(isItemHalfPrice) : [];
             const groups = new Map();
@@ -2361,11 +2379,11 @@ function renderSameProducts(item) {
         const each = _perItemPrice(it), up = unitPriceOf(it);
         const pd = String(it.price_display || '').replace(/\s+/g, ' ').trim();
         // ALDI's listed items are its Special Buys and Super Savers, apart from its everyday low prices
-        const status = isEverydayPrice(it) ? t('everyday_badge')
+        const status = it._regular ? t('cmp3_regular_weekly') : isEverydayPrice(it) ? t('everyday_badge')
             : (it.save_amount > 0 || isPlainSpecial(it) || it.store === 'ALDI') ? t('special_badge') : t('cmp3_regular');
         const cheapest = high - low > 0.05 && each - low < 0.005;
         return `
-            <div class="aldi-cmp-row ${isThis ? 'is-this' : ''}" ${isThis ? '' : 'role="button" tabindex="0"'} data-cmp-store="${st}">
+            <div class="aldi-cmp-row ${isThis ? 'is-this' : ''}" ${isThis || it._regular ? '' : 'role="button" tabindex="0"'} data-cmp-store="${st}">
                 <div class="min-w-0">
                     ${head}
                     <div class="aldi-cmp-name">${escHTML(name)}</div>
@@ -2379,7 +2397,7 @@ function renderSameProducts(item) {
             </div>`;
     };
     list.innerHTML = ['Coles', 'Woolworths', 'ALDI'].map(row).join('');
-    list.querySelectorAll('.aldi-cmp-row[data-cmp-store]:not(.is-this)').forEach(el => {
+    list.querySelectorAll('.aldi-cmp-row[role="button"]').forEach(el => {      // a regular price has no page of its own
         const open = (e) => { e.stopPropagation(); openProductModal(byStore[el.dataset.cmpStore]); };
         el.onclick = open;
         el.onkeydown = (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(e); } };
