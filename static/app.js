@@ -352,11 +352,9 @@ function initCategoryArrows() {
     } catch (e) {}
 }
 
-// Theme: the site is light only (no dark mode, the phone's dark setting is not followed).
+// Theme: set before the page shows by the script in index.html (ozwh-theme, otherwise the device setting).
 // Clears the dark-mode choice older versions saved, so it never comes back.
 function initTheme() {
-    document.documentElement.classList.remove('dark');
-    document.documentElement.classList.add('light');
     try { localStorage.removeItem('theme'); localStorage.removeItem('themeChoice'); } catch (e) {}
 }
 
