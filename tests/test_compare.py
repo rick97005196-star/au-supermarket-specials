@@ -214,6 +214,25 @@ check(cleaner is None, f'dishwasher cleaner: {cleaner}')
 check(sorbent and sorbent['verdict'] == 'dearer' and sorbent['stores'] == ['ALDI'] and sorbent['basis'] == 'sh'
       and near(sorbent['diff'], 0.05), f'Woolworths 3 ply toilet paper: {sorbent}')
 
+# every kind compared gets a group name in all four languages (三家比價 group headers)
+I18N_JS = r'''
+const fs = require('fs'), vm = require('vm');
+const store = { getItem: () => null, setItem() {}, removeItem() {} };
+const ctx = { window: { localStorage: store }, localStorage: store, document: { querySelectorAll: () => [] }, console };
+vm.createContext(ctx);
+vm.runInContext(fs.readFileSync(process.argv[1], 'utf8') + '\n;this.I18N = I18N;', ctx);
+const { CMP_TYPES } = require(process.argv[2]);
+const out = [];
+for (const lang of ['zh', 'en', 'ja', 'ko'])
+    for (const ty of CMP_TYPES) if (!(ctx.I18N[lang].cmp_kind || {})[ty.k]) out.push(lang + ':' + ty.k);
+console.log(JSON.stringify(out));
+'''
+r = subprocess.run(['node', '-e', I18N_JS, os.path.join(ROOT, 'static', 'i18n.js'), os.path.join(ROOT, 'static', 'compare.js')],
+                   capture_output=True, text=True, encoding='utf-8')
+check(r.returncode == 0, 'i18n.js loads in node: ' + r.stderr[-300:])
+missing = json.loads(r.stdout or '[]') if r.returncode == 0 else []
+check(not missing, f'compare kinds without a group name: {missing}')
+
 for b in bad:
     print('FAIL', b)
 print(f'{total - len(bad)}/{total} price comparison checks passed')

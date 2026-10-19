@@ -1244,6 +1244,8 @@ function toggleHalfPricePill() {
 
 // 比價: only what at least one other supermarket has too (the same product, or the same kind per kg / litre / item)
 let cmpOnly = false;
+let cmpGroupOf = new Map();     // item -> its compare group {key, items, stores}, rebuilt on every load
+let cmpHalfOn = false, lastCmpGroups = 0;
 function toggleCmpOnly() {
     cmpOnly = !cmpOnly;
     const pill = document.getElementById('cmpPill');
@@ -1910,6 +1912,7 @@ async function loadSpecials() {
         // Enrich with cross-supermarket comparison info (before filtering: 比價 needs it)
         enrichCrossStoreComparisons(staticSpecials);
         const isComparable = (it) => (it.cross_store_matches && it.cross_store_matches.length) || valueCompare(it, staticSpecials);
+        const isListed = (it) => it.store === 'ALDI' || it.save_amount > 0 || isEverydayPrice(it);
 
         const favMatchIds = favOnly ? new Set(matchFavorites(staticSpecials).map(x => x.id)) : null;
         let filtered = staticSpecials.filter(it => {
@@ -1920,7 +1923,7 @@ async function loadSpecials() {
             }
             // Strictly only show items with genuine discounts (or ALDI Super Savers & Special Buys),
             // plus the everyday low prices
-            if (it.store !== 'ALDI' && (!it.save_amount || it.save_amount <= 0) && !isEverydayPrice(it)) return false;
+            if (!isListed(it)) return false;
             // ALDI never marks prices down (no "was" price), its prices are its lowest: kept, after the half-price items
             if (discountOnly && it.store !== 'ALDI' && !isItemHalfPrice(it)) return false;
             if (favOnly && !favMatchIds.has(it.id)) return false;
@@ -1963,17 +1966,35 @@ async function loadSpecials() {
             filtered = popularFirst(filtered);
         }
         if (discountOnly) filtered = [...filtered.filter(isItemHalfPrice), ...filtered.filter(it => !isItemHalfPrice(it))];
+        cmpGroupOf = new Map();
+        cmpHalfOn = false;
+        lastCmpGroups = 0;
         if (cmpOnly) {
-            // the same kind (or the same product) side by side, where its first one sorted; cheapest per unit first
+            // the filters (store, half price, category, search...) pick WHICH kinds to show, in their sorted order;
+            // each kind then lists all three supermarkets' items of that week, cheapest per unit first
+            const keyOf = (it) => (valueCompare(it, staticSpecials) ? `k:${cmpTypeOf(it)}` : `p:${getCompareKey(it)}`);
+            const valOf = (it) => { const vc = valueCompare(it, staticSpecials); return vc ? vc.mine.value : (it.price || 0); };
+            const half = discountOnly ? filtered.filter(isItemHalfPrice) : [];
             const groups = new Map();
-            for (const it of filtered) {
-                const vc = valueCompare(it, staticSpecials);
-                const k = vc ? `k:${cmpTypeOf(it)}` : `p:${getCompareKey(it)}`;
-                if (!groups.has(k)) groups.set(k, []);
-                groups.get(k).push({ it, v: vc ? vc.mine.value : (it.price || 0) });
+            for (const it of (half.length ? half : filtered)) {
+                const k = keyOf(it);
+                if (!groups.has(k)) groups.set(k, { key: k, items: [], stores: new Set() });
             }
-            filtered = [...groups.values()].flatMap(g => g.sort((a, b) => a.v - b.v).map(x => x.it));
+            for (const it of staticSpecials) {
+                if (it.period !== currentPeriod || !isListed(it) || !isComparable(it)) continue;
+                const g = groups.get(keyOf(it));
+                if (g) { g.items.push(it); g.stores.add(it.store); }
+            }
+            filtered = [];
+            for (const g of groups.values()) {
+                g.items.sort((a, b) => valOf(a) - valOf(b));
+                g.items.forEach(it => cmpGroupOf.set(it, g));
+                filtered.push(...g.items);
+            }
+            cmpHalfOn = half.length > 0;
+            lastCmpGroups = groups.size;
         }
+        renderCmpExplain();
 
         loading.classList.add('hidden');
         currentLoadedItems = filtered;
@@ -1983,12 +2004,11 @@ async function loadSpecials() {
         renderFavPanel();
         renderFavSearchButton();
         const notice = document.getElementById('activeFilterNotice');
-        if (notice) notice.innerHTML = (favOnly ? `<button type="button" class="tag is-accent" onclick="toggleFavOnly()"><i class="fa-solid fa-heart text-[9px]"></i> ${t('fav_filter_on')} ✕</button>` : '') +
-            (cmpOnly ? `<button type="button" class="tag is-accent" onclick="toggleCmpOnly()"><i class="fa-solid fa-scale-balanced text-[9px]"></i> ${t('cmp_filter_on')} ✕</button>` : '');
+        if (notice) notice.innerHTML = (favOnly ? `<button type="button" class="tag is-accent" onclick="toggleFavOnly()"><i class="fa-solid fa-heart text-[9px]"></i> ${t('fav_filter_on')} ✕</button>` : '');
         // Wednesday–Sunday: only ALDI has announced next week yet -> say when the others come
-        if (notice && !favOnly && !cmpOnly && currentPeriod === 'next' &&
+        if (notice && currentPeriod === 'next' &&
             !staticSpecials.some(x => x.period === 'next' && (x.store === 'Coles' || x.store === 'Woolworths'))) {
-            notice.innerHTML = `<span class="tag is-next">${t('next_cw_pending')}</span>`;
+            notice.innerHTML += `<span class="tag is-next">${t('next_cw_pending')}</span>`;
         }
 
         if (filtered.length === 0) {
@@ -2052,6 +2072,7 @@ let lastResultCount = null;
 let lastEverydayCount = 0;
 // "N specials", plus the everyday low prices on their own: they are listed too but are not specials
 function resultsCountLabel() {
+    if (cmpOnly && lastCmpGroups) return t('cmp_count', { g: lastCmpGroups, n: lastResultCount || 0 });
     const n = (lastResultCount || 0) - lastEverydayCount;
     return t('found_targets', { n }) + (lastEverydayCount ? t('found_everyday', { n: lastEverydayCount }) : '');
 }
@@ -2060,6 +2081,7 @@ function renderProductsCurrent() {
     // keep the result count in the selected language when switching languages
     const countEl = document.getElementById('resultsCountText');
     if (countEl && lastResultCount !== null) countEl.textContent = resultsCountLabel();
+    renderCmpExplain();
     if (currentLoadedItems && currentLoadedItems.length > 0) {
         renderProducts(currentLoadedItems);
     } else {
@@ -2181,8 +2203,10 @@ function renderNextBatch() {
         const nextSlice = currentDisplayItems.slice(renderedCount, renderedCount + BATCH_SIZE);
         const fragment = document.createDocumentFragment();
 
-        nextSlice.forEach(item => {
+        nextSlice.forEach((item, i) => {
             try {
+                const g = cmpOnly && cmpGroupOf.get(item);
+                if (g && g !== cmpGroupOf.get(currentDisplayItems[renderedCount + i - 1])) fragment.appendChild(cmpGroupHeader(g));
                 const card = createProductCardElement(item);
                 if (card) fragment.appendChild(card);
             } catch (cardErr) {
@@ -2244,6 +2268,44 @@ function fmtUnitPrice(up, keepBase) {
     return `$${up.value.toFixed(2)}/${_cmpUnit(up.basis)}`;
 }
 
+// fx codes shared by several kinds (compare.js): one label set per family
+const CMP_FX_FAMILY = { chicken_mince: 'mince', beef_mince: 'mince', pork_mince: 'mince', lamb_mince: 'mince',
+    pork_chops: 'chops', lamb_chops: 'chops', beef_scotch: 'beef', beef_rump: 'beef', beef_sirloin: 'beef',
+    salmon: 'skin', barramundi: 'skin' };
+// "Beef mince · Lean · Frozen" from the group key "k:beef_mince|F|l"; the same product: its own name
+function cmpGroupName(g) {
+    const first = g.items[0];
+    if (g.key.startsWith('p:')) return getProductTranslation(first, currentLang) || first.title;
+    const [kind, flags, fx] = g.key.slice(2).split('|');
+    const fam = CMP_FX_FAMILY[kind] || kind;
+    const fxLabel = kind === 'cheese' ? [getCmpLabel('cmp_fx', 'cheese|' + fx.slice(0, 2)), getCmpLabel('cmp_fx', 'cheese|' + fx.slice(2))].filter(Boolean).join(' · ')
+        : kind === 'toilet_paper' ? (fx ? t('cmp_ply', { n: fx }) : '')
+        : (fx ? getCmpLabel('cmp_fx', fam + '|' + fx) : '');
+    return [getCmpLabel('cmp_kind', kind) || kind, fxLabel, ...[...flags].map(f => getCmpLabel('cmp_flag', f))].filter(Boolean).join(' · ');
+}
+function cmpGroupHeader(g) {
+    const el = document.createElement('div');
+    el.className = 'cmp-group';
+    const vc = g.key.startsWith('k:') && valueCompare(g.items[0], staticSpecials);
+    const meta = vc ? t('cmp_group_unit', { u: _cmpUnit(vc.basis), n: g.items.length }) : t('cmp_group_price', { n: g.items.length });
+    const dots = ['Woolworths', 'Coles', 'ALDI'].filter(s => g.stores.has(s))
+        .map(s => `<span class="cmp-group-store"><i class="store-dot ${s === 'Coles' ? 'dot-coles' : (s === 'ALDI' ? 'dot-aldi' : 'dot-woolies')}"></i>${s}</span>`).join('');
+    el.innerHTML = `<span class="cmp-group-name"></span><span class="cmp-group-meta">${meta}</span><span class="cmp-group-stores">${dots}</span>`;
+    el.firstChild.textContent = cmpGroupName(g);
+    return el;
+}
+// The box above the list while comparing: what the groups mean, and how the other filters act on them
+function renderCmpExplain() {
+    const box = document.getElementById('cmpExplain');
+    if (!box) return;
+    box.hidden = !cmpOnly;
+    if (!cmpOnly) return;
+    box.innerHTML = `<div class="cmp-explain-head"><b><i class="fa-solid fa-scale-balanced"></i> ${t('cmp_explain_title')}</b>` +
+        `<button type="button" class="cmp-explain-off" onclick="toggleCmpOnly()">${t('cmp_turn_off')}</button></div>` +
+        `<p>${t('cmp_explain')}</p><p>${t('cmp_explain_tags')}</p>` +
+        (currentStore !== 'All' ? `<p>${t('cmp_explain_store', { store: currentStore })}</p>` : '') +
+        (cmpHalfOn ? `<p>${t('cmp_explain_half', { label: t('half_price_only') })}</p>` : '');
+}
 function valueCompareBadgeText(cmp) {
     if (!cmp) return '';
     const s = cmp.cheapest.item.store, u = _cmpUnit(cmp.basis);
@@ -2296,7 +2358,7 @@ function renderValueCompare(item) {
 
 function createProductCardElement(item) {
     const card = document.createElement('div');
-    card.className = 'p-card group';
+    card.className = 'p-card group' + (cmpOnly && currentStore !== 'All' && item.store === currentStore ? ' is-cmp-anchor' : '');
     card.onclick = () => openProductModal(item);
     card.tabIndex = 0;      // keyboard: Tab to a card, Enter opens it (no role=button: the card holds its own buttons)
 
@@ -2410,7 +2472,7 @@ function createProductCardElement(item) {
 
             ${crossStoreBadgeText ? `
                 <span class="p-compare ${compareIsGood ? 'is-cheaper' : ''}" title="${escAttr(crossStoreBadgeText)}">
-                    <i class="fa-solid fa-scale-balanced text-[9px]"></i>${isCheapest ? `<b>${t('cheapest_badge')}</b>` : ''}${crossStoreBadgeText}
+                    <b class="cmp-kind ${exactText ? 'is-same' : ''}">${t(exactText ? 'cmp_same_item' : 'cmp_same_kind')}</b>${isCheapest ? `<b>${t('cheapest_badge')}</b>` : ''}${crossStoreBadgeText}
                 </span>
             ` : ''}
 
