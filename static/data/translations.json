@@ -122312,11 +122312,11 @@
     "src": "ai"
   },
   "QuiteLike Parmesan Chicken Risoni - 2 Person Meal Kit 1 Each": {
-    "zh": "QuiteLike パルメザン チキン リゾーニ 2人前 ミールキット",
-    "ja": "QuiteLike パルメザン チキン リゾーニ 2パーソン ミール キット",
-    "ko": "QuiteLike 파마산 치킨 리소니 2인분 밀 키트",
+    "zh": "QuiteLike 帕瑪森起司雞肉米型麵雙人料理包",
+    "ja": "QuiteLike パルメザンチキン リゾーニ 2人前ミールキット",
+    "ko": "QuiteLike 파마산 치킨 리조니 2인용 밀키트",
     "src": "ai",
-    "qa_tries": 1
+    "qa_tries": 2
   },
   "I&J The Finest Frozen Squid Tubes 1kg": {
     "zh": "I&J 冷凍中卷管 1公斤",
@@ -122698,11 +122698,11 @@
     "src": "ai"
   },
   "Coles Ready To Roast Porchetta With Fennel & Orange Seasoning approx. 1.1kg": {
-    "zh": "Coles 茴香柳橙調味烤豬肉捲 約1.1公斤",
-    "ja": "Coles レディ トゥ ロースト ポルケッタ ウィズ フェンネル ＆ オレンジ シーズニング 約1.1kg",
-    "ko": "Coles 레디 투 로스트 포르케타 위즈 펜넬 앤 오렌지 시즈닝 약 1.1kg",
+    "zh": "Coles 茴香柳橙調味義式烤乳豬捲 約1.1公斤",
+    "ja": "Coles フェンネル＆オレンジシーズニング ポルケッタ 約1.1kg",
+    "ko": "Coles 펜넬 & 오렌지 시즈닝 포르케타 약 1.1kg",
     "src": "ai",
-    "qa_tries": 1
+    "qa_tries": 2
   },
   "Vitasoy Soy Milky Regular Chilled 1L": {
     "zh": "Vitasoy 濃醇豆奶 冷藏款 1公升",
@@ -122754,10 +122754,10 @@
   },
   "Impressed Oh Mandy 1L": {
     "zh": "Impressed Oh Mandy 果汁 1公升",
-    "ja": "Impressed Oh Mandy 1L",
-    "ko": "Impressed Oh Mandy 1L",
+    "ja": "Impressed Oh Mandy ジュース 1L",
+    "ko": "Impressed Oh Mandy 주스 1L",
     "src": "ai",
-    "qa_tries": 1
+    "qa_tries": 2
   },
   "Black Swan Dip Reduced Fat Roasted Capsicum 200g": {
     "zh": "Black Swan 烤紅椒減脂沾醬 200克",
@@ -123078,10 +123078,11 @@
     "src": "ai"
   },
   "Wonderbao BBQ Pork Bao 6 Pack 405g": {
-    "zh": "Wonderbao 叉燒包 6入 405克",
-    "ja": "Wonderbao BBQポークまん 6個入 405g",
-    "ko": "Wonderbao BBQ 포크 호빵 6개입 405g",
-    "src": "ai"
+    "zh": "Wonderbao 叉燒包 405克 6入",
+    "ja": "Wonderbao BBQポークパオ 405g 6個入",
+    "ko": "Wonderbao BBQ 포크 바오 405g 6개입",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Tegel Takeouts Frozen Chicken Tenderloins Ruffle Buttermilk Style 400g": {
     "zh": "Tegel Takeouts 冷凍香酥白脫牛奶雞裡肌 400克",
@@ -123165,7 +123166,8 @@
     "zh": "King Of Kings 港式叉燒包 380克",
     "ja": "King Of Kings ローストBBQポークまん 380g",
     "ko": "King Of Kings 로스티드 BBQ 포크 번 380g",
-    "src": "ai"
+    "src": "ai",
+    "qa_tries": 1
   },
   "Fancy Plants Chocolate Silky Pot 190g": {
     "zh": "Fancy Plants 絲滑巧克力布丁 190克",
@@ -123741,6 +123743,1008 @@
     "zh": "Obela 開心果檸檬杜卡鷹嘴豆泥醬 220克",
     "ja": "Obela ガーニッシュト ディップ ホムス ピスタチオ レモン デュカ 220g",
     "ko": "Obela 가니시드 딥 호무스 피스타치오 레몬 듀카 220g",
+    "src": "ai"
+  },
+  "Mrs Mac's Microwaveable Sausage Roll 175g": {
+    "zh": "Mrs Mac's 微波香腸捲 175克",
+    "ja": "Mrs Mac's 電子レンジ用ソーセージロール 175g",
+    "ko": "Mrs Mac's 전자레인지용 소시지 롤 175g",
+    "src": "ai"
+  },
+  "South Cape Cream Cheese Apricot Almond 80g": {
+    "zh": "South Cape 杏桃杏仁奶油起司 80克",
+    "ja": "South Cape アプリコットアーモンドクリームチーズ 80g",
+    "ko": "South Cape 살구 아몬드 크림치즈 80g",
+    "src": "ai"
+  },
+  "Primo Protein Roast Chicken Breast 150g": {
+    "zh": "Primo Protein 烤雞胸肉 150克",
+    "ja": "Primo Protein ローストチキン胸肉 150g",
+    "ko": "Primo Protein 로스트 닭가슴살 150g",
+    "src": "ai"
+  },
+  "Latina Fresh Creamy Sun-dried Tomato Pasta Sauce 425g": {
+    "zh": "Latina Fresh 奶油風乾番茄義大利麵醬 425克",
+    "ja": "Latina Fresh クリーミーセミドライトマトパスタソース 425g",
+    "ko": "Latina Fresh 크리미 선드라이 토마토 파스타 소스 425g",
+    "src": "ai"
+  },
+  "Arnott's Shapes Original Chicken Crimpy & Tasty Cheese 32g": {
+    "zh": "Arnott's Shapes 綜合口味餅乾 32克",
+    "ja": "Arnott's Shapes オリジナルチキンクリンピー＆テイスティチーズ 32g",
+    "ko": "Arnott's Shapes 오리지널 치킨 크림피 & 테이스티 치즈 32g",
+    "src": "ai"
+  },
+  "National Pies Little Classic Beef Pies 12 Pack 720g": {
+    "zh": "National Pies 經典迷你牛肉派 720克（12入）",
+    "ja": "National Pies クラシックミニビーフパイ 720g（12個入）",
+    "ko": "National Pies 클래식 미니 소고기 파이 720g（12개입）",
+    "src": "ai"
+  },
+  "Peters Maxibon That's Mint 4 Pack 560mL": {
+    "zh": "Peters Maxibon 薄荷冰淇淋三明治 560毫升（4入）",
+    "ja": "Peters Maxibon ミントアイスサンド 560ml（4個入）",
+    "ko": "Peters Maxibon 민트 아이스크림 샌드위치 560ml（4개입）",
+    "src": "ai"
+  },
+  "Rokeby Probiotic Filmjolk Yoghurt Natural 750g": {
+    "zh": "Rokeby 益生菌原味優格 750克",
+    "ja": "Rokeby プロバイオティクスフィルミョルクヨーグルト プレーン 750g",
+    "ko": "Rokeby 프로바이오틱스 필묠크 요거트 플레인 750g",
+    "src": "ai"
+  },
+  "Annabel Karmel Bolognaise Pasta Bake 200g": {
+    "zh": "Annabel Karmel 波隆那肉醬義大利麵 200克",
+    "ja": "Annabel Karmel ボロネーゼパスタベイク 200g",
+    "ko": "Annabel Karmel 볼로네제 파스타 베이크 200g",
+    "src": "ai"
+  },
+  "Mrs Mac's Microwaveable Beef Pastie 165g": {
+    "zh": "Mrs Mac's 微波牛肉餡餅 165克",
+    "ja": "Mrs Mac's 電子レンジ用ビーフパスティ 165g",
+    "ko": "Mrs Mac's 전자레인지용 소고기 패스티 165g",
+    "src": "ai"
+  },
+  "Primo Protein Double Smoked Leg Ham 190g": {
+    "zh": "Primo Protein 雙重煙燻火腿 190克",
+    "ja": "Primo Protein ダブルスモークレッグハム 190g",
+    "ko": "Primo Protein 더블 훈제 레그 햄 190g",
+    "src": "ai"
+  },
+  "Obela Garnished Dip Hommus With Zesty Jalapeno 220g": {
+    "zh": "Obela 墨西哥辣椒鷹嘴豆泥 220克",
+    "ja": "Obela ハラペーニョ入りフムスディップ 220g",
+    "ko": "Obela 할라피뇨 후무스 딥 220g",
+    "src": "ai"
+  },
+  "Nudie Byron Breeze Juice 2L": {
+    "zh": "Nudie Byron Breeze 果汁 2公升",
+    "ja": "Nudie Byron Breeze ジュース 2L",
+    "ko": "Nudie Byron Breeze 주스 2L",
+    "src": "ai"
+  },
+  "McCain Frozen BBQ Meatlovers Family Pizza 500g": {
+    "zh": "McCain BBQ 肉食愛好者披薩 500克",
+    "ja": "McCain BBQ ミートラバーズファミリーピザ 500g",
+    "ko": "McCain BBQ 미트러버 패밀리 피자 500g",
+    "src": "ai"
+  },
+  "Twinings Sparkling Tea Orange Passionfruit Green Tea 250mL": {
+    "zh": "Twinings 柳橙百香果綠茶氣泡茶 250毫升",
+    "ja": "Twinings オレンジパッションフルーツ緑茶スパークリングティー 250ml",
+    "ko": "Twinings 오렌지 패션후르츠 녹차 스파클링 티 250ml",
+    "src": "ai"
+  },
+  "Provedore Mild Chorizo Salami 100g": {
+    "zh": "Provedore 溫和西班牙臘腸 100克",
+    "ja": "Provedore マイルドチョリソーサラミ 100g",
+    "ko": "Provedore 마일드 초리조 살라미 100g",
+    "src": "ai"
+  },
+  "Rana Gourmet Ricotta Spinach & Lemon Ravioli 300g": {
+    "zh": "Rana 瑞可塔起司菠菜檸檬義大利餃 300克",
+    "ja": "Rana リコッタチーズ・ほうれん草・レモンラビオリ 300g",
+    "ko": "Rana 리코타 치즈 시금치 레몬 라비올리 300g",
+    "src": "ai"
+  },
+  "Obela Hommus To Go Dip & Crackers High Protein Classic 125g": {
+    "zh": "Obela 鷹嘴豆泥沾醬餅乾 125克",
+    "ja": "Obela フムスディップ＆クラッカー 125g",
+    "ko": "Obela 후무스 딥 & 크래커 125g",
+    "src": "ai"
+  },
+  "Mersey Valley Little Entertainer Pickled Onion 80g": {
+    "zh": "Mersey Valley 醃洋蔥起司 80克",
+    "ja": "Mersey Valley ピクルスオニオンチーズ 80g",
+    "ko": "Mersey Valley 피클 양파 치즈 80g",
+    "src": "ai"
+  },
+  "Gippsland Dairy Boysenberry Twist Yoghurt 160g": {
+    "zh": "Gippsland Dairy 波森莓優格 160克",
+    "ja": "Gippsland Dairy ボイセンベリーツイストヨーグルト 160g",
+    "ko": "Gippsland Dairy 보이젠베리 트위스트 요거트 160g",
+    "src": "ai"
+  },
+  "Don Salami Hot Hungarian 200g": {
+    "zh": "Don 匈牙利辣味薩拉米香腸 200克",
+    "ja": "Don ハンガリー風スパイシーサラミ 200g",
+    "ko": "Don 헝가리식 매운 살라미 200g",
+    "src": "ai"
+  },
+  "Cheer Cheese Nibbles Tasty 300g": {
+    "zh": "Cheer 濃郁起司球 300克",
+    "ja": "Cheer テイスティチーズニブルス 300g",
+    "ko": "Cheer 테이스티 치즈 니블스 300g",
+    "src": "ai"
+  },
+  "McCain Pub Style Extra Crispy Fries 750g": {
+    "zh": "McCain 酒館風酥脆薯條 750克",
+    "ja": "McCain パブスタイルエクストラクリスピーフライドポテト 750g",
+    "ko": "McCain 펍 스타일 초바삭 감자튀김 750g",
+    "src": "ai"
+  },
+  "Primo Leg Ham 25% Less Salt 100g": {
+    "zh": "Primo 減鹽25%火腿 100克",
+    "ja": "Primo 減塩25%レッグハム 100g",
+    "ko": "Primo 저염 25% 레그 햄 100g",
+    "src": "ai"
+  },
+  "Fantastic Hokkien Noodles 450g": {
+    "zh": "Fantastic 福建麵 450克",
+    "ja": "Fantastic 福建麺 450g",
+    "ko": "Fantastic 복건면 450g",
+    "src": "ai"
+  },
+  "Super Nature Wellness Burrito Bowl 350g": {
+    "zh": "Super Nature 健康墨西哥捲餅碗 350克",
+    "ja": "Super Nature ウェルネス ブリトーボウル 350g",
+    "ko": "Super Nature 웰니스 브리또 볼 350g",
+    "src": "ai"
+  },
+  "Gippsland Dairy Toffee & Honeycomb Twist Yoghurt 160g": {
+    "zh": "Gippsland Dairy 太妃糖蜂巢脆餅優格 160克",
+    "ja": "Gippsland Dairy トフィー＆ハニカム ツイスト ヨーグルト 160g",
+    "ko": "Gippsland Dairy 토피 & 허니컴 트위스트 요거트 160g",
+    "src": "ai"
+  },
+  "McCain Frozen Supreme Family Pizza 500g": {
+    "zh": "McCain 冷凍至尊家庭披薩 500克",
+    "ja": "McCain 冷凍 シュプリーム ファミリーピザ 500g",
+    "ko": "McCain 냉동 수프림 패밀리 피자 500g",
+    "src": "ai"
+  },
+  "Jindi Brie 125g": {
+    "zh": "Jindi 布里起司 125克",
+    "ja": "Jindi ブリー 125g",
+    "ko": "Jindi 브리 치즈 125g",
+    "src": "ai"
+  },
+  "Original Juice Co. Black Label Pulp Free Chilled Orange Juice 1.5L": {
+    "zh": "Original Juice Co. 黑標無果肉冰冷柳橙汁 1.5公升",
+    "ja": "Original Juice Co. ブラックラベル パルプフリー チルド オレンジジュース 1.5L",
+    "ko": "Original Juice Co. 블랙 라벨 펄프 프리 칠드 오렌지 주스 1.5L",
+    "src": "ai"
+  },
+  "Twinings Sparkling Tea Raspberry Lemonade White Tea 250mL": {
+    "zh": "Twinings 覆盆子檸檬風味氣泡白茶 250毫升",
+    "ja": "Twinings スパークリングティー ラズベリーレモネード 白茶 250mL",
+    "ko": "Twinings 스파클링 티 라즈베리 레몬에이드 백차 250mL",
+    "src": "ai"
+  },
+  "Lean Cuisine Sweet And Sour Chicken 350g": {
+    "zh": "Lean Cuisine 糖醋雞肉 350克",
+    "ja": "Lean Cuisine スウィート＆サワー チキン 350g",
+    "ko": "Lean Cuisine 스위트 앤 사워 치킨 350g",
+    "src": "ai"
+  },
+  "Nuttelex Olive Spread 500g": {
+    "zh": "Nuttelex 橄欖油抹醬 500克",
+    "ja": "Nuttelex オリーブ スプレッド 500g",
+    "ko": "Nuttelex 올리브 스프레드 500g",
+    "src": "ai"
+  },
+  "Vaalia Kids Yoghurt Pouch Vanilla 140g": {
+    "zh": "Vaalia 兒童香草優格擠壓袋 140克",
+    "ja": "Vaalia キッズ ヨーグルト パウチ バニラ 140g",
+    "ko": "Vaalia 키즈 요거트 파우치 바닐라 140g",
+    "src": "ai"
+  },
+  "Ice Break Iced Coffee Triple Shot 750mL": {
+    "zh": "Ice Break 三倍濃縮冰咖啡 750毫升",
+    "ja": "Ice Break アイスコーヒー トリプルショット 750mL",
+    "ko": "Ice Break 아이스 커피 트리플 샷 750mL",
+    "src": "ai"
+  },
+  "Dare No Added Sugar Double Espresso Iced Coffee 500mL": {
+    "zh": "Dare 無加糖雙倍濃縮冰咖啡 500毫升",
+    "ja": "Dare 砂糖不使用 ダブルエスプレッソ アイスコーヒー 500mL",
+    "ko": "Dare 무첨가당 더블 에스프레소 아이스 커피 500mL",
+    "src": "ai"
+  },
+  "Tegel Take Outs Karaage Frozen Chicken Chunks Ruffle 360g": {
+    "zh": "Tegel 外帶系列冷凍日式唐揚雞塊波浪型 360克",
+    "ja": "Tegel テイクアウツ から揚げ 冷凍 チキンチャンクス ラッフル 360g",
+    "ko": "Tegel 테이크 아웃 가라아게 냉동 치킨 청크 러플 360g",
+    "src": "ai"
+  },
+  "Cheer Cheese Slices Vintage 250g": {
+    "zh": "Cheer 陳年起司片 250克",
+    "ja": "Cheer チーズスライス ビンテージ 250g",
+    "ko": "Cheer 치즈 슬라이스 빈티지 250g",
+    "src": "ai"
+  },
+  "Don Leg Ham Shaved 200g": {
+    "zh": "Don 薄片火腿 200克",
+    "ja": "Don レッグハム シェーブ 200g",
+    "ko": "Don 레그 햄 쉐이브 200g",
+    "src": "ai"
+  },
+  "McCain Frozen Cheese & Bacon Family Pizza 500g": {
+    "zh": "McCain 冷凍起司培根家庭披薩 500克",
+    "ja": "McCain 冷凍 チーズ＆ベーコン ファミリーピザ 500g",
+    "ko": "McCain 냉동 치즈 & 베이컨 패밀리 피자 500g",
+    "src": "ai"
+  },
+  "Peters Frosty Fruits Tropical 50% Less Sugar Ice Sticks 8 Pack 520mL": {
+    "zh": "Peters 熱帶水果減糖50%冰棒 8入 520毫升",
+    "ja": "Peters フロスティフルーツ トロピカル 50%糖質オフ アイススティック 8個入 520mL",
+    "ko": "Peters 프로스티 프루츠 트로피컬 50% 저당 아이스 스틱 8개입 520mL",
+    "src": "ai"
+  },
+  "Della Rosa Pepperoni Pizza Slices 2 Pack 600g": {
+    "zh": "Della Rosa 義式辣味香腸披薩片 2入 600克",
+    "ja": "Della Rosa ペパロニ ピザスライス 2個入 600g",
+    "ko": "Della Rosa 페퍼로니 피자 슬라이스 2개입 600g",
+    "src": "ai"
+  },
+  "Bega Strong & Bitey Cheese & Water Cracker 38g": {
+    "zh": "Bega 濃郁起司與水餅乾 38克",
+    "ja": "Bega ストロング＆バイティ チーズ＆ウォータークラッカー 38g",
+    "ko": "Bega 스트롱 & 바이티 치즈 & 워터 크래커 38g",
+    "src": "ai"
+  },
+  "Peters Frosty Fruits Tropical Ice Blocks 8 Pack 600mL": {
+    "zh": "Peters 熱帶水果冰棒 8入 600毫升",
+    "ja": "Peters フロスティフルーツ トロピカル アイスブロック 8個入 600mL",
+    "ko": "Peters 프로스티 프루츠 트로피컬 아이스 블록 8개입 600mL",
+    "src": "ai"
+  },
+  "Westminster Cheese Smoked English Cheddar 150g": {
+    "zh": "Westminster 煙燻英國切達起司 150克",
+    "ja": "Westminster スモーク イングリッシュチェダー 150g",
+    "ko": "Westminster 스모크 잉글리시 체다 치즈 150g",
+    "src": "ai"
+  },
+  "Grove Juice Orange Mango Passionfruit Pineapple Apple 350mL": {
+    "zh": "Grove Juice 柳橙芒果百香果鳳梨蘋果綜合果汁 350毫升",
+    "ja": "Grove Juice オレンジ マンゴー パッションフルーツ パイナップル アップル 350mL",
+    "ko": "Grove Juice 오렌지 망고 패션프루트 파인애플 사과 주스 350mL",
+    "src": "ai"
+  },
+  "Peters Maxibon Caramel Rough Nut 4 Pack 560mL": {
+    "zh": "Peters Maxibon 焦糖顆粒堅果三明治冰淇淋 4入 560毫升",
+    "ja": "Peters Maxibon キャラメル ラフナッツ 4個入 560mL",
+    "ko": "Peters Maxibon 카라멜 러프 넛 4개입 560mL",
+    "src": "ai"
+  },
+  "Nutty Bruce Organic Unsweetened Almond Milk 1L": {
+    "zh": "Nutty Bruce 有機無加糖杏仁奶 1公升",
+    "ja": "Nutty Bruce オーガニック 砂糖不使用 アーモンドミルク 1L",
+    "ko": "Nutty Bruce 유기농 무가당 아몬드 밀크 1L",
+    "src": "ai"
+  },
+  "Flora Proactiv Margarine Spread Buttery 500g": {
+    "zh": "Flora Proactiv 植物固醇奶油風味抹醬 500克",
+    "ja": "Flora Proactiv マーガリン スプレッド バタリー 500g",
+    "ko": "Flora Proactiv 마가린 스프레드 버터리 500g",
+    "src": "ai"
+  },
+  "McCain Red Box Plated Veal Cordon Bleu 320g": {
+    "zh": "McCain 紅盒藍帶小牛肉排 320克",
+    "ja": "McCain レッドボックス プレート 仔牛のコルドンブルー 320g",
+    "ko": "McCain 레드 박스 플래티드 송아지 고든 블루 320g",
+    "src": "ai"
+  },
+  "Pauls Kids Bluey Mango Yoghurt Pouch 70g": {
+    "zh": "Pauls 兒童 Bluey 芒果優格擠壓袋 70克",
+    "ja": "Pauls キッズ Bluey マンゴー ヨーグルト パウチ 70g",
+    "ko": "Pauls 키즈 Bluey 망고 요거트 파우치 70g",
+    "src": "ai"
+  },
+  "Peters Maxibon Original Vanilla 4 Pack 560mL": {
+    "zh": "Peters Maxibon 經典香草冰淇淋 4入 560毫升",
+    "ja": "Peters Maxibon オリジナル バニラ 4個入 560mL",
+    "ko": "Peters Maxibon 오리지널 바닐라 4개입 560mL",
+    "src": "ai"
+  },
+  "Streets Golden Gaytime Birthday Cake Sticks 4 Pack 400mL": {
+    "zh": "Streets Golden Gaytime 生日蛋糕風味冰棒 4入 400毫升",
+    "ja": "Streets Golden Gaytime バースデーケーキ アイスバー 4個入 400mL",
+    "ko": "Streets Golden Gaytime 생일 케이크 아이스크림 스틱 4개입 400mL",
+    "src": "ai"
+  },
+  "Don Pepperoni Salami 200g": {
+    "zh": "Don 義式辣味莎樂美腸 200克",
+    "ja": "Don ペパロニ サラミ 200g",
+    "ko": "Don 페퍼로니 살라미 200g",
+    "src": "ai"
+  },
+  "Cp Authentic Asia Mango Sticky Rice Spring Roll 275g": {
+    "zh": "Cp Authentic Asia 芒果糯米春捲 275克",
+    "ja": "Cp Authentic Asia マンゴー もち米 春巻き 275g",
+    "ko": "Cp Authentic Asia 망고 찹쌀 스프링 롤 275g",
+    "src": "ai"
+  },
+  "V2 Plant Based Mince 400g": {
+    "zh": "V2 植物基素絞肉 400克",
+    "ja": "V2 プラントベース ひき肉 400g",
+    "ko": "V2 식물성 다진 고기 400g",
+    "src": "ai"
+  },
+  "Elastoplast Plastic Strips 40 Pack": {
+    "zh": "Elastoplast 塑膠透氣ok繃 40入",
+    "ja": "Elastoplast プラスチック 救急絆創膏 40枚入",
+    "ko": "Elastoplast 플라스틱 반창고 40개입",
+    "src": "ai"
+  },
+  "Birds Eye Atlantic Salmon Fillet Natural 250g": {
+    "zh": "Birds Eye 大西洋鮭魚排 原味 250克",
+    "ja": "Birds Eye アトランティックサーモン フィレ ナチュラル 250g",
+    "ko": "Birds Eye 대서양 연어 필렛 내추럴 250g",
+    "src": "ai"
+  },
+  "McCain Frozen Cheese & Bacon Pizza Pockets 400g": {
+    "zh": "McCain 冷凍起司培根披薩餃 400克",
+    "ja": "McCain 冷凍 チーズ＆ベーコン ピザポケット 400g",
+    "ko": "McCain 냉동 치즈 앤 베이컨 피자 포켓 400g",
+    "src": "ai"
+  },
+  "YoPro High Protein Yoghurt No Added Sugar Mango 160g": {
+    "zh": "YoPro 高蛋白無加糖芒果優格 160克",
+    "ja": "YoPro 高タンパク ヨーグルト 砂糖不使用 マンゴー 160g",
+    "ko": "YoPro 고단백 요거트 무당 망고 160g",
+    "src": "ai"
+  },
+  "Summer Snow Sparkling Pink Lady Apple Juice 750mL": {
+    "zh": "Summer Snow 粉紅佳人氣泡蘋果汁 750毫升",
+    "ja": "Summer Snow スパークリング ピンクレディ アップルジュース 750mL",
+    "ko": "Summer Snow 스파클링 핑크 레이디 사과 주스 750mL",
+    "src": "ai"
+  },
+  "Jarlsberg Dairy Original Swiss Cheese Slices 150g": {
+    "zh": "Jarlsberg Dairy 經典瑞士起司片 150克",
+    "ja": "Jarlsberg Dairy オリジナル スイスチーズ スライス 150g",
+    "ko": "Jarlsberg Dairy 오리지널 스위스 치즈 슬라이스 150g",
+    "src": "ai"
+  },
+  "YoPro High Protein Yoghurt Pouch No Added Sugar Mixed Berries 150g": {
+    "zh": "YoPro 高蛋白無加糖綜合莓果優格擠壓袋 150克",
+    "ja": "YoPro 高タンパク ヨーグルト パウチ 砂糖不使用 ミックスベリー 150g",
+    "ko": "YoPro 고단백 요거트 파우치 무당 믹스 베리 150g",
+    "src": "ai"
+  },
+  "Cheer Tasty Cheese Block 400g": {
+    "zh": "Cheer 風味切達起司塊 400克",
+    "ja": "Cheer テイスティー チーズ ブロック 400g",
+    "ko": "Cheer 테이스티 치즈 블록 400g",
+    "src": "ai"
+  },
+  "Farro Organic Spelt Basil Pesto Chicken Pizza 450g": {
+    "zh": "Farro 有機斯佩爾特小麥羅勒青醬雞肉比薩 450克",
+    "ja": "Farro オーガニック スペルト小麦 バジルペスト チキンピザ 450g",
+    "ko": "Farro 유기농 스펠트밀 바질 페스토 치킨 피자 450g",
+    "src": "ai"
+  },
+  "The Juice Brothers Orange Juice 1L": {
+    "zh": "The Juice Brothers 柳橙汁 1公升",
+    "ja": "The Juice Brothers オレンジジュース 1L",
+    "ko": "The Juice Brothers 오렌지 주스 1L",
+    "src": "ai"
+  },
+  "Don Salami Mild Hungarian 200g": {
+    "zh": "Don 溫和匈牙利風莎樂美腸 200克",
+    "ja": "Don サラミ マイルド ハンガリアン 200g",
+    "ko": "Don 살라미 마일드 헝가리안 200g",
+    "src": "ai"
+  },
+  "Don Footy Franks Skin On 600g": {
+    "zh": "Don 帶皮熱狗 600克",
+    "ja": "Don フッティ フランクス スキンオン 600g",
+    "ko": "Don 푸티 프랑크 스킨 온 600g",
+    "src": "ai"
+  },
+  "Core Powerfoods Bolognese Potato Bake 350g": {
+    "zh": "Core Powerfoods 波隆那肉醬焗馬鈴薯 350克",
+    "ja": "Core Powerfoods ボロネーゼ ポテトベイク 350g",
+    "ko": "Core Powerfoods 볼로네제 감자 베이크 350g",
+    "src": "ai"
+  },
+  "Primo Mortadella Slices 100g": {
+    "zh": "Primo 義式莫塔德拉香腸片 100克",
+    "ja": "Primo モルタデッラ スライス 100g",
+    "ko": "Primo 모르타델라 슬라이스 100g",
+    "src": "ai"
+  },
+  "Herbert Adams Quiche Pumpkin Parmesan Spinach 200g": {
+    "zh": "Herbert Adams 南瓜帕瑪森起司菠菜鹹派 200克",
+    "ja": "Herbert Adams キッシュ パンプキン パルメザン ホウレンソウ 200g",
+    "ko": "Herbert Adams 키쉬 호박 파마산 시금치 200g",
+    "src": "ai"
+  },
+  "Cheer Cheese Slices Mozzarella 250g": {
+    "zh": "Cheer 莫札瑞拉起司片 250g",
+    "ja": "Cheer チーズスライス モッツァレラ 250g",
+    "ko": "Cheer 치즈 슬라이스 모짜렐라 250g",
+    "src": "ai"
+  },
+  "Cocobella Dairy Free Natural Coconut Yoghurt 500g": {
+    "zh": "Cocobella 無乳糖原味椰子優格 500克",
+    "ja": "Cocobella デイリーフリー ナチュラル ココナッツ ヨーグルト 500g",
+    "ko": "Cocobella 유제품 무함유 내추럴 코코넛 요거트 500g",
+    "src": "ai"
+  },
+  "QuiteLike Beef Yaki Udon - 2 Person Meal Kit 1 Each": {
+    "zh": "QuiteLike 牛肉炒烏龍麵 2人份料理包",
+    "ja": "QuiteLike ビーフ 焼うどん 2人前 ミールキット",
+    "ko": "QuiteLike 소고기 야끼우동 2인분 밀키트",
+    "src": "ai"
+  },
+  "Lemnos Traditional Fetta 360g": {
+    "zh": "Lemnos 傳統菲達起司 360克",
+    "ja": "Lemnos トラディショナル フェタ 360g",
+    "ko": "Lemnos 트래디셔널 페타 치즈 360g",
+    "src": "ai"
+  },
+  "On The Menu Frozen Pappardelle Ragu 260g": {
+    "zh": "On The Menu 冷凍寬帶麵肉醬 260克",
+    "ja": "On The Menu 冷凍パッパルデッレ ラグー 260g",
+    "ko": "On The Menu 냉동 파파르델레 라구 260g",
+    "src": "ai"
+  },
+  "V2 Plant Based Chicken Style Burger 2 Pack 200g": {
+    "zh": "V2 植物基雞肉風漢堡排 2入 200克",
+    "ja": "V2 プラントベース チキン風バーガー 2個入 200g",
+    "ko": "V2 식물성 치킨 스타일 버거 2개입 200g",
+    "src": "ai"
+  },
+  "Primo Protein Mild Hungarian Salami 150g": {
+    "zh": "Primo 高蛋白溫和匈牙利風味莎樂美腸 150克",
+    "ja": "Primo プロテイン マイルド ハンガリアン サラミ 150g",
+    "ko": "Primo 단백질 마일드 헝가리안 살라미 150g",
+    "src": "ai"
+  },
+  "McCain Red Box Plated Roast Lamb 320g": {
+    "zh": "McCain Red Box 烤羊肉餐 320克",
+    "ja": "McCain Red Box プレート ローストラム 320g",
+    "ko": "McCain Red Box 플로어 롸스트 램 320g",
+    "src": "ai"
+  },
+  "Doritos Dip Guacamole 200g": {
+    "zh": "Doritos 酪梨醬 200g",
+    "ja": "Doritos ディップ ワカモレ 200g",
+    "ko": "Doritos 딥 과카몰리 200g",
+    "src": "ai"
+  },
+  "Impressed Cold Pressed Jack Rose Juice 1L": {
+    "zh": "Impressed 冷壓傑克羅斯果汁 1公升",
+    "ja": "Impressed コールドプレス ジャックローズ ジュース 1L",
+    "ko": "Impressed 저온압착 잭 로즈 주스 1L",
+    "src": "ai"
+  },
+  "Birds Eye Frozen Fish Fingers 15 Pieces 375g": {
+    "zh": "Birds Eye 冷凍魚條 15入 375克",
+    "ja": "Birds Eye 冷凍フィッシュフィンガー 15個入 375g",
+    "ko": "Birds Eye 냉동 생선스틱 15개입 375g",
+    "src": "ai"
+  },
+  "Provedore Garlic & Fennel Salami 100g": {
+    "zh": "Provedore 蒜香茴香莎樂美腸 100克",
+    "ja": "Provedore ガーリック＆フェンネル サラミ 100g",
+    "ko": "Provedore 마늘 & 펜넬 살라미 100g",
+    "src": "ai"
+  },
+  "Haagen-Dazs Caramel, Biscuit & Cream Ice Cream Tub 457mL": {
+    "zh": "Haagen-Dazs 焦糖餅乾奶油冰淇淋 457毫升",
+    "ja": "Haagen-Dazs キャラメル ビスケット＆クリーム アイスクリーム カップ 457mL",
+    "ko": "Haagen-Dazs 카라멜 비스킷 앤 크림 아이스크림 컵 457mL",
+    "src": "ai"
+  },
+  "Mainland On The Go Cheese & Balsamic Beetroot Lunch Pack 110g": {
+    "zh": "Mainland 隨身起司與巴薩米克甜菜根點心盒 110克",
+    "ja": "Mainland オンザゴー チーズ＆バルサミコ ビートルート ランチパック 110g",
+    "ko": "Mainland 온 더 고 치즈 & 발사믹 비트루트 런치 팩 110g",
+    "src": "ai"
+  },
+  "Herbert Adams Pancetta With Cheddar And Leek 200g": {
+    "zh": "Herbert Adams 義大利培根切達起司與韭蔥派 200克",
+    "ja": "Herbert Adams パンチェッタ チェダー＆リーク 200g",
+    "ko": "Herbert Adams 판체타 체다 앤 리크 200g",
+    "src": "ai"
+  },
+  "Pauls Kids Bluey Vanilla Flavoured Yoghurt Pouch 70g": {
+    "zh": "Pauls Kids Bluey 兒童香草口味優格擠壓袋 70克",
+    "ja": "Pauls Kids Bluey バニラ風味 ヨーグルト パウチ 70g",
+    "ko": "Pauls Kids Bluey 바닐라 맛 요거트 파우치 70g",
+    "src": "ai"
+  },
+  "Nature's Gift Slow Cooked Beef Rice Pumpkin & Split Peas Dog Food 2x220g 2 Pack": {
+    "zh": "Nature's Gift 慢燉牛肉米南瓜碗豆狗食 220克 2入",
+    "ja": "Nature's Gift スロークック ビーフ ライス パンプキン＆スプリットピー ドッグフード 220g 2個入",
+    "ko": "Nature's Gift 슬로우 쿡 비프 라이스 펌킨 & 스플릿 피 독푸드 220g 2개입",
+    "src": "ai"
+  },
+  "Perfect Italiano Original Ricotta Soft Cheese Tub 250g": {
+    "zh": "Perfect Italiano 經典瑞可達軟起司 250克",
+    "ja": "Perfect Italiano オリジナル リコッタ ソフトチーズ カップ 250g",
+    "ko": "Perfect Italiano 오리지널 리코타 소프트 치즈 컵 250g",
+    "src": "ai"
+  },
+  "Sara Lee Frozen Sticky Date Pudding 475g": {
+    "zh": "Sara Lee 冷凍太妃棗布丁 475克",
+    "ja": "Sara Lee 冷凍スティッキー デイト プディング 475g",
+    "ko": "Sara Lee 냉동 스티키 데이트 푸딩 475g",
+    "src": "ai"
+  },
+  "The Yoghurt Shop Belgian Triple Chocolate 170g": {
+    "zh": "The Yoghurt Shop 比利時三重巧克力優格 170克",
+    "ja": "The Yoghurt Shop ベルジャン トリプル チョコレート 170g",
+    "ko": "The Yoghurt Shop 벨지안 트리플 초콜릿 170g",
+    "src": "ai"
+  },
+  "YoGo Chocolate Custard Tubs Choc Dessert Snack 12 Pack 1200g": {
+    "zh": "YoGo 巧克力卡士達甜點杯 12入 1200克",
+    "ja": "YoGo チョコレート カスタード カップ デザートスナック 12個入 1200g",
+    "ko": "YoGo 초콜릿 커스터드 컵 디저트 스낵 12개입 1200g",
+    "src": "ai"
+  },
+  "Obela Caramelised Onion Hommus 220g": {
+    "zh": "Obela 焦糖洋蔥鷹嘴豆泥 220g",
+    "ja": "Obela キャラメリゼオニオン フムス 220g",
+    "ko": "Obela 카라멜라이즈드 어니언 후무스 220g",
+    "src": "ai"
+  },
+  "Lean Cuisine Arrabbiata Penne 350g": {
+    "zh": "Lean Cuisine 惡魔拿坡里筆管麵 350克",
+    "ja": "Lean Cuisine アラビアータ ペンネ 350g",
+    "ko": "Lean Cuisine 아라비아타 펜네 350g",
+    "src": "ai"
+  },
+  "Fropro Protein Slices Pepperoni Pizza 2 Pack 360g": {
+    "zh": "Fropro 高蛋白切片佩珀洛尼披薩 2入 360克",
+    "ja": "Fropro プロテイン スライス ペパロニ ピザ 2個入 360g",
+    "ko": "Fropro 단백질 슬라이스 페퍼로니 피자 2개입 360g",
+    "src": "ai"
+  },
+  "Cadbury Mousse Caramilk 90g": {
+    "zh": "Cadbury 卡拉米白巧克力慕斯 90克",
+    "ja": "Cadbury ムース キャラクミルク 90g",
+    "ko": "Cadbury 무스 카라밀크 90g",
+    "src": "ai"
+  },
+  "YoPro High Protein Yoghurt Pouch No Added Sugar Strawberry 150g": {
+    "zh": "YoPro 高蛋白無加糖草莓優格擠壓袋 150克",
+    "ja": "YoPro 高タンパク ヨーグルト パウチ 砂糖不使用 ストロベリー 150g",
+    "ko": "YoPro 고단백 요거트 파우치 무첨가당 딸기 150g",
+    "src": "ai"
+  },
+  "Tasmanian Heritage Club Cheddar Vintage 140g": {
+    "zh": "Tasmanian Heritage 陳年俱樂部切達起司 140克",
+    "ja": "Tasmanian Heritage クラブ チェダー ヴィンテージ 140g",
+    "ko": "Tasmanian Heritage 클럽 체다 빈티지 140g",
+    "src": "ai"
+  },
+  "Steggles Frozen Flaming Chicken Wing Nibbles 1kg": {
+    "zh": "Steggles 冷凍火辣雞翅小腿 1公斤",
+    "ja": "Steggles 冷凍 フレイミング チキンウィング ニブルズ 1kg",
+    "ko": "Steggles 냉동 플레이밍 치킨 윙 니블스 1kg",
+    "src": "ai"
+  },
+  "Posh Poppas Mini BBQ Meatlovers Pizza 280g": {
+    "zh": "Posh Poppas 迷你 BBQ 肉食主義披薩 280克",
+    "ja": "Posh Poppas ミニ BBQ ミートラバーズ ピザ 280g",
+    "ko": "Posh Poppas 미니 BBQ 미트러버 피자 280g",
+    "src": "ai"
+  },
+  "Mersey Valley Little Entertainer Classic 80g": {
+    "zh": "Mersey Valley Little Entertainer 經典切達起司 80克",
+    "ja": "Mersey Valley Little Entertainer クラシックチェダー 80g",
+    "ko": "Mersey Valley Little Entertainer 클래식 체다 80g",
+    "src": "ai"
+  },
+  "On The Menu Big Feast Penne Beef And Bacon Pasta 480g": {
+    "zh": "On The Menu Big Feast 牛肉培根筆管麵 480克",
+    "ja": "On The Menu Big Feast 牛肉とベーコンのペンネ 480g",
+    "ko": "On The Menu Big Feast 소고기 베이컨 펜네 파스타 480g",
+    "src": "ai"
+  },
+  "Nudie Nothing But 100% Fresh Juice Orange Pulp Free 1L": {
+    "zh": "Nudie 100% 鮮榨無果肉柳橙汁 1公升",
+    "ja": "Nudie 100% フレッシュオレンジジュース 果肉なし 1L",
+    "ko": "Nudie 100% 신선한 오렌지 주스 펄프 프리 1L",
+    "src": "ai"
+  },
+  "Impressed Easy Greens Juice 1L": {
+    "zh": "Impressed 綠拿鐵蔬菜果汁 1公升",
+    "ja": "Impressed イージーグリーンジュース 1L",
+    "ko": "Impressed 이지 그린 주스 1L",
+    "src": "ai"
+  },
+  "Original Black Label Grapefruit Juice 1.5L": {
+    "zh": "Original Black Label 葡萄柚汁 1.5公升",
+    "ja": "Original Black Label グレープフルーツジュース 1.5L",
+    "ko": "Original Black Label 자몽 주스 1.5L",
+    "src": "ai"
+  },
+  "Lemnos High Protein Fetta Infused Tub 300g": {
+    "zh": "Lemnos 高蛋白菲達起司盒 300克",
+    "ja": "Lemnos 高プロテイン フェタチーズカップ 300g",
+    "ko": "Lemnos 고단백 페타 치즈 300g",
+    "src": "ai"
+  },
+  "Arnott's Clix Crackers & Tasty Cheese 31g": {
+    "zh": "Arnott's Clix 蘇打餅乾與濃郁起司 31克",
+    "ja": "Arnott's Clix クラッカー＆テイスティチーズ 31g",
+    "ko": "Arnott's Clix 크래커 & 테이스티 치즈 31g",
+    "src": "ai"
+  },
+  "Zoosh Smokey Bacon Dip 185g": {
+    "zh": "Zoosh 煙燻培根沾醬 185克",
+    "ja": "Zoosh スモーキーベーコンディップ 185g",
+    "ko": "Zoosh 스모키 베이컨 딥 185g",
+    "src": "ai"
+  },
+  "Primo Cook & Create Diced Bacon 200g": {
+    "zh": "Primo 料理用切丁培根 200克",
+    "ja": "Primo クック＆クリエイト ダイスベーコン 200g",
+    "ko": "Primo 쿡 앤 크리에이트 다이스 베이컨 200g",
+    "src": "ai"
+  },
+  "Bega Colby Cheese & Water Crackers 38g": {
+    "zh": "Bega 科比起司與水蘇打餅乾 38克",
+    "ja": "Bega コルビージャックチーズ＆ウォータークラッカー 38g",
+    "ko": "Bega 콜비 치즈 & 워터 크래커 38g",
+    "src": "ai"
+  },
+  "La Famiglia Garlic Bread Loaf 400g": {
+    "zh": "La Famiglia 大蒜麵包條 400克",
+    "ja": "La Famiglia ガーリックブレッド ローフ 400g",
+    "ko": "La Famiglia 갈릭 브레드 로프 400g",
+    "src": "ai"
+  },
+  "Core Powerfoods Beef Tortellini 350g": {
+    "zh": "Core Powerfoods 牛肉義大利餃 350克",
+    "ja": "Core Powerfoods ビーフトルテリーニ 350g",
+    "ko": "Core Powerfoods 비프 토르텔리니 350g",
+    "src": "ai"
+  },
+  "Ice Break Iced Coffee No Sugar Added 750mL": {
+    "zh": "Ice Break 無加糖冰咖啡 750毫升",
+    "ja": "Ice Break アイスコーヒー 砂糖不使用 750mL",
+    "ko": "Ice Break 아이스 커피 무가당 750mL",
+    "src": "ai"
+  },
+  "Core PowerFoods Korean BBQ Beef 350g": {
+    "zh": "Core PowerFoods 韓式烤肉風味牛肉 350克",
+    "ja": "Core PowerFoods 韓国風BBQビーフ 350g",
+    "ko": "Core PowerFoods 코리안 BBQ 비프 350g",
+    "src": "ai"
+  },
+  "Della Rosa Cheese & Bacon Pizza Slices 2 Pack 600g": {
+    "zh": "Della Rosa 起司培根披薩切片 600克（2入）",
+    "ja": "Della Rosa チーズ＆ベーコン ピザスライス 2個入 600g",
+    "ko": "Della Rosa 치즈 & 베이컨 피자 슬라이스 2개입 600g",
+    "src": "ai"
+  },
+  "Vaalia Kids Yoghurt Pouch Banana 140g": {
+    "zh": "Vaalia 兒童香蕉優格吸袋 140克",
+    "ja": "Vaalia キッズ ヨーグルトパウチ バナナ 140g",
+    "ko": "Vaalia 키즈 요거트 파우치 바나나 140g",
+    "src": "ai"
+  },
+  "Jalna Pot Set Yoghurt Natural Greek Style 170g": {
+    "zh": "Jalna 壺裝希臘式原味優格 170克",
+    "ja": "Jalna ポットセット ヨーグルト プレーン ギリシャスタイル 170g",
+    "ko": "Jalna 팟 세트 요거트 플레인 그릭 스타일 170g",
+    "src": "ai"
+  },
+  "Primo Mild Salami 25% Less Salt 80g": {
+    "zh": "Primo 減鹽 25% 溫和莎樂美腸 80克",
+    "ja": "Primo マイルドサラミ 塩分25%カット 80g",
+    "ko": "Primo 마일드 살라미 25% 저염 80g",
+    "src": "ai"
+  },
+  "Chris' Heritage Vintage Cheddar & Caramelised Onion Savoury Dip 170g": {
+    "zh": "Chris' Heritage 陳年切達與焦糖洋蔥風味沾醬 170克",
+    "ja": "Chris' Heritage ビンテージチェダー＆キャラメリゼオニオン ディップ 170g",
+    "ko": "Chris' Heritage 빈티지 체다 & 카라멜라이즈드 어니언 딥 170g",
+    "src": "ai"
+  },
+  "Don Double Smoked Leg Ham 200g": {
+    "zh": "Don 雙重煙燻火腿片 200克",
+    "ja": "Don ダブルスモーク レッグハム 200g",
+    "ko": "Don 더블 스모크 레그 햄 200g",
+    "src": "ai"
+  },
+  "Billy B's Fermented Hot Sauce 200mL": {
+    "zh": "Billy B's 發酵辣椒醬 200毫升",
+    "ja": "Billy B's 発酵ホットソース 200mL",
+    "ko": "Billy B's 발효 핫 소스 200mL",
+    "src": "ai"
+  },
+  "Cadbury Mousse Caramello 90g": {
+    "zh": "Cadbury 卡拉焦糖慕斯 90克",
+    "ja": "Cadbury ムース キャラメロ 90g",
+    "ko": "Cadbury 무스 카라멜로 90g",
+    "src": "ai"
+  },
+  "Soyco Vietnamese Lemongrass Lime Tofu 200g": {
+    "zh": "Soyco 越式香茅萊姆豆腐 200克",
+    "ja": "Soyco ベトナム風レモングラスライム 豆腐 200g",
+    "ko": "Soyco 베트남식 레몬그라스 라임 두부 200g",
+    "src": "ai"
+  },
+  "Flora Margarine Spread Original 500g": {
+    "zh": "Flora 經典植物油抹醬 500克",
+    "ja": "Flora マーガリン スプレッド オリジナル 500g",
+    "ko": "Flora 마가린 스프레드 오리지널 500g",
+    "src": "ai"
+  },
+  "So Good Frozen Dessert Vanilla Bliss 1L": {
+    "zh": "So Good 香草極樂冷凍甜點 1公升",
+    "ja": "So Good フローズンデザート バニラ ブリス 1L",
+    "ko": "So Good 프로즌 디저트 바닐라 블리스 1L",
+    "src": "ai"
+  },
+  "Fropro Protein Pizza Slices BBQ Chicken 2 Pack 360g": {
+    "zh": "Fropro 蛋白質披薩片 BBQ 雞肉口味 2入 360克",
+    "ja": "Fropro プロテイン ピザスライス BBQチキン味 2個入 360g",
+    "ko": "Fropro 단백질 피자 슬라이스 BBQ 치킨맛 2개입 360g",
+    "src": "ai"
+  },
+  "The Juice Brothers Morning Start Juice 1L": {
+    "zh": "The Juice Brothers 早安活力果汁 1公升",
+    "ja": "The Juice Brothers モーニングスタート ジュース 1L",
+    "ko": "The Juice Brothers 모닝 스타트 주스 1L",
+    "src": "ai"
+  },
+  "Maggie Beer Cheddar Caramelised Onion 150g": {
+    "zh": "Maggie Beer 切達起司焦糖洋蔥口味 150克",
+    "ja": "Maggie Beer チェダー キャラメリゼオニオン 150g",
+    "ko": "Maggie Beer 체다 카라멜라이즈드 어니언 150g",
+    "src": "ai"
+  },
+  "Jarlsberg Protein Cheese Slices 150g": {
+    "zh": "Jarlsberg 蛋白質起司片 150克",
+    "ja": "Jarlsberg プロテイン チーズスライス 150g",
+    "ko": "Jarlsberg 단백질 치즈 슬라이스 150g",
+    "src": "ai"
+  },
+  "Buono Mochi Ice Chocolate Banana 156g": {
+    "zh": "Buono 麻糬冰淇淋巧克力香蕉口味 156克",
+    "ja": "Buono もちアイス チョコバナナ味 156g",
+    "ko": "Buono 찹쌀떡 아이스크림 초콜릿 바나나맛 156g",
+    "src": "ai"
+  },
+  "First Press Cold Drip 10 Shot Coffee 500mL": {
+    "zh": "First Press 冷滴 10份濃縮咖啡 500毫升",
+    "ja": "First Press コールドドリップ 10ショット コーヒー 500mL",
+    "ko": "First Press 콜드 드립 10샷 커피 500mL",
+    "src": "ai"
+  },
+  "Fantastic Singapore Noodles 350g": {
+    "zh": "Fantastic 新加坡炒麵 350克",
+    "ja": "Fantastic シンガポールヌードル 350g",
+    "ko": "Fantastic 싱가포르 누들 350g",
+    "src": "ai"
+  },
+  "McCain Frozen Ham & Pineapple Family Pizza 500g": {
+    "zh": "McCain 冷凍火腿鳳梨家庭號披薩 500克",
+    "ja": "McCain 冷凍 ハム＆パイナップル ファミリーピザ 500g",
+    "ko": "McCain 냉동 햄 앤 파인애플 패밀리 피자 500g",
+    "src": "ai"
+  },
+  "Real Dairy Tasty Cheese & Crackers 10 Pack 300g": {
+    "zh": "Real Dairy 風味起司與餅干 10入 300克",
+    "ja": "Real Dairy テイスティチーズ＆クラッカー 10個入 300g",
+    "ko": "Real Dairy 테이스티 치즈 앤 크래커 10개입 300g",
+    "src": "ai"
+  },
+  "Rana Gourmet Garlic & Chilli Prawn Ravioli 300g": {
+    "zh": "Rana 美食家大蒜辣椒蝦仁義大利餃 300g",
+    "ja": "Rana グルメ ガーリック＆チリ えび ラビオリ 300g",
+    "ko": "Rana 고메 갈릭 앤 칠리 새우 라비올리 300g",
+    "src": "ai"
+  },
+  "Primo Original Twiggy Sticks 200g": {
+    "zh": "Primo 經典細切肉乾 200克",
+    "ja": "Primo オリジナル ツウィギスティック 200g",
+    "ko": "Primo 오리지널 트위기 스틱 200g",
+    "src": "ai"
+  },
+  "Pureland High Protein Firm Tofu 500g": {
+    "zh": "Pureland 高蛋白質板豆腐 500克",
+    "ja": "Pureland 高タンパク かため豆腐 500g",
+    "ko": "Pureland 고단백 단단한 두부 500g",
+    "src": "ai"
+  },
+  "Jc's Hot N Spicy Mix 90g": {
+    "zh": "Jc's 香辣綜合果仁 90克",
+    "ja": "Jc's ホット＆スパイシーミックス 90g",
+    "ko": "Jc's 핫 앤 스파이시 믹스 90g",
+    "src": "ai"
+  },
+  "Lean Cuisine Lamb & Rosemary Hotpot 280g": {
+    "zh": "Lean Cuisine 迷迭香羊肉煲 280克",
+    "ja": "Lean Cuisine ラム＆ローズマリー ホットポット 280g",
+    "ko": "Lean Cuisine 양고기 앤 로즈마리 핫팟 280g",
+    "src": "ai"
+  },
+  "Core Powerfoods Tuscan Chicken Bake 350g": {
+    "zh": "Core Powerfoods 托斯卡納烤雞 350克",
+    "ja": "Core Powerfoods トスカナ風チキンベイク 350g",
+    "ko": "Core Powerfoods 토스카나 치킨 베이크 350g",
+    "src": "ai"
+  },
+  "I&J The Finest Frozen Prawns Cooked & Peeled Tail Off 500g": {
+    "zh": "I&J 精選冷凍熟蝦仁（無尾） 500克",
+    "ja": "I&J ファイネスト 冷凍えび ボイル・殻むき 背ワタなし 尾なし 500g",
+    "ko": "I&J 파이네스트 냉동 새우 칵테일 새우 꼬리 없음 500g",
+    "src": "ai"
+  },
+  "Lean Cuisine Beef Stroganoff With Pasta 280g": {
+    "zh": "Lean Cuisine 蘑菇酸奶油牛肉佐義大利麵 280g",
+    "ja": "Lean Cuisine ビーフストロガノフ パスタ付き 280g",
+    "ko": "Lean Cuisine 비프 스트로가노프 파스타 포함 280g",
+    "src": "ai"
+  },
+  "Yoplait Petit Miam Kids Yoghurt Pouch Fruit Salad 70g": {
+    "zh": "Yoplait Petit Miam 兒童優格吸口包水果沙拉口味 70克",
+    "ja": "Yoplait Petit Miam キッズ ヨーグルトパウチ フルーツサラダ味 70g",
+    "ko": "Yoplait Petit Miam 키즈 요거트 파우치 과일 샐러드맛 70g",
+    "src": "ai"
+  },
+  "So Good Frozen Dessert Chocolate Bliss 1L": {
+    "zh": "So Good 巧克力極樂冷凍甜點 1公升",
+    "ja": "So Good フローズンデザート チョコレートブリス 1L",
+    "ko": "So Good 냉동 디저트 초콜릿 블리스 1L",
+    "src": "ai"
+  },
+  "Cheer Aussie Jack Cheese Slices 250g": {
+    "zh": "Cheer 澳洲傑克起司片 250克",
+    "ja": "Cheer オージー ジャックチーズスライス 250g",
+    "ko": "Cheer 호주산 잭 치즈 슬라이스 250g",
+    "src": "ai"
+  },
+  "Nanna's Family Size Apple Pie 600g": {
+    "zh": "Nanna's 家庭號蘋果派 600克",
+    "ja": "Nanna's ファミリーサイズ アップルパイ 600g",
+    "ko": "Nanna's 패밀리 사이즈 애플 파이 600g",
+    "src": "ai"
+  },
+  "Maggie Beer Cheddar Vintage 150g": {
+    "zh": "Maggie Beer 陳年切達起司 150克",
+    "ja": "Maggie Beer チェダー ビンテージ 150g",
+    "ko": "Maggie Beer 체다 빈티지 150g",
+    "src": "ai"
+  },
+  "Island Harvest Tasmania Panna Cotta With Raspberry Coulis 145g": {
+    "zh": "Island Harvest Tasmania 覆盆子醬奶酪 145克",
+    "ja": "Island Harvest Tasmania パンナコッタ ラズベリークーリ付き 145g",
+    "ko": "Island Harvest Tasmania 판나코타 라즈베리 퓌레 포함 145g",
+    "src": "ai"
+  },
+  "Primo Shredded Ham Twin Pack 300g": {
+    "zh": "Primo 雙包裝火腿絲 300克",
+    "ja": "Primo シュレッドハム ツインパック 300g",
+    "ko": "Primo 슈레드 햄 트윈 팩 300g",
+    "src": "ai"
+  },
+  "The Laughing Cow Cheese 16 Portions 256g": {
+    "zh": "The Laughing Cow 起司 16入 256克",
+    "ja": "The Laughing Cow チーズ 16ピース 256g",
+    "ko": "The Laughing Cow 치즈 16포션 256g",
+    "src": "ai"
+  },
+  "Peters Maxibon Honey Comb This 4 Pack 560mL": {
+    "zh": "Peters Maxibon 蜂窩脆餅冰淇淋 560毫升 4入",
+    "ja": "Peters Maxibon ハニカムアイスクリーム 560ml 4個入",
+    "ko": "Peters Maxibon 허니컴 아이스크림 560ml 4개입",
+    "src": "ai"
+  },
+  "Lean Cuisine Spaghetti Bolognese 280g": {
+    "zh": "Lean Cuisine 肉醬義大利麵 280克",
+    "ja": "Lean Cuisine ボロネーゼスパゲッティ 280g",
+    "ko": "Lean Cuisine 볼로네제 스파게티 280g",
+    "src": "ai"
+  },
+  "Impressed Ginger Ninja Juice 1L": {
+    "zh": "Impressed 薑汁忍者果汁 1公升",
+    "ja": "Impressed ジンジャーニンジャジュース 1L",
+    "ko": "Impressed 진저 닌자 주스 1L",
+    "src": "ai"
+  },
+  "Peters Oreo Ice Cream Tub 1.2L": {
+    "zh": "Peters Oreo 冰淇淋桶 1.2公升",
+    "ja": "Peters Oreo アイスクリームタブ 1.2L",
+    "ko": "Peters Oreo 아이스크림 컵 1.2L",
+    "src": "ai"
+  },
+  "Jindi Camembert 125g": {
+    "zh": "Jindi 卡門貝爾起司 125克",
+    "ja": "Jindi カマンベールチーズ 125g",
+    "ko": "Jindi 까망베르 치즈 125g",
+    "src": "ai"
+  },
+  "Farro Organic Spelt Smoky Bbq Chicken Pizza 470g": {
+    "zh": "Farro 有機斯佩ルト小麥煙燻烤雞披薩 470克",
+    "ja": "Farro オーガニックスペルト小麦 スモーキーBBQチキンピザ 470g",
+    "ko": "Farro 유기농 스펠트밀 스모키 BBQ 치킨 피자 470g",
+    "src": "ai"
+  },
+  "Yoplait Berry Punnet Yoghurt Strawberry Mixed Berries 6x160g 960g": {
+    "zh": "Yoplait 草莓綜合莓果優格 160克 x 6入 960克",
+    "ja": "Yoplait ベリーミックス ヨーグルト ストロベリー 160g x 6個入 960g",
+    "ko": "Yoplait 베리 믹스 요거트 딸기 160g x 6개입 960g",
+    "src": "ai"
+  },
+  "Yogo Chocolate Custard Pouch Choc Dessert Snack 120g": {
+    "zh": "Yogo 巧克力卡士達袋裝甜點零食 120克",
+    "ja": "Yogo チョコレートカスタード パウチ デザートスナック 120g",
+    "ko": "Yogo 초콜릿 커스터드 파우치 디저트 스낵 120g",
+    "src": "ai"
+  },
+  "Destination Italy Chocolate Hazelnut Gelato Tub 500mL": {
+    "zh": "Destination Italy 巧克力榛果義式冰淇淋桶 500毫升",
+    "ja": "Destination Italy チョコレートヘーゼルナッツ ジェラートタブ 500ml",
+    "ko": "Destination Italy 초콜릿 헤이즐넛 젤라또 컵 500ml",
+    "src": "ai"
+  },
+  "Meredith Dairy Whipped Goats Cheese 100g": {
+    "zh": "Meredith Dairy 打發山羊起司 100克",
+    "ja": "Meredith Dairy ホイップゴートチーズ 100g",
+    "ko": "Meredith Dairy 휘프 고트 치즈 100g",
+    "src": "ai"
+  },
+  "Core PowerFoods Loaded Mac N Cheese 350g": {
+    "zh": "Core PowerFoods 澎湃起司通心粉 350克",
+    "ja": "Core PowerFoods ローデッドマックンチーズ 350g",
+    "ko": "Core PowerFoods 로디드 맥앤치즈 350g",
+    "src": "ai"
+  },
+  "Sabrini Samosa 1.125kg": {
+    "zh": "Sabrini 印度咖哩角 1.125公斤",
+    "ja": "Sabrini サモサ 1.125kg",
+    "ko": "Sabrini 사모사 1.125kg",
+    "src": "ai"
+  },
+  "Divine Classic Dairy Dessert Creamy Caramel 2 Pack 150g": {
+    "zh": "Divine 經典香濃焦糖奶香甜點 150克 2入",
+    "ja": "Divine クラシック デージードッス クリーミーキャラメル 150g 2個入",
+    "ko": "Divine 클래식 데이지 디저트 크리미 카라멜 150g 2개입",
+    "src": "ai"
+  },
+  "The Yoghurt Shop Honey Spice Muesli Pod 170g": {
+    "zh": "The Yoghurt Shop 蜂蜜香料燕麥脆片優格杯 170克",
+    "ja": "The Yoghurt Shop ハニースパイス ミューズリーカップ 170g",
+    "ko": "The Yoghurt Shop 허니 스파이스 뮤즈리 컵 170g",
+    "src": "ai"
+  },
+  "YoPro High Protein Yoghurt No Added Sugar Salted Caramel 160g": {
+    "zh": "YoPro 高蛋白無添加糖海鹽焦糖優格 160克",
+    "ja": "YoPro 高タンパク ヨーグルト 砂糖不使用 塩キャラメル 160g",
+    "ko": "YoPro 고단백 요거트 무설탕 솔티드 카라멜 160g",
+    "src": "ai"
+  },
+  "Tasmanian Heritage Club Cheddar Smoked 140g": {
+    "zh": "Tasmanian Heritage 煙燻切達起司 140克",
+    "ja": "Tasmanian Heritage スモークチェダーチーズ 140g",
+    "ko": "Tasmanian Heritage 스모크 체다 치즈 140g",
+    "src": "ai"
+  },
+  "Sara Lee Frozen Chocolate Buttercake 350g": {
+    "zh": "Sara Lee 冷凍巧克力奶油蛋糕 350克",
+    "ja": "Sara Lee 冷凍チョコレートバターケーキ 350g",
+    "ko": "Sara Lee 냉동 초콜릿 버터케이크 350g",
     "src": "ai"
   }
 }
