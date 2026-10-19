@@ -117,7 +117,7 @@ function applyLanguage(lang) {
 
     updatePeriodBadges();
     renderSearchSuggestions();
-    try { renderFavPanel(); renderFavSearchButton(); renderAccountBox(); } catch (e) {}
+    try { renderFavPanel(); renderFavSearchButton(); } catch (e) {}
     renderRegionSelect();
 }
 
@@ -880,9 +880,8 @@ setInterval(renderLastUpdated, 60000);
 // =====================================================================
 //  我的常買 (regular items): matched against every week's specials.
 //  Saved with the 澳洲打工度假資訊平台 account service (window.OZWH, loaded from the hub):
-//  in this browser while signed out, in the Google account once signed in (the first sign-in
-//  moves this browser's list into the account). If the service cannot load, this browser keeps
-//  the list as before (FAV_KEY).
+//  sign-in is paused (2026-10-19), so the list stays in this browser. If the service cannot
+//  load, this browser keeps the list as before (FAV_KEY).
 // =====================================================================
 const FAV_KEY = 'favorites_v1';
 const FAV_MOVED_KEY = 'favorites_v1_moved';       // the old list has been handed to OZWH
@@ -957,7 +956,7 @@ function moveOldFavorites() {
     } catch (e) {}
     _favCache = null;
 }
-// Signed in / out, or the list changed (also on another tab of this site): draw everything again
+// The list changed (also on another tab of this site): draw everything again
 let _favRedrawTimer = null;
 function onFavoritesChanged() {
     _favCache = null;
@@ -968,7 +967,6 @@ function onFavoritesChanged() {
         updateModalFavButton();
         renderFavPanel();
         renderFavSearchButton();
-        renderAccountBox();
         const box = document.getElementById('favManager');
         if (box && !box.classList.contains('hidden')) openFavManager();
         if (favOnly) loadSpecials();
@@ -979,48 +977,7 @@ function initAccount() {
     if (!o) return;
     moveOldFavorites();
     o.onChange(onFavoritesChanged);
-    renderAccountButton();
     if (o.ready && o.ready.then) o.ready.then(() => { moveOldFavorites(); onFavoritesChanged(); });
-}
-// The sign-in box in "常購商品 › 管理": Google sign-in, or who is signed in, plus the hub's "我的收藏"
-function renderAccountButton() {
-    const btn = document.getElementById('accountBtn');
-    if (!btn) return;
-    const o = ozwh();
-    btn.classList.toggle('hidden', !o);
-    if (!o) return;
-    const u = o.user;
-    const label = t(u ? 'acct_head_account' : 'acct_head_login');
-    const txt = document.getElementById('accountBtnText');
-    if (txt) txt.textContent = label;
-    btn.title = label;
-    btn.setAttribute('aria-label', label);
-    btn.classList.toggle('is-signed-in', !!u);
-    const icon = btn.querySelector('.acct-head-icon');
-    if (icon) {
-        const pic = u && /^https:\/\//.test(u.picture || '') ? u.picture : '';
-        icon.innerHTML = pic ? `<img src="${pic.replace(/"/g, '&quot;')}" alt="" referrerpolicy="no-referrer">` : '<i class="fa-regular fa-user"></i>';
-    }
-}
-function renderAccountBox() {
-    renderAccountButton();
-    const box = document.getElementById('favAccount');
-    if (!box) return;
-    const o = ozwh();
-    if (!o) { box.classList.add('hidden'); return; }
-    box.classList.remove('hidden');
-    const esc = (v) => String(v || '').replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
-    const mySaves = `<a class="acct-link" href="https://au-working-holiday.pages.dev/account/" target="_blank" rel="noopener">${t('acct_my_saves')}<i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>`;
-    if (o.user) {
-        box.innerHTML = `
-            <p class="acct-text">${esc(t('acct_signed_in', { name: o.user.name || o.user.email || '' }))}</p>
-            <div class="acct-actions">${mySaves}<button type="button" class="btn-ghost acct-btn" onclick="window.OZWH && OZWH.logout()">${t('acct_logout')}</button></div>`;
-    } else {
-        box.innerHTML = `
-            <p class="acct-text">${t('acct_sync_hint')}</p>
-            <div class="acct-actions"><div id="favLoginBtn" class="acct-login"></div>${mySaves}</div>`;
-        try { o.renderLoginButton(document.getElementById('favLoginBtn')); } catch (e) {}
-    }
 }
 // Links from the hub's "我的收藏" page open the site with that search: ?q=...
 function applyUrlSearch() {
@@ -1133,7 +1090,6 @@ function renderFavPanel() {
             <div class="fav-hint">
                 <i class="fa-regular fa-heart"></i>
                 <span>${t('fav_hint')}</span>
-                ${ozwh() && !ozwh().user ? `<button type="button" class="toggle-pill shrink-0" onclick="openFavManager()">${t('acct_hint_btn')}</button>` : ''}
                 <button type="button" class="icon-btn border-0" aria-label="${t('aria_close')}" onclick="try{safeStore.setItem('fav_hint_dismissed','1')}catch(e){}; renderFavPanel()"><i class="fa-solid fa-xmark text-[12px]"></i></button>
             </div>`;
         panel.classList.remove('hidden');
@@ -1222,7 +1178,6 @@ function openFavManager() {
             </div>
             <button type="button" class="icon-btn shrink-0" aria-label="${t('fav_remove')}" onclick="removeFavoriteAt(${i})"><i class="fa-regular fa-trash-can text-[13px]"></i></button>
         </div>`).join('') : `<p class="text-[14px] t-ink-3 text-center py-10">${t('fav_empty')}</p>`;
-    renderAccountBox();
     const wasHidden = box.classList.contains('hidden');
     box.classList.remove('hidden');
     document.getElementById('favManagerBackdrop').classList.remove('hidden');

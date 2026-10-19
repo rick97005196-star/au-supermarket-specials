@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="18 20.4 97.2 97.2" role="img" aria-label="澳洲打工度假資訊平台">
+  <g stroke="#2A2F36" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+    <!-- 提把 -->
+    <path d="M49 34C49 22 71 22 71 34" fill="none"/>
+    <!-- 兩側肩帶 -->
+    <path d="M31 48C22 58 22 82 31 94" fill="none" stroke-width="3.5"/>
+    <path d="M89 48C98 58 98 82 89 94" fill="none" stroke-width="3.5"/>
+    <!-- 背包主體 -->
+    <rect x="30" y="32" width="60" height="72" rx="18" fill="#5E9E5B"/>
+    <!-- 上蓋 -->
+    <path d="M30 52C30 40 40 32 52 32H68C80 32 90 40 90 52V56C78 62 42 62 30 56Z" fill="#4C8A4A"/>
+    <!-- 前口袋（臉） -->
+    <rect x="38" y="64" width="44" height="31" rx="9" fill="#86C080"/>
+  </g>
+  <!-- 扣環 -->
+  <rect x="55.5" y="53" width="9" height="9" rx="2" fill="#FFD45C" stroke="#2A2F36" stroke-width="3"/>
+  <!-- 臉 -->
+  <ellipse cx="52" cy="76" rx="4.2" ry="5.2" fill="#2A2F36"/>
+  <ellipse cx="68" cy="76" rx="4.2" ry="5.2" fill="#2A2F36"/>
+  <circle cx="53.5" cy="74" r="1.5" fill="#fff"/>
+  <circle cx="69.5" cy="74" r="1.5" fill="#fff"/>
+  <path d="M55 84q5 5.5 10 0" fill="none" stroke="#2A2F36" stroke-width="3" stroke-linecap="round"/>
+  <!-- 綁在下方的睡墊 -->
+  <rect x="22" y="98" width="76" height="15" rx="7.5" fill="#E7C99A" stroke="#2A2F36" stroke-width="4"/>
+  <path d="M40 98.5V112.5M80 98.5V112.5" stroke="#2A2F36" stroke-width="3" stroke-linecap="round"/>
+  <!-- 南十字星小吊牌 -->
+  <g transform="rotate(-12 96 46)">
+    <rect x="83" y="34" width="26" height="24" rx="6" fill="#FFD84D" stroke="#2A2F36" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M96 39.5 97.8 44.2 102.5 46 97.8 47.8 96 52.5 94.2 47.8 89.5 46 94.2 44.2Z" fill="#2A2F36"/>
+  </g>
+</svg>

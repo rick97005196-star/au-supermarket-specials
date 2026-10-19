@@ -96,10 +96,21 @@ button, a, input, select { -webkit-tap-highlight-color: transparent; }
     transition: border-color .2s ease, background .2s ease;
 }
 .site-header.is-scrolled { border-bottom-color: var(--line); }
-.hub-bar { background: var(--surface); border-bottom: 1px solid var(--line); }
-.hub-back { display: inline-flex; align-items: center; gap: 6px; min-height: 40px; font-size: 13px; color: var(--ink-2); text-decoration: none; }
-.hub-back:hover { color: var(--ink); text-decoration: underline; }
-.hub-back i { font-size: 12px; }
+/* 澳洲打工度假資訊平台 bar — copied from _品牌設計/品牌規範.md #6 (same on all sites, own system font);
+   only change: the flex row lives in .ozwh-hubnav-in so it lines up with the header's centred width */
+.ozwh-hubnav{background:#fff;border-top:4px solid #FFD45C;border-bottom:1.5px solid #D9D7CF;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang TC","Microsoft JhengHei","Noto Sans TC",Roboto,sans-serif;line-height:1.3}
+.ozwh-hubnav-in{display:flex;align-items:center;gap:12px;min-height:52px;padding-top:6px;padding-bottom:6px}
+.ozwh-hubnav-crumb{display:flex;align-items:center;flex-wrap:wrap;gap:6px;min-width:0;font-size:14px}
+.ozwh-hubnav-crumb a{display:inline-flex;align-items:center;gap:6px;min-height:40px;color:#2A2F36;font-weight:800;text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:4px;text-decoration-color:#FFD45C}
+.ozwh-hubnav-crumb img{width:26px;height:26px;flex:none}
+.ozwh-hubnav-sep{color:#9AA0A6}
+.ozwh-hubnav-here{color:#5B6169}
+.ozwh-hubnav-btn{margin-left:auto;display:inline-flex;align-items:center;gap:6px;height:40px;padding:0 14px;border:2px solid #2A2F36;border-radius:6px;background:#fff;color:#2A2F36;font-size:14px;font-weight:700;text-decoration:none;white-space:nowrap}
+.ozwh-hubnav-btn:hover{background:#F6F5F1}
+.ozwh-hubnav-btn svg{width:18px;height:18px;flex:none;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.ozwh-hubnav a:focus-visible{outline:2px solid #2A2F36;outline-offset:2px}
+@media (max-width:560px){.ozwh-hubnav-sep,.ozwh-hubnav-here{display:none}}
+@media (max-width:360px){.ozwh-hubnav-in{gap:8px}.ozwh-hubnav-btn{padding:0 10px}}
 .brand-mark { width: 36px; height: 36px; border-radius: 10px; object-fit: cover; box-shadow: 0 0 0 1px var(--line); }
 .icon-btn {
     width: 38px; height: 38px; border-radius: 999px;
@@ -1388,24 +1399,5 @@ html:root :is(.stat-label, #statsRow .stat-label, .seg-btn .seg-meta, .eyebrow) 
 /* Top disclaimer: link to the full disclaimer (shared rule 5) */
 .top-disclaimer .disc-more { margin-left: 4px; white-space: nowrap; color: var(--ink); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
 
-/* Sign-in box in 常購商品 › 管理 (Google sign-in from the 澳洲打工度假資訊平台 account service) */
+/* 常購商品 › 管理: the list lives in this browser only (sign-in paused 2026-10-19) */
 .fav-account { margin: 12px 16px 0; padding: 12px 14px; border-radius: 12px; background: var(--surface-2); font-size: 13px; line-height: 1.6; color: var(--ink-2); }
-.fav-account .acct-text { margin-bottom: 8px; }
-.fav-account .acct-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; }
-.fav-account .acct-login { min-height: 40px; display: flex; align-items: center; }
-.fav-account .acct-link { display: inline-flex; align-items: center; min-height: 40px; color: var(--ink); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
-.fav-account .acct-link i { font-size: 11px; margin-left: 4px; }
-.fav-account .acct-btn { min-height: 40px; padding: 0 14px; font-size: 13px; }
-
-/* Header: sign-in / account (opens 常購商品 with the sign-in box) */
-html:root .acct-head {
-    display: inline-flex; align-items: center; gap: 6px; height: 38px; min-width: 38px; padding: 0 10px;
-    justify-content: center; border-radius: var(--r-box); background: var(--ctl-surface); color: var(--ink);
-    box-shadow: 0 0 0 1px var(--ctl-ring), var(--ctl-shadow); font-size: 13px; font-weight: 500; white-space: nowrap;
-}
-html:root .acct-head.hidden { display: none; }
-html:root .acct-head:hover { box-shadow: 0 0 0 1px var(--ctl-ring-strong), var(--ctl-shadow-hover); }
-.acct-head-icon { display: inline-flex; width: 20px; height: 20px; align-items: center; justify-content: center; font-size: 14px; }
-.acct-head-icon img { width: 20px; height: 20px; border-radius: 999px; object-fit: cover; }
-@media (max-width: 639px) { html:root .acct-head { padding: 0; width: 38px; } }
-html:root .fav-hint .toggle-pill { min-height: 40px; }
