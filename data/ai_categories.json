@@ -1513,6 +1513,16 @@
   "aisle": "Protein & Meals Convenience Meals",
   "date": "2026-10-19"
  },
+ "Core Powerfoods Parma & Mash 350g": {
+  "category": "frozen",
+  "aisle": "Protein & Meals Convenience Meals",
+  "date": "2026-10-19"
+ },
+ "Core Powerfoods Shepherds Pie 350g": {
+  "category": "frozen",
+  "aisle": "Protein & Meals Convenience Meals",
+  "date": "2026-10-19"
+ },
  "Coriander Bunch": {
   "category": "produce",
   "aisle": "ALDI Fruits Vegetables",
@@ -1791,6 +1801,11 @@
   "category": "health_vitamins",
   "aisle": "Health & Wellness     First Aid & Medicinal   HEALTH CARE",
   "date": "2026-10-12"
+ },
+ "Denada No Added Sugar Caramel & Dark Choc Pops 4 Pack 360mL": {
+  "category": "frozen",
+  "aisle": "Ice Cream Better For You Multi",
+  "date": "2026-10-19"
  },
  "Dettol 2 In 1 Hands & Surfaces Antibacterial Wipes 60 pack": {
   "category": "household",
@@ -2503,6 +2518,11 @@
  "GOLDENVALE Just Bran 530g": {
   "category": "pantry",
   "aisle": "ALDI Pantry",
+  "date": "2026-10-19"
+ },
+ "GYM BOD Caramel Protein Choc Dipped Sticks 4 Pack 360mL": {
+  "category": "frozen",
+  "aisle": "Ice Cream Better For You Multi",
   "date": "2026-10-19"
  },
  "Garlic 3 Pack": {
@@ -3374,6 +3394,11 @@
   "category": "pantry",
   "aisle": "Lunch Box , Pantry , Back to School , Dinner     Breakfast & Spreads , Breakfast   BREAKFAST FOODS",
   "date": "2026-10-12"
+ },
+ "Juicies Watermelon 10 Pack 1L": {
+  "category": "frozen",
+  "aisle": "Ice Cream Refreshment Ice Mult",
+  "date": "2026-10-19"
  },
  "Just For Men Moustache & Beard In Colour Dark Brown 1 Pack": {
   "category": "health_vitamins",
@@ -4905,6 +4930,11 @@
   "date": "2026-10-19"
  },
  "Nanna's Banoffee Snack Pies 4 Pack 450g": {
+  "category": "frozen",
+  "aisle": "Frozen Desserts Hot Eating Desserts",
+  "date": "2026-10-19"
+ },
+ "Nanna's Salted Caramel Snack Pies 4 Pack 450g": {
   "category": "frozen",
   "aisle": "Frozen Desserts Hot Eating Desserts",
   "date": "2026-10-19"
@@ -6659,6 +6689,11 @@
   "aisle": "Pantry     Condiments   CONDIMENTS",
   "date": "2026-10-12"
  },
+ "Sara Lee Mini Cups French Vanilla Cheesecake 4 Pack 320g": {
+  "category": "frozen",
+  "aisle": "Frozen Desserts Cheesecakes",
+  "date": "2026-10-19"
+ },
  "Saunders Malt Extract 1kg": {
   "category": "pantry",
   "aisle": "Pantry     Baking   COOKING NEEDS",
@@ -6793,6 +6828,11 @@
   "category": "pantry",
   "aisle": "Pantry , International Foods     International Foods , Asian   ETHNIC / GOURMET FOOD",
   "date": "2026-10-12"
+ },
+ "Soyco Firm Tofu 450g": {
+  "category": "dairy_eggs",
+  "aisle": "Chilled Vegetarian Tofu",
+  "date": "2026-10-19"
  },
  "Soyco Fried Flavoured Tofu Sesame Soy Ginger 200g": {
   "category": "dairy_eggs",
@@ -6953,10 +6993,20 @@
   "aisle": "food and beverage groceries dairy",
   "date": "2026-10-12"
  },
+ "Tasmanian Heritage Little Entertainers Havarti 80g": {
+  "category": "dairy_eggs",
+  "aisle": "Gourmet Cheese Round Eye",
+  "date": "2026-10-19"
+ },
  "Tasmanian Mountain Water 10 Litre": {
   "category": "drinks",
   "aisle": "food and beverage groceries drinks",
   "date": "2026-10-12"
+ },
+ "Tasmanian Triple Pate 190g": {
+  "category": "dairy_eggs",
+  "aisle": "Gourmet Cheese Pate",
+  "date": "2026-10-19"
  },
  "Tasti Nut Bar Dark Choc & Cranberry 420g": {
   "category": "snacks",
@@ -7404,6 +7454,11 @@
   "category": "health_vitamins",
   "aisle": "Vitamins Muscle Support",
   "date": "2026-10-13"
+ },
+ "Vitasoy Soy Milky Low Sugar 2% Fat 1L": {
+  "category": "drinks",
+  "aisle": "Dy Milk Plant",
+  "date": "2026-10-19"
  },
  "Vitasoy Soy Milky Regular Chilled 1L": {
   "category": "dairy_eggs",
