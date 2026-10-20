@@ -6,7 +6,7 @@
     <title>澳洲超市特價資訊 | AU Supermarket Specials</title>
     <meta name="description" content="每週彙整 Woolworths、Coles、ALDI 三大超市的店內特價與半價商品，可依州別（QLD、NSW、VIC…）瀏覽，並以中、英、日、韓文搜尋商品。">
     <link rel="canonical" href="https://au-supermarket-specials.pages.dev/">
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"澳洲超市特價優惠 AU Supermarket Specials","url":"https://au-supermarket-specials.pages.dev/","inLanguage":["zh-TW","en","ja","ko"],"description":"Weekly in-store specials and half-price deals from Woolworths, Coles and ALDI in Australia."}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"澳洲超市特價資訊","url":"https://au-supermarket-specials.pages.dev/","inLanguage":["zh-TW","en","ja","ko"],"description":"Weekly in-store specials and half-price deals from Woolworths, Coles and ALDI in Australia."}</script>
 
     <!-- Disable Browser Cache for Instant Updates -->
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
@@ -68,7 +68,7 @@
     <!-- ===================== Header ===================== -->
     <header id="siteHeader" class="site-header">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-3">
-            <a href="./" class="brand-link flex items-center gap-3 min-w-0">
+            <a href="./" class="brand-link flex items-center gap-3 min-w-0" aria-label="澳洲超市特價資訊">
                 <img src="./logo-96.png?v=3" alt="" width="36" height="36" class="brand-mark shrink-0">
                 <div class="min-w-0 leading-tight">
                     <div data-i18n="app_title" class="text-[15px] font-semibold t-ink truncate">澳洲超市特價資訊</div>
@@ -97,7 +97,7 @@
 
                 <button id="themeBtn" type="button" class="icon-btn theme-btn" aria-pressed="false" aria-label="深色模式"><i class="fa-solid fa-moon i-moon" aria-hidden="true"></i><i class="fa-solid fa-sun i-sun" aria-hidden="true"></i></button>
 
-                <button onclick="toggleShoppingDrawer()" class="cart-btn" aria-label="Shopping list">
+                <button onclick="toggleShoppingDrawer()" class="cart-btn" aria-label="採買清單">
                     <i class="fa-solid fa-basket-shopping text-[13px]"></i>
                     <span data-i18n="shopping_manifest" class="hidden sm:inline">我的採買清單</span>
                     <span id="cartCountBadge" class="cart-count num">0</span>
@@ -122,7 +122,7 @@
     <div class="top-disclaimer" role="note">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
-            <span><b data-i18n="disclaimer_title">免責聲明</b> <span class="disc-long" data-i18n="disclaimer_text">本網站特價資訊僅供參考，實際商品售價、優惠檔期與庫存狀況均以各超市實體門市現場及官方最新公告為準。</span><span class="disc-short" data-i18n="disclaimer_short">特價資訊僅供參考，請以門市實際標示為準</span> <a class="disc-more" href="https://au-working-holiday.pages.dev/disclaimer/" target="_blank" rel="noopener" data-i18n="disclaimer_more">閱讀完整說明</a></span>
+            <span><b data-i18n="disclaimer_title">免責聲明</b> <span class="disc-long" data-i18n="disclaimer_text">本網站特價資訊僅供參考，實際商品售價、優惠檔期與庫存狀況均以各超市實體門市現場及官方最新公告為準。</span><span class="disc-short" data-i18n="disclaimer_short">特價資訊僅供參考，請以門市實際標示為準</span> <a class="disc-more" href="https://au-working-holiday.pages.dev/disclaimer/" data-i18n="disclaimer_more">閱讀完整說明</a></span>
         </div>
     </div>
 
@@ -137,7 +137,7 @@
                     </span>
                     <label class="region-chip" id="regionChip">
                         <i class="fa-solid fa-location-dot"></i>
-                        <select id="regionSelect" class="region-select" aria-label="Region" onchange="setRegion(this.value)">
+                        <select id="regionSelect" class="region-select" aria-label="選擇地區" onchange="setRegion(this.value)">
                             <option value="QLD">昆士蘭 QLD</option>
                         </select>
                     </label>
@@ -223,7 +223,7 @@
             <div class="relative">
                 <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 t-ink-3 text-[14px]"></i>
                 <input type="search" id="searchInput" placeholder="搜尋特價商品" enterkeyhint="search" class="search-field" oninput="debounceSearch()" autocomplete="off" />
-                <button id="clearSearchBtn" onclick="clearSearch()" class="hidden absolute right-3 top-1/2 -translate-y-1/2 t-ink-3 hover:t-ink p-1" aria-label="Clear">
+                <button id="clearSearchBtn" onclick="clearSearch()" class="hidden absolute right-3 top-1/2 -translate-y-1/2 t-ink-3 hover:t-ink p-1" aria-label="清除搜尋">
                     <i class="fa-solid fa-circle-xmark text-[15px]"></i>
                 </button>
             </div>
@@ -248,7 +248,7 @@
                         <i class="fa-solid fa-scale-balanced text-[12px]"></i>
                         <span data-i18n="cmp_only">三家比價</span>
                     </button>
-                    <select id="sortSelect" onchange="loadSpecials()" class="select-pill flex-1 sm:flex-none min-w-0" aria-label="Sort">
+                    <select id="sortSelect" onchange="loadSpecials()" class="select-pill flex-1 sm:flex-none min-w-0" aria-label="排序方式">
                         <option value="relevance" data-i18n="sort_relevance">依相關度</option>
                         <option value="popular" data-i18n="sort_popular">依熱門程度</option>
                         <option value="save_desc" data-i18n="sort_save_desc">依折扣金額</option>
@@ -279,7 +279,7 @@
                     </span>
                     <i class="fa-solid fa-chevron-down text-[12px] notice-chevron"></i>
                 </button>
-                <button onclick="dismissAnnouncement()" class="icon-btn border-0 mr-2 shrink-0" title="關閉公告" aria-label="Close">
+                <button onclick="dismissAnnouncement()" class="icon-btn border-0 mr-2 shrink-0" title="關閉公告" aria-label="關閉公告">
                     <i class="fa-solid fa-xmark text-[13px]"></i>
                 </button>
             </div>
@@ -409,7 +409,7 @@
                 <h2 class="text-[17px] font-semibold t-ink" data-i18n="shopping_manifest">我的採買清單</h2>
                 <p class="text-[12px] t-ink-3" data-i18n="shopping_subtitle">依超市分類整理，方便於門市逐項採買</p>
             </div>
-            <button onclick="toggleShoppingDrawer()" class="icon-btn" aria-label="Close"><i class="fa-solid fa-xmark text-[14px]"></i></button>
+            <button onclick="toggleShoppingDrawer()" class="icon-btn" aria-label="關閉採買清單"><i class="fa-solid fa-xmark text-[14px]"></i></button>
         </div>
 
         <div id="shoppingListContainer" class="flex-1 overflow-y-auto p-4 sm:p-5 space-y-3"></div>
@@ -457,13 +457,13 @@
                     <span id="modalHalfPriceBadge" class="hidden tag is-sale">½ 50% OFF</span>
                     <span id="modalPopularBadge" class="hidden tag is-next"><i class="fa-solid fa-star text-[9px]"></i> <span data-i18n="popular_badge">熱門暢銷</span></span>
                 </div>
-                <button onclick="closeProductModal()" class="icon-btn" aria-label="Close"><i class="fa-solid fa-xmark text-[14px]"></i></button>
+                <button onclick="closeProductModal()" class="icon-btn" aria-label="關閉商品資訊"><i class="fa-solid fa-xmark text-[14px]"></i></button>
             </div>
 
             <div class="p-5 sm:p-6 overflow-y-auto space-y-5">
                 <div class="flex flex-col sm:flex-row gap-5 items-center sm:items-start">
                     <div class="relative w-40 h-40 sm:w-48 sm:h-48 rounded-2xl p-4 flex items-center justify-center shrink-0" style="background:#fff;border:1px solid var(--line)">
-                        <img id="modalProductImg" alt="Product Image" class="max-h-full max-w-full object-contain" />
+                        <img id="modalProductImg" alt="商品圖片" class="max-h-full max-w-full object-contain" />
                         <div id="modalHalfPriceOverlayBadge" class="hidden absolute top-2.5 left-2.5 pointer-events-none">
                             <img id="modalHalfPriceImg" alt="1/2 Price" class="w-14 h-14 object-contain" />
                         </div>
@@ -560,7 +560,7 @@
     <div id="favManager" class="panel fixed z-50 hidden left-0 right-0 bottom-0 sm:left-1/2 sm:right-auto sm:bottom-auto sm:top-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2 w-full sm:max-w-md rounded-t-3xl sm:rounded-3xl flex flex-col max-h-[80vh]" style="box-shadow: var(--shadow-lg)" role="dialog" aria-modal="true">
         <div class="px-5 py-4 flex items-center justify-between border-b b-line">
             <h2 class="text-[17px] font-semibold t-ink"><i class="fa-solid fa-heart t-sale mr-1.5"></i><span data-i18n="fav_title">常購商品</span></h2>
-            <button onclick="closeFavManager()" class="icon-btn" aria-label="Close"><i class="fa-solid fa-xmark text-[14px]"></i></button>
+            <button onclick="closeFavManager()" class="icon-btn" aria-label="關閉常購商品"><i class="fa-solid fa-xmark text-[14px]"></i></button>
         </div>
         <!-- Sign-in is paused (2026-10-19): the list lives in this browser only -->
         <p id="favAccount" class="fav-account" data-i18n="fav_local_note">常購商品只存在這台裝置的瀏覽器（清除瀏覽紀錄或換裝置就會不見）。</p>
@@ -579,7 +579,7 @@
                 <h2 id="fbTitle" class="text-[17px] font-semibold t-ink"><i class="fa-regular fa-comment-dots mr-1.5"></i><span data-i18n="fb_entry_title">意見回饋</span></h2>
                 <p class="text-[12px] t-ink-3" data-i18n="fb_anon_note">本表單完全匿名，無須填寫姓名或電子信箱，亦不記錄個人身分</p>
             </div>
-            <button onclick="closeFeedback()" class="icon-btn" aria-label="Close"><i class="fa-solid fa-xmark text-[14px]"></i></button>
+            <button onclick="closeFeedback()" class="icon-btn" aria-label="關閉意見回饋"><i class="fa-solid fa-xmark text-[14px]"></i></button>
         </div>
         <form id="feedbackForm" class="p-4 sm:p-5 space-y-3 overflow-y-auto" onsubmit="event.preventDefault(); sendFeedback();">
             <div class="flex flex-wrap gap-2" role="radiogroup" id="fbTypes">
@@ -603,7 +603,7 @@
     </button>
 
     <!-- Back to top -->
-    <button id="backToTopBtn" onclick="scrollToTop()" title="回到頂部" class="to-top translate-y-16 opacity-0 pointer-events-none" aria-label="Back to top">
+    <button id="backToTopBtn" onclick="scrollToTop()" title="回到頂部" class="to-top translate-y-16 opacity-0 pointer-events-none" aria-label="回到頂部">
         <i class="fa-solid fa-arrow-up text-[13px]"></i>
     </button>
 

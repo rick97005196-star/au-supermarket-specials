@@ -153,7 +153,7 @@ html.dark .ozwh-hubnav a:focus-visible{outline-color:#ECEAE4}
     color: var(--ink); font-size: 13px; font-weight: 600; white-space: nowrap; cursor: pointer;
 }
 .lang-pill > .fa-globe { color: var(--accent); font-size: 14px; }
-.lang-pill .lang-caret { font-size: 9px; color: var(--ink-3); }
+.lang-pill .lang-caret { font-size: 11px; color: var(--ink-3); }
 .lang-pill select {
     position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer;
     appearance: none; -webkit-appearance: none; border: 0; font-size: 16px; /* 16px: no zoom-in on iPhone */
@@ -237,7 +237,7 @@ html.dark .ozwh-hubnav a:focus-visible{outline-color:#ECEAE4}
     display: inline-flex; align-items: center; justify-content: center;
     background: var(--next-soft); color: var(--next); font-size: 13px;
 }
-.notice-badge { font-size: 10px; font-weight: 600; padding: 2px 8px; border-radius: 999px; background: var(--next-soft); color: var(--next); white-space: nowrap; }
+.notice-badge { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 999px; background: var(--next-soft); color: var(--next); white-space: nowrap; }
 .notice-chevron { transition: transform .2s ease; color: var(--ink-3); }
 .notice.is-open .notice-chevron { transform: rotate(180deg); }
 .notice-body { display: none; padding: 0 16px 16px 60px; }
@@ -336,7 +336,7 @@ html.dark .p-media { background: #f4f3ef; border-bottom-color: transparent; }
 .p-meta { display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--ink-3); min-width: 0; }
 .p-meta .p-store { display: inline-flex; align-items: center; gap: 5px; font-weight: 600; color: var(--ink-2); flex-shrink: 0; }
 .p-meta .sep { opacity: .5; }
-.p-meta .p-cat { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.p-meta .p-cat { white-space: normal; overflow-wrap: anywhere; }
 .p-title {
     font-size: 14px; font-weight: 600; line-height: 1.4; color: var(--ink);
     display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; min-height: 2.8em;
@@ -401,7 +401,7 @@ html.dark .p-media { background: #f4f3ef; border-bottom-color: transparent; }
 .list-section { background: var(--surface-2); border-radius: 14px; padding: 12px; }
 .list-item { background: var(--surface); border-radius: 12px; padding: 10px; display: flex; align-items: center; gap: 10px; }
 .store-label { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; color: var(--ink); }
-.tag { font-size: 10px; font-weight: 600; padding: 2px 7px; border-radius: 999px; background: var(--surface-2); color: var(--ink-2); white-space: nowrap; }
+.tag { font-size: 11px; font-weight: 600; padding: 2px 7px; border-radius: 999px; background: var(--surface-2); color: var(--ink-2); white-space: nowrap; }
 .tag.is-next { background: var(--next-soft); color: var(--next); }
 .tag.is-sale { background: var(--sale-soft); color: var(--sale); }
 .tag.is-sale.is-everyday { background: var(--accent-soft); color: var(--accent-text); }
@@ -581,7 +581,7 @@ input[type="search"]::-webkit-search-cancel-button { -webkit-appearance: none; }
 @media (max-width: 370px) {
     .brand-link [data-i18n="app_title"] { display: none; }   /* logo only on very narrow phones */
     .stats-row .stat-value { font-size: 17px; }
-    .stats-row .stat-label { font-size: 10.5px; gap: 4px; }
+    .stats-row .stat-label { font-size: 11px; gap: 4px; }
 }
 .region-select option { color: #1a1a1a; background: #fff; }
 @media (max-width: 640px) { .region-chip { height: 34px; font-size: 13px; } }
@@ -919,7 +919,7 @@ html.dark .cat-grid .chip, html.dark .chip { background: var(--surface); box-sha
 @media (min-width: 640px) { #productsGrid { gap: 20px; } }
 .p-media { padding: 16%; }
 .p-half { top: 10px; left: 10px; width: 26%; max-width: 46px; min-width: 32px; }
-.p-flag { top: 10px; right: 10px; font-size: 10px; font-weight: 600; padding: 3px 7px; background: rgba(255,255,255,.85); color: var(--next); }
+.p-flag { top: 10px; right: 10px; font-size: 11px; font-weight: 600; padding: 3px 7px; background: rgba(255,255,255,.85); color: var(--next); }
 .p-flag i { display: none; }
 .p-fav { width: 30px; height: 30px; right: 10px; bottom: 10px; font-size: 13px;
     background: rgba(255,255,255,.8); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
@@ -1023,7 +1023,7 @@ html.dark .qty-btn:active { background: rgba(0,0,0,.1); }
 .p-aldi i { font-size: 11px; margin-top: 2px; flex-shrink: 0; }
 .p-aldi.is-upcoming { color: var(--next); }
 .p-aldi-tag {
-    position: absolute; z-index: 2; top: 10px; left: 10px; font-size: 10px; font-weight: 700; letter-spacing: .01em;
+    position: absolute; z-index: 2; top: 10px; left: 10px; font-size: 11px; font-weight: 700; letter-spacing: .01em;
     padding: 3px 8px; border-radius: 999px; background: #00205b; color: #fff;
 }
 .p-aldi-tag.is-saver { background: #f5a800; color: #1d1d1f; }

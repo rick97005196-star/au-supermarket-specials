@@ -805,7 +805,7 @@ function updateStatsDisplay() {
     }
     const nextBadgeEl = document.getElementById('periodDateNextBadge');
     if (nextBadgeEl) {
-        if (nextData.total > 0 && nextDateStr && !nextDateStr.includes('尚未') && !nextDateStr.includes('公佈')) {
+        if (nextData.total > 0 && nextDateStr && !nextDateStr.includes('尚未')) {
             nextBadgeEl.textContent = `(${nextDateStr.replace(/\s20\d\d\b/g, '')})`;
         } else {
             nextBadgeEl.textContent = t('not_released_yet');
@@ -818,7 +818,7 @@ function updateStatsDisplay() {
     if (regionInfo) activeInfo = Object.assign({}, activeInfo, regionInfo);
     let activeRangeText = activeInfo.date_range || (currentPeriod === 'current' ? t('current_cycle') : t('next_cycle'));
     if (currentPeriod === 'next' && (!activeInfo.total || activeInfo.total === 0)) {
-        activeRangeText = currentLang === 'zh' ? '尚未公布（預計週二公布）' : (currentLang === 'ja' ? '未公開（火曜公開予定）' : (currentLang === 'ko' ? '미공개 (화요일 공개 예정)' : 'Not Released Yet'));
+        activeRangeText = currentLang === 'zh' ? '尚未公布（通常週一或週二公布）' : (currentLang === 'ja' ? '未公開（火曜公開予定）' : (currentLang === 'ko' ? '미공개 (화요일 공개 예정)' : 'Not Released Yet'));
     }
     document.getElementById('activeDateRange').textContent = formatHeroDateRange(activeRangeText);
 
@@ -2016,7 +2016,7 @@ async function loadSpecials() {
             const valOf = (it) => { const vc = valueCompare(it, staticSpecials); return vc ? vc.mine.value : _perItemPrice(it); };
             const half = discountOnly ? filtered.filter(isItemHalfPrice) : [];
             const groups = new Map();
-            for (const it of (half.length ? half : filtered)) {
+            for (const it of (discountOnly ? half : filtered)) {
                 const k = keyOf(it);
                 if (!groups.has(k)) groups.set(k, { key: k, items: [], stores: new Set() });
             }
@@ -2541,7 +2541,7 @@ function createProductCardElement(item) {
     card.innerHTML = `
         <div class="p-media">
             ${halfPriceBadgeSrc ? `
-                <div class="p-half"><img src="${halfPriceBadgeSrc}" alt="1/2 Price" /></div>
+                <div class="p-half"><img src="${halfPriceBadgeSrc}" alt="半價" /></div>
             ` : ''}
             ${aldiInfo ? `<span class="p-aldi-tag ${aldiInfo.kind === 'saver' ? 'is-saver' : ''}">${aldiInfo.kind === 'saver' ? t('aldi_tag_saver') : t('aldi_tag_buy')}</span>` : ''}
             ${isItemPopular(item) ? `
@@ -2789,7 +2789,7 @@ function openProductModal(item) {
 
     // Dates (ALDI: the deal's own day instead of the week)
     const _aldi = aldiDateInfo(item);
-    document.getElementById('modalDateRange').textContent = _aldi ? _aldi.long : (item.date_range || 'Active Specials');
+    document.getElementById('modalDateRange').textContent = _aldi ? _aldi.long : (item.date_range || (currentLang === 'zh' ? '本週特價' : 'Active Specials'));
 
     // Supermarket Price Lockup in Modal
     const p = parseSupermarketPrice(item.price_display, item.price);
@@ -3423,7 +3423,7 @@ async function addToShoppingList(item) {
             body: JSON.stringify(payload)
         });
         if (res.ok) {
-            showToast(`${t('added')}: ${item.title.substring(0, 18)}...`);
+            showToast(`${t('added')}: ${item.title.substring(0, 18)}…`);
             loadShoppingList();
             return;
         }
@@ -3435,7 +3435,7 @@ async function addToShoppingList(item) {
     if (existing) {
         existing.quantity = Math.min(99, (parseInt(existing.quantity, 10) || 1) + 1);
         saveLocalShoppingList(items);
-        showToast(`${t('added')}: ${item.title.substring(0, 18)}... × ${existing.quantity}`);
+        showToast(`${t('added')}: ${item.title.substring(0, 18)}… × ${existing.quantity}`);
         loadShoppingList();
         return;
     }
@@ -3443,7 +3443,7 @@ async function addToShoppingList(item) {
     payload.is_bought = false;
     items.push(payload);
     saveLocalShoppingList(items);
-    showToast(`${t('added')}: ${item.title.substring(0, 18)}...`);
+    showToast(`${t('added')}: ${item.title.substring(0, 18)}…`);
     loadShoppingList();
 }
 
@@ -3483,7 +3483,7 @@ async function deleteShoppingItem(id) {
 }
 
 async function clearShoppingList() {
-    if (!confirm(t('clear_manifest') + '?')) return;
+    if (!confirm(currentLang === 'zh' ? '確定要清空採買清單？' : t('clear_manifest') + '?')) return;
     try {
         const res = await apiFetch('/api/shopping-list', { method: 'DELETE' });
         if (res.ok) {
@@ -3542,13 +3542,13 @@ async function copyShoppingList() {
         await navigator.clipboard.writeText(text);
         showToast(t('copied'));
     } catch (e) {
-        showToast('Copy failed', 'fa-circle-xmark', true);
+        showToast(currentLang === 'zh' ? '複製失敗，請手動選取文字' : 'Copy failed', 'fa-circle-xmark', true);
     }
 }
 
 async function triggerUpdate() {
     if (isUpdating) return;
-    if (!confirm(t('update_feed') + '?')) return;
+    if (!confirm(currentLang === 'zh' ? '確定要更新型錄？' : t('update_feed') + '?')) return;
 
     try {
         const res = await apiFetch('/api/update?pages=10', { method: 'POST' });
@@ -3556,7 +3556,7 @@ async function triggerUpdate() {
         showToast(t('updating'));
         checkUpdateStatus();
     } catch (e) {
-        showToast('Update failed', 'fa-circle-xmark', true);
+        showToast(currentLang === 'zh' ? '更新失敗，請稍後再試' : 'Update failed', 'fa-circle-xmark', true);
     }
 }
 
@@ -3634,6 +3634,9 @@ function renderAnnouncement() {
     const linkUrl = cachedAnnouncement.link_url || langData.link_url;
     if (linkUrl && linkUrl.trim()) {
         linkElem.href = linkUrl;
+        // 自家網站同分頁開啟，外部網站才開新分頁
+        let own = false; try { own = /\.pages\.dev$/.test(new URL(linkUrl, location.href).hostname); } catch (e) {}
+        linkElem.target = own ? '_self' : '_blank';
         linkText.textContent = langData.link_text || '了解更多';
         linkElem.classList.remove('hidden');
     } else {
