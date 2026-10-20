@@ -133961,11 +133961,11 @@
     "qa_tries": 1
   },
   "Twinings Australian Afternoon Tea Bags 10 Pack 20g": {
-    "zh": "Twinings 澳洲下午茶茶包 10入",
-    "ja": "Twinings オーストラリアンアフタヌーンティー ティーバッグ 10袋入",
-    "ko": "Twinings 호주식 애프터눈 티 티백 10개입",
+    "zh": "Twinings 澳洲下午茶茶包 20克（10入）",
+    "ja": "Twinings オーストラリアンアフタヌーンティー ティーバッグ 20g（10個入）",
+    "ko": "Twinings 호주식 애프터눈 티 티백 20g（10개입）",
     "src": "ai",
-    "qa_tries": 1
+    "qa_tries": 2
   },
   "Vittoria Freeze Dried Latte Instant Coffee 400g": {
     "zh": "Vittoria 拿鐵冷凍乾燥即溶咖啡 400克",
@@ -134010,11 +134010,11 @@
     "qa_tries": 1
   },
   "Only Organic Snack Bandits Mango & Banana Snack Bars 6x22g 132g": {
-    "zh": "Only Organic 芒果香蕉點心棒 22克 x 6入",
-    "ja": "Only Organic マンゴー＆バナナ スナックバー 22g x 6個入",
-    "ko": "Only Organic 망고 & 바나나 스낵바 22g x 6개입",
+    "zh": "Only Organic 芒果香蕉水果條 22克 x 6入（132克）",
+    "ja": "Only Organic マンゴー＆バナナ スナックバー 22g x 6個入（132g）",
+    "ko": "Only Organic 망고 & 바나나 스낵바 22g x 6개입（132g）",
     "src": "ai",
-    "qa_tries": 1
+    "qa_tries": 2
   },
   "Barilla Basil Pesto Alla Genovese Pasta Sauce 190g": {
     "zh": "Barilla 熱那亞羅勒青醬 190克",
@@ -134024,11 +134024,11 @@
     "qa_tries": 1
   },
   "Continental Cup A Soup Chicken With Lots Of Noodles Serves 2 60g": {
-    "zh": "Continental 雞肉麵杯湯 60克",
-    "ja": "Continental カップスープ チキン＆ヌードル 60g",
-    "ko": "Continental 컵수프 치킨 누들 60g",
+    "zh": "Continental 雞肉麵杯湯 60克（2份裝）",
+    "ja": "Continental カップスープ チキン＆ヌードル 60g（2食分）",
+    "ko": "Continental 컵 수프 치킨 & 누들 60g（2인분）",
     "src": "ai",
-    "qa_tries": 1
+    "qa_tries": 2
   },
   "Cottons Organic Ultra Thin Pads Regular 14 Pack": {
     "zh": "Cottons 有機超薄衛生棉一般型 14入",
@@ -134232,10 +134232,11 @@
     "src": "ai"
   },
   "Devondale Uht Full Cream Multipack Milk 6x200ml 1.2L": {
-    "zh": "Devondale 全脂保久乳 200毫升 x 6入",
-    "ja": "Devondale UHT 全乳 200ml x 6本入",
-    "ko": "Devondale UHT 전지우유 200ml x 6개입",
-    "src": "ai"
+    "zh": "Devondale 全脂保久乳 200毫升 x 6入（1.2公升）",
+    "ja": "Devondale 常温保存可能全乳 200ml x 6本入（1.2L）",
+    "ko": "Devondale 멸균 전지우유 200ml x 6개입（1.2L）",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Old El Paso Gluten Free Taco Spice Mix 30g": {
     "zh": "Old El Paso 無麩質塔可調味粉 30克",
@@ -134376,10 +134377,11 @@
     "src": "ai"
   },
   "Samyang Buldak Spicy Ramen Carbonara 5 Pack 650g": {
-    "zh": "Samyang 三養火辣雞肉風味泡麵奶油培根口味 650克（5入）",
-    "ja": "Samyang ブルダック炒め麺 カルボナーラ 650g（5個入）",
-    "ko": "Samyang 불닭볶음면 까르보나라 650g（5개입）",
-    "src": "ai"
+    "zh": "Samyang Buldak 辣味奶油培根風味泡麵 650克（5入）",
+    "ja": "Samyang Buldak カルボナーラブルダック炒め麺 650g（5個入）",
+    "ko": "Samyang Buldak 까르보 불닭볶음면 650g（5개입）",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Laucke Wallaby Bakers Flour 5Kg": {
     "zh": "Laucke Wallaby 烘焙麵粉 5公斤",
@@ -134397,6 +134399,372 @@
     "zh": "Cancer Council SPF 50+ 極致滾珠防曬乳 75毫升",
     "ja": "Cancer Council SPF 50+ ウルトラ ロールオン日焼け止め 75ml",
     "ko": "Cancer Council SPF 50+ 울트라 롤온 선크림 75ml",
+    "src": "ai"
+  },
+  "Bega Almond Spread Crunchy 325g": {
+    "zh": "Bega 杏仁醬顆粒口感 325克",
+    "ja": "Bega アーモンドスプレッド クランチ 325g",
+    "ko": "Bega 아몬드 스프레드 크런치 325g",
+    "src": "ai"
+  },
+  "Cadbury Curly Wurly Milk Chocolate Mini Bars 135g 15 pack": {
+    "zh": "Cadbury Curly Wurly 牛奶巧克力迷你棒 135克（15入）",
+    "ja": "Cadbury Curly Wurly ミルクチョコレート ミニバー 135g (15個入)",
+    "ko": "Cadbury Curly Wurly 밀크 초콜릿 미니바 135g (15개입)",
+    "src": "ai"
+  },
+  "Woolworths Milk Chocolate Block 180g": {
+    "zh": "Woolworths 牛奶巧克力排塊 180克",
+    "ja": "Woolworths ミルクチョコレートブロック 180g",
+    "ko": "Woolworths 밀크 초콜릿 블록 180g",
+    "src": "ai"
+  },
+  "Ingham's Turkey Burgers 500g": {
+    "zh": "Ingham's 火雞肉漢堡排 500克",
+    "ja": "Ingham's ターキーバーガー 500g",
+    "ko": "Ingham's 칠면조 버거 500g",
+    "src": "ai"
+  },
+  "THE FISHMONGER Fish Cakes 290g/ 2pk": {
+    "zh": "THE FISHMONGER 魚餅 290克（2入）",
+    "ja": "THE FISHMONGER フィッシュケーキ 290g (2個入)",
+    "ko": "THE FISHMONGER 피쉬 케이크 290g (2개입)",
+    "src": "ai"
+  },
+  "Nice & Natural Protein Nut Bars Dark Choc & Cacao 5 Pack 165g": {
+    "zh": "Nice & Natural 高蛋白堅果棒 黑巧克力可可口味 165克（5入）",
+    "ja": "Nice & Natural プロテインナッツバー ダークチョコ＆カカオ 165g (5個入)",
+    "ko": "Nice & Natural 단백질 견과류바 다크 초코 & 카카오 165g (5개입)",
+    "src": "ai"
+  },
+  "Piksters Interdental Brushes Yellow Size 3 40 Pack": {
+    "zh": "Piksters 牙間刷 黃色 3號（40入）",
+    "ja": "Piksters 歯間ブラシ イエロー サイズ3 (40本入)",
+    "ko": "Piksters 치간 칫솔 옐로우 사이즈 3 (40개입)",
+    "src": "ai"
+  },
+  "The Natural Confectionery Co. Fruity Chews Lollies Share Bag 350g": {
+    "zh": "The Natural Confectionery Co. 水果軟糖分享包 350克",
+    "ja": "The Natural Confectionery Co. フルーツチューキャンディ シェアパック 350g",
+    "ko": "The Natural Confectionery Co. 과일 츄잉 캔디 쉐어백 350g",
+    "src": "ai"
+  },
+  "Lee Kum Kee Ready Sauce Cantonese Chicken 120g": {
+    "zh": "Lee Kum Kee 李錦記 廣式雞肉料理醬 120克",
+    "ja": "Lee Kum Kee 広東風チキンソース 120g",
+    "ko": "Lee Kum Kee 광동식 치킨 소스 120g",
+    "src": "ai"
+  },
+  "Cancer Council Ultra Sensitive Kids Sunscreen SPF 50+ 150mL": {
+    "zh": "Cancer Council 極致敏感肌兒童防曬乳 SPF 50+ 150毫升",
+    "ja": "Cancer Council ウルトラセンシティブ キッズ日焼け止め SPF 50+ 150ml",
+    "ko": "Cancer Council 울트라 센시티브 키즈 선크림 SPF 50+ 150ml",
+    "src": "ai"
+  },
+  "Coco Earth Oat Flour 250g": {
+    "zh": "Coco Earth 燕麥粉 250克",
+    "ja": "Coco Earth オートフラワー 250g",
+    "ko": "Coco Earth 오트밀 가루 250g",
+    "src": "ai"
+  },
+  "Mortein Powergard Cockroach Baits 12 Pack": {
+    "zh": "Mortein Powergard 蟑螂誘餌盒 12入",
+    "ja": "Mortein Powergard ゴキブリ駆除剤 12個入",
+    "ko": "Mortein Powergard 바퀴벌레 베이트 12개입",
+    "src": "ai"
+  },
+  "Cadbury Dairy Milk Freddo Strawberry Mini Bars 180g 12 pack": {
+    "zh": "Cadbury Dairy Milk Freddo 草莓牛奶巧克力迷你棒 180克（12入）",
+    "ja": "Cadbury Dairy Milk Freddo ストロベリーミルクチョコレート ミニバー 180g (12個入)",
+    "ko": "Cadbury Dairy Milk Freddo 딸기 밀크 초콜릿 미니바 180g (12개입)",
+    "src": "ai"
+  },
+  "Infuzions Veggie Rings Aussie BBQ 5x15g 75g": {
+    "zh": "Infuzions 蔬菜圈 澳洲烤肉口味 75克（15克 x 5入）",
+    "ja": "Infuzions ベジタブルリング オージーBBQ味 75g (15g x 5個入)",
+    "ko": "Infuzions 야채링 호주식 BBQ맛 75g (15g x 5개입)",
+    "src": "ai"
+  },
+  "HILLCREST Power Grain Mix 560g": {
+    "zh": "HILLCREST 綜合穀物麥片 560克",
+    "ja": "HILLCREST パワーグレインミックス 560g",
+    "ko": "HILLCREST 파워 곡물 믹스 560g",
+    "src": "ai"
+  },
+  "Pascall Marshmallows Pink & White Jumbo Size 520g": {
+    "zh": "Pascall 棉花糖 粉白雙色 特大號 520克",
+    "ja": "Pascall マシュマロ ピンク＆ホワイト ジャンボサイズ 520g",
+    "ko": "Pascall 마시멜로 핑크 & 화이트 점보 사이즈 520g",
+    "src": "ai"
+  },
+  "Pringles Potato Chips Barbeque 134g": {
+    "zh": "Pringles 洋芋片 烤肉口味 134克",
+    "ja": "Pringles ポテトチップス バーベキュー味 134g",
+    "ko": "Pringles 감자칩 바베큐맛 134g",
+    "src": "ai"
+  },
+  "Parkers Pretzels BBQ Multipack 8 Pack 200g": {
+    "zh": "Parkers 蝴蝶餅 烤肉口味 200克（8入）",
+    "ja": "Parkers プレッツェル BBQ マルチパック 200g (8個入)",
+    "ko": "Parkers 프레첼 BBQ 멀티팩 200g (8개입)",
+    "src": "ai"
+  },
+  "MANTOVANI Pandoro 750g": {
+    "zh": "MANTOVANI 義大利黃金麵包 750克",
+    "ja": "MANTOVANI パンドーロ 750g",
+    "ko": "MANTOVANI 판도로 750g",
+    "src": "ai"
+  },
+  "The Natural Confectionery Co. Snakes Lollies Large Share Bag 440g": {
+    "zh": "The Natural Confectionery Co. 蛇形軟糖 大份量分享包 440克",
+    "ja": "The Natural Confectionery Co. スネークキャンディ ラージシェアパック 440g",
+    "ko": "The Natural Confectionery Co. 뱀 젤리 대용량 쉐어백 440g",
+    "src": "ai"
+  },
+  "Animals Like Us Rawmix33 With Grass-fed Beef Dry Dog Food 1Kg": {
+    "zh": "Animals Like Us Rawmix33 草飼牛肉配方 乾狗糧 1公斤",
+    "ja": "Animals Like Us Rawmix33 グラスフェッドビーフ ドッグフード 1kg",
+    "ko": "Animals Like Us Rawmix33 목초 사육 소고기 건식 사료 1kg",
+    "src": "ai"
+  },
+  "Cadbury Fry's Turkish Delight Mini Bars 180g 12 pack": {
+    "zh": "Cadbury Fry's 土耳其軟糖巧克力迷你棒 180克（12入）",
+    "ja": "Cadbury Fry's ターキッシュディライト チョコレートミニバー 180g (12個入)",
+    "ko": "Cadbury Fry's 터키쉬 딜라이트 초콜릿 미니바 180g (12개입)",
+    "src": "ai"
+  },
+  "Nature's Gift Grain Free Homestyle Stew With Chicken Salmon Dog Food 100g 8 Pack": {
+    "zh": "Nature's Gift 無穀物家常燉肉 雞肉鮭魚配方 濕狗糧 100克（8入）",
+    "ja": "Nature's Gift グレインフリー ホームスタイルシチュー チキン＆サーモン ドッグフード 100g (8個入)",
+    "ko": "Nature's Gift 그레인 프리 홈스타일 스튜 치킨 & 연어 습식 사료 100g (8개입)",
+    "src": "ai"
+  },
+  "Praise Seafood Sauce 250mL": {
+    "zh": "Praise 海鮮醬 250毫升",
+    "ja": "Praise シーフードソース 250ml",
+    "ko": "Praise 해산물 소스 250ml",
+    "src": "ai"
+  },
+  "Air Wick VIPoo Fruity Pin Up Toilet Spray 55mL": {
+    "zh": "Air Wick VIPoo 水果香氛 馬桶消臭噴霧 55毫升",
+    "ja": "Air Wick VIPoo フルーティーな香り トイレ用消臭スプレー 55ml",
+    "ko": "Air Wick VIPoo 과일향 화장실 탈취 스프레이 55ml",
+    "src": "ai"
+  },
+  "Nature's Gift Chicken Jerky Bites Dog Treats 150g": {
+    "zh": "Nature's Gift 雞肉乾丁成犬零食 150克",
+    "ja": "Nature's Gift チキンジャーキーバイト 犬用おやつ 150g",
+    "ko": "Nature's Gift 치킨 저키 바이트 반려견 간식 150g",
+    "src": "ai"
+  },
+  "Bickfords Cordial Guava & Citrus 750mL": {
+    "zh": "Bickfords 芭樂柑橘濃縮果汁 750毫升",
+    "ja": "Bickfords コーディアル グアバ＆シトラス 750ml",
+    "ko": "Bickfords 코디얼 구아바 & 시트러스 750ml",
+    "src": "ai"
+  },
+  "Woolworths Secret Burger Sauce 320g": {
+    "zh": "Woolworths 秘製漢堡醬 320克",
+    "ja": "Woolworths シークレットバーガーソース 320g",
+    "ko": "Woolworths 시크릿 버거 소스 320g",
+    "src": "ai"
+  },
+  "Sunkist Soft Drink Orange 600mL": {
+    "zh": "Sunkist 柳橙汽水 600毫升",
+    "ja": "Sunkist ソフトドリンク オレンジ 600ml",
+    "ko": "Sunkist 탄산음료 오렌지 600ml",
+    "src": "ai"
+  },
+  "Cadbury Dairy Milk Freddo Popping Candy Chocolate 144g 12 pack": {
+    "zh": "Cadbury 牛奶巧克力跳跳糖 Freddo 144克（12入）",
+    "ja": "Cadbury デイリーミルク Freddo ポッピングキャンディチョコレート 144g（12個入）",
+    "ko": "Cadbury 데어리 밀크 Freddo 팝핑 캔디 초콜릿 144g（12개입）",
+    "src": "ai"
+  },
+  "INTERNATIONAL CUISINE Spinach Pizza 390g": {
+    "zh": "INTERNATIONAL CUISINE 菠菜披薩 390克",
+    "ja": "INTERNATIONAL CUISINE ほうれん草ピザ 390g",
+    "ko": "INTERNATIONAL CUISINE 시금치 피자 390g",
+    "src": "ai"
+  },
+  "Neutrogena Oil Free Acne Scrub 125mL": {
+    "zh": "Neutrogena 露得清 無油抗痘洗面乳 125毫升",
+    "ja": "Neutrogena オイルフリー アクネスクラブ 125ml",
+    "ko": "Neutrogena 오일 프리 여드름 스크럽 125ml",
+    "src": "ai"
+  },
+  "INTERNATIONAL CUISINE Mozzarella Pizza 335g": {
+    "zh": "INTERNATIONAL CUISINE 莫札瑞拉起司披薩 335克",
+    "ja": "INTERNATIONAL CUISINE モッツァレラピザ 335g",
+    "ko": "INTERNATIONAL CUISINE 모짜렐라 피자 335g",
+    "src": "ai"
+  },
+  "Piksters Interdental Brushes Blue Size 5 40 Pack": {
+    "zh": "Piksters 牙間刷 藍色 5號 40入",
+    "ja": "Piksters 歯間ブラシ ブルー サイズ5 40個入",
+    "ko": "Piksters 치간 칫솔 블루 사이즈 5 40개입",
+    "src": "ai"
+  },
+  "Gillette Labs Razor Cartridges 4 pack": {
+    "zh": "Gillette Labs 刮鬍刀片 4入",
+    "ja": "Gillette Labs 替刃 4個入",
+    "ko": "Gillette Labs 면도날 4개입",
+    "src": "ai"
+  },
+  "Pringles Salt & Vinegar Potato Chips 134g": {
+    "zh": "Pringles 鹽醋洋芋片 134克",
+    "ja": "Pringles ソルト＆ビネガー ポテトチップス 134g",
+    "ko": "Pringles 소금 & 식초 감자칩 134g",
+    "src": "ai"
+  },
+  "L'Oreal Revitalift Filler Day St 50mL": {
+    "zh": "L'Oreal 玻尿酸抗皺日霜 50毫升",
+    "ja": "L'Oreal リバイタリフト フィラー デイクリーム 50ml",
+    "ko": "L'Oreal 리바이탈리프트 필러 데이 크림 50ml",
+    "src": "ai"
+  },
+  "Kettle Sweet Potato Chips Sea Salt 135g": {
+    "zh": "Kettle 海鹽地瓜片 135克",
+    "ja": "Kettle スイートポテトチップス シーソルト 135g",
+    "ko": "Kettle 고구마칩 씨솔트 135g",
+    "src": "ai"
+  },
+  "Olina's Bakehouse Artisan Crackers Garlic & Thyme 90g": {
+    "zh": "Olina's Bakehouse 手工蒜味百里香餅乾 90克",
+    "ja": "Olina's Bakehouse アーティザンクラッカー ガーリック＆タイム 90g",
+    "ko": "Olina's Bakehouse 아티잔 크래커 갈릭 & 타임 90g",
+    "src": "ai"
+  },
+  "Ritz Mini Crackers Original Bags 184g 8 pack": {
+    "zh": "Ritz 迷你經典餅乾 184克（8入）",
+    "ja": "Ritz ミニクラッカー オリジナル 184g（8個入）",
+    "ko": "Ritz 미니 크래커 오리지널 184g（8개입）",
+    "src": "ai"
+  },
+  "Nature's Gift Grainfree With Beef Dog Food 6.5Kg": {
+    "zh": "Nature's Gift 無穀牛肉成犬飼料 6.5公斤",
+    "ja": "Nature's Gift グレインフリー ビーフ 成犬用ドッグフード 6.5kg",
+    "ko": "Nature's Gift 그레인프리 비프 반려견 사료 6.5kg",
+    "src": "ai"
+  },
+  "Continental Cup A Soup Roast Chicken Hearty Soup Serves 2 75g": {
+    "zh": "Continental 杯湯 烤雞風味濃湯 75克（2份）",
+    "ja": "Continental カップスープ ローストチキン 75g（2食分）",
+    "ko": "Continental 컵 수프 로스트 치킨 75g（2인분）",
+    "src": "ai"
+  },
+  "ASIA GREEN GARDEN Butter Chicken Curry Paste 315g": {
+    "zh": "ASIA GREEN GARDEN 奶油雞咖哩醬 315克",
+    "ja": "ASIA GREEN GARDEN バターチキンカレーペースト 315g",
+    "ko": "ASIA GREEN GARDEN 버터 치킨 커리 페이스트 315g",
+    "src": "ai"
+  },
+  "OB Finest Gluten Free Activated Charcoal Wafer Crackers 100g": {
+    "zh": "OB Finest 無麩質活性碳威化餅乾 100克",
+    "ja": "OB Finest グルテンフリー 活性炭ウエハースクラッカー 100g",
+    "ko": "OB Finest 글루텐 프리 활성탄 웨이퍼 크래커 100g",
+    "src": "ai"
+  },
+  "MasterFoods Barbecue Sauce 250mL": {
+    "zh": "MasterFoods 烤肉醬 250毫升",
+    "ja": "MasterFoods バーベキューソース 250ml",
+    "ko": "MasterFoods 바비큐 소스 250ml",
+    "src": "ai"
+  },
+  "Cadbury Dairy Milk Freddo Milky Top Mini Bars 144g 12 pack": {
+    "zh": "Cadbury 牛奶巧克力 Freddo 迷你條 144克（12入）",
+    "ja": "Cadbury デイリーミルク Freddo ミルキートップ ミニバー 144g（12個入）",
+    "ko": "Cadbury 데어리 밀크 Freddo 밀키 탑 미니 바 144g（12개입）",
+    "src": "ai"
+  },
+  "Easiyo Drinking Yoghurt Strawbry 180g": {
+    "zh": "Easiyo 草莓優格飲 180克",
+    "ja": "Easiyo ドリンキングヨーグルト ストロベリー 180g",
+    "ko": "Easiyo 마시는 요거트 딸기 180g",
+    "src": "ai"
+  },
+  "Cadbury Cookies Choc Centre 156g": {
+    "zh": "Cadbury 巧克力夾心餅乾 156克",
+    "ja": "Cadbury クッキー チョコセンター 156g",
+    "ko": "Cadbury 쿠키 초코 센터 156g",
+    "src": "ai"
+  },
+  "Tayas Coffee Intense Lollies 270g": {
+    "zh": "Tayas 濃郁咖啡糖 270克",
+    "ja": "Tayas コーヒーインテンス キャンディ 270g",
+    "ko": "Tayas 커피 인텐스 캔디 270g",
+    "src": "ai"
+  },
+  "Indya Sona Masoori Rice 5Kg": {
+    "zh": "Indya Sona Masoori 米 5公斤",
+    "ja": "Indya ソナマスリ米 5kg",
+    "ko": "Indya 소나 마수리 쌀 5kg",
+    "src": "ai"
+  },
+  "Philadelphia Cream Cheese Block 250g – From the Fridge": {
+    "zh": "Philadelphia 奶油乳酪塊 250克",
+    "ja": "Philadelphia クリームチーズブロック 250g",
+    "ko": "Philadelphia 크림치즈 블록 250g",
+    "src": "ai"
+  },
+  "Whiskas 1+ Years Wet Cat Food Ocean Fish Loaf Can 400g": {
+    "zh": "Whiskas 成貓濕糧 海洋魚肉肉泥罐頭 400克",
+    "ja": "Whiskas 成猫用ウェットキャットフード オーシャンフィッシュローフ缶 400g",
+    "ko": "Whiskas 성묘용 습식 캣푸드 오션피쉬 로프 캔 400g",
+    "src": "ai"
+  },
+  "Cadbury Special Treats Chocolate Mini Bars 180g 12 pack": {
+    "zh": "Cadbury 迷你巧克力棒 180克（12入）",
+    "ja": "Cadbury ミニチョコレートバー 180g（12個入）",
+    "ko": "Cadbury 미니 초콜릿 바 180g（12개입）",
+    "src": "ai"
+  },
+  "Marion's Kitchen Thai Satay Chicken Kit 210g": {
+    "zh": "Marion's Kitchen 泰式沙嗲雞肉料理包 210克",
+    "ja": "Marion's Kitchen タイ風サテチキンキット 210g",
+    "ko": "Marion's Kitchen 태국식 사테 치킨 키트 210g",
+    "src": "ai"
+  },
+  "Cadbury Dairy Milk Caramello Koala Chocolate 180g 12 pack": {
+    "zh": "Cadbury Dairy Milk 焦糖無尾熊巧克力 180克（12入）",
+    "ja": "Cadbury Dairy Milk キャラメロコアラチョコレート 180g（12個入）",
+    "ko": "Cadbury Dairy Milk 카라멜로 코알라 초콜릿 180g（12개입）",
+    "src": "ai"
+  },
+  "Twinings Cold Infusions Lemon & Ginger 4 Pack": {
+    "zh": "Twinings 冷泡茶 檸檬薑味 4入",
+    "ja": "Twinings コールドインフュージョン レモン＆ジンジャー 4個入",
+    "ko": "Twinings 콜드 인퓨전 레몬 & 진저 4개입",
+    "src": "ai"
+  },
+  "OB Finest Three Cheese With Chilli Crisps 85g": {
+    "zh": "OB Finest 三重起司辣椒脆餅 85克",
+    "ja": "OB Finest スリーチーズ＆チリクリスプ 85g",
+    "ko": "OB Finest 쓰리 치즈 & 칠리 크리스프 85g",
+    "src": "ai"
+  },
+  "The Natural Confectionery Co. Party Mix Lollies Mini Bags 160g 8 pack": {
+    "zh": "The Natural Confectionery Co. 綜合軟糖迷你包 160克（8入）",
+    "ja": "The Natural Confectionery Co. パーティーミックスグミ ミニバッグ 160g（8個入）",
+    "ko": "The Natural Confectionery Co. 파티 믹스 젤리 미니백 160g（8개입）",
+    "src": "ai"
+  },
+  "Monster Energy Cans Green 6x250ml 1.5L": {
+    "zh": "Monster Energy 能量飲料 250毫升 x 6入（1.5公升）",
+    "ja": "Monster Energy エナジードリンク 250ml x 6本入（1.5L）",
+    "ko": "Monster Energy 에너지 드링크 250ml x 6개입（1.5L）",
+    "src": "ai"
+  },
+  "Optimum Adult All Breeds Grain Free Dry Dog Food Chicken & Vegetables 2.5kg": {
+    "zh": "Optimum 成犬全犬種無穀物乾糧 雞肉蔬菜口味 2.5公斤",
+    "ja": "Optimum 成犬用全犬種グレインフリードッグフード チキン＆ベジタブル 2.5kg",
+    "ko": "Optimum 성견용 전견종 그레인 프리 도그푸드 치킨 & 야채 2.5kg",
+    "src": "ai"
+  },
+  "Woolworths 2 Pack Basa Portions Skinless 260g": {
+    "zh": "Woolworths 去皮巴沙魚排 260克（2入）",
+    "ja": "Woolworths 皮なしバサフィレ 260g（2個入）",
+    "ko": "Woolworths 껍질 제거 바사 필레 260g（2개입）",
     "src": "ai"
   }
 }
