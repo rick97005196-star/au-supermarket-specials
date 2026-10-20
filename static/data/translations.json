@@ -134800,10 +134800,11 @@
     "src": "ai"
   },
   "Monster Energy Cans Ultra 6x250ml 1.5L": {
-    "zh": "Monster Energy Ultra 能量飲料 250毫升 x 6入",
-    "ja": "Monster Energy Ultra エナジードリンク 250ml x 6本入",
-    "ko": "Monster Energy Ultra 에너지 드링크 250ml x 6개입",
-    "src": "ai"
+    "zh": "Monster Energy Ultra 能量飲料 250毫升 x 6入（1.5公升）",
+    "ja": "Monster Energy Ultra エナジードリンク 250ml x 6本入（1.5L）",
+    "ko": "Monster Energy Ultra 에너지 드링크 250ml x 6개입（1.5L）",
+    "src": "ai",
+    "qa_tries": 1
   },
   "ATP Science Noway Collagen Fusion Bar Mangoes & Cream 60g": {
     "zh": "ATP Science Noway 膠原蛋白棒 芒果奶油口味 60克",
@@ -134941,6 +134942,204 @@
     "zh": "Vanish Preen Oxi Action Gold 強效衣物去漬噴霧 450毫升",
     "ja": "Vanish Preen Oxi Action Gold ウルトラパワー 衣類用シミ抜きスプレー 450mL",
     "ko": "Vanish Preen Oxi Action Gold 울트라 파워 의류 얼룩 제거 스프레이 450mL",
+    "src": "ai"
+  },
+  "Edgell Snack Time Black Beans Capsicum & Charred Corn With Zesty Salsa 70g": {
+    "zh": "Edgell 黑豆甜椒烤玉米莎莎醬點心 70克",
+    "ja": "Edgell 黒豆・パプリカ・焼きトウモロコシ サルサソース付き 70g",
+    "ko": "Edgell 블랙빈 파프리카 구운 옥수수 살사 소스 스낵 70g",
+    "src": "ai"
+  },
+  "Pepsi Max No Sugar Cola Vanilla Soft Drink Bottle 1.25L": {
+    "zh": "Pepsi Max 無糖香草可樂 1.25公升",
+    "ja": "Pepsi Max ゼロシュガー バニラコーラ 1.25L",
+    "ko": "Pepsi Max 제로슈거 바닐라 콜라 1.25L",
+    "src": "ai"
+  },
+  "Eurobisc Croissant With Chocolate Cream Filling 6 Pack 300g": {
+    "zh": "Eurobisc 巧克力奶油可頌 300克（6入）",
+    "ja": "Eurobisc チョコレートクリームクロワッサン 300g（6個入）",
+    "ko": "Eurobisc 초콜릿 크림 크루아상 300g（6개입）",
+    "src": "ai"
+  },
+  "Wanderlust Berberine 333mg 60 Pack": {
+    "zh": "Wanderlust 黃連素 333毫克 60入",
+    "ja": "Wanderlust ベルベリン 333mg 60個入",
+    "ko": "Wanderlust 베르베린 333mg 60개입",
+    "src": "ai"
+  },
+  "Gillette Super Thin Long Handle Disposable Razors 8 Pack": {
+    "zh": "Gillette 超薄長柄拋棄式刮鬍刀 8入",
+    "ja": "Gillette スーパーシン ロングハンドル 使い捨てカミソリ 8個入",
+    "ko": "Gillette 슈퍼 씬 롱 핸들 일회용 면도기 8개입",
+    "src": "ai"
+  },
+  "Dr. Oetker Krem Santi 144g": {
+    "zh": "Dr. Oetker 鮮奶油粉 144克",
+    "ja": "Dr. Oetker ホイップクリームパウダー 144g",
+    "ko": "Dr. Oetker 휘핑크림 파우더 144g",
+    "src": "ai"
+  },
+  "Doritos Supreme Cheese Corn Chips 60g": {
+    "zh": "Doritos 頂級起司玉米片 60克",
+    "ja": "Doritos シュプリームチーズ コーンチップス 60g",
+    "ko": "Doritos 슈프림 치즈 콘칩 60g",
+    "src": "ai"
+  },
+  "Old El Paso Fajita Spice Mix 40g": {
+    "zh": "Old El Paso 法士達香料粉 40克",
+    "ja": "Old El Paso ファヒータ スパイスミックス 40g",
+    "ko": "Old El Paso 파히타 스파이스 믹스 40g",
+    "src": "ai"
+  },
+  "Palmolive Antibacterial Hand Wash 2 Hour Defence Orange 250mL": {
+    "zh": "Palmolive 抗菌洗手乳 2小時防護橘子香 250毫升",
+    "ja": "Palmolive 抗菌ハンドウォッシュ 2時間ディフェンス オレンジの香り 250mL",
+    "ko": "Palmolive 항균 핸드워시 2시간 방어 오렌지 향 250mL",
+    "src": "ai"
+  },
+  "Tena Liners Sensitive Lights Long 20 Pack": {
+    "zh": "Tena 敏感肌護墊加長型 20入",
+    "ja": "Tena ライナー センシティブ ライト ロング 20個入",
+    "ko": "Tena 라이너 센시티브 라이트 롱 20개입",
+    "src": "ai"
+  },
+  "Avalanche 99% Sugar Free Double Shot Latte 10 Pack": {
+    "zh": "Avalanche 99%無糖雙倍濃縮拿鐵 10入",
+    "ja": "Avalanche 99%シュガーフリー ダブルショットラテ 10本入",
+    "ko": "Avalanche 99% 무설탕 더블샷 라떼 10개입",
+    "src": "ai"
+  },
+  "Burt's Bees Beeswax Lip Balm 4.25g": {
+    "zh": "Burt's Bees 蜂蠟護唇膏 4.25克",
+    "ja": "Burt's Bees ビーズワックス リップバーム 4.25g",
+    "ko": "Burt's Bees 비즈왁스 립밤 4.25g",
+    "src": "ai"
+  },
+  "Mayvers Low Carb Collagen Protein Vanilla White Chocolate 280g": {
+    "zh": "Mayvers 低碳水膠原蛋白香草白巧克力抹醬 280克",
+    "ja": "Mayvers 低糖質 コラーゲンプロテイン バニラホワイトチョコレート 280g",
+    "ko": "Mayvers 저탄수 콜라겐 단백질 바닐라 화이트 초콜릿 280g",
+    "src": "ai"
+  },
+  "Smiths Original Crinkle Potato Chips 60g": {
+    "zh": "Smith's 原味波浪洋芋片 60克",
+    "ja": "Smith's オリジナル クリンクルポテトチップス 60g",
+    "ko": "Smith's 오리지널 크링클 감자칩 60g",
+    "src": "ai"
+  },
+  "Maggi Your Meal Your Way Cottage Pie Gluten Free 37g": {
+    "zh": "Maggi 無麩質牧羊人派調味粉 37克",
+    "ja": "Maggi グルテンフリー コテージパイの素 37g",
+    "ko": "Maggi 글루텐 프리 코티지 파이 소스 37g",
+    "src": "ai"
+  },
+  "Hoyts Giardiniera Pickled 750g": {
+    "zh": "Hoyts 義式醃漬蔬菜 750克",
+    "ja": "Hoyts ジャルディニエラ ピクルス 750g",
+    "ko": "Hoyts 자르디니에라 피클 750g",
+    "src": "ai"
+  },
+  "HB Belly Me Shot Shred It 60mL": {
+    "zh": "Henry Blooms 燃脂代謝飲 60毫升",
+    "ja": "Henry Blooms シェイプアップショット 60mL",
+    "ko": "Henry Blooms 쉐이프업 샷 60mL",
+    "src": "ai"
+  },
+  "Providore Vine Ripened Tomato And Fire Roasted Pepper Pasta Sauce 400g": {
+    "zh": "Providore 藤熟番茄烤甜椒義大利麵醬 400克",
+    "ja": "Providore 完熟トマトと焼きパプリカのパスタソース 400g",
+    "ko": "Providore 완숙 토마토와 구운 파프리카 파스타 소스 400g",
+    "src": "ai"
+  },
+  "Henry Blooms Belly Me Shot Tanning 60mL": {
+    "zh": "Henry Blooms 助曬飲 60毫升",
+    "ja": "Henry Blooms タンニングショット 60mL",
+    "ko": "Henry Blooms 태닝 샷 60mL",
+    "src": "ai"
+  },
+  "Fehlbergs Brown Pickled Onions 500g": {
+    "zh": "Fehlbergs 醃漬棕色洋蔥 500克",
+    "ja": "Fehlbergs ブラウンピクルスオニオン 500g",
+    "ko": "Fehlbergs 브라운 피클 양파 500g",
+    "src": "ai"
+  },
+  "Only Organic Kindy 1-5 Years Vegetable Macaroni & Cheese Pasta Express 220g": {
+    "zh": "Only Organic 1-5歲幼兒蔬菜起司通心粉 220克",
+    "ja": "Only Organic 1-5歳児用 野菜とチーズのマカロニ 220g",
+    "ko": "Only Organic 1-5세 유아용 야채 치즈 마카로니 220g",
+    "src": "ai"
+  },
+  "Only Organic Mango & Yoghurt Brekkie Baby Food Pouch 8+ Months 120g": {
+    "zh": "Only Organic 8個月以上芒果優格早餐泥 120克",
+    "ja": "Only Organic 8ヶ月以上 マンゴーヨーグルト 朝食ベビーフード 120g",
+    "ko": "Only Organic 8개월 이상 망고 요거트 아침 이유식 120g",
+    "src": "ai"
+  },
+  "Kushi Jelly Cups 75mL": {
+    "zh": "Kushi 果凍杯 75毫升",
+    "ja": "Kushi ゼリーカップ 75mL",
+    "ko": "Kushi 젤리 컵 75mL",
+    "src": "ai"
+  },
+  "Rafferty's Garden Pumpkin & Spinach Pasta Bake Baby Food Prebiotics Pouch 6+ Months 120g": {
+    "zh": "Rafferty's Garden 6個月以上南瓜菠菜義大利麵泥 120克",
+    "ja": "Rafferty's Garden 6ヶ月以上 かぼちゃとほうれん草のパスタ ベビーフード 120g",
+    "ko": "Rafferty's Garden 6개월 이상 호박 시금치 파스타 이유식 120g",
+    "src": "ai"
+  },
+  "Grill'd Signature Tomato Relish 285g": {
+    "zh": "Grill'd 招牌番茄醬 285克",
+    "ja": "Grill'd シグネチャー トマトレリッシュ 285g",
+    "ko": "Grill'd 시그니처 토마토 렐리시 285g",
+    "src": "ai"
+  },
+  "Maggi Gluten Free Recipe Bases Satay Chicken 43g": {
+    "zh": "Maggi 無麩質沙嗲雞肉料理包 43克",
+    "ja": "Maggi グルテンフリー サテチキン用調味料 43g",
+    "ko": "Maggi 글루텐 프리 사테 치킨 소스 43g",
+    "src": "ai"
+  },
+  "Carman's Energy Guarana + Protein Choc Peanut Butter 200g 5 Pack": {
+    "zh": "Carman's 瓜拿納蛋白巧克力花生醬能量棒 200克（5入）",
+    "ja": "Carman's エナジー ガラナ＋プロテイン チョコピーナッツバター 200g（5個入）",
+    "ko": "Carman's 에너지 과라나 + 단백질 초코 피넛버터 200g（5개입）",
+    "src": "ai"
+  },
+  "Laucke Pizza & Focaccia Flour Mix 1Kg": {
+    "zh": "Laucke 披薩與佛卡夏麵粉預拌粉 1公斤",
+    "ja": "Laucke ピザ＆フォカッチャ用ミックス粉 1kg",
+    "ko": "Laucke 피자 & 포카치아 믹스 가루 1kg",
+    "src": "ai"
+  },
+  "Health Lab Choc Brownie Protein Balls 5x40g 200g": {
+    "zh": "Health Lab 巧克力布朗尼蛋白球 40克 x 5入",
+    "ja": "Health Lab チョコブラウニー プロテインボール 40g x 5個入",
+    "ko": "Health Lab 초코 브라우니 단백질 볼 40g x 5개입",
+    "src": "ai"
+  },
+  "Smiths Salt & Vinegar Crinkle Potato Chips 60g": {
+    "zh": "Smith's 鹽醋波浪洋芋片 60克",
+    "ja": "Smith's ソルト＆ビネガー クリンクルポテトチップス 60g",
+    "ko": "Smith's 소금&식초 크링클 감자칩 60g",
+    "src": "ai"
+  },
+  "Coles Bakery Indulgent White 40% Choc Chip Cookie 6 Pack": {
+    "zh": "Coles Bakery 40%白巧克力豆餅乾 6入",
+    "ja": "Coles Bakery 40%ホワイトチョコチップクッキー 6個入",
+    "ko": "Coles Bakery 40% 화이트 초코칩 쿠키 6개입",
+    "src": "ai"
+  },
+  "Rosken Intensive Care Body Lotion Moisture 400mL": {
+    "zh": "Rosken 強效保濕身體乳 400毫升",
+    "ja": "Rosken インテンシブケア ボディローション モイスチャー 400ml",
+    "ko": "Rosken 인텐시브 케어 바디로션 모이스처 400ml",
+    "src": "ai"
+  },
+  "Raid Day & Night Plug In Primary 1 each": {
+    "zh": "Raid 日夜用液體電蚊香器 1入",
+    "ja": "Raid 昼夜用プラグ式蚊取り器 1個入",
+    "ko": "Raid 주야간용 플러그형 모기향기 1개입",
     "src": "ai"
   }
 }
