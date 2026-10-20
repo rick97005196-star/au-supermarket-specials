@@ -9,17 +9,17 @@
     "by_category": {
       "bakery": 238,
       "dairy_eggs": 788,
-      "drinks": 1003,
+      "drinks": 1005,
       "frozen": 514,
       "health_vitamins": 2486,
-      "household": 900,
+      "household": 899,
       "liquor": 70,
       "meat": 662,
-      "pantry": 1861,
+      "pantry": 1858,
       "pet": 202,
       "produce": 332,
       "seafood": 88,
-      "snacks": 1598
+      "snacks": 1600
     },
     "half_price_count": 3046,
     "date_range": "Wed 14 Oct 2026 - Tue 20 Oct 2026",
@@ -61,7 +61,7 @@
       "Woolworths": 2854
     }
   },
-  "last_updated": "2026-10-20 00:48:43",
+  "last_updated": "2026-10-20 01:19:24",
   "base_region": "QLD",
   "regions": {
     "QLD": {
@@ -321,5 +321,5 @@
       }
     }
   },
-  "data_updated_at": "2026-10-20T00:50:12Z"
+  "data_updated_at": "2026-10-20T01:19:54Z"
 }
