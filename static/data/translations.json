@@ -135113,10 +135113,11 @@
     "src": "ai"
   },
   "Health Lab Choc Brownie Protein Balls 5x40g 200g": {
-    "zh": "Health Lab 巧克力布朗尼蛋白球 40克 x 5入",
-    "ja": "Health Lab チョコブラウニー プロテインボール 40g x 5個入",
-    "ko": "Health Lab 초코 브라우니 단백질 볼 40g x 5개입",
-    "src": "ai"
+    "zh": "Health Lab 巧克力布朗尼蛋白球 200克（40克 x 5入）",
+    "ja": "Health Lab チョコブラウニープロテインボール 200g (40g x 5個入)",
+    "ko": "Health Lab 초코 브라우니 프로틴 볼 200g (40g x 5개입)",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Smiths Salt & Vinegar Crinkle Potato Chips 60g": {
     "zh": "Smith's 鹽醋波浪洋芋片 60克",
@@ -135140,6 +135141,60 @@
     "zh": "Raid 日夜用液體電蚊香器 1入",
     "ja": "Raid 昼夜用プラグ式蚊取り器 1個入",
     "ko": "Raid 주야간용 플러그형 모기향기 1개입",
+    "src": "ai"
+  },
+  "Wanderlust Powder Shilajit 50g": {
+    "zh": "Wanderlust 喜來芝粉 50克",
+    "ja": "Wanderlust シラジットパウダー 50g",
+    "ko": "Wanderlust 실라짓 파우더 50g",
+    "src": "ai"
+  },
+  "Cadbury Old Gold Bundaberg Rum Dark Chocolate Block 180g": {
+    "zh": "Cadbury Old Gold 邦德堡蘭姆酒黑巧克力排 180克",
+    "ja": "Cadbury Old Gold バンダバーグラムダークチョコレート 180g",
+    "ko": "Cadbury Old Gold 번다버그 럼 다크 초콜릿 180g",
+    "src": "ai"
+  },
+  "Masterfoods High Protein Korean BBQ Beef Recipe Base Pouch 175g": {
+    "zh": "Masterfoods 高蛋白韓式烤肉牛肉料理包 175克",
+    "ja": "Masterfoods 高タンパク韓国風BBQビーフ調味料 175g",
+    "ko": "Masterfoods 고단백 한국식 BBQ 소고기 요리 소스 175g",
+    "src": "ai"
+  },
+  "Life Savers Gummy Rings 170g": {
+    "zh": "Life Savers 圈圈軟糖 170克",
+    "ja": "Life Savers リンググミ 170g",
+    "ko": "Life Savers 링 젤리 170g",
+    "src": "ai"
+  },
+  "Golden Circle Tetra Drink Apple 6 Pack 1.5L": {
+    "zh": "Golden Circle 蘋果汁 1.5公升（6入）",
+    "ja": "Golden Circle アップルジュース 1.5L (6個入)",
+    "ko": "Golden Circle 사과 주스 1.5L (6개입)",
+    "src": "ai"
+  },
+  "Tiger Petit Beurre Vanilla Flavour 300g": {
+    "zh": "Tiger Petit Beurre 香草口味餅乾 300克",
+    "ja": "Tiger Petit Beurre バニラ風味ビスケット 300g",
+    "ko": "Tiger Petit Beurre 바닐라향 비스킷 300g",
+    "src": "ai"
+  },
+  "Always Fresh Polskie Ogorki Cucumbers 680g": {
+    "zh": "Always Fresh 波蘭式醃黃瓜 680克",
+    "ja": "Always Fresh ポーランド風ピクルス 680g",
+    "ko": "Always Fresh 폴란드식 오이 피클 680g",
+    "src": "ai"
+  },
+  "Life Savers Duos Sour Rings 180g": {
+    "zh": "Life Savers 雙色酸味圈圈軟糖 180克",
+    "ja": "Life Savers デュオサワーリンググミ 180g",
+    "ko": "Life Savers 듀오 사워 링 젤리 180g",
+    "src": "ai"
+  },
+  "McCormick Italian Herb Roast Potatoes 40g": {
+    "zh": "McCormick 義式香料烤馬鈴薯調味粉 40克",
+    "ja": "McCormick イタリアンハーブローストポテト用調味料 40g",
+    "ko": "McCormick 이탈리안 허브 로스트 포테이토 시즈닝 40g",
     "src": "ai"
   }
 }
