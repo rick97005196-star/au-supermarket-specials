@@ -134564,10 +134564,11 @@
     "src": "ai"
   },
   "Woolworths Secret Burger Sauce 320g": {
-    "zh": "Woolworths 秘製漢堡醬 320克",
+    "zh": "Woolworths 特製漢堡醬 320克",
     "ja": "Woolworths シークレットバーガーソース 320g",
     "ko": "Woolworths 시크릿 버거 소스 320g",
-    "src": "ai"
+    "src": "ai",
+    "qa_tries": 1
   },
   "Sunkist Soft Drink Orange 600mL": {
     "zh": "Sunkist 柳橙汽水 600毫升",
@@ -134708,10 +134709,11 @@
     "src": "ai"
   },
   "Whiskas 1+ Years Wet Cat Food Ocean Fish Loaf Can 400g": {
-    "zh": "Whiskas 成貓濕糧 海洋魚肉肉泥罐頭 400克",
-    "ja": "Whiskas 成猫用ウェットキャットフード オーシャンフィッシュローフ缶 400g",
-    "ko": "Whiskas 성묘용 습식 캣푸드 오션피쉬 로프 캔 400g",
-    "src": "ai"
+    "zh": "Whiskas 1歲以上成貓濕糧 海魚肉泥罐頭 400克",
+    "ja": "Whiskas 1歳以上 成猫用ウェットフード オーシャンフィッシュ ローフ缶 400g",
+    "ko": "Whiskas 1세 이상 성묘용 습식 사료 오션 피쉬 로프 캔 400g",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Cadbury Special Treats Chocolate Mini Bars 180g 12 pack": {
     "zh": "Cadbury 迷你巧克力棒 180克（12入）",
@@ -134765,6 +134767,180 @@
     "zh": "Woolworths 去皮巴沙魚排 260克（2入）",
     "ja": "Woolworths 皮なしバサフィレ 260g（2個入）",
     "ko": "Woolworths 껍질 제거 바사 필레 260g（2개입）",
+    "src": "ai"
+  },
+  "Street Kitchen Pad Thai 255g": {
+    "zh": "Street Kitchen 泰式炒河粉醬料包 255克",
+    "ja": "Street Kitchen パッタイソース 255g",
+    "ko": "Street Kitchen 팟타이 소스 255g",
+    "src": "ai"
+  },
+  "Cadbury Real Baking Milk Chocolate Melts 225g": {
+    "zh": "Cadbury 牛奶巧克力烘焙豆 225克",
+    "ja": "Cadbury ミルクチョコレートチップ 225g",
+    "ko": "Cadbury 밀크 초콜릿 칩 225g",
+    "src": "ai"
+  },
+  "Maggi Side Dishes Cheesy Cauliflower Bake Gluten Free 30g": {
+    "zh": "Maggi 起司花椰菜焗烤粉 無麩質 30克",
+    "ja": "Maggi チーズカリフラワーベイク グルテンフリー 30g",
+    "ko": "Maggi 치즈 콜리플라워 베이크 글루텐 프리 30g",
+    "src": "ai"
+  },
+  "Piksters Interdental Brushes Size 1 40 Pack": {
+    "zh": "Piksters 牙間刷 1號 40入",
+    "ja": "Piksters 歯間ブラシ サイズ1 40個入",
+    "ko": "Piksters 치간 칫솔 사이즈 1 40개입",
+    "src": "ai"
+  },
+  "Red Tractor Black Chia Seeds 600g": {
+    "zh": "Red Tractor 黑奇亞籽 600克",
+    "ja": "Red Tractor ブラックチアシード 600g",
+    "ko": "Red Tractor 블랙 치아씨드 600g",
+    "src": "ai"
+  },
+  "Monster Energy Cans Ultra 6x250ml 1.5L": {
+    "zh": "Monster Energy Ultra 能量飲料 250毫升 x 6入",
+    "ja": "Monster Energy Ultra エナジードリンク 250ml x 6本入",
+    "ko": "Monster Energy Ultra 에너지 드링크 250ml x 6개입",
+    "src": "ai"
+  },
+  "ATP Science Noway Collagen Fusion Bar Mangoes & Cream 60g": {
+    "zh": "ATP Science Noway 膠原蛋白棒 芒果奶油口味 60克",
+    "ja": "ATP Science Noway コラーゲンバー マンゴークリーム味 60g",
+    "ko": "ATP Science Noway 콜라겐 바 망고 크림맛 60g",
+    "src": "ai"
+  },
+  "Red Rock Deli Sea Salt & Bal Vinegar Potato Chips 165g": {
+    "zh": "Red Rock Deli 洋芋片 海鹽巴薩米克醋口味 165克",
+    "ja": "Red Rock Deli ポテトチップス シーソルト＆バルサミコ酢味 165g",
+    "ko": "Red Rock Deli 감자칩 씨솔트 & 발사믹 식초맛 165g",
+    "src": "ai"
+  },
+  "Maggi Gluten Free Side Dishes Three Cheese Potato Bake 21g": {
+    "zh": "Maggi 三重起司馬鈴薯焗烤粉 無麩質 21克",
+    "ja": "Maggi 3種のチーズポテトベイク グルテンフリー 21g",
+    "ko": "Maggi 쓰리 치즈 포테이토 베이크 글루텐 프리 21g",
+    "src": "ai"
+  },
+  "L'Oreal Age Perfect Cell Renewal Day Cream Spf15 50mL": {
+    "zh": "L'Oreal 巴黎萊雅 Age Perfect 細胞再生日霜 SPF15 50毫升",
+    "ja": "L'Oreal Age Perfect セルリニューアル デイクリーム SPF15 50ml",
+    "ko": "L'Oreal Age Perfect 셀 리뉴얼 데이 크림 SPF15 50ml",
+    "src": "ai"
+  },
+  "Oral B Floss Action Deep Clean Refill Brush Heads 8 Pack": {
+    "zh": "Oral B 牙線型深層清潔電動牙刷刷頭 8入",
+    "ja": "Oral B フロスアクション ディープクリーン 替えブラシ 8個入",
+    "ko": "Oral B 플로스 액션 딥 클린 리필 칫솔모 8개입",
+    "src": "ai"
+  },
+  "Bubs Organic Grass Fed Formula Stage 3 Toddler 800g": {
+    "zh": "Bubs 有機草飼幼兒配方奶粉 3階段 800克",
+    "ja": "Bubs オーガニック グラスフェッド 幼児用粉ミルク ステージ3 800g",
+    "ko": "Bubs 유기농 그래스페드 유아용 분유 3단계 800g",
+    "src": "ai"
+  },
+  "Pringles Minis Multi Pack BBQ 5 Pack 95g": {
+    "zh": "Pringles 迷你洋芋片 烤肉口味 5入 95克",
+    "ja": "Pringles ミニポテトチップス バーベキュー味 5個入 95g",
+    "ko": "Pringles 미니 감자칩 바비큐맛 5개입 95g",
+    "src": "ai"
+  },
+  "Cadbury Real Chocolate Baking Chips Milk Chocolate 200g": {
+    "zh": "Cadbury 牛奶巧克力烘焙豆 200克",
+    "ja": "Cadbury ミルクチョコレートチップ 200g",
+    "ko": "Cadbury 밀크 초콜릿 칩 200g",
+    "src": "ai"
+  },
+  "Maggi Recipe Bases Apricot Chicken 35g": {
+    "zh": "Maggi 杏桃雞肉料理醬包 35克",
+    "ja": "Maggi アプリコットチキン用ソース 35g",
+    "ko": "Maggi 살구 치킨 소스 35g",
+    "src": "ai"
+  },
+  "Bubs Organic Grass Fed Formula Stage 2 Follow On 800g": {
+    "zh": "Bubs 有機草飼後續配方奶粉 2階段 800克",
+    "ja": "Bubs オーガニック グラスフェッド フォローアップミルク ステージ2 800g",
+    "ko": "Bubs 유기농 그래스페드 후속 분유 2단계 800g",
+    "src": "ai"
+  },
+  "Mutti Passata Tomato Puree 400g": {
+    "zh": "Mutti 番茄糊 400克",
+    "ja": "Mutti パッサータ トマトピューレ 400g",
+    "ko": "Mutti 파사타 토마토 퓨레 400g",
+    "src": "ai"
+  },
+  "Supercoat Peanut Butter & Oats Baked Biscuits Dog Treats 400g": {
+    "zh": "Supercoat 花生醬燕麥烘焙餅乾 成犬零食 400克",
+    "ja": "Supercoat ピーナッツバター＆オーツ 焼きビスケット 犬用おやつ 400g",
+    "ko": "Supercoat 피넛 버터 & 오트 구운 비스킷 반려견 간식 400g",
+    "src": "ai"
+  },
+  "Wallaby Original Bites Dark Choc Fruit And Nut 120g": {
+    "zh": "Wallaby 經典款黑巧克力水果堅果能量球 120克",
+    "ja": "Wallaby オリジナル ダークチョコ フルーツ＆ナッツ 120g",
+    "ko": "Wallaby 오리지널 다크 초코 과일 & 견과류 120g",
+    "src": "ai"
+  },
+  "Cadbury Real Dark Chocolate Melts 225g": {
+    "zh": "Cadbury 黑巧克力烘焙豆 225克",
+    "ja": "Cadbury ダークチョコレートチップ 225g",
+    "ko": "Cadbury 다크 초콜릿 칩 225g",
+    "src": "ai"
+  },
+  "Cancer Council SPF 50+ Moisturising Tube Sunscreen 110mL": {
+    "zh": "Cancer Council 保濕防曬乳 SPF 50+ 110毫升",
+    "ja": "Cancer Council 保湿日焼け止め SPF 50+ 110ml",
+    "ko": "Cancer Council 보습 선크림 SPF 50+ 110ml",
+    "src": "ai"
+  },
+  "Street Kitchen Thai Yellow Curry 285g": {
+    "zh": "Street Kitchen 泰式黃咖哩醬料包 285克",
+    "ja": "Street Kitchen タイイエローカレーソース 285g",
+    "ko": "Street Kitchen 태국식 옐로우 커리 소스 285g",
+    "src": "ai"
+  },
+  "Greenback Salted Caramel Plant Protein Bar 50g": {
+    "zh": "Greenback 海鹽焦糖植物蛋白棒 50克",
+    "ja": "Greenback ソルテッドキャラメル 植物性プロテインバー 50g",
+    "ko": "Greenback 솔티드 카라멜 식물성 단백질 바 50g",
+    "src": "ai"
+  },
+  "Nature's Gift Kangaroo Jerky Strips Dog Treats 150g": {
+    "zh": "Nature's Gift 袋鼠肉條 成犬零食 150克",
+    "ja": "Nature's Gift カンガルー肉ジャーキー 犬用おやつ 150g",
+    "ko": "Nature's Gift 캥거루 육포 반려견 간식 150g",
+    "src": "ai"
+  },
+  "Supercoat Chicken Parsley & Carrot Baked Biscuits Dog Treats 400g": {
+    "zh": "Supercoat 雞肉巴西里紅蘿蔔烘焙餅乾 成犬零食 400克",
+    "ja": "Supercoat チキン・パセリ・人参 焼きビスケット 犬用おやつ 400g",
+    "ko": "Supercoat 치킨·파슬리·당근 구운 비스킷 반려견 간식 400g",
+    "src": "ai"
+  },
+  "Sun Harvest Lime Juice 200mL": {
+    "zh": "Sun Harvest 萊姆汁 200毫升",
+    "ja": "Sun Harvest ライム果汁 200mL",
+    "ko": "Sun Harvest 라임 주스 200mL",
+    "src": "ai"
+  },
+  "Kez's Kitchen Gluten Free Chocolate Raspberry Vienna Eclair 190g": {
+    "zh": "Kez's Kitchen 無麩質巧克力覆盆莓維也納閃電泡芙 190克",
+    "ja": "Kez's Kitchen グルテンフリー チョコレートラズベリー ウィーンエクレア 190g",
+    "ko": "Kez's Kitchen 글루텐 프리 초콜릿 라즈베리 비엔나 에클레어 190g",
+    "src": "ai"
+  },
+  "Daley Street Dark/intense Aluminium Nespresso Compatible Coffee Capsules 10 Pack": {
+    "zh": "Daley Street 深焙濃郁鋁製 Nespresso 相容咖啡膠囊 10入",
+    "ja": "Daley Street ダーク/インテンス アルミ製 Nespresso互換 コーヒーカプセル 10個入",
+    "ko": "Daley Street 다크/인텐스 알루미늄 Nespresso 호환 커피 캡슐 10개입",
+    "src": "ai"
+  },
+  "Vanish Preen Oxi Action Gold Ultra Power Fabric Stain Remover Spray 450mL": {
+    "zh": "Vanish Preen Oxi Action Gold 強效衣物去漬噴霧 450毫升",
+    "ja": "Vanish Preen Oxi Action Gold ウルトラパワー 衣類用シミ抜きスプレー 450mL",
+    "ko": "Vanish Preen Oxi Action Gold 울트라 파워 의류 얼룩 제거 스프레이 450mL",
     "src": "ai"
   }
 }
