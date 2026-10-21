@@ -3172,9 +3172,10 @@
     "src": "ai"
   },
   "L'Oreal Paris Men Expert Hydra Energetic Face Wash 100mL": {
-    "zh": "L'Oreal Paris 巴黎萊雅男士水能保濕醒膚洗面乳 (100毫升裝)",
-    "ja": "ロレアルパリ メンズエクスパート ハイドラエナジェティック 洗顔フォーム（100mL）",
-    "ko": "로레알 파리 맨 엑스퍼트 하이드라 에너제틱 폼클렌저 (100mL)"
+    "zh": "L'Oreal Paris 男仕極效保濕洗面乳 100毫升",
+    "ja": "L'Oreal Paris メン エキスパート ハイドラエナジェティック 洗顔料 100mL",
+    "ko": "L'Oreal Paris 멘 엑스퍼트 하이드라 에너제틱 폼클렌저 100mL",
+    "src": "ai"
   },
   "Sprite Lemonade Soft Drink Bottle 1.25L": {
     "zh": "Sprite 檸檬汽水 1.25公升",
@@ -149904,129 +149905,159 @@
     "src": "ai"
   },
   "KB's Whiting Bites Southern Style Batter 1kg": {
-    "zh": "KB's Whiting Bites Southern Style Batter 1kg",
-    "ja": "KB's ホワイティングバイツ 南部風バター 1kg",
-    "ko": "KB 화이팅이 남부식 반죽 1kg을 깨물어요"
+    "zh": "KB's 南方美式裹粉鱚魚塊 1公斤",
+    "ja": "KB's ホワイティング バイツ サザンスタイル バター 1kg",
+    "ko": "KB's 화이팅 바이츠 서던 스타일 배터 1kg",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Twinings Cold Infusions Raspberry Lime 14 Pack": {
-    "zh": "Twinings 冷浸液覆盆子酸橙 14 包",
-    "ja": "トワイニング コールド インフュージョン ラズベリー ライム 14 パック",
-    "ko": "Twinings Cold Infusions 라즈베리 라임 14팩"
+    "zh": "Twinings 冷泡茶覆盆子萊姆口味 14入",
+    "ja": "Twinings コールドインフュージョン ラズベリー＆ライム 14個入",
+    "ko": "Twinings 콜드 인퓨전 라즈베리 라임 14개입",
+    "src": "ai"
   },
   "Palmolive Naturals Body Wash Anti Stress 1L": {
-    "zh": "Palmolive Naturals 抗壓力沐浴乳 1L",
-    "ja": "パルモリーブ ナチュラルズ ボディウォッシュ アンチストレス 1L",
-    "ko": "Palmolive Naturals 바디 워시 안티 스트레스 1L"
+    "zh": "Palmolive 自然系列舒壓沐浴乳 1公升",
+    "ja": "Palmolive ナチュラルズ ボディウォッシュ アンチストレス 1L",
+    "ko": "Palmolive 내추럴스 바디워시 안티 스트레스 1L",
+    "src": "ai"
   },
   "KB's Salt & Pepper Squid 1kg": {
-    "zh": "KB's 椒鹽魷魚 1kg",
-    "ja": "KB's ソルト＆ペッパーイカ 1kg",
-    "ko": "KB소금고추오징어 1kg"
+    "zh": "KB's 椒鹽魷魚 1公斤",
+    "ja": "KB's ソルト＆ペッパー スクイッド 1kg",
+    "ko": "KB's 소트 앤 페퍼 오징어 1kg",
+    "src": "ai"
   },
   "Birds Eye Air Baked Southern Blue Whiting 380g": {
-    "zh": "Birds Eye 空氣烤南藍鱈魚 380g",
-    "ja": "バーズアイ エアベイクド サザンブルーホワイティング 380g",
-    "ko": "버즈아이 에어 베이크드 서던 블루 화이팅 380g"
+    "zh": "Birds Eye 空氣烘焙南方藍鱈 380克",
+    "ja": "Birds Eye エアベイクド サザンブルーホワイティング 380g",
+    "ko": "Birds Eye 에어 베이킹 서던 블루 화이팅 380g",
+    "src": "ai"
   },
   "Nescafe Farmers Origins Africa Ristretto Coffee Capsules 10 Pack": {
-    "zh": "雀巢 Farmers Origins 非洲 Ristretto 咖啡膠囊 10 包",
-    "ja": "ネスカフェ ファーマーズ オリジンズ アフリカ リストレット コーヒーカプセル 10個パック",
-    "ko": "네스카페 파머스 오리진스 아프리카 리스트레토 커피 캡슐 10팩"
+    "zh": "Nescafe Farmers Origins 非洲極短濃縮咖啡膠囊 10入",
+    "ja": "Nescafe Farmers Origins アフリカ リストレット コーヒーカプセル 10個入",
+    "ko": "Nescafe Farmers Origins 아프리카 리스트레토 커피캡슐 10개입",
+    "src": "ai"
   },
   "Peters Drumstick Minis Classic Vanilla Cones 6 Pack 490mL": {
-    "zh": "Peters 迷你鼓棒經典香草甜筒 6 件裝 490mL",
-    "ja": "ピーターズ ドラムスティック ミニ クラシック バニラ コーン 6 パック 490mL",
-    "ko": "피터스 드럼스틱 미니 클래식 바닐라 콘 6팩 490mL"
+    "zh": "Peters Drumstick 迷你經典香草甜筒 490毫升 6入",
+    "ja": "Peters Drumstick ミニ クラシックバニラ コーンアイス 490ml 6個入",
+    "ko": "Peters Drumstick 미니 클래식 바닐라 콘 아이스크림 490ml 6개입",
+    "src": "ai"
   },
   "Palmolive Naturals Body Wash Shea Butter 1L": {
-    "zh": "Palmolive Naturals 乳木果沐浴乳 1L",
-    "ja": "パルモリーブ ナチュラルズ ボディウォッシュ シアバター 1L",
-    "ko": "Palmolive Naturals 바디 워시 시어 버터 1L"
+    "zh": "Palmolive 自然系列乳油木果油沐浴乳 1公升",
+    "ja": "Palmolive ナチュラルズ ボディウォッシュ シアバター 1L",
+    "ko": "Palmolive 내추럴스 바디워시 시어버터 1L",
+    "src": "ai"
   },
   "Colgate Plax Fresh Mint Mouthwash 500mL": {
-    "zh": "高露潔 Plax 新鮮薄荷漱口水 500mL",
-    "ja": "コルゲート プラックス フレッシュミント マウスウォッシュ 500mL",
-    "ko": "콜게이트 플렉스 프레쉬 민트 구강청결제 500mL"
+    "zh": "Colgate 潔齒專科清新薄荷漱口水 500毫升",
+    "ja": "Colgate プラックス フレッシュミント マウスウォッシュ 500mL",
+    "ko": "Colgate 플랙스 프레시 민트 구강청결제 500mL",
+    "src": "ai"
   },
   "Mayver's Upside Down Crunchy Peanut Butter 450g": {
-    "zh": "Mayver's 倒脆花生醬 450g",
-    "ja": "メイバーズ アップサイドダウン クランチピーナッツバター 450g",
-    "ko": "메이버 업사이드다운 크런치 땅콩버터 450g"
+    "zh": "Mayver's 上翻顆粒花生醬 450克",
+    "ja": "Mayver's アップサイドダウン チャンキーピーナッツバター 450g",
+    "ko": "Mayver's 업사이드 다운 크런치 땅콩버터 450g",
+    "src": "ai"
   },
   "Palmolive Antibacterial Hand Wash Sea Minerals Refill 1L": {
-    "zh": "Palmolive 抗菌洗手液海洋礦物質補充裝 1L",
-    "ja": "パルモリーブ 抗菌ハンドウォッシュ シーミネラル つめかえ用 1L",
-    "ko": "팜올리브 항균 핸드워시 씨 미네랄 리필 1L"
+    "zh": "Palmolive 抗菌洗手乳海洋礦物補充包 1公升",
+    "ja": "Palmolive 薬用ハンドウォッシュ シーミネラル 詰替 1L",
+    "ko": "Palmolive 항균 핸드워시 씨 미네랄 리필 1L",
+    "src": "ai"
   },
   "Twinings Cold Infusions Mango & Passionfruit 14 Pack": {
-    "zh": "Twinings 芒果西番蓮冷飲 14 包",
-    "ja": "トワイニング コールド インフュージョン マンゴー & パッションフルーツ 14 パック",
-    "ko": "Twinings Cold Infusions 망고 & 패션푸르트 14팩"
+    "zh": "Twinings 冷泡茶芒果百香果口味 14入",
+    "ja": "Twinings コールドインフュージョン マンゴー＆パッションフルーツ 14個入",
+    "ko": "Twinings 콜드 인퓨전 망고 & 패션프루트 14개입",
+    "src": "ai"
   },
   "Peters Drumstick Caramel Swirl Cones 4 Pack 475mL": {
-    "zh": "Peters Drumstick Caramel Swirl Cones 4 Pack 475mL",
-    "ja": "ピーターズ ドラムスティック キャラメル スワール コーン 4 パック 475mL",
-    "ko": "피터스 드럼스틱 카라멜 소용돌이 콘 4팩 475mL"
+    "zh": "Peters Drumstick 焦糖旋風冰淇淋甜筒 4入 475毫升",
+    "ja": "Peters Drumstick キャラメルスワール コーン 4個入 475ml",
+    "ko": "Peters Drumstick 카라멜 스월 콘 4개입 475ml",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Mario Coconut Biscuits 720g": {
-    "zh": "馬裡奧椰子餅乾 720g",
-    "ja": "マリオ ココナッツビスケット 720g",
-    "ko": "마리오 코코넛 비스킷 720g"
+    "zh": "Mario 椰子餅乾 720克",
+    "ja": "Mario ココナッツ ビスケット 720g",
+    "ko": "Mario 코코넛 비스킷 720g",
+    "src": "ai"
   },
   "Scholl Party Feet Ball Of Foot Gel Cushions 1 Pair": {
-    "zh": "Scholl Party Feet Ball Of Foot Gel Cushions 1 Pair",
-    "ja": "Scholl パーティー フィート フット ボール ジェル クッション 1 ペア",
-    "ko": "숄 파티 발 볼 오브 풋 젤 쿠션 1쌍"
+    "zh": "Scholl 派對足前掌舒壓凝膠墊 1雙",
+    "ja": "Scholl パーティーフィート 前足用 ジェルクッション 1ペア",
+    "ko": "Scholl 파티 풋 볼 오브 풋 젤 쿠션 1쌍",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Kb's Whiting Bites Battered 1kg": {
-    "zh": "Kb's 鱈魚咬傷 1 公斤",
-    "ja": "KB's ホワイティングバイツ ボロボロ 1kg",
-    "ko": "Kb 화이팅 바이트 1kg"
+    "zh": "Kb's 炸鱚魚塊 1公斤",
+    "ja": "Kb's ホワイティング バイツ バッター 1kg",
+    "ko": "Kb's 화이팅 바이트 배터드 1kg",
+    "src": "ai"
   },
   "La Famiglia Bread Slices Garlic 9 Pack 270g": {
-    "zh": "La Famiglia Bread Slices Garlic 9 Pack 270g",
-    "ja": "ラ・ファミリア スライスパン ガーリック 9枚パック 270g",
-    "ko": "라파밀리아 빵조각 마늘 9팩 270g"
+    "zh": "La Famiglia 大蒜風味切片麵包 9入 270克",
+    "ja": "La Famiglia ブレッド スライス ガーリック 9個入 270g",
+    "ko": "La Famiglia 브레드 슬라이스 갈릭 9개입 270g",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Birds Eye Air Baked Barramundi 250g": {
-    "zh": "Birds Eye Air Baked Barramundi 250g",
-    "ja": "バーズアイ エアベイクド バラマンディ 250g",
-    "ko": "버즈아이 에어 베이크드 바라문디 250g"
+    "zh": "Birds Eye 空氣烘烤尖吻鱸 250克",
+    "ja": "Birds Eye エアベイクド バラマンディ 250g",
+    "ko": "Birds Eye 에어 베이크드 바라문디 250g",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Masterfoods Umami Garlic Herb Seasoning Can 45g": {
-    "zh": "Masterfoods Umami Garlic Herb Seasoning Can 45g",
+    "zh": "Masterfoods Umami 大蒜香草調味料罐裝 45 克",
     "ja": "マスターフーズ 旨味ガーリックハーブシーズニング 缶45g",
     "ko": "마스터푸드 우마미 마늘 허브 시즈닝 캔 45g"
   },
   "KB's Mexican Taco Fish Strips 1kg": {
-    "zh": "KB's 墨西哥 Taco 魚條 1kg",
-    "ja": "KB's メキシカンタコスフィッシュストリップ 1kg",
-    "ko": "KB 멕시칸 타코 생선 스트립 1kg"
+    "zh": "KB's 墨西哥塔可魚條 1公斤",
+    "ja": "KB's メキシカン タコ フィッシュストリップス 1kg",
+    "ko": "KB's 멕시칸 타코 피시 스트립 1kg",
+    "src": "ai"
   },
   "Palmolive Body Wash Mens Active 1L": {
-    "zh": "Palmolive Body Wash Mens Active 1L",
-    "ja": "パルモリーブ ボディウォッシュ メンズアクティブ 1L",
-    "ko": "Palmolive 바디워시 남성용 액티브 1L"
+    "zh": "Palmolive 男士活力沐浴乳 1公升",
+    "ja": "Palmolive ボディーウォッシュ メンズ アクティブ 1L",
+    "ko": "Palmolive 바디 워시 맨즈 액티브 1L",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Peters Drumstick Banana Caramel Cones 4 Pack 475mL": {
-    "zh": "Peters 鼓棒香蕉焦糖甜筒 4 包 475mL",
-    "ja": "ピーターズ ドラムスティック バナナ キャラメル コーン 4個パック 475mL",
-    "ko": "피터스 드럼스틱 바나나 카라멜 콘 4팩 475mL"
+    "zh": "Peters Drumstick 香蕉焦糖甜筒 475毫升 4入",
+    "ja": "Peters Drumstick バナナキャラメル コーンアイス 475ml 4個入",
+    "ko": "Peters Drumstick 바나나 카라멜 콘 아이스크림 475ml 4개입",
+    "src": "ai"
   },
   "Duracell Ultra D Alkaline Batteries 2 Pack": {
-    "zh": "金霸王 Ultra D 鹼性電池 2 片裝",
-    "ja": "Duracell ウルトラ D アルカリ電池 2 個パック",
-    "ko": "듀라셀 울트라 D 알카라인 배터리 2팩"
+    "zh": "Duracell 超極效1號鹼性電池 2入",
+    "ja": "Duracell ウルトラ D アルカリ乾電池 2個入",
+    "ko": "Duracell 울트라 D 알카라인 건전지 2개입",
+    "src": "ai"
   },
   "KB's Crispy Fish Tenders Karaage Style 1Kg": {
-    "zh": "KB's 炸魚柳 1Kg",
-    "ja": "KB's サクサクフィッシュテンダー からあげ風 1Kg",
-    "ko": "KB 크리스피 피시텐더 가라아게 스타일 1Kg"
+    "zh": "KB's 日式唐揚酥脆魚柳 1公斤",
+    "ja": "KB's クリスピー フィッシュテンダーズ から揚げ風 1Kg",
+    "ko": "KB's 크리스피 피시 텐더 가라아게 스타일 1Kg",
+    "src": "ai"
   },
   "Peters Drumstick Minis Boysenberry Swirl Cones 6 Pack 480mL": {
-    "zh": "Peters Drumstick 迷你波森莓漩渦錐體 6 件裝 480mL",
-    "ja": "ピーターズ ドラムスティック ミニ ボイセンベリー スワール コーン 6 パック 480mL",
-    "ko": "피터스 드럼스틱 미니 보이젠베리 소용돌이 콘 6팩 480mL"
+    "zh": "Peters Drumstick 迷你波森莓漩渦甜筒 480毫升 6入",
+    "ja": "Peters Drumstick ミニ ボイセンベリー スワール コーンアイス 480ml 6個入",
+    "ko": "Peters Drumstick 미니 보이센베리 스월 콘 아이스크림 480ml 6개입",
+    "src": "ai"
   },
   "Moccona Classic Medium Roast Instant Coffee 100g": {
     "zh": "Moccona 經典中焙即溶咖啡 100克",
@@ -150302,6 +150333,360 @@
     "zh": "Borg's 菠菜起司餃超值包 1公斤",
     "ja": "Borg's ほうれん草パスティッツィ バリューパック 1kg",
     "ko": "Borg's 시금치 파스티치 밸류팩 1kg",
+    "src": "ai"
+  },
+  "Lynx Lower Body Deodorant Spray Coconut & Sandalwood 100mL": {
+    "zh": "Lynx 下半身體香噴霧 椰子與檀香 100毫升",
+    "ja": "Lynx 下半身用デオドラントスプレー ココナッツ＆サンダルウッド 100ml",
+    "ko": "Lynx 하체용 데오도란트 스프레이 코코넛 & 샌달우드 100ml",
+    "src": "ai"
+  },
+  "Schweppes Sparkling Water Lime & Lemon 18x375ml 6.75L": {
+    "zh": "Schweppes 萊姆檸檬氣泡水 375毫升 x 18入",
+    "ja": "Schweppes スパークリングウォーター ライム＆レモン 375ml x 18",
+    "ko": "Schweppes 스파클링 워터 라임 & 레몬 375ml x 18개입",
+    "src": "ai"
+  },
+  "Cobs Drizzld Popcorn Sweet Milk Chocolate 110g": {
+    "zh": "Cobs 淋醬爆米花香甜牛奶巧克力口味 110克",
+    "ja": "Cobs ドリズルポップコーン スウィートミルクチョコレート 110g",
+    "ko": "Cobs 드리즐드 팝콘 스위트 밀크 초콜릿 110g",
+    "src": "ai"
+  },
+  "Palmolive Antibacterial Hand Wash Odour Neutralising Lime Refill 1L": {
+    "zh": "Palmolive 抗菌洗手乳去味萊姆補充包 1公升",
+    "ja": "Palmolive 抗菌ハンドウォッシュ 消臭ライム 詰め替え 1L",
+    "ko": "Palmolive 항균 핸드 워시 오더 뉴트럴라이징 라임 리필 1L",
+    "src": "ai"
+  },
+  "Colgate Total Active Prevention Enamel Strength Toothpaste 115g": {
+    "zh": "Colgate 全效主動防護固齒牙膏 115克",
+    "ja": "Colgate トータル アクティブ プリベンション エナメルストレングス 歯磨き粉 115g",
+    "ko": "Colgate 토탈 액티브 프리벤션 에나멜 스트렝스 치약 115g",
+    "src": "ai"
+  },
+  "Palmolive Naturals Shower Milk Black Orchid 1L": {
+    "zh": "Palmolive 自然沐浴乳黑蘭花香 1公升",
+    "ja": "Palmolive ナチュラルズ シャワーミルク ブラックオーキッド 1L",
+    "ko": "Palmolive 내추럴스 샤워 밀크 블랙 오키드 1L",
+    "src": "ai"
+  },
+  "Rexona Women Deodorant 72hr Advanced Aerosol Invisible Dry Fresh 220mL": {
+    "zh": "Rexona 女士72小時進階制汗噴霧隱形乾爽清新香 220毫升",
+    "ja": "Rexona レディース デオドラント 72hr アドバンスド エアゾール インビジブル ドライ フレッシュ 220ml",
+    "ko": "Rexona 여성 데오도란트 72hr 어드밴스드 에어로졸 인비저블 드라이 프레시 220ml",
+    "src": "ai"
+  },
+  "Twinings Cold Infusions Lemon & Ginger 14 Pack": {
+    "zh": "Twinings 冷泡茶檸檬生薑口味 14入",
+    "ja": "Twinings コールドインフュージョン レモン＆ジンジャー 14個入",
+    "ko": "Twinings 콜드 인퓨전 레몬 & 진저 14개입",
+    "src": "ai"
+  },
+  "Schmackos Chomp N Chew With Peanut Butter & Chicken Flavoured Dog Treat Large 60g": {
+    "zh": "Schmackos 花生醬與雞肉口味大型犬潔牙骨 60克",
+    "ja": "Schmackos チョンプンチュウ ピーナッツバター＆チキンフレーバー ドッグトリート ラージ 60g",
+    "ko": "Schmackos 촘프 앤 츄 피넛 버터 & 치킨 플레이버 독 트릿 라지 60g",
+    "src": "ai"
+  },
+  "Mount Franklin Lightly Sparkling Water Blood Orange 10x375ml 3.75L": {
+    "zh": "Mount Franklin 微氣泡水血橙口味 375毫升 x 10入",
+    "ja": "Mount Franklin ライトスパークリングウォーター ブラッドオレンジ 375ml x 10",
+    "ko": "Mount Franklin 라이틀리 스파클링 워터 블러드 오렌지 375ml x 10개입",
+    "src": "ai"
+  },
+  "Mount Franklin Lightly Sparkling Water Raspberry Multipack Cans 375ml 10 Pack": {
+    "zh": "Mount Franklin 微氣泡水覆盆子口味 375毫升 x 10入",
+    "ja": "Mount Franklin ライトスパークリングウォーター ラズベリー マルチパック 缶 375ml 10個入",
+    "ko": "Mount Franklin 라이틀리 스파클링 워터 라즈베리 멀티팩 캔 375ml 10개입",
+    "src": "ai"
+  },
+  "Bondi Sands Self Tanning Foam Light/medium 200mL": {
+    "zh": "Bondi Sands 自體美黑泡沫淺至中階 200毫升",
+    "ja": "Bondi Sands セルフタンニングフォーム ライト／ミディアム 200ml",
+    "ko": "Bondi Sands 셀프 태닝 폼 라이트/미디엄 200ml",
+    "src": "ai"
+  },
+  "Oreo Dunked Cadbury Milk Chocolate Original Cookies 6 Pack 197g": {
+    "zh": "Oreo 沾裹 Cadbury 牛乳巧克力經典夾心餅乾 6入 197克",
+    "ja": "Oreo ダンクト キャドバリー ミルクチョコレート オリジナル クッキー 6個入 197g",
+    "ko": "Oreo 덩크드 Cadbury 밀크 초콜릿 오리지널 쿠키 6개입 197g",
+    "src": "ai"
+  },
+  "L'Oreal Paris Men Expert Barber Club Face & Hair Wash 200mL": {
+    "zh": "L'Oreal Paris 男仕專業理容沙龍洗面洗髮露 200毫升",
+    "ja": "L'Oreal Paris メン エキスパート バーバークラブ フェイス＆ヘアウォッシュ 200ml",
+    "ko": "L'Oreal Paris 멘 엑스퍼트 바버 클럽 페이스 & 헤어 워시 200ml",
+    "src": "ai"
+  },
+  "Bondi Sands Aero Express Self Tanning Mousse 200g": {
+    "zh": "Bondi Sands 極速自體美黑慕絲 200克",
+    "ja": "Bondi Sands エアロ エクスプレス セルフタンニングムース 200g",
+    "ko": "Bondi Sands 에어로 익스프레스 셀프 태닝 무스 200g",
+    "src": "ai"
+  },
+  "Masterfoods Airfry Zesty Herb Vegies Seasoning Can 50g": {
+    "zh": "Masterfoods 氣炸鍋酸甜香草蔬菜調味料罐 50克",
+    "ja": "Masterfoods エアフライ ゼスティ ハーブ ベジーズ シーズニング 缶 50g",
+    "ko": "Masterfoods 에어프라이 제스티 허브 베지스 시즈닝 캔 50g",
+    "src": "ai"
+  },
+  "Masterfoods Spicy Chilli Garlic Seasoning Can 50g": {
+    "zh": "Masterfoods 香辣蒜香調味料罐 50克",
+    "ja": "Masterfoods スパイシー チリ ガーリック シーズニング 缶 50g",
+    "ko": "Masterfoods 스파이시 칠리 갈릭 시즈닝 캔 50g",
+    "src": "ai"
+  },
+  "Coca-Cola Zero Sugar Coke 10x375ml 3.75L": {
+    "zh": "Coca-Cola 零卡可樂 375毫升 x 10入",
+    "ja": "Coca-Cola ゼロシュガー コーラ 375ml x 10",
+    "ko": "Coca-Cola 제로 슈거 콜라 375ml x 10개입",
+    "src": "ai"
+  },
+  "Rexona Men Advanced Deodorant Thermo Iced Lemon & Sage 220mL": {
+    "zh": "Rexona 男士進階制汗噴霧極酷冰檸檬鼠尾草香 220毫升",
+    "ja": "Rexona メンズ アドバンスド デオドラント サーモ アイスド レモン＆セージ 220ml",
+    "ko": "Rexona 남성 어드밴스드 데오도란트 서모 아이스드 레몬 & 세이지 220ml",
+    "src": "ai"
+  },
+  "Palmolive Naturals Body Wash Coconut 1L": {
+    "zh": "Palmolive 自然沐浴乳椰子香 1公升",
+    "ja": "Palmolive ナチュラルズ ボディーウォッシュ ココナッツ 1L",
+    "ko": "Palmolive 내추럴스 바디 워시 코코넛 1L",
+    "src": "ai"
+  },
+  "Cadbury Favourites Monopoly Games Box 489g": {
+    "zh": "Cadbury 精選綜合巧克力地產大亨遊戲禮盒 489克",
+    "ja": "Cadbury フェイバリッツ モノプロポリ ゲーム ボックス 489g",
+    "ko": "Cadbury 페이보리츠 모노폴리 게임 박스 489g",
+    "src": "ai"
+  },
+  "Colgate Plax Mouthwash Fresh Tea 500mL": {
+    "zh": "Colgate 碧蓮漱口水清新茶香 500毫升",
+    "ja": "Colgate プラックス マウスウォッシュ フレッシュティー 500ml",
+    "ko": "Colgate 플락스 구강청결제 후레쉬 티 500ml",
+    "src": "ai"
+  },
+  "Ajax Luxury Home Smooth Vanilla & Bergamot Multipurpose Trigger 750mL": {
+    "zh": "Ajax Luxury Home 柔和香草佛手柑香多功能清潔噴霧 750毫升",
+    "ja": "Ajax Luxury Home スムースバニラ＆ベルガモット 多目的スプレー 750ml",
+    "ko": "Ajax Luxury Home 스무스 바닐라 & 베르가못 다목적 스프레이 750ml",
+    "src": "ai"
+  },
+  "Maharajah's Choice Large Plain Pappadams 100g": {
+    "zh": "Maharajah's Choice 大片原味印度薄脆餅 100克",
+    "ja": "Maharajah's Choice ラージ プレーン パパダム 100g",
+    "ko": "Maharajah's Choice 라지 플레인 파파담 100g",
+    "src": "ai"
+  },
+  "Mayver's Upside Down Smooth Peanut Butter 450g": {
+    "zh": "Mayver's 倒裝滑順花生醬 450克",
+    "ja": "Mayver's アップサイドダウン スムース ピーナッツバター 450g",
+    "ko": "Mayver's 업사이드 다운 스무스 땅콩버터 450g",
+    "src": "ai"
+  },
+  "Sharwood's Extra Creamy Butter Chicken Simmer Sauce 420g": {
+    "zh": "Sharwood's 超濃郁奶油雞肉慢煮醬 420克",
+    "ja": "Sharwood's エクストラクリーミー バターチキン シマースース 420g",
+    "ko": "Sharwood's 엑스트라 크리미 버터 치킨 시머 소스 420g",
+    "src": "ai"
+  },
+  "Polished London Teeth Whitening Powder 12g": {
+    "zh": "Polished London 牙齒美白粉 12克",
+    "ja": "Polished London 歯のホワイトニングパウダー 12g",
+    "ko": "Polished London 치아 화이트닝 파우더 12g",
+    "src": "ai"
+  },
+  "Darrell Lea Triple Chocolate Raspberry Logs 110g": {
+    "zh": "Darrell Lea 三重巧克力覆盆子條 110克",
+    "ja": "Darrell Lea トリプルチョコレート ラズベリー ログ 110g",
+    "ko": "Darrell Lea 트리플 초콜릿 라즈베리 롤 110g",
+    "src": "ai"
+  },
+  "Whole Earth Sweetener Monk Fruit Raw Doy Bag 500g": {
+    "zh": "Whole Earth Sweetener 羅漢果糖原味夾鏈袋裝 500克",
+    "ja": "Whole Earth Sweetener モンクフルーツ ラウ ドイバッグ 500g",
+    "ko": "Whole Earth Sweetener 몽크푸르트 로우 도이백 500g",
+    "src": "ai"
+  },
+  "Bondi Sands Liquid Gold Self Tanning Foam 200mL": {
+    "zh": "Bondi Sands 黃金液體助曬泡沫 200毫升",
+    "ja": "Bondi Sands リキッドゴールド セルフタンニングフォーム 200ml",
+    "ko": "Bondi Sands 리퀴드 골드 셀프 태닝 폼 200ml",
+    "src": "ai"
+  },
+  "Nescafe Farmers Origins Brazil Lungo Coffee Capsules 10 Pack": {
+    "zh": "Nescafe Farmers Origins 巴西大杯咖啡膠囊 10入",
+    "ja": "Nescafe Farmers Origins ブラジル ルンゴ コーヒーカプセル 10個入",
+    "ko": "Nescafe Farmers Origins 브라질 룽고 커피캡슐 10개입",
+    "src": "ai"
+  },
+  "Palmolive Naturals Hand Wash Aloe Vera & Chamomile Refill 1L": {
+    "zh": "Palmolive Naturals 蘆薈洋甘菊香洗手乳補充包 1公升",
+    "ja": "Palmolive Naturals ハンドウォッシュ アロエベラ＆カモミール 詰め替え用 1L",
+    "ko": "Palmolive Naturals 핸드워시 알로에베라 & 캐모마일 리필 1L",
+    "src": "ai"
+  },
+  "Schweppes Mixers Ginger Beer Soft Drink 1.1L": {
+    "zh": "Schweppes Mixers 薑汁汽水 1.1公升",
+    "ja": "Schweppes Mixers ジンジャービア ソフトドリンク 1.1L",
+    "ko": "Schweppes Mixers 진저비어 탄산음료 1.1L",
+    "src": "ai"
+  },
+  "Bondi Sands Aero Ultra Dark 225mL": {
+    "zh": "Bondi Sands 極黑空氣助曬劑 225毫升",
+    "ja": "Bondi Sands エアロ ウルトラダーク 225ml",
+    "ko": "Bondi Sands 에어로 울트라 다크 225ml",
+    "src": "ai"
+  },
+  "Colgate Total Active Prevention Deep Clean Charcoal Toothpaste 115g": {
+    "zh": "Colgate 護齦專家全效深層清潔活性碳牙膏 115克",
+    "ja": "Colgate トータル アクティブ プレベンション ディープクリーン チャコール 歯磨き粉 115g",
+    "ko": "Colgate 토탈 액티브 프리벤션 딥클린 숯 치약 115g",
+    "src": "ai"
+  },
+  "Green's Drizzle Choc Hazelnut 375g": {
+    "zh": "Green's 淋醬巧克力榛果口味 375克",
+    "ja": "Green's ドリズル チョコヘーゼルナッツ 375g",
+    "ko": "Green's 드리블 초코 헤이즐넛 375g",
+    "src": "ai"
+  },
+  "Rexona Women Deodorant 72hr Advanced Aerosol Bright Bouquet 220mL": {
+    "zh": "Rexona 女士72小時進階噴霧式體香劑 璀璨花香 220毫升",
+    "ja": "Rexona レディース デオドラント 72時間 アドバンスド エアゾール ブライトブーケ 220ml",
+    "ko": "Rexona 여성 데오도란트 72시간 어드밴스드 에어로졸 브라이트 부케 220ml",
+    "src": "ai"
+  },
+  "Banana Boat SPF 50+ Sunscreen Sport 400g": {
+    "zh": "Banana Boat SPF 50+ 運動防曬乳 400克",
+    "ja": "Banana Boat SPF 50+ サンスクリーン スポーツ 400g",
+    "ko": "Banana Boat SPF 50+ 선스크린 스포츠 400g",
+    "src": "ai"
+  },
+  "Mountain Dew Soft Drink Cans Multipack 375mL 18 Pack": {
+    "zh": "Mountain Dew 碳酸飲料罐裝 375毫升 18入",
+    "ja": "Mountain Dew ソフトドリンク 缶 マルチパック 375ml 18個入",
+    "ko": "Mountain Dew 탄산음료 캔 멀티팩 375ml 18개입",
+    "src": "ai"
+  },
+  "Palmolive Naturals Body Wash Pomegranate Mango 1L": {
+    "zh": "Palmolive Naturals 紅石榴芒果香沐浴乳 1公升",
+    "ja": "Palmolive Naturals ボディウォッシュ ザクロ＆マンゴー 1L",
+    "ko": "Palmolive Naturals 바디워시 석류 & 망고 1L",
+    "src": "ai"
+  },
+  "Polished London Teeth Whitening Strips 4 Pack": {
+    "zh": "Polished London 牙齒美白貼片 4入",
+    "ja": "Polished London 歯のホワイトニングストリップ 4個入",
+    "ko": "Polished London 치아 화이트닝 스트립 4개입",
+    "src": "ai"
+  },
+  "Scholl 24hr Energy Insole Large 1 Each": {
+    "zh": "Scholl 24小時活力鞋墊 大號 1入",
+    "ja": "Scholl 24時間 エナジー インソール ラージ 1個",
+    "ko": "Scholl 24시간 에너지 인솔 라지 1개",
+    "src": "ai"
+  },
+  "Haldirams Snack Bhel Puri 200g": {
+    "zh": "Haldirams 零食印度香料脆米 200克",
+    "ja": "Haldirams スナック ベルプーリ 200g",
+    "ko": "Haldirams 스낵 벨푸리 200g",
+    "src": "ai"
+  },
+  "Moccona Caramel Flavor Infused Instant Coffee 95g": {
+    "zh": "Moccona 焦糖風味即溶咖啡 95克",
+    "ja": "Moccona キャラメル風味 インスタントコーヒー 95g",
+    "ko": "Moccona 카라멜 향 인스턴트 커피 95g",
+    "src": "ai"
+  },
+  "Cove By Earth Choice Surface Cleaner 475mL": {
+    "zh": "Cove By Earth Choice 表面清潔劑 475毫升",
+    "ja": "Cove By Earth Choice サーフェスクリーナー 475ml",
+    "ko": "Cove By Earth Choice 표면 세정제 475ml",
+    "src": "ai"
+  },
+  "Palmolive Naturals Body Wash Cherry Blossom 1L": {
+    "zh": "Palmolive 櫻花香沐浴乳 1公升",
+    "ja": "Palmolive ナチュラals ボディウォッシュ チェリーブロッサム 1L",
+    "ko": "Palmolive 내추럴스 바디워시 체리블로썸 1L",
+    "src": "ai"
+  },
+  "Mount Franklin Lightly Sparkling Water Lime Multipack Cans 375ml 10 Pack": {
+    "zh": "Mount Franklin 微氣泡萊姆風味氣泡水 375毫升 x 10入",
+    "ja": "Mount Franklin ライトスパークリングウォーター ライム 缶 375ml 10個入",
+    "ko": "Mount Franklin 라이트 스파클링 워터 라임 캔 375ml 10개입",
+    "src": "ai"
+  },
+  "Masterfoods Airfry Cheesy Herb Chip Seasoning Can 50g": {
+    "zh": "Masterfoods 氣炸起司香草薯條調味料 50克",
+    "ja": "Masterfoods エアフライ チーズハーブ チップスシーズニング 缶 50g",
+    "ko": "Masterfoods 에어프라이어 치즈 허브 칩 시즈닝 캔 50g",
+    "src": "ai"
+  },
+  "Masterfoods Zesty Lemon Herb Seasoning Can 50g": {
+    "zh": "Masterfoods 勁爽檸檬香草調味料 50克",
+    "ja": "Masterfoods ゼスティレモンハーブシーズニング 缶 50g",
+    "ko": "Masterfoods 제스티 레몬 허브 시즈닝 캔 50g",
+    "src": "ai"
+  },
+  "Solo Lemon Soft Drink Zero Sugar Cans Multipack 375mL 18 Pack": {
+    "zh": "Solo 零糖檸檬汽水 375毫升 x 18入",
+    "ja": "Solo レモン ソフトドリンク ゼロシュガー 缶 375mL 18個入",
+    "ko": "Solo 레몬 탄산음료 제로슈거 캔 375mL 18개입",
+    "src": "ai"
+  },
+  "Palmolive Naturals Body Wash Mild & Sensitive 1L": {
+    "zh": "Palmolive 溫和敏感沐浴乳 1公升",
+    "ja": "Palmolive ナチュラals ボディウォッシュ マイルド＆センシティブ 1L",
+    "ko": "Palmolive 내추럴스 바디워시 마일드 앤 센시티브 1L",
+    "src": "ai"
+  },
+  "L'Oreal Paris Men Expert Barber Club Beard Oil 30mL": {
+    "zh": "L'Oreal Paris 男仕專業理容鬍鬚油 30毫升",
+    "ja": "L'Oreal Paris メン エキスパート バーバークラブ ビアードオイル 30mL",
+    "ko": "L'Oreal Paris 멘 엑스퍼트 바버 클럽 수염 오일 30mL",
+    "src": "ai"
+  },
+  "Colgate Total Active Prevention Fresh Toothpaste 115g": {
+    "zh": "Colgate 全效全面防護清新牙膏 115克",
+    "ja": "Colgate トータル アクティブ プレベンション フレッシュ 歯磨き粉 115g",
+    "ko": "Colgate 토탈 액티브 프리벤션 프레시 치약 115g",
+    "src": "ai"
+  },
+  "Palmolive Naturals Body Wash Sea Minerals 1L": {
+    "zh": "Palmolive 海洋礦物沐浴乳 1公升",
+    "ja": "Palmolive ナチュラals ボディウォッシュ シーミネラルズ 1L",
+    "ko": "Palmolive 내추럴스 바디워시 씨 미네랄스 1L",
+    "src": "ai"
+  },
+  "Norsca Pastels Low Aluminium 24hr Aero Vanilla Bean Whip 155mL": {
+    "zh": "Norsca 粉彩低鋁24小時香草豆氣壓體香噴霧 155毫升",
+    "ja": "Norsca パステル ローアルミ 24時間 エアロ バニラビーンズ ホイップ 155mL",
+    "ko": "Norsca 파스텔 Low 알루미늄 24시간 에어로 바닐라 빈 휩 155mL",
+    "src": "ai"
+  },
+  "Pepsi Soft Drink Cola Cans Multipack 375mL 18 Pack": {
+    "zh": "Pepsi 可樂汽水 375毫升 x 18入",
+    "ja": "Pepsi ソフトドリンク コーラ 缶 375mL 18個入",
+    "ko": "Pepsi 탄산음료 콜라 캔 375mL 18개입",
+    "src": "ai"
+  },
+  "Schweppes Lemonade Soft Drink Cans Multipack 375mL 18 Pack": {
+    "zh": "Schweppes 檸檬汽水 375毫升 x 18入",
+    "ja": "Schweppes レモネード ソフトドリンク 缶 375mL 18個入",
+    "ko": "Schweppes 레모네이드 탄산음료 캔 375mL 18개입",
+    "src": "ai"
+  },
+  "Fanta Orange Soft Drink Multipack Cans 375ml 10 Pack": {
+    "zh": "Fanta 橘子汽水 375毫升 x 10入",
+    "ja": "Fanta オレンジ ソフトドリンク 缶 375ml 10個入",
+    "ko": "Fanta 오렌지 탄산음료 캔 375ml 10개입",
+    "src": "ai"
+  },
+  "Pepsi Max Soft Drink No Sugar Cans Multipack 375mL 18 Pack": {
+    "zh": "Pepsi Max 無糖可樂汽水 375毫升 x 18入",
+    "ja": "Pepsi Max ソフトドリンク ノーシュガー 缶 375mL 18個入",
+    "ko": "Pepsi Max 탄산음료 제로슈거 캔 375mL 18개입",
     "src": "ai"
   }
 }
