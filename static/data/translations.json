@@ -151759,10 +151759,11 @@
     "src": "ai"
   },
   "Continental Cup A Soup Dutch Curry With Rice Serves 2 55g": {
-    "zh": "Continental Cup A Soup 荷蘭咖哩飯濃湯 55克",
-    "ja": "Continental Cup A Soup ダッチカレーライススープ 55g",
-    "ko": "Continental Cup A Soup 더치 카레 라이스 수프 55g",
-    "src": "ai"
+    "zh": "Continental 荷式咖哩飯杯湯 2人份 55克",
+    "ja": "Continental カップAスープ ダッチカレー ライス入り 2食分 55g",
+    "ko": "Continental 컵 에이 수프 더치 카레 라이스 2인분 55g",
+    "src": "ai",
+    "qa_tries": 1
   },
   "H2coco Chocolate Flavoured Coconut Water 500mL": {
     "zh": "H2coco 巧克力風味椰子水 500毫升",
@@ -151996,6 +151997,372 @@
     "zh": "Poise 漏尿專用護墊 加強型 12入",
     "ja": "Poise 尿漏れ用パッド エクストラ 12個入",
     "ko": "Poise 요실금 패드 엑스트라 12개입",
+    "src": "ai"
+  },
+  "McIlhenny Co Tabasco Pepper Sauce 150mL": {
+    "zh": "McIlhenny Co 辣椒醬 150毫升",
+    "ja": "McIlhenny Co ペッパーソース 150ml",
+    "ko": "McIlhenny Co 페퍼 소스 150ml",
+    "src": "ai"
+  },
+  "Mutti Baby Roma Tomatoes Whole 400g": {
+    "zh": "Mutti 羅馬番茄罐頭 400克",
+    "ja": "Mutti ホールトマト缶 400g",
+    "ko": "Mutti 홀 토마토 캔 400g",
+    "src": "ai"
+  },
+  "Trident Thai Sweet Chilli Sauce 730mL": {
+    "zh": "Trident 泰式甜辣醬 730毫升",
+    "ja": "Trident タイ風スイートチリソース 730ml",
+    "ko": "Trident 태국식 스위트 칠리 소스 730ml",
+    "src": "ai"
+  },
+  "Haldirams Gulab Jamun 1kg": {
+    "zh": "Haldirams 古拉布賈穆甜點 1公斤",
+    "ja": "Haldirams グラブジャムン 1kg",
+    "ko": "Haldirams 굴랍 자문 1kg",
+    "src": "ai"
+  },
+  "Whiskas 1+ Years Jellymeat Loaf Wet Cat Food Can 400g": {
+    "zh": "Whiskas 成貓肉凍罐頭 400克",
+    "ja": "Whiskas 成猫用ゼリー仕立てウェットフード 400g",
+    "ko": "Whiskas 성묘용 젤리 타입 습식 사료 400g",
+    "src": "ai"
+  },
+  "Arnott's Gluten Free Shapes Biscuits Chicken Crimpy 110g": {
+    "zh": "Arnott's 無麩質雞汁餅乾 110克",
+    "ja": "Arnott's グルテンフリー シェイプス ビスケット チキン味 110g",
+    "ko": "Arnott's 글루텐 프리 셰이프스 비스킷 치킨맛 110g",
+    "src": "ai"
+  },
+  "Sunrice Microwave Brown Rice Cup 250g": {
+    "zh": "Sunrice 微波糙米飯 250克",
+    "ja": "Sunrice 電子レンジ用玄米カップ 250g",
+    "ko": "Sunrice 전자레인지용 현미밥 컵 250g",
+    "src": "ai"
+  },
+  "Maggi Dry Recipe Base Bolognese Tomato& Herb 26g": {
+    "zh": "Maggi 番茄香草義大利麵醬粉 26克",
+    "ja": "Maggi ボロネーゼ トマト＆ハーブ 調理用ミックス 26g",
+    "ko": "Maggi 볼로네제 토마토&허브 요리용 믹스 26g",
+    "src": "ai"
+  },
+  "Hello Jello Strawberry Jelly Crystals 22g": {
+    "zh": "Hello Jello 草莓果凍粉 22克",
+    "ja": "Hello Jello ストロベリーゼリーの素 22g",
+    "ko": "Hello Jello 딸기 젤리 믹스 22g",
+    "src": "ai"
+  },
+  "Leggo's Tomato Squeezy Paste 400g": {
+    "zh": "Leggo's 番茄糊擠壓瓶 400克",
+    "ja": "Leggo's トマトペースト 400g",
+    "ko": "Leggo's 토마토 페이스트 400g",
+    "src": "ai"
+  },
+  "Remedy Sodaly Yuzu Lemon 4x250ml 1L": {
+    "zh": "Remedy Sodaly 柚子檸檬氣泡水 250毫升 x 4入",
+    "ja": "Remedy Sodaly ゆずレモン炭酸飲料 250ml x 4本",
+    "ko": "Remedy Sodaly 유자 레몬 탄산수 250ml x 4개입",
+    "src": "ai"
+  },
+  "Nerf Dog 10in Compact Blaster & 2.5in Standard Non- Squeak Tennis Ball Light Blue/ Orange 1 Pack": {
+    "zh": "Nerf Dog 10吋發射器與2.5吋無聲網球組 1入",
+    "ja": "Nerf Dog 10インチブラスター＆2.5インチ音の鳴らないテニスボール 1個入",
+    "ko": "Nerf Dog 10인치 블래스터 & 2.5인치 무소음 테니스공 1개입",
+    "src": "ai"
+  },
+  "Sirena Lite Tuna In Oil Italian Style 95g": {
+    "zh": "Sirena 義式輕油漬鮪魚 95克",
+    "ja": "Sirena ライトオイル漬けツナ イタリアンスタイル 95g",
+    "ko": "Sirena 라이트 오일 참치 이탈리안 스타일 95g",
+    "src": "ai"
+  },
+  "Dermaveen Sensitive Sun Face & Body Cream SPF 50+ 500g": {
+    "zh": "Dermaveen 敏感肌臉部與身體防曬乳 SPF 50+ 500克",
+    "ja": "Dermaveen 敏感肌用フェイス＆ボディ日焼け止め SPF 50+ 500g",
+    "ko": "Dermaveen 민감성 피부용 얼굴 및 바디 선크림 SPF 50+ 500g",
+    "src": "ai"
+  },
+  "Carman's Muesli Toasted Super Berry Cranberry & Blueberry 500g": {
+    "zh": "Carman's 莓果烤燕麥 500克",
+    "ja": "Carman's スーパーベリー 焼きミューズリー 500g",
+    "ko": "Carman's 슈퍼 베리 구운 뮤즐리 500g",
+    "src": "ai"
+  },
+  "Dove Advanced Body Wash Rejuvenating Pomegranate 700mL": {
+    "zh": "Dove 多芬石榴煥活沐浴乳 700毫升",
+    "ja": "Dove ボディウォッシュ ザクロの香り 700ml",
+    "ko": "Dove 바디워시 석류향 700ml",
+    "src": "ai"
+  },
+  "Remedy Sodaly Pineapple 4x250ml 1L": {
+    "zh": "Remedy Sodaly 鳳梨氣泡水 250毫升 x 4入",
+    "ja": "Remedy Sodaly パイナップル炭酸飲料 250ml x 4本",
+    "ko": "Remedy Sodaly 파인애플 탄산수 250ml x 4개입",
+    "src": "ai"
+  },
+  "Australian Botanical Soap Lemongrass 200g": {
+    "zh": "Australian Botanical Soap 檸檬草香皂 200克",
+    "ja": "Australian Botanical Soap レモングラス石鹸 200g",
+    "ko": "Australian Botanical Soap 레몬그라스 비누 200g",
+    "src": "ai"
+  },
+  "Vitapet Chicken Sampler Jerhigh Dog Treat 400g": {
+    "zh": "Vitapet 雞肉風味狗零食 400克",
+    "ja": "Vitapet チキン味 犬用おやつ 400g",
+    "ko": "Vitapet 치킨맛 반려견 간식 400g",
+    "src": "ai"
+  },
+  "Sunrice Mwr Protein Brown Rice Cup 250g": {
+    "zh": "Sunrice 高蛋白微波糙米飯 250克",
+    "ja": "Sunrice 高タンパク玄米カップ 250g",
+    "ko": "Sunrice 고단백 현미밥 컵 250g",
+    "src": "ai"
+  },
+  "Mr Chen's Saucy Sesame Hand-pulled Style Noodle 320g": {
+    "zh": "Mr Chen's 芝麻醬手拉麵 320克",
+    "ja": "Mr Chen's セサミソース 手延べ風麺 320g",
+    "ko": "Mr Chen's 참깨 소스 수타 스타일 면 320g",
+    "src": "ai"
+  },
+  "Green Nation Life Multipurpose Lemongrass 500mL": {
+    "zh": "Green Nation Life 檸檬草多功能清潔劑 500毫升",
+    "ja": "Green Nation Life 多目的クリーナー レモングラスの香り 500ml",
+    "ko": "Green Nation Life 다목적 세정제 레몬그라스향 500ml",
+    "src": "ai"
+  },
+  "La Zuppa Soup Pouch Tuscan Chicken Vegetable & Rice 400g": {
+    "zh": "La Zuppa 托斯卡尼雞肉蔬菜米湯 400克",
+    "ja": "La Zuppa トスカーナ風チキン野菜ライススープ 400g",
+    "ko": "La Zuppa 투스카니식 치킨 야채 라이스 수프 400g",
+    "src": "ai"
+  },
+  "Always Fresh Stuffed Olives Anchovy 235g": {
+    "zh": "Always Fresh 鯷魚夾心橄欖 235克",
+    "ja": "Always Fresh アンチョビ詰めオリーブ 235g",
+    "ko": "Always Fresh 앤초비 속재료 올리브 235g",
+    "src": "ai"
+  },
+  "Hello Jello Pineapple Jelly Crystals 22g": {
+    "zh": "Hello Jello 鳳梨果凍粉 22克",
+    "ja": "Hello Jello パイナップルゼリーの素 22g",
+    "ko": "Hello Jello 파인애플 젤리 믹스 22g",
+    "src": "ai"
+  },
+  "Whittaker's Peanut Caramel Brittle Chocolate Block 250g": {
+    "zh": "Whittaker's 花生焦糖脆片巧克力磚 250克",
+    "ja": "Whittaker's ピーナッツ キャラメル ブリトル チョコレート ブロック 250g",
+    "ko": "Whittaker's 피너츠 카라멜 브리틀 초콜릿 블록 250g",
+    "src": "ai"
+  },
+  "Air Wick Aerosol-free Auto Spray Essential Oil Refill Sweet Vanilla & Shea Butter 228mL": {
+    "zh": "Air Wick 無氣霧自動噴霧精油補充罐 甜香草與乳木果油 228毫升",
+    "ja": "Air Wick エアゾールフリー オートスプレー エッセンシャルオイル 付け替え スウィートバニラ＆シアバター 228mL",
+    "ko": "Air Wick 에어로졸 프리 오토 스프레이 에센셜 오일 리필 스위트 바닐라 & 시어버터 228mL",
+    "src": "ai"
+  },
+  "Trident Thai Hot Spicy Soup Packet 50g": {
+    "zh": "Trident 泰式香辣湯包 50克",
+    "ja": "Trident タイ ホットスパイシー スープ パケット 50g",
+    "ko": "Trident 타이 핫 스파이시 수프 패킷 50g",
+    "src": "ai"
+  },
+  "Twinings Camomile Honey And Vanilla Infusions Tea Bags 10 Pack": {
+    "zh": "Twinings 洋甘菊蜂蜜香草草本茶包 10入",
+    "ja": "Twinings カモミール ハニー アンド バニラ インフュージョンズ ティーバッグ 10個入",
+    "ko": "Twinings 카모마일 허니 앤 바닐라 인퓨전스 티백 10개입",
+    "src": "ai"
+  },
+  "Brut Splash On Deodorant For Men 200mL": {
+    "zh": "Brut 男士潑式體香劑 200毫升",
+    "ja": "Brut スプラッシュ オン デオドラント フォーメン 200mL",
+    "ko": "Brut 스플래시 온 데오드란트 포 맨 200mL",
+    "src": "ai"
+  },
+  "Moccona Espresso Medium Roast Concentrate Liquid Coffee Sachets 8 Pack": {
+    "zh": "Moccona 義式中焙濃縮咖啡液即溶包 8入",
+    "ja": "Moccona エスプレッソ ミディアムロースト コンセントレート リキッド コーヒー サシェ 8個入",
+    "ko": "Moccona 에스프레소 미디엄 로스트 컨센트레이트 리퀴드 커피 샤셰 8개입",
+    "src": "ai"
+  },
+  "Poise Pads For Bladder Leaks Extra Plus 10 Pack": {
+    "zh": "Poise 漏尿防護護墊 加強型 10入",
+    "ja": "Poise パッド フォー ブラダー リーク エクストラ プラス 10個入",
+    "ko": "Poise 패드 포 블래더 리크 엑스트라 플러스 10개입",
+    "src": "ai"
+  },
+  "Alka Power Alkaline Water 12x600ml 12 Pack": {
+    "zh": "Alka Power 鹼性離子水 600毫升 x 12入",
+    "ja": "Alka Power アルカリ水 600mL x 12個入",
+    "ko": "Alka Power 알칼리 워터 600mL x 12개입",
+    "src": "ai"
+  },
+  "Totalcare Heartworm Flea Prot Med Dog Treatment 1 Pack": {
+    "zh": "Totalcare 中型犬用心絲蟲跳蚤預防藥 1入",
+    "ja": "Totalcare ハートワーム フリー プロテクト ミディアム ドッグ トリートメント 1個入",
+    "ko": "Totalcare 하트웜 플리 프로텍트 미디엄 독 트리트먼트 1개입",
+    "src": "ai"
+  },
+  "Royal Fields Large Ord River Chickpeas 1kg": {
+    "zh": "Royal Fields 大顆奧德河鷹嘴豆 1公斤",
+    "ja": "Royal Fields ラージ オード リバー ひよこ豆 1kg",
+    "ko": "Royal Fields 라지 오드 리버 병아리콩 1kg",
+    "src": "ai"
+  },
+  "Dove Advance Body Wash Triple Moist 700 mL": {
+    "zh": "Dove 深度保濕沐浴乳 三重潤澤款 700毫升",
+    "ja": "Dove アドバンス ボディウォッシュ トリプルモイスト 700mL",
+    "ko": "Dove 어드밴스 바디 워시 트리플 모이스트 700mL",
+    "src": "ai"
+  },
+  "Sunrice Microwave Teriyaki Rice Cup 250g": {
+    "zh": "Sunrice 微波照燒風味飯碗 250克",
+    "ja": "Sunrice マイクロウェーブ テリヤキ ライス カップ 250g",
+    "ko": "Sunrice 마이크로웨이브 데리야키 라이스 컵 250g",
+    "src": "ai"
+  },
+  "Vittoria Espresso Ground Coffee 1kg": {
+    "zh": "Vittoria 義式研磨咖啡粉 1公斤",
+    "ja": "Vittoria エスプレッソ グラウンド コーヒー 1kg",
+    "ko": "Vittoria 에스프레소 그라운드 커피 1kg",
+    "src": "ai"
+  },
+  "Golden Circle Mango Nectar 2L": {
+    "zh": "Golden Circle 芒果果泥飲料 2公升",
+    "ja": "Golden Circle マンゴー ネクター 2L",
+    "ko": "Golden Circle 망고 넥타 2L",
+    "src": "ai"
+  },
+  "HB Belly Me Bloat Away 60mL": {
+    "zh": "HB Belly Me 順暢消脹滴劑 60毫升",
+    "ja": "HB Belly Me ブロート アウェイ 60mL",
+    "ko": "HB Belly Me 블로트 어웨이 60mL",
+    "src": "ai"
+  },
+  "Hello Jello Lime Jelly Crystals 22g": {
+    "zh": "Hello Jello萊姆果凍粉 22克",
+    "ja": "Hello Jello ライム ゼリー クリスタル 22g",
+    "ko": "Hello Jello 라임 젤리 크리스탈 22g",
+    "src": "ai"
+  },
+  "Tunisian Shakshuka Meal Base 200g": {
+    "zh": "突尼西亞夏卡蘇卡番茄蛋煲醬底 200克",
+    "ja": "チュニジア風 シャクシュカ ミールベース 200g",
+    "ko": "튀니지안 샥슈카 밀 베이스 200g",
+    "src": "ai"
+  },
+  "The Mood Food Co. Protein Choc Crisp Balls 100g": {
+    "zh": "The Mood Food Co. 高蛋白巧克力脆球 100克",
+    "ja": "The Mood Food Co. プロテイン チョコ クリスプ ボール 100g",
+    "ko": "The Mood Food Co. 프로틴 초코 크리스프 볼 100g",
+    "src": "ai"
+  },
+  "H2juice Pineapple 1.25L": {
+    "zh": "H2juice 鳳梨汁 1.25公升",
+    "ja": "H2juice パイナップル ジュース 1.25L",
+    "ko": "H2juice 파인애플 1.25L",
+    "src": "ai"
+  },
+  "Muscle Nation Custard Bar Choc Fudge Brownie 60g": {
+    "zh": "Muscle Nation 卡士達蛋白棒 巧克力布朗尼口味 60克",
+    "ja": "Muscle Nation カスタード バー チョコ ファッジ ブラウニー 60g",
+    "ko": "Muscle Nation 커스터드 바 초코 퍼지 브라우니 60g",
+    "src": "ai"
+  },
+  "Odor Eaters Super Tuff 1 Pair": {
+    "zh": "Odor Eaters 超強耐磨鞋墊 1雙",
+    "ja": "Odor Eaters スーパー タフ 1ペア",
+    "ko": "Odor Eaters 슈퍼 터프 1켤레",
+    "src": "ai"
+  },
+  "Viva Paper Towel White 360 Sheets 6 Pack": {
+    "zh": "Viva 白色廚房紙巾 360張 6入",
+    "ja": "Viva ペーパー タオル ホワイト 360シート 6個入",
+    "ko": "Viva 페이퍼 타월 화이트 360시트 6개입",
+    "src": "ai"
+  },
+  "Dove Advanced Body Wash Restoring Coconut 700mL": {
+    "zh": "Dove 深度保濕沐浴乳 舒緩椰子香 700毫升",
+    "ja": "Dove アドバンス ボディウォッシュ リストアリング ココナッツ 700mL",
+    "ko": "Dove 어드밴스 바디 워시 리스토어링 코코넛 700mL",
+    "src": "ai"
+  },
+  "ABC Extra Hot Chilli Sauce 335mL": {
+    "zh": "ABC 極辣辣椒醬 335毫升",
+    "ja": "ABC エクストラ ホット チリソース 335mL",
+    "ko": "ABC 엑스트라 핫 칠리 소스 335mL",
+    "src": "ai"
+  },
+  "Totalcare Heartworm Flea Prot Small Dog Treatment 1 Pack": {
+    "zh": "Totalcare 小型犬用心絲蟲跳蚤預防藥 1入",
+    "ja": "Totalcare ハートワーム フリー プロテクト スモール ドッグ トリートメント 1個入",
+    "ko": "Totalcare 하트웜 플리 프로텍트 스몰 독 트리트먼트 1개입",
+    "src": "ai"
+  },
+  "Maggi 2 Minute Instant Noodles Honey Soy Chicken 5 Pack 350g": {
+    "zh": "Maggi 2分鐘即食麵 蜂蜜醬油雞肉口味 5入 350克",
+    "ja": "Maggi 2分インスタントラーメン ハニーソイチキン味 5個入 350g",
+    "ko": "Maggi 2분 인스턴트 라면 허니 소이 치킨맛 5개입 350g",
+    "src": "ai"
+  },
+  "Poise Pads For Bladder Leaks Regular 16 Pack": {
+    "zh": "Poise 漏尿護理墊 一般型 16入",
+    "ja": "Poise 尿もれ用パッド レギュラー 16個入",
+    "ko": "Poise 요실금 패드 레귤러 16개입",
+    "src": "ai"
+  },
+  "Trolli Sour Mates Bag 140g": {
+    "zh": "Trolli 酸甜好朋友軟糖包 140克",
+    "ja": "Trolli サワーメイツ バッグ 140g",
+    "ko": "Trolli 사워 메이트 백 140g",
+    "src": "ai"
+  },
+  "Nice Rice Australian Arborio Rice 750 g": {
+    "zh": "Nice Rice 澳洲義大利燉飯米 750克",
+    "ja": "Nice Rice オーストラリア産 アボリオ米 750g",
+    "ko": "Nice Rice 호주산 아보리오 쌀 750g",
+    "src": "ai"
+  },
+  "Totalcare Heartworm Flea Prot Large Dog Treatment 1 Pack": {
+    "zh": "Totalcare 大型犬用心絲蟲跳蚤預防藥 1入",
+    "ja": "Totalcare 大型犬用フィラリア・ノミ予防薬 1個入",
+    "ko": "Totalcare 대형견용 심장사상충 및 벼룩 예방약 1개입",
+    "src": "ai"
+  },
+  "Moccona Espresso Caramel Concentrate Liquid Coffee Sachets 8 Pack": {
+    "zh": "Moccona 濃縮焦糖風味液態咖啡隨身包 8入",
+    "ja": "Moccona エスプレッソ キャラメル コンセントレート 液体コーヒーポーション 8個入",
+    "ko": "Moccona 에스프레소 카라멜 컨센트레이트 액상 커피 스틱 8개입",
+    "src": "ai"
+  },
+  "Moro Squeeze Bottle Evoo 500mL": {
+    "zh": "Moro 擠壓瓶特級初榨橄欖油 500毫升",
+    "ja": "Moro スクイズボトル エキストラバージンオリーブオイル 500mL",
+    "ko": "Moro 스퀴즈 병 엑스트라 버진 올리브 오일 500mL",
+    "src": "ai"
+  },
+  "Gem Skin-loving Roll On Deodorant Coconut Vanilla 50mL": {
+    "zh": "Gem 親膚滾珠體香膏 椰子香草香 50毫升",
+    "ja": "Gem スキンラブ ロールオン デオドラント ココナッツバニラの香り 50mL",
+    "ko": "Gem 스킨 러빙 롤온 데오도란트 코코넛 바닐라향 50mL",
+    "src": "ai"
+  },
+  "Dilmah Pure Ceylon Jasmine Flavour Green Tea Bags 20 Pack 40g": {
+    "zh": "Dilmah 純錫蘭茉莉花風味綠茶包 20入 40克",
+    "ja": "Dilmah ピュアセイロン ジャスミンフレーバー 緑茶ティーバッグ 20個入 40g",
+    "ko": "Dilmah 퓨어 실론 자스민향 녹차 티백 20개입 40g",
+    "src": "ai"
+  },
+  "Vittoria Mountain Grown Beans 500g": {
+    "zh": "Vittoria 高山嚴選咖啡豆 500克",
+    "ja": "Vittoria マウンテン・グロウン コーヒー豆 500g",
+    "ko": "Vittoria 마운틴 그로운 원두 500g",
+    "src": "ai"
+  },
+  "MasterFoods Spaghetti Bolognese Herb Blend 40g": {
+    "zh": "MasterFoods 義大利波隆那肉醬香草調味粉 40克",
+    "ja": "MasterFoods スパゲッティ ボロネーゼ ハーブブレンド 40g",
+    "ko": "MasterFoods 스파게티 볼로네제 허브 블렌드 40g",
     "src": "ai"
   }
 }
