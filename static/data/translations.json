@@ -152024,10 +152024,11 @@
     "src": "ai"
   },
   "Whiskas 1+ Years Jellymeat Loaf Wet Cat Food Can 400g": {
-    "zh": "Whiskas 成貓肉凍罐頭 400克",
-    "ja": "Whiskas 成猫用ゼリー仕立てウェットフード 400g",
-    "ko": "Whiskas 성묘용 젤리 타입 습식 사료 400g",
-    "src": "ai"
+    "zh": "Whiskas 1歲以上果凍肉泥罐頭成貓主食 400克",
+    "ja": "Whiskas 1歳以上用 ゼリー仕立て肉のパテ ウェットキャットフード缶 400g",
+    "ko": "Whiskas 1세 이상용 젤리 미트 로프 습식 캔 사료 400g",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Arnott's Gluten Free Shapes Biscuits Chicken Crimpy 110g": {
     "zh": "Arnott's 無麩質雞汁餅乾 110克",
@@ -152061,9 +152062,10 @@
   },
   "Remedy Sodaly Yuzu Lemon 4x250ml 1L": {
     "zh": "Remedy Sodaly 柚子檸檬氣泡水 250毫升 x 4入",
-    "ja": "Remedy Sodaly ゆずレモン炭酸飲料 250ml x 4本",
-    "ko": "Remedy Sodaly 유자 레몬 탄산수 250ml x 4개입",
-    "src": "ai"
+    "ja": "Remedy Sodaly 柚子レモン 炭酸飲料 250ml x 4本入",
+    "ko": "Remedy Sodaly 유자 레몬 탄산음료 250ml x 4개입",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Nerf Dog 10in Compact Blaster & 2.5in Standard Non- Squeak Tennis Ball Light Blue/ Orange 1 Pack": {
     "zh": "Nerf Dog 10吋發射器與2.5吋無聲網球組 1入",
@@ -152097,9 +152099,10 @@
   },
   "Remedy Sodaly Pineapple 4x250ml 1L": {
     "zh": "Remedy Sodaly 鳳梨氣泡水 250毫升 x 4入",
-    "ja": "Remedy Sodaly パイナップル炭酸飲料 250ml x 4本",
-    "ko": "Remedy Sodaly 파인애플 탄산수 250ml x 4개입",
-    "src": "ai"
+    "ja": "Remedy Sodaly パイナップル 炭酸飲料 250ml x 4本入",
+    "ko": "Remedy Sodaly 파인애플 탄산음료 250ml x 4개입",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Australian Botanical Soap Lemongrass 200g": {
     "zh": "Australian Botanical Soap 檸檬草香皂 200克",
@@ -152363,6 +152366,155 @@
     "zh": "MasterFoods 義大利波隆那肉醬香草調味粉 40克",
     "ja": "MasterFoods スパゲッティ ボロネーゼ ハーブブレンド 40g",
     "ko": "MasterFoods 스파게티 볼로네제 허브 블렌드 40g",
+    "src": "ai"
+  },
+  "Kit Kat Aero Strawberry Chocolate Block 155g": {
+    "zh": "Kit Kat Aero Strawberry Chocolate Block 155g",
+    "ja": "キットカット エアロ ストロベリーチョコレートブロック 155g",
+    "ko": "킷캣 에어로 스트로베리 초콜릿 블록 155g"
+  },
+  "La Zuppa Soup Pouch Roasted Pumpkin 400g": {
+    "zh": "La Zuppa 烤南瓜湯袋 400g",
+    "ja": "ラ・ズッパ スープパウチ ローストかぼちゃ 400g",
+    "ko": "라 주파 수프 파우치 구운 호박 400g"
+  },
+  "La Zuppa Soup Pouch Creamy Chicken & Vegetable 400g": {
+    "zh": "La Zuppa 奶油雞肉蔬菜湯袋 400g",
+    "ja": "ラ・ズッパ スープパウチ クリーミーチキン＆ベジタブル 400g",
+    "ko": "라 주파 수프 파우치 크리미 치킨 & 야채 400g"
+  },
+  "Skin Control Jelly Swipes Facial Toner Pads 60 Pack": {
+    "zh": "Skin Control Jelly Swipes 臉部爽膚水墊 60 片裝",
+    "ja": "スキン コントロール ジェリー スワイプ フェイシャル トナー パッド 60 パック",
+    "ko": "스킨 컨트롤 젤리 스와이프 페이셜 토너 패드 60팩"
+  },
+  "Muscletech Whey + Creatine Chocolate 465g": {
+    "zh": "Muscletech 乳清 + 肌酸巧克力 465 克",
+    "ja": "マッスルテック ホエイ + クレアチン チョコレート 465g",
+    "ko": "머슬텍 웨이 + 크레아틴 초콜릿 465g"
+  },
+  "Betty Crocker Red Velvet Cake Mix 450g": {
+    "zh": "Betty Crocker 紅色天鵝絨蛋糕粉 450 克",
+    "ja": "ベティ クロッカー レッドベルベットケーキミックス 450g",
+    "ko": "베티크로커 레드벨벳 케이크믹스 450g"
+  },
+  "Rafferty's Garden Blueberries Banana & Apple And Nothing Else Baby Food Puree Pouch 4+ Months 120g": {
+    "zh": "Rafferty's Garden 藍莓、香蕉和蘋果等嬰兒食品果泥袋裝 4 個月以上 120g",
+    "ja": "ラファティーズ ガーデン ブルーベリー バナナ & アップル & ナッシング エルス ベビーフード ピューレ パウチ 4 ヵ月以上 120g",
+    "ko": "Rafferty's Garden 블루베리 바나나 & 사과 외에는 아무것도 없습니다 이유식 퓨레 파우치 4개월 이상 120g"
+  },
+  "Sharwood's Green Label Mango Chutney 354g": {
+    "zh": "Sharwood's 綠標芒果酸辣醬 354g",
+    "ja": "シャーウッド グリーンラベル マンゴーチャツネ 354g",
+    "ko": "샤우드 그린 라벨 망고 처트니 354g"
+  },
+  "Mars Secret Centre Biscuits 132g": {
+    "zh": "火星秘密中心餅乾 132g",
+    "ja": "マーズ シークレット センター ビスケット 132g",
+    "ko": "마스 시크릿센터 비스킷 132g"
+  },
+  "Cadbury Curly Wurly Squirlies Chocolate Bites 130g": {
+    "zh": "吉百利 Curly Wurly Squirlies 巧克力片 130 克",
+    "ja": "キャドバリー カーリー ワーリー スクワリーズ チョコレートバイツ 130g",
+    "ko": "캐드버리 컬리 월리 스쿼리스 초콜릿 바이츠 130g"
+  },
+  "Sirena Lite Tuna Chilli 95g": {
+    "zh": "Sirena Lite 鮪魚辣椒 95g",
+    "ja": "シレーナ ライト ツナチリ 95g",
+    "ko": "시레나 라이트 참치 칠리 95g"
+  },
+  "Betty Crocker Vanilla Cupcake Mix 370g": {
+    "zh": "Betty Crocker 香草蛋糕粉 370g",
+    "ja": "ベティ クロッカー バニラカップケーキミックス 370g",
+    "ko": "베티 크로커 바닐라 컵케이크 믹스 370g"
+  },
+  "Sunrice Mwr Protein Jasmine Rice Cup 250g": {
+    "zh": "Sunrice Mwr 蛋白茉莉米杯 250g",
+    "ja": "サンライス Mwr プロテイン ジャスミンライスカップ 250g",
+    "ko": "선라이스 Mwr 프로틴 자스민 라이스컵 250g"
+  },
+  "S & B Japanese Instant Tofu Miso Soup 30g": {
+    "zh": "S & B 日本即食豆腐味噌湯 30g",
+    "ja": "S&B 和風即席豆腐みそ汁 30g",
+    "ko": "S&B 일본식 즉석두부 된장국 30g"
+  },
+  "Ocean Spray Drink Ruby Red 1.5L": {
+    "zh": "海洋噴霧飲料寶石紅 1.5L",
+    "ja": "オーシャンスプレードリンク ルビーレッド 1.5L",
+    "ko": "오션스프레이 드링크 루비레드 1.5L"
+  },
+  "Mama Noodles Pork 5 Pack 450g": {
+    "zh": "媽媽豬肉麵5包450g",
+    "ja": "ママヌードル ポーク 5パック 450g",
+    "ko": "마마 국수 돼지고기 5팩 450g"
+  },
+  "Mama Noodles Shrimp Tom Yum 5 Pack 450g": {
+    "zh": "媽媽面蝦冬蔭功5包450g",
+    "ja": "ママヌードル シュリンプトムヤム 5パック 450g",
+    "ko": "마마누들 새우 톰얌 5팩 450g"
+  },
+  "Mingle Guac & Avo Topper Seasoning 45g": {
+    "zh": "Mingle 酪梨醬和奶油醬調味料 45g",
+    "ja": "ミングル グアック＆アボトッパーシーズニング 45g",
+    "ko": "밍글 구악&아보 토퍼 시즈닝 45g"
+  },
+  "San Remo Spaghetti No 5 500g": {
+    "zh": "聖雷莫 5 號義大利麵 500g",
+    "ja": "サンレモ スパゲッティ No5 500g",
+    "ko": "산레모 스파게티 No.5 500g"
+  },
+  "Monster Energy Drink Ultra 4x500ml 2L": {
+    "zh": "Monster 超級能量飲料 4x500ml 2L",
+    "ja": "モンスターエナジードリンク ウルトラ 4x500ml 2L",
+    "ko": "몬스터 에너지 드링크 울트라 4x500ml 2L"
+  },
+  "Rafferty's Garden Chicken Vegetables & Rice Baby Food Protein Pouch 6+ Months 120g": {
+    "zh": "Rafferty's Garden 雞肉蔬菜和米嬰兒食品蛋白袋 6 個月以上 120 克",
+    "ja": "ラファティーズ ガーデン チキン 野菜&ライス ベビーフード プロテイン パウチ 6か月以上 120g",
+    "ko": "Rafferty's Garden 치킨 야채 및 쌀 이유식 단백질 파우치 6개월 이상 120g"
+  },
+  "Sun Lolly Mango 480g": {
+    "zh": "太陽棒棒糖芒果480g",
+    "ja": "サンロリーマンゴー 480g",
+    "ko": "썬롤리 망고 480g"
+  },
+  "Red Rock Deli Potato Chips Lunchbox Snacks Multipack Honey Soy Chicken 5 Pack 140g": {
+    "zh": "Red Rock Deli 洋芋片午餐盒零食多件裝蜂蜜大豆雞肉 5 包 140 克",
+    "ja": "レッド ロック デリ ポテトチップス ランチボックス スナック マルチパック ハニー ソイ チキン 5 パック 140g",
+    "ko": "레드락 델리 포테이토칩 도시락 스낵 멀티팩 허니 소이 치킨 5팩 140g"
+  },
+  "Fehlbergs Burger Pickles 490g": {
+    "zh": "Fehlbergs 漢堡泡菜 490g",
+    "ja": "フェールベルグス バーガーピクルス 490g",
+    "ko": "펠버그 버거 피클 490g"
+  },
+  "Fever-Tree Premium Mixers Mediterranean Light Tonic Water 500mL": {
+    "zh": "Fever-Tree Premium Mixers 地中海清淡湯力水 500mL",
+    "ja": "フィーバーツリー プレミアムミキサー 地中海ライトトニックウォーター 500mL",
+    "ko": "Fever-Tree 프리미엄 믹서 지중해 라이트 토닉 워터 500mL"
+  },
+  "La Zuppa Soup Pouch Minestrone 400g": {
+    "zh": "La Zuppa 義式蔬菜湯包 400克",
+    "ja": "La Zuppa ミネストローネ スープパウチ 400g",
+    "ko": "La Zuppa 미네스트로네 수프 파우치 400g",
+    "src": "ai"
+  },
+  "Nice & Natural Protein Nut Bars Salted Caramel With Superseeds 5 Pack 165g": {
+    "zh": "Nice & Natural 鹹焦糖超級種子蛋白堅果棒 165克（5入）",
+    "ja": "Nice & Natural ソルティキャラメル＆スーパーシード プロテインナッツバー 165g（5個入）",
+    "ko": "Nice & Natural 솔티드 카라멜 & 슈퍼시드 단백질 견과류 바 165g（5개입）",
+    "src": "ai"
+  },
+  "Vitasoy Oat Milky 1L": {
+    "zh": "Vitasoy 燕麥奶 1公升",
+    "ja": "Vitasoy オーツミルク 1L",
+    "ko": "Vitasoy 오트밀크 1L",
+    "src": "ai"
+  },
+  "Yackandandah Lemon Curd Spread 350g": {
+    "zh": "Yackandandah 檸檬凝乳抹醬 350克",
+    "ja": "Yackandandah レモンカード スプレッド 350g",
+    "ko": "Yackandandah 레몬 커드 스프레드 350g",
     "src": "ai"
   }
 }
