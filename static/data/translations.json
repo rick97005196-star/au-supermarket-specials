@@ -150018,9 +150018,10 @@
     "qa_tries": 1
   },
   "Masterfoods Umami Garlic Herb Seasoning Can 45g": {
-    "zh": "Masterfoods Umami 大蒜香草調味料罐裝 45 克",
-    "ja": "マスターフーズ 旨味ガーリックハーブシーズニング 缶45g",
-    "ko": "마스터푸드 우마미 마늘 허브 시즈닝 캔 45g"
+    "zh": "Masterfoods 鮮味蒜香草調味料罐 45克",
+    "ja": "Masterfoods うまみ ガーリックハーブ シーズニング 缶 45g",
+    "ko": "Masterfoods 우마미 갈릭 허브 시즈닝 캔 45g",
+    "src": "ai"
   },
   "KB's Mexican Taco Fish Strips 1kg": {
     "zh": "KB's 墨西哥塔可魚條 1公斤",
@@ -150342,10 +150343,11 @@
     "src": "ai"
   },
   "Schweppes Sparkling Water Lime & Lemon 18x375ml 6.75L": {
-    "zh": "Schweppes 萊姆檸檬氣泡水 375毫升 x 18入",
-    "ja": "Schweppes スパークリングウォーター ライム＆レモン 375ml x 18",
-    "ko": "Schweppes 스파클링 워터 라임 & 레몬 375ml x 18개입",
-    "src": "ai"
+    "zh": "Schweppes 萊姆檸檬氣泡水 375毫升 x 18入 6.75公升",
+    "ja": "Schweppes スパークリングウォーター ライム＆レモン 375mL x 18個入 6.75L",
+    "ko": "Schweppes 스파클링 워터 라임 앤 레몬 375mL x 18개입 6.75L",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Cobs Drizzld Popcorn Sweet Milk Chocolate 110g": {
     "zh": "Cobs 淋醬爆米花香甜牛奶巧克力口味 110克",
@@ -150390,10 +150392,11 @@
     "src": "ai"
   },
   "Mount Franklin Lightly Sparkling Water Blood Orange 10x375ml 3.75L": {
-    "zh": "Mount Franklin 微氣泡水血橙口味 375毫升 x 10入",
-    "ja": "Mount Franklin ライトスパークリングウォーター ブラッドオレンジ 375ml x 10",
-    "ko": "Mount Franklin 라이틀리 스파클링 워터 블러드 오렌지 375ml x 10개입",
-    "src": "ai"
+    "zh": "Mount Franklin 微氣泡水 紅血橙口味 375毫升 x 10入 3.75公升",
+    "ja": "Mount Franklin ライトスパークリングウォーター ブラッドオレンジ 375mL x 10個入 3.75L",
+    "ko": "Mount Franklin 라이트 스파클링 워터 블러드 오렌지 375mL x 10개입 3.75L",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Mount Franklin Lightly Sparkling Water Raspberry Multipack Cans 375ml 10 Pack": {
     "zh": "Mount Franklin 微氣泡水覆盆子口味 375毫升 x 10入",
@@ -150438,10 +150441,11 @@
     "src": "ai"
   },
   "Coca-Cola Zero Sugar Coke 10x375ml 3.75L": {
-    "zh": "Coca-Cola 零卡可樂 375毫升 x 10入",
-    "ja": "Coca-Cola ゼロシュガー コーラ 375ml x 10",
-    "ko": "Coca-Cola 제로 슈거 콜라 375ml x 10개입",
-    "src": "ai"
+    "zh": "Coca-Cola 可口可樂 零卡汽水 375毫升 x 10入 3.75公升",
+    "ja": "Coca-Cola ゼロシュガー コーラ 375mL x 10個入 3.75L",
+    "ko": "Coca-Cola 제로 슈거 콜라 375mL x 10개입 3.75L",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Rexona Men Advanced Deodorant Thermo Iced Lemon & Sage 220mL": {
     "zh": "Rexona 男士進階制汗噴霧極酷冰檸檬鼠尾草香 220毫升",
@@ -150687,6 +150691,330 @@
     "zh": "Pepsi Max 無糖可樂汽水 375毫升 x 18入",
     "ja": "Pepsi Max ソフトドリンク ノーシュガー 缶 375mL 18個入",
     "ko": "Pepsi Max 탄산음료 제로슈거 캔 375mL 18개입",
+    "src": "ai"
+  },
+  "Continental Pasta & Sauce Sour Cream & Chives 80g": {
+    "zh": "Continental 義大利麵醬 酸奶油洋蔥口味 80克",
+    "ja": "Continental パスタ＆ソース サワークリーム＆チャイブ 80g",
+    "ko": "Continental 파스타 & 소스 사워크림 & 차이브 80g",
+    "src": "ai"
+  },
+  "Armor All Super Heavy Duty Wash 1L": {
+    "zh": "Armor All 超強效洗車精 1公升",
+    "ja": "Armor All スーパーヘビーデューティーウォッシュ 1L",
+    "ko": "Armor All 슈퍼 헤비 듀티 워시 1L",
+    "src": "ai"
+  },
+  "Rexona Women Deodorant 72hr Advanced Aerosol Shower Fresh 220mL": {
+    "zh": "Rexona 女士 72小時進階版噴霧體香膏 舒爽香 220毫升",
+    "ja": "Rexona レディース デオドラント 72hr アドバンスド エアゾール シャワーフレッシュ 220mL",
+    "ko": "Rexona 여성용 데오드란트 72hr 어드밴스드 에어로졸 샤워 프레시 220mL",
+    "src": "ai"
+  },
+  "Rexona Men Deodorant 72hr Advanced Aerosol Workout 220mL": {
+    "zh": "Rexona 男士 72小時進階版噴霧體香膏 運動香 220毫升",
+    "ja": "Rexona メンズ デオドラント 72hr アドバンスド エアゾール ワークアウト 220mL",
+    "ko": "Rexona 남성용 데오드란트 72hr 어드밴스드 에어로졸 워크아웃 220mL",
+    "src": "ai"
+  },
+  "Thins Chicken Potato Chips 175g": {
+    "zh": "Thins 雞汁洋芋片 175克",
+    "ja": "Thins チキン ポテトチップス 175g",
+    "ko": "Thins 치킨 포테이토 칩 175g",
+    "src": "ai"
+  },
+  "Colgate Optic White Toothpaste Natural Enzymes 100g": {
+    "zh": "Colgate 光感美白牙膏 天然酵素 100克",
+    "ja": "Colgate オプティックホワイト 歯磨き粉 ナチュラルエンザイム 100g",
+    "ko": "Colgate 옵틱 화이트 치약 내추럴 엔자임 100g",
+    "src": "ai"
+  },
+  "Mount Franklin Lightly Sparkling Water Pineapple Multipack Cans 375ml 10 Pack": {
+    "zh": "Mount Franklin 微氣泡水 鳳梨口味 罐裝 375毫升 10入",
+    "ja": "Mount Franklin ライトスパークリングウォーター パイナップル マルチパック 缶 375ml 10個入",
+    "ko": "Mount Franklin 라이트 스파클링 워터 파인애플 멀티팩 캔 375ml 10개입",
+    "src": "ai"
+  },
+  "Veet Expert Face Hair Removal Cold Wax Strips For Sensitive Skin 20 Pack": {
+    "zh": "Veet 專業臉部除毛冷蠟貼片 敏感肌適用 20入",
+    "ja": "Veet エキスパート フェイス 脱毛用 冷感ワックスストリップ 敏感肌用 20枚入",
+    "ko": "Veet 엑스퍼트 페이스 제모용 왁스 스트립 민감성 피부용 20개입",
+    "src": "ai"
+  },
+  "Rexona Men Deodorant 72hr Advanced Aerosol Invisible Dry Black & White 220mL": {
+    "zh": "Rexona 男士 72小時進階版噴霧體香膏 黑白衣物隱形乾爽 220毫升",
+    "ja": "Rexona メンズ デオドラント 72hr アドバンスド エアゾール インビジブル ドライ ブラック＆ホワイト 220mL",
+    "ko": "Rexona 남성용 데오드란트 72hr 어드밴스드 에어로졸 인비지블 드라이 블랙 & 화이트 220mL",
+    "src": "ai"
+  },
+  "Mortein Peaceful Nights Mosquito & Fly Control Primary 2.57mL": {
+    "zh": "Mortein 安穩之夜 蚊蠅防治補充液 2.57毫升",
+    "ja": "Mortein ピースフルナイト モスキート＆フライ コントロール プライマリ 2.57mL",
+    "ko": "Mortein 피스풀 나이트 모기 & 파리 컨트롤 프라이머리 2.57mL",
+    "src": "ai"
+  },
+  "Palmolive Naturals Body Wash Milk & Honey 1L": {
+    "zh": "Palmolive 天然沐浴乳 牛乳蜂蜜香 1公升",
+    "ja": "Palmolive ナチュラルズ ボディウォッシュ ミルク＆ハニー 1L",
+    "ko": "Palmolive 내추럴스 바디 워시 밀크 & 허니 1L",
+    "src": "ai"
+  },
+  "Bunjie Travel Baby Wipes 20 Pack": {
+    "zh": "Bunjie 旅行用嬰兒濕紙巾 20入",
+    "ja": "Bunjie トラベル ベビーワイプ 20枚入",
+    "ko": "Bunjie 트래블 베이비 물티슈 20개입",
+    "src": "ai"
+  },
+  "Norsca Forest Fresh Deodorant Pump 150mL": {
+    "zh": "Norsca 森林清新體香噴霧 150毫升",
+    "ja": "Norsca フォレストフレッシュ デオドラント ポンプ 150mL",
+    "ko": "Norsca 포레스트 프레시 데오드란트 펌프 150mL",
+    "src": "ai"
+  },
+  "Rexona Men Deodorant 72hr Advanced Aerosol Sport 220mL": {
+    "zh": "Rexona 男士 72小時進階版噴霧體香膏 運動活力香 220毫升",
+    "ja": "Rexona メンズ デオドラント 72hr アドバンスド エアゾール スポーツ 220mL",
+    "ko": "Rexona 남성용 데오드란트 72hr 어드밴스드 에어로졸 스포츠 220mL",
+    "src": "ai"
+  },
+  "Darrell Lea Triple Triple Chocolate Liquorice Logs 110g": {
+    "zh": "Darrell Lea 三倍巧克力甘草條 110克",
+    "ja": "Darrell Lea トリプルチョコレート リコリス ロッグス 110g",
+    "ko": "Darrell Lea 트리플 초콜릿 감초 롤 110g",
+    "src": "ai"
+  },
+  "Radox Feel Oxygenated Shower Gel Body Wash 1L": {
+    "zh": "Radox 活氧感沐浴乳 1公升",
+    "ja": "Radox フィール オキシジェネイテッド シャワージェル ボディウォッシュ 1L",
+    "ko": "Radox 필 옥시지네이티드 샤워 젤 바디 워시 1L",
+    "src": "ai"
+  },
+  "Thins Original Potato Chips 175g": {
+    "zh": "Thins 原味洋芋片 175克",
+    "ja": "Thins オリジナル ポテトチップス 175g",
+    "ko": "Thins 오리지널 포테이토 칩 175g",
+    "src": "ai"
+  },
+  "Rexona Women Deodorant 72hr Advanced Aerosol Invisible Dry 220mL": {
+    "zh": "Rexona 女士 72小時進階版噴霧體香膏 隱形乾爽 220毫升",
+    "ja": "Rexona レディース デオドラント 72hr アドバンスド エアゾール インビジブル ドライ 220mL",
+    "ko": "Rexona 여성용 데오드란트 72hr 어드밴스드 에어로졸 인비지블 드라이 220mL",
+    "src": "ai"
+  },
+  "Cadbury Buzz Bar Share Pack 160g": {
+    "zh": "Cadbury Buzz Bar 分享包 160克",
+    "ja": "Cadbury バズバー シェアパック 160g",
+    "ko": "Cadbury 버즈 바 셰어팩 160g",
+    "src": "ai"
+  },
+  "Scholl Party Feet Heel Shield 1 each": {
+    "zh": "Scholl 派對足跡 後跟防磨貼",
+    "ja": "Scholl パーティーフット ヒールシールド",
+    "ko": "Scholl 파티 풋 힐 쉴드",
+    "src": "ai"
+  },
+  "Cobs Drizzld Popcorn Sea Salted Caramel 110g": {
+    "zh": "Cobs 淋醬爆米花 海鹽焦糖口味 110克",
+    "ja": "Cobs ドリズルド ポップコーン シーソルトキャラメル 110g",
+    "ko": "Cobs 드리즐드 팝콘 씨 솔트 카라멜 110g",
+    "src": "ai"
+  },
+  "Tasty Rich And Spicy Miso Glaze 150g": {
+    "zh": "Tasty 濃郁香辣味噌醬 150克",
+    "ja": "Tasty リッチ アンド スパイシー 味噌グレーズ 150g",
+    "ko": "Tasty 리치 앤 스파이시 미소 글레이즈 150g",
+    "src": "ai"
+  },
+  "Morning Fresh Soft Hands Vanilla & Rose Dishwashing Liquid 350mL": {
+    "zh": "Morning Fresh 護手洗碗精 香草玫瑰香 350毫升",
+    "ja": "Morning Fresh ソフトハンズ バニラ＆ローズ 食器用洗剤 350mL",
+    "ko": "Morning Fresh 소프트 핸즈 바닐라 & 로즈 주방세제 350mL",
+    "src": "ai"
+  },
+  "Nescafe Farmers Origin Colombia Espresso Coffee Capsules 10 Pack": {
+    "zh": "Nescafe 小農系列 哥倫比亞濃縮咖啡膠囊 10入",
+    "ja": "Nescafe ファーマーズオリジン コロンビア エスプレッソ コーヒーカプセル 10個入",
+    "ko": "Nescafe 파머스 오리진 콜롬비아 에스프레소 커피 캡슐 10개입",
+    "src": "ai"
+  },
+  "Dettol Antibacterial Foam:hand Wash Lime & Orange Refill 900mL": {
+    "zh": "Dettol 抗菌洗手慕斯 萊姆柳橙香 補充包 900毫升",
+    "ja": "Dettol 薬用 泡ハンドウォッシュ ライム＆オレンジ 詰替 900mL",
+    "ko": "Dettol 항균 거품 핸드 워시 라임 & 오렌지 리필 900mL",
+    "src": "ai"
+  },
+  "Ajax Luxury Home Sandalwood Multipurpose Trigger 750mL": {
+    "zh": "Ajax 奢華檀香多功能清潔噴劑 750毫升",
+    "ja": "Ajax ラグジュアリーホーム サンダルウッド 多目的スプレー 750mL",
+    "ko": "Ajax 럭셔리 홈 샌달우드 멀티퍼포스 트리거 750mL",
+    "src": "ai"
+  },
+  "L'Oreal Paris Men Expert Hydra Energetic Scrub 100mL": {
+    "zh": "L'Oreal Paris Men Expert 男仕極效活水去角質洗面乳 100毫升",
+    "ja": "L'Oreal Paris Men Expert エナジェティック スクラブ 100mL",
+    "ko": "L'Oreal Paris Men Expert 하이드라 에너제틱 스크럽 100mL",
+    "src": "ai"
+  },
+  "Radox Feel Extreme Men Body Wash 1L": {
+    "zh": "Radox 極限酷爽男性沐浴乳 1公升",
+    "ja": "Radox フィールエクストリーム メンズ ボディウォッシュ 1L",
+    "ko": "Radox 필 익스트림 맨 바디워시 1L",
+    "src": "ai"
+  },
+  "Protex Soap Antibacterial Fresh 90g": {
+    "zh": "Protex 抗菌香皂清新款 90克",
+    "ja": "Protex 薬用石鹸 フレッシュ 90g",
+    "ko": "Protex 항균 비누 프레시 90g",
+    "src": "ai"
+  },
+  "Colgate Optic White Pro Series Teeth Whitening Toothpaste Vividly Fresh With 5% Hydrogen Peroxide 80g": {
+    "zh": "Colgate Optic White 光感·白專業系列美白牙膏極致清新含 5% 過氧化氫 80克",
+    "ja": "Colgate Optic White プロシリーズ 歯美白歯磨き粉 ビビッドフレッシュ 5%過酸化水素配合 80g",
+    "ko": "Colgate Optic White 프로 시리즈 치아 미백 치약 비비드 프레시 5% 과산화수소 함유 80g",
+    "src": "ai"
+  },
+  "Protex Bar Soap Skin Purifying 90g": {
+    "zh": "Protex 淨膚香皂 90克",
+    "ja": "Protex バーソープ スキンピュリファイング 90g",
+    "ko": "Protex 바 비누 스킨 퓨리파잉 90g",
+    "src": "ai"
+  },
+  "Norsca Instant Adrenaline 48hr Anti Perspirant Deodorant 212mL": {
+    "zh": "Norsca 瞬效飆 adrenalin 48小時體香噴霧 212毫升",
+    "ja": "Norsca インスタントアドレナリン 48時間制汗スプレー 212mL",
+    "ko": "Norsca 인스턴트 아드레날린 48시간 앤티퍼스피런트 데오도란트 212mL",
+    "src": "ai"
+  },
+  "Colgate Optic White Alcohol Free Whitening Mouthwash With Optic Brightener 500mL": {
+    "zh": "Colgate Optic White 光感·白無酒精美白漱口水含亮白因子 500毫升",
+    "ja": "Colgate Optic White ノンアルコール ホワイトニング マウスウォッシュ オプティックブライトナー配合 500mL",
+    "ko": "Colgate Optic White 무알콜 화이트닝 구십제 옵틱 브라이트너 함유 500mL",
+    "src": "ai"
+  },
+  "Bondi Sands Tanning Foam Dark 200mL": {
+    "zh": "Bondi Sands 助曬泡沫深色款 200毫升",
+    "ja": "Bondi Sands タンニングフォーム ダーク 200mL",
+    "ko": "Bondi Sands 태닝 폼 다크 200mL",
+    "src": "ai"
+  },
+  "Sharwood's Butter Chicken Simmer Sauce 420g": {
+    "zh": "Sharwood's 奶油雞肉慢煮醬 420克",
+    "ja": "Sharwood's バターチキン シマースース 420g",
+    "ko": "Sharwood's 버터 치킨 시머 소스 420g",
+    "src": "ai"
+  },
+  "Norsca Forest Fresh Antiperspirant Roll On Deodorant 50mL": {
+    "zh": "Norsca 森林清新滾珠體香劑 50毫升",
+    "ja": "Norsca フォレストフレッシュ 制汗ロールオン 50mL",
+    "ko": "Norsca 포레스트 프레시 앤티퍼스피런트 롤온 데오도란트 50mL",
+    "src": "ai"
+  },
+  "Rafferty's Garden Banana & Vanilla Porridge 12 Months 200g": {
+    "zh": "Rafferty's Garden 香蕉香草燕麥粥 12個月以上 200克",
+    "ja": "Rafferty's Garden バナナ＆バニラ ポリッジ 12ヶ月 200g",
+    "ko": "Rafferty's Garden 바나나 & 바닐라 포리지 12개월 200g",
+    "src": "ai"
+  },
+  "L'Oreal Men Expert Pure Carbon Face Wash 100mL": {
+    "zh": "L'Oreal Men Expert 炭爽抗油光洗面乳 100毫升",
+    "ja": "L'Oreal Men Expert ピュアカーボン 洗顔料 100mL",
+    "ko": "L'Oreal Men Expert 퓨어 카본 페이스 워시 100mL",
+    "src": "ai"
+  },
+  "Bondi Sands Body Brush 1 each": {
+    "zh": "Bondi Sands 身體刷",
+    "ja": "Bondi Sands ボディブラシ 1個",
+    "ko": "Bondi Sands 바디 브러시 1개",
+    "src": "ai"
+  },
+  "Thins Salt & Vinegar Potato Chips 175g": {
+    "zh": "Thins 鹽醋口味洋芋片 175克",
+    "ja": "Thins ソルト＆ビネガー ポテトチップス 175g",
+    "ko": "Thins 솔트 앤 비네거 포테이토 칩스 175g",
+    "src": "ai"
+  },
+  "L'Oreal Men Expert Hydra Energetic Moisturiser 50mL": {
+    "zh": "L'Oreal Men Expert 男仕極效活水保濕乳 50毫升",
+    "ja": "L'Oreal Men Expert エナジェティック 保湿クリーム 50mL",
+    "ko": "L'Oreal Men Expert 하이드라 에너제틱 모이스처라이저 50mL",
+    "src": "ai"
+  },
+  "Morning Fresh Dishwashing Liquid Antibacterial Active Lemon 350mL": {
+    "zh": "Morning Fresh 抗菌檸檬洗碗精 350毫升",
+    "ja": "Morning Fresh 食器用洗剤 抗菌アクティブレモン 350mL",
+    "ko": "Morning Fresh 식기세척 세제 항균 액티브 레몬 350mL",
+    "src": "ai"
+  },
+  "Haldirams Samosa 200g": {
+    "zh": "Haldirams 印度黃金餃 200克",
+    "ja": "Haldirams サモサ 200g",
+    "ko": "Haldirams 사모사 200g",
+    "src": "ai"
+  },
+  "Schmackos Chomp N Chew Large Dog With Beef Dog Treat 1 Pack": {
+    "zh": "Schmackos 大型犬牛肉耐嚼狗零食 1入",
+    "ja": "Schmackos 大型犬用 ビーフ入り 噛むおやつ 1パック",
+    "ko": "Schmackos 대형견용 비프 츄잉 개 간식 1팩",
+    "src": "ai"
+  },
+  "Rexona Men Deodorant 72hr Advanced Aerosol Extra Cool 220mL": {
+    "zh": "Rexona Men 72小時進階制汗噴霧極酷涼感 220毫升",
+    "ja": "Rexona Men 72時間アドバンスド デオドラントスプレー エクストラクール 220mL",
+    "ko": "Rexona Men 72시간 어드밴스드 데오도란트 에어로졸 엑스트라 쿨 220mL",
+    "src": "ai"
+  },
+  "Brut 72Hr Antiperspirant Deodorant Original 212mL": {
+    "zh": "Brut 72小時經典款體香噴霧 212毫升",
+    "ja": "Brut 72時間制汗デオドラント オリジナル 212mL",
+    "ko": "Brut 72시간 앤티퍼스피런트 데오도란트 오리지널 212mL",
+    "src": "ai"
+  },
+  "Rexona Men Deodorant 72hr Advanced Aerosol Invisible Ice Fresh 220mL": {
+    "zh": "Rexona Men 72小時進階制汗噴霧隱形冰爽 220毫升",
+    "ja": "Rexona Men 72時間アドバンスド デオドラントスプレー インビジブル アイスフレッシュ 220mL",
+    "ko": "Rexona Men 72시간 어드밴스드 데오도란트 에어로졸 인비저블 아이스 프레시 220mL",
+    "src": "ai"
+  },
+  "Norsca Aluminium Free Anti-Perspirant Roll On Deodorant 50mL": {
+    "zh": "Norsca 無鋁滾珠體香劑 50毫升",
+    "ja": "Norsca アルミニウムフリー 制汗ロールオン 50mL",
+    "ko": "Norsca 알루미늄 프리 앤티퍼스피런트 롤온 데오도란트 50mL",
+    "src": "ai"
+  },
+  "Bondi Sands SPF 50+ Face Lotion 75mL": {
+    "zh": "Bondi Sands SPF 50+ 臉部防曬乳 75毫升",
+    "ja": "Bondi Sands SPF 50+ フェイスローション 75mL",
+    "ko": "Bondi Sands SPF 50+ 페이스 로션 75mL",
+    "src": "ai"
+  },
+  "Morning Fresh Cucumber & Aloe Vera Soft Hands Dishwashing Liquid 350mL": {
+    "zh": "Morning Fresh 黃瓜蘆薈護手洗碗精 350毫升",
+    "ja": "Morning Fresh キュウリ＆アロエベラ 柔軟ハンド 食器用洗剤 350mL",
+    "ko": "Morning Fresh 오이 & 알로에 베라 소프트 핸즈 식기세척 세제 350mL",
+    "src": "ai"
+  },
+  "Haldirams All IN One 200g": {
+    "zh": "Haldirams 綜合印度零食 200克",
+    "ja": "Haldirams オールインワン スナック 200g",
+    "ko": "Haldirams 올인원 스낵 200g",
+    "src": "ai"
+  },
+  "Green's Drizzle Lemon & Sugar 375g": {
+    "zh": "Green's 檸檬糖霜蛋糕粉 375克",
+    "ja": "Green's レモン＆シュガー ケーキミックス 375g",
+    "ko": "Green's 레몬 앤 슈가 케이크 믹스 375g",
+    "src": "ai"
+  },
+  "Thins Light & Tangy Potato Chips 175g": {
+    "zh": "Thins 清爽酸甜洋芋片 175g",
+    "ja": "Thins ライト＆タングy ポテトチップス 175g",
+    "ko": "Thins 라이트 앤 탱기 포테이토 칩스 175g",
+    "src": "ai"
+  },
+  "L'Oreal Paris Men Pure Carbon Face Scrub 100mL": {
+    "zh": "L'Oreal Paris 男士碳爽去角質洗面乳 100毫升",
+    "ja": "L'Oreal Paris メンズ ピュアカーボン フェイススクラブ 100mL",
+    "ko": "L'Oreal Paris 맨즈 퓨어 카본 페이스 스크럽 100mL",
     "src": "ai"
   }
 }
