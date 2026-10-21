@@ -151126,10 +151126,11 @@
     "src": "ai"
   },
   "Schweppes Sparkling Water Blood Orange & Mango 18x375ml 6.75L": {
-    "zh": "Schweppes 氣泡水 血橙芒果口味 375毫升 x 18入",
-    "ja": "Schweppes スパークリングウォーター ブラッドオレンジ＆マンゴー味 375ml x 18本入",
-    "ko": "Schweppes 탄산수 블러드 오렌지 & 망고 맛 375ml x 18개입",
-    "src": "ai"
+    "zh": "Schweppes 氣泡水 血橙芒果口味 375毫升 x 18入 (6.75公升)",
+    "ja": "Schweppes スパークリングウォーター ブラッドオレンジ＆マンゴー 375ml x 18本 (6.75L)",
+    "ko": "Schweppes 스파클링 워터 블러드 오렌지 & 망고 375ml x 18개입 (6.75L)",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Original Source Body Wash Mint & Tea Tree 1L": {
     "zh": "Original Source 沐浴乳 薄荷茶樹香 1公升",
@@ -151150,10 +151151,11 @@
     "src": "ai"
   },
   "Swisse Ultiboost Calm + Sleep Gummies 120 Pack": {
-    "zh": "Swisse 舒緩助眠軟糖 120入",
-    "ja": "Swisse ウルティブースト カーム＋スリープ グミ 120個入",
-    "ko": "Swisse 울티부스트 카ーム + 슬립 구미 120개입",
-    "src": "ai"
+    "zh": "Swisse Ultiboost 放鬆助眠軟糖 120入",
+    "ja": "Swisse Ultiboost リラックス＆睡眠サポートグミ 120個入",
+    "ko": "Swisse Ultiboost 릴랙스 및 수면 보조 구미 120개입",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Nature's Own Sleep Ezy 120 Pack": {
     "zh": "Nature's Own 助眠錠 120入",
@@ -151177,6 +151179,78 @@
     "zh": "Swisse Ulti Boost 4倍濃縮野生魚油膠囊 60入",
     "ja": "Swisse Ulti Boost 4倍濃縮野生魚油カプセル 60個入",
     "ko": "Swisse Ulti Boost 4배 농축 야생 피쉬오일 캡슐 60개입",
+    "src": "ai"
+  },
+  "Lvl Up Everyday Hydration Tropical 10 Pack": {
+    "zh": "Lvl Up 日常補水飲料 熱帶水果口味 10入",
+    "ja": "Lvl Up デイリーハイドレーション トロピカル味 10個入",
+    "ko": "Lvl Up 데일리 하이드레이션 트로피컬 맛 10개입",
+    "src": "ai"
+  },
+  "Lvl Up Everyday Hydration Mixed Berry 10 Pack": {
+    "zh": "Lvl Up 日常補水飲料 綜合莓果口味 10入",
+    "ja": "Lvl Up デイリーハイドレーション ミックスベリー味 10個入",
+    "ko": "Lvl Up 데일리 하이드레이션 믹스베리 맛 10개입",
+    "src": "ai"
+  },
+  "Bonds Bucket Hat 1 each": {
+    "zh": "Bonds 漁夫帽",
+    "ja": "Bonds バケットハット",
+    "ko": "Bonds 버킷햇",
+    "src": "ai"
+  },
+  "Continental Pasta & Sauce Bacon Carbonara 80g": {
+    "zh": "Continental 義大利麵醬 培根培根蛋奶口味 80克",
+    "ja": "Continental パスタソース ベーコンカルボナーラ 80g",
+    "ko": "Continental 파스타 소스 베이컨 까르보나라 80g",
+    "src": "ai"
+  },
+  "Continental Pasta & Sauce Alfredo 80g": {
+    "zh": "Continental 義大利麵醬 奶油白醬口味 80克",
+    "ja": "Continental パスタソース アルフレッド 80g",
+    "ko": "Continental 파스타 소스 알프레도 80g",
+    "src": "ai"
+  },
+  "Coles Halloween Large Treat Pail 1 Each": {
+    "zh": "Coles 萬聖節大型糖果桶",
+    "ja": "Coles ハロウィン用大型トリートペール",
+    "ko": "Coles 할로윈 대형 간식 바구니",
+    "src": "ai"
+  },
+  "Continental Pasta & Sauce Macaroni Cheese 80g": {
+    "zh": "Continental 義大利麵醬 通心粉起司口味 80克",
+    "ja": "Continental パスタソース マカロニチーズ 80g",
+    "ko": "Continental 파스타 소스 마카로니 치즈 80g",
+    "src": "ai"
+  },
+  "Lvl Up Everyday Hydration Watermelon 10 Pack": {
+    "zh": "Lvl Up 日常補水飲料 西瓜口味 10入",
+    "ja": "Lvl Up デイリーハイドレーション スイカ味 10個入",
+    "ko": "Lvl Up 데일리 하이드레이션 수박 맛 10개입",
+    "src": "ai"
+  },
+  "Pensilva Grenache 750ml 1 Each": {
+    "zh": "Pensilva 格那希紅酒 750毫升",
+    "ja": "Pensilva グルナッシュ 750ml",
+    "ko": "Pensilva 그르나슈 750ml",
+    "src": "ai"
+  },
+  "Original Source Body Wash Sea Minerals 1L": {
+    "zh": "Original Source 沐浴乳 海洋礦物香 1公升",
+    "ja": "Original Source ボディウォッシュ シーミネラルの香り 1L",
+    "ko": "Original Source 바디워시 씨 미네랄 향 1L",
+    "src": "ai"
+  },
+  "Hide & Seek Biscuit FAB Chocolate 112g": {
+    "zh": "Hide & Seek 餅乾 FAB巧克力口味 112克",
+    "ja": "Hide & Seek ビスケット FABチョコレート味 112g",
+    "ko": "Hide & Seek 비스킷 FAB 초콜릿 맛 112g",
+    "src": "ai"
+  },
+  "Continental Pasta & Sauce Alfredo Garlic & Herbs 80g": {
+    "zh": "Continental 義大利麵醬 蒜味香草奶油白醬口味 80克",
+    "ja": "Continental パスタソース アルフレッド ガーリック＆ハーブ 80g",
+    "ko": "Continental 파스타 소스 알프레도 갈릭 & 허브 80g",
     "src": "ai"
   }
 }
