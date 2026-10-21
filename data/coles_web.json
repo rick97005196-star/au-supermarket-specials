@@ -1,5 +1,5 @@
 {
-"cursor": 11,
+"cursor": 16,
 "items": {
 "1000075": {
 "category": "Seasonal Events Halloween",
@@ -3871,6 +3871,21 @@
 "unit_price": "$7.38/ 100ea",
 "was_price": 29.5
 },
+"1990076": {
+"category": "Vitamins Multi Vitamins",
+"discount_desc": "1/2 PRICE",
+"id": "1990076",
+"image_url": "https://productimages.coles.com.au/productimages/1/1990076.jpg",
+"price": 19.75,
+"price_display": "$19.75",
+"product_url": "https://www.coles.com.au/product/cenovis-womens-multi-plus-energy-boost-once-daily-caps-100-pack-1990076",
+"save_amount": 19.75,
+"store": "Coles",
+"store_category": "Vitamins Multi Vitamins",
+"title": "Cenovis Womens Multi Plus Energy Boost Once Daily Caps 100 Pack",
+"unit_price": "$19.75/ 100ea",
+"was_price": 39.5
+},
 "1990156": {
 "category": "Vitamins Sleep",
 "discount_desc": "1/2 PRICE",
@@ -3930,6 +3945,21 @@
 "title": "Nature's Own Vitamin B12 Tablets 1000y 120 Pack",
 "unit_price": "$12.29/ 100ea",
 "was_price": 29.5
+},
+"1990393": {
+"category": "Vitamins Immunity",
+"discount_desc": "1/2 PRICE",
+"id": "1990393",
+"image_url": "https://productimages.coles.com.au/productimages/1/1990393.jpg",
+"price": 19.75,
+"price_display": "$19.75",
+"product_url": "https://www.coles.com.au/product/natures-own-triple-strength-garlic-c-horseradish-tabs-100-pack-1990393",
+"save_amount": 19.75,
+"store": "Coles",
+"store_category": "Vitamins Immunity",
+"title": "Natures Own Triple Strength Garlic +c Horseradish Tabs 100 Pack",
+"unit_price": "$19.75/ 100ea",
+"was_price": 39.5
 },
 "1990790": {
 "category": "Vitamins Sleep",
@@ -8581,6 +8611,36 @@
 "unit_price": "$1.50/ 1L",
 "was_price": 3.3
 },
+"3989974": {
+"category": "Softdrinks Cans",
+"discount_desc": "1/2 PRICE",
+"id": "3989974",
+"image_url": "https://productimages.coles.com.au/productimages/3/3989974.jpg",
+"price": 11.5,
+"price_display": "$11.50",
+"product_url": "https://www.coles.com.au/product/coca-cola-zero-sugar-vanilla-soft-drink-multipack-cans-375ml-10-pack-3989974",
+"save_amount": 11.5,
+"store": "Coles",
+"store_category": "Softdrinks Cans",
+"title": "Coca-Cola Zero Sugar Vanilla Soft Drink Multipack Cans 375ml 10 Pack",
+"unit_price": "$3.07/ 1L",
+"was_price": 23.0
+},
+"3989996": {
+"category": "Softdrinks Cans",
+"discount_desc": "1/2 PRICE",
+"id": "3989996",
+"image_url": "https://productimages.coles.com.au/productimages/3/3989996.jpg",
+"price": 11.5,
+"price_display": "$11.50",
+"product_url": "https://www.coles.com.au/product/coca-cola-zero-sugar-zero-caffeine-10-pack-3989996",
+"save_amount": 11.5,
+"store": "Coles",
+"store_category": "Softdrinks Cans",
+"title": "Coca-Cola Zero Sugar Zero Caffeine 10 Pack",
+"unit_price": "$3.07/ 1L",
+"was_price": 23.0
+},
 "3996197": {
 "category": "Aircare Candle",
 "discount_desc": "1/2 PRICE",
@@ -8836,6 +8896,21 @@
 "unit_price": "$3.07/ 1L",
 "was_price": 23.0
 },
+"4147215": {
+"category": "Skin Care Suncare",
+"discount_desc": "1/2 PRICE",
+"id": "4147215",
+"image_url": "https://productimages.coles.com.au/productimages/4/4147215.jpg",
+"price": 10.75,
+"price_display": "$10.75",
+"product_url": "https://www.coles.com.au/product/nivea-sun-spf-50-protect-moisturise-lotion-200ml-4147215",
+"save_amount": 10.75,
+"store": "Coles",
+"store_category": "Skin Care Suncare",
+"title": "Nivea Sun SPF 50+ Protect & Moisturise Lotion 200mL",
+"unit_price": "$5.38/ 100mL",
+"was_price": 21.5
+},
 "4150672": {
 "category": "Bakery Packaged Cake Slices/Mini Rolls",
 "discount_desc": "1/2 PRICE",
@@ -8850,6 +8925,36 @@
 "title": "Mr Kipling Chocolate Cake Slices 6 Pack 155g",
 "unit_price": "$2.00/ 100g",
 "was_price": 6.2
+},
+"4155745": {
+"category": "Dental Health Toothbrush",
+"discount_desc": "1/2 PRICE",
+"id": "4155745",
+"image_url": "https://productimages.coles.com.au/productimages/4/4155745.jpg",
+"price": 2.75,
+"price_display": "$2.75",
+"product_url": "https://www.coles.com.au/product/colgate-360-deep-clean-medium-toothbrush-1-pack-4155745",
+"save_amount": 2.75,
+"store": "Coles",
+"store_category": "Dental Health Toothbrush",
+"title": "Colgate 360 Deep Clean Medium Toothbrush 1 Pack",
+"unit_price": "$2.75/ 1ea",
+"was_price": 5.5
+},
+"4155756": {
+"category": "Dental Health Toothbrush",
+"discount_desc": "1/2 PRICE",
+"id": "4155756",
+"image_url": "https://productimages.coles.com.au/productimages/4/4155756.jpg",
+"price": 2.75,
+"price_display": "$2.75",
+"product_url": "https://www.coles.com.au/product/colgate-360-deep-clean-soft-toothbrush-1-pack-4155756",
+"save_amount": 2.75,
+"store": "Coles",
+"store_category": "Dental Health Toothbrush",
+"title": "Colgate 360 Deep Clean Soft Toothbrush 1 Pack",
+"unit_price": "$2.75/ 1ea",
+"was_price": 5.5
 },
 "4156883": {
 "category": "Coffee Coffee All In One",
@@ -9240,6 +9345,21 @@
 "title": "Swisse Ultiboost Iron + Probiotic For Women's Health 30 Pack",
 "unit_price": "$41.67/ 100ea",
 "was_price": 25.0
+},
+"4224291": {
+"category": "Cleaning Goods Toilet",
+"discount_desc": "1/2 PRICE",
+"id": "4224291",
+"image_url": "https://productimages.coles.com.au/productimages/4/4224291.jpg",
+"price": 3.5,
+"price_display": "$3.50",
+"product_url": "https://www.coles.com.au/product/bref-brilliant-gel-rimblock-arctic-ocean-toilet-cleaner-42g-4224291",
+"save_amount": 3.5,
+"store": "Coles",
+"store_category": "Cleaning Goods Toilet",
+"title": "Bref Brilliant Gel Rimblock Arctic Ocean Toilet Cleaner 42g",
+"unit_price": "$8.33/ 100g",
+"was_price": 7.0
 },
 "4232303": {
 "category": "Homewares Otg Hydration",
@@ -10276,6 +10396,21 @@
 "unit_price": "$13.75/ 100g",
 "was_price": 22.0
 },
+"4842439": {
+"category": "Dental Health Toothpaste",
+"discount_desc": "1/2 PRICE",
+"id": "4842439",
+"image_url": "https://productimages.coles.com.au/productimages/4/4842439.jpg",
+"price": 5.5,
+"price_display": "$5.50",
+"product_url": "https://www.coles.com.au/product/colgate-advanced-whitening-toothpaste-200g-4842439",
+"save_amount": 5.5,
+"store": "Coles",
+"store_category": "Dental Health Toothpaste",
+"title": "Colgate Advanced Whitening Toothpaste 200g",
+"unit_price": "$2.75/ 100g",
+"was_price": 11.0
+},
 "4842440": {
 "category": "Dental Health Toothpaste",
 "discount_desc": "1/2 PRICE",
@@ -10318,6 +10453,21 @@
 "store": "Coles",
 "store_category": "Dental Health Toothbrush",
 "title": "Colgate 360 Advanced Optic White Toothbrush Medium 3 Pack",
+"unit_price": "$2.33/ 1ea",
+"was_price": 14.0
+},
+"4842472": {
+"category": "Dental Health Toothbrush",
+"discount_desc": "1/2 PRICE",
+"id": "4842472",
+"image_url": "https://productimages.coles.com.au/productimages/4/4842472.jpg",
+"price": 7.0,
+"price_display": "$7.00",
+"product_url": "https://www.coles.com.au/product/colgate-360-advanced-optic-white-toothbrush-soft-3-pack-4842472",
+"save_amount": 7.0,
+"store": "Coles",
+"store_category": "Dental Health Toothbrush",
+"title": "Colgate 360 Advanced Optic White Toothbrush Soft 3 Pack",
 "unit_price": "$2.33/ 1ea",
 "was_price": 14.0
 },
@@ -10365,6 +10515,21 @@
 "title": "Decor Microsafe Easy Heat Containers 375ml 3 Pack",
 "unit_price": "$2.05/ 1ea",
 "was_price": 12.3
+},
+"4951172": {
+"category": "Aircare Aerosol",
+"discount_desc": "1/2 PRICE",
+"id": "4951172",
+"image_url": "https://productimages.coles.com.au/productimages/4/4951172.jpg",
+"price": 3.5,
+"price_display": "$3.50",
+"product_url": "https://www.coles.com.au/product/scentory-aerosol-luscious-petals-165g-4951172",
+"save_amount": 3.5,
+"store": "Coles",
+"store_category": "Aircare Aerosol",
+"title": "Scentory Aerosol Luscious Petals 165g",
+"unit_price": "$2.12/ 100g",
+"was_price": 7.0
 },
 "4951605": {
 "category": "Aircare Aerosol",
@@ -66851,6 +67016,6 @@
 "pages_done": 143
 },
 "pages": 28,
-"pages_done": 10,
+"pages_done": 15,
 "week": "2026-10-21"
 }
