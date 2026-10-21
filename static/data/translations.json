@@ -153375,10 +153375,11 @@
     "src": "ai"
   },
   "Coca-Cola Vanilla Soft Drink 10x375ml 3.75L": {
-    "zh": "Coca-Cola 可口可樂香草汽水 375毫升 x 10入",
-    "ja": "Coca-Cola バニラ味炭酸飲料 375ml x 10個入",
-    "ko": "Coca-Cola 바닐라맛 탄산음료 375ml x 10개입",
-    "src": "ai"
+    "zh": "Coca-Cola 香草口味可口可樂 375毫升 x 10入 3.75公升",
+    "ja": "Coca-Cola バニラ ソフトドリンク 375mL x 10本 3.75L",
+    "ko": "Coca-Cola 바닐라 탄산음료 375mL x 10개입 3.75L",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Sprite Zero Sugar Lemonade Soft Drink Multipack Cans 375ml 10 Pack": {
     "zh": "Sprite 零糖檸檬汽水 375毫升 x 10入",
@@ -153387,10 +153388,11 @@
     "src": "ai"
   },
   "Sprite Lemonade Natural Flavour 10x375ml 3.75L": {
-    "zh": "Sprite 天然風味檸檬汽水 375毫升 x 10入",
-    "ja": "Sprite 天然レモンフレーバー炭酸飲料 375ml x 10個入",
-    "ko": "Sprite 천연 레몬향 탄산음료 375ml x 10개입",
-    "src": "ai"
+    "zh": "Sprite 雪碧天然檸檬口味汽水 375毫升 x 10入 3.75公升",
+    "ja": "Sprite レモネード ナチュラルフレーバー 375mL x 10本 3.75L",
+    "ko": "Sprite 레모네이드 내추럴 플레이버 375mL x 10개입 3.75L",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Coca-Cola Classic Soft Drink Multipack Cans 375ml 10 Pack": {
     "zh": "Coca-Cola 可口可樂經典汽水 375毫升 x 10入",
@@ -153405,10 +153407,11 @@
     "src": "ai"
   },
   "Coca-Cola Diet Coke 10x375ml 3.75L": {
-    "zh": "Coca-Cola Diet Coke 健怡汽水 375毫升 x 10入",
-    "ja": "Coca-Cola Diet Coke 炭酸飲料 375ml x 10個入",
-    "ko": "Coca-Cola Diet Coke 탄산음료 375ml x 10개입",
-    "src": "ai"
+    "zh": "Coca-Cola 健怡可口可樂 375毫升 x 10入 3.75公升",
+    "ja": "Coca-Cola ダイエットコーク 375mL x 10本 3.75L",
+    "ko": "Coca-Cola 다이어트 코크 375mL x 10개입 3.75L",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Pine O Cleen Platinum Laundry Sanitiser Fresh Breeze 2L": {
     "zh": "Pine O Cleen 白金衣物除菌液 清新微風香 2公升",
@@ -153432,6 +153435,90 @@
     "zh": "Ferrero Rocher 金莎巧克力禮盒 200克（16入）",
     "ja": "Ferrero Rocher チョコレートギフトボックス 200g（16個入）",
     "ko": "Ferrero Rocher 초콜릿 선물세트 200g（16개입）",
+    "src": "ai"
+  },
+  "MCVITIE'S Digestives Original 355g": {
+    "zh": "McVitie's 原味全麥消化餅乾 355克",
+    "ja": "McVitie's ダイジェスティブビスケット オリジナル 355g",
+    "ko": "McVitie's 다이제스티브 오리지널 355g",
+    "src": "ai"
+  },
+  "Maharajah's Choice Mango Chutney Twists 90g": {
+    "zh": "Maharajah's Choice 芒果酸 chutney 漩渦餅乾 90克",
+    "ja": "Maharajah's Choice マンゴーチャツネ ツイスト 90g",
+    "ko": "Maharajah's Choice 망고 처트니 트위스트 90g",
+    "src": "ai"
+  },
+  "Maharajah's Choice Mango Chutney Chips 52g": {
+    "zh": "Maharajah's Choice 芒果酸 chutney 洋芋片 52克",
+    "ja": "Maharajah's Choice マンゴーチャツネ チップス 52g",
+    "ko": "Maharajah's Choice 망고 처트니 칩스 52g",
+    "src": "ai"
+  },
+  "Hamilton Everyday Face Invisible Sunscreen SPF 50+ Light Tint 75g": {
+    "zh": "Hamilton Everyday Face 隱形防曬乳 SPF 50+ 輕透膚色 75克",
+    "ja": "Hamilton Everyday Face インビジブル 日焼け止め SPF 50+ ライトティント 75g",
+    "ko": "Hamilton Everyday Face 인비저블 자외선 차단제 SPF 50+ 라이트 틴트 75g",
+    "src": "ai"
+  },
+  "Continental Pasta & Sauce Chicken Curry 80g": {
+    "zh": "Continental 義大利麵與醬汁 咖哩雞口味 80克",
+    "ja": "Continental パスタ＆ソース チキンカレー 80g",
+    "ko": "Continental 파스타 & 소스 치킨 커리 80g",
+    "src": "ai"
+  },
+  "Hamilton Active Family Sunscreen SPF 50+ 500mL": {
+    "zh": "Hamilton Active Family 全家防曬乳 SPF 50+ 500毫升",
+    "ja": "Hamilton Active Family 日焼け止め SPF 50+ 500mL",
+    "ko": "Hamilton Active Family 선스크린 SPF 50+ 500mL",
+    "src": "ai"
+  },
+  "Haldirams Bhujia 200g": {
+    "zh": "Haldirams 印度香辣脆餅 200克",
+    "ja": "Haldirams ブジア 200g",
+    "ko": "Haldirams 부지아 200g",
+    "src": "ai"
+  },
+  "Cadbury Favourites Ultimate Share Chocolate Gift Box 700g": {
+    "zh": "Cadbury Favourites 經典綜合分享巧克力禮盒 700克",
+    "ja": "Cadbury Favourites アルティメット シェア チョコレート ギフトボックス 700g",
+    "ko": "Cadbury Favourites 얼티밋 셰어 초콜릿 기프트 박스 700g",
+    "src": "ai"
+  },
+  "The Natural Confectionery Co. Juicy Bursts Strawberry & Raspberry Lollies 150g": {
+    "zh": "The Natural Confectionery Co. 果汁爆漿 草莓與覆盆子軟糖 150克",
+    "ja": "The Natural Confectionery Co. ジューシー バースト ストロベリー＆ラズベリー キャンディ 150g",
+    "ko": "The Natural Confectionery Co. 쥬시 버스트 스트로베리 & 라즈베리 젤리 150g",
+    "src": "ai"
+  },
+  "Hamilton Everyday Face Invisible Sunscreen SPF 50+ Medium Tint 75g": {
+    "zh": "Hamilton Everyday Face 隱形防曬乳 SPF 50+ 自然膚色 75克",
+    "ja": "Hamilton Everyday Face インビジブル 日焼け止め SPF 50+ ミディアムティント 75g",
+    "ko": "Hamilton Everyday Face 인비저블 자외선 차단제 SPF 50+ 미디엄 틴트 75g",
+    "src": "ai"
+  },
+  "Bondi Sands Ultra Dark One Hour Express Tanning Foam 200mL": {
+    "zh": "Bondi Sands 極深色 一小時快速助曬泡沫 200毫升",
+    "ja": "Bondi Sands ウルトラ ダーク 1時間 エクスプレス 日焼けフォーム 200mL",
+    "ko": "Bondi Sands 울트라 다크 원 아워 익스프레스 태닝 폼 200mL",
+    "src": "ai"
+  },
+  "Hamilton Sensitive Sunscreen SPF 50+ 265mL": {
+    "zh": "Hamilton Sensitive 敏感肌防曬乳 SPF 50+ 265毫升",
+    "ja": "Hamilton Sensitive 日焼け止め SPF 50+ 265mL",
+    "ko": "Hamilton Sensitive 센시티브 선스크린 SPF 50+ 265mL",
+    "src": "ai"
+  },
+  "Haldirams Boondi Masala 200g": {
+    "zh": "Haldirams 印度香料炸麵球 200克",
+    "ja": "Haldirams ブンディ マサラ 200g",
+    "ko": "Haldirams 분디 마살라 200g",
+    "src": "ai"
+  },
+  "Maharajah's Choice Green Chutney Twist 90g": {
+    "zh": "Maharajah's Choice 綠色酸 chutney 漩渦餅乾 90克",
+    "ja": "Maharajah's Choice グリーンチャツネ ツイスト 90g",
+    "ko": "Maharajah's Choice 그린 처트니 트위스트 90g",
     "src": "ai"
   }
 }
