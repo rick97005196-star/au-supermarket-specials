@@ -1,5 +1,5 @@
 {
-"cursor": 26,
+"cursor": 1,
 "items": {
 "1000075": {
 "category": "Seasonal Events Halloween",
@@ -8836,6 +8836,21 @@
 "unit_price": "$5.25/ 1ea",
 "was_price": 10.5
 },
+"3793906": {
+"category": "Kitchenware Food Storage",
+"discount_desc": "1/2 PRICE",
+"id": "3793906",
+"image_url": "https://productimages.coles.com.au/productimages/3/3793906.jpg",
+"price": 1.95,
+"price_display": "$1.95",
+"product_url": "https://www.coles.com.au/product/sistema-klip-it-plus-rectangle-container-400ml-1-each-3793906",
+"save_amount": 1.95,
+"store": "Coles",
+"store_category": "Kitchenware Food Storage",
+"title": "Sistema Klip It Plus Rectangle Container 400ml 1 each",
+"unit_price": "$1.95/ 1ea",
+"was_price": 3.9
+},
 "3794137": {
 "category": "Kitchenware Food Storage",
 "discount_desc": "1/2 PRICE",
@@ -8850,6 +8865,36 @@
 "title": "Sistema Klip It Plus Rectangle Container 1l 1 each",
 "unit_price": "$3.20/ 1ea",
 "was_price": 6.4
+},
+"3794181": {
+"category": "Kitchenware Food Storage",
+"discount_desc": "1/2 PRICE",
+"id": "3794181",
+"image_url": "https://productimages.coles.com.au/productimages/3/3794181.jpg",
+"price": 7.87,
+"price_display": "$7.87",
+"product_url": "https://www.coles.com.au/product/sistema-klip-it-plus-containers-1l-3-pack-3794181",
+"save_amount": 7.88,
+"store": "Coles",
+"store_category": "Kitchenware Food Storage",
+"title": "Sistema Klip It Plus Containers 1l 3 Pack",
+"unit_price": "$2.62/ 1ea",
+"was_price": 15.75
+},
+"3794272": {
+"category": "Kitchenware Food Storage",
+"discount_desc": "1/2 PRICE",
+"id": "3794272",
+"image_url": "https://productimages.coles.com.au/productimages/3/3794272.jpg",
+"price": 7.1,
+"price_display": "$7.10",
+"product_url": "https://www.coles.com.au/product/sistema-klip-it-plus-containers-520ml-3-pack-3794272",
+"save_amount": 7.1,
+"store": "Coles",
+"store_category": "Kitchenware Food Storage",
+"title": "Sistema Klip It Plus Containers 520ml 3 Pack",
+"unit_price": "$2.37/ 1ea",
+"was_price": 14.2
 },
 "3794319": {
 "category": "Kitchenware Food Storage",
@@ -18422,9 +18467,9 @@
 "was_price": 8.6
 }
 },
-"last_full": 1792549126.9965253,
+"last_full": 1792579679.614793,
 "more": {
-"cursor": 144,
+"cursor": 146,
 "items": {
 "1000051": {
 "category": "Bars Gum Pocket Pack Pocket Packs",
@@ -68123,9 +68168,9 @@
 }
 },
 "pages": 153,
-"pages_done": 143
+"pages_done": 145
 },
 "pages": 28,
-"pages_done": 25,
+"pages_done": 0,
 "week": "2026-10-21"
 }
