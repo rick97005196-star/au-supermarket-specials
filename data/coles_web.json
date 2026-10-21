@@ -1,5 +1,5 @@
 {
-"cursor": 16,
+"cursor": 21,
 "items": {
 "1000075": {
 "category": "Seasonal Events Halloween",
@@ -871,6 +871,36 @@
 "unit_price": "$0.81/ 100mL",
 "was_price": 8.0
 },
+"1420599": {
+"category": "Dishwashing Hand",
+"discount_desc": "1/2 PRICE",
+"id": "1420599",
+"image_url": "https://productimages.coles.com.au/productimages/1/1420599.jpg",
+"price": 4.0,
+"price_display": "$4.00",
+"product_url": "https://www.coles.com.au/product/fairy-complete-clean-dishwashing-liquid-original-495ml-1420599",
+"save_amount": 4.0,
+"store": "Coles",
+"store_category": "Dishwashing Hand",
+"title": "Fairy Complete Clean Dishwashing Liquid Original 495mL",
+"unit_price": "$0.81/ 100mL",
+"was_price": 8.0
+},
+"1420602": {
+"category": "Dishwashing Machine",
+"discount_desc": "1/2 PRICE",
+"id": "1420602",
+"image_url": "https://productimages.coles.com.au/productimages/1/1420602.jpg",
+"price": 38.0,
+"price_display": "$38.00",
+"product_url": "https://www.coles.com.au/product/fairy-5-power-action-lemon-dishwashing-tablets-70-pack-1420602",
+"save_amount": 38.0,
+"store": "Coles",
+"store_category": "Dishwashing Machine",
+"title": "Fairy 5 Power Action Lemon Dishwashing Tablets 70 Pack",
+"unit_price": "$0.54/ 1ea",
+"was_price": 76.0
+},
 "1420613": {
 "category": "Dishwashing Machine",
 "discount_desc": "1/2 PRICE",
@@ -885,6 +915,36 @@
 "title": "Fairy 5 Power Action Lemon Dishwashing Tablets 34 Pack",
 "unit_price": "$0.68/ 1ea",
 "was_price": 46.0
+},
+"142413": {
+"category": "Bars Gum Pocket Pack Bars",
+"discount_desc": "1/2 PRICE",
+"id": "142413",
+"image_url": "https://productimages.coles.com.au/productimages/1/142413.jpg",
+"price": 1.5,
+"price_display": "$1.50",
+"product_url": "https://www.coles.com.au/product/smarties-milk-choc-box-50g-142413",
+"save_amount": 1.5,
+"store": "Coles",
+"store_category": "Bars Gum Pocket Pack Bars",
+"title": "Smarties Milk Choc Box 50g",
+"unit_price": "$3.00/ 100g",
+"was_price": 3.0
+},
+"142424": {
+"category": "Bars Gum Pocket Pack Bars",
+"discount_desc": "1/2 PRICE",
+"id": "142424",
+"image_url": "https://productimages.coles.com.au/productimages/1/142424.jpg",
+"price": 1.5,
+"price_display": "$1.50",
+"product_url": "https://www.coles.com.au/product/nestle-peppermint-crisp-chocolate-bar-35g-142424",
+"save_amount": 1.5,
+"store": "Coles",
+"store_category": "Bars Gum Pocket Pack Bars",
+"title": "Nestle Peppermint Crisp Chocolate Bar 35g",
+"unit_price": "$4.29/ 100g",
+"was_price": 3.0
 },
 "1445716": {
 "category": "Family Underwear Mens Underwear",
@@ -3076,6 +3136,81 @@
 "unit_price": "$0.08/ 1ea",
 "was_price": 3.0
 },
+"1849271": {
+"category": "Softdrinks Cans",
+"discount_desc": "1/2 PRICE",
+"id": "1849271",
+"image_url": "https://productimages.coles.com.au/productimages/1/1849271.jpg",
+"price": 11.5,
+"price_display": "$11.50",
+"product_url": "https://www.coles.com.au/product/sprite-zero-sugar-lemonade-soft-drink-multipack-cans-375ml-10-pack-1849271",
+"save_amount": 11.5,
+"store": "Coles",
+"store_category": "Softdrinks Cans",
+"title": "Sprite Zero Sugar Lemonade Soft Drink Multipack Cans 375ml 10 Pack",
+"unit_price": "$3.07/ 1L",
+"was_price": 23.0
+},
+"1849293": {
+"category": "Softdrinks Cans",
+"discount_desc": "1/2 PRICE",
+"id": "1849293",
+"image_url": "https://productimages.coles.com.au/productimages/1/1849293.jpg",
+"price": 11.5,
+"price_display": "$11.50",
+"product_url": "https://www.coles.com.au/product/coca-cola-vanilla-soft-drink-10x375ml-3-75l-1849293",
+"save_amount": 11.5,
+"store": "Coles",
+"store_category": "Softdrinks Cans",
+"title": "Coca-Cola Vanilla Soft Drink 10x375ml 3.75L",
+"unit_price": "$3.07/ 1L",
+"was_price": 23.0
+},
+"1849307": {
+"category": "Softdrinks Cans",
+"discount_desc": "1/2 PRICE",
+"id": "1849307",
+"image_url": "https://productimages.coles.com.au/productimages/1/1849307.jpg",
+"price": 11.5,
+"price_display": "$11.50",
+"product_url": "https://www.coles.com.au/product/coca-cola-classic-soft-drink-multipack-cans-375ml-10-pack-1849307",
+"save_amount": 11.5,
+"store": "Coles",
+"store_category": "Softdrinks Cans",
+"title": "Coca-Cola Classic Soft Drink Multipack Cans 375ml 10 Pack",
+"unit_price": "$3.07/ 1L",
+"was_price": 23.0
+},
+"1849318": {
+"category": "Softdrinks Cans",
+"discount_desc": "1/2 PRICE",
+"id": "1849318",
+"image_url": "https://productimages.coles.com.au/productimages/1/1849318.jpg",
+"price": 11.5,
+"price_display": "$11.50",
+"product_url": "https://www.coles.com.au/product/coca-cola-diet-coke-10x375ml-3-75l-1849318",
+"save_amount": 11.5,
+"store": "Coles",
+"store_category": "Softdrinks Cans",
+"title": "Coca-Cola Diet Coke 10x375ml 3.75L",
+"unit_price": "$3.07/ 1L",
+"was_price": 23.0
+},
+"1849329": {
+"category": "Softdrinks Cans",
+"discount_desc": "1/2 PRICE",
+"id": "1849329",
+"image_url": "https://productimages.coles.com.au/productimages/1/1849329.jpg",
+"price": 11.5,
+"price_display": "$11.50",
+"product_url": "https://www.coles.com.au/product/sprite-lemonade-natural-flavour-10x375ml-3-75l-1849329",
+"save_amount": 11.5,
+"store": "Coles",
+"store_category": "Softdrinks Cans",
+"title": "Sprite Lemonade Natural Flavour 10x375ml 3.75L",
+"unit_price": "$3.07/ 1L",
+"was_price": 23.0
+},
 "1849330": {
 "category": "Softdrinks Cans",
 "discount_desc": "1/2 PRICE",
@@ -3089,6 +3224,21 @@
 "store_category": "Softdrinks Cans",
 "title": "Fanta Orange Soft Drink Multipack Cans 375ml 10 Pack",
 "unit_price": "$3.07/ 1L",
+"was_price": 23.0
+},
+"1850011": {
+"category": "Womens Deos & Groom Hair Removal",
+"discount_desc": "1/2 PRICE",
+"id": "1850011",
+"image_url": "https://productimages.coles.com.au/productimages/1/1850011.jpg",
+"price": 11.5,
+"price_display": "$11.50",
+"product_url": "https://www.coles.com.au/product/gillette-venus-intimate-hair-skin-razor-kit-with-2-refill-blades-1-each-1850011",
+"save_amount": 11.5,
+"store": "Coles",
+"store_category": "Womens Deos & Groom Hair Removal",
+"title": "Gillette Venus Intimate Hair & Skin Razor Kit With 2 Refill Blades 1 Each",
+"unit_price": "$11.50/ 1ea",
 "was_price": 23.0
 },
 "1850747": {
@@ -3106,6 +3256,21 @@
 "unit_price": "$1.22/ 100g",
 "was_price": 2.2
 },
+"1851295": {
+"category": "Confectionery Sharepacks",
+"discount_desc": "1/2 PRICE",
+"id": "1851295",
+"image_url": "https://productimages.coles.com.au/productimages/1/1851295.jpg",
+"price": 3.75,
+"price_display": "$3.75",
+"product_url": "https://www.coles.com.au/product/aero-mint-mini-pack-11-pieces-88g-1851295",
+"save_amount": 3.75,
+"store": "Coles",
+"store_category": "Confectionery Sharepacks",
+"title": "Aero Mint Mini Pack 11 Pieces 88g",
+"unit_price": "$4.26/ 100g",
+"was_price": 7.5
+},
 "1851455": {
 "category": "Hair Care Colourants",
 "discount_desc": "1/2 PRICE",
@@ -3118,6 +3283,21 @@
 "store": "Coles",
 "store_category": "Hair Care Colourants",
 "title": "Live Colour Semi-permanent Toner Ice White T1 1 Each",
+"unit_price": "$9.00/ 1ea",
+"was_price": 18.0
+},
+"1851466": {
+"category": "Hair Care Colourants",
+"discount_desc": "1/2 PRICE",
+"id": "1851466",
+"image_url": "https://productimages.coles.com.au/productimages/1/1851466.jpg",
+"price": 9.0,
+"price_display": "$9.00",
+"product_url": "https://www.coles.com.au/product/schwarzkopf-live-colour-permanent-intence-bleach-max-blonde-00b-1-each-1851466",
+"save_amount": 9.0,
+"store": "Coles",
+"store_category": "Hair Care Colourants",
+"title": "Schwarzkopf Live Colour Permanent Intence Bleach Max Blonde 00b 1 Each",
 "unit_price": "$9.00/ 1ea",
 "was_price": 18.0
 },
@@ -4471,6 +4651,36 @@
 "unit_price": "$0.08/ 1ea",
 "was_price": 13.5
 },
+"2277253": {
+"category": "Mens Deos & Grooming Deodorants",
+"discount_desc": "1/2 PRICE",
+"id": "2277253",
+"image_url": "https://productimages.coles.com.au/productimages/2/2277253.jpg",
+"price": 2.25,
+"price_display": "$2.25",
+"product_url": "https://www.coles.com.au/product/brut-original-roll-on-deodorant-1-each-2277253",
+"save_amount": 2.25,
+"store": "Coles",
+"store_category": "Mens Deos & Grooming Deodorants",
+"title": "Brut Original Roll On Deodorant 1 each",
+"unit_price": "$4.50/ 100mL",
+"was_price": 4.5
+},
+"2277300": {
+"category": "Womens Deos & Groom Hair Removal",
+"discount_desc": "1/2 PRICE",
+"id": "2277300",
+"image_url": "https://productimages.coles.com.au/productimages/2/2277300.jpg",
+"price": 11.0,
+"price_display": "$11.00",
+"product_url": "https://www.coles.com.au/product/schick-silk-salon-total-bikini-razor-trimmer-kit-1-refill-blade-1-each-2277300",
+"save_amount": 11.0,
+"store": "Coles",
+"store_category": "Womens Deos & Groom Hair Removal",
+"title": "Schick Silk Salon Total Bikini Razor & Trimmer Kit +1 Refill Blade 1 Each",
+"unit_price": "$11.00/ 1ea",
+"was_price": 22.0
+},
 "2279893": {
 "category": "Coffee Capsules",
 "discount_desc": "1/2 PRICE",
@@ -4485,6 +4695,21 @@
 "title": "Vittoria Espressotoria Italian Blend Coffee Capsules 12 Pack 78g",
 "unit_price": "$0.46/ 1ea",
 "was_price": 11.0
+},
+"229828": {
+"category": "Boxed Chocolates Premium",
+"discount_desc": "1/2 PRICE",
+"id": "229828",
+"image_url": "https://productimages.coles.com.au/productimages/2/229828.jpg",
+"price": 10.5,
+"price_display": "$10.50",
+"product_url": "https://www.coles.com.au/product/ferrero-rocher-chocolate-gift-box-16-pack-200g-229828",
+"save_amount": 10.5,
+"store": "Coles",
+"store_category": "Boxed Chocolates Premium",
+"title": "Ferrero Rocher Chocolate Gift Box 16 Pack 200g",
+"unit_price": "$5.25/ 100g",
+"was_price": 21.0
 },
 "2351254": {
 "category": "Confectionery Sugar",
@@ -4845,6 +5070,21 @@
 "title": "Huggies Gentle Cleanse Baby Wipes Coconut Oil 80 Pack",
 "unit_price": "$3.44/ 100ea",
 "was_price": 5.5
+},
+"2739950": {
+"category": "Cat Food Dry Cat",
+"discount_desc": "1/2 PRICE",
+"id": "2739950",
+"image_url": "https://productimages.coles.com.au/productimages/2/2739950.jpg",
+"price": 13.25,
+"price_display": "$13.25",
+"product_url": "https://www.coles.com.au/product/fussy-cat-grain-free-adult-dry-cat-food-chicken-turkey-with-cranberry-2-5-kg-2739950",
+"save_amount": 13.25,
+"store": "Coles",
+"store_category": "Cat Food Dry Cat",
+"title": "Fussy Cat Grain Free Adult Dry Cat Food Chicken & Turkey With Cranberry 2.5 Kg",
+"unit_price": "$0.53/ 100g",
+"was_price": 26.5
 },
 "2739960": {
 "category": "Cat Food Dry Cat",
@@ -10801,6 +11041,21 @@
 "unit_price": "$13.75/ 1kg",
 "was_price": 27.5
 },
+"5018874": {
+"category": "Coffee Instant",
+"discount_desc": "1/2 PRICE",
+"id": "5018874",
+"image_url": "https://productimages.coles.com.au/productimages/5/5018874.jpg",
+"price": 7.25,
+"price_display": "$7.25",
+"product_url": "https://www.coles.com.au/product/moccona-classic-dark-roast-instant-coffee-100g-5018874",
+"save_amount": 7.25,
+"store": "Coles",
+"store_category": "Coffee Instant",
+"title": "Moccona Classic Dark Roast Instant Coffee 100g",
+"unit_price": "$7.25/ 100g",
+"was_price": 14.5
+},
 "5020898": {
 "category": "Cleaning Goods Bathroom",
 "discount_desc": "1/2 PRICE",
@@ -10920,6 +11175,21 @@
 "title": "Vanish Napisan Gold 0% Colours Stain Remover 2kg",
 "unit_price": "$9.00/ 1kg",
 "was_price": 36.0
+},
+"5086740": {
+"category": "Laundry Accessories Laundry Sanitisers",
+"discount_desc": "1/2 PRICE",
+"id": "5086740",
+"image_url": "https://productimages.coles.com.au/productimages/5/5086740.jpg",
+"price": 12.5,
+"price_display": "$12.50",
+"product_url": "https://www.coles.com.au/product/canesten-laundry-hygiene-rinse-lemon-2l-5086740",
+"save_amount": 12.5,
+"store": "Coles",
+"store_category": "Laundry Accessories Laundry Sanitisers",
+"title": "Canesten Laundry Hygiene Rinse Lemon 2L",
+"unit_price": "$6.25/ 1L",
+"was_price": 25.0
 },
 "5109335": {
 "category": "Laundry Capsules",
@@ -12598,6 +12868,21 @@
 "store": "Coles",
 "store_category": "Laundry Accessories Laundry Sanitisers",
 "title": "Pine O Cleen Platinum Laundry Sanitiser Floral 2L",
+"unit_price": "$7.00/ 1L",
+"was_price": 28.0
+},
+"6264333": {
+"category": "Laundry Accessories Laundry Sanitisers",
+"discount_desc": "1/2 PRICE",
+"id": "6264333",
+"image_url": "https://productimages.coles.com.au/productimages/6/6264333.jpg",
+"price": 14.0,
+"price_display": "$14.00",
+"product_url": "https://www.coles.com.au/product/pine-o-cleen-platinum-laundry-sanitiser-fresh-breeze-2l-6264333",
+"save_amount": 14.0,
+"store": "Coles",
+"store_category": "Laundry Accessories Laundry Sanitisers",
+"title": "Pine O Cleen Platinum Laundry Sanitiser Fresh Breeze 2L",
 "unit_price": "$7.00/ 1L",
 "was_price": 28.0
 },
@@ -67016,6 +67301,6 @@
 "pages_done": 143
 },
 "pages": 28,
-"pages_done": 15,
+"pages_done": 20,
 "week": "2026-10-21"
 }
