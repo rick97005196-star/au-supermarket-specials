@@ -1,5 +1,5 @@
 {
-"cursor": 26,
+"cursor": 1,
 "items": {
 "1000075": {
 "category": "Seasonal Events Halloween",
@@ -18827,9 +18827,9 @@
 "was_price": 8.6
 }
 },
-"last_full": 1792579679.614793,
+"last_full": 1792731815.6879878,
 "more": {
-"cursor": 1,
+"cursor": 3,
 "items": {
 "1000051": {
 "category": "Bars Gum Pocket Pack Pocket Packs",
@@ -49701,6 +49701,21 @@
 "unit_price": "$7.20/ 100g",
 "was_price": 30.0
 },
+"5259350": {
+"category": "Nuts/Dried Cashews",
+"discount_desc": "Special",
+"id": "5259350",
+"image_url": "https://productimages.coles.com.au/productimages/5/5259350.jpg",
+"price": 12.0,
+"price_display": "$12.00",
+"product_url": "https://www.coles.com.au/product/coles-roasted-and-salted-cashews-750g-5259350",
+"save_amount": 0,
+"store": "Coles",
+"store_category": "Nuts/Dried Cashews",
+"title": "Coles Roasted And Salted Cashews 750g",
+"unit_price": "$16.00/ 1kg",
+"was_price": 0
+},
 "5259644": {
 "category": "Pork Pork Value Added",
 "discount_desc": "2 for $14.00",
@@ -51710,6 +51725,21 @@
 "title": "Coles Herb Punnets Lemongrass 30g",
 "unit_price": "$1.10/ 10g",
 "was_price": 6.6
+},
+"5750960": {
+"category": "Mushrooms White Mushrooms",
+"discount_desc": "2 for $7.00",
+"id": "5750960",
+"image_url": "https://productimages.coles.com.au/productimages/5/5750960.jpg",
+"price": 7.0,
+"price_display": "2 for $7.00",
+"product_url": "https://www.coles.com.au/product/coles-sliced-mushrooms-200g-5750960",
+"save_amount": 1.0,
+"store": "Coles",
+"store_category": "Mushrooms White Mushrooms",
+"title": "Coles Sliced Mushrooms 200g",
+"unit_price": "$20.00/ 1kg",
+"was_price": 8.0
 },
 "5777536": {
 "category": "Biscuits & Cookies Cream/Plain Biscuits",
@@ -60050,6 +60080,21 @@
 "title": "French's Classic Yellow Mustard 226g",
 "unit_price": "$1.33/ 100g",
 "was_price": 3.6
+},
+"7963859": {
+"category": "Potatoes Red Potatoes",
+"discount_desc": "Special",
+"id": "7963859",
+"image_url": "https://productimages.coles.com.au/productimages/7/7963859.jpg",
+"price": 6.0,
+"price_display": "$6.00",
+"product_url": "https://www.coles.com.au/product/coles-red-royale-washed-potatoes-2kg-7963859",
+"save_amount": 0,
+"store": "Coles",
+"store_category": "Potatoes Red Potatoes",
+"title": "Coles Red Royale Washed Potatoes 2Kg",
+"unit_price": "$3.00/ 1kg",
+"was_price": 0
 },
 "7991457": {
 "category": "Prepackaged Seafood Salmon Skin-On Pps",
@@ -68529,9 +68574,9 @@
 },
 "last_full": 1792583280.868456,
 "pages": 153,
-"pages_done": 0
+"pages_done": 2
 },
 "pages": 28,
-"pages_done": 25,
+"pages_done": 0,
 "week": "2026-10-21"
 }

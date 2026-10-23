@@ -1,8 +1,8 @@
 {
   "current": {
-    "total": 8729,
+    "total": 8732,
     "by_store": {
-      "Coles": 4707,
+      "Coles": 4710,
       "Woolworths": 3901,
       "ALDI": 121
     },
@@ -17,7 +17,7 @@
       "meat": 639,
       "pantry": 1980,
       "pet": 254,
-      "produce": 349,
+      "produce": 350,
       "seafood": 89,
       "snacks": 1752
     },
@@ -57,14 +57,14 @@
       "ALDI": 2446
     }
   },
-  "last_updated": "2026-10-23 00:32:18",
+  "last_updated": "2026-10-23 05:11:20",
   "base_region": "QLD",
   "regions": {
     "QLD": {
       "current": {
-        "total": 8729,
+        "total": 8732,
         "by_store": {
-          "Coles": 4707,
+          "Coles": 4710,
           "Woolworths": 3901,
           "ALDI": 121
         },
@@ -90,9 +90,9 @@
     },
     "NSW": {
       "current": {
-        "total": 8735,
+        "total": 8738,
         "by_store": {
-          "Coles": 4707,
+          "Coles": 4710,
           "Woolworths": 3907,
           "ALDI": 121
         },
@@ -118,9 +118,9 @@
     },
     "ACT": {
       "current": {
-        "total": 8729,
+        "total": 8732,
         "by_store": {
-          "Coles": 4707,
+          "Coles": 4710,
           "Woolworths": 3901,
           "ALDI": 121
         },
@@ -146,9 +146,9 @@
     },
     "VIC": {
       "current": {
-        "total": 8733,
+        "total": 8736,
         "by_store": {
-          "Coles": 4705,
+          "Coles": 4708,
           "Woolworths": 3907,
           "ALDI": 121
         },
@@ -174,9 +174,9 @@
     },
     "SA": {
       "current": {
-        "total": 8727,
+        "total": 8730,
         "by_store": {
-          "Coles": 4705,
+          "Coles": 4708,
           "Woolworths": 3901,
           "ALDI": 121
         },
@@ -202,9 +202,9 @@
     },
     "WA": {
       "current": {
-        "total": 8728,
+        "total": 8731,
         "by_store": {
-          "Coles": 4706,
+          "Coles": 4709,
           "Woolworths": 3901,
           "ALDI": 121
         },
@@ -230,9 +230,9 @@
     },
     "TAS": {
       "current": {
-        "total": 8728,
+        "total": 8731,
         "by_store": {
-          "Coles": 4707,
+          "Coles": 4710,
           "Woolworths": 3900,
           "ALDI": 121
         },
@@ -258,9 +258,9 @@
     },
     "NT": {
       "current": {
-        "total": 8729,
+        "total": 8732,
         "by_store": {
-          "Coles": 4707,
+          "Coles": 4710,
           "Woolworths": 3901,
           "ALDI": 121
         },
@@ -285,5 +285,5 @@
       }
     }
   },
-  "data_updated_at": "2026-10-23T00:32:46Z"
+  "data_updated_at": "2026-10-23T05:11:47Z"
 }
