@@ -1,5 +1,5 @@
 {
-"cursor": 6,
+"cursor": 11,
 "items": {
 "1000075": {
 "category": "Seasonal Events Halloween",
@@ -10831,6 +10831,21 @@
 "unit_price": "$36.73/ 1kg",
 "was_price": 31.0
 },
+"4304867": {
+"category": "Laundry Accessories Fabric Conditioners",
+"discount_desc": "1/2 PRICE",
+"id": "4304867",
+"image_url": "https://productimages.coles.com.au/productimages/4/4304867.jpg",
+"price": 6.5,
+"price_display": "$6.50",
+"product_url": "https://www.coles.com.au/product/downy-unstoppable-in-wash-scent-booster-beads-fresh-162g-4304867",
+"save_amount": 6.5,
+"store": "Coles",
+"store_category": "Laundry Accessories Fabric Conditioners",
+"title": "Downy Unstoppable In - Wash Scent Booster Beads Fresh 162g",
+"unit_price": "$40.12/ 1kg",
+"was_price": 13.0
+},
 "4309929": {
 "category": "Shoe Care Accessories",
 "discount_desc": "1/2 PRICE",
@@ -10860,6 +10875,36 @@
 "title": "Gatorade No Sugar Orange 600mL",
 "unit_price": "$3.50/ 1L",
 "was_price": 4.2
+},
+"4317177": {
+"category": "International Foods Mediterranean",
+"discount_desc": "1/2 PRICE",
+"id": "4317177",
+"image_url": "https://productimages.coles.com.au/productimages/4/4317177.jpg",
+"price": 2.5,
+"price_display": "$2.50",
+"product_url": "https://www.coles.com.au/product/matilde-vicenzi-millefoglie-d-italia-mini-snack-hazelnut-cream-125g-4317177",
+"save_amount": 2.5,
+"store": "Coles",
+"store_category": "International Foods Mediterranean",
+"title": "Matilde Vicenzi Millefoglie D'italia Mini Snack Hazelnut Cream 125g",
+"unit_price": "$2.00/ 100g",
+"was_price": 5.0
+},
+"4317188": {
+"category": "International Foods Mediterranean",
+"discount_desc": "1/2 PRICE",
+"id": "4317188",
+"image_url": "https://productimages.coles.com.au/productimages/4/4317188.jpg",
+"price": 2.5,
+"price_display": "$2.50",
+"product_url": "https://www.coles.com.au/product/matilde-vicenzi-millefoglie-d-italia-mini-snack-vanilla-cream-125g-4317188",
+"save_amount": 2.5,
+"store": "Coles",
+"store_category": "International Foods Mediterranean",
+"title": "Matilde Vicenzi Millefoglie D'italia Mini Snack Vanilla Cream 125g",
+"unit_price": "$2.00/ 100g",
+"was_price": 5.0
 },
 "4318861": {
 "category": "Wine Red Wine",
@@ -18015,6 +18060,21 @@
 "title": "Peters Drumstick Caramel Swirl Cones 4 Pack 475mL",
 "unit_price": "$1.04/ 100mL",
 "was_price": 9.9
+},
+"9092664": {
+"category": "Hair Care Shampoo/Conditioner",
+"discount_desc": "1/2 PRICE",
+"id": "9092664",
+"image_url": "https://productimages.coles.com.au/productimages/9/9092664.jpg",
+"price": 4.5,
+"price_display": "$4.50",
+"product_url": "https://www.coles.com.au/product/tresemme-shampoo-moisture-rich-350ml-9092664",
+"save_amount": 4.5,
+"store": "Coles",
+"store_category": "Hair Care Shampoo/Conditioner",
+"title": "Tresemme Shampoo Moisture Rich 350mL",
+"unit_price": "$1.29/ 100mL",
+"was_price": 9.0
 },
 "9092675": {
 "category": "Hair Care Shampoo/Conditioner",
@@ -68592,6 +68652,6 @@
 "pages_done": 2
 },
 "pages": 28,
-"pages_done": 5,
+"pages_done": 10,
 "week": "2026-10-21"
 }
