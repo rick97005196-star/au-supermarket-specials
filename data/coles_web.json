@@ -1,5 +1,5 @@
 {
-"cursor": 11,
+"cursor": 16,
 "items": {
 "1000075": {
 "category": "Seasonal Events Halloween",
@@ -10575,6 +10575,21 @@
 "title": "Coca-Cola Diet Soft Drink Bottle 1.25L",
 "unit_price": "$1.80/ 1L",
 "was_price": 4.5
+},
+"4209094": {
+"category": "Asian Foods Asian Savoury Snacks",
+"discount_desc": "1/2 PRICE",
+"id": "4209094",
+"image_url": "https://productimages.coles.com.au/productimages/4/4209094.jpg",
+"price": 6.0,
+"price_display": "$6.00",
+"product_url": "https://www.coles.com.au/product/nongshim-shin-ramyun-black-4-pack-520g-4209094",
+"save_amount": 6.0,
+"store": "Coles",
+"store_category": "Asian Foods Asian Savoury Snacks",
+"title": "Nongshim Shin Ramyun Black 4 Pack 520g",
+"unit_price": "$1.15/ 100g",
+"was_price": 12.0
 },
 "4223765": {
 "category": "Vitamins Beauty",
@@ -68652,6 +68667,6 @@
 "pages_done": 2
 },
 "pages": 28,
-"pages_done": 10,
+"pages_done": 15,
 "week": "2026-10-21"
 }
