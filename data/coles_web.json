@@ -1,5 +1,5 @@
 {
-"cursor": 26,
+"cursor": 1,
 "items": {
 "1000075": {
 "category": "Seasonal Events Halloween",
@@ -19022,9 +19022,9 @@
 "was_price": 8.6
 }
 },
-"last_full": 1792731815.6879878,
+"last_full": 1792857897.7080958,
 "more": {
-"cursor": 3,
+"cursor": 5,
 "items": {
 "1000051": {
 "category": "Bars Gum Pocket Pack Pocket Packs",
@@ -20659,6 +20659,21 @@
 "store_category": "Frozen Snacks Entertainment",
 "title": "Coles Kitchen Mini Okonomiyaki 180g",
 "unit_price": "$3.22/ 100g",
+"was_price": 17.4
+},
+"1130260": {
+"category": "Frozen Snacks Entertainment",
+"discount_desc": "3 for $15.00",
+"id": "1130260",
+"image_url": "https://productimages.coles.com.au/productimages/1/1130260.jpg",
+"price": 15.0,
+"price_display": "3 for $15.00",
+"product_url": "https://www.coles.com.au/product/coles-kitchen-fish-chip-bites-168g-1130260",
+"save_amount": 2.4,
+"store": "Coles",
+"store_category": "Frozen Snacks Entertainment",
+"title": "Coles Kitchen Fish & Chip Bites 168g",
+"unit_price": "$3.45/ 100g",
 "was_price": 17.4
 },
 "1130282": {
@@ -63756,6 +63771,21 @@
 "unit_price": "$4.85/ 100g",
 "was_price": 9.0
 },
+"8871654": {
+"category": "Meals Health",
+"discount_desc": "2 for $20.00",
+"id": "8871654",
+"image_url": "https://productimages.coles.com.au/productimages/8/8871654.jpg",
+"price": 20.0,
+"price_display": "2 for $20.00",
+"product_url": "https://www.coles.com.au/product/coles-perform-chicken-veggie-risoni-350g-8871654",
+"save_amount": 4.0,
+"store": "Coles",
+"store_category": "Meals Health",
+"title": "Coles Perform Chicken & Veggie Risoni 350g",
+"unit_price": "$3.43/ 100g",
+"was_price": 24.0
+},
 "8871723": {
 "category": "Yoghurt Yoghurt",
 "discount_desc": "Save $1.05",
@@ -68769,9 +68799,9 @@
 },
 "last_full": 1792583280.868456,
 "pages": 153,
-"pages_done": 2
+"pages_done": 4
 },
 "pages": 28,
-"pages_done": 25,
+"pages_done": 0,
 "week": "2026-10-21"
 }
