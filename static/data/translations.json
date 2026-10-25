@@ -155702,10 +155702,11 @@
     "src": "ai"
   },
   "Barbell Foods Biltong Sea Salt 70g": {
-    "zh": "Barbell Foods 風乾牛肉乾 海鹽口味 70克",
-    "ja": "Barbell Foods ビルトング 海塩味 70g",
-    "ko": "Barbell Foods 빌통 바다소금맛 70g",
-    "src": "ai"
+    "zh": "Barbell Foods 海鹽風干肉片 70克",
+    "ja": "Barbell Foods ビルトン シーソルト 70g",
+    "ko": "Barbell Foods 빌통 씨솔트 70g",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Lea & Perrins Worcestershire Sauce 290mL": {
     "zh": "Lea & Perrins 烏醋 290毫升",
@@ -155723,6 +155724,126 @@
     "zh": "La Zuppa 湯包 雞肉玉米口味 400克",
     "ja": "La Zuppa スープパウチ チキン＆スイートコーン 400g",
     "ko": "La Zuppa 스프 파우치 치킨 앤 스위트콘 400g",
+    "src": "ai"
+  },
+  "Betty Crocker Devils Food Cake Mx 450g": {
+    "zh": "Betty Crocker 惡魔食品蛋糕粉 450克",
+    "ja": "Betty Crocker デビルズフードケーキミックス 450g",
+    "ko": "Betty Crocker 데블스 푸드 케이크 믹스 450g",
+    "src": "ai"
+  },
+  "Betty Crocker Vanilla Cake Mix 450g": {
+    "zh": "Betty Crocker 香草蛋糕粉 450克",
+    "ja": "Betty Crocker バニラケーキミックス 450g",
+    "ko": "Betty Crocker 바닐라 케이크 믹스 450g",
+    "src": "ai"
+  },
+  "Musashi Protein Crisp Bar Vanilla Caramel 60g": {
+    "zh": "Musashi 香草焦糖口味高蛋白酥脆棒 60克",
+    "ja": "Musashi プロテインクリスプバー バニラキャラメル 60g",
+    "ko": "Musashi 프로틴 크리스프 바 바닐라 카라멜 60g",
+    "src": "ai"
+  },
+  "San Remo Penne Pasta 750g": {
+    "zh": "San Remo 筆管麵 750克",
+    "ja": "San Remo ペンネパスタ 750g",
+    "ko": "San Remo 펜네 파스타 750g",
+    "src": "ai"
+  },
+  "TOM Organic Pads Regular Extra Thick 10 Pack": {
+    "zh": "TOM Organic 一般特厚衛生棉 10入",
+    "ja": "TOM Organic オーガニック生理用ナプキン レギュラー 特厚 10個入",
+    "ko": "TOM Organic 유기농 생리대 레귤러 엑스트라 틱 10개입",
+    "src": "ai"
+  },
+  "Berocca Energy Effervescent Variety Pack 45 Pack": {
+    "zh": "Berocca 活力發泡錠多款口味 45入",
+    "ja": "Berocca エナジー発泡錠バラエティパック 45個入",
+    "ko": "Berocca 에너지 발포정 버라이어티 팩 45개입",
+    "src": "ai"
+  },
+  "Wattie's Tomato Sauce 560g": {
+    "zh": "Wattie's 番茄醬 560克",
+    "ja": "Wattie's トマトソース 560g",
+    "ko": "Wattie's 토마토 소스 560g",
+    "src": "ai"
+  },
+  "Mortein Naturgard Automatic Fragrance Free Refill 152g": {
+    "zh": "Mortein Naturgard 自動噴霧無香補充罐 152克",
+    "ja": "Mortein Naturgard 自動スプレー 無香料 付け替え用 152g",
+    "ko": "Mortein Naturgard 자동 스프레이 무향 리필 152g",
+    "src": "ai"
+  },
+  "Rexona Women Deodorant 72hr Advanced Roll On Invisible Pure 50mL": {
+    "zh": "Rexona 女士 72小時進階滾珠體香膏 清透隱形 50毫升",
+    "ja": "Rexona レディース デオドラント 72時間アドバンスド ロールオン インビジブル ピュア 50mL",
+    "ko": "Rexona 여성 데오도란트 72시간 어드밴스드 롤온 인비저블 퓨어 50mL",
+    "src": "ai"
+  },
+  "Helios Ultra Hold Nail Glue 2.7mL": {
+    "zh": "Helios 超強黏合指甲膠 2.7毫升",
+    "ja": "Helios ウルトラホールド ネイルグルー 2.7mL",
+    "ko": "Helios 울트라 홀드 네일 글루 2.7mL",
+    "src": "ai"
+  },
+  "Coles Deli Thawed Cooked Prawn Plate Small 200g": {
+    "zh": "Coles Deli 解凍熟蝦拼盤 小份 200克",
+    "ja": "Coles Deli 解凍ボイルエビ プレート 小 200g",
+    "ko": "Coles Deli 해동 자숙 새우 플레이트 스몰 200g",
+    "src": "ai"
+  },
+  "Cancer Council Ultra SPF 50+ 250mL": {
+    "zh": "Cancer Council 極效防曬乳 SPF 50+ 250毫升",
+    "ja": "Cancer Council ウルトラ 日焼け止め SPF 50+ 250mL",
+    "ko": "Cancer Council 울트라 선스크린 SPF 50+ 250mL",
+    "src": "ai"
+  },
+  "Musashi Shred & Burn Protein Powder Chocolate Milkshake 900g": {
+    "zh": "Musashi 塑身減脂高蛋白粉 巧克力奶昔口味 900克",
+    "ja": "Musashi シェッド＆バーン プロテインパウダー チョコレートミルクセーキ 900g",
+    "ko": "Musashi 셰드 앤 번 프로틴 파우더 초콜릿 밀크셰이크 900g",
+    "src": "ai"
+  },
+  "Nestle Kit Kat Candy Cane Sharepack 261g": {
+    "zh": "Nestle Kit Kat 拐杖糖口味分享包 261克",
+    "ja": "Nestle Kit Kat キャンディケーン シェアパック 261g",
+    "ko": "Nestle Kit Kat 캔디 케인 셰어팩 261g",
+    "src": "ai"
+  },
+  "Kan Tong Honey Sesame & Garlic Stir Fry Sauce 520g": {
+    "zh": "Kan Tong 蜂蜜芝麻蒜香快炒醬 520克",
+    "ja": "Kan Tong ハニーセサミ＆ガーリック 炒め物ソース 520g",
+    "ko": "Kan Tong 허니 세사미 앤 가릭 볶음 소스 520g",
+    "src": "ai"
+  },
+  "MasterFoods Slow Cooker Beef & Red Wine Casserole Recipe Base 175g": {
+    "zh": "MasterFoods 慢燉牛肉紅酒煲料理醬包 175克",
+    "ja": "MasterFoods スロークッカー 牛肉と赤ワインのキャセロール レシピベース 175g",
+    "ko": "MasterFoods 슬로우 쿠커 비프 앤 레드 와인 캐서롤 레시피 베이스 175g",
+    "src": "ai"
+  },
+  "San Remo Plain Fettuccine Pasta 500g": {
+    "zh": "San Remo 原味寬扁麵 500克",
+    "ja": "San Remo プレーン フェットチーネ パスタ 500g",
+    "ko": "San Remo 플레인 페투치네 파스타 500g",
+    "src": "ai"
+  },
+  "Selleys Rapid Mould Killer 500mL": {
+    "zh": "Selleys 快速除黴劑 500毫升",
+    "ja": "Selleys ラピッド カビキラー 500mL",
+    "ko": "Selleys 래피드 곰팡이 킬러 500mL",
+    "src": "ai"
+  },
+  "Cancer Council SPF 50+ Sunscreen Tube Ultra 110mL": {
+    "zh": "Cancer Council 極效防曬乳軟管裝 SPF 50+ 110毫升",
+    "ja": "Cancer Council SPF 50+ サンスクリーン チューブ ウルトラ 110mL",
+    "ko": "Cancer Council SPF 50+ 선스크린 튜브 울트라 110mL",
+    "src": "ai"
+  },
+  "Schweppes Fizz Blood Orange Lime Soft Drink Mini Cans 250mL 6 Pack": {
+    "zh": "Schweppes 血橙萊姆氣泡汽水迷妳罐 250毫升 6入",
+    "ja": "Schweppes フィズ ブラッドオレンジ ライム 炭酸飲料 ミニ缶 250mL 6個入",
+    "ko": "Schweppes 피즈 블러드 오렌지 라임 탄산음료 미니캔 250mL 6개입",
     "src": "ai"
   }
 }
