@@ -1,5 +1,5 @@
 {
-"cursor": 26,
+"cursor": 1,
 "items": {
 "1000075": {
 "category": "Seasonal Events Halloween",
@@ -5415,6 +5415,51 @@
 "title": "Swisse Ultivite Womens High Potency Multivitamin Tablets 40 Pack",
 "unit_price": "$49.38/ 100ea",
 "was_price": 39.5
+},
+"2086823": {
+"category": "Bars Gum Pocket Pack Bars",
+"discount_desc": "1/2 PRICE",
+"id": "2086823",
+"image_url": "https://productimages.coles.com.au/productimages/2/2086823.jpg",
+"price": 1.5,
+"price_display": "$1.50",
+"product_url": "https://www.coles.com.au/product/allen-s-block-party-choc-bar-44g-2086823",
+"save_amount": 1.5,
+"store": "Coles",
+"store_category": "Bars Gum Pocket Pack Bars",
+"title": "Allen's Block Party Choc Bar 44g",
+"unit_price": "",
+"was_price": 3.0
+},
+"2089515": {
+"category": "Confectionery Block Chocolate",
+"discount_desc": "1/2 PRICE",
+"id": "2089515",
+"image_url": "https://productimages.coles.com.au/productimages/2/2089515.jpg",
+"price": 4.25,
+"price_display": "$4.25",
+"product_url": "https://www.coles.com.au/product/lindt-lindor-block-chocolate-dark-100g-2089515",
+"save_amount": 4.25,
+"store": "Coles",
+"store_category": "Confectionery Block Chocolate",
+"title": "Lindt Lindor Block Chocolate Dark 100g",
+"unit_price": "$4.25/ 100g",
+"was_price": 8.5
+},
+"2089741": {
+"category": "Confectionery Block Chocolate",
+"discount_desc": "1/2 PRICE",
+"id": "2089741",
+"image_url": "https://productimages.coles.com.au/productimages/2/2089741.jpg",
+"price": 4.25,
+"price_display": "$4.25",
+"product_url": "https://www.coles.com.au/product/lindt-lindor-block-chocolate-pistachio-100g-2089741",
+"save_amount": 4.25,
+"store": "Coles",
+"store_category": "Confectionery Block Chocolate",
+"title": "Lindt Lindor Block Chocolate Pistachio 100g",
+"unit_price": "$4.25/ 100g",
+"was_price": 8.5
 },
 "2089752": {
 "category": "Skin Care Tanning",
@@ -19052,9 +19097,9 @@
 "was_price": 8.6
 }
 },
-"last_full": 1792857897.7080958,
+"last_full": 1792941501.58197,
 "more": {
-"cursor": 5,
+"cursor": 7,
 "items": {
 "1000051": {
 "category": "Bars Gum Pocket Pack Pocket Packs",
@@ -20779,6 +20824,21 @@
 "store_category": "Pork Pork Chops",
 "title": "Coles Pork Loin Chops Large Pack approx 1kg",
 "unit_price": "$14.00/ 1kg",
+"was_price": 17.0
+},
+"1135297": {
+"category": "Cereal Muesli",
+"discount_desc": "2 for $13.00",
+"id": "1135297",
+"image_url": "https://productimages.coles.com.au/productimages/1/1135297.jpg",
+"price": 13.0,
+"price_display": "2 for $13.00",
+"product_url": "https://www.coles.com.au/product/heritage-mill-protein-clusters-honey-roasted-nut-650g-1135297",
+"save_amount": 4.0,
+"store": "Coles",
+"store_category": "Cereal Muesli",
+"title": "Heritage Mill Protein Clusters Honey Roasted Nut 650g",
+"unit_price": "$1.31/ 100g",
 "was_price": 17.0
 },
 "1137612": {
@@ -48651,6 +48711,21 @@
 "unit_price": "$26.19/ 1kg",
 "was_price": 0
 },
+"4882466": {
+"category": "Dental Health Dental Accessories",
+"discount_desc": "Save $1.15",
+"id": "4882466",
+"image_url": "https://productimages.coles.com.au/productimages/4/4882466.jpg",
+"price": 6.35,
+"price_display": "$6.35",
+"product_url": "https://www.coles.com.au/product/piksters-interdental-brushes-pink-size-00-10-pack-4882466",
+"save_amount": 1.15,
+"store": "Coles",
+"store_category": "Dental Health Dental Accessories",
+"title": "Piksters Interdental Brushes Pink Size 00 10 Pack",
+"unit_price": "$0.64/ 1ea",
+"was_price": 7.5
+},
 "4883425": {
 "category": "Frozen World Foods Indian",
 "discount_desc": "Save $2.50",
@@ -48988,11 +49063,11 @@
 "image_url": "https://productimages.coles.com.au/productimages/4/4997140.jpg",
 "price": 18.0,
 "price_display": "$18.00",
-"product_url": "https://www.coles.com.au/product/coles-no-added-hormone-beef-vsp-rr-porterhouse-steak-2-pack-450g-4997140",
+"product_url": "https://www.coles.com.au/product/coles-beef-porterhouse-steak-2-pack-450g-4997140",
 "save_amount": 2.5,
 "store": "Coles",
 "store_category": "Beef Beef Grilling Steaks",
-"title": "Coles No Added Hormone Beef Vsp Rr Porterhouse Steak 2 Pack 450g",
+"title": "Coles Beef Porterhouse Steak 2 Pack 450g",
 "unit_price": "$40.00/ 1kg",
 "was_price": 20.5
 },
@@ -68829,9 +68904,9 @@
 },
 "last_full": 1792583280.868456,
 "pages": 153,
-"pages_done": 4
+"pages_done": 6
 },
 "pages": 28,
-"pages_done": 25,
+"pages_done": 0,
 "week": "2026-10-21"
 }
