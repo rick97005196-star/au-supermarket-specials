@@ -155092,10 +155092,11 @@
     "src": "ai"
   },
   "Totalcare Shampoo Flea Control 350 mL": {
-    "zh": "Totalcare 除蚤洗毛精 350毫升",
-    "ja": "Totalcare シャンプー ノミ駆除 350ml",
-    "ko": "Totalcare 샴푸 벼룩 방지 350ml",
-    "src": "ai"
+    "zh": "Totalcare 寵物跳蚤洗髮精 350毫升",
+    "ja": "Totalcare ペット用 シャンプー ノミ駆除 350ml",
+    "ko": "Totalcare 반려동물 샴푸 벼룩 방지 350ml",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Ocean Spray Drink Cranberry Pineapple Low Sugar 1.5L": {
     "zh": "Ocean Spray 低糖蔓越莓鳳梨風味飲 1.5公升",
@@ -155128,10 +155129,11 @@
     "src": "ai"
   },
   "Continental Pasta & Sauce Family Sour Cream Chives 145g": {
-    "zh": "Continental 義大利麵與醬料 酸奶油蝦夷蔥家庭號 145克",
-    "ja": "Continental パスタ＆ソース ファミリー サワークリーム＆チャイブ 145g",
-    "ko": "Continental 파스타 & 소스 패밀리 사워크림 차이브 145g",
-    "src": "ai"
+    "zh": "Continental 義大利麵醬 酸奶油洋蔥口味 145克",
+    "ja": "Continental パスタ＆ソース ファミリー サワークリーム＆チャイブ味 145g",
+    "ko": "Continental 파스타 & 소스 패밀리 사워크림 앤 차이브맛 145g",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Whittaker's Block Chocolate Hokey Pokey 250g": {
     "zh": "Whittaker's 太妃糖塊狀巧克力 250克",
@@ -155152,10 +155154,11 @@
     "src": "ai"
   },
   "Sodaly Tropic 4x250ml 1L": {
-    "zh": "Sodaly 熱帶水果風味氣泡水 250毫升 x 4入",
-    "ja": "Sodaly トロピック 250ml×4",
-    "ko": "Sodaly 트로픽 250ml x 4",
-    "src": "ai"
+    "zh": "Sodaly 熱帶水果口味氣泡水 250毫升 x 4入 1公升",
+    "ja": "Sodaly トロピカル 炭酸水 250ml x 4本 1L",
+    "ko": "Sodaly 트로피컬 탄산수 250ml x 4개입 1L",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Smith's Crackers BBQ 160g": {
     "zh": "Smith's 烤肉口味餅乾 160克",
@@ -155233,6 +155236,289 @@
     "zh": "Vileda 植絨橡膠手套 小號 1雙",
     "ja": "Vileda シルバーラインドグローブ Sサイズ 1双",
     "ko": "Vileda 실버라인 글러브 스몰 1켤레",
+    "src": "ai"
+  },
+  "Berri Quelch Tropical Fruit Juice Icy Tubes 24 Pack 1.68L": {
+    "zh": "Berri Quelch 熱帶水果冰棒 24入 1.68公升",
+    "ja": "Berri Quelch トロピカルフルーツジュース アイシーチューブ 24個入 1.68L",
+    "ko": "Berri Quelch 트로피컬 후룻 주스 아이시 튜브 24개입 1.68L",
+    "src": "ai"
+  },
+  "Nature's Way Beauty Collagen Tablets 60 pack": {
+    "zh": "Nature's Way 美麗膠原蛋白錠 60入",
+    "ja": "Nature's Way ビューティーコラーゲン タブレット 60粒",
+    "ko": "Nature's Way 뷰티 콜라겐 타블렛 60정",
+    "src": "reviewed",
+    "reviewed": true
+  },
+  "Palmolive Naturals Foaming Hand Wash Japanese Cherry Blossom 250mL": {
+    "zh": "Palmolive Naturals 櫻花香泡沫洗手乳 250毫升",
+    "ja": "Palmolive Naturals 泡ハンドソープ 日本の桜の香り 250mL",
+    "ko": "Palmolive Naturals 거품형 핸드워시 일본 벚꽃 향 250mL",
+    "src": "ai"
+  },
+  "Fancy Feast Gravy Lovers With Beef Cat Food 85g": {
+    "zh": "Fancy Feast Gravy Lovers 牛肉貓罐頭 85克",
+    "ja": "Fancy Feast Gravy Lovers 牛肉入りキャットフード 85g",
+    "ko": "Fancy Feast Gravy Lovers 소고기 캣푸드 85g",
+    "src": "ai"
+  },
+  "Uncle Tobys Oats Quick Sachets Creamy Honey 350g": {
+    "zh": "Uncle Tobys Oats 即食燕麥片 蜂蜜口味 350克",
+    "ja": "Uncle Tobys Oats インスタントオートミール クリーミーハニー味 350g",
+    "ko": "Uncle Tobys Oats 즉석 오트밀 크리미 허니 맛 350g",
+    "src": "ai"
+  },
+  "V Energy Blue 500mL": {
+    "zh": "V Energy 藍色能量飲料 500毫升",
+    "ja": "V Energy ブルー エナジードリンク 500mL",
+    "ko": "V Energy 블루 에너지 드링크 500mL",
+    "src": "ai"
+  },
+  "Coca-Cola Classic Soft Drink Multipack Mini Cans 250ml 6 Pack": {
+    "zh": "Coca-Cola 可口可樂 經典汽水 250毫升 x 6入",
+    "ja": "Coca-Cola クラシック 炭酸飲料 ミニ缶 250mL 6個入",
+    "ko": "Coca-Cola 클래식 탄산음료 미니캔 250mL 6개입",
+    "src": "ai"
+  },
+  "Betty Crocker Cake Mix Chocolate Fudge 450g": {
+    "zh": "Betty Crocker 巧克力軟糖蛋糕預拌粉 450克",
+    "ja": "Betty Crocker ケーキミックス チョコレートファッジ味 450g",
+    "ko": "Betty Crocker 케이크 믹스 초콜릿 퍼지 맛 450g",
+    "src": "ai"
+  },
+  "No Pong Deodorant All Natural Cream Original 35g": {
+    "zh": "No Pong 天然體香膏 經典款 35克",
+    "ja": "No Pong デオドラント 天然クリーム オリジナル 35g",
+    "ko": "No Pong 데오도란트 천연 크림 오리지널 35g",
+    "src": "ai"
+  },
+  "Knorr Yellow Chicken Powder 1 kg": {
+    "zh": "Knorr 雞粉 1公斤",
+    "ja": "Knorr チキンパウダー 1kg",
+    "ko": "Knorr 치킨 파우더 1kg",
+    "src": "ai"
+  },
+  "Arnott's Gluten Free Tim Tam Original Biscuits 150g": {
+    "zh": "Arnott's 無麩質 Tim Tam 經典巧克力餅乾 150克",
+    "ja": "Arnott's グルテンフリー Tim Tam オリジナルビスケット 150g",
+    "ko": "Arnott's 글루텐 프리 Tim Tam 오리지널 비스킷 150g",
+    "src": "ai"
+  },
+  "Moccona Espresso Dark Roast Concentrate Liquid Coffee Sachets 8 Pack": {
+    "zh": "Moccona 濃縮義式深焙咖啡液 8入",
+    "ja": "Moccona エスプレッソ ダークロースト 濃縮液体コーヒー 8個入",
+    "ko": "Moccona 에스프레소 다크 로스트 농축 액상 커피 8개입",
+    "src": "ai"
+  },
+  "Betty Crocker Triple Chocolate Fudge Brownie Mix 500g": {
+    "zh": "Betty Crocker 三重巧克力軟糖布朗尼預拌粉 500克",
+    "ja": "Betty Crocker トリプルチョコレートファッジ ブラウニーミックス 500g",
+    "ko": "Betty Crocker 트리플 초콜릿 퍼지 브라우니 믹스 500g",
+    "src": "ai"
+  },
+  "Helios French Nail Short Beige 24 Pack": {
+    "zh": "Helios 法式短款指甲貼 米色 24入",
+    "ja": "Helios フレンチネイル ショート ベージュ 24個入",
+    "ko": "Helios 프렌치 네일 쇼트 베이지 24개입",
+    "src": "ai"
+  },
+  "Sirena Tuna Pasta Pesto 170g": {
+    "zh": "Sirena 鮪魚青醬義大利麵 170克",
+    "ja": "Sirena ツナパスタ ペストソース 170g",
+    "ko": "Sirena 참치 파스타 페스토 170g",
+    "src": "ai"
+  },
+  "Schweppes Mineral Water Infused Pineapple Passionfruit 1.1L": {
+    "zh": "Schweppes 鳳梨百香果風味氣泡水 1.1公升",
+    "ja": "Schweppes ミネラルウォーター パイナップル＆パッションフルーツ風味 1.1L",
+    "ko": "Schweppes 미네랄 워터 파인애플 패션후르츠 향 1.1L",
+    "src": "ai"
+  },
+  "Golden Circle 100% Apple Mango Banana Juice 2L": {
+    "zh": "Golden Circle 100% 蘋果芒果香蕉果汁 2公升",
+    "ja": "Golden Circle 100% アップル・マンゴー・バナナジュース 2L",
+    "ko": "Golden Circle 100% 사과 망고 바나나 주스 2L",
+    "src": "ai"
+  },
+  "San Remo Pasta Bowties 500g": {
+    "zh": "San Remo 蝴蝶麵 500克",
+    "ja": "San Remo パスタ ファルファッレ 500g",
+    "ko": "San Remo 파스타 나비면 500g",
+    "src": "ai"
+  },
+  "Moccona Cafe Classics Latte Coffee Sachets 30 Pack": {
+    "zh": "Moccona 拿鐵咖啡粉 30入",
+    "ja": "Moccona カフェクラシック ラテ コーヒー 30個入",
+    "ko": "Moccona 카페 클래식 라떼 커피 30개입",
+    "src": "ai"
+  },
+  "Golden Circle Zero Sugar Golden Pash Drink 1L": {
+    "zh": "Golden Circle 無糖百香果鳳梨風味飲料 1公升",
+    "ja": "Golden Circle ゼロシュガー ゴールデンパッシュドリンク 1L",
+    "ko": "Golden Circle 제로 슈가 골든 패쉬 음료 1L",
+    "src": "ai"
+  },
+  "Vileda Silverlined Gloves Medium 1 Pair": {
+    "zh": "Vileda 銀離子內襯手套 中號 1雙",
+    "ja": "Vileda シルバーライン手袋 Mサイズ 1双",
+    "ko": "Vileda 실버라이닝 장갑 M사이즈 1켤레",
+    "src": "ai"
+  },
+  "Poise Liners For Bladder Leaks Light 18 Pack": {
+    "zh": "Poise 輕量型漏尿護墊 18入",
+    "ja": "Poise 尿漏れケア用ライナー ライト 18個入",
+    "ko": "Poise 요실금용 라이너 라이트 18개입",
+    "src": "ai"
+  },
+  "Uncle Tobys Oats Quick Sachets Berry Variety 350g": {
+    "zh": "Uncle Tobys Oats 即食燕麥片 綜合莓果口味 350克",
+    "ja": "Uncle Tobys Oats インスタントオートミール ベリーミックス味 350g",
+    "ko": "Uncle Tobys Oats 즉석 오트밀 베리 믹스 맛 350g",
+    "src": "ai"
+  },
+  "San Remo Angel Hair Pasta 500g": {
+    "zh": "San Remo 天使細麵 500克",
+    "ja": "San Remo パスタ エンジェルヘア 500g",
+    "ko": "San Remo 파스타 엔젤헤어 500g",
+    "src": "ai"
+  },
+  "Ocean Spray Drink Cranberry Light 1.5L": {
+    "zh": "Ocean Spray 蔓越莓輕盈果汁飲料 1.5公升",
+    "ja": "Ocean Spray クランベリードリンク ライト 1.5L",
+    "ko": "Ocean Spray 크랜베리 음료 라이트 1.5L",
+    "src": "ai"
+  },
+  "Sun & Daughter Pink Tinted Mineral Sunscreen Spf50 100mL": {
+    "zh": "Sun & Daughter 粉色潤色礦物防曬乳 SPF50 100毫升",
+    "ja": "Sun & Daughter ピンク色ミネラル日焼け止め SPF50 100mL",
+    "ko": "Sun & Daughter 핑크 틴트 미네랄 선크림 SPF50 100mL",
+    "src": "ai"
+  },
+  "BC High Protein Bar Raspberry Truffle 4 Pack 160g": {
+    "zh": "BC 高蛋白棒 覆盆子松露口味 160克（4入）",
+    "ja": "BC 高タンパク質バー ラズベリートリュフ味 160g（4個入）",
+    "ko": "BC 고단백질 바 라즈베리 트러플 맛 160g（4개입）",
+    "src": "ai"
+  },
+  "Totalcare Cat Toy Dangler 1 Pack": {
+    "zh": "Totalcare 貓用逗貓棒 1入",
+    "ja": "Totalcare 猫用おもちゃ ダングラー 1個入",
+    "ko": "Totalcare 고양이 장난감 댄글러 1개입",
+    "src": "ai"
+  },
+  "Tommee Tippee Natural Start Bottle 0m+ 150ml 1 Pack": {
+    "zh": "Tommee Tippee 奶瓶 0個月以上 150毫升 1入",
+    "ja": "Tommee Tippee ナチュラルスタート 哺乳びん 0カ月以上 150ml 1個入",
+    "ko": "Tommee Tippee 내추럴 스타트 젖병 0개월 이상 150ml 1개입",
+    "src": "ai"
+  },
+  "Fanta Orange Zero Sugar Soft Drink Multipack Mini Cans 250ml 6 Pack": {
+    "zh": "Fanta 零卡橘子汽水 迷你罐 250毫升 6入",
+    "ja": "Fanta オレンジ ゼロシュガー 炭酸飲料 ミニ缶 250ml 6個入",
+    "ko": "Fanta 오렌지 제로 슈거 탄산음료 미니캔 250ml 6개입",
+    "src": "ai"
+  },
+  "Mortein Powergard Crawling Insect Killer Easy Reach With Germ Kill 320g": {
+    "zh": "Mortein Powergard 爬蟲類殺蟲劑 易達噴頭 抗菌配方 320克",
+    "ja": "Mortein Powergard 害虫駆除スプレー イージーリーチ 除菌成分配合 320g",
+    "ko": "Mortein Powergard 기어다니는 해충 살충제 이지 리치 제균 320g",
+    "src": "ai"
+  },
+  "Golden Circle Zero Sugar Apple Raspberry Fruit Drink 1L": {
+    "zh": "Golden Circle 零糖蘋果覆盆子果汁飲料 1公升",
+    "ja": "Golden Circle ゼロシュガー アップルラズベリー フルーツドリンク 1L",
+    "ko": "Golden Circle 제로 슈거 사과 라즈베리 과일 음료 1L",
+    "src": "ai"
+  },
+  "Tom Organic Pads Ultra Thin Overnight 8 Pack": {
+    "zh": "Tom Organic 超薄夜用衛生棉 8入",
+    "ja": "Tom Organic 超うす型 夜用ナプキン 8個入",
+    "ko": "Tom Organic 초슬림 오버나이트 생리대 8개입",
+    "src": "ai"
+  },
+  "B.Box Tritan Drink Bottle Straw Top 450ml 1 Each": {
+    "zh": "B.Box Tritan 吸管水壺 450毫升 1入",
+    "ja": "B.Box トライタン 水筒 ストロータイプ 450ml 1個入",
+    "ko": "B.Box 트라이탄 물병 빨대형 450ml 1개입",
+    "src": "ai"
+  },
+  "B.box Cleaning Brush Set 1 Pack": {
+    "zh": "B.box 清潔刷具組 1入",
+    "ja": "B.box クリーニングブラシセット 1個入",
+    "ko": "B.box 세척 브러시 세트 1개입",
+    "src": "ai"
+  },
+  "Cobs Best Ever Butter Multipack Lunchbox Snacks 5 Pack": {
+    "zh": "Cobs 奶油口味爆米花 隨身包 5入",
+    "ja": "Cobs バター味 ポップコーン ランチボックススナック 5個入",
+    "ko": "Cobs 버터맛 팝콘 런치박스 스낵 5개입",
+    "src": "ai"
+  },
+  "Cobram Estate Extra Virgin Olive Oil 750mL": {
+    "zh": "Cobram Estate 特級初榨橄欖油 750毫升",
+    "ja": "Cobram Estate エキストラバージンオリーブオイル 750ml",
+    "ko": "Cobram Estate 엑스트라 버진 올리브 오일 750ml",
+    "src": "ai"
+  },
+  "Tommee Tippee Starter Spout Cup 4m+ 240ml 1 Pack": {
+    "zh": "Tommee Tippee 初階鴨嘴杯 4個月以上 240毫升 1入",
+    "ja": "Tommee Tippee スタータースパウトマグ 4カ月以上 240ml 1個入",
+    "ko": "Tommee Tippee 스타터 스파웃 컵 4개월 이상 240ml 1개입",
+    "src": "ai"
+  },
+  "Muscle Nation Custard Bar White Choc Raspberry 60g": {
+    "zh": "Muscle Nation 卡士達蛋白棒 白巧克力覆盆子口味 60克",
+    "ja": "Muscle Nation カスタードプロテインバー ホワイトチョコラズベリー味 60g",
+    "ko": "Muscle Nation 커스터드 프로틴 바 화이트 초코 라즈베리맛 60g",
+    "src": "ai"
+  },
+  "5 Gum Grape Spark Sugar Free Chewing Gum 27g": {
+    "zh": "5 Gum 葡萄酷炫無糖口香糖 27克",
+    "ja": "5 Gum グレープスパーク シュガーレスガム 27g",
+    "ko": "5 Gum 포도 스파크 무설탕 껌 27g",
+    "src": "ai"
+  },
+  "Earth Choice Lemon Burst 500mL": {
+    "zh": "Earth Choice 檸檬香洗碗精 500毫升",
+    "ja": "Earth Choice レモンバースト 食器用洗剤 500ml",
+    "ko": "Earth Choice 레몬향 식기세척 세제 500ml",
+    "src": "ai"
+  },
+  "Three Threes Old Style Pickled Onions 500g": {
+    "zh": "Three Threes 古早味醃洋蔥 500克",
+    "ja": "Three Threes オールドスタイル ピクルスオニオン 500g",
+    "ko": "Three Threes 올드 스타일 피클 양파 500g",
+    "src": "ai"
+  },
+  "Breeders Choice Cat Litter Paper 6L": {
+    "zh": "Breeders Choice 紙質貓砂 6公升",
+    "ja": "Breeders Choice 猫砂 紙製 6L",
+    "ko": "Breeders Choice 종이 고양이 모래 6L",
+    "src": "ai"
+  },
+  "Totalcare Cat Treat Ball 1 Pack": {
+    "zh": "Totalcare 貓用零食球 1入",
+    "ja": "Totalcare 猫用トリートボール 1個入",
+    "ko": "Totalcare 고양이 간식 볼 1개입",
+    "src": "ai"
+  },
+  "Coca-Cola Vanilla Soft Drink Multipack Mini Cans 250ml 6 Pack": {
+    "zh": "Coca-Cola 香草口味可樂 迷你罐 250毫升 6入",
+    "ja": "Coca-Cola バニラ味 炭酸飲料 ミニ缶 250ml 6個入",
+    "ko": "Coca-Cola 바닐라맛 탄산음료 미니캔 250ml 6개입",
+    "src": "ai"
+  },
+  "San Remo Large Vegeroni Spiral Pasta 375g": {
+    "zh": "San Remo 大款蔬菜螺旋義大利麵 375克",
+    "ja": "San Remo ラージ ベジロニ スパイラルパスタ 375g",
+    "ko": "San Remo 라지 베지로니 스파이럴 파스타 375g",
+    "src": "ai"
+  },
+  "Mission Cheesy Nachos Tortilla Triangles Corn Chips 230g": {
+    "zh": "Mission 起司納豆風味玉米片 230克",
+    "ja": "Mission チージーフレーバー トルティーヤ 三角コーンチップス 230g",
+    "ko": "Mission 치즈 나초맛 토르티야 트라이앵글 옥수수 칩 230g",
     "src": "ai"
   }
 }
