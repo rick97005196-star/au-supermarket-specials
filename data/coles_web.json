@@ -1,5 +1,5 @@
 {
-"cursor": 6,
+"cursor": 11,
 "items": {
 "1000075": {
 "category": "Seasonal Events Halloween",
@@ -5746,6 +5746,21 @@
 "unit_price": "$1.14/ 100g",
 "was_price": 5.0
 },
+"2351265": {
+"category": "Confectionery Sugar",
+"discount_desc": "1/2 PRICE",
+"id": "2351265",
+"image_url": "https://productimages.coles.com.au/productimages/2/2351265.jpg",
+"price": 2.5,
+"price_display": "$2.50",
+"product_url": "https://www.coles.com.au/product/the-natural-confectionery-co-party-mix-lollies-220g-2351265",
+"save_amount": 2.5,
+"store": "Coles",
+"store_category": "Confectionery Sugar",
+"title": "The Natural Confectionery Co. Party Mix Lollies 220g",
+"unit_price": "$1.14/ 100g",
+"was_price": 5.0
+},
 "2352960": {
 "category": "Confectionery Sharepacks",
 "discount_desc": "1/2 PRICE",
@@ -11056,6 +11071,21 @@
 "unit_price": "$2.50/ 100mL",
 "was_price": 11.0
 },
+"4344453": {
+"category": "Mens Deos & Grooming Deodorants",
+"discount_desc": "1/2 PRICE",
+"id": "4344453",
+"image_url": "https://productimages.coles.com.au/productimages/4/4344453.jpg",
+"price": 5.5,
+"price_display": "$5.50",
+"product_url": "https://www.coles.com.au/product/rexona-men-deodorant-72hr-advanced-aerosol-coconut-cleanse-220ml-4344453",
+"save_amount": 5.5,
+"store": "Coles",
+"store_category": "Mens Deos & Grooming Deodorants",
+"title": "Rexona Men Deodorant 72hr Advanced Aerosol Coconut Cleanse 220mL",
+"unit_price": "$2.50/ 100mL",
+"was_price": 11.0
+},
 "4344497": {
 "category": "Yoghurt Yoghurt",
 "discount_desc": "1/2 PRICE",
@@ -13272,7 +13302,7 @@
 "save_amount": 4.75,
 "store": "Coles",
 "store_category": "Mens Deos & Grooming Deodorants",
-"title": "Brut 72Hr Antiperspirant Deodorant Original 212mL",
+"title": "Brut 72hr Antiperspirant Deodorant Original 212mL",
 "unit_price": "$2.24/ 100mL",
 "was_price": 9.5
 },
@@ -68802,6 +68832,6 @@
 "pages_done": 4
 },
 "pages": 28,
-"pages_done": 5,
+"pages_done": 10,
 "week": "2026-10-21"
 }
