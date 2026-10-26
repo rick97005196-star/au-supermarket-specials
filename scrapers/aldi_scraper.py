@@ -10,7 +10,7 @@ import sys
 # Ensure root directory is in sys.path
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from categories import classify_product
-from scrapers.regions import EVERYDAY_DESC
+from scrapers.regions import EVERYDAY_DESC, REGULAR_DESC
 
 HEADERS = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
@@ -47,7 +47,7 @@ SUPER_SAVERS_FALLBACK = 'https://www.aldi.com.au/products/super-savers/k/1588161
 # are listed as everyday low prices (no sale date, shown after the specials).
 LOWER_PRICES_FALLBACK = 'https://www.aldi.com.au/products/lower-prices/k/1588161425841179'
 # ALDI's everyday range: the grocery aisles of the online shop (~3,000 products). ALDI sells nearly everything
-# at one lasting low price, so these are listed as everyday low prices, like Lower Prices. Left out: the seasonal
+# at one lasting price; these are its regular shelf prices ("一般價", listed after the deals and Lower Prices). Left out: the seasonal
 # and Special Buys aisles (christmas, limited-time-only, front-of-store), liquor (sold in some states only) and
 # the curated picks (people's picks, higher protein), which only repeat products from these aisles.
 RANGE_AISLES = ('fruits-vegetables', 'meat-seafood', 'deli-chilled-meats', 'dairy-eggs-fridge', 'pantry', 'bakery',
@@ -215,7 +215,7 @@ def scrape_aldi_all_weeks() -> Dict[str, Any]:
                 badge_el = tile.select_one('[data-test="product-tile__on-sale-label"]')
                 # The kind decides how the website shows the date: Super Savers = a weekly price (Wed–Tue),
                 # Special Buys = on sale from a Wednesday or Saturday while stocks last
-                badge = EVERYDAY_DESC if is_lower or aisle else ("Super Savers" if "super-savers" in url else "Special Buys")
+                badge = EVERYDAY_DESC if is_lower else REGULAR_DESC if aisle else ("Super Savers" if "super-savers" in url else "Special Buys")
                 
                 # 5. Image URL (High-res)
                 img = tile.select_one('img')

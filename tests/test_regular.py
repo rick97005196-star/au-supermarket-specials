@@ -1,5 +1,6 @@
 """Checks for the weekly Woolworths regular prices (scrapers/woolies_regular.py + scripts/regular_match.cjs):
-which Coles / ALDI products are looked up, which Woolworths prices are kept, and which search results are skipped.
+which Woolworths products count as plain in-store prices, which of them the price compare keeps, and how a week's
+department pages are read in parts.
 No network: the Woolworths answers are made up here.
 
     python tests/test_regular.py
@@ -9,6 +10,7 @@ import json
 import os
 import sys
 import tempfile
+import time
 import types
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -34,9 +36,7 @@ check(not wr.is_fresh('2026-10-20', d(2026, 10, 21)), 'read on Tuesday: stale fr
 check(not wr.is_fresh('2026-10-21', d(2026, 10, 28)), 'stale a week later')
 check(not wr.is_fresh(None, d(2026, 10, 21)) and not wr.is_fresh('soon', d(2026, 10, 21)), 'no date: stale')
 
-check(wr.search_term("Arnott's Shapes | Pizza (190g)") == "Arnott's Shapes Pizza 190g", 'search words')
-
-# --- which search results are plain in-store prices ---
+# --- which products are plain in-store prices ---
 base = {'Stockcode': 123, 'Name': "Arnott's Shapes Pizza", 'PackageSize': '190g', 'InstorePrice': 3.5,
         'InstoreWasPrice': 3.5, 'CupPrice': 1.84, 'CupMeasure': '100G', 'MediumImageFile': 'https://x/m.jpg'}
 it = wr.to_item(base)
@@ -55,7 +55,7 @@ for why, change in [('on special', {'InstoreIsOnSpecial': True}), ('was price ab
                     ('no stock code', {'Stockcode': None})]:
     check(wr.to_item(dict(base, **change)) is None, f'skipped: {why}')
 
-# --- which products are looked up, and which regular prices are kept (the website's own rules) ---
+# --- which regular prices the price compare keeps (the website's own rules) ---
 def item(i, store, title, price, **kw):
     return dict({'id': i, 'store': store, 'title': title, 'price': price, 'price_display': f'${price:.2f} ea',
                  'save_amount': 0.5, 'was_price': price + 0.5, 'period': 'current'}, **kw)
@@ -84,21 +84,105 @@ cands = [wr.to_item(base),                                                   # s
 kept = wr.match('keep', cands)
 check([k['id'] for k in kept] == ['w123'], f'kept: {[k["id"] for k in kept]}')
 
-# --- Woolworths refusing: last week's file stays as it was and the run fails; --if-stale skips a fresh file ---
+# --- one week read in parts: each run goes on where the last one stopped; the lists are written only when every
+# department is read, and a run that read nothing changes no file ---
+class Found:
+    status_code = 200
+
+    def __init__(self, data):
+        self.data = data
+
+    def json(self):
+        return self.data
+
+
+class Broken:                                            # a block page instead of JSON
+    status_code = 200
+
+    def json(self):
+        raise ValueError('not JSON')
+
+
+def page(total, *products):
+    return Found({'Bundles': [{'Products': list(products)}], 'TotalRecordCount': total})
+
+
+def answers(*seq):
+    seq = list(seq)
+    return lambda site, send: seq.pop(0) if seq else None
+
+
+def saved(path):
+    with open(path, encoding='utf-8') as f:
+        return json.load(f)
+
+
+def raw(path):
+    with open(path, 'rb') as f:
+        return f.read()
+
+
+def files():
+    return [raw(p) if os.path.exists(p) else None for p in (wr.LIST, wr.OUT, wr.PROGRESS)]
+
+
 sys.modules['curl_cffi'] = types.SimpleNamespace(requests=types.SimpleNamespace(Session=lambda **k: None))
-wr.polite = lambda site, send: None
 wr.OUT = os.path.join(tmp, 'regular.json')
-old = json.dumps({'updated_at': '2026-10-14', 'items': [{'id': 'w9'}]})
+wr.LIST = os.path.join(tmp, 'regular-woolworths.json')
+wr.PROGRESS = os.path.join(tmp, 'regular_progress.json')
+wr.FOOD = ['Fruit & Veg', 'Bakery']
+wr.MIN_ROWS = 1
 with open(wr.OUT, 'w', encoding='utf-8') as f:
-    f.write(old)
-sys.argv = ['woolies_regular.py']
+    json.dump({'updated_at': '2026-10-14', 'items': [{'id': 'w9'}]}, f)
+last_week = raw(wr.OUT)
+today = wr._brisbane_today().isoformat()
+DEPS = Found({'Categories': [{'NodeId': '1', 'UrlFriendlyName': 'fruit-veg', 'Description': 'Fruit & Veg'},
+                             {'NodeId': '2', 'UrlFriendlyName': 'bakery', 'Description': 'Bakery'},
+                             {'NodeId': '3', 'UrlFriendlyName': 'specials', 'Description': 'Specials'}]})
+bread = dict(base, Stockcode=200, Name='Wonder White Bread', PackageSize='700g', InstorePrice=3.8)
+special = dict(base, Stockcode=201, InstoreIsOnSpecial=True)
+# polite() answers in order: the home page, the department list, then one answer per page
+
+wr.polite = answers(Found({}), DEPS, page(40, base, special), None)     # page 1 of 2, then a refusal
 check(wr.main() == 1, 'a refused run fails')
-with open(wr.OUT, encoding='utf-8') as f:
-    check(f.read() == old, "a refused run keeps last week's file")
-with open(wr.OUT, 'w', encoding='utf-8') as f:
-    json.dump({'updated_at': wr._brisbane_today().isoformat(), 'items': []}, f)
-sys.argv = ['woolies_regular.py', '--if-stale']
-check(wr.main() == 0, '--if-stale: nothing to do when already read this week')
+prog = saved(wr.PROGRESS)
+check(prog['dep'] == 'Fruit & Veg' and prog['page'] == 2 and [r[0] for r in prog['rows']] == ['w123']
+      and prog['started'] == today and not prog['done'], f'where it stopped is remembered: {prog}')
+check(not os.path.exists(wr.LIST) and raw(wr.OUT) == last_week, "a part-read week keeps last week's lists")
+
+for why, seq in [('no department list', (Found({}), None)), ('the first page refused', (Found({}), DEPS, None)),
+                 ('a block page', (Found({}), DEPS, Broken()))]:
+    before = files()
+    wr.polite = answers(*seq)
+    check(wr.main() == 1 and files() == before, f'read nothing, changed nothing: {why}')
+
+wr.polite = answers(Found({}), DEPS, page(40, bread), page(1, base))     # page 2, then Bakery (w123 again)
+check(wr.main() == 0, 'the run that finishes the week succeeds')
+lst, out = saved(wr.LIST), saved(wr.OUT)
+check([r[0] for r in lst['items']] == ['w123', 'w200'] and lst['updated_at'] == today and lst['store'] == 'Woolworths',
+      f'every regular price listed once: {lst}')
+check(all(len(r) == len(wr.ROW) and isinstance(r[wr.ROW.index('category')], str) for r in lst['items']), 'row shape')
+check([it['id'] for it in out['items']] == ['w123'] and out['updated_at'] == today,
+      f'the price compare keeps only matched prices, under today: {out}')
+check(saved(wr.PROGRESS) == {'started': today, 'done': True}, 'the finished week is remembered without its rows')
+
+wr.polite = answers()
+check(wr.main() == 0, 'week already read: nothing to do, no request')
+
+with open(wr.PROGRESS, 'w', encoding='utf-8') as f:     # last week's, finished
+    json.dump({'started': '2026-10-14', 'done': True}, f)
+wr.time = types.SimpleNamespace(monotonic=iter([0, 0, 10 ** 6]).__next__)   # time is up after one page
+wr.polite = answers(Found({}), DEPS, page(40, base))
+check(wr.main() == 0, 'a run that stops at its time limit succeeds')
+prog = saved(wr.PROGRESS)
+check(prog['started'] == today and not prog['done'] and prog['dep'] == 'Fruit & Veg' and prog['page'] == 2
+      and [r[0] for r in prog['rows']] == ['w123'], f'a new week starts over: {prog}')
+wr.time = time
+
+wr.MIN_ROWS = 10
+before = files()
+wr.polite = answers(Found({}), DEPS, page(40, bread), page(1))
+check(wr.main() == 1 and files() == before, "too few prices for a whole week: last week's lists stay")
 
 for b in bad:
     print('FAIL', b)

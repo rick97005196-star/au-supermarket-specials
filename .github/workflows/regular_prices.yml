@@ -1,15 +1,20 @@
-name: Woolworths 平常價（每週）
+name: 超市平常價（每週）
 
-# Once a week, after the specials change on Wednesday: for this week's Coles / ALDI products that Woolworths
-# very likely sells but has no special for, read the Woolworths regular price (scrapers/woolies_regular.py,
-# about 1 hour, a few seconds between requests) and save static/data/regular.json.
-# No deploy here: the next "Weekly Specials Auto Update & Deploy" run that changes the website puts the file
-# online with everything else. Kept out of that workflow's queue on purpose (a waiting run there would be replaced).
+# Each week, after the specials change on Wednesday, read the plain shelf prices (products not on special) of
+# Woolworths and Coles, page by page through their food categories, a few seconds between requests:
+#   scrapers/woolies_regular.py -> static/data/regular-woolworths.json, and static/data/regular.json for the price compare
+#   scrapers/coles_regular.py   -> static/data/regular-coles.json, Thursday to Sunday only (Monday to Wednesday the
+#                                  specials update reads the Coles website every half hour)
+# A run reads each store for a limited time and goes on from data/regular_progress.json and
+# data/coles_regular_progress.json; a store whose week is read does nothing. A list is written only when its whole
+# week is read. No deploy here: the next "Weekly Specials Auto Update & Deploy" run that changes the website puts the
+# files online with everything else. Kept out of that workflow's queue on purpose (a waiting run there would be replaced).
 on:
   schedule:
-    # Wednesday 13:37 Brisbane (UTC+10) = 03:37 UTC; Thursday same time as a backup when Wednesday's run failed
-    - cron: '37 3 * * 3'
-    - cron: '37 3 * * 4'
+    # 03:37 and 09:37 UTC = 13:37 and 19:37 Brisbane (UTC+10), Wednesday and Thursday
+    - cron: '37 3,9 * * 3,4'
+    # 03:37 UTC = 13:37 Brisbane, Friday to Sunday: the rest of the Coles week
+    - cron: '37 3 * * 5,6,0'
   workflow_dispatch:
 
 concurrency:
@@ -36,14 +41,23 @@ jobs:
           node-version: '22'
       - run: pip install -r requirements.txt
       - name: Read Woolworths regular prices
-        # the scheduled runs skip when this week's prices are already saved (the Thursday backup after a good Wednesday)
-        run: python scrapers/woolies_regular.py ${{ github.event_name == 'schedule' && '--if-stale' || '' }}
+        # at most 55 minutes; goes on where the last run stopped, and does nothing when the week is done
+        run: python scrapers/woolies_regular.py
+      - name: Read Coles regular prices
+        # also after a failed Woolworths read; at most 30 minutes, Thursday to Sunday only
+        if: ${{ !cancelled() }}
+        run: python scrapers/coles_regular.py
       - name: Save
+        # also after a failed read: what was read before a store stopped answering is kept
+        if: ${{ !cancelled() }}
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action Bot"
-          git add static/data/regular.json
+          for f in static/data/regular.json static/data/regular-woolworths.json static/data/regular-coles.json \
+                   data/regular_progress.json data/coles_regular_progress.json; do
+            if [ -e "$f" ]; then git add "$f"; fi
+          done
           git diff --staged --quiet && exit 0
-          git commit -m "Weekly Woolworths regular prices [skip ci]"
+          git commit -m "Weekly regular prices [skip ci]"
           for i in 1 2 3; do git pull --rebase origin main && git push origin HEAD:main && exit 0; sleep 20; done
           exit 1

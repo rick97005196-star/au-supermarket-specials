@@ -1451,3 +1451,20 @@ html:root .header-actions .theme-btn { position: relative; font-size: 14px; }
 html:root .header-actions .theme-btn::after { content: ''; position: absolute; inset: -3px; border-radius: inherit; }
 .theme-btn .i-sun, html.dark .theme-btn .i-moon { display: none; }
 html.dark .theme-btn .i-sun { display: inline-block; }
+
+/* v14.8 price types: 特價 red, 天天低價 green, 一般價 gray, each in a small box so the three never blur together */
+html:root .p-was .p-save, html:root .p-everyday, html:root .p-regular {
+    display: inline-block; padding: 1px 6px; border-radius: 4px; font-size: 12px; font-weight: 600; line-height: 1.4; }
+html:root .p-was .p-save { color: var(--sale); background: var(--sale-soft); }
+html:root .p-everyday, html:root .tag.is-sale.is-everyday { color: var(--fresh); background: color-mix(in srgb, var(--fresh) 12%, transparent); }
+html:root .p-regular, html:root .tag.is-sale.is-regular { color: var(--ink-3); background: color-mix(in srgb, var(--ink-3) 14%, transparent); }
+.price-filters { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.type-key { display: inline-block; flex: none; width: 8px; height: 8px; border-radius: 2px; }
+.type-key.key-sp { background: var(--sale); }
+.type-key.key-ev { background: var(--fresh); }
+.type-key.key-rg { background: var(--ink-3); }
+@media (max-width: 767px) {
+    .price-filters { width: 100%; }
+    .type-seg { display: grid; grid-template-columns: repeat(4, 1fr); width: 100%; gap: 2px; }
+    .type-seg .seg-btn { min-height: 40px; min-width: 0; padding: 6px 4px; gap: 5px; font-size: 13px; line-height: 1.2; white-space: normal; }
+}

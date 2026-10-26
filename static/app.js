@@ -10,6 +10,7 @@ let globalStats = null;
 let isStaticMode = false;
 let staticSpecials = [];
 let staticRegular = [];      // Woolworths regular prices, only for the price compare (regularPrices)
+let regularLists = null;     // the full Woolworths / Coles regular price lists, loaded only for the regular-price tab or a search (ensureRegularList)
 const DEFAULT_FALLBACK_IMG = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300' width='300' height='300'%3E%3Crect width='300' height='300' fill='%23f8fafc'/%3E%3Cpath d='M100 110 h100 v12 h-100 z M90 135 h120 v90 c0 10 -8 18 -18 18 h-84 c-10 0 -18 -8 -18 -18 z' fill='%23e2e8f0'/%3E%3Cpath d='M130 110 v-20 c0 -11 9 -20 20 -20 s20 9 20 20 v20' fill='none' stroke='%2394a3b8' stroke-width='8' stroke-linecap='round'/%3E%3Ctext x='150' y='270' font-family='system-ui, -apple-system, sans-serif' font-size='13' font-weight='600' fill='%2394a3b8' text-anchor='middle'%3EAU Specials%3C/text%3E%3C/svg%3E";
 
 // Categories definition (Aligned with Australian Supermarket Departments)
@@ -685,9 +686,9 @@ function sanitizeProduct(it) {
     return it;
 }
 
-// Woolworths regular prices (static/data/regular.json, read every Wednesday by scrapers/woolies_regular.py) for
-// Coles / ALDI products Woolworths has no special for. Only shown in the price compare, never listed as products;
-// a file not refreshed for over two weeks is ignored.
+// Woolworths regular prices (static/data/regular.json, read each week from Wednesday by scrapers/woolies_regular.py) for
+// Coles / ALDI products Woolworths has no special for. Only for the price compare (the full lists that are listed as
+// products come from ensureRegularList); a file not refreshed for over two weeks is ignored.
 function regularPrices(reg) {
     if (!reg || !Array.isArray(reg.items) || !(Date.now() - Date.parse(reg.updated_at) < 15 * 864e5)) return [];
     return reg.items.map(sanitizeProduct).filter(it => it && it.price > 0)
@@ -705,6 +706,38 @@ async function getStaticSpecials() {
         staticSpecials = regionize(rawSpecials);
     }
     return staticSpecials;
+}
+
+// The full Woolworths / Coles regular price lists (static/data/regular-woolworths.json and regular-coles.json, read
+// each week by scrapers/woolies_regular.py and coles_regular.py): about 1-2 MB, so loaded only when someone opens the
+// regular-price tab or searches. A product on special this week is left out (its special card already shows it);
+// a list not refreshed for over two weeks is ignored.
+const REGULAR_ROW = ['id', 'title', 'price', 'price_display', 'unit_price', 'image_url', 'product_url', 'category'];
+async function ensureRegularList() {
+    if (regularLists) return regularLists;
+    const files = await Promise.all(['regular-woolworths.json', 'regular-coles.json'].map(f => fetchStaticJson(f)));
+    if (!files.some(Boolean)) return [];        // failed load: try again next time
+    const onSpecial = new Set();                 // shop product numbers on special this week ('w123' / 'c123')
+    for (const it of rawSpecials || []) {
+        if (it.period !== 'current') continue;
+        const w = /woolworths\.com\.au\/shop\/productdetails\/(\d+)/i.exec(it.product_url || '');
+        const c = /coles\.com\.au\/product\/[^?#]*-(\d+)(?:[?#]|$)/i.exec(it.product_url || '');
+        if (w) onSpecial.add('w' + w[1]); else if (c) onSpecial.add('c' + c[1]);
+    }
+    regularLists = [];
+    files.forEach((f, i) => {
+        if (!f || !Array.isArray(f.items) || !(Date.now() - Date.parse(f.updated_at) < 15 * 864e5)) return;
+        const store = ['Woolworths', 'Coles'][i];
+        for (const row of f.items) {
+            if (!Array.isArray(row)) continue;
+            const it = sanitizeProduct(Object.assign(Object.fromEntries(REGULAR_ROW.map((k, j) => [k, row[j]])),
+                { store, was_price: 0, save_amount: 0, discount_desc: 'Regular Price', period: 'current' }));
+            if (!it) continue;
+            if (store === 'Coles') it.id = 'c' + it.id;
+            if (it.price > 0 && !onSpecial.has(String(it.id))) regularLists.push(it);
+        }
+    });
+    return regularLists;
 }
 
 function renderRegionSelect() {
@@ -841,13 +874,15 @@ function updateStatsDisplay() {
     const byStore = activeInfo.by_store || {};
     // big number = everything listed for the store, bar = the specials' share: ALDI is mostly everyday low prices
     const everyday = activeInfo.everyday_by_store;
+    const regular = activeInfo.regular_by_store;
     [['Woolworths', 'Woolies'], ['Coles', 'Coles'], ['ALDI', 'Aldi']].forEach(([store, id]) => {
-        const sp = byStore[store] || 0, all = sp + ((everyday && everyday[store]) || 0);
+        const sp = byStore[store] || 0, all = sp + ((everyday && everyday[store]) || 0) + ((regular && regular[store]) || 0);
         document.getElementById('stat' + id).textContent = all;
         document.getElementById('statBar' + id).style.width = all ? (sp / all * 100) + '%' : '0';
         document.getElementById('statSub' + id).textContent = t('stat_store_specials', { n: sp });
     });
     document.getElementById('statsNote').hidden = !everyday;
+    document.getElementById('statsNoteRg').hidden = !(regular && Object.values(regular).some(Boolean));
 }
 
 // "Wed 23 Sep 2026 - Tue 29 Sep 2026" -> "9月23日 – 9月29日" / "23 Sep – 29 Sep"
@@ -1077,6 +1112,7 @@ function _matchFavoritesNow(items, favs) {
     const productKeys = new Set(favs.filter(f => f.type === 'product').map(f => f.key));
     const keywords = favs.filter(f => f.type === 'keyword').map(f => f.q);
     return (items || []).filter(it => {
+        if (isRegularPrice(it)) return false;
         if (it.store !== 'ALDI' && (!it.save_amount || it.save_amount <= 0) && !isPlainSpecial(it)) return false;
         if (productKeys.has(favProductKey(it))) return true;
         return keywords.some(q => favKeywordMatch(it, q));
@@ -1607,15 +1643,15 @@ function clusterItemsBySeries(items) {
 function popularWithAldi(items) {
     const top = createDiverseBestSellers(items.filter(it => isItemPopular(it) && calculatePopularityScore(it) > 0)) || [];
     const topSet = new Set(top);
-    return [...top, ...clusterItemsBySeries(items.filter(it => it.store === 'ALDI' && !topSet.has(it)))];
+    const aldi = items.filter(it => it.store === 'ALDI' && !topSet.has(it));
+    return [...top, ...clusterItemsBySeries(aldi.filter(it => !isRegularPrice(it))), ...clusterItemsBySeries(aldi.filter(isRegularPrice))];
 }
 
 // Opening view: best sellers ("熱門暢銷", max 2 per brand) first, taking turns between departments
 // so the first screen shows snacks, drinks, meat, pantry… instead of one category; then the rest.
 function popularFirst(items) {
     const top = createDiverseBestSellers(items) || [];
-    if (!top.length) return [...clusterItemsBySeries(items.filter(it => !isEverydayPrice(it))),
-                             ...clusterItemsBySeries(items.filter(isEverydayPrice))];
+    if (!top.length) return [0, 1, 2].flatMap(tier => clusterItemsBySeries(items.filter(it => priceTier(it) === tier)));
     const queues = new Map();
     top.forEach(it => {
         const c = it.category || 'other';
@@ -1639,8 +1675,7 @@ function popularFirst(items) {
     const topSet = new Set(top);
     const rest = items.filter(it => !topSet.has(it));
     // everyday low prices are not specials: after all the specials
-    return [...mixed, ...clusterItemsBySeries(rest.filter(it => !isEverydayPrice(it))),
-            ...clusterItemsBySeries(rest.filter(isEverydayPrice))];
+    return [...mixed, ...[0, 1, 2].flatMap(tier => clusterItemsBySeries(rest.filter(it => priceTier(it) === tier)))];
 }
 
 // Sort items by comparator while clustering identical product lines together
@@ -1806,6 +1841,13 @@ function isEverydayPrice(it) {
 function isPlainSpecial(it) {
     return !!it && it.discount_desc === 'Special' && !((it.save_amount || 0) > 0);
 }
+// Regular shelf price ("一般價"): no discount at all (ALDI's range aisles, Woolworths' regular prices). Listed after
+// the specials and everyday low prices, never counted as a special, never in 熱門 or the favourite alerts.
+function isRegularPrice(it) {
+    return !!it && !((it.save_amount || 0) > 0) && (it.discount_desc === 'Regular Price' || !!it._regular);
+}
+function priceTypeOf(it) { return isRegularPrice(it) ? 'regular' : isEverydayPrice(it) ? 'everyday' : 'special'; }
+function priceTier(it) { return isRegularPrice(it) ? 2 : isEverydayPrice(it) ? 1 : 0; }
 
 // Robust Australian Supermarket 1/2 Price (Half Price) Detection
 function isItemHalfPrice(it) {
@@ -1875,6 +1917,13 @@ function selectStore(store) {
     loadSpecials();
 }
 
+let priceType = 'all';
+function selectPriceType(type) {
+    priceType = type;
+    document.querySelectorAll('.type-tab').forEach(tab => tab.classList.toggle('is-active', tab.dataset.type === type));
+    loadSpecials();
+}
+
 let currentLoadedItems = [];
 
 // Load Specials
@@ -1923,6 +1972,7 @@ async function loadSpecials() {
             currentLoadedItems = data.items || [];
             lastResultCount = data.total || 0;
             lastEverydayCount = 0;
+            lastRegularCount = 0;
             resultsCountText.textContent = resultsCountLabel();
 
             if (!currentLoadedItems || currentLoadedItems.length === 0) {
@@ -1950,7 +2000,7 @@ async function loadSpecials() {
         enrichCrossStoreComparisons(staticSpecials);
         // a Woolworths regular price alone does not make a 比價 group: it is no card of its own
         const isComparable = (it) => (it.cross_store_matches || []).some(m => !m.ref._regular) || valueCompare(it, staticSpecials);
-        const isListed = (it) => it.store === 'ALDI' || it.save_amount > 0 || isEverydayPrice(it) || isPlainSpecial(it);
+        const isListed = (it) => it.store === 'ALDI' || it.save_amount > 0 || isEverydayPrice(it) || isPlainSpecial(it) || isRegularPrice(it);
 
         const favMatchIds = favOnly ? new Set(matchFavorites(staticSpecials).map(x => x.id)) : null;
         let filtered = staticSpecials.filter(it => {
@@ -1962,6 +2012,7 @@ async function loadSpecials() {
             // Strictly only show items with genuine discounts (or ALDI Super Savers & Special Buys),
             // plus the everyday low prices
             if (!isListed(it)) return false;
+            if (priceType !== 'all' && priceTypeOf(it) !== priceType) return false;
             // ALDI never marks prices down (no "was" price), its prices are its lowest: kept, after the half-price items
             if (discountOnly && it.store !== 'ALDI' && !isItemHalfPrice(it)) return false;
             if (favOnly && !favMatchIds.has(it.id)) return false;
@@ -1996,7 +2047,7 @@ async function loadSpecials() {
         } else if (currentStore === 'ALDI') {
             // ALDI: in the order they go on sale (Super Savers, then Wednesday, then Saturday); its everyday
             // range (no sale date) after the specials
-            filtered = strictSort(filtered, (a, b) => isEverydayPrice(a) - isEverydayPrice(b) || (a.sf || '').localeCompare(b.sf || '') ||
+            filtered = strictSort(filtered, (a, b) => priceTier(a) - priceTier(b) || (a.sf || '').localeCompare(b.sf || '') ||
                 (/super/i.test(b.discount_desc || '') - /super/i.test(a.discount_desc || '')));
         } else {
             // Default & relevance: this week's best sellers first (what people come for), mixed across
@@ -2004,6 +2055,22 @@ async function loadSpecials() {
             filtered = popularFirst(filtered);
         }
         if (discountOnly) filtered = [...filtered.filter(isItemHalfPrice), ...filtered.filter(it => !isItemHalfPrice(it))];
+        if ((priceType === 'regular' || (priceType === 'all' && currentSearch)) && !favOnly && !cmpOnly && !discountOnly && currentPeriod === 'current') {
+            // the full Woolworths / Coles regular price lists (only here: ~30,000 products would bury the specials)
+            const extra = (await ensureRegularList()).filter(it => {
+                if (currentStore !== 'All' && it.store !== currentStore) return false;
+                if (!itemInCategory(it, currentCategory)) return false;
+                if (currentSearch) { const sc = scoreSearchMatch(it, currentSearch); if (!sc) return false; it._searchScore = sc; }
+                return true;
+            });
+            // numeric keys only: a title tie-break (localeCompare) over ~30,000 items is slow; ties keep file order
+            const key = sortBy === 'price_asc' ? it => it.price || 0 : sortBy === 'price_desc' ? it => -(it.price || 0)
+                : sortBy === 'unit_asc' ? it => (unitPriceOf(it) || { value: Infinity }).value
+                : currentSearch ? it => -(it._searchScore || 0) : null;
+            let list = priceType === 'regular' ? filtered.concat(extra) : extra;
+            if (key) list = list.map(it => [key(it), it]).sort((a, b) => a[0] - b[0]).map(p => p[1]);
+            filtered = priceType === 'regular' ? list : filtered.concat(list);
+        }
         cmpGroupOf = new Map();
         cmpHalfOn = false;
         lastCmpGroups = 0;
@@ -2040,6 +2107,7 @@ async function loadSpecials() {
         currentLoadedItems = filtered;
         lastResultCount = filtered.length;
         lastEverydayCount = filtered.filter(isEverydayPrice).length;
+        lastRegularCount = filtered.filter(isRegularPrice).length;
         resultsCountText.textContent = resultsCountLabel();
         renderFavPanel();
         renderFavSearchButton();
@@ -2110,11 +2178,15 @@ async function loadSpecials() {
 
 let lastResultCount = null;
 let lastEverydayCount = 0;
+let lastRegularCount = 0;
 // "N specials", plus the everyday low prices on their own: they are listed too but are not specials
 function resultsCountLabel() {
     if (cmpOnly && lastCmpGroups) return t('cmp_count', { g: lastCmpGroups, n: lastResultCount || 0 });
-    const n = (lastResultCount || 0) - lastEverydayCount;
-    return t('found_targets', { n }) + (lastEverydayCount ? t('found_everyday', { n: lastEverydayCount }) : '');
+    const n = (lastResultCount || 0) - lastEverydayCount - lastRegularCount;
+    // nothing on special (the 天天低價 / 一般價 tabs): say what is there instead of "0 specials"
+    if (!n && lastEverydayCount) return t('found_everyday_only', { n: lastEverydayCount }) + (lastRegularCount ? t('found_regular', { n: lastRegularCount }) : '');
+    if (!n && lastRegularCount) return t('found_regular_only', { n: lastRegularCount });
+    return t('found_targets', { n }) + (lastEverydayCount ? t('found_everyday', { n: lastEverydayCount }) : '') + (lastRegularCount ? t('found_regular', { n: lastRegularCount }) : '');
 }
 
 function renderProductsCurrent() {
@@ -2378,7 +2450,7 @@ function renderSameProducts(item) {
         const pd = String(it.price_display || '').replace(/\s+/g, ' ').trim();
         // ALDI's listed items are its Special Buys and Super Savers, apart from its everyday low prices
         const status = it._regular ? t('cmp3_regular_weekly') : isEverydayPrice(it) ? t('everyday_badge')
-            : (it.save_amount > 0 || isPlainSpecial(it) || it.store === 'ALDI') ? t('special_badge') : t('cmp3_regular');
+            : isRegularPrice(it) ? t('regular_badge') : (it.save_amount > 0 || isPlainSpecial(it) || it.store === 'ALDI') ? t('special_badge') : t('cmp3_regular');
         const cheapest = high - low > 0.05 && each - low < 0.005;
         return `
             <div class="aldi-cmp-row ${isThis ? 'is-this' : ''}" ${isThis || it._regular ? '' : 'role="button" tabindex="0"'} data-cmp-store="${st}">
@@ -2586,6 +2658,7 @@ function createProductCardElement(item) {
                         ${effectiveSave > 0 ? `<span class="p-save">${t('save_badge', { amount: effectiveSave.toFixed(2) })}</span>` : ''}
                         ${isEverydayPrice(item) ? `<span class="p-everyday">${t('everyday_badge')}</span>` : ''}
                         ${isPlainSpecial(item) ? `<span class="p-save">${t('special_badge')}</span>` : ''}
+                        ${isRegularPrice(item) ? `<span class="p-regular">${t('regular_badge')}</span>` : ''}
                     </div>`}
                     ${unitPriceClean && !showNormUnit ? `<div class="p-unit num mt-0.5 truncate" title="${escAttr(unitPriceClean)}">${unitPriceClean}</div>` : ''}
                 </div>
@@ -2790,6 +2863,7 @@ function openProductModal(item) {
     // Dates (ALDI: the deal's own day instead of the week)
     const _aldi = aldiDateInfo(item);
     document.getElementById('modalDateRange').textContent = _aldi ? _aldi.long : (item.date_range || (currentLang === 'zh' ? '本週特價' : 'Active Specials'));
+    document.getElementById('modalDateRange').parentElement.classList.toggle('hidden', isRegularPrice(item));   // a regular price has no special period
 
     // Supermarket Price Lockup in Modal
     const p = parseSupermarketPrice(item.price_display, item.price);
@@ -2817,6 +2891,7 @@ function openProductModal(item) {
 
     const saveBadge = document.getElementById('modalSaveBadge');
     saveBadge.classList.toggle('is-everyday', isEverydayPrice(item));
+    saveBadge.classList.toggle('is-regular', isRegularPrice(item));
     if (effectiveSave > 0) {
         saveBadge.textContent = t('save_badge', { amount: effectiveSave.toFixed(2) });
         saveBadge.classList.remove('hidden');
@@ -2825,6 +2900,9 @@ function openProductModal(item) {
         saveBadge.classList.remove('hidden');
     } else if (isPlainSpecial(item)) {
         saveBadge.textContent = t('special_badge');
+        saveBadge.classList.remove('hidden');
+    } else if (isRegularPrice(item)) {
+        saveBadge.textContent = t('regular_badge');
         saveBadge.classList.remove('hidden');
     } else {
         saveBadge.classList.add('hidden');
@@ -3719,6 +3797,7 @@ function recordVisit() {
 function trackInterest(item, ev) {
     try {
         if (!item || !item.title || !['v', 'a', 'f'].includes(ev)) return;
+        if (isRegularPrice(item)) return;     // regular prices stay out of 熱門
         if (navigator.doNotTrack === '1' || window.doNotTrack === '1') return;
         if (!/pages\.dev$|^localhost$|^127\.0\.0\.1$/.test(location.hostname)) return;
         const k = String(item.title).trim().replace(/\s+/g, ' ').toLowerCase().slice(0, 160);

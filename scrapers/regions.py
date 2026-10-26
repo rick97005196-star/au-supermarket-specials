@@ -116,6 +116,9 @@ EVERYDAY_DESC = 'Everyday Low Price'
 # Coles' website marks some specials (mostly its own fresh produce) "SPECIAL" with no "was" price:
 # kept and shown with a "特價" label, without a saving.
 SPECIAL_DESC = 'Special'
+# Not a special at all: the supermarket's normal shelf price (ALDI's range aisles, Woolworths' regular prices).
+# Listed with a "一般價" label after the specials and everyday low prices, never counted as a special.
+REGULAR_DESC = 'Regular Price'
 _EVERYDAY = re.compile(r'\bevery\s*day\b(?!\s*market)', re.I)
 
 
@@ -131,6 +134,11 @@ def everyday_desc(desc):
 def is_everyday(item):
     """An everyday-price item: no discount, marked by the scraper with EVERYDAY_DESC."""
     return (item.get('discount_desc') or '').startswith(EVERYDAY_DESC) and not (item.get('save_amount') or 0) > 0
+
+
+def is_regular(item):
+    """A regular shelf price: no discount, marked by the scraper with REGULAR_DESC."""
+    return (item.get('discount_desc') or '') == REGULAR_DESC and not (item.get('save_amount') or 0) > 0
 
 
 # ---------------------------------------------------------------- merging

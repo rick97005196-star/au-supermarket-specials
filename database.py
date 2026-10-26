@@ -6,7 +6,7 @@ import re
 from datetime import datetime
 from typing import List, Dict, Any, Optional
 
-from scrapers.regions import EVERYDAY_DESC, SPECIAL_DESC
+from scrapers.regions import EVERYDAY_DESC, SPECIAL_DESC, REGULAR_DESC
 
 DB_DIR = os.path.join(os.path.dirname(__file__), 'data')
 DB_PATH = os.path.join(DB_DIR, 'specials.db')
@@ -219,9 +219,9 @@ def save_specials(store: str, items: List[Dict[str, Any]], period: str = 'curren
 
             # Only keep products that have a real discount (ALDI Super Savers & Special Buys are included)
             # or an everyday low price (Coles "Every Day" / Woolworths "Everyday Low Price")
-            # or a Coles website "SPECIAL" that shows no "was" price
+            # or a Coles website "SPECIAL" that shows no "was" price, or a regular shelf price ("一般價")
             if store != 'ALDI' and save_amount <= 0 and (was_price <= price or was_price == 0) \
-                    and not discount_desc.startswith(EVERYDAY_DESC) and discount_desc != SPECIAL_DESC:
+                    and not discount_desc.startswith(EVERYDAY_DESC) and discount_desc not in (SPECIAL_DESC, REGULAR_DESC):
                 continue
 
             aisle = (item.get('store_category') or '').strip()
@@ -232,7 +232,7 @@ def save_specials(store: str, items: List[Dict[str, Any]], period: str = 'curren
                 'save_amount': save_amount, 'discount_desc': discount_desc,
                 'category': cat, 'is_popular': bool(is_pop)
             })
-            if save_amount <= 0 and discount_desc.startswith(EVERYDAY_DESC):
+            if save_amount <= 0 and (discount_desc.startswith(EVERYDAY_DESC) or discount_desc == REGULAR_DESC):
                 is_pop, score = 0, 0      # not a special: never in "熱門暢銷"
 
             rows.append((
@@ -362,7 +362,7 @@ def get_specials(
 ) -> Dict[str, Any]:
     with get_db() as conn:
         cursor = conn.cursor()
-        where_clauses = ['period = ?', f'(save_amount > 0 OR was_price > price OR store = "ALDI" OR discount_desc LIKE "{EVERYDAY_DESC}%" OR discount_desc = "{SPECIAL_DESC}")']
+        where_clauses = ['period = ?', f'(save_amount > 0 OR was_price > price OR store = "ALDI" OR discount_desc LIKE "{EVERYDAY_DESC}%" OR discount_desc = "{SPECIAL_DESC}" OR discount_desc = "{REGULAR_DESC}")']
         params = [period]
 
         if store and store.lower() != 'all':

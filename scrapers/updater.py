@@ -40,10 +40,10 @@ LASTING_DESCS = ('Lower Shelf Price',)      # Woolworths' lasting price cuts (be
 
 
 def _is_lasting(item):
-    """A price that does not end with the week: everyday low prices, Woolworths' lower shelf prices."""
-    from scrapers.regions import EVERYDAY_DESC
+    """A price that does not end with the week: everyday low prices, regular prices, Woolworths' lower shelf prices."""
+    from scrapers.regions import EVERYDAY_DESC, REGULAR_DESC
     desc = item.get('discount_desc') or ''
-    return desc.startswith(EVERYDAY_DESC) or desc in LASTING_DESCS
+    return desc.startswith(EVERYDAY_DESC) or desc == REGULAR_DESC or desc in LASTING_DESCS
 
 
 def with_lasting_prices(next_items, current_items):
@@ -99,12 +99,12 @@ def _aldi_special_buys_kept(new_items):
 
 
 def _aldi_range_kept(new_items):
-    """A read that stopped part-way through ALDI's everyday range (the website refused us, a network error)
-    keeps the saved everyday prices it did not reach, rather than dropping them (the data check would then hold
+    """A read that stopped part-way through ALDI's range (Lower Prices and the regular aisles: the website refused
+    us, a network error) keeps the saved range prices it did not reach, rather than dropping them (the data check would then hold
     back the whole update); the next full read replaces them. When the deals failed too, keeps nothing, so the
     save guard keeps the old ALDI data as it is."""
     # shortcut: if ALDI drops over 20% of its range for good, the old prices stay (warned on every update) until fixed by hand
-    from scrapers.regions import is_everyday
+    from scrapers.regions import is_everyday, is_regular
     from database import get_db
     try:
         with get_db() as conn:
@@ -113,12 +113,13 @@ def _aldi_range_kept(new_items):
                 "category, product_url, sale_from, store_category FROM specials "
                 "WHERE store = 'ALDI' AND period = 'current'").fetchall()
     except Exception as e:
-        print(f" Could not read the saved ALDI everyday prices: {e}")
+        print(f" Could not read the saved ALDI range prices: {e}")
         return []
-    saved = [d for d in map(dict, rows) if is_everyday(d)]
-    new_everyday = sum(1 for it in new_items if is_everyday(it))
-    new_deals = len(new_items) - new_everyday
-    if new_everyday >= len(saved) * 0.8 or new_deals < (len(rows) - len(saved)) * 0.6:
+    in_range = lambda d: is_everyday(d) or is_regular(d)
+    saved = [d for d in map(dict, rows) if in_range(d)]
+    new_range = sum(1 for it in new_items if in_range(it))
+    new_deals = len(new_items) - new_range
+    if new_range >= len(saved) * 0.8 or new_deals < (len(rows) - len(saved)) * 0.6:
         return []
     have = {it['title'].lower() for it in new_items}
     return [it for it in saved if it['title'].lower() not in have]
@@ -221,12 +222,12 @@ def update_all_stores(max_catalogue_pages: int = 50) -> Dict[str, Any]:
         kept_range = _aldi_range_kept(a_curr_items)
         if kept_range:
             a_curr_items = a_curr_items + kept_range
-            print(f"::warning::ALDI everyday range read only part-way - kept {len(kept_range)} saved everyday prices until the next full read.")
+            print(f"::warning::ALDI range read only part-way - kept {len(kept_range)} saved range prices until the next full read.")
         a_curr_date = aldi_data['current']['date_range']
         saved_a_curr = save_specials('ALDI', a_curr_items, period='current', date_range=a_curr_date)
         print(f" Saved {saved_a_curr} ALDI current week specials ({a_curr_date}).")
 
-        # ALDI's everyday range is read for this week only: carry it into next week's preview like Coles and Woolworths
+        # ALDI's range is read for this week only: carry it into next week's preview like Coles and Woolworths
         a_next_items = with_lasting_prices(aldi_data['next']['items'], a_curr_items)
         a_next_date = aldi_data['next']['date_range']
         saved_a_next = 0

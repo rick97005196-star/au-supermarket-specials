@@ -20,6 +20,8 @@ on:
       - 'scrapers/coles_scraper.py'
       - 'scrapers/woolies_scraper.py'
       - 'scrapers/woolies_regular.py'
+      - 'scrapers/coles_regular.py'
+      - 'scrapers/coles_web.py'
       - 'scripts/regular_match.cjs'
       - 'database.py'
   workflow_dispatch:
@@ -58,3 +60,5 @@ jobs:
         run: python tests/test_aldi_range.py   # needs the packages installed in the step above
       - name: Woolworths regular price test
         run: python tests/test_regular.py
+      - name: Coles regular price test
+        run: python tests/test_coles_regular.py

@@ -3,7 +3,7 @@ import datetime
 import json
 import os
 
-from scrapers.regions import EVERYDAY_DESC, SPECIAL_DESC, is_everyday
+from scrapers.regions import EVERYDAY_DESC, SPECIAL_DESC, REGULAR_DESC, is_everyday, is_regular
 
 os.makedirs('static/data', exist_ok=True)
 
@@ -19,9 +19,9 @@ c.execute(f"""
            unit_price, was_price, save_amount, discount_desc, image_url, product_url,
            regions, region_prices, sale_from, {_aisle_col}
     FROM specials
-    WHERE price > 0 AND ((save_amount > 0 OR was_price > price) OR store = 'ALDI' OR discount_desc LIKE ? OR discount_desc = ?)
+    WHERE price > 0 AND ((save_amount > 0 OR was_price > price) OR store = 'ALDI' OR discount_desc LIKE ? OR discount_desc IN (?, ?))
     ORDER BY id ASC
-""", (EVERYDAY_DESC + '%', SPECIAL_DESC))
+""", (EVERYDAY_DESC + '%', SPECIAL_DESC, REGULAR_DESC))
 rows = c.fetchall()
 items = [dict(r) for r in rows]
 
@@ -136,14 +136,15 @@ _interest, _interest_total = load_interest()
 _moved = apply_interest(items, _interest, _interest_total)
 print(f"Visitor interest: {len(_interest)} products counted (weighted total {_interest_total:.0f}), {_moved} specials moved up")
 
-# Everyday low prices are not specials: never "熱門暢銷", never in the best-sellers at the top
+# Everyday low prices and regular prices are not specials: never "熱門暢銷", never in the best-sellers at the top
 # (-1, not 0: the website recomputes a score of 0 itself)
-_everyday = 0
+_everyday = _regular = 0
 for it in items:
-    if is_everyday(it):
+    if is_everyday(it) or is_regular(it):
         it['popularity_score'] = -1
-        _everyday += 1
-print(f"Everyday low prices: {_everyday} items")
+        _everyday += is_everyday(it)
+        _regular += is_regular(it)
+print(f"Everyday low prices: {_everyday} items, regular prices: {_regular} items")
 
 # ---- "熱門暢銷" badge: only the top ~10% per category, max 2 per brand, so the badge stays meaningful ----
 import math, re as _re
@@ -202,7 +203,7 @@ from scrapers.regions import ALL_REGIONS, BASE_REGION
 def _region_stats(region):
     out = {}
     for period in ('current', 'next'):
-        total, by_store, half, everyday, everyday_by_store = 0, {}, 0, 0, {}
+        total, by_store, half, everyday, everyday_by_store, regular, regular_by_store = 0, {}, 0, 0, {}, 0, {}
         for it in items:
             if it.get('period') != period or ('rg' in it and region not in it['rg']):
                 continue
@@ -211,13 +212,17 @@ def _region_stats(region):
                 everyday += 1          # listed on the site, but not a special: not in the specials numbers
                 everyday_by_store[p['store']] = everyday_by_store.get(p['store'], 0) + 1
                 continue
+            if is_regular(p):
+                regular += 1           # listed on the site, but not a special
+                regular_by_store[p['store']] = regular_by_store.get(p['store'], 0) + 1
+                continue
             total += 1
             by_store[p['store']] = by_store.get(p['store'], 0) + 1
             if (p['store'] == 'ALDI' or (p.get('save_amount') or 0) > 0) and database.is_half_price(
                     p.get('price'), p.get('was_price'), p.get('save_amount'), p.get('discount_desc')):
                 half += 1
         out[period] = {'total': total, 'by_store': by_store, 'half_price_count': half, 'everyday_count': everyday,
-                       'everyday_by_store': everyday_by_store}
+                       'everyday_by_store': everyday_by_store, 'regular_count': regular, 'regular_by_store': regular_by_store}
     return out
 # "Next week" must never show this week's dates (happens when only ALDI has published next week)
 def _shift_week(rng, days=7):
