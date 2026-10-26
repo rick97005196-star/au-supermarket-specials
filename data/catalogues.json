@@ -162,14 +162,14 @@
     "url": "https://www.salefinder.com.au/woolworths-catalogue/weekly-catalogue-nsw/68440/list"
    },
    {
-    "date_range": "Wed 21 Oct 2026 - Tue 27 Oct 2026",
-    "id": 68456,
-    "url": "https://www.salefinder.com.au/woolworths-catalogue/weekly-catalogue-nsw/68456/list"
-   },
-   {
     "date_range": "Wed 28 Oct 2026 - Tue 3 Nov 2026",
     "id": 68580,
     "url": "https://www.salefinder.com.au/woolworths-catalogue/weekly-catalogue-nsw/68580/list"
+   },
+   {
+    "date_range": "Wed 21 Oct 2026 - Tue 27 Oct 2026",
+    "id": 68456,
+    "url": "https://www.salefinder.com.au/woolworths-catalogue/weekly-catalogue-nsw/68456/list"
    },
    {
     "date_range": "Wed 28 Oct 2026 - Tue 3 Nov 2026",
@@ -262,9 +262,19 @@
     "url": "https://www.salefinder.com.au/woolworths-catalogue/weekly-catalogue-vic/68436/list"
    },
    {
+    "date_range": "Wed 21 Oct 2026 - Tue 27 Oct 2026",
+    "id": 68450,
+    "url": "https://www.salefinder.com.au/woolworths-catalogue/weekly-catalogue-vic/68450/list"
+   },
+   {
     "date_range": "Wed 28 Oct 2026 - Tue 3 Nov 2026",
     "id": 68572,
     "url": "https://www.salefinder.com.au/woolworths-catalogue/weekly-catalogue-vic/68572/list"
+   },
+   {
+    "date_range": "Wed 28 Oct 2026 - Tue 3 Nov 2026",
+    "id": 68591,
+    "url": "https://www.salefinder.com.au/woolworths-catalogue/weekly-catalogue-vic/68591/list"
    },
    {
     "date_range": "Wed 14 Oct 2026 - Tue 20 Oct 2026",
@@ -275,11 +285,6 @@
     "date_range": "Wed 14 Oct 2026 - Tue 20 Oct 2026",
     "id": 68341,
     "url": "https://www.salefinder.com.au/woolworths-catalogue/weekly-catalogue-vic/68341/list"
-   },
-   {
-    "date_range": "Wed 21 Oct 2026 - Tue 27 Oct 2026",
-    "id": 68450,
-    "url": "https://www.salefinder.com.au/woolworths-catalogue/weekly-catalogue-vic/68450/list"
    }
   ],
   "WA": [
@@ -305,7 +310,7 @@
    "full_discovery": 1793017084.609961
   },
   "Woolworths": {
-   "full_discovery": 1792995951.2111223
+   "full_discovery": 1793018888.0029638
   }
  }
 }
