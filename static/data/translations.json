@@ -157045,10 +157045,11 @@
     "src": "ai"
   },
   "V Energy Drink Original 4x250ml 1L": {
-    "zh": "V 能量飲料 經典款 250毫升 x 4入",
-    "ja": "V エナジードリンク オリジナル 250ml x 4個入",
-    "ko": "V 에너지 드링크 오리지널 250ml x 4개입",
-    "src": "ai"
+    "zh": "V 能量飲料原味 250毫升 x 4入 1公升",
+    "ja": "V エナジー ドリンク オリジナル 250ml x 4入 1L",
+    "ko": "V 에너지 드링크 오리지널 250ml x 4입 1L",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Temptations Hearty Beef Flavour Cat Treats 180g": {
     "zh": "Temptations 貓零食 濃郁牛肉口味 180克",
@@ -157084,6 +157085,108 @@
     "zh": "Golden Circle 利樂包綜合果汁 6入 1.5公升",
     "ja": "Golden Circle テトラパック ドリンク ゴールデンパッシュ 6個入 1.5L",
     "ko": "Golden Circle 테트라팩 음료 골든 패시 6개입 1.5L",
+    "src": "ai"
+  },
+  "Mutti Tomato Passata with Basil 700g": {
+    "zh": "Mutti 羅勒番茄糊 700克",
+    "ja": "Mutti バジル入りトマトピューレ 700g",
+    "ko": "Mutti 바질 토마토 파사타 700g",
+    "src": "ai"
+  },
+  "Vita Diet Swiss Chocolate Flavoured Shake 48g": {
+    "zh": "Vita Diet 瑞士巧克力口味奶昔 48克",
+    "ja": "Vita Diet スイスチョコレートフレーバー シェイク 48g",
+    "ko": "Vita Diet 스위스 초콜릿향 쉐이크 48g",
+    "src": "ai"
+  },
+  "B.box Silicon Mesh Feeder 6+ Months 1 Each": {
+    "zh": "B.box 矽膠網袋副食品分裝器 6個月以上",
+    "ja": "B.box シリコン メッシュ フィーダー 6ヶ月以上 1個入",
+    "ko": "B.box 실리콘 메쉬 피더 6개월 이상 1개입",
+    "src": "ai"
+  },
+  "Piksters Eco Charcoal Floss Picks 30 Pack": {
+    "zh": "Piksters 環保活性碳牙線棒 30入",
+    "ja": "Piksters エコ チャコール フロス ピックス 30個入",
+    "ko": "Piksters 에코 차콜 치실 30개입",
+    "src": "ai"
+  },
+  "Watermelon Glutinous Rice Hoa Vang 1kg": {
+    "zh": "Watermelon 西瓜牌花黃糯米 1公斤",
+    "ja": "Watermelon グルチナス ライス ホア バン 1kg",
+    "ko": "Watermelon 찹쌀 호아 방 1kg",
+    "src": "ai"
+  },
+  "Tetley Decaffeinated Black Tea Bags 100 pack 185g": {
+    "zh": "Tetley 去咖啡因紅茶包 100入 185克",
+    "ja": "Tetley デカフェ ブラック ティー バッグ 100個入 185g",
+    "ko": "Tetley 디카페인 홍차 티백 100개입 185g",
+    "src": "ai"
+  },
+  "Mission Mini Plain Naan 6 Pack 240g": {
+    "zh": "Mission 迷你原味印度烤餅 6入 240克",
+    "ja": "Mission ミニ プレーン ナナン 6個入 240g",
+    "ko": "Mission 미니 플레인 난 6개입 240g",
+    "src": "ai"
+  },
+  "B.Box Tritan Drink Bottle Straw Top 600ml 1 Each": {
+    "zh": "B.Box Tritan 吸管水壺 600毫升",
+    "ja": "B.Box トライタン ドリンク ボトル ストロー トップ 600ml 1個入",
+    "ko": "B.Box 트라이탄 물병 빨대 뚜껑 600ml 1개입",
+    "src": "ai"
+  },
+  "Nuby Nana Nubs Massaging Toothbrush 1 each": {
+    "zh": "Nuby 香蕉寶寶按摩牙刷",
+    "ja": "Nuby ナナ ナブス マッサージング トゥースブラシ 1個入",
+    "ko": "Nuby 나나 넙스 마사지 칫솔 1개입",
+    "src": "ai"
+  },
+  "Rafferty's Garden Beef Sweet Potato & Parsnip Protein Baby Food Pouch 6+ Months 120g": {
+    "zh": "Rafferty's Garden 牛肉地瓜歐洲防風草蛋白質嬰兒副食品泥 6個月以上 120克",
+    "ja": "Rafferty's Garden ビーフ スイート ポテト ＆ パースニップ プロテイン ベビーフード パウチ 6ヶ月以上 120g",
+    "ko": "Rafferty's Garden 비프 고구마 ＆ 파스닙 단백질 이유식 파우치 6개월 이상 120g",
+    "src": "ai"
+  },
+  "Oral B Kids Starwars Frozen Battery Toothbrush Age 3+ Years 1 Pack": {
+    "zh": "Oral B 兒童星際大戰冰雪奇緣電動牙刷 3歲以上 1入",
+    "ja": "Oral B キッズ スターウォーズ フローズン バッテリー トゥースブラシ 3歳以上 1個入",
+    "ko": "Oral B 키즈 스타워즈 겨울왕국 건전지 칫솔 3세 이상 1개입",
+    "src": "ai"
+  },
+  "Ultimates Indulge Whitemeat Tuna With Fish Roe & Chicken Breast Adult Cat Food 85g": {
+    "zh": "Ultimates Indulge 白肉鮪魚附魚卵與雞胸肉成貓主食罐 85克",
+    "ja": "Ultimates Indulge ホワイトミート ツナ ウィズ フィッシュ ロエ ＆ チキン ブレスト アダルト キャット フード 85g",
+    "ko": "Ultimates Indulge 화이트미트 참치 위드 피시 로에 ＆ 닭가슴살 성캣용 캣푸드 85g",
+    "src": "ai"
+  },
+  "Epzen Dream Bubble Natural Aromatic Bathing Bubbles 500mL": {
+    "zh": "Epzen 夢幻泡泡天然芳香泡澡露 500毫升",
+    "ja": "Epzen ドリーム バブル ナチュラル アロマティック バッシング バブルス 500ml",
+    "ko": "Epzen 드림 버블 내추럴 아로마틱 바싱 버블 500ml",
+    "src": "ai"
+  },
+  "B.box 360 Drinking Cup 250ml 6+ Months 1 Each": {
+    "zh": "B.box 360度學習水杯 250毫升 6個月以上",
+    "ja": "B.box 360 ドリンク カップ 250ml 6ヶ月以上 1個入",
+    "ko": "B.box 360 드링킹 컵 250ml 6개월 이상 1개입",
+    "src": "ai"
+  },
+  "Rafferty's Garden Brown Rice Bean & Pumpkin Baby Food Pouch 8+ Months 120g": {
+    "zh": "Rafferty's Garden 糙米豆子南瓜嬰兒副食品泥 8個月以上 120g",
+    "ja": "Rafferty's Garden ブラウン ライス ビーン ＆ パンプキン ベビーフード パウチ 8ヶ月以上 120g",
+    "ko": "Rafferty's Garden 현미 빈 ＆ 펌킨 이유식 파우치 8개월 이상 120g",
+    "src": "ai"
+  },
+  "B.box Disney Sippy Cup 240ml 6+ Months 1 Each": {
+    "zh": "B.box 迪士尼防漏水杯 240毫升 6個月以上",
+    "ja": "B.box ディズニー シッピー カップ 240ml 6ヶ月以上 1個入",
+    "ko": "B.box 디즈니 시피 컵 240ml 6개월 이상 1개입",
+    "src": "ai"
+  },
+  "Mae Ploy Green Curry Paste 50g": {
+    "zh": "Mae Ploy 綠咖哩醬 50克",
+    "ja": "Mae Ploy グリーン カリー ペースト 50g",
+    "ko": "Mae Ploy 그린 커리 페이스트 50g",
     "src": "ai"
   }
 }
