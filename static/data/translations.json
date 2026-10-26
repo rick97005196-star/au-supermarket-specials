@@ -156676,10 +156676,11 @@
     "src": "ai"
   },
   "Boss Ice Tea Long Black 4x237ml 948mL": {
-    "zh": "Boss 黑咖啡 237毫升 x 4入",
-    "ja": "Boss ロングブラック 237ml x 4本入",
-    "ko": "Boss 롱 블랙 커피 237ml x 4개입",
-    "src": "ai"
+    "zh": "Boss 冰 美式黑咖啡 237毫升 x 4入 948毫升",
+    "ja": "Boss アイスティー ロングブラック 237ml x 4本 948mL",
+    "ko": "Boss 아이스 티 롱 블랙 237ml x 4개입 948mL",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Bird's Custard Powder Drum 250g": {
     "zh": "Bird's 卡士達粉 250克",
@@ -156712,10 +156713,11 @@
     "src": "ai"
   },
   "Boss Ice Tea Latte 4x237ml 948mL": {
-    "zh": "Boss 拿鐵咖啡 237毫升 x 4入",
-    "ja": "Boss ラテ 237ml x 4本入",
-    "ko": "Boss 라떼 237ml x 4개입",
-    "src": "ai"
+    "zh": "Boss 冰 奶茶 237毫升 x 4入 948毫升",
+    "ja": "Boss アイスティーラテ 237ml x 4本 948mL",
+    "ko": "Boss 아이스 티 라떼 237ml x 4개입 948mL",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Red Rock Deli Chips Spicy Chilli Sriracha 165g": {
     "zh": "Red Rock Deli 是拉差香辣洋芋片 165克",
@@ -156736,15 +156738,184 @@
     "src": "ai"
   },
   "Boss Ice Tea Vanilla Latte 4x237ml 948mL": {
-    "zh": "Boss 香草拿鐵咖啡 237毫升 x 4入",
-    "ja": "Boss バニララテ 237ml x 4本入",
-    "ko": "Boss 바닐라 라떼 237ml x 4개입",
-    "src": "ai"
+    "zh": "Boss 冰 香草奶茶 237毫升 x 4入 948毫升",
+    "ja": "Boss アイスティー バニララテ 237ml x 4本 948mL",
+    "ko": "Boss 아이스 티 바닐라 라떼 237ml x 4개입 948mL",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Piksters Interdental Brushes Blue Size 5 10 Pack": {
     "zh": "Piksters 藍色牙間刷 5號 10入",
     "ja": "Piksters 歯間ブラシ ブルー サイズ5 10本入",
     "ko": "Piksters 치간 칫솔 블루 사이즈 5 10개입",
+    "src": "ai"
+  },
+  "Sunrice Microwave Coconut Flavoured Rice Cup 250g": {
+    "zh": "Sunrice 微波椰香風味白飯 250克",
+    "ja": "Sunrice 電子レンジ用 ココナッツ風味ライス カップ 250g",
+    "ko": "Sunrice 전자레인지용 코코넛향 쌀밥 컵 250g",
+    "src": "ai"
+  },
+  "Twinings Cranberry & Pomegranate Infusions Tea Bags 10 Pack": {
+    "zh": "Twinings 蔓越莓石榴茶包 10入",
+    "ja": "Twinings クランベリー＆ザクロ インフュージョン ティーバッグ 10個入",
+    "ko": "Twinings 크랜베리 & 석류 인퓨전 티백 10개입",
+    "src": "ai"
+  },
+  "Nestle Plaistowe Baking Chocolate 70% Cocoa Block 180g": {
+    "zh": "Nestle Plaistowe 70%可可烘焙巧克力磚 180克",
+    "ja": "Nestle Plaistowe 製菓用チョコレート 70% カカオ ブロック 180g",
+    "ko": "Nestle Plaistowe 베이킹 초콜릿 70% 코코아 블록 180g",
+    "src": "ai"
+  },
+  "B.Box Insulated Drink Bottle Straw Top 500ml 1 Each": {
+    "zh": "B.Box 吸管式保溫水壺 500毫升",
+    "ja": "B.Box 断熱ドリンクボトル ストロー飲み口 500ml",
+    "ko": "B.Box 보온/보냉 물병 빨대 뚜껑 500ml",
+    "src": "ai"
+  },
+  "Mingle Seasoning Everything Bagel 50g": {
+    "zh": "Mingle 貝果綜合香料調味料 50克",
+    "ja": "Mingle シーズニング エブリシングベーグル 50g",
+    "ko": "Mingle 시즈닝 에브리싱 베이글 50g",
+    "src": "ai"
+  },
+  "Biostime Sn-2 Bio Plus Hpo Toddler Milk Drink 12+months 800g": {
+    "zh": "Biostime Sn-2 Bio Plus Hpo 幼兒成長奶粉 12個月以上 800克",
+    "ja": "Biostime Sn-2 Bio Plus Hpo 幼児用ミルクドリンク 12ヶ月以上 800g",
+    "ko": "Biostime Sn-2 Bio Plus Hpo 유아용 우유 음료 12개월 이상 800g",
+    "src": "ai"
+  },
+  "Epzen Soothe Soak 100% Natural Magnesium Bath Flakes 500g": {
+    "zh": "Epzen Soothe 100%天然鎂離子泡澡片 500克",
+    "ja": "Epzen スーズソーク 100% ナチュラル マグネシウム バスフレーク 500g",
+    "ko": "Epzen 수드 소크 100% 내추럴 마그네슘 배스 플레이크 500g",
+    "src": "ai"
+  },
+  "Captain's Table Classic Water Crackers 125g": {
+    "zh": "Captain's Table 經典蘇打餅乾 125克",
+    "ja": "Captain's Table クラシック ウォータークラッカー 125g",
+    "ko": "Captain's Table 클래식 워터 크래커 125g",
+    "src": "ai"
+  },
+  "Lavazza Tales Of Italy Capri Coffee Beans 500g": {
+    "zh": "Lavazza 義大利故事卡布里咖啡豆 500克",
+    "ja": "Lavazza テイルズ オブ イタリア カプリ コーヒー豆 500g",
+    "ko": "Lavazza 테일즈 오브 이탈리아 카프리 커피콩 500g",
+    "src": "ai"
+  },
+  "Coles Carrot Cupcakes 4 Pack 288g": {
+    "zh": "Coles 紅蘿蔔杯子蛋糕 4入 288克",
+    "ja": "Coles キャロット カップケーキ 4個入 288g",
+    "ko": "Coles 당근 컵케이크 4개입 288g",
+    "src": "ai"
+  },
+  "Century Tuna Hot And Spicy 180g": {
+    "zh": "Century Tuna 香辣鮪魚罐頭 180克",
+    "ja": "Century Tuna ホット＆スパイシー ツナ 180g",
+    "ko": "Century Tuna 핫 앤 스파이시 참치 180g",
+    "src": "ai"
+  },
+  "Mcclure's Sweet & Spicy Pickles 500g": {
+    "zh": "Mcclure's 酸甜微辣酸黃瓜 500克",
+    "ja": "Mcclure's スウィート＆スパイシー ピクルス 500g",
+    "ko": "Mcclure's 스위트 앤 스파이시 피클 500g",
+    "src": "ai"
+  },
+  "Cobram Estate Chilli Infused Extra Virgin Olive Oil 250mL": {
+    "zh": "Cobram Estate 辣椒風味特級初榨橄欖油 250毫升",
+    "ja": "Cobram Estate チリインフューズ エキストラバージン オリーブオイル 250ml",
+    "ko": "Cobram Estate 칠리 인퓨즈드 엑스트라 버진 올리브 오일 250ml",
+    "src": "ai"
+  },
+  "Campbell's Real Stock Chicken Stock Salt Reduced 500mL": {
+    "zh": "Campbell's 減鹽鮮雞高湯 500毫升",
+    "ja": "Campbell's リアルストック チキンスープストック 減塩 500ml",
+    "ko": "Campbell's 리얼 스톡 치킨 스톡 저염 500ml",
+    "src": "ai"
+  },
+  "Betty Crocker Frosting Milk Chocolate 400g": {
+    "zh": "Betty Crocker 牛奶巧克力糖霜 400克",
+    "ja": "Betty Crocker フロスティング ミルクチョコレート 400g",
+    "ko": "Betty Crocker 프로스팅 밀크 초콜릿 400g",
+    "src": "ai"
+  },
+  "Quest Tortilla Style Protein Chips Nacho Chips 32g": {
+    "zh": "Quest 墨西哥薄餅風格高蛋白玉米片 起司口味 32克",
+    "ja": "Quest トルティーヤスタイル プロテインチップス ナチョチップス 32g",
+    "ko": "Quest 토르티야 스타일 단백질 칩 나초 칩 32g",
+    "src": "ai"
+  },
+  "Divella Spaghetti Ristorante No 8 Pasta 500g": {
+    "zh": "Divella 8號餐廳級義大利麵 500克",
+    "ja": "Divella スパゲティ リストランテ No.8 パスタ 500g",
+    "ko": "Divella 스파게티 리스토란테 No. 8 파스타 500g",
+    "src": "ai"
+  },
+  "The Pink Stuff Miracle Multi Purpose Cleaner 750mL": {
+    "zh": "The Pink Stuff 奇蹟多功能清潔劑 750毫升",
+    "ja": "The Pink Stuff ミラクル マルチパーパス クリーナー 750ml",
+    "ko": "The Pink Stuff 미라클 다목적 세정제 750ml",
+    "src": "ai"
+  },
+  "Equal Sweetener Sachets 100 Pack": {
+    "zh": "Equal 代糖隨身包 100入",
+    "ja": "Equal 甘味料 サシェ 100個入",
+    "ko": "Equal 감미료 스틱 100개입",
+    "src": "ai"
+  },
+  "Sunrice Herb & Garlic Flavoured Rice Cup 250g": {
+    "zh": "Sunrice 香草大蒜風味白飯 250克",
+    "ja": "Sunrice ハーブ＆ガーリック風味ライス カップ 250g",
+    "ko": "Sunrice 허브 & 갈릭향 쌀밥 컵 250g",
+    "src": "ai"
+  },
+  "Kinder Tronky Multipack Biscuit Bars 5 Pack 90g": {
+    "zh": "Kinder Tronky 威化餅乾 5入 90克",
+    "ja": "Kinder Tronky マルチパック ビスケットバー 5個入 90g",
+    "ko": "Kinder Tronky 멀티팩 비스킷 바 5개입 90g",
+    "src": "ai"
+  },
+  "Century Tuna Calamansi 180g": {
+    "zh": "Century Tuna 金桔風味鮪魚罐頭 180克",
+    "ja": "Century Tuna カラマンシー ツナ 180g",
+    "ko": "Century Tuna 깔라만시 참치 180g",
+    "src": "ai"
+  },
+  "Happy Peanuts 100g": {
+    "zh": "Happy 花生 100克",
+    "ja": "Happy ピーナッツ 100g",
+    "ko": "Happy 땅콩 100g",
+    "src": "ai"
+  },
+  "Extra Intense Mint Sugar Free Chewing Gum 64g": {
+    "zh": "Extra 強烈薄荷無糖口香糖 64克",
+    "ja": "Extra インテンスミント シュガーレス ガム 64g",
+    "ko": "Extra 인텐스 민트 무설탕 껌 64g",
+    "src": "ai"
+  },
+  "Odor Eaters Active Wear Insole 1 Pair": {
+    "zh": "Odor Eaters 運動鞋墊 1雙",
+    "ja": "Odor Eaters アクティブウェア インソール 1足",
+    "ko": "Odor Eaters 액티브웨어 깔창 1켤레",
+    "src": "ai"
+  },
+  "CSR Soft Icing Mixture 1Kg": {
+    "zh": "CSR 軟糖霜粉 1公斤",
+    "ja": "CSR ソフトアイシングミックス 1Kg",
+    "ko": "CSR 소프트 아이싱 믹스 1Kg",
+    "src": "ai"
+  },
+  "Nice & Natural Deluxe Protein Bars Caramel & Milk Choc Multipack Snacks 5 Pack 200g": {
+    "zh": "Nice & Natural 豪華高蛋白棒焦糖牛奶巧克力口味點心 5入 200克",
+    "ja": "Nice & Natural デラックス プロテインバー キャラメル＆ミルクチョコ マルチパック スナック 5個入 200g",
+    "ko": "Nice & Natural 디럭스 프로틴 바 카라멜 & 밀크 초코 멀티팩 스낵 5개입 200g",
+    "src": "ai"
+  },
+  "B.box Wrist Baby Teether 3+ Months 1 Each": {
+    "zh": "B.box 手腕嬰兒牙膠 3個月以上 1入",
+    "ja": "B.box リスト ベビー 歯固め 3ヶ月以上 1個",
+    "ko": "B.box 손목 아기 치아발육기 3개월 이상 1개",
     "src": "ai"
   }
 }
