@@ -28,7 +28,9 @@
       "ALDI": 2465,
       "Coles": 26,
       "Woolworths": 2882
-    }
+    },
+    "regular_count": 0,
+    "regular_by_store": {}
   },
   "next": {
     "total": 1485,
@@ -59,9 +61,11 @@
       "ALDI": 2461,
       "Coles": 36,
       "Woolworths": 2894
-    }
+    },
+    "regular_count": 0,
+    "regular_by_store": {}
   },
-  "last_updated": "2026-10-26 13:18:22",
+  "last_updated": "2026-10-26 14:48:21",
   "base_region": "QLD",
   "regions": {
     "QLD": {
@@ -78,7 +82,9 @@
           "ALDI": 2465,
           "Coles": 26,
           "Woolworths": 2882
-        }
+        },
+        "regular_count": 0,
+        "regular_by_store": {}
       },
       "next": {
         "total": 1485,
@@ -93,7 +99,9 @@
           "ALDI": 2461,
           "Coles": 36,
           "Woolworths": 2894
-        }
+        },
+        "regular_count": 0,
+        "regular_by_store": {}
       }
     },
     "NSW": {
@@ -110,7 +118,9 @@
           "ALDI": 2465,
           "Coles": 25,
           "Woolworths": 2882
-        }
+        },
+        "regular_count": 0,
+        "regular_by_store": {}
       },
       "next": {
         "total": 1482,
@@ -125,7 +135,9 @@
           "ALDI": 2461,
           "Coles": 35,
           "Woolworths": 2894
-        }
+        },
+        "regular_count": 0,
+        "regular_by_store": {}
       }
     },
     "ACT": {
@@ -142,7 +154,9 @@
           "ALDI": 2465,
           "Coles": 25,
           "Woolworths": 2882
-        }
+        },
+        "regular_count": 0,
+        "regular_by_store": {}
       },
       "next": {
         "total": 1482,
@@ -157,7 +171,9 @@
           "ALDI": 2461,
           "Coles": 35,
           "Woolworths": 2894
-        }
+        },
+        "regular_count": 0,
+        "regular_by_store": {}
       }
     },
     "VIC": {
@@ -174,7 +190,9 @@
           "ALDI": 2465,
           "Coles": 25,
           "Woolworths": 2882
-        }
+        },
+        "regular_count": 0,
+        "regular_by_store": {}
       },
       "next": {
         "total": 1485,
@@ -189,7 +207,9 @@
           "ALDI": 2461,
           "Coles": 35,
           "Woolworths": 2894
-        }
+        },
+        "regular_count": 0,
+        "regular_by_store": {}
       }
     },
     "SA": {
@@ -206,7 +226,9 @@
           "ALDI": 2465,
           "Coles": 26,
           "Woolworths": 2882
-        }
+        },
+        "regular_count": 0,
+        "regular_by_store": {}
       },
       "next": {
         "total": 1483,
@@ -221,7 +243,9 @@
           "ALDI": 2461,
           "Coles": 36,
           "Woolworths": 2894
-        }
+        },
+        "regular_count": 0,
+        "regular_by_store": {}
       }
     },
     "WA": {
@@ -238,7 +262,9 @@
           "ALDI": 2465,
           "Coles": 28,
           "Woolworths": 2882
-        }
+        },
+        "regular_count": 0,
+        "regular_by_store": {}
       },
       "next": {
         "total": 1483,
@@ -253,7 +279,9 @@
           "ALDI": 2461,
           "Coles": 38,
           "Woolworths": 2894
-        }
+        },
+        "regular_count": 0,
+        "regular_by_store": {}
       }
     },
     "TAS": {
@@ -270,7 +298,9 @@
           "ALDI": 2465,
           "Coles": 26,
           "Woolworths": 2881
-        }
+        },
+        "regular_count": 0,
+        "regular_by_store": {}
       },
       "next": {
         "total": 1483,
@@ -285,7 +315,9 @@
           "ALDI": 2461,
           "Coles": 36,
           "Woolworths": 2893
-        }
+        },
+        "regular_count": 0,
+        "regular_by_store": {}
       }
     },
     "NT": {
@@ -302,7 +334,9 @@
           "ALDI": 2465,
           "Coles": 26,
           "Woolworths": 2882
-        }
+        },
+        "regular_count": 0,
+        "regular_by_store": {}
       },
       "next": {
         "total": 1486,
@@ -317,9 +351,11 @@
           "ALDI": 2461,
           "Coles": 36,
           "Woolworths": 2894
-        }
+        },
+        "regular_count": 0,
+        "regular_by_store": {}
       }
     }
   },
-  "data_updated_at": "2026-10-26T13:18:42Z"
+  "data_updated_at": "2026-10-26T14:48:36Z"
 }
