@@ -48,9 +48,12 @@
         .err { color: var(--sale); font-size: 13px; min-height: 20px; }
         .hidden { display: none !important; }
         .tabs { display: flex; gap: 6px; padding: 4px; background: var(--surface-2); border-radius: 999px; margin-bottom: 16px; }
-        .tab { flex: 1; height: 38px; border: 0; border-radius: 999px; background: transparent; color: var(--ink-3); font: inherit; font-size: 14px; font-weight: 600; cursor: pointer; }
+        .tab { flex: 1; min-width: 0; height: 38px; padding: 0 4px; border: 0; border-radius: 999px; background: transparent; color: var(--ink-3); font: inherit; font-size: 14px; font-weight: 600; white-space: nowrap; cursor: pointer; }
         .tab.on { background: var(--surface); color: var(--ink); box-shadow: 0 1px 3px rgba(0,0,0,.08); }
         .tab .dot { display: inline-block; min-width: 18px; padding: 0 5px; margin-left: 4px; border-radius: 999px; background: var(--sale); color: #fff; font-size: 11px; line-height: 18px; }
+        /* three tabs on a 320px phone: shrink a little so the unread badge stays on the same line */
+        @media (max-width: 360px) { .tab { font-size: 13px; } .tab .dot { margin-left: 2px; padding: 0 4px; min-width: 16px; } }
+        #sitesErr:empty { display: none; }
         /* ---- visitor statistics ---- */
         .viz { --bar: #1baf7a; --bar-hover: #14915f; }
         @media (prefers-color-scheme: dark) { .viz { --bar: #199e70; --bar-hover: #22b884; } }
@@ -82,6 +85,19 @@
         details.tbl td, details.tbl th { padding: 5px 6px; border-bottom: 1px solid var(--line); text-align: right; }
         details.tbl td:first-child, details.tbl th:first-child { text-align: left; }
         .note { font-size: 12px; color: var(--ink-3); margin-top: 12px; line-height: 1.6; }
+        /* ---- all sites ---- */
+        .hb .row > span:first-child { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .hb.wide .row { grid-template-columns: minmax(0, 1fr) 25% 42px; }
+        @media (min-width: 640px) { .split.two { grid-template-columns: repeat(2, 1fr); } .split .wide { grid-column: 1 / -1; } }
+        .srow { display: grid; grid-template-columns: minmax(0, 1fr) repeat(3, 50px); gap: 4px; align-items: center; width: 100%; min-height: 44px; padding: 0 10px; border: 0; border-radius: 999px; background: transparent; color: var(--ink); font: inherit; font-size: 14px; text-align: right; cursor: pointer; }
+        .srow > :first-child { text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .srow b { font-weight: 600; font-variant-numeric: tabular-nums; }
+        .srow.head { min-height: 0; padding-bottom: 4px; font-size: 12px; color: var(--ink-3); cursor: default; }
+        button.srow:hover { background: var(--surface-2); }
+        .srow.on, button.srow.on:hover { background: var(--accent-soft); color: var(--accent); }
+        .stitle { font-size: 16px; margin: 18px 0 10px; }
+        .err a { color: inherit; }
+        .err code { word-break: break-all; background: var(--surface-2); color: var(--ink); padding: 1px 5px; border-radius: 6px; }
     </style>
 </head>
 <body>
@@ -112,6 +128,7 @@
         <div class="tabs" role="tablist">
             <button class="tab on" data-tab="visits" onclick="showTab('visits')">📈 瀏覽統計</button>
             <button class="tab" data-tab="fb" onclick="showTab('fb')">💬 意見箱<span id="tabUnread" class="dot hidden"></span></button>
+            <button class="tab" data-tab="sites" onclick="showTab('sites')">🌐 所有網站</button>
         </div>
 
         <section id="visitsView" class="viz">
@@ -152,6 +169,32 @@
         </div>
         <p id="listErr" class="err"></p>
         <div id="list"></div>
+        </section>
+
+        <section id="sitesView" class="viz hidden">
+            <p id="sitesErr" class="err"></p>
+            <div id="sitesBody" class="hidden">
+                <div class="card" id="siteList"></div>
+                <h2 class="stitle" id="sName"></h2>
+                <div class="kpis">
+                    <div class="card kpi"><b id="wToday">-</b><span>今天造訪</span><small id="wTodayViews"></small></div>
+                    <div class="card kpi"><b id="wWeek">-</b><span>近 7 天造訪</span></div>
+                    <div class="card kpi"><b id="wMonth">-</b><span>近 30 天造訪</span></div>
+                    <div class="card kpi"><b id="wViews">-</b><span>30 天瀏覽</span></div>
+                </div>
+                <div class="card">
+                    <div class="chart-title"><h2>每天造訪（近 30 天）</h2><span>滑過或點長條看數字</span></div>
+                    <div class="bars" id="sbars" role="img" aria-label="近 30 天每天造訪次數長條圖"></div>
+                    <div class="xaxis"><span id="sxFrom"></span><span id="sxMid"></span><span>今天</span></div>
+                    <details class="tbl"><summary>表格檢視</summary><table><thead><tr><th>日期</th><th>造訪</th><th>瀏覽次數</th></tr></thead><tbody id="stblBody"></tbody></table></details>
+                </div>
+                <div class="split two">
+                    <div class="card hb"><h3>裝置（近 30 天造訪）</h3><div id="sDevice"></div></div>
+                    <div class="card hb"><h3>國家／地區</h3><div id="sCountry"></div></div>
+                    <div class="card hb wide"><h3>熱門頁面（近 30 天瀏覽次數）</h3><div id="sPages"></div></div>
+                </div>
+                <p class="note">「造訪」＝從別的網站、搜尋或直接打開進站的次數（站內換頁不重算），和「📈 瀏覽統計」的「訪客」算法不同，兩邊數字不能直接比較。這裡的數字來自 Cloudflare Web Analytics，是抽樣估算的大約值；只看得到近 30 天，已排除機器人。</p>
+            </div>
         </section>
     </div>
 </div>
@@ -249,6 +292,8 @@
         document.querySelectorAll('.tab').forEach(b => b.classList.toggle('on', b.dataset.tab === t));
         document.getElementById('visitsView').classList.toggle('hidden', t !== 'visits');
         document.getElementById('fbView').classList.toggle('hidden', t !== 'fb');
+        document.getElementById('sitesView').classList.toggle('hidden', t !== 'sites');
+        if (t === 'sites' && !sitesLoaded) loadSites();
         try { localStorage.setItem('admin_tab', t); } catch (e) {}
     }
     async function loadVisits() {
@@ -272,16 +317,17 @@
             drawHB('hbRegion', d.region, REGN);
         } catch (e) { err.textContent = '連線失敗，請檢查網路'; }
     }
-    function drawBars(days) {
-        const box = document.getElementById('bars');
-        const max = Math.max(1, ...days.map(x => x.visitors));
-        box.innerHTML = days.map((x, i) => `<div class="col ${x.visitors ? '' : 'zero'}" tabindex="0" data-i="${i}"><i style="height:${Math.max(1.5, x.visitors / max * 100)}%"></i></div>`).join('') + '<div class="tip hidden" id="tip"></div>';
-        document.getElementById('xFrom').textContent = days.length ? md(days[0].day) : '';
-        document.getElementById('xMid').textContent = days.length > 15 ? md(days[15].day) : '';
-        const tip = document.getElementById('tip');
+    // pre: id prefix ('' = 瀏覽統計, 's' = 所有網站); field: which number the bars show
+    function drawBars(days, pre = '', label = '訪客', field = 'visitors') {
+        const box = document.getElementById(pre + 'bars');
+        const max = Math.max(1, ...days.map(x => x[field]));
+        box.innerHTML = days.map((x, i) => `<div class="col ${x[field] ? '' : 'zero'}" tabindex="0" data-i="${i}"><i style="height:${Math.max(1.5, x[field] / max * 100)}%"></i></div>`).join('') + `<div class="tip hidden" id="${pre}tip"></div>`;
+        document.getElementById(pre + 'xFrom').textContent = days.length ? md(days[0].day) : '';
+        document.getElementById(pre + 'xMid').textContent = days.length > 15 ? md(days[15].day) : '';
+        const tip = document.getElementById(pre + 'tip');
         const show = (col) => {
             const x = days[+col.dataset.i];
-            tip.innerHTML = `${md(x.day)}　訪客 <b>${fmt(x.visitors)}</b>　瀏覽 ${fmt(x.views)}`;
+            tip.innerHTML = `${md(x.day)}　${label} <b>${fmt(x[field])}</b>　瀏覽 ${fmt(x.views)}`;
             const r = col.getBoundingClientRect(), b = box.getBoundingClientRect();
             const bar = col.querySelector('i').getBoundingClientRect();
             tip.style.left = Math.min(Math.max(r.left - b.left + r.width / 2, 70), b.width - 70) + 'px';
@@ -293,16 +339,74 @@
             c.addEventListener('focus', () => show(c));
             c.addEventListener('click', () => show(c));
         });
-        box.addEventListener('mouseleave', () => tip.classList.add('hidden'));
-        document.getElementById('tblBody').innerHTML = days.slice().reverse().map(x => `<tr><td>${md(x.day)}</td><td>${fmt(x.visitors)}</td><td>${fmt(x.views)}</td></tr>`).join('');
+        box.onmouseleave = () => tip.classList.add('hidden');
+        document.getElementById(pre + 'tblBody').innerHTML = days.slice().reverse().map(x => `<tr><td>${md(x.day)}</td><td>${fmt(x[field])}</td><td>${fmt(x.views)}</td></tr>`).join('');
     }
     function drawHB(id, rows, names) {
         rows = rows || [];
         const total = rows.reduce((s, r) => s + r.n, 0) || 1;
         document.getElementById(id).innerHTML = rows.length ? rows.map(r => {
             const pct = Math.round(r.n / total * 100);
-            return `<div class="row"><span>${names[r.k] || r.k}</span><span class="track"><i style="width:${pct}%"></i></span><b>${pct}%</b></div>`;
+            const name = esc(names[r.k] || r.k);     // page paths come from visitors' browsers: never trust them as HTML
+            return `<div class="row"><span title="${name}">${name}</span><span class="track"><i style="width:${pct}%"></i></span><b>${pct}%</b></div>`;
         }).join('') : '<p class="sub">還沒有資料</p>';
+    }
+
+    // ---------------- all sites (Cloudflare Web Analytics, via /api/sites) ----------------
+    const SDEV = { desktop: '💻 電腦', mobile: '📱 手機', tablet: '平板', other: '其他' };
+    let sites = [], siteSel = 'all', sitesLoaded = false, regionNames = null;
+    try { regionNames = new Intl.DisplayNames(['zh-TW'], { type: 'region' }); } catch (e) {}
+    const countryName = (k) => {
+        if (k === 'other') return '其他';
+        if (k === 'unknown') return '不明';
+        try { if (regionNames && /^[A-Z]{2}$/.test(k)) return regionNames.of(k); } catch (e) {}
+        return k;
+    };
+    const TOKEN_URL = 'https://dash.cloudflare.com/?to=/:account/api-tokens&amp;permissionGroupKeys=%5B%7B%22key%22%3A%22account_analytics%22%2C%22type%22%3A%22read%22%7D%5D&amp;name=Account%20Analytics%20Token';
+    async function loadSites() {
+        sitesLoaded = true;
+        const err = document.getElementById('sitesErr');
+        err.textContent = '';
+        try {
+            const res = await fetch('/api/sites', { headers: { Authorization: 'Bearer ' + key } });
+            const d = await res.json().catch(() => ({}));
+            if (!d.ok) {
+                sitesLoaded = false;      // try again next time the tab is opened
+                document.getElementById('sitesBody').classList.add('hidden');
+                if (res.status === 401) err.textContent = '密碼不對，請重新登入';
+                else if (res.status === 429) err.textContent = '密碼錯太多次，為了安全已暫時鎖住，請一小時後再試';
+                else if (d.error === 'no_token') err.innerHTML = `還沒設定 Cloudflare 讀取權杖，所以讀不到各網站的數字。設定方法：① 到 <a href="${TOKEN_URL}" target="_blank" rel="noopener">Cloudflare 建立權杖</a>（權限：Account Analytics 讀取）；② 在自己電腦的終端機執行 <code>npx wrangler pages secret put CF_ANALYTICS_TOKEN --project-name au-supermarket-specials</code>，貼上權杖；③ 網站重新上架一次後生效。權杖請勿貼給任何人。`;
+                else if (d.error === 'no_account') err.textContent = '權杖找不到 Cloudflare 帳號。請確認權杖是在這個 Cloudflare 帳號建立的，或另外設定 CF_ACCOUNT_ID。';
+                else if (d.error === 'api') err.textContent = 'Cloudflare 回傳錯誤：' + (d.message || '未知錯誤');
+                else err.textContent = '讀取所有網站統計失敗';
+                return;
+            }
+            sites = d.sites || [];
+            document.getElementById('siteList').innerHTML = '<div class="srow head"><span>網站</span><span>今天</span><span>7 天</span><span>30 天</span></div>' +
+                sites.map(s => `<button class="srow" data-code="${esc(s.code)}" onclick="pickSite(this.dataset.code)"><span>${esc(s.name)}</span><b>${fmt(s.totals.today)}</b><b>${fmt(s.totals.week)}</b><b>${fmt(s.totals.month)}</b></button>`).join('');
+            document.getElementById('sitesBody').classList.remove('hidden');
+            pickSite(siteSel);
+        } catch (e) { sitesLoaded = false; err.textContent = '連線失敗，請檢查網路'; }
+    }
+    function pickSite(code) {
+        const s = sites.find(x => x.code === code) || sites[0];
+        if (!s) return;
+        siteSel = s.code;
+        document.querySelectorAll('#siteList button.srow').forEach(b => {
+            b.classList.toggle('on', b.dataset.code === siteSel);
+            b.setAttribute('aria-pressed', b.dataset.code === siteSel);
+        });
+        const t = s.totals || {};
+        document.getElementById('sName').textContent = s.name;
+        document.getElementById('wToday').textContent = fmt(t.today);
+        document.getElementById('wTodayViews').textContent = `瀏覽 ${fmt(t.todayViews)} 次`;
+        document.getElementById('wWeek').textContent = fmt(t.week);
+        document.getElementById('wMonth').textContent = fmt(t.month);
+        document.getElementById('wViews').textContent = fmt(t.monthViews);
+        drawBars(s.days || [], 's', '造訪', 'visits');
+        drawHB('sDevice', s.device, SDEV);
+        drawHB('sCountry', s.country, Object.fromEntries((s.country || []).map(r => [r.k, countryName(r.k)])));
+        drawHB('sPages', s.pages, { other: '其他頁面' });
     }
 
     const _origLoad = load;
@@ -315,6 +419,7 @@
             dot.textContent = unread; dot.classList.toggle('hidden', !unread);
             let tab = 'visits';
             try { tab = localStorage.getItem('admin_tab') || 'visits'; } catch (e) {}
+            sitesLoaded = false;      // 重新整理 also refreshes the all-sites numbers
             showTab(tab);
         }
         return ok;
