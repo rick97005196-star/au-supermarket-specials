@@ -136,7 +136,7 @@
                 <div class="card kpi"><b id="kToday">-</b><span>今天訪客</span><small id="kTodayViews"></small></div>
                 <div class="card kpi"><b id="kWeek">-</b><span>近 7 天訪客</span></div>
                 <div class="card kpi"><b id="kMonth">-</b><span>近 30 天訪客</span><small id="kMonthViews"></small></div>
-                <div class="card kpi"><b id="kAll">-</b><span>累計訪客</span><small id="kSince"></small></div>
+                <div class="card kpi"><b id="kAll">-</b><span>近 90 天訪客</span><small id="kSince"></small></div>
             </div>
             <div class="card">
                 <div class="chart-title"><h2>每天訪客人數（近 30 天）</h2><span>滑過或點長條看數字</span></div>
@@ -310,7 +310,7 @@
             document.getElementById('kMonth').textContent = fmt(t.month_visitors);
             document.getElementById('kMonthViews').textContent = `瀏覽 ${fmt(t.month_views)} 次`;
             document.getElementById('kAll').textContent = fmt(t.all_visitors);
-            document.getElementById('kSince').textContent = t.since ? `自 ${md(t.since)} 起` : '';
+            document.getElementById('kSince').textContent = t.since ? `自 ${md(t.since)} 起共瀏覽 ${fmt(t.all_views)} 次` : '';
             drawBars(d.days || []);
             drawHB('hbDevice', d.device, DEVN);
             drawHB('hbLang', d.lang, LANGN);

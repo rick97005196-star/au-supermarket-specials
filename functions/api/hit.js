@@ -6,6 +6,7 @@
  *
  * What is stored: the day, a random visitor id that the browser made up itself (no name, email,
  * IP or cookie from anyone else), phone/computer, language and chosen state. Robots are ignored.
+ * Visitor ids are kept 90 days (older rows are deleted with the first view of each day); daily view totals are kept.
  */
 import { checkOwner, authError } from '../_lib/auth.js';
 const SITE = 'au-supermarket-specials.pages.dev';
@@ -58,9 +59,14 @@ export async function onRequestPost({ request, env }) {
     const who = (await sha256((request.headers.get('CF-Connecting-IP') || 'x') + '|' + day + '|hit')).slice(0, 16);
     const lim = await db.prepare('INSERT INTO hit_rate (day, who, n) VALUES (?, ?, 1) ON CONFLICT(day, who) DO UPDATE SET n = n + 1 RETURNING n').bind(day, who).first();
     if (lim && lim.n > 300) return json({ ok: true, limited: true });
-    await db.batch([
+    const [, cnt] = await db.batch([
         db.prepare('INSERT OR IGNORE INTO visit_unique (day, vid, device, lang, region) VALUES (?, ?, ?, ?, ?)').bind(day, vid, device, lang, region),
-        db.prepare('INSERT INTO visit_count (day, views) VALUES (?, 1) ON CONFLICT(day) DO UPDATE SET views = views + 1').bind(day)
+        db.prepare('INSERT INTO visit_count (day, views) VALUES (?, 1) ON CONFLICT(day) DO UPDATE SET views = views + 1 RETURNING views').bind(day)
+    ]);
+    // the first view of each day deletes visitor ids older than 90 days and old flood counters (privacy policy)
+    if (cnt.results?.[0]?.views === 1) await db.batch([
+        db.prepare('DELETE FROM visit_unique WHERE day < ?').bind(brisbaneDay(89)),
+        db.prepare('DELETE FROM hit_rate WHERE day < ?').bind(brisbaneDay(1))
     ]);
     return json({ ok: true });
 }
@@ -71,8 +77,7 @@ export async function onRequestGet({ request, env }) {
     if (!env.FEEDBACK_DB) return json({ ok: false, error: 'no_db' });
     const db = env.FEEDBACK_DB;
     await ensureTables(db);
-    await db.prepare('DELETE FROM hit_rate WHERE day < ?').bind(brisbaneDay(1)).run();
-    const from30 = brisbaneDay(29), from7 = brisbaneDay(6), today = brisbaneDay();
+    const from30 = brisbaneDay(29), from7 = brisbaneDay(6), from90 = brisbaneDay(89), today = brisbaneDay();
     const [visitors, views, totals, device, lang, region] = await db.batch([
         db.prepare('SELECT day, COUNT(*) AS n FROM visit_unique WHERE day >= ? GROUP BY day').bind(from30),
         db.prepare('SELECT day, views AS n FROM visit_count WHERE day >= ?').bind(from30),
@@ -82,9 +87,9 @@ export async function onRequestGet({ request, env }) {
             (SELECT COUNT(DISTINCT vid) FROM visit_unique WHERE day >= ?) AS week_visitors,
             (SELECT COUNT(DISTINCT vid) FROM visit_unique WHERE day >= ?) AS month_visitors,
             (SELECT COALESCE(SUM(views), 0) FROM visit_count WHERE day >= ?) AS month_views,
-            (SELECT COUNT(DISTINCT vid) FROM visit_unique) AS all_visitors,
+            (SELECT COUNT(DISTINCT vid) FROM visit_unique WHERE day >= ?) AS all_visitors,
             (SELECT COALESCE(SUM(views), 0) FROM visit_count) AS all_views,
-            (SELECT MIN(day) FROM visit_count) AS since`).bind(today, today, from7, from30, from30),
+            (SELECT MIN(day) FROM visit_count) AS since`).bind(today, today, from7, from30, from30, from90),
         db.prepare('SELECT device AS k, COUNT(DISTINCT vid) AS n FROM visit_unique WHERE day >= ? GROUP BY device ORDER BY n DESC').bind(from30),
         db.prepare('SELECT lang AS k, COUNT(DISTINCT vid) AS n FROM visit_unique WHERE day >= ? GROUP BY lang ORDER BY n DESC').bind(from30),
         db.prepare('SELECT region AS k, COUNT(DISTINCT vid) AS n FROM visit_unique WHERE day >= ? GROUP BY region ORDER BY n DESC').bind(from30)
