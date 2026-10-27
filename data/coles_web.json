@@ -19114,7 +19114,7 @@
 },
 "last_full": 1793097307.0815086,
 "more": {
-"cursor": 100,
+"cursor": 105,
 "items": {
 "1000049": {
 "category": "Desserts (Gr) Jelly",
@@ -22188,6 +22188,21 @@
 "store": "Coles",
 "store_category": "Flour Plain",
 "title": "White Wings Plain Flour 1Kg",
+"unit_price": "$2.70/ 1kg",
+"was_price": 3.4
+},
+"119535": {
+"category": "Flour Plain",
+"discount_desc": "Save $0.70",
+"id": "119535",
+"image_url": "https://productimages.coles.com.au/productimages/1/119535.jpg",
+"price": 2.7,
+"price_display": "$2.70",
+"product_url": "https://www.coles.com.au/product/white-wings-self-raising-flour-1kg-119535",
+"save_amount": 0.7,
+"store": "Coles",
+"store_category": "Flour Plain",
+"title": "White Wings Self Raising Flour 1kg",
 "unit_price": "$2.70/ 1kg",
 "was_price": 3.4
 },
@@ -38691,6 +38706,36 @@
 "unit_price": "$15.81/ 1kg",
 "was_price": 5.5
 },
+"2747696": {
+"category": "Pickled Vegetables Capsicums",
+"discount_desc": "Save $0.60",
+"id": "2747696",
+"image_url": "https://productimages.coles.com.au/productimages/2/2747696.jpg",
+"price": 4.9,
+"price_display": "$4.90",
+"product_url": "https://www.coles.com.au/product/always-fresh-roasted-whole-peppers-330g-2747696",
+"save_amount": 0.6,
+"store": "Coles",
+"store_category": "Pickled Vegetables Capsicums",
+"title": "Always Fresh Roasted Whole Peppers 330g",
+"unit_price": "$14.85/ 1kg",
+"was_price": 5.5
+},
+"2747765": {
+"category": "Pickled Vegetables Tomatoes",
+"discount_desc": "Save $1.00",
+"id": "2747765",
+"image_url": "https://productimages.coles.com.au/productimages/2/2747765.jpg",
+"price": 4.0,
+"price_display": "$4.00",
+"product_url": "https://www.coles.com.au/product/always-fresh-sundried-tomatoes-strips-220g-2747765",
+"save_amount": 1.0,
+"store": "Coles",
+"store_category": "Pickled Vegetables Tomatoes",
+"title": "Always Fresh Sundried Tomatoes Strips 220g",
+"unit_price": "$18.18/ 1kg",
+"was_price": 5.0
+},
 "2747947": {
 "category": "Pickled Vegetables Olives",
 "discount_desc": "Save $0.80",
@@ -38780,6 +38825,21 @@
 "title": "Sandhurst Sandwich Stackers 500g",
 "unit_price": "$6.00/ 1kg",
 "was_price": 4.2
+},
+"2749749": {
+"category": "Cleaning Goods Multipurpose",
+"discount_desc": "Save $0.90",
+"id": "2749749",
+"image_url": "https://productimages.coles.com.au/productimages/2/2749749.jpg",
+"price": 7.8,
+"price_display": "$7.80",
+"product_url": "https://www.coles.com.au/product/bar-keepers-friend-cleanser-polish-powder-340g-2749749",
+"save_amount": 0.9,
+"store": "Coles",
+"store_category": "Cleaning Goods Multipurpose",
+"title": "Bar Keepers Friend Cleanser & Polish Powder 340g",
+"unit_price": "$2.29/ 100g",
+"was_price": 8.7
 },
 "2750034": {
 "category": "Protein & Meals Plant Based",
@@ -38915,6 +38975,21 @@
 "title": "Cadbury Dairy Milk Tropical Pineapple Chocolate Block 180g",
 "unit_price": "$3.06/ 100g",
 "was_price": 8.0
+},
+"2770279": {
+"category": "Pest Control Prsnl Insc Repellant",
+"discount_desc": "Save $2.98",
+"id": "2770279",
+"image_url": "https://productimages.coles.com.au/productimages/2/2770279.jpg",
+"price": 8.92,
+"price_display": "$8.92",
+"product_url": "https://www.coles.com.au/product/bushman-plus-20-deet-with-sunscreen-pump-100ml-2770279",
+"save_amount": 2.98,
+"store": "Coles",
+"store_category": "Pest Control Prsnl Insc Repellant",
+"title": "Bushman Plus 20% Deet With Sunscreen Pump 100mL",
+"unit_price": "$8.92/ 100mL",
+"was_price": 11.9
 },
 "2777518": {
 "category": "Sauces & Dressings Sauces",
@@ -83904,7 +83979,7 @@
 },
 "last_full": 1793006324.1574802,
 "pages": 153,
-"pages_done": 99
+"pages_done": 104
 },
 "pages": 28,
 "pages_done": 0,
