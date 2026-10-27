@@ -116,6 +116,11 @@ jobs:
           for f in data/catalogues.json data/coles_web.json data/woolies_web.json data/catalogue_items.json.gz data/ai_categories.json; do [ ! -f "$f" ] || git add "$f"; done
           git diff --staged --quiet || (git commit -m "Save scraper memory [skip ci]" && git pull --rebase --autostash -X theirs origin main && git push origin main) || echo "memory not saved this time"
 
+      - name: Use the newest pages
+        # a change to the pages may have been pushed since this run saved its data; do not put older pages back
+        if: steps.check.outputs.changed == 'true' && steps.check.outputs.block != 'true'
+        run: git fetch origin main && git checkout FETCH_HEAD -- static
+
       - name: Build CSS (pre-built Tailwind, fast on phones)
         if: steps.check.outputs.changed == 'true' && steps.check.outputs.block != 'true'
         run: npx -y tailwindcss@3 -c tailwind.config.js -i tailwind.input.css -o static/tw.css --minify || echo "CSS build skipped, using committed static/tw.css"

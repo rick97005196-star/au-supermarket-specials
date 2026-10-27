@@ -14,8 +14,10 @@ on:
       - 'tailwind.config.js'
   workflow_dispatch:
 
+# Own queue: in the specials update's queue a waiting run is replaced by the next one, and that run
+# only goes online when it has new data, so a change to the pages could stay offline
 concurrency:
-  group: weekly-specials-update
+  group: deploy-site
   cancel-in-progress: false
 
 permissions:
@@ -33,6 +35,9 @@ jobs:
           node-version: '22'
       - name: Build CSS
         run: npx -y tailwindcss@3 -c tailwind.config.js -i tailwind.input.css -o static/tw.css --minify || echo "using committed static/tw.css"
+      - name: Use the newest data
+        # the specials update may have put newer data online while this ran; do not put older data back
+        run: git fetch origin main && git checkout FETCH_HEAD -- static/data
       - name: Deploy to Cloudflare Pages
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}

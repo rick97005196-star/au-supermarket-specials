@@ -70,10 +70,12 @@ jobs:
           exit 1
       - name: Put the new regular prices online
         # GitHub does not start the deploy workflow for this bot's own push, so the lists go online here
+        # (newest pages and data from main first, so nothing someone else just put online is put back)
         if: ${{ !cancelled() && steps.save.outputs.online == 'true' }}
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
         run: |
+          git fetch origin main && git checkout FETCH_HEAD -- static
           npx -y tailwindcss@3 -c tailwind.config.js -i tailwind.input.css -o static/tw.css --minify || echo "CSS build skipped, using committed static/tw.css"
           npx wrangler pages deploy static --project-name=au-supermarket-specials --branch=main
       - name: Check the new regular prices are online
