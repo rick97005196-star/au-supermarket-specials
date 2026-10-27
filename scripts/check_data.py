@@ -67,9 +67,10 @@ def ranges(items):
 
 
 def fingerprint(items, stats, translations):
-    """Content hash that ignores values which change on every run (ids, timestamps)."""
+    """Content hash that ignores values which change on every run (ids, timestamps) and the visitor-interest
+    popularity score and popular badge, so a few more page views alone do not put the site online again."""
     rows = sorted(
-        json.dumps({k: v for k, v in it.items() if k not in ('id',)}, ensure_ascii=False, sort_keys=True)
+        json.dumps({k: v for k, v in it.items() if k not in ('id', 'popularity_score', 'is_popular')}, ensure_ascii=False, sort_keys=True)
         for it in items or []
     )
     st = {k: v for k, v in (stats or {}).items() if k not in ('last_updated', 'data_updated_at')}

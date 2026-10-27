@@ -17,4 +17,4 @@ jobs:
       - name: Deploy preview
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-        run: npx wrangler pages deploy static --project-name=au-supermarket-specials --branch=preview
+        run: npx -y wrangler@4 pages deploy static --project-name=au-supermarket-specials --branch=preview

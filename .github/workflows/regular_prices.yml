@@ -77,7 +77,7 @@ jobs:
         run: |
           git fetch origin main && git checkout FETCH_HEAD -- static
           npx -y tailwindcss@3 -c tailwind.config.js -i tailwind.input.css -o static/tw.css --minify || echo "CSS build skipped, using committed static/tw.css"
-          npx wrangler pages deploy static --project-name=au-supermarket-specials --branch=main
+          npx -y wrangler@4 pages deploy static --project-name=au-supermarket-specials --branch=main
       - name: Check the new regular prices are online
         if: ${{ !cancelled() && steps.save.outputs.online == 'true' }}
         run: |

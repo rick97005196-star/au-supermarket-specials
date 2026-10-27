@@ -41,6 +41,7 @@ permissions:
 jobs:
   update-and-deploy:
     runs-on: ubuntu-24.04   # fixed version: "latest" switches to Ubuntu 26 from 19 Oct 2026
+    timeout-minutes: 120   # usually a few minutes, longest seen 62; a stuck run must not hold the queue for 6 hours
 
     steps:
       - name: Checkout Code
@@ -102,7 +103,14 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action Bot"
           for f in data/specials.db data/catalogues.json data/coles_web.json data/woolies_web.json data/catalogue_items.json.gz data/ai_categories.json data/interest.json static/data/specials.json static/data/stats.json static/data/translations.json; do [ ! -f "$f" ] || git add "$f"; done
-          git diff --staged --quiet || (git commit -m "Auto-update weekly specials & translations [skip ci]" && git pull --rebase -X theirs origin main && git push origin main)
+          git diff --staged --quiet && exit 0
+          git commit -m "Auto-update weekly specials & translations [skip ci]"
+          for i in 1 2 3; do
+            git pull --rebase -X theirs origin main && git push origin main && exit 0
+            git rebase --abort 2>/dev/null || true
+            sleep 20
+          done
+          exit 1
 
       # ---- The scrapers' saved copies (catalogues already downloaded, half-price lists read so far)
       #      are kept even when the website itself did not change, so the next update does not have
@@ -130,7 +138,7 @@ jobs:
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
         run: |
-          npx wrangler pages deploy static --project-name=au-supermarket-specials --branch=main
+          npx -y wrangler@4 pages deploy static --project-name=au-supermarket-specials --branch=main
 
       # ---- Layer 4: make sure the live website really shows the new data ----
       - name: Verify live website

@@ -221,7 +221,7 @@ html.dark .ozwh-hubnav a:focus-visible{outline-color:#ECEAE4}
 .seg-btn.is-active { background: var(--surface); color: var(--ink); font-weight: 600; box-shadow: var(--shadow-md); }
 .seg-btn .seg-meta { font-size: 11px; font-weight: 500; color: var(--ink-3); }
 .seg-btn .seg-tag {
-    font-size: 10px; font-weight: 600; padding: 2px 7px; border-radius: 999px;
+    font-size: 11px; font-weight: 600; padding: 2px 7px; border-radius: 999px;
     background: var(--next-soft); color: var(--next);
 }
 .seg-lg .seg-btn { padding: 10px 20px; font-size: 14px; }
@@ -328,7 +328,7 @@ html.dark .p-media { background: #f4f3ef; border-bottom-color: transparent; }
 .p-flag {
     position: absolute; z-index: 2; top: 10px; right: 10px;
     display: inline-flex; align-items: center; gap: 4px;
-    font-size: 10px; font-weight: 600; padding: 3px 8px; border-radius: 999px;
+    font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 999px;
     background: rgba(255,255,255,.92); color: #8a5a00; box-shadow: 0 0 0 1px rgba(0,0,0,.06);
 }
 .p-flag.half { right: auto; left: 10px; background: var(--sale); color: #fff; box-shadow: none; }
