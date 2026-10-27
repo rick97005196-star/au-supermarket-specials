@@ -115,9 +115,13 @@ TRANSLATION_ALERT = 30  # more products with translation problems than this -> e
 
 def pre():
     items = load(os.path.join(DATA, 'specials.json'))
+    if os.path.exists(os.path.join(DATA, 'specials-next.json')):   # next week has its own file
+        items += load(os.path.join(DATA, 'specials-next.json'))
     stats = load(os.path.join(DATA, 'stats.json'))
     trans = load(os.path.join(DATA, 'translations.json'))
     prev_items = previous('static/data/specials.json')
+    if prev_items is not None:
+        prev_items += previous('static/data/specials-next.json') or []
     prev_stats = previous('static/data/stats.json')
     prev_trans = previous('static/data/translations.json')
 

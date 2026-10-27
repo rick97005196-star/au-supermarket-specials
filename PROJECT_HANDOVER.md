@@ -23,9 +23,9 @@
 - **前端**：純原生 HTML5 + Vanilla JavaScript + CSS（Tailwind 實用類別風格設計、深色/淺色模式、完美支援手機與桌面 RWD）。零 npm 繁重構建依賴，靜態載入速度極快。
 - **後端 API**：Python 3.10+ / FastAPI / Uvicorn。
 - **資料庫**：SQLite3 (`data/specials.db`)。
-- **爬蟲工具**：`requests` + `beautifulsoup4`（高效純 HTTP 爬蟲）+ 備用 `selenium`。
+- **爬蟲工具**：`requests` + `beautifulsoup4`（高效純 HTTP 爬蟲）+ `curl_cffi`。
 - **AI 翻譯引擎**：Google Gemini API (`gemini-2.5-flash`) + 本地澳洲超市專業名詞字典修復庫。
-- **CI/CD 自動化**：GitHub Actions 爬取與部署 (`.github/workflows/auto_update.yml`)。準時啟動靠 Cloudflare 定時器 (`cloudflare/update-timer`，週一至週三每 30 分鐘、週三 00:01 換週、週四至週日每天兩次)，GitHub 自己的排程常被略過，只當備援；定時器停擺時會寄信通知 (`scripts/check_timer.py`)。
+- **CI/CD 自動化**：GitHub Actions 爬取與部署 (`.github/workflows/auto_update.yml`)。準時啟動靠 Cloudflare 定時器 (`cloudflare/update-timer`，週一至週三每 30 分鐘、週三 00:01 換週、週四至週日每天兩次)，GitHub 自己的排程常被略過，只當備援：備援排程開始時，若定時器已經啟動過最近一個時段的更新，就自動跳過、不重複更新；定時器停擺時會寄信通知 (`scripts/check_timer.py`)。
 - **託管平台**：Cloudflare Pages (Direct Upload / Wrangler)。
 
 ---
@@ -57,9 +57,10 @@ au-supermarket-specials/
 │   │   ├── app.js                # 前端核心邏輯 (篩選、搜尋、多語切換、購物清單)
 │   │   └── i18n.js               # UI 介面多語系文本字典
 │   └── data/
-│       ├── specials.json         # 匯出的全站特價商品快照 (供靜態網站讀取)
-│       ├── stats.json            # 統計數據 (各超市數量、半價數量、檔期)
-│       └── translations.json     # 全商品翻譯快取字典 (超過 4,000 筆)
+│       ├── specials.json         # 匯出的本週特價商品 (網站一打開就讀)
+│       ├── specials-next.json    # 下週預告商品 (切到下週、有收藏或下週開始時才讀)
+│       ├── stats.json            # 統計數據 (各超市數量、半價數量、檔期；next_ranges = 下週檔期)
+│       └── translations.json     # 全商品翻譯快取字典 (超過 4,000 筆；只存在 repo，不上傳網站)
 ├── categories.py                 # 13 大分類器 (正則規則) 與人氣熱門商品評分演算法
 ├── database.py                   # SQLite 操作層 (增刪查改、防清空保護機制)
 ├── deploy_cloudflare.bat         # 本地一鍵部署至 Cloudflare 批次檔

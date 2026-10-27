@@ -20,6 +20,7 @@ on:
   # 1) Cloudflare 定時器（cloudflare/update-timer）每 30 分鐘準時從這裡啟動更新（主要方式）
   # 2) 也可以在 GitHub 網頁 Actions 標籤上一鍵手動立即執行
   # 上面 GitHub 自己的排程保留當備援：它常被略過，但定時器出問題時至少還有它
+  # 備援排程開始時，若定時器已經啟動過最近一次的更新，就自動跳過，不重複更新
   workflow_dispatch:
     inputs:
       source:
@@ -39,7 +40,28 @@ permissions:
   actions: read      # only to check that the Cloudflare timer is still starting updates
 
 jobs:
+  # ---- GitHub's backup schedule: did the Cloudflare timer already start this update? (then there
+  #      is nothing to do) Also emails the owner if the timer stopped, e.g. its key expired ----
+  timer:
+    if: github.event_name == 'schedule'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    outputs:
+      covered: ${{ steps.check.outputs.covered }}
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          sparse-checkout: scripts
+      - name: Check the Cloudflare update timer
+        id: check
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 scripts/check_timer.py
+
   update-and-deploy:
+    needs: timer
+    # runs unless the timer already started this update (also when the timer check failed or was skipped)
+    if: ${{ !cancelled() && needs.timer.outputs.covered != 'true' }}
     runs-on: ubuntu-24.04   # fixed version: "latest" switches to Ubuntu 26 from 19 Oct 2026
     timeout-minutes: 120   # usually a few minutes, longest seen 62; a stuck run must not hold the queue for 6 hours
 
@@ -102,7 +124,7 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action Bot"
-          for f in data/specials.db data/catalogues.json data/coles_web.json data/woolies_web.json data/catalogue_items.json.gz data/ai_categories.json data/interest.json static/data/specials.json static/data/stats.json static/data/translations.json; do [ ! -f "$f" ] || git add "$f"; done
+          for f in data/specials.db data/catalogues.json data/coles_web.json data/woolies_web.json data/catalogue_items.json.gz data/ai_categories.json data/interest.json static/data/specials.json static/data/specials-next.json static/data/stats.json static/data/translations.json; do [ ! -f "$f" ] || git add "$f"; done
           git diff --staged --quiet && exit 0
           git commit -m "Auto-update weekly specials & translations [skip ci]"
           for i in 1 2 3; do
@@ -138,6 +160,7 @@ jobs:
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
         run: |
+          rm -f static/data/translations.json   # 7 MB the website never reads (specials.json carries the translations); stays in the repo
           npx -y wrangler@4 pages deploy static --project-name=au-supermarket-specials --branch=main
 
       # ---- Layer 4: make sure the live website really shows the new data ----
@@ -153,11 +176,3 @@ jobs:
         run: |
           echo "::error::需要注意：$ALERT"
           exit 1
-
-      # ---- Is the Cloudflare timer still starting the updates? (checked when GitHub's backup
-      #      schedule ran; emails the owner if the timer stopped, e.g. its key expired) ----
-      - name: Check the Cloudflare update timer
-        if: github.event_name == 'schedule'
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: python scripts/check_timer.py

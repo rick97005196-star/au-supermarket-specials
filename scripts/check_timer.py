@@ -1,10 +1,13 @@
 """
-Is the Cloudflare update timer still starting the updates?
+Is the Cloudflare update timer still starting the updates, and has it already started this one?
 
-Runs at the end of every update that GitHub's own (backup) schedule started. The Cloudflare timer
-marks the updates it starts with "Cloudflare" in their title. If the timer has worked before but has
-not started anything for too long (for example its GitHub key expired), this check fails, and GitHub
-emails the owner. Before the timer has ever run, it only prints a note.
+Runs first in every update that GitHub's own (backup) schedule started. The Cloudflare timer marks
+the updates it starts with "Cloudflare" in their title.
+  * If the timer already started an update for its latest planned time, the backup has nothing to
+    add: this writes covered=true and the workflow skips the update.
+  * If the timer has worked before but has not started anything for too long (for example its
+    GitHub key expired), this check fails, and GitHub emails the owner. Before the timer has ever
+    run, it only prints a note.
 
     python scripts/check_timer.py          (needs GH_TOKEN and GITHUB_REPOSITORY, set by GitHub Actions)
 """
@@ -18,6 +21,26 @@ TIMER_MARK = 'Cloudflare'
 # longest normal gap between two timer starts, plus room for an update that was already queued
 MAX_GAP_BUSY_DAYS = datetime.timedelta(hours=3)     # Mon-Wed: every 30 minutes
 MAX_GAP_QUIET_DAYS = datetime.timedelta(hours=25)   # Thu-Sun: twice a day
+BRISBANE = datetime.timedelta(hours=10)             # Queensland has no daylight saving
+
+
+def is_timer_slot(b):
+    """Does the timer start an update at this Brisbane minute? The same plan as shouldRun() in
+    cloudflare/update-timer/src/timer.js (tests/test_check_timer.py checks that they agree)."""
+    wd, h, m = b.weekday(), b.hour, b.minute        # Monday = 0
+    if wd == 2 and h == 0 and m == 1:
+        return True
+    if wd <= 2:
+        return m in (17, 47)
+    return m == 17 and h in (10, 22)
+
+
+def latest_slot(now):
+    """The timer's last planned start at or before now (both UTC)."""
+    t = (now + BRISBANE).replace(second=0, microsecond=0)
+    while not is_timer_slot(t):
+        t -= datetime.timedelta(minutes=1)
+    return t - BRISBANE
 
 
 def latest_timer_start(runs):
@@ -27,6 +50,13 @@ def latest_timer_start(runs):
     if not times:
         return None
     return max(datetime.datetime.fromisoformat(t.replace('Z', '+00:00')) for t in times)
+
+
+def covered(runs, now):
+    """Did the timer already start an update for its latest planned time? A cancelled or failed one
+    does not count (conclusion None = still waiting or running): then the backup does the update."""
+    last = latest_timer_start([r for r in runs if r.get('conclusion') in (None, 'success')])
+    return last is not None and last >= latest_slot(now) - datetime.timedelta(minutes=1)
 
 
 def verdict(runs, now):
@@ -59,10 +89,17 @@ def fetch_runs():
 def main():
     try:
         runs = fetch_runs()
-    except Exception as e:                         # cannot check: never fail the update because of it
+    except Exception as e:                         # cannot check: never fail or skip the update because of it
         print(f'::notice::無法檢查 Cloudflare 定時器（{e}）')
         return 0
-    state, msg = verdict(runs, datetime.datetime.now(datetime.timezone.utc))
+    now = datetime.datetime.now(datetime.timezone.utc)
+    done = covered(runs, now)
+    if os.environ.get('GITHUB_OUTPUT'):
+        with open(os.environ['GITHUB_OUTPUT'], 'a', encoding='utf-8') as f:
+            f.write(f"covered={'true' if done else 'false'}\n")
+    if done:
+        print('::notice::Cloudflare 定時器已經啟動了這一次的更新，備援排程這次不重複更新')
+    state, msg = verdict(runs, now)
     if state == 'stopped':
         print(f'::error::{msg}')
         return 1

@@ -206,8 +206,12 @@ def load_current():
     root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     with open(os.path.join(root, 'static', 'data', 'translations.json'), encoding='utf-8') as f:
         tr = json.load(f)
-    with open(os.path.join(root, 'static', 'data', 'specials.json'), encoding='utf-8') as f:
-        items = json.load(f)
+    items = []
+    for name in ('specials.json', 'specials-next.json'):   # next week has its own file
+        path = os.path.join(root, 'static', 'data', name)
+        if os.path.exists(path):
+            with open(path, encoding='utf-8') as f:
+                items += json.load(f)
     return tr, sorted({x['title'] for x in items})
 
 

@@ -177,11 +177,13 @@ for (period, cat), members in groups.items():
             break
 print(f"Popular badge: {sum(1 for x in items if x['is_popular'])} of {len(items)} items")
 
-with open('static/data/specials.json', 'w', encoding='utf-8') as f:
-    # compact JSON: this file is downloaded by every visitor (mostly on mobile data)
-    json.dump(items, f, ensure_ascii=False, separators=(',', ':'))
-
-print(f"Exported {len(items)} specials to static/data/specials.json (with translations)")
+# Two files: every visitor downloads this week's (mostly on mobile data); next week's only when it is
+# looked at or starts. Compact JSON. specials-next.json is always written, also empty, so an old one never stays.
+_next = [it for it in items if it.get('period') == 'next']
+for _name, _part in (('specials.json', [it for it in items if it.get('period') != 'next']), ('specials-next.json', _next)):
+    with open('static/data/' + _name, 'w', encoding='utf-8') as f:
+        json.dump(_part, f, ensure_ascii=False, separators=(',', ':'))
+    print(f"Exported {len(_part)} specials to static/data/{_name} (with translations)")
 
 # How the products no rule recognised were placed (read by scripts/check_data.py; not published)
 _report = {'ai': [], 'aisle': [], 'guessed': []}
@@ -244,6 +246,8 @@ stats['base_region'] = BASE_REGION
 stats['regions'] = {r: _region_stats(r) for r in ALL_REGIONS}
 for period in ('current', 'next'):   # the default numbers are Queensland's
     stats[period].update(stats['regions'][BASE_REGION][period])
+# The weeks in specials-next.json: the site knows when next week starts without downloading it
+stats['next_ranges'] = sorted({it['date_range'] for it in _next if it.get('date_range')})
 # When the specials were last refreshed (UTC, ISO format) - shown on the site as "updated x hours ago"
 stats['data_updated_at'] = datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')
 with open('static/data/stats.json', 'w', encoding='utf-8') as f:

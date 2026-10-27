@@ -605,14 +605,20 @@ async function apiFetch(url, options) {
     return fetch(url, options);
 }
 
-// In-memory high-speed cache for static JSON files
+// In-memory high-speed cache for static JSON files (a download still running is kept too, so callers at the same time share one request)
 const staticJsonCache = new Map();
 
 // Helper to fetch static JSON that works seamlessly on both local server and Cloudflare Pages
-async function fetchStaticJson(filename) {
-    if (staticJsonCache.has(filename)) {
-        return staticJsonCache.get(filename);
+function fetchStaticJson(filename) {
+    if (!staticJsonCache.has(filename)) {
+        const loading = downloadStaticJson(filename);
+        staticJsonCache.set(filename, loading);
+        // a failed download is tried again next time
+        loading.then(data => { if (data === null && staticJsonCache.get(filename) === loading) staticJsonCache.delete(filename); });
     }
+    return Promise.resolve(staticJsonCache.get(filename));
+}
+async function downloadStaticJson(filename) {
     const candidates = [
         `/data/${filename}`,
         `/static/data/${filename}`,
@@ -624,9 +630,7 @@ async function fetchStaticJson(filename) {
             const contentType = res.headers.get('content-type') || '';
             // Prevent parsing HTML 404 fallback as JSON
             if (res.ok && !contentType.includes('text/html')) {
-                const data = await res.json();
-                staticJsonCache.set(filename, data);
-                return data;
+                return await res.json();
             }
         } catch (e) {}
     }
@@ -651,6 +655,16 @@ let currentRegion = (() => {
     return DEFAULT_REGION;
 })();
 let rawSpecials = null;
+let rawHasNext = false;   // next week's specials (specials-next.json) are in rawSpecials
+
+// Next week's specials are a separate file, loaded only when needed: the next-week tab, the favourites
+// panel, or once next week has started (rollWeek then moves them into this week)
+function nextWeekDue(st) {
+    st = st || globalStats || {};
+    const ranges = st.next_ranges || (st.next && st.next.date_range ? [st.next.date_range] : []);
+    const today = _brisbaneToday();
+    return ranges.some(r => { const w = parseWeekRange(r); return w && w.start <= today; });
+}
 
 function regionize(list) {
     const r = currentRegion;
@@ -696,20 +710,37 @@ function regularPrices(reg) {
         .map(it => Object.assign(it, { period: 'current', _regular: true }));
 }
 
-async function getStaticSpecials() {
-    if (!rawSpecials) {
-        const [data, reg] = await Promise.all([fetchStaticJson('specials.json'), fetchStaticJson('regular.json')]);
-        if (Array.isArray(data) && data.length) rawSpecials = data.map(sanitizeProduct).filter(Boolean);
-        else return [];        // failed load: try again next time instead of remembering "no specials"
-        staticRegular = regularPrices(reg);
-        weekRoll = null;
-        rawSpecials = rollWeek(rawSpecials);
-        if (weekRoll && globalStats) updateStatsDisplay();
+async function getStaticSpecials(force) {
+    const withNext = force || currentPeriod === 'next' || nextWeekDue(globalStats || await fetchStaticJson('stats.json'));
+    if (!rawSpecials || (withNext && !rawHasNext)) {
+        const [data, reg, next] = await Promise.all([fetchStaticJson('specials.json'), fetchStaticJson('regular.json'),
+                                                     withNext ? fetchStaticJson('specials-next.json') : null]);
+        const ok = Array.isArray(data) && data.length;
+        if (!ok && !rawSpecials) return [];   // failed load: try again next time instead of remembering "no specials"
+        if (ok && (!rawSpecials || Array.isArray(next))) {   // next week's file missing: keep what is shown
+            // an older specials.json still carries next week itself (the two files may go online a moment apart)
+            const all = Array.isArray(next) ? data.filter(x => x && x.period !== 'next').concat(next) : data;
+            rawHasNext = Array.isArray(next) || data.some(x => x && x.period === 'next');
+            rawSpecials = all.map(sanitizeProduct).filter(Boolean);
+            staticRegular = regularPrices(reg);
+            weekRoll = null;
+            rawSpecials = rollWeek(rawSpecials);
+            if (weekRoll && globalStats) updateStatsDisplay();
+            staticSpecials = regionize(rawSpecials);
+        }
     }
     if (!staticSpecials || staticSpecials._region !== currentRegion || !staticSpecials.length) {
         staticSpecials = regionize(rawSpecials);
     }
     return staticSpecials;
+}
+
+// The favourites panel also counts next week's specials: fetch them after the page is shown
+let nextLoading = null;
+function loadNextInBackground() {
+    if (rawHasNext || nextLoading) return;
+    nextLoading = getStaticSpecials(true).then(() => { if (rawHasNext) renderFavPanel(); })
+        .catch(() => {}).finally(() => { nextLoading = null; });
 }
 
 // The full Woolworths / Coles regular price lists (static/data/regular-woolworths.json and regular-coles.json, read
@@ -2128,6 +2159,7 @@ async function loadSpecials() {
         lastRegularCount = filtered.filter(isRegularPrice).length;
         resultsCountText.textContent = resultsCountLabel();
         renderFavPanel();
+        if (!rawHasNext && loadFavorites().length) loadNextInBackground();   // next week's favourites count
         renderFavSearchButton();
         const notice = document.getElementById('activeFilterNotice');
         if (notice) notice.innerHTML = (favOnly ? `<button type="button" class="tag is-accent" onclick="toggleFavOnly()"><i class="fa-solid fa-heart text-[9px]"></i> ${t('fav_filter_on')} ✕</button>` : '');
@@ -3303,10 +3335,13 @@ function applyWeekRollToStats() {
     globalStats._rolled = weekRoll.day;
 }
 
-function rollIfDue() {
+async function rollIfDue() {
     if (!rawSpecials) return;
+    let changed = false;
+    // next week has started: fetch its file first (that load moves the week itself)
+    if (!rawHasNext && nextWeekDue()) { await getStaticSpecials(); changed = rawHasNext; }
     const rolled = rollWeek(rawSpecials);
-    if (rolled === rawSpecials) return;
+    if (rolled === rawSpecials && !changed) return;
     rawSpecials = rolled;
     regularLists = null;      // its "on special this week" set was built from last week
     staticSpecials = regionize(rawSpecials);
@@ -4055,6 +4090,7 @@ async function checkForNewData(force) {
         staticJsonCache.clear();
         staticJsonCache.set('stats.json', fresh);
         rawSpecials = null;
+        rawHasNext = false;
         staticSpecials = [];
         globalStats = fresh;
         updateStatsDisplay();
