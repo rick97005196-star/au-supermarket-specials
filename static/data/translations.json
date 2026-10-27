@@ -11195,9 +11195,10 @@
     "src": "ai"
   },
   "Heinz Seriously Good Mayonnaise Vegan Mayo 270mL": {
-    "zh": "亨氏 Heinz 真正好味純素美乃滋 (270毫升)",
-    "ja": "ハインツ シリアスリー・グッド ヴィーガンマヨネーズ 植物性（270ml）",
-    "ko": "하인즈 시리어슬리 굿 비건 마요네즈 (270ml)"
+    "zh": "Heinz Seriously Good 純素美乃滋 270毫升",
+    "ja": "Heinz Seriously Good ヴィーガンマヨネーズ 270mL",
+    "ko": "Heinz Seriously Good 비건 마요네즈 270mL",
+    "src": "ai"
   },
   "Smith's Mini Canister 65-150g": {
     "zh": "Smith's 迷你罐裝洋芋片 65-150克",
@@ -159356,15 +159357,88 @@
     "src": "ai"
   },
   "Golden Circle Tetra Drink Apple Raspberry 6 Pack 1.5L": {
-    "zh": "Golden Circle 蘋果覆盆莓果汁 250毫升 x 6入",
-    "ja": "Golden Circle アップルラズベリージュース 250ml x 6個入",
-    "ko": "Golden Circle 사과 라즈베리 주스 250ml x 6개입",
-    "src": "ai"
+    "zh": "Golden Circle 蘋果覆盆莓果汁 6入 1.5公升",
+    "ja": "Golden Circle アップルラズベリージュース 6個入 1.5L",
+    "ko": "Golden Circle 사과 라즈베리 주스 6개입 1.5L",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Sabrini Green Chilli Chutney 300g": {
     "zh": "Sabrini 青辣椒酸辣醬 300克",
     "ja": "Sabrini 青唐辛子チャツネ 300g",
     "ko": "Sabrini 청고추 처트니 300g",
+    "src": "ai"
+  },
+  "Thayers Unscented Alcohol Free Toner With Witch Hazel & Aloe Vera 355mL": {
+    "zh": "Thayers 無香精無酒精金縷梅蘆薈化妝水 355毫升",
+    "ja": "Thayers 無香料アルコールフリーウィッチヘーゼル＆アロエベラ化粧水 355mL",
+    "ko": "Thayers 무향 알코올 프리 위치하젤 & 알로에 베라 토너 355mL",
+    "src": "ai"
+  },
+  "Praise Dressing Balsamic 99% Fat Free 25% Less Sugar 330mL": {
+    "zh": "Praise 巴薩米克油醋醬 99%脫脂減糖25% 330毫升",
+    "ja": "Praise バルサミコドレッシング 99%脂肪ゼロ・糖質25%オフ 330mL",
+    "ko": "Praise 발사믹 드레싱 99% 무지방 25% 저당 330mL",
+    "src": "ai"
+  },
+  "Praise Dressing French Fat Free 25% Less Sugar 330mL": {
+    "zh": "Praise 法式沙拉醬 脫脂減糖25% 330毫升",
+    "ja": "Praise フレンチドレッシング 脂肪ゼロ・糖質25%オフ 330mL",
+    "ko": "Praise 프렌치 드레싱 무지방 25% 저당 330mL",
+    "src": "ai"
+  },
+  "Coles Deli Roast Capsicum Strips 130g": {
+    "zh": "Coles Deli 烤甜椒條 130克",
+    "ja": "Coles Deli ローストパプリカストリップ 130g",
+    "ko": "Coles Deli 구운 파프리카 스트립 130g",
+    "src": "ai"
+  },
+  "Milklab Oat Milk 250mL": {
+    "zh": "Milklab 燕麥奶 250毫升",
+    "ja": "Milklab オーツミルク 250mL",
+    "ko": "Milklab 오트밀크 250mL",
+    "src": "ai"
+  },
+  "Buontempo Gluten Free Spirals 600g": {
+    "zh": "Buontempo 無麩質螺旋麵 600克",
+    "ja": "Buontempo グルテンフリー スパイラルパスタ 600g",
+    "ko": "Buontempo 글루텐 프리 스파이럴 파스타 600g",
+    "src": "ai"
+  },
+  "Buontempo Gluten Free Penne 600g": {
+    "zh": "Buontempo 無麩質筆管麵 600克",
+    "ja": "Buontempo グルテンフリー ペンネ 600g",
+    "ko": "Buontempo 글루텐 프리 펜네 600g",
+    "src": "ai"
+  },
+  "Lyre's Classico Grande Sparkling 750mL": {
+    "zh": "Lyre's Classico Grande 無酒精氣泡酒 750毫升",
+    "ja": "Lyre's Classico Grande ノンアルコールスパークリング 750mL",
+    "ko": "Lyre's Classico Grande 무알콜 스파클링 750mL",
+    "src": "ai"
+  },
+  "Healtheries Tasty Twist Chicken Multipack Chips Lunchbox Friendly Kids Snacks 100g": {
+    "zh": "Healtheries 雞汁風味薯條 綜合包兒童點心 100克",
+    "ja": "Healtheries チキン味チップス マルチパック キッズスナック 100g",
+    "ko": "Healtheries 치킨맛 칩 멀티팩 어린이 간식 100g",
+    "src": "ai"
+  },
+  "True Fruit Strips Tropicana 120g": {
+    "zh": "True Fruit 熱帶水果條 120克",
+    "ja": "True Fruit トロピカルフルーツストリップ 120g",
+    "ko": "True Fruit 트로피칼 과일 스트립 120g",
+    "src": "ai"
+  },
+  "Tic Tac Orange Mints 24g": {
+    "zh": "Tic Tac 橘子口味薄荷糖 24克",
+    "ja": "Tic Tac オレンジミント 24g",
+    "ko": "Tic Tac 오렌지 민트 24g",
+    "src": "ai"
+  },
+  "Royal Fields Semolina Coarse 1kg": {
+    "zh": "Royal Fields 粗粒小麥粉 1公斤",
+    "ja": "Royal Fields セモリナ粉（粗挽き） 1kg",
+    "ko": "Royal Fields 세몰리나 가루(거친 입자) 1kg",
     "src": "ai"
   }
 }
