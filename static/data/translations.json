@@ -162141,10 +162141,11 @@
     "src": "ai"
   },
   "Coco Health Bondi Skin 55mL": {
-    "zh": "Coco Health Bondi Skin 精華液 55毫升",
-    "ja": "Coco Health Bondi Skin 55ml",
-    "ko": "Coco Health Bondi Skin 55ml",
-    "src": "ai"
+    "zh": "Coco Health Bondi Skin 55毫升",
+    "ja": "Coco Health Bondi Skin 55mL",
+    "ko": "Coco Health Bondi Skin 55mL",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Nature's Own Magnesium 200 Pack": {
     "zh": "Nature's Own 鎂膠囊 200入",
@@ -162342,6 +162343,162 @@
     "zh": "L'Oreal Age Perfect 雙效抗老精華液 15毫升",
     "ja": "L'Oreal Age Perfect エイジングケア セラム Le Duo 15mL",
     "ko": "L'Oreal Age Perfect 안티에이징 세럼 Le Duo 15mL",
+    "src": "ai"
+  },
+  "Maybelline Instant Perfector 4-In-1 Glow Light 20mL": {
+    "zh": "Maybelline 4合1妝前乳 光澤亮白款 20毫升",
+    "ja": "Maybelline インスタントパーフェクター 4-in-1 グロウ ライト 20ml",
+    "ko": "Maybelline 인스턴트 퍼펙터 4-in-1 글로우 라이트 20ml",
+    "src": "ai"
+  },
+  "Maybelline Superstay 24hr Lip Petal 4.1mL": {
+    "zh": "Maybelline 持久唇釉 Petal 4.1毫升",
+    "ja": "Maybelline 24時間持続リップ Petal 4.1mL",
+    "ko": "Maybelline 24시간 지속 립 Petal 4.1mL",
+    "src": "ai"
+  },
+  "Garnier Pure Active Charcoal Cleansing Gel 250mL": {
+    "zh": "Garnier 活碳淨化潔面凝露 250毫升",
+    "ja": "Garnier ピュア アクティブ チャコール クレンジング ジェル 250mL",
+    "ko": "Garnier 퓨어 액티브 차콜 클렌징 젤 250mL",
+    "src": "ai"
+  },
+  "Garnier Vitamin C Micellar Cleansing Water 700mL": {
+    "zh": "Garnier 維生素C超效溫和卸妝水 700毫升",
+    "ja": "Garnier ビタミンC ミセラ クレンジングウォーター 700mL",
+    "ko": "Garnier 비타민 C 미셀라 클렌징 워터 700mL",
+    "src": "ai"
+  },
+  "Cenovis Women's Multivitamin Capsules 100 Pack": {
+    "zh": "Cenovis 女性專用綜合維他命膠囊 100入",
+    "ja": "Cenovis ウィメンズ マルチビタミン カプセル 100個入",
+    "ko": "Cenovis 우먼스 멀티비타민 캡슐 100개입",
+    "src": "ai"
+  },
+  "Coles Carrots 1Kg": {
+    "zh": "Coles 紅蘿蔔 1公斤",
+    "ja": "Coles キャロット 1kg",
+    "ko": "Coles 당근 1kg",
+    "src": "ai"
+  },
+  "Nature's Own Vitamin D3 Capsules 200 Pack": {
+    "zh": "Nature's Own 維生素D3膠囊 200入",
+    "ja": "Nature's Own ビタミンD3 カプセル 200個入",
+    "ko": "Nature's Own 비타민 D3 캡슐 200개입",
+    "src": "ai"
+  },
+  "Coles Iceberg Lettuce 1 Each": {
+    "zh": "Coles 美生菜",
+    "ja": "Coles アイスバーグ レタス",
+    "ko": "Coles 양상추",
+    "src": "ai"
+  },
+  "Coles Cucumbers Continental Loose 1 Each": {
+    "zh": "Coles 櫛瓜",
+    "ja": "Coles コンチネンタル キュウリ",
+    "ko": "Coles 오이",
+    "src": "ai"
+  },
+  "Cenovis Men's Multivitamin Capsules 100 Pack": {
+    "zh": "Cenovis 男性專用綜合維他命膠囊 100入",
+    "ja": "Cenovis メンズ マルチビタミン カプセル 100個入",
+    "ko": "Cenovis 맨즈 멀티비타민 캡슐 100개입",
+    "src": "ai"
+  },
+  "Coles Red Capsicum Loose approx. 220g": {
+    "zh": "Coles 紅椒 約220克",
+    "ja": "Coles レッド パプリカ 約220g",
+    "ko": "Coles 레드 파프리카 약 220g",
+    "src": "ai"
+  },
+  "Natures Own Glucosamine With Chondroitin Tablets 120 Pack": {
+    "zh": "Nature's Own 葡萄糖胺加軟骨素錠 120入",
+    "ja": "Nature's Own グルコサミン コンドロイチン タブレット 120個入",
+    "ko": "Nature's Own 글루코사민 콘드로이친 타블렛 120개입",
+    "src": "ai"
+  },
+  "Coca-Cola Zero Sugar Soft Drink Multipack Cans 375ml 24 Pack": {
+    "zh": "Coca-Cola 可口可樂 Zero 零卡汽水 375毫升 x 24入",
+    "ja": "Coca-Cola ゼロシュガー ソフトドリンク 375mL 24缶入",
+    "ko": "Coca-Cola 제로 슈거 탄산음료 375mL 24개입",
+    "src": "ai"
+  },
+  "Cenovis Women's 50+ Multivitamin Capsules 100 Pack": {
+    "zh": "Cenovis 50歲以上女性專用綜合維他命膠囊 100入",
+    "ja": "Cenovis ウィメンズ 50+ マルチビタミン カプセル 100個入",
+    "ko": "Cenovis 우먼스 50+ 멀티비타민 캡슐 100개입",
+    "src": "ai"
+  },
+  "Nature's Own Ashwagandha+ 60 Pack": {
+    "zh": "Nature's Own 南非醉茄+膠囊 60入",
+    "ja": "Nature's Own アシュワガンダ+ 60個入",
+    "ko": "Nature's Own 아슈와간다+ 60개입",
+    "src": "ai"
+  },
+  "Garnier Vitamin C Brightening Serum Cream SPF15 50mL": {
+    "zh": "Garnier 維生素C亮白保濕精華乳霜 SPF15 50毫升",
+    "ja": "Garnier ビタミンC ブライトニング セラム クリーム SPF15 50mL",
+    "ko": "Garnier 비타민 C 브라이트닝 세럼 크림 SPF15 50mL",
+    "src": "ai"
+  },
+  "Pickers Mini Italian Herb Mozzarella Sticks 230g": {
+    "zh": "Pickers 義式香草迷你莫札瑞拉起司條 230克",
+    "ja": "Pickers ミニ イタリアンハーブ モッツァレラスティック 230g",
+    "ko": "Pickers 미니 이탈시안 허브 모짜렐라 스틱 230g",
+    "src": "ai"
+  },
+  "Schick Xtreme 4 Refill Blades 4 Pack": {
+    "zh": "Schick 舒適牌 Xtreme 4 刮鬍刀替換刀片 4入",
+    "ja": "Schick Xtreme 4 替え刃 4個入",
+    "ko": "Schick Xtreme 4 리필 면도날 4개입",
+    "src": "ai"
+  },
+  "Cadbury Dairy Milk Assortment Gift Box 180g": {
+    "zh": "Cadbury 綜合牛奶巧克力禮盒 180克",
+    "ja": "Cadbury デーリーミルク アソートメント ギフトボックス 180g",
+    "ko": "Cadbury 데어리 밀크 어소트먼트 기프트 박스 180g",
+    "src": "ai"
+  },
+  "Artline 200 Fineline Black Pen 1 Each": {
+    "zh": "Artline 200 極細黑筆",
+    "ja": "Artline 200 ファインライン ブラックペン",
+    "ko": "Artline 200 파인라인 블랙 펜",
+    "src": "ai"
+  },
+  "Garnier Vitamin C Glow Jelly Cream 50mL": {
+    "zh": "Garnier 維生素C亮采果凍保濕霜 50毫升",
+    "ja": "Garnier ビタミンC グロウ ジェリー クリーム 50mL",
+    "ko": "Garnier 비타민 C 글로우 젤리 크림 50mL",
+    "src": "ai"
+  },
+  "Smiths Crinkle Potato Chips Sour Cream & Onion 170g": {
+    "zh": "Smith's 波浪洋芋片 酸奶油洋蔥口味 170克",
+    "ja": "Smith's クリンクル ポテトチップス サワークリーム＆オニオン 170g",
+    "ko": "Smith's 크링클 감자칩 사워크림&어니언 170g",
+    "src": "ai"
+  },
+  "Happy Snack Company Chickpea Crunch Mix Cranberries 150g": {
+    "zh": "Happy Snack Company 鷹嘴豆蔓越莓酥脆混合包 150克",
+    "ja": "Happy Snack Company ひよこ豆 クランチ ミックス クランベリー 150g",
+    "ko": "Happy Snack Company 병아리콩 크런치 믹스 크랜베리 150g",
+    "src": "ai"
+  },
+  "Smiths Double Crunch Spicy Pickle 150g": {
+    "zh": "Smith's 雙倍爽脆酸黃瓜口味洋芋片 150克",
+    "ja": "Smith's ダブル クランチ スパイシー ピクルス 150g",
+    "ko": "Smith's 더블 크런치 스파이시 피클 150g",
+    "src": "ai"
+  },
+  "Smiths Mini Canisters Salted Original 65g": {
+    "zh": "Smith's 迷你罐裝原味洋芋片 65克",
+    "ja": "Smith's ミニ キャニスター ソルテッド オリジナル 65g",
+    "ko": "Smith's 미니 캐니스터 솔티드 오리지널 65g",
+    "src": "ai"
+  },
+  "Cenovis Mens 50+ Multivitamin Capsules 100 Pack": {
+    "zh": "Cenovis 50歲以上男性專用綜合維他命膠囊 100入",
+    "ja": "Cenovis メンズ 50+ マルチビタミン カプセル 100個入",
+    "ko": "Cenovis 맨즈 50+ 멀티비타민 캡슐 100개입",
     "src": "ai"
   }
 }
