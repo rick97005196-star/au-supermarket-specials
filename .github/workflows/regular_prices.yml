@@ -7,8 +7,9 @@ name: 超市平常價（每週）
 #                                  specials update reads the Coles website every half hour)
 # A run reads each store for a limited time and goes on from data/regular_progress.json and
 # data/coles_regular_progress.json; a store whose week is read does nothing. A list is written only when its whole
-# week is read. No deploy here: the next "Weekly Specials Auto Update & Deploy" run that changes the website puts the
-# files online with everything else. Kept out of that workflow's queue on purpose (a waiting run there would be replaced).
+# week is read. A run that saves a new list puts the website online itself right after the save (GitHub starts no
+# other workflow for this bot's own push) and checks the live site shows it. Kept out of the specials workflow's
+# queue on purpose (a waiting run there would be replaced).
 on:
   schedule:
     # 03:37 and 09:37 UTC = 13:37 and 19:37 Brisbane (UTC+10), Wednesday and Thursday
@@ -27,7 +28,7 @@ permissions:
 jobs:
   regular-prices:
     runs-on: ubuntu-24.04   # fixed version: "latest" switches to Ubuntu 26 from 19 Oct 2026
-    timeout-minutes: 100
+    timeout-minutes: 110   # reading stops itself by 85 minutes; the rest is for saving and putting it online
     steps:
       - uses: actions/checkout@v5
         with:
@@ -48,6 +49,7 @@ jobs:
         if: ${{ !cancelled() }}
         run: python scrapers/coles_regular.py
       - name: Save
+        id: save
         # also after a failed read: what was read before a store stopped answering is kept
         if: ${{ !cancelled() }}
         run: |
@@ -58,6 +60,47 @@ jobs:
             if [ -e "$f" ]; then git add "$f"; fi
           done
           git diff --staged --quiet && exit 0
+          # only a new price list changes the website; progress files alone do not
+          site=$(git diff --staged --quiet -- static/data && echo false || echo true)
           git commit -m "Weekly regular prices [skip ci]"
-          for i in 1 2 3; do git pull --rebase origin main && git push origin HEAD:main && exit 0; sleep 20; done
+          for i in 1 2 3; do
+            git pull --rebase origin main && git push origin HEAD:main && { echo "online=$site" >> "$GITHUB_OUTPUT"; exit 0; }
+            sleep 20
+          done
           exit 1
+      - name: Put the new regular prices online
+        # GitHub does not start the deploy workflow for this bot's own push, so the lists go online here
+        if: ${{ !cancelled() && steps.save.outputs.online == 'true' }}
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: |
+          npx -y tailwindcss@3 -c tailwind.config.js -i tailwind.input.css -o static/tw.css --minify || echo "CSS build skipped, using committed static/tw.css"
+          npx wrangler pages deploy static --project-name=au-supermarket-specials --branch=main
+      - name: Check the new regular prices are online
+        if: ${{ !cancelled() && steps.save.outputs.online == 'true' }}
+        run: |
+          python - <<'EOF'
+          import json, os, sys, time, urllib.request
+          SITE = 'https://au-supermarket-specials.pages.dev/data/'
+          files = [f for f in ('regular.json', 'regular-woolworths.json', 'regular-coles.json')
+                   if os.path.exists('static/data/' + f)]
+          for attempt in range(6):
+              late = []
+              for f in files:
+                  with open('static/data/' + f, encoding='utf-8') as fh:
+                      want = json.load(fh).get('updated_at')
+                  try:
+                      req = urllib.request.Request(SITE + f + '?t=' + str(time.time()),
+                                                   headers={'User-Agent': 'regular-prices-check'})
+                      got = json.load(urllib.request.urlopen(req, timeout=60)).get('updated_at')
+                  except Exception as e:
+                      got = f'error {e}'
+                  if got != want:
+                      late.append(f'{f}: live {got}, saved {want}')
+              if not late:
+                  print('Live website shows the new regular prices:', ', '.join(files))
+                  sys.exit(0)
+              time.sleep(20)
+          print('::error::The live website still shows old regular prices - ' + '; '.join(late))
+          sys.exit(1)
+          EOF

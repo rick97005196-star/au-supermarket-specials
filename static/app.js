@@ -10,6 +10,7 @@ let globalStats = null;
 let isStaticMode = false;
 let staticSpecials = [];
 let staticRegular = [];      // Woolworths regular prices, only for the price compare (regularPrices)
+let weekRoll = null;          // set when the page moved next week's specials into this week itself (rollWeek)
 let regularLists = null;     // the full Woolworths / Coles regular price lists, loaded only for the regular-price tab or a search (ensureRegularList)
 const DEFAULT_FALLBACK_IMG = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300' width='300' height='300'%3E%3Crect width='300' height='300' fill='%23f8fafc'/%3E%3Cpath d='M100 110 h100 v12 h-100 z M90 135 h120 v90 c0 10 -8 18 -18 18 h-84 c-10 0 -18 -8 -18 -18 z' fill='%23e2e8f0'/%3E%3Cpath d='M130 110 v-20 c0 -11 9 -20 20 -20 s20 9 20 20 v20' fill='none' stroke='%2394a3b8' stroke-width='8' stroke-linecap='round'/%3E%3Ctext x='150' y='270' font-family='system-ui, -apple-system, sans-serif' font-size='13' font-weight='600' fill='%2394a3b8' text-anchor='middle'%3EAU Specials%3C/text%3E%3C/svg%3E";
 
@@ -701,6 +702,9 @@ async function getStaticSpecials() {
         if (Array.isArray(data) && data.length) rawSpecials = data.map(sanitizeProduct).filter(Boolean);
         else return [];        // failed load: try again next time instead of remembering "no specials"
         staticRegular = regularPrices(reg);
+        weekRoll = null;
+        rawSpecials = rollWeek(rawSpecials);
+        if (weekRoll && globalStats) updateStatsDisplay();
     }
     if (!staticSpecials || staticSpecials._region !== currentRegion || !staticSpecials.length) {
         staticSpecials = regionize(rawSpecials);
@@ -826,6 +830,7 @@ async function loadStats() {
 
 function updateStatsDisplay() {
     if (!globalStats) return;
+    applyWeekRollToStats();
 
     const currentData = globalStats.current || {};
     const nextData = globalStats.next || {};
@@ -1296,6 +1301,18 @@ function toggleCmpOnly() {
     const pill = document.getElementById('cmpPill');
     if (pill) { pill.classList.toggle('is-on-accent', cmpOnly); pill.setAttribute('aria-pressed', String(cmpOnly)); }
     loadSpecials();
+}
+
+// Phones: price type, 1/2 price and sort fold under one button (always shown on wider screens)
+function toggleFilters() {
+    const open = document.getElementById('moreFilters').classList.toggle('is-open');
+    document.getElementById('filterToggle').setAttribute('aria-expanded', String(open));
+}
+function updateFilterCount() {
+    const el = document.getElementById('filterCount');
+    if (!el) return;
+    const n = (priceType !== 'all') + document.getElementById('halfPriceOnly').checked + (document.getElementById('sortSelect').value !== 'relevance');
+    el.textContent = n; el.hidden = !n;
 }
 
 function updateHalfPricePillStyle() {
@@ -1949,6 +1966,7 @@ async function loadSpecials() {
 
     const discountOnly = document.getElementById('halfPriceOnly').checked;
     const sortBy = document.getElementById('sortSelect').value;
+    updateFilterCount();
 
     if (!isStaticMode) {
         const params = new URLSearchParams({
@@ -2117,6 +2135,10 @@ async function loadSpecials() {
         if (notice && currentPeriod === 'next' &&
             !staticSpecials.some(x => x.period === 'next' && (x.store === 'Coles' || x.store === 'Woolworths'))) {
             notice.innerHTML += `<span class="tag is-next">${t('next_cw_pending')}</span>`;
+        }
+        // the page moved to the new week itself and a store's new specials are only partly read yet
+        if (notice && currentPeriod === 'current' && weekRoll && weekRoll.thin.length) {
+            notice.innerHTML += `<span class="tag">${t('week_rolled_partial', { stores: weekRoll.thin.join('、') })}</span>`;
         }
 
         if (filtered.length === 0) {
@@ -3225,6 +3247,80 @@ function rollShoppingListWeek(items) {
     return changed;
 }
 
+// The data is made a few times a day; next week's specials are already in it before Wednesday. When next week
+// starts (Brisbane date) before new data is out, move them into this week here, drop the specials that ended,
+// and recount the numbers, so the site changes at midnight.
+function rollWeek(items) {
+    const today = _brisbaneToday();
+    const ranges = new Map();
+    const range = (it) => { const k = it.date_range || ''; if (!ranges.has(k)) ranges.set(k, parseWeekRange(k)); return ranges.get(k); };
+    if (!items.some(it => it.period === 'next' && range(it) && range(it).start <= today)) return items;
+    const was = {}, now = {}, out = [];
+    for (const it of items) {
+        const r = range(it);
+        if (it.period === 'next' && r && r.start <= today) {
+            if (priceTier(it) === 0) now[it.store] = (now[it.store] || 0) + 1;
+            out.push(Object.assign({}, it, { period: 'current' }));
+        } else if (it.period === 'current' && r && r.end < today) {
+            if (priceTier(it) === 0) was[it.store] = (was[it.store] || 0) + 1;
+        } else out.push(it);
+    }
+    // a store with under half last week's number of specials is still being read
+    weekRoll = { day: today, thin: Object.keys(was).filter(s => (now[s] || 0) < was[s] * 0.5) };
+    return out;
+}
+
+// The numbers stats.json carries for one week and region (export_static_data.py _region_stats)
+function countItems(items, period, region) {
+    const s = { total: 0, by_store: {}, half_price_count: 0, everyday_count: 0, everyday_by_store: {}, regular_count: 0, regular_by_store: {} };
+    const add = (o, k) => { o[k] = (o[k] || 0) + 1; };
+    for (const it of items) {
+        if (it.period !== period || (it.rg && !it.rg.includes(region))) continue;
+        const o = it.rp && it.rp[region];
+        const p = o ? Object.assign({}, it, o) : it;
+        if (isEverydayPrice(p)) { s.everyday_count++; add(s.everyday_by_store, p.store); }
+        else if (isRegularPrice(p)) { s.regular_count++; add(s.regular_by_store, p.store); }
+        else {
+            s.total++; add(s.by_store, p.store);
+            if ((p.store === 'ALDI' || (p.save_amount || 0) > 0) && isItemHalfPrice(p)) s.half_price_count++;
+        }
+    }
+    return s;
+}
+
+// After rollWeek the counts and week dates in stats.json are last week's: count them again from the items
+function applyWeekRollToStats() {
+    if (!weekRoll || !rawSpecials || globalStats._rolled === weekRoll.day) return;
+    const regions = globalStats.regions || (globalStats.regions = {});
+    const pick = (p) => (rawSpecials.find(x => x.period === p && x.store !== 'ALDI' && parseWeekRange(x.date_range))
+                      || rawSpecials.find(x => x.period === p) || {}).date_range || '';
+    for (const r of Object.keys(regions)) {
+        regions[r] = Object.assign({}, regions[r], { current: countItems(rawSpecials, 'current', r), next: countItems(rawSpecials, 'next', r) });
+    }
+    const b = globalStats.base_region || DEFAULT_REGION;
+    const base = regions[b] || { current: countItems(rawSpecials, 'current', b), next: countItems(rawSpecials, 'next', b) };
+    for (const p of ['current', 'next']) globalStats[p] = Object.assign({}, base[p], { date_range: pick(p) });
+    globalStats._rolled = weekRoll.day;
+}
+
+function rollIfDue() {
+    if (!rawSpecials) return;
+    const rolled = rollWeek(rawSpecials);
+    if (rolled === rawSpecials) return;
+    rawSpecials = rolled;
+    regularLists = null;      // its "on special this week" set was built from last week
+    staticSpecials = regionize(rawSpecials);
+    updateStatsDisplay();
+    updatePeriodBadges();
+    loadSpecials();
+    try { renderFavPanel(); } catch (e) {}
+}
+
+// Check again just after each Brisbane midnight (a hidden tab's timer may run late; coming back to the page checks too)
+function scheduleMidnightRoll() {
+    setTimeout(() => { rollIfDue(); scheduleMidnightRoll(); }, 86400000 - (Date.now() + 10 * 3600 * 1000) % 86400000 + 5000);
+}
+
 function repairLocalShoppingItems() {
     try {
         let items = getLocalShoppingList();
@@ -3767,6 +3863,7 @@ function initApp() {
     checkUpdateStatus();
     setTimeout(loadTranslations, 1500);
     setTimeout(() => checkForNewData(true), 8000);   // a slow connection may have shown the saved copy first
+    scheduleMidnightRoll();
     setTimeout(recordVisit, 1500);
 }
 
@@ -3946,6 +4043,7 @@ async function checkForNewData(force) {
         try { if (!globalStats) await loadStats(); await loadSpecials(); renderFavPanel(); } catch (e) {}
         return;
     }
+    rollIfDue();
     if (!isStaticMode) return;
     if (!force && Date.now() - lastFreshCheck < 3 * 60 * 1000) return;
     lastFreshCheck = Date.now();
