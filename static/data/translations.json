@@ -159466,15 +159466,124 @@
     "src": "ai"
   },
   "V Energy Drink Pineapple 4x250ml 1L": {
-    "zh": "V 能量飲料 鳳梨口味 250毫升 x 4入",
-    "ja": "V エナジードリンク パイナップル 250ml x 4本入",
-    "ko": "V 에너지 드링크 파인애플 250ml x 4개입",
-    "src": "ai"
+    "zh": "V 能量飲料 鳳梨口味 250毫升 x 4入 (1公升)",
+    "ja": "V エナジードリンク パイナップル味 250ml x 4個入 (1L)",
+    "ko": "V 에너지 드링크 파인애플 맛 250ml x 4개입 (1L)",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Golden Circle 100% Juice Orange 2L": {
     "zh": "Golden Circle 100% 柳橙汁 2公升",
     "ja": "Golden Circle 100% オレンジジュース 2L",
     "ko": "Golden Circle 100% 오렌지 주스 2L",
+    "src": "ai"
+  },
+  "DOMINION NATURALS Sour Babies 180g": {
+    "zh": "DOMINION NATURALS 酸味軟糖 180克",
+    "ja": "DOMINION NATURALS サワーグミ 180g",
+    "ko": "DOMINION NATURALS 사워 젤리 180g",
+    "src": "ai"
+  },
+  "DELI ORIGINALS Seafood sauce 260g": {
+    "zh": "DELI ORIGINALS 海鮮醬 260克",
+    "ja": "DELI ORIGINALS シーフードソース 260g",
+    "ko": "DELI ORIGINALS 해산물 소스 260g",
+    "src": "ai"
+  },
+  "Raid Max Antibacterial Fast Kill Crawling Insect Killer 350g": {
+    "zh": "Raid Max 抗菌快速殺蟲劑 350克",
+    "ja": "Raid Max 抗菌・速効性這う虫用殺虫剤 350g",
+    "ko": "Raid Max 항균 빠른 살충제 350g",
+    "src": "ai"
+  },
+  "Musashi Energy Drink Blue Raspberry 500mL": {
+    "zh": "Musashi 能量飲料 藍覆盆子口味 500毫升",
+    "ja": "Musashi エナジードリンク ブルーラズベリー味 500ml",
+    "ko": "Musashi 에너지 드링크 블루 라즈베리 맛 500ml",
+    "src": "ai"
+  },
+  "Supercoat Smartblend Puppy Dry Dog Food 6.7kg": {
+    "zh": "Supercoat Smartblend 幼犬乾糧 6.7公斤",
+    "ja": "Supercoat Smartblend 子犬用ドライドッグフード 6.7kg",
+    "ko": "Supercoat Smartblend 강아지용 건식 사료 6.7kg",
+    "src": "ai"
+  },
+  "Mortein Naturgard Multi Insect Killer Aerosol 300g": {
+    "zh": "Mortein Naturgard 多功能殺蟲噴霧 300克",
+    "ja": "Mortein Naturgard マルチ殺虫スプレー 300g",
+    "ko": "Mortein Naturgard 다목적 살충 스프레이 300g",
+    "src": "ai"
+  },
+  "Mortein Fast Knockdown Fly & Mosquito Killer Odourless 350g": {
+    "zh": "Mortein 快速擊倒蒼蠅蚊子殺蟲劑 無味型 350克",
+    "ja": "Mortein 速効性ハエ・蚊用殺虫剤 無香料 350g",
+    "ko": "Mortein 빠른 파리·모기 살충제 무향 350g",
+    "src": "ai"
+  },
+  "LAZZIO Luxe Reserve Nicaragua Coffee Beans 500g": {
+    "zh": "LAZZIO Luxe Reserve 尼加拉瓜咖啡豆 500克",
+    "ja": "LAZZIO Luxe Reserve ニカラグア産コーヒー豆 500g",
+    "ko": "LAZZIO Luxe Reserve 니카라과 커피 원두 500g",
+    "src": "ai"
+  },
+  "Mortein Naturgard Bomb 3x90g 270g": {
+    "zh": "Mortein Naturgard 水煙式殺蟲劑 90克 x 3入",
+    "ja": "Mortein Naturgard くん煙殺虫剤 90g x 3個入",
+    "ko": "Mortein Naturgard 훈연 살충제 90g x 3개입",
+    "src": "ai"
+  },
+  "CUCINA Sundried Tomato & Garlic Flavoured Cous Cous 100g": {
+    "zh": "CUCINA 油漬番茄大蒜口味北非小米 100克",
+    "ja": "CUCINA ドライトマト＆ガーリック風味クスクス 100g",
+    "ko": "CUCINA 선드라이 토마토 & 마늘 맛 쿠스쿠스 100g",
+    "src": "ai"
+  },
+  "CUCINA Roasted Vegetable Flavoured Cous Cous 100g": {
+    "zh": "CUCINA 烤蔬菜口味北非小米 100克",
+    "ja": "CUCINA 焼き野菜風味クスクス 100g",
+    "ko": "CUCINA 구운 채소 맛 쿠스쿠스 100g",
+    "src": "ai"
+  },
+  "DELI ORIGINALS Tartare sauce 260g": {
+    "zh": "DELI ORIGINALS 塔塔醬 260克",
+    "ja": "DELI ORIGINALS タルタルソース 260g",
+    "ko": "DELI ORIGINALS 타르타르 소스 260g",
+    "src": "ai"
+  },
+  "CUCINA Moroccan Medley Flavoured Cous Cous 100g": {
+    "zh": "CUCINA 摩洛哥綜合口味北非小米 100克",
+    "ja": "CUCINA モロッカンメドレー風味クスクス 100g",
+    "ko": "CUCINA 모로칸 메들리 맛 쿠스쿠스 100g",
+    "src": "ai"
+  },
+  "DOMINION NATURALS Bananas 160g": {
+    "zh": "DOMINION NATURALS 香蕉乾 160克",
+    "ja": "DOMINION NATURALS バナナチップス 160g",
+    "ko": "DOMINION NATURALS 바나나 칩 160g",
+    "src": "ai"
+  },
+  "CUCINA Australian Diced Tomatoes 400g": {
+    "zh": "CUCINA 澳洲番茄丁罐頭 400克",
+    "ja": "CUCINA オーストラリア産ダイストマト缶 400g",
+    "ko": "CUCINA 호주산 다이스 토마토 캔 400g",
+    "src": "ai"
+  },
+  "Biotene Mouthwash Dry Mouth Relief Fresh Mint 235mL": {
+    "zh": "Biotene 口腔漱口水 口乾緩解 清新薄荷口味 235毫升",
+    "ja": "Biotene マウスウォッシュ 口腔保湿 フレッシュミント味 235ml",
+    "ko": "Biotene 구강청결제 구강건조 완화 신선한 민트 향 235ml",
+    "src": "ai"
+  },
+  "Supercoat Smartblend Adult Chicken Dry Dog Food 7kg": {
+    "zh": "Supercoat Smartblend 成犬乾糧 雞肉口味 7公斤",
+    "ja": "Supercoat Smartblend 成犬用ドライドッグフード チキン味 7kg",
+    "ko": "Supercoat Smartblend 성견용 건식 사료 닭고기 맛 7kg",
+    "src": "ai"
+  },
+  "Supercoat Smartblend Adult Beef Dry Dog Food 7kg": {
+    "zh": "Supercoat Smartblend 成犬乾糧 牛肉口味 7公斤",
+    "ja": "Supercoat Smartblend 成犬用ドライドッグフード ビーフ味 7kg",
+    "ko": "Supercoat Smartblend 성견용 건식 사료 소고기 맛 7kg",
     "src": "ai"
   }
 }
