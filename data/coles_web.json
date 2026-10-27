@@ -1,5 +1,5 @@
 {
-"cursor": 26,
+"cursor": 1,
 "items": {
 "1000075": {
 "category": "Seasonal Events Halloween",
@@ -19112,9 +19112,9 @@
 "was_price": 8.6
 }
 },
-"last_full": 1793035544.1841538,
+"last_full": 1793065706.2325056,
 "more": {
-"cursor": 26,
+"cursor": 28,
 "items": {
 "1000049": {
 "category": "Desserts (Gr) Jelly",
@@ -57096,6 +57096,51 @@
 "unit_price": "$1.13/ 100g",
 "was_price": 17.0
 },
+"5283693": {
+"category": "Cereal Muesli",
+"discount_desc": "2 for $13.00",
+"id": "5283693",
+"image_url": "https://productimages.coles.com.au/productimages/5/5283693.jpg",
+"price": 13.0,
+"price_display": "2 for $13.00",
+"product_url": "https://www.coles.com.au/product/heritage-mill-muesli-fruit-nut-750g-5283693",
+"save_amount": 4.0,
+"store": "Coles",
+"store_category": "Cereal Muesli",
+"title": "Heritage Mill Muesli Fruit & Nut 750g",
+"unit_price": "$1.13/ 100g",
+"was_price": 17.0
+},
+"5283900": {
+"category": "Cereal Muesli",
+"discount_desc": "2 for $13.00",
+"id": "5283900",
+"image_url": "https://productimages.coles.com.au/productimages/5/5283900.jpg",
+"price": 13.0,
+"price_display": "2 for $13.00",
+"product_url": "https://www.coles.com.au/product/heritage-mill-clusters-crunchy-nut-750g-5283900",
+"save_amount": 4.0,
+"store": "Coles",
+"store_category": "Cereal Muesli",
+"title": "Heritage Mill Clusters Crunchy Nut 750g",
+"unit_price": "$1.13/ 100g",
+"was_price": 17.0
+},
+"5284765": {
+"category": "Cereal Muesli",
+"discount_desc": "2 for $13.00",
+"id": "5284765",
+"image_url": "https://productimages.coles.com.au/productimages/5/5284765.jpg",
+"price": 13.0,
+"price_display": "2 for $13.00",
+"product_url": "https://www.coles.com.au/product/heritage-mill-clusters-almond-cinnamon-limited-edition-750g-5284765",
+"save_amount": 4.0,
+"store": "Coles",
+"store_category": "Cereal Muesli",
+"title": "Heritage Mill Clusters Almond & Cinnamon Limited Edition 750g",
+"unit_price": "$1.13/ 100g",
+"was_price": 17.0
+},
 "5285280": {
 "category": "Prepackaged Seafood Salmon Skin-Off Pps",
 "discount_desc": "Save $4.00",
@@ -81099,9 +81144,9 @@
 },
 "last_full": 1793006324.1574802,
 "pages": 153,
-"pages_done": 25
+"pages_done": 27
 },
 "pages": 28,
-"pages_done": 25,
+"pages_done": 0,
 "week": "2026-10-21"
 }
