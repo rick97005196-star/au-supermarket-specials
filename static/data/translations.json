@@ -164886,10 +164886,11 @@
     "src": "ai"
   },
   "Yumi's Mini Middle Eastern Hommus 3x65g 195g": {
-    "zh": "Yumi's 迷你中東鷹嘴豆泥 65克 x 3入",
-    "ja": "Yumi's ミニ中東風フムス 65g x 3個入",
-    "ko": "Yumi's 미니 중동식 후무스 65g x 3개입",
-    "src": "ai"
+    "zh": "Yumi's 迷你中東鷹嘴豆泥 65克 x 3入 195克",
+    "ja": "Yumi's ミニ中東風フムス 65g x 3個入 195g",
+    "ko": "Yumi's 미니 중동식 후무스 65g x 3개입 195g",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Pauls Zymil Low Fat Long Life Milk 1L": {
     "zh": "Pauls Zymil 低脂保久乳 1公升",
@@ -164907,6 +164908,204 @@
     "zh": "Ardmona 番茄碎罐頭 410克",
     "ja": "Ardmona クラッシュトマト 410g",
     "ko": "Ardmona 으깬 토마토 410g",
+    "src": "ai"
+  },
+  "Coles Organic Coconut Milk 400mL": {
+    "zh": "Coles 有機椰奶 400毫升",
+    "ja": "Coles オーガニックココナッツミルク 400ml",
+    "ko": "Coles 유기농 코코넛 밀크 400ml",
+    "src": "ai"
+  },
+  "Coles Organic Coconut Cream 400mL": {
+    "zh": "Coles 有機椰奶霜 400毫升",
+    "ja": "Coles オーガニックココナッツクリーム 400ml",
+    "ko": "Coles 유기농 코코넛 크림 400ml",
+    "src": "ai"
+  },
+  "Winton Road Barossa Valley Shiraz 750ml 1 Each": {
+    "zh": "Winton Road Barossa Valley 希拉紅酒 750毫升",
+    "ja": "Winton Road Barossa Valley シラーズ 750ml",
+    "ko": "Winton Road Barossa Valley 쉬라즈 750ml",
+    "src": "ai"
+  },
+  "Coles Finest Triple Cream Brie 200g": {
+    "zh": "Coles Finest 三倍奶油布里起司 200克",
+    "ja": "Coles Finest トリプルクリームブリー 200g",
+    "ko": "Coles Finest 트리플 크림 브리 치즈 200g",
+    "src": "ai"
+  },
+  "The Deli Roast Beef 150g": {
+    "zh": "The Deli 烤牛肉片 150克",
+    "ja": "The Deli ローストビーフ 150g",
+    "ko": "The Deli 로스트 비프 150g",
+    "src": "ai"
+  },
+  "Veuve Clicquot Yellow Label Brut Nv 750ml 1 Each": {
+    "zh": "Veuve Clicquot 黃牌香檳 750毫升",
+    "ja": "Veuve Clicquot イエローラベル ブリュット NV 750ml",
+    "ko": "Veuve Clicquot 옐로우 라벨 브뤼 NV 750ml",
+    "src": "ai"
+  },
+  "The Deli Prosciutto 150g": {
+    "zh": "The Deli 義式生火腿 150克",
+    "ja": "The Deli プロシュート 150g",
+    "ko": "The Deli 프로슈토 150g",
+    "src": "ai"
+  },
+  "Youfoodz Regular Singapore Chicken Noodles 320g": {
+    "zh": "Youfoodz 星洲炒雞肉麵 320克",
+    "ja": "Youfoodz シンガポールチキンヌードル 320g",
+    "ko": "Youfoodz 싱가포르 치킨 누들 320g",
+    "src": "ai"
+  },
+  "El-Amin's Halal Diced Beef 500g": {
+    "zh": "El-Amin's 清真骰子牛肉 500克",
+    "ja": "El-Amin's ハラール角切り牛肉 500g",
+    "ko": "El-Amin's 할랄 깍둑썰기 소고기 500g",
+    "src": "ai"
+  },
+  "Lindt Lindor Limited Edition Chocolate Round Tin 396g": {
+    "zh": "Lindt Lindor 限定版圓罐巧克力 396克",
+    "ja": "Lindt Lindor 限定版チョコレートラウンド缶 396g",
+    "ko": "Lindt Lindor 한정판 초콜릿 원형 틴케이스 396g",
+    "src": "ai"
+  },
+  "Ardmona Diced Tomatoes 400g": {
+    "zh": "Ardmona 罐裝番茄丁 400克",
+    "ja": "Ardmona ダイストマト缶 400g",
+    "ko": "Ardmona 다이스 토마토 캔 400g",
+    "src": "ai"
+  },
+  "Youfoodz Nourish Honey Mustard Chicken With Garlic Veg 318g": {
+    "zh": "Youfoodz 蜂蜜芥末雞肉佐蒜香蔬菜 318克",
+    "ja": "Youfoodz ハニーマスタードチキン ガーリック野菜添え 318g",
+    "ko": "Youfoodz 허니 머스타드 치킨과 마늘 채소 318g",
+    "src": "ai"
+  },
+  "Youfoodz Slow Cooked Lamb With Loaded Mash 350g": {
+    "zh": "Youfoodz 慢燉羊肉佐馬鈴薯泥 350克",
+    "ja": "Youfoodz スロークックラム マッシュポテト添え 350g",
+    "ko": "Youfoodz 슬로우 쿡 양고기와 매쉬드 포테이토 350g",
+    "src": "ai"
+  },
+  "Youfoodz Creamy Chicken Carbonara 310g": {
+    "zh": "Youfoodz 奶油雞肉培根義大利麵 310克",
+    "ja": "Youfoodz クリーミーチキンカルボナーラ 310g",
+    "ko": "Youfoodz 크리미 치킨 까르보나라 310g",
+    "src": "ai"
+  },
+  "Chandler Original Clay Cat Litter 7L": {
+    "zh": "Chandler 經典款礦砂 7公升",
+    "ja": "Chandler オリジナル粘土猫砂 7L",
+    "ko": "Chandler 오리지널 클레이 고양이 모래 7L",
+    "src": "ai"
+  },
+  "Breeders Choice Cat Litter Paper 15L": {
+    "zh": "Breeders Choice 紙漿貓砂 15公升",
+    "ja": "Breeders Choice 紙製猫砂 15L",
+    "ko": "Breeders Choice 종이 고양이 모래 15L",
+    "src": "ai"
+  },
+  "Coles Silverbeet Medium 1 Each": {
+    "zh": "Coles 瑞士甜菜 1把",
+    "ja": "Coles スイスチャード 1束",
+    "ko": "Coles 근대 1단",
+    "src": "ai"
+  },
+  "Tip Top Thins Wholemeal 6 Pack 240g": {
+    "zh": "Tip Top 全麥薄片吐司 6入 240克",
+    "ja": "Tip Top 全粒粉薄切り食パン 6個入 240g",
+    "ko": "Tip Top 통밀 씬 식빵 6개입 240g",
+    "src": "ai"
+  },
+  "Coles Kale Bunch Green 1 Each": {
+    "zh": "Coles 羽衣甘藍 1把",
+    "ja": "Coles ケール 1束",
+    "ko": "Coles 케일 1단",
+    "src": "ai"
+  },
+  "Coles Finest Vintage British Cheddar 200g": {
+    "zh": "Coles Finest 熟成英國切達起司 200克",
+    "ja": "Coles Finest ヴィンテージ英国産チェダーチーズ 200g",
+    "ko": "Coles Finest 빈티지 영국산 체다 치즈 200g",
+    "src": "ai"
+  },
+  "Pauls Zymil Skim Long Life Milk 1L": {
+    "zh": "Pauls Zymil 去脂保久乳 1公升",
+    "ja": "Pauls Zymil 無脂肪ロングライフ牛乳 1L",
+    "ko": "Pauls Zymil 무지방 멸균우유 1L",
+    "src": "ai"
+  },
+  "Tip Top Thins Original 6 Pack 240g": {
+    "zh": "Tip Top 經典款薄片吐司 6入 240克",
+    "ja": "Tip Top オリジナル薄切り食パン 6個入 240g",
+    "ko": "Tip Top 오리지널 씬 식빵 6개입 240g",
+    "src": "ai"
+  },
+  "The Deli Ham Off The Bone 150g": {
+    "zh": "The Deli 帶骨火腿片 150克",
+    "ja": "The Deli 骨付きハム 150g",
+    "ko": "The Deli 뼈 있는 햄 150g",
+    "src": "ai"
+  },
+  "Quorn Meat Free Mince 300g": {
+    "zh": "Quorn 素絞肉 300克",
+    "ja": "Quorn ミートフリーミンチ 300g",
+    "ko": "Quorn 미트 프리 다진 고기 300g",
+    "src": "ai"
+  },
+  "Youfoodz Italian Beef Ragu With Penne & Cheese Sauce 320g": {
+    "zh": "Youfoodz 義式牛肉醬筆管麵佐起司醬 320克",
+    "ja": "Youfoodz イタリアンビーフラグー ペンネ＆チーズソース 320g",
+    "ko": "Youfoodz 이탈리안 비프 라구 펜네와 치즈 소스 320g",
+    "src": "ai"
+  },
+  "Youfoodz Creamy Garlic Chicken Kyiv With Chips & Broccoli 312g": {
+    "zh": "Youfoodz 奶油蒜香雞肉基輔炸雞佐薯條與花椰菜 312克",
+    "ja": "Youfoodz クリーミーガーリックチキンキエフ ポテト＆ブロッコリー添え 312g",
+    "ko": "Youfoodz 크리미 갈릭 치킨 키예프, 감자튀김 및 브로콜리 포함 312g",
+    "src": "ai"
+  },
+  "Cadbury Favourites Snack 686g": {
+    "zh": "Cadbury 綜合巧克力禮盒 686克",
+    "ja": "Cadbury フェイバリット チョコレートアソート 686g",
+    "ko": "Cadbury 페이보릿 초콜릿 모음 686g",
+    "src": "ai"
+  },
+  "The Deli Mild Hungarian Salami 150g": {
+    "zh": "The Deli 溫和匈牙利臘腸 150克",
+    "ja": "The Deli マイルドハンガリアンサラミ 150g",
+    "ko": "The Deli 마일드 헝가리안 살라미 150g",
+    "src": "ai"
+  },
+  "The Deli Turkey Breast Sliced 150g": {
+    "zh": "The Deli 火雞胸肉切片 150克",
+    "ja": "The Deli 七面鳥胸肉スライス 150g",
+    "ko": "The Deli 칠면조 가슴살 슬라이스 150g",
+    "src": "ai"
+  },
+  "Youfoodz Mushroom & Cheese Tortellini With Creamy Sauce 330g": {
+    "zh": "Youfoodz 奶油醬蘑菇起司義大利餃 330克",
+    "ja": "Youfoodz マッシュルーム＆チーズトルテリーニ クリーミーソース 330g",
+    "ko": "Youfoodz 머쉬룸 & 치즈 토르텔리니, 크림 소스 포함 330g",
+    "src": "ai"
+  },
+  "Youfoodz Nourish Roast Chicken & Veg With Bacon Loaded Mash 350g": {
+    "zh": "Youfoodz 烤雞蔬菜佐培根馬鈴薯泥 350克",
+    "ja": "Youfoodz ローストチキン＆野菜 ベーコン入りマッシュポテト添え 350g",
+    "ko": "Youfoodz 로스트 치킨 & 채소, 베이컨 매쉬드 포테이토 포함 350g",
+    "src": "ai"
+  },
+  "The Deli Australian Ham 150g": {
+    "zh": "The Deli 澳洲火腿切片 150克",
+    "ja": "The Deli オーストラリア産ハム 150g",
+    "ko": "The Deli 호주산 햄 150g",
+    "src": "ai"
+  },
+  "The Deli Shaved Champagne Ham 150g": {
+    "zh": "The Deli 香檳火腿薄片 150克",
+    "ja": "The Deli シャンパンハムスライス 150g",
+    "ko": "The Deli 샴페인 햄 슬라이스 150g",
     "src": "ai"
   }
 }
