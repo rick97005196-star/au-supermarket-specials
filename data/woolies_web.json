@@ -1108,6 +1108,20 @@
 "unit_price": "$78.95 / 1KG",
 "was_price": 6.0
 },
+"ben's original american bbq style rice 250g": {
+"category": "pantry",
+"discount_desc": "2 for $5.00",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/6093750.jpg",
+"price": 5.0,
+"price_display": "2 for $5.00",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/6093750/ben-s-original-american-bbq-style-rice",
+"save_amount": 3.0,
+"store": "Woolworths",
+"store_category": "Pantry , Container Bonus Credits     Pasta, Rice & Grains , Pantry   PASTA / RICE",
+"title": "Ben's Original American BBQ Style Rice 250g",
+"unit_price": "$1.6 / 100G",
+"was_price": 8.0
+},
 "ben's original asian chicken rice 250g": {
 "category": "pantry",
 "discount_desc": "2 for $5.00",
@@ -1234,19 +1248,19 @@
 "unit_price": "$0.63 / 1EA",
 "was_price": 50.0
 },
-"berocca hydrate electrolytes effervescent tablets orange 10 pack": {
+"berocca hydrate electrolytes effervescent tablets orange 40 pack": {
 "category": "health_vitamins",
-"discount_desc": "2 for $12.00",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/052832.jpg",
-"price": 12.0,
-"price_display": "2 for $12.00",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/52832/berocca-hydrate-electrolytes-effervescent-tablets-orange",
-"save_amount": 5.9,
+"discount_desc": "2 for $35.00",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/052852.jpg",
+"price": 35.0,
+"price_display": "2 for $35.00",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/52852/berocca-hydrate-electrolytes-effervescent-tablets-orange",
+"save_amount": 15.0,
 "store": "Woolworths",
 "store_category": "Health & Wellness     First Aid & Medicinal   HEALTH CARE",
-"title": "Berocca Hydrate Electrolytes Effervescent Tablets Orange 10 pack",
-"unit_price": "$0.9 / 1EA",
-"was_price": 17.9
+"title": "Berocca Hydrate Electrolytes Effervescent Tablets Orange 40 pack",
+"unit_price": "$0.63 / 1EA",
+"was_price": 50.0
 },
 "berri apple fruit juice pop top 250ml": {
 "category": "drinks",
@@ -1371,20 +1385,6 @@
 "store": "Woolworths",
 "store_category": "Cleaning & Maintenance     Cleaning Goods   CLEANSING",
 "title": "Botanica Auto Air Freshener Refill Caribbean Vetiver & Sandalwood 228mL",
-"unit_price": "$7.46 / 100ML",
-"was_price": 34.0
-},
-"botanica auto air freshener refill jasmine & sri lankan cinnamon 228ml": {
-"category": "household",
-"discount_desc": "2 for $22.00",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/265402.jpg",
-"price": 22.0,
-"price_display": "2 for $22.00",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/265402/botanica-auto-air-freshener-refill-jasmine-sri-lankan-cinnamon",
-"save_amount": 12.0,
-"store": "Woolworths",
-"store_category": "Cleaning & Maintenance     Cleaning Goods   CLEANSING",
-"title": "Botanica Auto Air Freshener Refill Jasmine & Sri Lankan Cinnamon 228mL",
 "unit_price": "$7.46 / 100ML",
 "was_price": 34.0
 },
@@ -2886,20 +2886,6 @@
 "unit_price": "$5.9 / 1L",
 "was_price": 11.8
 },
-"cottee's fruit cup cordial with 40% fruit juice 1l": {
-"category": "drinks",
-"discount_desc": "2 for $8.20",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/362461.jpg",
-"price": 8.2,
-"price_display": "2 for $8.20",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/362461/cottee-s-fruit-cup-cordial-with-40-fruit-juice",
-"save_amount": 3.6,
-"store": "Woolworths",
-"store_category": "Lunch Box , Drinks     Drinks , Cordials, Juices & Iced Teas   CORDIAL / DRINK BASES",
-"title": "Cottee's Fruit Cup Cordial with 40% Fruit Juice 1L",
-"unit_price": "$5.9 / 1L",
-"was_price": 11.8
-},
 "cottee's lemon cordial lemon crush with 40% fruit juice 1l": {
 "category": "drinks",
 "discount_desc": "2 for $8.20",
@@ -2981,20 +2967,6 @@
 "store": "Woolworths",
 "store_category": "Lunch Box , Drinks     Drinks , Cordials, Juices & Iced Teas   CORDIAL / DRINK BASES",
 "title": "Cottee's Raspberry Cordial Raspberry 1L",
-"unit_price": "$5.9 / 1L",
-"was_price": 11.8
-},
-"cottee's zero sugar apple & raspberry cordial sugar free 1l": {
-"category": "drinks",
-"discount_desc": "2 for $8.20",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/190931.jpg",
-"price": 8.2,
-"price_display": "2 for $8.20",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/190931/cottee-s-zero-sugar-apple-raspberry-cordial-sugar-free",
-"save_amount": 3.6,
-"store": "Woolworths",
-"store_category": "Lunch Box , Drinks     Drinks , Cordials, Juices & Iced Teas   CORDIAL / DRINK BASES",
-"title": "Cottee's Zero Sugar Apple & Raspberry Cordial Sugar Free 1L",
 "unit_price": "$5.9 / 1L",
 "was_price": 11.8
 },
@@ -3305,20 +3277,6 @@
 "title": "Elvive Bond Repair Leave-In Serum 150mL",
 "unit_price": "$20 / 100ML",
 "was_price": 60.0
-},
-"elvive color protect conditioner 340ml": {
-"category": "health_vitamins",
-"discount_desc": "2 for $12.00",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/6008514.jpg",
-"price": 12.0,
-"price_display": "2 for $12.00",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/6008514/elvive-color-protect-conditioner",
-"save_amount": 8.0,
-"store": "Woolworths",
-"store_category": "Personal Care     Hair Care   TOILETRIES",
-"title": "Elvive Color Protect Conditioner 340mL",
-"unit_price": "$2.94 / 100ML",
-"was_price": 20.0
 },
 "elvive color protect shampoo 340ml": {
 "category": "health_vitamins",
@@ -4676,6 +4634,20 @@
 "store_category": "Snacks & Confectionery , Lunch Box     Chips , Snacks   SNACKS",
 "title": "Infuzions Bluey Cheesy Peasy Poppeas 10g x 5 pack",
 "unit_price": "$8 / 100G",
+"was_price": 8.0
+},
+"infuzions veggie rings aussie barbecue 5 pack": {
+"category": "household",
+"discount_desc": "2 for $7.00",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/6031453.jpg",
+"price": 7.0,
+"price_display": "2 for $7.00",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/6031453/infuzions-veggie-rings-aussie-barbecue",
+"save_amount": 1.0,
+"store": "Woolworths",
+"store_category": "Snacks & Confectionery , Lunch Box     Dietary Needs , Chips , Snacks   SNACKS",
+"title": "Infuzions Veggie Rings Aussie Barbecue 5 pack",
+"unit_price": "$5.33 / 100G",
 "was_price": 8.0
 },
 "infuzions veggie straws sour cream & herb 5 pack": {
@@ -6862,6 +6834,20 @@
 "unit_price": "$1.71 / 100G",
 "was_price": 9.0
 },
+"masterfoods high protein meal korean bbq beef recipe base 175g": {
+"category": "pantry",
+"discount_desc": "3 for $7.95",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/6085812.jpg",
+"price": 7.95,
+"price_display": "3 for $7.95",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/6085812/masterfoods-high-protein-meal-korean-bbq-beef-recipe-base",
+"save_amount": 1.05,
+"store": "Woolworths",
+"store_category": "Pantry     Cooking Sauces & Recipe Bases   PREPARED FOODS",
+"title": "MasterFoods High Protein Meal Korean BBQ Beef Recipe Base 175g",
+"unit_price": "$1.71 / 100G",
+"was_price": 9.0
+},
 "masterfoods high protein spicy chicken pasta recipe base 175g": {
 "category": "pantry",
 "discount_desc": "3 for $7.95",
@@ -6903,6 +6889,20 @@
 "title": "MasterFoods Honey Mustard Chicken Cooking Sauce 505g",
 "unit_price": "$0.97 / 100G",
 "was_price": 9.8
+},
+"masterfoods honey mustard chicken recipe base 175g": {
+"category": "pantry",
+"discount_desc": "3 for $7.95",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/186442.jpg",
+"price": 7.95,
+"price_display": "3 for $7.95",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/186442/masterfoods-honey-mustard-chicken-recipe-base",
+"save_amount": 1.05,
+"store": "Woolworths",
+"store_category": "Pantry     Cooking Sauces & Recipe Bases   PREPARED FOODS",
+"title": "MasterFoods Honey Mustard Chicken Recipe Base 175g",
+"unit_price": "$1.71 / 100G",
+"was_price": 9.0
 },
 "masterfoods lamb herbs 15g": {
 "category": "pantry",
@@ -7070,6 +7070,20 @@
 "store_category": "Pantry     Herbs & Spices   COOKING NEEDS",
 "title": "MasterFoods Nutmeg Ground 35g",
 "unit_price": "$1 / 10G",
+"was_price": 7.0
+},
+"masterfoods onion powder 44g": {
+"category": "pantry",
+"discount_desc": "2 for $6.00",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/6013244.jpg",
+"price": 6.0,
+"price_display": "2 for $6.00",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/6013244/masterfoods-onion-powder",
+"save_amount": 1.0,
+"store": "Woolworths",
+"store_category": "Pantry     Herbs & Spices   COOKING NEEDS",
+"title": "MasterFoods Onion Powder 44g",
+"unit_price": "$0.8 / 10G",
 "was_price": 7.0
 },
 "masterfoods oregano leaves 10g": {
@@ -7519,6 +7533,20 @@
 "title": "MasterFoods Turmeric Ground 34g",
 "unit_price": "$1.03 / 10G",
 "was_price": 7.0
+},
+"masterfoods tuscan meatballs recipe base 175g": {
+"category": "pantry",
+"discount_desc": "3 for $7.95",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/223136.jpg",
+"price": 7.95,
+"price_display": "3 for $7.95",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/223136/masterfoods-tuscan-meatballs-recipe-base",
+"save_amount": 1.05,
+"store": "Woolworths",
+"store_category": "Pantry     Cooking Sauces & Recipe Bases   PREPARED FOODS",
+"title": "MasterFoods Tuscan Meatballs Recipe Base 175g",
+"unit_price": "$1.71 / 100G",
+"was_price": 9.0
 },
 "masterfoods vanillin sugar 65g": {
 "category": "pantry",
@@ -8037,34 +8065,6 @@
 "title": "MonDeli Spanish Style Salami 80g",
 "unit_price": "$93.75 / 1KG",
 "was_price": 15.0
-},
-"monster energy bad apple can 500ml": {
-"category": "drinks",
-"discount_desc": "2 for $7.90",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/6086374.jpg",
-"price": 7.9,
-"price_display": "2 for $7.90",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/6086374/monster-energy-bad-apple-can",
-"save_amount": 1.5,
-"store": "Woolworths",
-"store_category": "Drinks     Sports & Energy Drinks   LIFESTYLE/WATER NON CARBONATED",
-"title": "Monster Energy Bad Apple Can 500mL",
-"unit_price": "$9.4 / 1L",
-"was_price": 9.4
-},
-"monster energy drink aussie lemonade 500ml": {
-"category": "drinks",
-"discount_desc": "2 for $7.90",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/6024547.jpg",
-"price": 7.9,
-"price_display": "2 for $7.90",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/6024547/monster-energy-drink-aussie-lemonade",
-"save_amount": 1.5,
-"store": "Woolworths",
-"store_category": "Drinks     Sports & Energy Drinks   LIFESTYLE/WATER NON CARBONATED",
-"title": "Monster Energy Drink Aussie Lemonade 500mL",
-"unit_price": "$9.4 / 1L",
-"was_price": 9.4
 },
 "monster energy drink blue hawaiian can 500ml": {
 "category": "drinks",
@@ -8990,20 +8990,6 @@
 "unit_price": "$6 / 100G",
 "was_price": 12.0
 },
-"olina's bakehouse gluten free artisan crackers fig & sunflower seed 100g": {
-"category": "snacks",
-"discount_desc": "2 for $10.00",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/683003.jpg",
-"price": 10.0,
-"price_display": "2 for $10.00",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/683003/olina-s-bakehouse-gluten-free-artisan-crackers-fig-sunflower-seed",
-"save_amount": 2.0,
-"store": "Woolworths",
-"store_category": "Snacks & Confectionery , Lunch Box , Health & Wellness , Christmas     Biscuits & Crackers , Dietary Needs , Health Foods   HEALTH FOODS",
-"title": "Olina's Bakehouse Gluten Free Artisan Crackers Fig & Sunflower Seed 100g",
-"unit_price": "$6 / 100G",
-"was_price": 12.0
-},
 "olina's bakehouse wafer crackers black pepper 100g": {
 "category": "snacks",
 "discount_desc": "2 for $5.00",
@@ -9074,20 +9060,6 @@
 "unit_price": "$2.35 / 100G",
 "was_price": 6.4
 },
-"oreo double stuff gingerbread cookies 136g": {
-"category": "snacks",
-"discount_desc": "2 for $4.50",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/6089829.jpg",
-"price": 4.5,
-"price_display": "2 for $4.50",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/6089829/oreo-double-stuff-gingerbread-cookies",
-"save_amount": 1.9,
-"store": "Woolworths",
-"store_category": "Snacks & Confectionery     Biscuits & Crackers   BISCUITS",
-"title": "Oreo Double Stuff Gingerbread Cookies 136g",
-"unit_price": "$2.35 / 100G",
-"was_price": 6.4
-},
 "oreo double stuff mint chocolate cookies 136g": {
 "category": "snacks",
 "discount_desc": "2 for $4.50",
@@ -9144,6 +9116,20 @@
 "unit_price": "$2.35 / 100G",
 "was_price": 6.4
 },
+"oreo dunked milk chocolate original cookies 197g 6 pack": {
+"category": "snacks",
+"discount_desc": "2 for $7.50",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/273129.jpg",
+"price": 7.5,
+"price_display": "2 for $7.50",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/273129/oreo-dunked-milk-chocolate-original-cookies",
+"save_amount": 3.5,
+"store": "Woolworths",
+"store_category": "Snacks & Confectionery , Halloween , Container Bonus Credits     Biscuits & Crackers   BISCUITS",
+"title": "Oreo Dunked Milk Chocolate Original Cookies 197g 6 pack",
+"unit_price": "$2.79 / 100G",
+"was_price": 11.0
+},
 "oreo mini cookies cadbury caramilk bags 204g 10 pack": {
 "category": "snacks",
 "discount_desc": "2 for $8.00",
@@ -9169,20 +9155,6 @@
 "store": "Woolworths",
 "store_category": "Lunch Box , Snacks & Confectionery , Container Bonus Credits     Dietary Needs , Biscuits & Crackers , Snacks , Snacks   BISCUITS",
 "title": "Oreo Mini Cookies Chocolate Bags 204g 10 pack",
-"unit_price": "$2.45 / 100G",
-"was_price": 10.0
-},
-"oreo mini cookies golden bags 204g 10 pack": {
-"category": "snacks",
-"discount_desc": "2 for $8.00",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/6035929.jpg",
-"price": 8.0,
-"price_display": "2 for $8.00",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/6035929/oreo-mini-cookies-golden-bags",
-"save_amount": 2.0,
-"store": "Woolworths",
-"store_category": "Lunch Box , Snacks & Confectionery , Halloween , Container Bonus Credits     Dietary Needs , Biscuits & Crackers , Snacks , Snacks   BISCUITS",
-"title": "Oreo Mini Cookies Golden Bags 204g 10 pack",
 "unit_price": "$2.45 / 100G",
 "was_price": 10.0
 },
@@ -10264,20 +10236,6 @@
 "unit_price": "$12.8 / 1L",
 "was_price": 6.4
 },
-"red bull red edition 250ml": {
-"category": "drinks",
-"discount_desc": "2 for $5.70",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/082625.jpg",
-"price": 5.7,
-"price_display": "2 for $5.70",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/82625/red-bull-red-edition",
-"save_amount": 0.7,
-"store": "Woolworths",
-"store_category": "Drinks     Sports & Energy Drinks   LIFESTYLE/WATER NON CARBONATED",
-"title": "Red Bull Red Edition 250mL",
-"unit_price": "$12.8 / 1L",
-"was_price": 6.4
-},
 "red rock deli balsamic beetroot fetta & cashews dip 135g": {
 "category": "dairy_eggs",
 "discount_desc": "2 for $7.00",
@@ -10305,6 +10263,20 @@
 "title": "Red Rock Deli Basil Pesto Pecorino & Cashews Dip 135g",
 "unit_price": "$3.7 / 100G",
 "was_price": 10.0
+},
+"red rock deli potato chips variety 28g x 10 pack": {
+"category": "snacks",
+"discount_desc": "2 for $15.00",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/299946.jpg",
+"price": 15.0,
+"price_display": "2 for $15.00",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/299946/red-rock-deli-potato-chips-variety",
+"save_amount": 2.8,
+"store": "Woolworths",
+"store_category": "Snacks & Confectionery , Lunch Box     Snacks , Chips , Snacks   SNACKS",
+"title": "Red Rock Deli Potato Chips Variety 28g x 10 pack",
+"unit_price": "$3.18 / 100G",
+"was_price": 17.8
 },
 "red rock deli roasted pumpkin caramelised onion & cashews dip 135g": {
 "category": "dairy_eggs",
@@ -10626,6 +10598,20 @@
 "store_category": "Snacks & Confectionery     Confectionery   CONFECTIONERY",
 "title": "Skittles Jellies Fruit Pandas Lollies 120g",
 "unit_price": "$5 / 100G",
+"was_price": 12.0
+},
+"skittles sours chewy lollies 190g": {
+"category": "snacks",
+"discount_desc": "2 for $8.00",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/348781.jpg",
+"price": 8.0,
+"price_display": "2 for $8.00",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/348781/skittles-sours-chewy-lollies",
+"save_amount": 4.0,
+"store": "Woolworths",
+"store_category": "Snacks & Confectionery     Confectionery   CONFECTIONERY",
+"title": "Skittles Sours Chewy Lollies 190g",
+"unit_price": "$3.16 / 100G",
 "was_price": 12.0
 },
 "smith's crinkle cut potato chips variety 20 pack": {
@@ -11272,6 +11258,20 @@
 "unit_price": "$12 / 1L",
 "was_price": 24.0
 },
+"v energy zero sugar blue drink 250ml x 4 pack": {
+"category": "drinks",
+"discount_desc": "2 for $16.00",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/174412.jpg",
+"price": 16.0,
+"price_display": "2 for $16.00",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/174412/v-energy-zero-sugar-blue-drink",
+"save_amount": 8.0,
+"store": "Woolworths",
+"store_category": "Drinks     Sports & Energy Drinks   LIFESTYLE/WATER NON CARBONATED",
+"title": "V Energy Zero Sugar Blue Drink 250mL x 4 pack",
+"unit_price": "$12 / 1L",
+"was_price": 24.0
+},
 "voost effervescent hydrate + electrolyte tropical tablets 20 pack": {
 "category": "health_vitamins",
 "discount_desc": "2 for $19.00",
@@ -11606,6 +11606,20 @@
 "store_category": "Poultry, Meat & Seafood , Dinner     Meat , BBQ Meat , Ready to Cook Meats   MEAT CONVENIENCE",
 "title": "Woolworths 6 Pack Classic Angus Beef Sausages 450g",
 "unit_price": "$20 / 1KG",
+"was_price": 18.0
+},
+"woolworths 6 pack classic cumberland pork sausages 500g": {
+"category": "meat",
+"discount_desc": "2 for $15.00",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/083728.jpg",
+"price": 15.0,
+"price_display": "2 for $15.00",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/83728/woolworths-6-pack-classic-cumberland-pork-sausages",
+"save_amount": 3.0,
+"store": "Woolworths",
+"store_category": "Poultry, Meat & Seafood , Dinner     Meat , BBQ Meat , Ready to Cook Meats   MEAT CONVENIENCE",
+"title": "Woolworths 6 Pack Classic Cumberland Pork Sausages 500g",
+"unit_price": "$18 / 1KG",
 "was_price": 18.0
 },
 "woolworths 6 pack country style pork sausages 505g": {
@@ -13358,6 +13372,20 @@
 "unit_price": "$2.29 / 100G",
 "was_price": 16.0
 },
+"woolworths pork sizzle steak 400g": {
+"category": "meat",
+"discount_desc": "2 for $15.00",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/680992.jpg",
+"price": 15.0,
+"price_display": "2 for $15.00",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/680992/woolworths-pork-sizzle-steak",
+"save_amount": 3.0,
+"store": "Woolworths",
+"store_category": "Poultry, Meat & Seafood     Meat , BBQ Meat   MEAT CONVENIENCE",
+"title": "Woolworths Pork Sizzle Steak 400g",
+"unit_price": "$22.5 / 1KG",
+"was_price": 18.0
+},
 "woolworths potato mashies with gravy filling 200g 8 pack": {
 "category": "pantry",
 "discount_desc": "2 for $10.00",
@@ -13961,7 +13989,7 @@
 "was_price": 16.0
 }
 },
-"last_full": 1793132567.094525
+"last_full": 1793177713.489684
 },
 "everyday-low-price": {
 "items": {
@@ -14285,20 +14313,6 @@
 "store_category": "Cleaning & Maintenance     Cleaning Goods   CLEANSING",
 "title": "Air Wick Air Freshener Spray Vanilla 237g",
 "unit_price": "$1.48 / 100G",
-"was_price": 0.0
-},
-"air wick country vanilla carpet deodoriser & freshener 500g": {
-"category": "household",
-"discount_desc": "Everyday Low Price",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/059297.jpg",
-"price": 6.0,
-"price_display": "$6.00 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/59297/air-wick-country-vanilla-carpet-deodoriser-freshener",
-"save_amount": 0.0,
-"store": "Woolworths",
-"store_category": "Cleaning & Maintenance     Cleaning Goods   CLEANSING",
-"title": "Air Wick Country Vanilla Carpet Deodoriser & Freshener 500g",
-"unit_price": "$1.2 / 100G",
 "was_price": 0.0
 },
 "air wick life scents mystical garden reed 30ml": {
@@ -14847,6 +14861,20 @@
 "unit_price": "$3.2 / 100G",
 "was_price": 0.0
 },
+"alula gold newborn infant formula 0-6m 900g": {
+"category": "pantry",
+"discount_desc": "Everyday Low Price",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/654782.jpg",
+"price": 29.0,
+"price_display": "$29.00 ea",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/654782/alula-gold-newborn-infant-formula-0-6m",
+"save_amount": 0.0,
+"store": "Woolworths",
+"store_category": "Baby     Baby Formula & Toddler Milk   BABY NEEDS",
+"title": "Alula Gold Newborn Infant Formula 0-6M 900g",
+"unit_price": "$3.22 / 100G",
+"was_price": 0.0
+},
 "alula gold reflux infant formula 0-12m 900g": {
 "category": "pantry",
 "discount_desc": "Everyday Low Price",
@@ -14987,6 +15015,20 @@
 "unit_price": "$3.24 / 100G",
 "was_price": 0.0
 },
+"aptamil gold+ 4 junior milk formula from 2+ years 900g": {
+"category": "pantry",
+"discount_desc": "Everyday Low Price",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/378535.jpg",
+"price": 29.15,
+"price_display": "$29.15 ea",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/378535/aptamil-gold-4-junior-milk-formula-from-2-years",
+"save_amount": 0.0,
+"store": "Woolworths",
+"store_category": "Baby     Baby Formula & Toddler Milk   BABY NEEDS",
+"title": "Aptamil Gold+ 4 Junior Milk Formula From 2+ Years 900g",
+"unit_price": "$3.24 / 100G",
+"was_price": 0.0
+},
 "aptamil gold+ colic & constipation baby formula from 0-12 months 900g": {
 "category": "pantry",
 "discount_desc": "Everyday Low Price",
@@ -15029,6 +15071,20 @@
 "unit_price": "$3.78 / 100G",
 "was_price": 0.0
 },
+"aptamil prosyneo sensitive baby infant formula from 0-12 months 900g": {
+"category": "pantry",
+"discount_desc": "Everyday Low Price",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/068714.jpg",
+"price": 34.0,
+"price_display": "$34.00 ea",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/68714/aptamil-prosyneo-sensitive-baby-infant-formula-from-0-12-months",
+"save_amount": 0.0,
+"store": "Woolworths",
+"store_category": "Baby     Baby Formula & Toddler Milk   BABY NEEDS",
+"title": "Aptamil Prosyneo Sensitive Baby Infant Formula From 0-12 Months 900g",
+"unit_price": "$3.78 / 100G",
+"was_price": 0.0
+},
 "archibald's pure australian honey 680g": {
 "category": "pantry",
 "discount_desc": "Everyday Low Price",
@@ -15041,6 +15097,20 @@
 "store_category": "Lunch Box , Pantry     Sandwich Ingredients , Breakfast & Spreads   JAMS / SPREADS",
 "title": "Archibald's Pure Australian Honey 680g",
 "unit_price": "$1.46 / 100G",
+"was_price": 0.0
+},
+"ardmona apricot nectar fruit drink 405ml": {
+"category": "drinks",
+"discount_desc": "Everyday Low Price",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/232164.jpg",
+"price": 2.0,
+"price_display": "$2.00 ea",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/232164/ardmona-apricot-nectar-fruit-drink",
+"save_amount": 0.0,
+"store": "Woolworths",
+"store_category": "Drinks     Cordials, Juices & Iced Teas   LONGLIFE JUICE / DRINKS",
+"title": "Ardmona Apricot Nectar Fruit Drink 405mL",
+"unit_price": "$4.94 / 1L",
 "was_price": 0.0
 },
 "armada 1 ply serviettes white 100 pack": {
@@ -15139,6 +15209,20 @@
 "store_category": "Lunch Box , Cleaning & Maintenance     Accessories , Kitchen   PAPERGOODS",
 "title": "Armada Cling Wrap 150m each",
 "unit_price": "$0.05 / 1M",
+"was_price": 0.0
+},
+"armada cling wrap 60m each": {
+"category": "household",
+"discount_desc": "Everyday Low Price",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/305390.jpg",
+"price": 3.5,
+"price_display": "$3.50 ea",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/305390/armada-cling-wrap-60m",
+"save_amount": 0.0,
+"store": "Woolworths",
+"store_category": "Lunch Box , Cleaning & Maintenance     Accessories , Kitchen   PAPERGOODS",
+"title": "Armada Cling Wrap 60m each",
+"unit_price": "$0.06 / 1M",
 "was_price": 0.0
 },
 "armada cocktail serviettes white 2ply 50 pack": {
@@ -17143,48 +17227,6 @@
 "unit_price": "$6.88 / 100ML",
 "was_price": 0.0
 },
-"bomberry frozen dark & white chocolate raspberries 150g": {
-"category": "snacks",
-"discount_desc": "Everyday Low Price",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/6067986.jpg",
-"price": 11.9,
-"price_display": "$11.90 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/6067986/bomberry-frozen-dark-white-chocolate-raspberries",
-"save_amount": 0.0,
-"store": "Woolworths",
-"store_category": "Freezer     Frozen Fruit   FREEZER - DESSERTS & PASTRY",
-"title": "Bomberry Frozen Dark & White Chocolate Raspberries 150g",
-"unit_price": "$7.93 / 100G",
-"was_price": 0.0
-},
-"bomberry frozen milk & white chocolate blueberries 150g": {
-"category": "snacks",
-"discount_desc": "Everyday Low Price",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/6066246.jpg",
-"price": 11.9,
-"price_display": "$11.90 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/6066246/bomberry-frozen-milk-white-chocolate-blueberries",
-"save_amount": 0.0,
-"store": "Woolworths",
-"store_category": "Freezer     Frozen Fruit   FREEZER - DESSERTS & PASTRY",
-"title": "Bomberry Frozen Milk & White Chocolate Blueberries 150g",
-"unit_price": "$7.93 / 100G",
-"was_price": 0.0
-},
-"bomberry frozen milk & white chocolate raspberries 150g": {
-"category": "snacks",
-"discount_desc": "Everyday Low Price",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/6069237.jpg",
-"price": 11.9,
-"price_display": "$11.90 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/6069237/bomberry-frozen-milk-white-chocolate-raspberries",
-"save_amount": 0.0,
-"store": "Woolworths",
-"store_category": "Freezer     Frozen Fruit   FREEZER - DESSERTS & PASTRY",
-"title": "Bomberry Frozen Milk & White Chocolate Raspberries 150g",
-"unit_price": "$7.93 / 100G",
-"was_price": 0.0
-},
 "bon gateaux chocolate bavarian frozen dessert 450g": {
 "category": "frozen",
 "discount_desc": "Everyday Low Price",
@@ -17558,7 +17600,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/690724/brita-water-filter-cartridge-maxtra-pro-pure-performance",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle , Cleaning & Maintenance     Kitchen Appliances , Kitchen   DOMESTICWARE",
+"store_category": "Home & Lifestyle , Cleaning & Maintenance     Kitchen , Kitchen Appliances   DOMESTICWARE",
 "title": "Brita Water Filter Cartridge Maxtra Pro Pure Performance each",
 "unit_price": "",
 "was_price": 0.0
@@ -18067,20 +18109,6 @@
 "unit_price": "$2.7 / 100G",
 "was_price": 0.0
 },
-"cadbury dairy milk caramel chocolate caramello large block 345g": {
-"category": "snacks",
-"discount_desc": "Everyday Low Price",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/147775.jpg",
-"price": 8.5,
-"price_display": "$8.50 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/147775/cadbury-dairy-milk-caramel-chocolate-caramello-large-block",
-"save_amount": 0.0,
-"store": "Woolworths",
-"store_category": "Container Bonus Credits , Snacks & Confectionery     Snacks & Confectionery , Confectionery   CONFECTIONERY",
-"title": "Cadbury Dairy Milk Caramel Chocolate Caramello Large Block 345g",
-"unit_price": "$2.46 / 100G",
-"was_price": 0.0
-},
 "cadbury dairy milk chocolate bar roll 55g": {
 "category": "snacks",
 "discount_desc": "Everyday Low Price",
@@ -18148,6 +18176,20 @@
 "store": "Woolworths",
 "store_category": "Halloween , Container Bonus Credits , Snacks & Confectionery     Snacks & Confectionery , Confectionery   CONFECTIONERY",
 "title": "Cadbury Dairy Milk Large Fruit & Nut Chocolate Block 340g",
+"unit_price": "$2.5 / 100G",
+"was_price": 0.0
+},
+"cadbury dairy milk large top deck chocolate block 340g": {
+"category": "snacks",
+"discount_desc": "Everyday Low Price",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/165352.jpg",
+"price": 8.5,
+"price_display": "$8.50 ea",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/165352/cadbury-dairy-milk-large-top-deck-chocolate-block",
+"save_amount": 0.0,
+"store": "Woolworths",
+"store_category": "Container Bonus Credits , Snacks & Confectionery     Snacks & Confectionery , Confectionery   CONFECTIONERY",
+"title": "Cadbury Dairy Milk Large Top Deck Chocolate Block 340g",
 "unit_price": "$2.5 / 100G",
 "was_price": 0.0
 },
@@ -18669,6 +18711,20 @@
 "unit_price": "$3.58 / 100G",
 "was_price": 0.0
 },
+"carman's protein dark choc & almond bars 400g 10 pack": {
+"category": "snacks",
+"discount_desc": "Everyday Low Price",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/6004146.jpg",
+"price": 12.9,
+"price_display": "$12.90 ea",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/6004146/carman-s-protein-dark-choc-almond-bars",
+"save_amount": 0.0,
+"store": "Woolworths",
+"store_category": "Dinner , Lunch Box , Snacks & Confectionery , Pantry     Snacks , Snacks , Muesli Bars & Snack Bars   BISCUITS",
+"title": "Carman's Protein Dark Choc & Almond Bars 400g 10 pack",
+"unit_price": "$3.23 / 100G",
+"was_price": 0.0
+},
 "carman's protein dark choc & cranberry bars 400g 10 pack": {
 "category": "snacks",
 "discount_desc": "Everyday Low Price",
@@ -18902,7 +18958,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/262177/chevron-alkaline-9v-alkaline",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Cleaning & Maintenance , Home & Lifestyle , Electronics     Hardware , Electronics , Batteries & Power   ELECTRICAL",
+"store_category": "Cleaning & Maintenance , Home & Lifestyle , Electronics     Hardware , Batteries & Power , Electronics   ELECTRICAL",
 "title": "Chevron Alkaline 9V Alkaline 2 pack",
 "unit_price": "$2.63 / 1EA",
 "was_price": 0.0
@@ -18916,7 +18972,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/683404/chevron-alkaline-aa",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Cleaning & Maintenance , Home & Lifestyle , Electronics     Hardware , Electronics , Batteries & Power   ELECTRICAL",
+"store_category": "Cleaning & Maintenance , Home & Lifestyle , Electronics     Hardware , Batteries & Power , Electronics   ELECTRICAL",
 "title": "Chevron Alkaline AA 24 pack",
 "unit_price": "$0.58 / 1EA",
 "was_price": 0.0
@@ -18930,7 +18986,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/262173/chevron-alkaline-aa-alkaline",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Cleaning & Maintenance , Home & Lifestyle , Electronics     Hardware , Electronics , Batteries & Power   ELECTRICAL",
+"store_category": "Cleaning & Maintenance , Home & Lifestyle , Electronics     Hardware , Batteries & Power , Electronics   ELECTRICAL",
 "title": "Chevron Alkaline AA Alkaline 10 pack",
 "unit_price": "$0.6 / 1EA",
 "was_price": 0.0
@@ -18944,7 +19000,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/88647/chevron-alkaline-aa-srt",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Cleaning & Maintenance , Home & Lifestyle , Electronics     Hardware , Electronics , Batteries & Power   ELECTRICAL",
+"store_category": "Cleaning & Maintenance , Home & Lifestyle , Electronics     Hardware , Batteries & Power , Electronics   ELECTRICAL",
 "title": "Chevron Alkaline AA SRT 50 pack",
 "unit_price": "$0.5 / 1EA",
 "was_price": 0.0
@@ -18958,7 +19014,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/683403/chevron-alkaline-aaa",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Cleaning & Maintenance , Home & Lifestyle , Electronics     Hardware , Electronics , Batteries & Power   ELECTRICAL",
+"store_category": "Cleaning & Maintenance , Home & Lifestyle , Electronics     Hardware , Batteries & Power , Electronics   ELECTRICAL",
 "title": "Chevron Alkaline AAA 24 pack",
 "unit_price": "$0.58 / 1EA",
 "was_price": 0.0
@@ -18972,7 +19028,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/88649/chevron-alkaline-aaa-srt",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Cleaning & Maintenance , Home & Lifestyle , Electronics     Hardware , Electronics , Batteries & Power   ELECTRICAL",
+"store_category": "Cleaning & Maintenance , Home & Lifestyle , Electronics     Hardware , Batteries & Power , Electronics   ELECTRICAL",
 "title": "Chevron Alkaline AAA SRT 50 pack",
 "unit_price": "$0.5 / 1EA",
 "was_price": 0.0
@@ -18986,7 +19042,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/268127/chevron-alkaline-d",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Cleaning & Maintenance , Home & Lifestyle , Electronics     Hardware , Electronics , Batteries & Power   ELECTRICAL",
+"store_category": "Cleaning & Maintenance , Home & Lifestyle , Electronics     Hardware , Batteries & Power , Electronics   ELECTRICAL",
 "title": "Chevron Alkaline D 4 pack",
 "unit_price": "$1.6 / 1EA",
 "was_price": 0.0
@@ -19014,7 +19070,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/262163/chevron-heavy-duty-6v-lantern",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Cleaning & Maintenance , Home & Lifestyle , Electronics     Hardware , Electronics , Batteries & Power   ELECTRICAL",
+"store_category": "Cleaning & Maintenance , Home & Lifestyle , Electronics     Hardware , Batteries & Power , Electronics   ELECTRICAL",
 "title": "Chevron Heavy-duty 6V Lantern each",
 "unit_price": "$12 / 1EA",
 "was_price": 0.0
@@ -19131,6 +19187,20 @@
 "unit_price": "$3.67 / 100G",
 "was_price": 0.0
 },
+"churu puree cat treats chicken variety 14g x 20 pack": {
+"category": "pet",
+"discount_desc": "Everyday Low Price",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/6088285.jpg",
+"price": 16.0,
+"price_display": "$16.00 ea",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/6088285/churu-puree-cat-treats-chicken-variety",
+"save_amount": 0.0,
+"store": "Woolworths",
+"store_category": "Pet     Cat & Kitten   PET FOOD",
+"title": "Churu Puree Cat Treats Chicken Variety 14g x 20 pack",
+"unit_price": "$5.71 / 100G",
+"was_price": 0.0
+},
 "churu puree cat treats salmon variety 14g x 20 pack": {
 "category": "pet",
 "discount_desc": "Everyday Low Price",
@@ -19156,6 +19226,20 @@
 "store": "Woolworths",
 "store_category": "Pet     Cat & Kitten   PET FOOD",
 "title": "Churu Puree Cat Treats Tuna & Chicken 14g x 20 pack",
+"unit_price": "$5.71 / 100G",
+"was_price": 0.0
+},
+"churu puree cat treats tuna variety 14g x 20 pack": {
+"category": "pet",
+"discount_desc": "Everyday Low Price",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/6088646.jpg",
+"price": 16.0,
+"price_display": "$16.00 ea",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/6088646/churu-puree-cat-treats-tuna-variety",
+"save_amount": 0.0,
+"store": "Woolworths",
+"store_category": "Pet     Cat & Kitten   PET FOOD",
+"title": "Churu Puree Cat Treats Tuna Variety 14g x 20 pack",
 "unit_price": "$5.71 / 100G",
 "was_price": 0.0
 },
@@ -19703,20 +19787,6 @@
 "store_category": "Dairy, Eggs & Fridge , Drinks     Chilled Juices & Drinks , Water , Chilled Drinks   CARBONATED SOFT DRINKS",
 "title": "Cocobella Coconut Water 350mL",
 "unit_price": "$10 / 1L",
-"was_price": 0.0
-},
-"coffee. beans medium roast 1kg": {
-"category": "drinks",
-"discount_desc": "Everyday Low Price",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/6056658.jpg",
-"price": 18.0,
-"price_display": "$18.00 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/6056658/coffee-beans-medium-roast",
-"save_amount": 0.0,
-"store": "Woolworths",
-"store_category": "Drinks , Pantry     Coffee , Tea & Coffee   BEVERAGES",
-"title": "Coffee. Beans Medium Roast 1kg",
-"unit_price": "$1.8 / 100G",
 "was_price": 0.0
 },
 "coffee. ready to drink espresso 1.5l": {
@@ -20853,6 +20923,20 @@
 "unit_price": "$18.75 / 1KG",
 "was_price": 0.0
 },
+"dairyworks protein cheese & rice crackers 10 pack": {
+"category": "snacks",
+"discount_desc": "Everyday Low Price",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/6079144.jpg",
+"price": 11.5,
+"price_display": "$11.50 ea",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/6079144/dairyworks-protein-cheese-rice-crackers",
+"save_amount": 0.0,
+"store": "Woolworths",
+"store_category": "Lunch Box , Dairy, Eggs & Fridge     Snacks , Cheese   CHEESE EVERYDAY",
+"title": "Dairyworks Protein Cheese & Rice Crackers 10 pack",
+"unit_price": "$38.33 / 1KG",
+"was_price": 0.0
+},
 "dairyworks protein cheese slices 400g": {
 "category": "dairy_eggs",
 "discount_desc": "Everyday Low Price",
@@ -21497,18 +21581,18 @@
 "unit_price": "$1.26 / 100ML",
 "was_price": 0.0
 },
-"drano bathroom max gel drain cleaner 1.2l": {
+"drano crystals drain cleaner 500g": {
 "category": "household",
 "discount_desc": "Everyday Low Price",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/278262.jpg",
-"price": 21.0,
-"price_display": "$21.00 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/278262/drano-bathroom-max-gel-drain-cleaner",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/084606.jpg",
+"price": 15.75,
+"price_display": "$15.75 ea",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/84606/drano-crystals-drain-cleaner",
 "save_amount": 0.0,
 "store": "Woolworths",
 "store_category": "Cleaning & Maintenance     Cleaning Goods   CLEANSING",
-"title": "Drano Bathroom Max Gel Drain Cleaner 1.2L",
-"unit_price": "$1.75 / 100ML",
+"title": "Drano Crystals Drain Cleaner 500g",
+"unit_price": "$3.15 / 100G",
 "was_price": 0.0
 },
 "drano universal unblocker 1.2l": {
@@ -22124,6 +22208,20 @@
 "store": "Woolworths",
 "store_category": "Snacks & Confectionery     Gum, Mints & Lozenges , Confectionery   CONFECTIONERY",
 "title": "Extra Peppermint Sugar Free Chewing Gum 81g",
+"unit_price": "$6.79 / 100G",
+"was_price": 0.0
+},
+"extra spearmint sugar free chewing gum 81g": {
+"category": "snacks",
+"discount_desc": "Everyday Low Price",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/005180.jpg",
+"price": 5.5,
+"price_display": "$5.50 ea",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/5180/extra-spearmint-sugar-free-chewing-gum",
+"save_amount": 0.0,
+"store": "Woolworths",
+"store_category": "Snacks & Confectionery     Gum, Mints & Lozenges , Confectionery   CONFECTIONERY",
+"title": "Extra Spearmint Sugar Free Chewing Gum 81g",
 "unit_price": "$6.79 / 100G",
 "was_price": 0.0
 },
@@ -23093,20 +23191,6 @@
 "unit_price": "$0.56 / 100G",
 "was_price": 0.0
 },
-"friskies adult seafood sensations dry cat food 2.5kg": {
-"category": "pet",
-"discount_desc": "Everyday Low Price",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/847745.jpg",
-"price": 13.9,
-"price_display": "$13.90 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/847745/friskies-adult-seafood-sensations-dry-cat-food",
-"save_amount": 0.0,
-"store": "Woolworths",
-"store_category": "Pet     Cat & Kitten   PET FOOD",
-"title": "Friskies Adult Seafood Sensations Dry Cat Food 2.5Kg",
-"unit_price": "$0.56 / 100G",
-"was_price": 0.0
-},
 "frisp baby corn pieces 200g": {
 "category": "snacks",
 "discount_desc": "Everyday Low Price",
@@ -23849,20 +23933,6 @@
 "unit_price": "",
 "was_price": 0.0
 },
-"green gardener hose joiner 12mm each": {
-"category": "household",
-"discount_desc": "Everyday Low Price",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/013517.jpg",
-"price": 4.0,
-"price_display": "$4.00 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/13517/green-gardener-hose-joiner-12mm",
-"save_amount": 0.0,
-"store": "Woolworths",
-"store_category": "Cleaning & Maintenance     Garden & Outdoors   GARDEN AIDS/SEEDS/BULBS",
-"title": "Green Gardener Hose Joiner 12mm each",
-"unit_price": "",
-"was_price": 0.0
-},
 "green gardener multi pattern spray trigger gun each": {
 "category": "household",
 "discount_desc": "Everyday Low Price",
@@ -24126,20 +24196,6 @@
 "store": "Woolworths",
 "store_category": "Cleaning & Maintenance     Cleaning Goods   CLEANSING",
 "title": "Handy Andy Cleaner & Disinfectant Green 750mL",
-"unit_price": "$0.53 / 100ML",
-"was_price": 0.0
-},
-"handy andy original fresh scent 750ml": {
-"category": "household",
-"discount_desc": "Everyday Low Price",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/031992.jpg",
-"price": 4.0,
-"price_display": "$4.00 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/31992/handy-andy-original-fresh-scent",
-"save_amount": 0.0,
-"store": "Woolworths",
-"store_category": "Cleaning & Maintenance     Cleaning Goods   CLEANSING",
-"title": "Handy Andy Original Fresh Scent 750mL",
 "unit_price": "$0.53 / 100ML",
 "was_price": 0.0
 },
@@ -25328,7 +25384,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/829155/inspire-flocked-hanger",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle , Cleaning & Maintenance     Home Decor & Furniture , Laundry   HABERDASHERY",
+"store_category": "Home & Lifestyle , Cleaning & Maintenance     Laundry , Home Decor & Furniture   HABERDASHERY",
 "title": "Inspire Flocked Hanger 10 pack",
 "unit_price": "$0.7 / 1EA",
 "was_price": 0.0
@@ -25384,7 +25440,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/829156/inspire-plastic-hanger",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle , Cleaning & Maintenance     Home Decor & Furniture , Laundry   HABERDASHERY",
+"store_category": "Home & Lifestyle , Cleaning & Maintenance     Laundry , Home Decor & Furniture   HABERDASHERY",
 "title": "Inspire Plastic Hanger 12 pack",
 "unit_price": "$0.42 / 1EA",
 "was_price": 0.0
@@ -25398,7 +25454,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/693008/inspire-plastic-non-slip-hanger",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle , Cleaning & Maintenance     Home Decor & Furniture , Laundry   HABERDASHERY",
+"store_category": "Home & Lifestyle , Cleaning & Maintenance     Laundry , Home Decor & Furniture   HABERDASHERY",
 "title": "Inspire Plastic Non-Slip Hanger 6 pack",
 "unit_price": "$1.33 / 1EA",
 "was_price": 0.0
@@ -25529,20 +25585,6 @@
 "unit_price": "$2.97 / 100G",
 "was_price": 0.0
 },
-"jeeny's ingredients puree tamarind 220g": {
-"category": "pantry",
-"discount_desc": "Everyday Low Price",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/250310.jpg",
-"price": 5.7,
-"price_display": "$5.70 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/250310/jeeny-s-ingredients-puree-tamarind",
-"save_amount": 0.0,
-"store": "Woolworths",
-"store_category": "International Foods , Pantry     Asian , International Foods   ETHNIC / GOURMET FOOD",
-"title": "Jeeny's Ingredients Puree Tamarind 220g",
-"unit_price": "$2.59 / 100G",
-"was_price": 0.0
-},
 "john west anchovy fillets in olive oil 45g": {
 "category": "pantry",
 "discount_desc": "Everyday Low Price",
@@ -25624,6 +25666,20 @@
 "store": "Woolworths",
 "store_category": "Lunch Box , Pantry     Sandwich Ingredients , Canned Food & Instant Meals   CANNED FISH",
 "title": "John West Tuna In Olive Oil Blend Value 95g x 6 pack",
+"unit_price": "$17.19 / 1KG",
+"was_price": 0.0
+},
+"john west tuna in onion & tomato savory sauce value 95g x 6 pack": {
+"category": "pantry",
+"discount_desc": "Everyday Low Price",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/6081265.jpg",
+"price": 9.8,
+"price_display": "$9.80 ea",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/6081265/john-west-tuna-in-onion-tomato-savory-sauce-value",
+"save_amount": 0.0,
+"store": "Woolworths",
+"store_category": "Lunch Box , Pantry     Sandwich Ingredients , Canned Food & Instant Meals   CANNED FISH",
+"title": "John West Tuna In Onion & Tomato Savory Sauce Value 95g x 6 pack",
 "unit_price": "$17.19 / 1KG",
 "was_price": 0.0
 },
@@ -26044,20 +26100,6 @@
 "store": "Woolworths",
 "store_category": "Home & Lifestyle     Dining & Entertaining   DOMESTICWARE",
 "title": "Kate's Kitchen Screw Top Glass Jar Assorted 1L each",
-"unit_price": "",
-"was_price": 0.0
-},
-"kate's kitchen screw top glass jar assorted 250ml each": {
-"category": "household",
-"discount_desc": "Everyday Low Price",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/133781.jpg",
-"price": 3.15,
-"price_display": "$3.15 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/133781/kate-s-kitchen-screw-top-glass-jar-assorted-250ml",
-"save_amount": 0.0,
-"store": "Woolworths",
-"store_category": "Home & Lifestyle     Dining & Entertaining   DOMESTICWARE",
-"title": "Kate's Kitchen Screw Top Glass Jar Assorted 250mL each",
 "unit_price": "",
 "was_price": 0.0
 },
@@ -26644,7 +26686,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/105194/korbond-anti-static-spray",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle , Cleaning & Maintenance     Stationery & Office Supplies , Clothing & Accessories , Laundry   HABERDASHERY",
+"store_category": "Home & Lifestyle , Cleaning & Maintenance     Laundry , Clothing & Accessories , Stationery & Office Supplies   HABERDASHERY",
 "title": "Korbond Anti Static Spray each",
 "unit_price": "",
 "was_price": 0.0
@@ -26658,7 +26700,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/102309/korbond-berry-pins",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle     Stationery & Office Supplies , Clothing & Accessories   HABERDASHERY",
+"store_category": "Home & Lifestyle     Clothing & Accessories , Stationery & Office Supplies   HABERDASHERY",
 "title": "Korbond Berry Pins 40 pack",
 "unit_price": "",
 "was_price": 0.0
@@ -26672,7 +26714,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/105196/korbond-clothes-brush-automatic",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle , Cleaning & Maintenance     Stationery & Office Supplies , Clothing & Accessories , Laundry   HABERDASHERY",
+"store_category": "Home & Lifestyle , Cleaning & Maintenance     Laundry , Clothing & Accessories , Stationery & Office Supplies   HABERDASHERY",
 "title": "Korbond Clothes Brush Automatic each",
 "unit_price": "",
 "was_price": 0.0
@@ -26686,7 +26728,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/101510/korbond-compact-needle-kit",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle     Stationery & Office Supplies , Clothing & Accessories   HABERDASHERY",
+"store_category": "Home & Lifestyle     Clothing & Accessories , Stationery & Office Supplies   HABERDASHERY",
 "title": "Korbond Compact Needle Kit 40 pack",
 "unit_price": "",
 "was_price": 0.0
@@ -26700,7 +26742,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/102326/korbond-easy-thread-needles",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle     Stationery & Office Supplies , Clothing & Accessories   HABERDASHERY",
+"store_category": "Home & Lifestyle     Clothing & Accessories , Stationery & Office Supplies   HABERDASHERY",
 "title": "Korbond Easy Thread Needles 10 pack",
 "unit_price": "",
 "was_price": 0.0
@@ -26714,7 +26756,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/105693/korbond-elastic-braided-12mm-x4m",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle     Stationery & Office Supplies , Clothing & Accessories   HABERDASHERY",
+"store_category": "Home & Lifestyle     Clothing & Accessories , Stationery & Office Supplies   HABERDASHERY",
 "title": "Korbond Elastic Braided 12Mm X4M each",
 "unit_price": "",
 "was_price": 0.0
@@ -26728,7 +26770,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/103338/korbond-elastic-braided-6mm-x5m",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle     Stationery & Office Supplies , Clothing & Accessories   HABERDASHERY",
+"store_category": "Home & Lifestyle     Clothing & Accessories , Stationery & Office Supplies   HABERDASHERY",
 "title": "Korbond Elastic Braided 6Mm X5M each",
 "unit_price": "",
 "was_price": 0.0
@@ -26742,7 +26784,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/105111/korbond-embroidery-handy-scissors-12cm",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle     Stationery & Office Supplies , Clothing & Accessories   HABERDASHERY",
+"store_category": "Home & Lifestyle     Clothing & Accessories , Stationery & Office Supplies   HABERDASHERY",
 "title": "Korbond Embroidery Handy Scissors 12cm each",
 "unit_price": "",
 "was_price": 0.0
@@ -26756,7 +26798,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/105137/korbond-fabric-wool-comb",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle , Cleaning & Maintenance     Stationery & Office Supplies , Clothing & Accessories , Laundry   HABERDASHERY",
+"store_category": "Home & Lifestyle , Cleaning & Maintenance     Laundry , Clothing & Accessories , Stationery & Office Supplies   HABERDASHERY",
 "title": "Korbond Fabric/Wool Comb each",
 "unit_price": "",
 "was_price": 0.0
@@ -26770,7 +26812,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/103469/korbond-fashion-tape-stripes-shapes",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle     Stationery & Office Supplies , Clothing & Accessories   HABERDASHERY",
+"store_category": "Home & Lifestyle     Clothing & Accessories , Stationery & Office Supplies   HABERDASHERY",
 "title": "Korbond Fashion Tape Stripes & Shapes each",
 "unit_price": "",
 "was_price": 0.0
@@ -26784,7 +26826,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/104440/korbond-hat-elastic-white-black",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle     Stationery & Office Supplies , Clothing & Accessories   HABERDASHERY",
+"store_category": "Home & Lifestyle     Clothing & Accessories , Stationery & Office Supplies   HABERDASHERY",
 "title": "Korbond Hat Elastic White/Black each",
 "unit_price": "",
 "was_price": 0.0
@@ -26798,7 +26840,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/102226/korbond-home-needle-kit",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle     Stationery & Office Supplies , Clothing & Accessories   HABERDASHERY",
+"store_category": "Home & Lifestyle     Clothing & Accessories , Stationery & Office Supplies   HABERDASHERY",
 "title": "Korbond Home Needle Kit 50 pack",
 "unit_price": "",
 "was_price": 0.0
@@ -26812,7 +26854,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/105095/korbond-instant-hemming-mending-tape-2m",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle     Stationery & Office Supplies , Clothing & Accessories   HABERDASHERY",
+"store_category": "Home & Lifestyle     Clothing & Accessories , Stationery & Office Supplies   HABERDASHERY",
 "title": "Korbond Instant Hemming & Mending Tape 2M each",
 "unit_price": "",
 "was_price": 0.0
@@ -26826,7 +26868,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/104497/korbond-instant-hook-loop-dots-self-stick",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle     Stationery & Office Supplies , Clothing & Accessories   HABERDASHERY",
+"store_category": "Home & Lifestyle     Clothing & Accessories , Stationery & Office Supplies   HABERDASHERY",
 "title": "Korbond Instant Hook & Loop Dots Self Stick 40 pack",
 "unit_price": "",
 "was_price": 0.0
@@ -26840,7 +26882,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/105195/korbond-instant-hook-loop-tape-self-stick-1m",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle     Stationery & Office Supplies , Clothing & Accessories   HABERDASHERY",
+"store_category": "Home & Lifestyle     Clothing & Accessories , Stationery & Office Supplies   HABERDASHERY",
 "title": "Korbond Instant Hook & Loop Tape Self Stick 1M each",
 "unit_price": "",
 "was_price": 0.0
@@ -26854,7 +26896,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/105192/korbond-instant-iron-on-hemming-web-10m",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle     Stationery & Office Supplies , Clothing & Accessories   HABERDASHERY",
+"store_category": "Home & Lifestyle     Clothing & Accessories , Stationery & Office Supplies   HABERDASHERY",
 "title": "Korbond Instant Iron On Hemming Web 10M each",
 "unit_price": "",
 "was_price": 0.0
@@ -26868,7 +26910,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/104401/korbond-instant-repair-double-sided-tape-4-6m",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle     Stationery & Office Supplies , Clothing & Accessories   HABERDASHERY",
+"store_category": "Home & Lifestyle     Clothing & Accessories , Stationery & Office Supplies   HABERDASHERY",
 "title": "Korbond Instant Repair Double Sided Tape 4.6M each",
 "unit_price": "",
 "was_price": 0.0
@@ -26882,7 +26924,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/105154/korbond-instant-repair-kit",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle     Stationery & Office Supplies , Clothing & Accessories   HABERDASHERY",
+"store_category": "Home & Lifestyle     Clothing & Accessories , Stationery & Office Supplies   HABERDASHERY",
 "title": "Korbond Instant Repair Kit each",
 "unit_price": "",
 "was_price": 0.0
@@ -26896,7 +26938,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/104441/korbond-lint-shaver",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle , Cleaning & Maintenance     Stationery & Office Supplies , Clothing & Accessories , Laundry   HABERDASHERY",
+"store_category": "Home & Lifestyle , Cleaning & Maintenance     Laundry , Clothing & Accessories , Stationery & Office Supplies   HABERDASHERY",
 "title": "Korbond Lint Shaver each",
 "unit_price": "",
 "was_price": 0.0
@@ -26910,7 +26952,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/102862/korbond-lint-travel-roller",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle , Cleaning & Maintenance     Stationery & Office Supplies , Clothing & Accessories , Laundry   HABERDASHERY",
+"store_category": "Home & Lifestyle , Cleaning & Maintenance     Laundry , Clothing & Accessories , Stationery & Office Supplies   HABERDASHERY",
 "title": "Korbond Lint Travel Roller each",
 "unit_price": "",
 "was_price": 0.0
@@ -26924,7 +26966,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/102657/korbond-pearl-headed-pins",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle     Stationery & Office Supplies , Clothing & Accessories   HABERDASHERY",
+"store_category": "Home & Lifestyle     Clothing & Accessories , Stationery & Office Supplies   HABERDASHERY",
 "title": "Korbond Pearl Headed Pins 200 pack",
 "unit_price": "",
 "was_price": 0.0
@@ -26938,7 +26980,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/94499/korbond-polyester-thread-black-white-500m",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle     Stationery & Office Supplies , Clothing & Accessories   HABERDASHERY",
+"store_category": "Home & Lifestyle     Clothing & Accessories , Stationery & Office Supplies   HABERDASHERY",
 "title": "Korbond Polyester Thread Black & White 500M 2 pack",
 "unit_price": "$1.5 / 1EA",
 "was_price": 0.0
@@ -26952,7 +26994,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/105114/korbond-polyester-thread-dark-colours-14m",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle     Stationery & Office Supplies , Clothing & Accessories   HABERDASHERY",
+"store_category": "Home & Lifestyle     Clothing & Accessories , Stationery & Office Supplies   HABERDASHERY",
 "title": "Korbond Polyester Thread Dark Colours 14m 12 pack",
 "unit_price": "",
 "was_price": 0.0
@@ -26966,7 +27008,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/94328/korbond-scissors-23cm",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle     Stationery & Office Supplies , Clothing & Accessories   HABERDASHERY",
+"store_category": "Home & Lifestyle     Clothing & Accessories , Stationery & Office Supplies   HABERDASHERY",
 "title": "Korbond Scissors 23cm each",
 "unit_price": "",
 "was_price": 0.0
@@ -26980,7 +27022,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/104676/korbond-scissors-soft-touch-handle",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle     Stationery & Office Supplies , Clothing & Accessories   HABERDASHERY",
+"store_category": "Home & Lifestyle     Clothing & Accessories , Stationery & Office Supplies   HABERDASHERY",
 "title": "Korbond Scissors Soft Touch Handle 2 pack",
 "unit_price": "",
 "was_price": 0.0
@@ -26994,7 +27036,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/102089/korbond-seam-ripper",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle     Stationery & Office Supplies , Clothing & Accessories   HABERDASHERY",
+"store_category": "Home & Lifestyle     Clothing & Accessories , Stationery & Office Supplies   HABERDASHERY",
 "title": "Korbond Seam Ripper 2 pack",
 "unit_price": "",
 "was_price": 0.0
@@ -27008,7 +27050,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/103909/korbond-sewing-oil",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle     Stationery & Office Supplies , Clothing & Accessories   HABERDASHERY",
+"store_category": "Home & Lifestyle     Clothing & Accessories , Stationery & Office Supplies   HABERDASHERY",
 "title": "Korbond Sewing Oil each",
 "unit_price": "",
 "was_price": 0.0
@@ -27022,7 +27064,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/105206/korbond-silicone-nipple-covers",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle     Stationery & Office Supplies , Clothing & Accessories   HABERDASHERY",
+"store_category": "Home & Lifestyle     Clothing & Accessories , Stationery & Office Supplies   HABERDASHERY",
 "title": "Korbond Silicone Nipple Covers each",
 "unit_price": "",
 "was_price": 0.0
@@ -27036,7 +27078,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/102830/korbond-snap-lock-pins",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle     Stationery & Office Supplies , Clothing & Accessories   HABERDASHERY",
+"store_category": "Home & Lifestyle     Clothing & Accessories , Stationery & Office Supplies   HABERDASHERY",
 "title": "Korbond Snap Lock Pins 4 pack",
 "unit_price": "",
 "was_price": 0.0
@@ -27050,7 +27092,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/101549/korbond-tape-measure-metric-imperial",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle     Stationery & Office Supplies , Clothing & Accessories   HABERDASHERY",
+"store_category": "Home & Lifestyle     Clothing & Accessories , Stationery & Office Supplies   HABERDASHERY",
 "title": "Korbond Tape Measure Metric & Imperial each",
 "unit_price": "",
 "was_price": 0.0
@@ -27064,7 +27106,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/105182/korbond-travel-sewing-kit",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle     Stationery & Office Supplies , Clothing & Accessories   HABERDASHERY",
+"store_category": "Home & Lifestyle     Clothing & Accessories , Stationery & Office Supplies   HABERDASHERY",
 "title": "Korbond Travel Sewing Kit each",
 "unit_price": "",
 "was_price": 0.0
@@ -27531,20 +27573,6 @@
 "unit_price": "$1.15 / 1L",
 "was_price": 0.0
 },
-"la ice no sugar cola cans 375ml x 12 pack": {
-"category": "drinks",
-"discount_desc": "Everyday Low Price",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/193511.jpg",
-"price": 9.6,
-"price_display": "$9.60 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/193511/la-ice-no-sugar-cola-cans",
-"save_amount": 0.0,
-"store": "Woolworths",
-"store_category": "Drinks     Soft Drinks   CARBONATED SOFT DRINKS",
-"title": "La Ice No Sugar Cola Cans 375mL x 12 pack",
-"unit_price": "$2.13 / 1L",
-"was_price": 0.0
-},
 "la mesita seasoning burrito mild 35g": {
 "category": "pantry",
 "discount_desc": "Everyday Low Price",
@@ -27851,6 +27879,20 @@
 "store_category": "Container Bonus Credits , International Foods , Pantry     Pantry , Asian , International Foods   ETHNIC / GOURMET FOOD",
 "title": "Lantern Alley Vermicelli Rice Noodles 340g",
 "unit_price": "$0.63 / 100G",
+"was_price": 0.0
+},
+"latina fresh egg fettuccine pasta 375g": {
+"category": "pantry",
+"discount_desc": "Everyday Low Price",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/022081.jpg",
+"price": 5.8,
+"price_display": "$5.80 ea",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/22081/latina-fresh-egg-fettuccine-pasta",
+"save_amount": 0.0,
+"store": "Woolworths",
+"store_category": "Deli , Dinner , Dairy, Eggs & Fridge , Pantry     Stove Top Meals , Fresh Pasta & Sauces , Pasta, Rice & Grains   DELI CONVENIENCE",
+"title": "Latina Fresh Egg Fettuccine Pasta 375g",
+"unit_price": "$1.55 / 100G",
 "was_price": 0.0
 },
 "latina fresh gluten free beef ravioli pasta 280g": {
@@ -28872,6 +28914,20 @@
 "store": "Woolworths",
 "store_category": "Freezer , Dinner , International Foods     Asian , Frozen Meals , Stove Top Meals   FROZEN MEALS",
 "title": "Lucky Kitchen Prawn Gyoza 750g",
+"unit_price": "$1.32 / 100G",
+"was_price": 0.0
+},
+"lucky kitchen vegie gyoza vegie gyoza 750g": {
+"category": "frozen",
+"discount_desc": "Everyday Low Price",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/126976.jpg",
+"price": 9.9,
+"price_display": "$9.90 ea",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/126976/lucky-kitchen-vegie-gyoza-vegie-gyoza",
+"save_amount": 0.0,
+"store": "Woolworths",
+"store_category": "Christmas , Freezer , Dinner , International Foods     Frozen Party Food , Vegetarian & Vegan , Asian , Frozen Meals , Stove Top Meals   FROZEN MEALS",
+"title": "Lucky Kitchen Vegie Gyoza Vegie Gyoza 750g",
 "unit_price": "$1.32 / 100G",
 "was_price": 0.0
 },
@@ -30886,7 +30942,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/807242/mint-bamboo-skewer-25cm",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle , Cleaning & Maintenance , Christmas     Christmas Trees & Decor , Kitchenware & Storage , Kitchen   DOMESTICWARE",
+"store_category": "Home & Lifestyle , Cleaning & Maintenance , Christmas     Christmas Trees & Decor , Kitchen , Kitchenware & Storage   DOMESTICWARE",
 "title": "MINT Bamboo Skewer 25cm 200 pack",
 "unit_price": "",
 "was_price": 0.0
@@ -30900,7 +30956,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/807238/mint-beechwood-mixing-spoon",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle , Cleaning & Maintenance     Kitchenware & Storage , Kitchen   DOMESTICWARE",
+"store_category": "Home & Lifestyle , Cleaning & Maintenance     Kitchen , Kitchenware & Storage   DOMESTICWARE",
 "title": "MINT Beechwood Mixing Spoon each",
 "unit_price": "",
 "was_price": 0.0
@@ -30914,7 +30970,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/807237/mint-beechwood-stirring-spoon",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle , Cleaning & Maintenance     Kitchenware & Storage , Kitchen   DOMESTICWARE",
+"store_category": "Home & Lifestyle , Cleaning & Maintenance     Kitchen , Kitchenware & Storage   DOMESTICWARE",
 "title": "MINT Beechwood Stirring Spoon each",
 "unit_price": "",
 "was_price": 0.0
@@ -30928,7 +30984,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/807239/mint-beechwood-wok-stirrer",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle , Cleaning & Maintenance     Kitchenware & Storage , Kitchen   DOMESTICWARE",
+"store_category": "Home & Lifestyle , Cleaning & Maintenance     Kitchen , Kitchenware & Storage   DOMESTICWARE",
 "title": "MINT Beechwood Wok Stirrer each",
 "unit_price": "",
 "was_price": 0.0
@@ -30942,7 +30998,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/807228/mint-cake-icing-set",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle , Cleaning & Maintenance     Kitchenware & Storage , Kitchen   DOMESTICWARE",
+"store_category": "Home & Lifestyle , Cleaning & Maintenance     Kitchen , Kitchenware & Storage   DOMESTICWARE",
 "title": "MINT Cake Icing Set each",
 "unit_price": "",
 "was_price": 0.0
@@ -30970,7 +31026,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/79697/mint-cocktail-skewer",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle , Cleaning & Maintenance , Christmas     Christmas Trees & Decor , Kitchenware & Storage , Kitchen   DOMESTICWARE",
+"store_category": "Home & Lifestyle , Cleaning & Maintenance , Christmas     Christmas Trees & Decor , Kitchen , Kitchenware & Storage   DOMESTICWARE",
 "title": "MINT Cocktail Skewer 50 pack",
 "unit_price": "",
 "was_price": 0.0
@@ -30984,7 +31040,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/131660/mint-cookie-cutters-assorted",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle , Cleaning & Maintenance     Kitchenware & Storage , Kitchen   DOMESTICWARE",
+"store_category": "Home & Lifestyle , Cleaning & Maintenance     Kitchen , Kitchenware & Storage   DOMESTICWARE",
 "title": "MINT Cookie Cutters Assorted 4 pack",
 "unit_price": "",
 "was_price": 0.0
@@ -30998,7 +31054,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/807260/mint-cotton-cooking-twine-100-meters",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle , Cleaning & Maintenance     Kitchenware & Storage , Kitchen   DOMESTICWARE",
+"store_category": "Home & Lifestyle , Cleaning & Maintenance     Kitchen , Kitchenware & Storage   DOMESTICWARE",
 "title": "MINT Cotton Cooking Twine 100 Meters each",
 "unit_price": "",
 "was_price": 0.0
@@ -31029,20 +31085,6 @@
 "store_category": "Cleaning & Maintenance , Home & Lifestyle     Kitchen , Kitchenware & Storage   DOMESTICWARE",
 "title": "MINT Cutting Mat Colour Coded 4 pack",
 "unit_price": "$9 / 1EA",
-"was_price": 0.0
-},
-"mint dessert spoons stainless steel 4 pack": {
-"category": "household",
-"discount_desc": "Everyday Low Price",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/807231.jpg",
-"price": 7.0,
-"price_display": "$7.00 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/807231/mint-dessert-spoons-stainless-steel",
-"save_amount": 0.0,
-"store": "Woolworths",
-"store_category": "Home & Lifestyle     Dining & Entertaining   DOMESTICWARE",
-"title": "MINT Dessert Spoons Stainless Steel 4 pack",
-"unit_price": "",
 "was_price": 0.0
 },
 "mint everday waterdrop dish each": {
@@ -31124,7 +31166,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/521914/mint-everyday-y-shaped-peeler-assorted",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle , Cleaning & Maintenance     Kitchenware & Storage , Kitchen   DOMESTICWARE",
+"store_category": "Home & Lifestyle , Cleaning & Maintenance     Kitchen , Kitchenware & Storage   DOMESTICWARE",
 "title": "MINT Everyday Y Shaped Peeler Assorted each",
 "unit_price": "",
 "was_price": 0.0
@@ -31152,7 +31194,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/420756/mint-jumbo-ice-cube-tray-assorted",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle , Cleaning & Maintenance     Kitchenware & Storage , Kitchen   DOMESTICWARE",
+"store_category": "Home & Lifestyle , Cleaning & Maintenance     Kitchen , Kitchenware & Storage   DOMESTICWARE",
 "title": "MINT Jumbo Ice Cube Tray Assorted each",
 "unit_price": "",
 "was_price": 0.0
@@ -31194,7 +31236,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/807261/mint-measuring-jug",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle , Cleaning & Maintenance     Kitchenware & Storage , Kitchen   DOMESTICWARE",
+"store_category": "Home & Lifestyle , Cleaning & Maintenance     Kitchen , Kitchenware & Storage   DOMESTICWARE",
 "title": "MINT Measuring Jug 3 pack",
 "unit_price": "",
 "was_price": 0.0
@@ -31208,7 +31250,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/6026437/mint-meat-thermometer",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle , Cleaning & Maintenance     Kitchenware & Storage , Kitchen   DOMESTICWARE",
+"store_category": "Home & Lifestyle , Cleaning & Maintenance     Kitchen , Kitchenware & Storage   DOMESTICWARE",
 "title": "MINT Meat Thermometer each",
 "unit_price": "",
 "was_price": 0.0
@@ -31236,7 +31278,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/6029662/mint-milk-frother",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle , Cleaning & Maintenance     Kitchenware & Storage , Kitchen   DOMESTICWARE",
+"store_category": "Home & Lifestyle , Cleaning & Maintenance     Kitchen , Kitchenware & Storage   DOMESTICWARE",
 "title": "MINT Milk Frother each",
 "unit_price": "",
 "was_price": 0.0
@@ -31250,7 +31292,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/82114/mint-netted-food-cover",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle , Cleaning & Maintenance , Christmas     Christmas Trees & Decor , Kitchenware & Storage , Kitchen   DOMESTICWARE",
+"store_category": "Home & Lifestyle , Cleaning & Maintenance , Christmas     Christmas Trees & Decor , Kitchen , Kitchenware & Storage   DOMESTICWARE",
 "title": "MINT Netted Food Cover each",
 "unit_price": "",
 "was_price": 0.0
@@ -31278,7 +31320,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/807332/mint-non-stick-milk-pan-12cm",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle , Cleaning & Maintenance     Kitchenware & Storage , Kitchen   DOMESTICWARE",
+"store_category": "Home & Lifestyle , Cleaning & Maintenance     Kitchen , Kitchenware & Storage   DOMESTICWARE",
 "title": "MINT Non Stick Milk Pan 12cm each",
 "unit_price": "",
 "was_price": 0.0
@@ -31362,7 +31404,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/807241/mint-pastry-brush",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle , Cleaning & Maintenance     Kitchenware & Storage , Kitchen   DOMESTICWARE",
+"store_category": "Home & Lifestyle , Cleaning & Maintenance     Kitchen , Kitchenware & Storage   DOMESTICWARE",
 "title": "MINT Pastry Brush each",
 "unit_price": "",
 "was_price": 0.0
@@ -31404,7 +31446,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/807240/mint-rolling-pin",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle , Cleaning & Maintenance     Kitchenware & Storage , Kitchen   DOMESTICWARE",
+"store_category": "Home & Lifestyle , Cleaning & Maintenance     Kitchen , Kitchenware & Storage   DOMESTICWARE",
 "title": "MINT Rolling Pin each",
 "unit_price": "",
 "was_price": 0.0
@@ -31418,7 +31460,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/427139/mint-sauce-bottle-assorted-400ml",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle , Cleaning & Maintenance     Kitchenware & Storage , Kitchen   DOMESTICWARE",
+"store_category": "Home & Lifestyle , Cleaning & Maintenance     Kitchen , Kitchenware & Storage   DOMESTICWARE",
 "title": "MINT Sauce Bottle Assorted 400mL each",
 "unit_price": "",
 "was_price": 0.0
@@ -31432,7 +31474,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/423716/mint-silicone-pastry-brush-assorted",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle , Cleaning & Maintenance     Kitchenware & Storage , Kitchen   DOMESTICWARE",
+"store_category": "Home & Lifestyle , Cleaning & Maintenance     Kitchen , Kitchenware & Storage   DOMESTICWARE",
 "title": "MINT Silicone Pastry Brush Assorted each",
 "unit_price": "",
 "was_price": 0.0
@@ -31446,7 +31488,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/133288/mint-silicone-straws-with-cleaning-brush",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle , Cleaning & Maintenance     Kitchenware & Storage , Kitchen   DOMESTICWARE",
+"store_category": "Home & Lifestyle , Cleaning & Maintenance     Kitchen , Kitchenware & Storage   DOMESTICWARE",
 "title": "MINT Silicone Straws With Cleaning Brush 5 pack",
 "unit_price": "",
 "was_price": 0.0
@@ -31502,7 +31544,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/807286/mint-soft-grip-can-opener",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle , Cleaning & Maintenance     Kitchenware & Storage , Kitchen   DOMESTICWARE",
+"store_category": "Home & Lifestyle , Cleaning & Maintenance     Kitchen , Kitchenware & Storage   DOMESTICWARE",
 "title": "MINT Soft Grip Can Opener each",
 "unit_price": "",
 "was_price": 0.0
@@ -31600,7 +31642,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/807274/mint-soft-grip-straight-peeler",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle , Cleaning & Maintenance     Kitchenware & Storage , Kitchen   DOMESTICWARE",
+"store_category": "Home & Lifestyle , Cleaning & Maintenance     Kitchen , Kitchenware & Storage   DOMESTICWARE",
 "title": "MINT Soft Grip Straight Peeler each",
 "unit_price": "",
 "was_price": 0.0
@@ -31642,7 +31684,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/807250/mint-stainless-steel-colander",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle , Cleaning & Maintenance     Kitchenware & Storage , Kitchen   DOMESTICWARE",
+"store_category": "Home & Lifestyle , Cleaning & Maintenance     Kitchen , Kitchenware & Storage   DOMESTICWARE",
 "title": "MINT Stainless Steel Colander each",
 "unit_price": "",
 "was_price": 0.0
@@ -31670,7 +31712,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/807271/mint-stainless-steel-grater-box",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle , Cleaning & Maintenance     Kitchenware & Storage , Kitchen   DOMESTICWARE",
+"store_category": "Home & Lifestyle , Cleaning & Maintenance     Kitchen , Kitchenware & Storage   DOMESTICWARE",
 "title": "MINT Stainless Steel Grater Box each",
 "unit_price": "",
 "was_price": 0.0
@@ -31698,7 +31740,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/807248/mint-stainless-steel-large-bowl-5-3l",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle , Cleaning & Maintenance     Kitchenware & Storage , Kitchen   DOMESTICWARE",
+"store_category": "Home & Lifestyle , Cleaning & Maintenance     Kitchen , Kitchenware & Storage   DOMESTICWARE",
 "title": "MINT Stainless Steel Large Bowl 5.3L each",
 "unit_price": "",
 "was_price": 0.0
@@ -31726,7 +31768,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/807259/mint-stainless-steel-sifter",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle , Cleaning & Maintenance     Kitchenware & Storage , Kitchen   DOMESTICWARE",
+"store_category": "Home & Lifestyle , Cleaning & Maintenance     Kitchen , Kitchenware & Storage   DOMESTICWARE",
 "title": "MINT Stainless Steel Sifter each",
 "unit_price": "",
 "was_price": 0.0
@@ -31810,7 +31852,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/807258/mint-tea-coffee-strainer",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle , Cleaning & Maintenance     Kitchenware & Storage , Kitchen   DOMESTICWARE",
+"store_category": "Home & Lifestyle , Cleaning & Maintenance     Kitchen , Kitchenware & Storage   DOMESTICWARE",
 "title": "MINT Tea / Coffee Strainer each",
 "unit_price": "",
 "was_price": 0.0
@@ -31852,7 +31894,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/807244/mint-toothpicks-holder",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle , Cleaning & Maintenance , Christmas     Christmas Trees & Decor , Kitchenware & Storage , Kitchen   DOMESTICWARE",
+"store_category": "Home & Lifestyle , Cleaning & Maintenance , Christmas     Christmas Trees & Decor , Kitchen , Kitchenware & Storage   DOMESTICWARE",
 "title": "MINT Toothpicks Holder 300 pack",
 "unit_price": "",
 "was_price": 0.0
@@ -31866,7 +31908,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/807253/mint-waiter-s-friend",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle , Cleaning & Maintenance , Christmas     Christmas Trees & Decor , Kitchenware & Storage , Kitchen   DOMESTICWARE",
+"store_category": "Home & Lifestyle , Cleaning & Maintenance , Christmas     Christmas Trees & Decor , Kitchen , Kitchenware & Storage   DOMESTICWARE",
 "title": "MINT Waiter's Friend each",
 "unit_price": "",
 "was_price": 0.0
@@ -31880,7 +31922,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/807226/mint-zester-grater",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle , Cleaning & Maintenance     Kitchenware & Storage , Kitchen   DOMESTICWARE",
+"store_category": "Home & Lifestyle , Cleaning & Maintenance     Kitchen , Kitchenware & Storage   DOMESTICWARE",
 "title": "MINT Zester Grater each",
 "unit_price": "",
 "was_price": 0.0
@@ -32090,7 +32132,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/100325/moki-life-metallics-earphones-assorted",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Gift Ideas , Home & Lifestyle , Electronics     Gifts for Him , Electronics , Headphones   ELECTRICAL",
+"store_category": "Gift Ideas , Home & Lifestyle , Electronics     Gifts for Him , Headphones , Electronics   ELECTRICAL",
 "title": "Moki Life Metallics Earphones Assorted each",
 "unit_price": "",
 "was_price": 0.0
@@ -33523,6 +33565,20 @@
 "unit_price": "$2.35 / 100G",
 "was_price": 0.0
 },
+"nestle soothers butter menthol throat lozenge 3 pack": {
+"category": "dairy_eggs",
+"discount_desc": "Everyday Low Price",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/002867.jpg",
+"price": 6.5,
+"price_display": "$6.50 ea",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/2867/nestle-soothers-butter-menthol-throat-lozenge",
+"save_amount": 0.0,
+"store": "Woolworths",
+"store_category": "Snacks & Confectionery     Confectionery , Gum, Mints & Lozenges   CONFECTIONERY",
+"title": "Nestle Soothers Butter Menthol Throat Lozenge 3 pack",
+"unit_price": "$0.22 / 1EA",
+"was_price": 0.0
+},
 "nestle soothers throat lozenge eucalyptus & menthol 3 pack": {
 "category": "health_vitamins",
 "discount_desc": "Everyday Low Price",
@@ -34265,20 +34321,6 @@
 "unit_price": "$7 / 1EA",
 "was_price": 0.0
 },
-"oh so comfy soft fit headband each": {
-"category": "health_vitamins",
-"discount_desc": "Everyday Low Price",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/052873.jpg",
-"price": 5.0,
-"price_display": "$5.00 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/52873/oh-so-comfy-soft-fit-headband",
-"save_amount": 0.0,
-"store": "Woolworths",
-"store_category": "Personal Care , Beauty     Hair Care , Hair Care   TOILETRIES",
-"title": "Oh So Comfy Soft Fit Headband each",
-"unit_price": "",
-"was_price": 0.0
-},
 "oh so comfy soft ponytailers hair bands 12 pack": {
 "category": "health_vitamins",
 "discount_desc": "Everyday Low Price",
@@ -34428,7 +34470,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/551299/olsent-led-candle-globe-bc-5-5w-480lm-warm-white",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle , Cleaning & Maintenance     Home Decor & Furniture , Hardware   ELECTRICAL",
+"store_category": "Home & Lifestyle , Cleaning & Maintenance     Hardware , Home Decor & Furniture   ELECTRICAL",
 "title": "Olsent LED Candle Globe Bc 5.5W 480Lm Warm White 2 pack",
 "unit_price": "$5 / 1EA",
 "was_price": 0.0
@@ -34442,7 +34484,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/551490/olsent-led-candle-ses-5-5w-480lm-ww",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle , Cleaning & Maintenance     Home Decor & Furniture , Hardware   ELECTRICAL",
+"store_category": "Home & Lifestyle , Cleaning & Maintenance     Hardware , Home Decor & Furniture   ELECTRICAL",
 "title": "Olsent Led Candle Ses 5.5W 480Lm Ww 2 pack",
 "unit_price": "$5 / 1EA",
 "was_price": 0.0
@@ -34456,7 +34498,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/425217/olsent-led-downlight-globe-gu5-3-6-0w-500lm-warm-white",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle , Cleaning & Maintenance     Home Decor & Furniture , Hardware   ELECTRICAL",
+"store_category": "Home & Lifestyle , Cleaning & Maintenance     Hardware , Home Decor & Furniture   ELECTRICAL",
 "title": "Olsent LED Downlight Globe Gu5.3 6.0W 500Lm Warm White 4 pack",
 "unit_price": "$4.88 / 1EA",
 "was_price": 0.0
@@ -34470,7 +34512,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/191160/olsent-led-gls-bc-15-0w-1800lm-cool-white",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle , Cleaning & Maintenance     Home Decor & Furniture , Hardware   ELECTRICAL",
+"store_category": "Home & Lifestyle , Cleaning & Maintenance     Hardware , Home Decor & Furniture   ELECTRICAL",
 "title": "Olsent LED GLS BC 15.0W 1800Lm Cool White 2 pack",
 "unit_price": "$12 / 1EA",
 "was_price": 0.0
@@ -34484,7 +34526,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/191158/olsent-led-gls-bc-15-0w-1800lm-warm-white",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle , Cleaning & Maintenance     Home Decor & Furniture , Hardware   ELECTRICAL",
+"store_category": "Home & Lifestyle , Cleaning & Maintenance     Hardware , Home Decor & Furniture   ELECTRICAL",
 "title": "Olsent LED GLS BC 15.0W 1800Lm Warm White 2 pack",
 "unit_price": "$12 / 1EA",
 "was_price": 0.0
@@ -34498,7 +34540,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/425285/olsent-led-gls-bc-9-0w-850lm-cool-white",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle , Cleaning & Maintenance     Home Decor & Furniture , Hardware   ELECTRICAL",
+"store_category": "Home & Lifestyle , Cleaning & Maintenance     Hardware , Home Decor & Furniture   ELECTRICAL",
 "title": "Olsent LED GLS BC 9.0W 850Lm Cool White 2 pack",
 "unit_price": "$5.25 / 1EA",
 "was_price": 0.0
@@ -34512,7 +34554,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/425284/olsent-led-gls-bc-9-0w-850lm-warm-white",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle , Cleaning & Maintenance     Home Decor & Furniture , Hardware   ELECTRICAL",
+"store_category": "Home & Lifestyle , Cleaning & Maintenance     Hardware , Home Decor & Furniture   ELECTRICAL",
 "title": "Olsent LED GLS BC 9.0W 850Lm Warm White 2 pack",
 "unit_price": "$5.25 / 1EA",
 "was_price": 0.0
@@ -34526,7 +34568,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/671659/olsent-led-gls-es-14-0w-1500lm-warm-white",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle , Cleaning & Maintenance     Home Decor & Furniture , Hardware   ELECTRICAL",
+"store_category": "Home & Lifestyle , Cleaning & Maintenance     Hardware , Home Decor & Furniture   ELECTRICAL",
 "title": "Olsent LED GLS ES 14.0W 1500Lm Warm White 2 pack",
 "unit_price": "$6 / 1EA",
 "was_price": 0.0
@@ -34540,7 +34582,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/192073/olsent-led-gls-es-15-0w-1800lm-cool-white",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle , Cleaning & Maintenance     Home Decor & Furniture , Hardware   ELECTRICAL",
+"store_category": "Home & Lifestyle , Cleaning & Maintenance     Hardware , Home Decor & Furniture   ELECTRICAL",
 "title": "Olsent LED GLS ES 15.0W 1800Lm Cool White 2 pack",
 "unit_price": "$6 / 1EA",
 "was_price": 0.0
@@ -34554,7 +34596,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/192072/olsent-led-gls-es-15-0w-1800lm-warm-white",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle , Cleaning & Maintenance     Home Decor & Furniture , Hardware   ELECTRICAL",
+"store_category": "Home & Lifestyle , Cleaning & Maintenance     Hardware , Home Decor & Furniture   ELECTRICAL",
 "title": "Olsent LED GLS ES 15.0W 1800Lm Warm White 2 pack",
 "unit_price": "$6 / 1EA",
 "was_price": 0.0
@@ -34568,7 +34610,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/425610/olsent-led-gls-es-6-0w-500lm-cool-white",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle , Cleaning & Maintenance     Home Decor & Furniture , Hardware   ELECTRICAL",
+"store_category": "Home & Lifestyle , Cleaning & Maintenance     Hardware , Home Decor & Furniture   ELECTRICAL",
 "title": "Olsent LED GLS ES 6.0W 500Lm Cool White 2 pack",
 "unit_price": "$5.25 / 1EA",
 "was_price": 0.0
@@ -34582,22 +34624,8 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/425283/olsent-led-gls-es-6-0w-500lm-warm-white",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle , Cleaning & Maintenance     Home Decor & Furniture , Hardware   ELECTRICAL",
+"store_category": "Home & Lifestyle , Cleaning & Maintenance     Hardware , Home Decor & Furniture   ELECTRICAL",
 "title": "Olsent LED GLS ES 6.0W 500Lm Warm White 2 pack",
-"unit_price": "$5.25 / 1EA",
-"was_price": 0.0
-},
-"olsent led gls globe bc 6.0w 500lm cool white 2 pack": {
-"category": "household",
-"discount_desc": "Everyday Low Price",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/425219.jpg",
-"price": 10.5,
-"price_display": "$10.50 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/425219/olsent-led-gls-globe-bc-6-0w-500lm-cool-white",
-"save_amount": 0.0,
-"store": "Woolworths",
-"store_category": "Home & Lifestyle , Cleaning & Maintenance     Home Decor & Furniture , Hardware   ELECTRICAL",
-"title": "Olsent LED Gls Globe Bc 6.0W 500Lm Cool White 2 pack",
 "unit_price": "$5.25 / 1EA",
 "was_price": 0.0
 },
@@ -34610,7 +34638,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/425218/olsent-led-gls-globe-bc-6-0w-500lm-warm-white",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle , Cleaning & Maintenance     Home Decor & Furniture , Hardware   ELECTRICAL",
+"store_category": "Home & Lifestyle , Cleaning & Maintenance     Hardware , Home Decor & Furniture   ELECTRICAL",
 "title": "Olsent LED Gls Globe Bc 6.0W 500Lm Warm White 2 pack",
 "unit_price": "$5.25 / 1EA",
 "was_price": 0.0
@@ -34624,7 +34652,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/425612/olsent-led-gls-globe-es-9-0w-850lm-cool-white",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle , Cleaning & Maintenance     Home Decor & Furniture , Hardware   ELECTRICAL",
+"store_category": "Home & Lifestyle , Cleaning & Maintenance     Hardware , Home Decor & Furniture   ELECTRICAL",
 "title": "Olsent LED Gls Globe Es 9.0W 850Lm Cool White 2 pack",
 "unit_price": "$5.25 / 1EA",
 "was_price": 0.0
@@ -34638,7 +34666,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/425611/olsent-led-gls-globe-es-9-0w-850lm-warm-white",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle , Cleaning & Maintenance     Home Decor & Furniture , Hardware   ELECTRICAL",
+"store_category": "Home & Lifestyle , Cleaning & Maintenance     Hardware , Home Decor & Furniture   ELECTRICAL",
 "title": "Olsent LED Gls Globe Es 9.0W 850Lm Warm White 2 pack",
 "unit_price": "$5.25 / 1EA",
 "was_price": 0.0
@@ -34652,7 +34680,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/425613/olsent-led-gu10-6-0w-500lm-warm-white",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle , Cleaning & Maintenance     Home Decor & Furniture , Hardware   ELECTRICAL",
+"store_category": "Home & Lifestyle , Cleaning & Maintenance     Hardware , Home Decor & Furniture   ELECTRICAL",
 "title": "Olsent Led Gu10 6.0W 500Lm Warm White 4 pack",
 "unit_price": "$4.88 / 1EA",
 "was_price": 0.0
@@ -34666,7 +34694,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/551383/olsent-led-round-es-5-5w-500lm-warm-white",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle , Cleaning & Maintenance     Home Decor & Furniture , Hardware   ELECTRICAL",
+"store_category": "Home & Lifestyle , Cleaning & Maintenance     Hardware , Home Decor & Furniture   ELECTRICAL",
 "title": "Olsent Led Round ES 5.5W 500Lm Warm White 2 pack",
 "unit_price": "$5.25 / 1EA",
 "was_price": 0.0
@@ -34680,7 +34708,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/551382/olsent-led-round-globe-bc-5-5w-500lm-warm-white",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle , Cleaning & Maintenance     Home Decor & Furniture , Hardware   ELECTRICAL",
+"store_category": "Home & Lifestyle , Cleaning & Maintenance     Hardware , Home Decor & Furniture   ELECTRICAL",
 "title": "Olsent LED Round Globe Bc 5.5W 500Lm Warm White 2 pack",
 "unit_price": "$5.25 / 1EA",
 "was_price": 0.0
@@ -35077,20 +35105,6 @@
 "unit_price": "",
 "was_price": 0.0
 },
-"oscar orsen dual sided emery boards 10 pack": {
-"category": "health_vitamins",
-"discount_desc": "Everyday Low Price",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/053259.jpg",
-"price": 2.0,
-"price_display": "$2.00 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/53259/oscar-orsen-dual-sided-emery-boards",
-"save_amount": 0.0,
-"store": "Woolworths",
-"store_category": "Personal Care , Beauty     Beauty Tools & Nails   TOILETRIES",
-"title": "Oscar Orsen Dual Sided Emery Boards 10 pack",
-"unit_price": "$0.2 / 1EA",
-"was_price": 0.0
-},
 "oscar orsen elastic headband black & brown 2 pack": {
 "category": "health_vitamins",
 "discount_desc": "Everyday Low Price",
@@ -35312,20 +35326,6 @@
 "store": "Woolworths",
 "store_category": "Personal Care , Beauty     Hair Care , Hair Care   TOILETRIES",
 "title": "Oscar Orsen Hair Vitaliser each",
-"unit_price": "",
-"was_price": 0.0
-},
-"oscar orsen jumbo soft ponytailers black 10 pack": {
-"category": "health_vitamins",
-"discount_desc": "Everyday Low Price",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/681662.jpg",
-"price": 4.5,
-"price_display": "$4.50 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/681662/oscar-orsen-jumbo-soft-ponytailers-black",
-"save_amount": 0.0,
-"store": "Woolworths",
-"store_category": "Personal Care , Beauty     Hair Care , Hair Care   TOILETRIES",
-"title": "Oscar Orsen Jumbo Soft Ponytailers Black 10 pack",
 "unit_price": "",
 "was_price": 0.0
 },
@@ -35873,20 +35873,6 @@
 "store_category": "Cleaning & Maintenance     Kitchen   CLEANSING",
 "title": "Palmolive Dishwashing Liquid Original - Ultra 1.5L",
 "unit_price": "$0.67 / 100ML",
-"was_price": 0.0
-},
-"palmolive dishwashing liquid original 750ml": {
-"category": "household",
-"discount_desc": "Everyday Low Price",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/273026.jpg",
-"price": 4.0,
-"price_display": "$4.00 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/273026/palmolive-dishwashing-liquid-original",
-"save_amount": 0.0,
-"store": "Woolworths",
-"store_category": "Cleaning & Maintenance     Kitchen   CLEANSING",
-"title": "Palmolive Dishwashing Liquid Original 750mL",
-"unit_price": "$0.53 / 100ML",
 "was_price": 0.0
 },
 "palmolive dishwashing liquid regular lemon lime 1.3l": {
@@ -36953,20 +36939,6 @@
 "unit_price": "",
 "was_price": 0.0
 },
-"paperclick leather look hard cover notebook assorted each": {
-"category": "household",
-"discount_desc": "Everyday Low Price",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/055332.jpg",
-"price": 9.0,
-"price_display": "$9.00 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/55332/paperclick-leather-look-hard-cover-notebook-assorted",
-"save_amount": 0.0,
-"store": "Woolworths",
-"store_category": "Home & Lifestyle     Stationery & Office Supplies   STATIONERY",
-"title": "Paperclick Leather Look Hard Cover Notebook Assorted each",
-"unit_price": "",
-"was_price": 0.0
-},
 "paperclick lever arch folder assorted each": {
 "category": "household",
 "discount_desc": "Everyday Low Price",
@@ -37205,20 +37177,6 @@
 "unit_price": "",
 "was_price": 0.0
 },
-"paperclick quilted pencil case assorted each": {
-"category": "household",
-"discount_desc": "Everyday Low Price",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/6052667.jpg",
-"price": 8.0,
-"price_display": "$8.00 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/6052667/paperclick-quilted-pencil-case-assorted",
-"save_amount": 0.0,
-"store": "Woolworths",
-"store_category": "Home & Lifestyle     Stationery & Office Supplies   STATIONERY",
-"title": "Paperclick Quilted Pencil Case Assorted each",
-"unit_price": "",
-"was_price": 0.0
-},
 "paperclick reporter notebook 300 pages each": {
 "category": "household",
 "discount_desc": "Everyday Low Price",
@@ -37258,20 +37216,6 @@
 "store": "Woolworths",
 "store_category": "Home & Lifestyle     Stationery & Office Supplies   STATIONERY",
 "title": "Paperclick Rubber Bands 100g",
-"unit_price": "",
-"was_price": 0.0
-},
-"paperclick scissors with soft grip 17cm assorted each": {
-"category": "household",
-"discount_desc": "Everyday Low Price",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/213906.jpg",
-"price": 5.0,
-"price_display": "$5.00 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/213906/paperclick-scissors-with-soft-grip-17cm-assorted",
-"save_amount": 0.0,
-"store": "Woolworths",
-"store_category": "Home & Lifestyle     Stationery & Office Supplies   STATIONERY",
-"title": "Paperclick Scissors with Soft Grip 17cm Assorted each",
 "unit_price": "",
 "was_price": 0.0
 },
@@ -37440,20 +37384,6 @@
 "store": "Woolworths",
 "store_category": "Home & Lifestyle     Stationery & Office Supplies   STATIONERY",
 "title": "Paperclick Thumb Tacks 200 pack",
-"unit_price": "",
-"was_price": 0.0
-},
-"paperclick twin zip pencil case assorted each": {
-"category": "household",
-"discount_desc": "Everyday Low Price",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/6052641.jpg",
-"price": 7.0,
-"price_display": "$7.00 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/6052641/paperclick-twin-zip-pencil-case-assorted",
-"save_amount": 0.0,
-"store": "Woolworths",
-"store_category": "Home & Lifestyle     Stationery & Office Supplies   STATIONERY",
-"title": "Paperclick Twin Zip Pencil Case Assorted each",
 "unit_price": "",
 "was_price": 0.0
 },
@@ -38670,7 +38600,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/223426/quantum-super-alkaline-aa-batteries",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Cleaning & Maintenance , Home & Lifestyle , Electronics     Hardware , Electronics , Batteries & Power   ELECTRICAL",
+"store_category": "Cleaning & Maintenance , Home & Lifestyle , Electronics     Hardware , Batteries & Power , Electronics   ELECTRICAL",
 "title": "Quantum Super Alkaline AA Batteries 10 pack",
 "unit_price": "$1.25 / 1EA",
 "was_price": 0.0
@@ -38684,7 +38614,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/223428/quantum-super-alkaline-aaa-batteries",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Cleaning & Maintenance , Home & Lifestyle , Electronics     Hardware , Electronics , Batteries & Power   ELECTRICAL",
+"store_category": "Cleaning & Maintenance , Home & Lifestyle , Electronics     Hardware , Batteries & Power , Electronics   ELECTRICAL",
 "title": "Quantum Super Alkaline AAA Batteries 10 pack",
 "unit_price": "$1.25 / 1EA",
 "was_price": 0.0
@@ -39305,6 +39235,20 @@
 "unit_price": "$13.7 / 1KG",
 "was_price": 0.0
 },
+"robern apricot balls 200g": {
+"category": "pantry",
+"discount_desc": "Everyday Low Price",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/241100.jpg",
+"price": 3.9,
+"price_display": "$3.90 ea",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/241100/robern-apricot-balls",
+"save_amount": 0.0,
+"store": "Woolworths",
+"store_category": "Lunch Box , Christmas , Snacks & Confectionery     Dietary Needs , Snacks   COOKING NEEDS",
+"title": "Robern Apricot Balls 200g",
+"unit_price": "$19.5 / 1KG",
+"was_price": 0.0
+},
 "robern apricot indulgence 200g": {
 "category": "pantry",
 "discount_desc": "Everyday Low Price",
@@ -39387,20 +39331,6 @@
 "store_category": "Lunch Box , Pantry     Sandwich Ingredients , Breakfast & Spreads   JAMS / SPREADS",
 "title": "Rose's Sweet Orange Marmalade 375g",
 "unit_price": "$1.2 / 100G",
-"was_price": 0.0
-},
-"saba organics multipurpose cleaner refill lemon 2l": {
-"category": "household",
-"discount_desc": "Everyday Low Price",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/906370.jpg",
-"price": 17.0,
-"price_display": "$17.00 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/906370/saba-organics-multipurpose-cleaner-refill-lemon",
-"save_amount": 0.0,
-"store": "Woolworths",
-"store_category": "Cleaning & Maintenance     Cleaning Goods   CLEANSING",
-"title": "Saba Organics Multipurpose Cleaner Refill Lemon 2L",
-"unit_price": "$0.85 / 100ML",
 "was_price": 0.0
 },
 "safcol pink salmon 210g": {
@@ -39751,6 +39681,20 @@
 "store_category": "Snacks & Confectionery     Biscuits & Crackers   BISCUITS",
 "title": "Sakata Rice Puff Crisps Teriyaki 73g",
 "unit_price": "$2.53 / 100G",
+"was_price": 0.0
+},
+"sakata stars rice crackers 13g x 12 pack": {
+"category": "snacks",
+"discount_desc": "Everyday Low Price",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/6034159.jpg",
+"price": 5.5,
+"price_display": "$5.50 ea",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/6034159/sakata-stars-rice-crackers",
+"save_amount": 0.0,
+"store": "Woolworths",
+"store_category": "Lunch Box , Snacks & Confectionery     Biscuits & Crackers , Snacks , Snacks   BISCUITS",
+"title": "Sakata Stars Rice Crackers 13g x 12 pack",
+"unit_price": "$3.53 / 100G",
 "was_price": 0.0
 },
 "sam's pantry chocolate brownie with roasted almonds protein bar 12 pack": {
@@ -40397,6 +40341,20 @@
 "unit_price": "$2.85 / 100G",
 "was_price": 0.0
 },
+"skin control pimple patches variety 100 pack": {
+"category": "health_vitamins",
+"discount_desc": "Everyday Low Price",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/6067690.jpg",
+"price": 15.0,
+"price_display": "$15.00 ea",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/6067690/skin-control-pimple-patches-variety",
+"save_amount": 0.0,
+"store": "Woolworths",
+"store_category": "Personal Care , Beauty     Skincare & Body   TOILETRIES",
+"title": "Skin Control Pimple Patches Variety 100 pack",
+"unit_price": "$15 / 1EA",
+"was_price": 0.0
+},
 "skinny cow ice cream sundaes chocolate vanilla caramel 4 pack": {
 "category": "frozen",
 "discount_desc": "Everyday Low Price",
@@ -40649,6 +40607,20 @@
 "unit_price": "$0.53 / 100G",
 "was_price": 0.0
 },
+"smitten fish selection wet cat food pouches 85g x 12 pack": {
+"category": "pet",
+"discount_desc": "Everyday Low Price",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/6017437.jpg",
+"price": 5.5,
+"price_display": "$5.50 ea",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/6017437/smitten-fish-selection-wet-cat-food-pouches",
+"save_amount": 0.0,
+"store": "Woolworths",
+"store_category": "Pet     Cat & Kitten   PET FOOD",
+"title": "Smitten Fish Selection Wet Cat Food Pouches 85g x 12 pack",
+"unit_price": "$0.54 / 100G",
+"was_price": 0.0
+},
 "smitten kitten dry cat food chicken & tuna 1kg": {
 "category": "pet",
 "discount_desc": "Everyday Low Price",
@@ -40719,18 +40691,18 @@
 "unit_price": "$3.75 / 1KG",
 "was_price": 0.0
 },
-"smitten recycled paper cat litter 10l": {
+"smitten recycled paper cat litter 20l": {
 "category": "pet",
 "discount_desc": "Everyday Low Price",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/672105.jpg",
-"price": 12.0,
-"price_display": "$12.00 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/672105/smitten-recycled-paper-cat-litter",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/672106.jpg",
+"price": 20.0,
+"price_display": "$20.00 ea",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/672106/smitten-recycled-paper-cat-litter",
 "save_amount": 0.0,
 "store": "Woolworths",
 "store_category": "Pet     Cat & Kitten   PET FOOD",
-"title": "Smitten Recycled Paper Cat Litter 10L",
-"unit_price": "$1.2 / 1L",
+"title": "Smitten Recycled Paper Cat Litter 20L",
+"unit_price": "$1 / 1L",
 "was_price": 0.0
 },
 "smitten wet cat food casserole beef in gravy 400g": {
@@ -42357,20 +42329,6 @@
 "unit_price": "$0.8 / 100ML",
 "was_price": 0.0
 },
-"team nutrition protein snack bar mint crisp 55g": {
-"category": "snacks",
-"discount_desc": "Everyday Low Price",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/973010.jpg",
-"price": 2.95,
-"price_display": "$2.95 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/973010/team-nutrition-protein-snack-bar-mint-crisp",
-"save_amount": 0.0,
-"store": "Woolworths",
-"store_category": "Health & Wellness , Lunch Box     Diet & Sports Nutrition , Snacks   HEALTH CARE",
-"title": "Team Nutrition Protein Snack Bar Mint Crisp 55g",
-"unit_price": "$5.36 / 100G",
-"was_price": 0.0
-},
 "team nutrition protein snack bar salted caramel crunch 55g": {
 "category": "snacks",
 "discount_desc": "Everyday Low Price",
@@ -43547,20 +43505,6 @@
 "unit_price": "$6.53 / 100G",
 "was_price": 0.0
 },
-"time's up sonic pest repeller each": {
-"category": "household",
-"discount_desc": "Everyday Low Price",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/643078.jpg",
-"price": 22.0,
-"price_display": "$22.00 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/643078/time-s-up-sonic-pest-repeller",
-"save_amount": 0.0,
-"store": "Woolworths",
-"store_category": "Cleaning & Maintenance     Pest Control   CLEANSING",
-"title": "Time's Up Sonic Pest Repeller each",
-"unit_price": "$22 / 1EA",
-"was_price": 0.0
-},
 "tip top 9 grain classic sandwich slice bread loaf bakery 700g": {
 "category": "bakery",
 "discount_desc": "Everyday Low Price",
@@ -44063,20 +44007,6 @@
 "store_category": "Personal Care     Period Care   TOILETRIES",
 "title": "U by Kotex Ultrathin Pads Regular With Wings 20 pack",
 "unit_price": "$0.28 / 1EA",
-"was_price": 0.0
-},
-"u by kotex ultrathin pads super with wings 18 pack": {
-"category": "health_vitamins",
-"discount_desc": "Everyday Low Price",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/912381.jpg",
-"price": 5.5,
-"price_display": "$5.50 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/912381/u-by-kotex-ultrathin-pads-super-with-wings",
-"save_amount": 0.0,
-"store": "Woolworths",
-"store_category": "Personal Care     Period Care   TOILETRIES",
-"title": "U by Kotex Ultrathin Pads Super With Wings 18 pack",
-"unit_price": "$0.31 / 1EA",
 "was_price": 0.0
 },
 "uncle tobys choc faves muesli bars 15 pack": {
@@ -45530,7 +45460,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/494024/waxworks-citronella-tea-light-candles-assorted",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle , Cleaning & Maintenance     Garden & Outdoors , Party Supplies , Pest Control   DOMESTICWARE",
+"store_category": "Home & Lifestyle , Cleaning & Maintenance     Garden & Outdoors , Pest Control , Party Supplies   DOMESTICWARE",
 "title": "Waxworks Citronella Tea Light Candles Assorted 30 pack",
 "unit_price": "$0.2 / 1EA",
 "was_price": 0.0
@@ -45544,7 +45474,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/278875/waxworks-insect-control-citronella-oil",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle , Cleaning & Maintenance     Garden & Outdoors , Party Supplies , Pest Control   DOMESTICWARE",
+"store_category": "Home & Lifestyle , Cleaning & Maintenance     Garden & Outdoors , Pest Control , Party Supplies   DOMESTICWARE",
 "title": "Waxworks Insect Control Citronella Oil 1L",
 "unit_price": "$0.75 / 100ML",
 "was_price": 0.0
@@ -45558,7 +45488,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/494115/waxworks-metal-bucket-citronella-candle-assorted-13cm",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle , Cleaning & Maintenance     Garden & Outdoors , Party Supplies , Pest Control   DOMESTICWARE",
+"store_category": "Home & Lifestyle , Cleaning & Maintenance     Garden & Outdoors , Pest Control , Party Supplies   DOMESTICWARE",
 "title": "Waxworks Metal Bucket Citronella Candle Assorted 13cm each",
 "unit_price": "$10 / 1EA",
 "was_price": 0.0
@@ -45572,7 +45502,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/889382/waxworks-mosquito-repellent-coils",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle , Cleaning & Maintenance     Garden & Outdoors , Party Supplies , Pest Control   DOMESTICWARE",
+"store_category": "Home & Lifestyle , Cleaning & Maintenance     Garden & Outdoors , Pest Control , Party Supplies   DOMESTICWARE",
 "title": "Waxworks Mosquito Repellent Coils 10 pack",
 "unit_price": "$0.5 / 1EA",
 "was_price": 0.0
@@ -45586,7 +45516,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/494110/waxworks-patio-glass-jar-citronella-candle-10cm-assorted",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle , Cleaning & Maintenance     Garden & Outdoors , Party Supplies , Pest Control   DOMESTICWARE",
+"store_category": "Home & Lifestyle , Cleaning & Maintenance     Garden & Outdoors , Pest Control , Party Supplies   DOMESTICWARE",
 "title": "Waxworks Patio Glass Jar Citronella Candle 10cm Assorted each",
 "unit_price": "$8 / 1EA",
 "was_price": 0.0
@@ -45600,7 +45530,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/173889/waxworks-pie-dish-citronella-candle-assorted",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle , Cleaning & Maintenance     Garden & Outdoors , Party Supplies , Pest Control   DOMESTICWARE",
+"store_category": "Home & Lifestyle , Cleaning & Maintenance     Garden & Outdoors , Pest Control , Party Supplies   DOMESTICWARE",
 "title": "Waxworks Pie Dish Citronella Candle Assorted each",
 "unit_price": "$5 / 1EA",
 "was_price": 0.0
@@ -45614,7 +45544,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/494108/waxworks-sandalwood-mozzie-sticks-with-eucalyptus-citronella",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle , Cleaning & Maintenance     Garden & Outdoors , Party Supplies , Pest Control   DOMESTICWARE",
+"store_category": "Home & Lifestyle , Cleaning & Maintenance     Garden & Outdoors , Pest Control , Party Supplies   DOMESTICWARE",
 "title": "Waxworks Sandalwood Mozzie Sticks With Eucalyptus & Citronella 12 pack",
 "unit_price": "$0.67 / 1EA",
 "was_price": 0.0
@@ -45628,7 +45558,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/338998/waxworks-vintage-jar-citronella-candle",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle , Cleaning & Maintenance     Garden & Outdoors , Party Supplies , Pest Control   DOMESTICWARE",
+"store_category": "Home & Lifestyle , Cleaning & Maintenance     Garden & Outdoors , Pest Control , Party Supplies   DOMESTICWARE",
 "title": "Waxworks Vintage Jar Citronella Candle each",
 "unit_price": "$12 / 1EA",
 "was_price": 0.0
@@ -46008,20 +45938,6 @@
 "store": "Woolworths",
 "store_category": "Home & Lifestyle     Kitchenware & Storage   FAMILY ACCESSORIES AND STORAGE",
 "title": "Willow Waste Tidy Round 10L each",
-"unit_price": "",
-"was_price": 0.0
-},
-"wiltshire air fryer liners 16cm square 50 pack": {
-"category": "household",
-"discount_desc": "Everyday Low Price",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/060972.jpg",
-"price": 5.0,
-"price_display": "$5.00 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/60972/wiltshire-air-fryer-liners-16cm-square",
-"save_amount": 0.0,
-"store": "Woolworths",
-"store_category": "Lunch Box , Cleaning & Maintenance     Accessories , Kitchen   PAPERGOODS",
-"title": "Wiltshire Air Fryer Liners 16cm Square 50 pack",
 "unit_price": "",
 "was_price": 0.0
 },
@@ -46415,6 +46331,34 @@
 "store_category": "Snacks & Confectionery , Lunch Box     Snacks , Snacks   SNACKS",
 "title": "Woolworths Australian Beef Smokey Biltong 45g",
 "unit_price": "$84.44 / 1KG",
+"was_price": 0.0
+},
+"woolworths australian butter salted 250g": {
+"category": "dairy_eggs",
+"discount_desc": "Everyday Low Price",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/068978.jpg",
+"price": 4.5,
+"price_display": "$4.50 ea",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/68978/woolworths-australian-butter-salted",
+"save_amount": 0.0,
+"store": "Woolworths",
+"store_category": "Dairy, Eggs & Fridge     Eggs, Butter & Margarine   DAIRY - BUTTER & MARGARINE",
+"title": "Woolworths Australian Butter Salted 250g",
+"unit_price": "$1.8 / 100G",
+"was_price": 0.0
+},
+"woolworths australian butter unsalted 250g": {
+"category": "dairy_eggs",
+"discount_desc": "Everyday Low Price",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/068977.jpg",
+"price": 4.5,
+"price_display": "$4.50 ea",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/68977/woolworths-australian-butter-unsalted",
+"save_amount": 0.0,
+"store": "Woolworths",
+"store_category": "Dairy, Eggs & Fridge     Eggs, Butter & Margarine   DAIRY - BUTTER & MARGARINE",
+"title": "Woolworths Australian Butter Unsalted 250g",
+"unit_price": "$1.8 / 100G",
 "was_price": 0.0
 },
 "woolworths australian canola oil 4l": {
@@ -46823,17 +46767,17 @@
 "unit_price": "$1.07 / 100G",
 "was_price": 0.0
 },
-"woolworths boysenberry classic cones 4 pack": {
+"woolworths boysenberry cones 475ml 4 pack": {
 "category": "frozen",
 "discount_desc": "Everyday Low Price",
 "image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/6066341.jpg",
 "price": 3.7,
 "price_display": "$3.70 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/6066341/woolworths-boysenberry-classic-cones",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/6066341/woolworths-boysenberry-cones",
 "save_amount": 0.0,
 "store": "Woolworths",
 "store_category": "Freezer     Ice Cream   ICE CREAM",
-"title": "Woolworths Boysenberry Classic Cones 4 pack",
+"title": "Woolworths Boysenberry Cones 475mL 4 pack",
 "unit_price": "$0.78 / 100ML",
 "was_price": 0.0
 },
@@ -46891,20 +46835,6 @@
 "store_category": "Snacks & Confectionery     Confectionery   CONFECTIONERY",
 "title": "Woolworths Bugs & Beetles Lollies 180g",
 "unit_price": "$1.11 / 100G",
-"was_price": 0.0
-},
-"woolworths butter chicken simmer sauce 500g": {
-"category": "pantry",
-"discount_desc": "Everyday Low Price",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/157531.jpg",
-"price": 2.7,
-"price_display": "$2.70 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/157531/woolworths-butter-chicken-simmer-sauce",
-"save_amount": 0.0,
-"store": "Woolworths",
-"store_category": "Dinner , Pantry     Cooking Sauces & Recipe Bases   CONDIMENTS",
-"title": "Woolworths Butter Chicken Simmer Sauce 500g",
-"unit_price": "$0.54 / 100G",
 "was_price": 0.0
 },
 "woolworths cabanossi & tasty cheese bites cheese & cabanossi bites 400g": {
@@ -47268,20 +47198,6 @@
 "store": "Woolworths",
 "store_category": "PREPARED FOODS",
 "title": "Woolworths Chicken Springwater 85g",
-"unit_price": "$16.47 / 1KG",
-"was_price": 0.0
-},
-"woolworths chicken sweet chilli 85g": {
-"category": "meat",
-"discount_desc": "Everyday Low Price",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/346132.jpg",
-"price": 1.4,
-"price_display": "$1.40 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/346132/woolworths-chicken-sweet-chilli",
-"save_amount": 0.0,
-"store": "Woolworths",
-"store_category": "PREPARED FOODS",
-"title": "Woolworths Chicken Sweet Chilli 85g",
 "unit_price": "$16.47 / 1KG",
 "was_price": 0.0
 },
@@ -48092,7 +48008,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/521897/woolworths-essentials-bag-seals",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle , Cleaning & Maintenance     Kitchenware & Storage , Kitchen   DOMESTICWARE",
+"store_category": "Home & Lifestyle , Cleaning & Maintenance     Kitchen , Kitchenware & Storage   DOMESTICWARE",
 "title": "Woolworths Essentials Bag Seals 8 pack",
 "unit_price": "",
 "was_price": 0.0
@@ -48204,7 +48120,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/131932/woolworths-essentials-collapsible-colander",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle , Cleaning & Maintenance     Kitchenware & Storage , Kitchen   DOMESTICWARE",
+"store_category": "Home & Lifestyle , Cleaning & Maintenance     Kitchen , Kitchenware & Storage   DOMESTICWARE",
 "title": "Woolworths Essentials Collapsible Colander each",
 "unit_price": "",
 "was_price": 0.0
@@ -48498,7 +48414,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/521895/woolworths-essentials-ice-cube-tray-assorted",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle , Cleaning & Maintenance     Kitchenware & Storage , Kitchen   DOMESTICWARE",
+"store_category": "Home & Lifestyle , Cleaning & Maintenance     Kitchen , Kitchenware & Storage   DOMESTICWARE",
 "title": "Woolworths Essentials Ice Cube Tray Assorted each",
 "unit_price": "",
 "was_price": 0.0
@@ -48582,7 +48498,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/854117/woolworths-essentials-metal-whisk-with-nylon-handle",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle , Cleaning & Maintenance     Kitchenware & Storage , Kitchen   DOMESTICWARE",
+"store_category": "Home & Lifestyle , Cleaning & Maintenance     Kitchen , Kitchenware & Storage   DOMESTICWARE",
 "title": "Woolworths Essentials Metal Whisk With Nylon Handle each",
 "unit_price": "",
 "was_price": 0.0
@@ -48638,7 +48554,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/854194/woolworths-essentials-nylon-turner",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle , Cleaning & Maintenance     Kitchenware & Storage , Kitchen   DOMESTICWARE",
+"store_category": "Home & Lifestyle , Cleaning & Maintenance     Kitchen , Kitchenware & Storage   DOMESTICWARE",
 "title": "Woolworths Essentials Nylon Turner each",
 "unit_price": "",
 "was_price": 0.0
@@ -48778,7 +48694,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/829154/woolworths-essentials-plastic-kids-hangers",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle , Cleaning & Maintenance     Home Decor & Furniture , Laundry   HABERDASHERY",
+"store_category": "Home & Lifestyle , Cleaning & Maintenance     Laundry , Home Decor & Furniture   HABERDASHERY",
 "title": "Woolworths Essentials Plastic Kids Hangers 6 pack",
 "unit_price": "$0.33 / 1EA",
 "was_price": 0.0
@@ -48946,7 +48862,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/521911/woolworths-essentials-silicone-spatula-assorted",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle , Cleaning & Maintenance     Kitchenware & Storage , Kitchen   DOMESTICWARE",
+"store_category": "Home & Lifestyle , Cleaning & Maintenance     Kitchen , Kitchenware & Storage   DOMESTICWARE",
 "title": "Woolworths Essentials Silicone Spatula Assorted each",
 "unit_price": "",
 "was_price": 0.0
@@ -48960,7 +48876,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/79693/woolworths-essentials-sink-plug",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle , Cleaning & Maintenance     Kitchenware & Storage , Kitchen   DOMESTICWARE",
+"store_category": "Home & Lifestyle , Cleaning & Maintenance     Kitchen , Kitchenware & Storage   DOMESTICWARE",
 "title": "Woolworths Essentials Sink Plug each",
 "unit_price": "",
 "was_price": 0.0
@@ -49184,7 +49100,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/829151/woolworths-essentials-wire-hangers",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle , Cleaning & Maintenance     Home Decor & Furniture , Laundry   HABERDASHERY",
+"store_category": "Home & Lifestyle , Cleaning & Maintenance     Laundry , Home Decor & Furniture   HABERDASHERY",
 "title": "Woolworths Essentials Wire Hangers 20 pack",
 "unit_price": "$0.3 / 1EA",
 "was_price": 0.0
@@ -49212,7 +49128,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/829152/woolworths-essentials-wooden-hangers",
 "save_amount": 0.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle , Cleaning & Maintenance     Home Decor & Furniture , Laundry   HABERDASHERY",
+"store_category": "Home & Lifestyle , Cleaning & Maintenance     Laundry , Home Decor & Furniture   HABERDASHERY",
 "title": "Woolworths Essentials Wooden Hangers 5 pack",
 "unit_price": "$6 / 1EA",
 "was_price": 0.0
@@ -49763,20 +49679,6 @@
 "unit_price": "$0.58 / 100G",
 "was_price": 0.0
 },
-"woolworths fruit juice syrup blackcurrant 750ml": {
-"category": "drinks",
-"discount_desc": "Everyday Low Price",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/141202.jpg",
-"price": 3.8,
-"price_display": "$3.80 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/141202/woolworths-fruit-juice-syrup-blackcurrant",
-"save_amount": 0.0,
-"store": "Woolworths",
-"store_category": "Lunch Box , Drinks     Drinks , Cordials, Juices & Iced Teas   CORDIAL / DRINK BASES",
-"title": "Woolworths Fruit Juice Syrup Blackcurrant 750mL",
-"unit_price": "$5.07 / 1L",
-"was_price": 0.0
-},
 "woolworths fruit mince pies lattice lattice 6 pack": {
 "category": "meat",
 "discount_desc": "Everyday Low Price",
@@ -50069,6 +49971,20 @@
 "store_category": "Bakery     Packaged Bread & Bakery   PROPRIETARY BAKERY",
 "title": "Woolworths High Protein Lower Carb Thin Crust Pizza Base 2 pack",
 "unit_price": "$2.5 / 100G",
+"was_price": 0.0
+},
+"woolworths high protein plain yoghurt 900g": {
+"category": "dairy_eggs",
+"discount_desc": "Everyday Low Price",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/086817.jpg",
+"price": 7.0,
+"price_display": "$7.00 ea",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/86817/woolworths-high-protein-plain-yoghurt",
+"save_amount": 0.0,
+"store": "Woolworths",
+"store_category": "Dairy, Eggs & Fridge     High Protein , Yoghurt   DAIRY - YOGHURT",
+"title": "Woolworths High Protein Plain Yoghurt 900g",
+"unit_price": "$0.78 / 100G",
 "was_price": 0.0
 },
 "woolworths himalayan pink fine table salt 1kg": {
@@ -52143,20 +52059,6 @@
 "unit_price": "$28 / 1KG",
 "was_price": 0.0
 },
-"woolworths raw prawns with garlic & herb marinade 220g": {
-"category": "pantry",
-"discount_desc": "Everyday Low Price",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/289587.jpg",
-"price": 10.0,
-"price_display": "$10.00 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/289587/woolworths-raw-prawns-with-garlic-herb-marinade",
-"save_amount": 0.0,
-"store": "Woolworths",
-"store_category": "Poultry, Meat & Seafood     Seafood   SEAFOOD CONVENIENCE",
-"title": "Woolworths Raw Prawns With Garlic & Herb Marinade 220g",
-"unit_price": "$45.45 / 1KG",
-"was_price": 0.0
-},
 "woolworths red kidney beans 420g": {
 "category": "pantry",
 "discount_desc": "Everyday Low Price",
@@ -52323,20 +52225,6 @@
 "store_category": "Dairy, Eggs & Fridge     Eggs, Butter & Margarine   DAIRY - BUTTER & MARGARINE",
 "title": "Woolworths Salted Butter 500g",
 "unit_price": "$1.4 / 100G",
-"was_price": 0.0
-},
-"woolworths salted peanuts 375g": {
-"category": "snacks",
-"discount_desc": "Everyday Low Price",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/509458.jpg",
-"price": 2.8,
-"price_display": "$2.80 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/509458/woolworths-salted-peanuts",
-"save_amount": 0.0,
-"store": "Woolworths",
-"store_category": "Snacks & Confectionery     Snacks   SNACKS",
-"title": "Woolworths Salted Peanuts 375g",
-"unit_price": "$7.47 / 1KG",
 "was_price": 0.0
 },
 "woolworths sandwich cheese slices 1kg": {
@@ -54482,7 +54370,7 @@
 "was_price": 0.0
 }
 },
-"last_full": 1793132567.094525
+"last_full": 1793177713.489684
 },
 "lower-shelf-price": {
 "items": {
@@ -54511,6 +54399,20 @@
 "store": "Woolworths",
 "store_category": "Lunch Box , Dairy, Eggs & Fridge     Snacks , Yoghurt   DAIRY - YOGHURT",
 "title": "Activia Probiotic Yoghurt Berries 125g x 4 pack",
+"unit_price": "$0.96 / 100G",
+"was_price": 6.0
+},
+"activia probiotic yoghurt mango 125g x 4 pack": {
+"category": "dairy_eggs",
+"discount_desc": "Lower Shelf Price",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/706267.jpg",
+"price": 4.8,
+"price_display": "$4.80 ea",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/706267/activia-probiotic-yoghurt-mango",
+"save_amount": 1.2,
+"store": "Woolworths",
+"store_category": "Lunch Box , Dairy, Eggs & Fridge     Snacks , Yoghurt   DAIRY - YOGHURT",
+"title": "Activia Probiotic Yoghurt Mango 125g x 4 pack",
 "unit_price": "$0.96 / 100G",
 "was_price": 6.0
 },
@@ -54906,6 +54808,20 @@
 "unit_price": "$0.06 / 1EA",
 "was_price": 2.5
 },
+"arnott's salada original crispbreads 250g": {
+"category": "snacks",
+"discount_desc": "Lower Shelf Price",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/036019.jpg",
+"price": 3.4,
+"price_display": "$3.40 ea",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/36019/arnott-s-salada-original-crispbreads",
+"save_amount": 0.6,
+"store": "Woolworths",
+"store_category": "Snacks & Confectionery , Christmas     Biscuits & Crackers   BISCUITS",
+"title": "Arnott's Salada Original Crispbreads 250g",
+"unit_price": "$1.36 / 100G",
+"was_price": 4.0
+},
 "arnott's salada wholemeal crispbreads 250g": {
 "category": "snacks",
 "discount_desc": "Lower Shelf Price",
@@ -55057,6 +54973,20 @@
 "store": "Woolworths",
 "store_category": "Pet     Dog & Puppy   MEAT CONVENIENCE",
 "title": "Baxter's Adult Fresh Chilled Dog Food Roll Chicken With Rice 3kg",
+"unit_price": "$0.21 / 100G",
+"was_price": 6.6
+},
+"baxter's adult fresh chilled dog food roll meat with vegetables 3kg": {
+"category": "pet",
+"discount_desc": "Lower Shelf Price",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/258293.jpg",
+"price": 6.25,
+"price_display": "$6.25 ea",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/258293/baxter-s-adult-fresh-chilled-dog-food-roll-meat-with-vegetables",
+"save_amount": 0.35,
+"store": "Woolworths",
+"store_category": "Pet     Dog & Puppy   MEAT CONVENIENCE",
+"title": "Baxter's Adult Fresh Chilled Dog Food Roll Meat With Vegetables 3kg",
 "unit_price": "$0.21 / 100G",
 "was_price": 6.6
 },
@@ -55909,7 +55839,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/240718/crest-4k-hdmi-with-ethernet-1-5m-high-speed-cable",
 "save_amount": 14.0,
 "store": "Woolworths",
-"store_category": "Home & Lifestyle , Cleaning & Maintenance , Electronics     Electronics , Batteries & Power , Hardware , Computers & Tablets   ELECTRICAL",
+"store_category": "Home & Lifestyle , Cleaning & Maintenance , Electronics     Batteries & Power , Hardware , Computers & Tablets , Electronics   ELECTRICAL",
 "title": "Crest 4K HDMI With Ethernet 1.5m High Speed Cable each",
 "unit_price": "",
 "was_price": 24.0
@@ -56735,7 +56665,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/425295/eveready-gold-aa-alkaline-batteries",
 "save_amount": 10.0,
 "store": "Woolworths",
-"store_category": "Cleaning & Maintenance , Home & Lifestyle , Electronics     Hardware , Electronics , Batteries & Power   ELECTRICAL",
+"store_category": "Cleaning & Maintenance , Home & Lifestyle , Electronics     Hardware , Batteries & Power , Electronics   ELECTRICAL",
 "title": "Eveready Gold AA Alkaline Batteries 16 pack",
 "unit_price": "$0.63 / 1EA",
 "was_price": 20.0
@@ -56749,7 +56679,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/743634/eveready-gold-aaa-alkaline-batteries",
 "save_amount": 10.0,
 "store": "Woolworths",
-"store_category": "Cleaning & Maintenance , Home & Lifestyle , Electronics     Hardware , Electronics , Batteries & Power   ELECTRICAL",
+"store_category": "Cleaning & Maintenance , Home & Lifestyle , Electronics     Hardware , Batteries & Power , Electronics   ELECTRICAL",
 "title": "Eveready Gold AAA Alkaline Batteries 16 pack",
 "unit_price": "$0.63 / 1EA",
 "was_price": 20.0
@@ -56781,6 +56711,20 @@
 "title": "Famous Soda Co Zero Sugar Tangerine 330mL",
 "unit_price": "$8.79 / 1L",
 "was_price": 4.0
+},
+"fanta orange soft drink cans 375ml x 24 pack": {
+"category": "drinks",
+"discount_desc": "Lower Shelf Price",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/370743.jpg",
+"price": 23.5,
+"price_display": "$23.50 ea",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/370743/fanta-orange-soft-drink-cans",
+"save_amount": 14.0,
+"store": "Woolworths",
+"store_category": "Drinks , Halloween     Soft Drinks   CARBONATED SOFT DRINKS",
+"title": "Fanta Orange Soft Drink Cans 375mL x 24 pack",
+"unit_price": "$2.61 / 1L",
+"was_price": 37.5
 },
 "fantastic beef noodle cup 70g": {
 "category": "pantry",
@@ -56949,20 +56893,6 @@
 "title": "Felix Sensations Jellies Meat Selection Wet Cat Food 85g x 24 pack",
 "unit_price": "$0.93 / 100G",
 "was_price": 21.0
-},
-"fess nasal & sinus saline wash gentle strength refill sachets 50 pack": {
-"category": "health_vitamins",
-"discount_desc": "Lower Shelf Price",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/6008912.jpg",
-"price": 17.0,
-"price_display": "$17.00 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/6008912/fess-nasal-sinus-saline-wash-gentle-strength-refill-sachets",
-"save_amount": 1.95,
-"store": "Woolworths",
-"store_category": "Health & Wellness     First Aid & Medicinal   HEALTH CARE",
-"title": "Fess Nasal & Sinus Saline Wash Gentle Strength Refill Sachets 50 pack",
-"unit_price": "$0.34 / 1EA",
-"was_price": 18.95
 },
 "fess nasal & sinus saline wash kit gentle strength 12 pack": {
 "category": "health_vitamins",
@@ -58056,20 +57986,6 @@
 "unit_price": "$3.29 / 100G",
 "was_price": 25.9
 },
-"harris strong coffee beans 700g": {
-"category": "drinks",
-"discount_desc": "Lower Shelf Price",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/6070900.jpg",
-"price": 23.0,
-"price_display": "$23.00 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/6070900/harris-strong-coffee-beans",
-"save_amount": 2.9,
-"store": "Woolworths",
-"store_category": "Drinks , Pantry     Coffee , Tea & Coffee   BEVERAGES",
-"title": "Harris Strong Coffee Beans 700g",
-"unit_price": "$3.29 / 100G",
-"was_price": 25.9
-},
 "harris strong ground coffee 700g": {
 "category": "drinks",
 "discount_desc": "Lower Shelf Price",
@@ -58615,20 +58531,6 @@
 "title": "Horlicks Malt Drink Powder 400g",
 "unit_price": "$2.13 / 100G",
 "was_price": 9.5
-},
-"huggies ultra dry nappy pants boys size 4 (9-14kg) 62 pack": {
-"category": "health_vitamins",
-"discount_desc": "Lower Shelf Price",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/151677.jpg",
-"price": 32.5,
-"price_display": "$32.50 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/151677/huggies-ultra-dry-nappy-pants-boys-size-4-9-14kg",
-"save_amount": 6.5,
-"store": "Woolworths",
-"store_category": "Baby     Nappies   BABY NEEDS",
-"title": "Huggies Ultra Dry Nappy Pants Boys Size 4 (9-14kg) 62 pack",
-"unit_price": "$0.52 / 1EA",
-"was_price": 39.0
 },
 "huggies ultra dry nappy pants boys size 5 (12-17kg) 54 pack": {
 "category": "health_vitamins",
@@ -60151,7 +60053,7 @@
 "product_url": "https://www.woolworths.com.au/shop/productdetails/451926/leggo-s-mushroom-bolognese-with-chunky-tomato-herbs-pasta-sauce",
 "save_amount": 1.3,
 "store": "Woolworths",
-"store_category": "Dinner , Pantry     Cooking Sauces & Recipe Bases , Stove Top Meals , International Foods   PASTA / RICE",
+"store_category": "Pantry , Dinner     Cooking Sauces & Recipe Bases , International Foods , Stove Top Meals   PASTA / RICE",
 "title": "Leggo's Mushroom Bolognese With Chunky Tomato & Herbs Pasta Sauce 500g",
 "unit_price": "$0.66 / 100G",
 "was_price": 4.6
@@ -60576,6 +60478,20 @@
 "unit_price": "$4.33 / 1KG",
 "was_price": 4.3
 },
+"mccain superfries steak cut 900g": {
+"category": "frozen",
+"discount_desc": "Lower Shelf Price",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/662932.jpg",
+"price": 3.9,
+"price_display": "$3.90 ea",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/662932/mccain-superfries-steak-cut",
+"save_amount": 0.4,
+"store": "Woolworths",
+"store_category": "Freezer , Dinner     Air Fryer Ready Meals , Chips & Wedges , Sides & Starters   FREEZER - VEGETABLES",
+"title": "McCain Superfries Steak Cut 900g",
+"unit_price": "$4.33 / 1KG",
+"was_price": 4.3
+},
 "mccain superfries straight cut 900g": {
 "category": "frozen",
 "discount_desc": "Lower Shelf Price",
@@ -60673,6 +60589,20 @@
 "title": "Mighty Soft Hot Dog Rolls 6 pack",
 "unit_price": "$0.67 / 1EA",
 "was_price": 4.5
+},
+"millie moon 99% pure water baby wipes 216 pack": {
+"category": "health_vitamins",
+"discount_desc": "Lower Shelf Price",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/6014355.jpg",
+"price": 10.0,
+"price_display": "$10.00 ea",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/6014355/millie-moon-99-pure-water-baby-wipes",
+"save_amount": 2.0,
+"store": "Woolworths",
+"store_category": "Baby , Gift Ideas     Nappies , Wipes & Changing , Baby Shower Gifts   BABY NEEDS",
+"title": "Millie Moon 99% Pure Water Baby Wipes 216 pack",
+"unit_price": "$4.63 / 100EA",
+"was_price": 12.0
 },
 "millie moon sensitive baby wipes 240 pack": {
 "category": "health_vitamins",
@@ -60841,20 +60771,6 @@
 "title": "Mount Franklin Lightly Sparkling Water Raspberry 1.25L",
 "unit_price": "$1.6 / 1L",
 "was_price": 3.35
-},
-"mr chen's microwave noodles hokkien 200g": {
-"category": "pantry",
-"discount_desc": "Lower Shelf Price",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/6057794.jpg",
-"price": 1.8,
-"price_display": "$1.80 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/6057794/mr-chen-s-microwave-noodles-hokkien",
-"save_amount": 0.2,
-"store": "Woolworths",
-"store_category": "International Foods , Pantry     Asian , International Foods   ETHNIC / GOURMET FOOD",
-"title": "Mr Chen's Microwave Noodles Hokkien 200g",
-"unit_price": "$0.9 / 100G",
-"was_price": 2.0
 },
 "mr chen's microwave noodles singapore 200g": {
 "category": "pantry",
@@ -61052,20 +60968,6 @@
 "unit_price": "$0.03 / 1EA",
 "was_price": 6.3
 },
-"nexba better creaming soda 330ml x 4 pack": {
-"category": "drinks",
-"discount_desc": "Lower Shelf Price",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/624279.jpg",
-"price": 5.9,
-"price_display": "$5.90 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/624279/nexba-better-creaming-soda",
-"save_amount": 1.05,
-"store": "Woolworths",
-"store_category": "Drinks     Soft Drinks   CARBONATED SOFT DRINKS",
-"title": "Nexba Better Creaming Soda 330mL x 4 pack",
-"unit_price": "$4.47 / 1L",
-"was_price": 6.95
-},
 "nexba better soda buderim ginger beer cans 330ml x 4 pack": {
 "category": "drinks",
 "discount_desc": "Lower Shelf Price",
@@ -61077,6 +60979,20 @@
 "store": "Woolworths",
 "store_category": "Drinks     Soft Drinks   CARBONATED SOFT DRINKS",
 "title": "Nexba Better Soda Buderim Ginger Beer Cans 330mL x 4 pack",
+"unit_price": "$4.47 / 1L",
+"was_price": 6.95
+},
+"nexba better soda pink lychee cans 330ml x 4 pack": {
+"category": "drinks",
+"discount_desc": "Lower Shelf Price",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/6076542.jpg",
+"price": 5.9,
+"price_display": "$5.90 ea",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/6076542/nexba-better-soda-pink-lychee-cans",
+"save_amount": 1.05,
+"store": "Woolworths",
+"store_category": "Drinks     Soft Drinks   CARBONATED SOFT DRINKS",
+"title": "Nexba Better Soda Pink Lychee Cans 330mL x 4 pack",
 "unit_price": "$4.47 / 1L",
 "was_price": 6.95
 },
@@ -61220,20 +61136,6 @@
 "unit_price": "$28.57 / 1KG",
 "was_price": 10.0
 },
-"omo active clean laundry liquid capsules detergent 50 pack": {
-"category": "household",
-"discount_desc": "Lower Shelf Price",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/207761.jpg",
-"price": 25.0,
-"price_display": "$25.00 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/207761/omo-active-clean-laundry-liquid-capsules-detergent",
-"save_amount": 2.0,
-"store": "Woolworths",
-"store_category": "Cleaning & Maintenance     Laundry   CLEANSING",
-"title": "OMO Active Clean Laundry Liquid Capsules Detergent 50 pack",
-"unit_price": "$0.5 / 1EA",
-"was_price": 27.0
-},
 "omo active clean laundry liquid detergent 4l": {
 "category": "household",
 "discount_desc": "Lower Shelf Price",
@@ -61275,20 +61177,6 @@
 "title": "OMO Laundry Powder Ultimate 5kg",
 "unit_price": "$8 / 1KG",
 "was_price": 45.0
-},
-"omo sensitive laundry liquid capsules detergent 50 pack": {
-"category": "household",
-"discount_desc": "Lower Shelf Price",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/268313.jpg",
-"price": 25.0,
-"price_display": "$25.00 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/268313/omo-sensitive-laundry-liquid-capsules-detergent",
-"save_amount": 2.0,
-"store": "Woolworths",
-"store_category": "Cleaning & Maintenance     Laundry   CLEANSING",
-"title": "OMO Sensitive Laundry Liquid Capsules Detergent 50 pack",
-"unit_price": "$0.5 / 1EA",
-"was_price": 27.0
 },
 "omo sensitive laundry liquid detergent 4l": {
 "category": "household",
@@ -62421,20 +62309,6 @@
 "store": "Woolworths",
 "store_category": "Snacks & Confectionery , Halloween     Buckets & Treats , Confectionery   CONFECTIONERY",
 "title": "Reese's Miniature Peanut Butter Cups 120g",
-"unit_price": "$3.75 / 100G",
-"was_price": 6.0
-},
-"reese's peanut butter pieces 120g": {
-"category": "snacks",
-"discount_desc": "Lower Shelf Price",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/6064310.jpg",
-"price": 4.5,
-"price_display": "$4.50 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/6064310/reese-s-peanut-butter-pieces",
-"save_amount": 1.5,
-"store": "Woolworths",
-"store_category": "Snacks & Confectionery     Confectionery   CONFECTIONERY",
-"title": "Reese's Peanut Butter Pieces 120g",
 "unit_price": "$3.75 / 100G",
 "was_price": 6.0
 },
@@ -63698,19 +63572,19 @@
 "unit_price": "$52.5 / 1KG",
 "was_price": 11.5
 },
-"tassal smoked salmon 150g": {
+"tassal smoked salmon 250g": {
 "category": "seafood",
 "discount_desc": "Lower Shelf Price",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/847049.jpg",
-"price": 13.0,
-"price_display": "$13.00 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/847049/tassal-smoked-salmon",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/847118.jpg",
+"price": 19.0,
+"price_display": "$19.00 ea",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/847118/tassal-smoked-salmon",
 "save_amount": 2.0,
 "store": "Woolworths",
-"store_category": "International Foods , Poultry, Meat & Seafood     Seafood   SEAFOOD CONVENIENCE",
-"title": "Tassal Smoked Salmon 150g",
-"unit_price": "$86.67 / 1KG",
-"was_price": 15.0
+"store_category": "International Foods , Christmas , Poultry, Meat & Seafood     Christmas Mains , Seafood   SEAFOOD CONVENIENCE",
+"title": "Tassal Smoked Salmon 250g",
+"unit_price": "$76 / 1KG",
+"was_price": 21.0
 },
 "telfast hayfever allergy relief 180mg antihistamine tablets 5 pack": {
 "category": "health_vitamins",
@@ -63739,6 +63613,20 @@
 "title": "The Dutch Company Apple Sauce Apple Sauce 710g",
 "unit_price": "$0.49 / 100G",
 "was_price": 4.4
+},
+"the happy snack company chickpeas chocolate 5 pack": {
+"category": "snacks",
+"discount_desc": "Lower Shelf Price",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/059453.jpg",
+"price": 4.8,
+"price_display": "$4.80 ea",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/59453/the-happy-snack-company-chickpeas-chocolate",
+"save_amount": 1.2,
+"store": "Woolworths",
+"store_category": "Snacks & Confectionery , Health & Wellness     Snacks , Health Foods   HEALTH FOODS",
+"title": "The Happy Snack Company Chickpeas Chocolate 5 pack",
+"unit_price": "$4.8 / 100G",
+"was_price": 6.0
 },
 "the happy snack company chickpeas dark choc & raspberry 5 pack": {
 "category": "snacks",
@@ -64969,6 +64857,20 @@
 "store": "Woolworths",
 "store_category": "Pantry     Baking   COOKING NEEDS",
 "title": "White Wings Plain Flour 2kg",
+"unit_price": "$2.2 / 1KG",
+"was_price": 4.95
+},
+"white wings self raising flour 2kg": {
+"category": "pantry",
+"discount_desc": "Lower Shelf Price",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/033079.jpg",
+"price": 4.4,
+"price_display": "$4.40 ea",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/33079/white-wings-self-raising-flour",
+"save_amount": 0.55,
+"store": "Woolworths",
+"store_category": "Pantry     Baking   COOKING NEEDS",
+"title": "White Wings Self Raising Flour 2kg",
 "unit_price": "$2.2 / 1KG",
 "was_price": 4.95
 },
@@ -66610,6 +66512,20 @@
 "unit_price": "$17.5 / 1KG",
 "was_price": 18.0
 },
+"woolworths pork mince 800g": {
+"category": "meat",
+"discount_desc": "Lower Shelf Price",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/169853.jpg",
+"price": 8.8,
+"price_display": "$8.80 ea",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/169853/woolworths-pork-mince",
+"save_amount": 0.7,
+"store": "Woolworths",
+"store_category": "International Foods , Poultry, Meat & Seafood     Meat , Mince   MEAT CONVENIENCE",
+"title": "Woolworths Pork Mince 800g",
+"unit_price": "$11 / 1KG",
+"was_price": 9.5
+},
 "woolworths potato minis 1kg": {
 "category": "frozen",
 "discount_desc": "Lower Shelf Price",
@@ -66637,6 +66553,20 @@
 "title": "Woolworths Potato Wedges 750g",
 "unit_price": "$4.67 / 1KG",
 "was_price": 4.5
+},
+"woolworths prosciutto wrapped chicken chilled meal 400g": {
+"category": "meat",
+"discount_desc": "Lower Shelf Price",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/827476.jpg",
+"price": 13.0,
+"price_display": "$13.00 ea",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/827476/woolworths-prosciutto-wrapped-chicken-chilled-meal",
+"save_amount": 1.0,
+"store": "Woolworths",
+"store_category": "Dairy, Eggs & Fridge , Deli , Dinner     Microwave Meals   DELI CONVENIENCE",
+"title": "Woolworths Prosciutto Wrapped Chicken Chilled Meal 400g",
+"unit_price": "$3.25 / 100G",
+"was_price": 14.0
 },
 "woolworths raspberry & white choc muffin bars 400g 10 pack": {
 "category": "bakery",
@@ -67395,7 +67325,7 @@
 "was_price": 14.0
 }
 },
-"last_full": 1793132567.094525
+"last_full": 1793177713.489684
 },
 "seasonal-price": {
 "items": {
@@ -67959,20 +67889,6 @@
 "unit_price": "$2.22 / 100G",
 "was_price": 4.5
 },
-"claratyne children's hayfever allergy relief antihistamine tablets 10 pack": {
-"category": "health_vitamins",
-"discount_desc": "Seasonal Price",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/681628.jpg",
-"price": 12.0,
-"price_display": "$12.00 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/681628/claratyne-children-s-hayfever-allergy-relief-antihistamine-tablets",
-"save_amount": 3.4,
-"store": "Woolworths",
-"store_category": "Health & Wellness     First Aid & Medicinal   HEALTH CARE",
-"title": "Claratyne Children's Hayfever Allergy Relief Antihistamine Tablets 10 pack",
-"unit_price": "$1.2 / 1EA",
-"was_price": 15.4
-},
 "claratyne hayfever allergy relief antihistamine tablets 10 pack": {
 "category": "health_vitamins",
 "discount_desc": "Seasonal Price",
@@ -67986,6 +67902,34 @@
 "title": "Claratyne Hayfever Allergy Relief Antihistamine Tablets 10 pack",
 "unit_price": "$1.05 / 1EA",
 "was_price": 14.25
+},
+"clearblue pregnancy test ultra early 3 pack": {
+"category": "health_vitamins",
+"discount_desc": "Seasonal Price",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/803377.jpg",
+"price": 18.0,
+"price_display": "$18.00 ea",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/803377/clearblue-pregnancy-test-ultra-early",
+"save_amount": 2.0,
+"store": "Woolworths",
+"store_category": "Health & Wellness , Baby     First Aid & Medicinal , Pregnancy Care & Family Planning   HEALTH CARE",
+"title": "Clearblue Pregnancy Test Ultra Early 3 pack",
+"unit_price": "$6 / 1EA",
+"was_price": 20.0
+},
+"clearblue visual early detect pregnancy tests 7 pack": {
+"category": "health_vitamins",
+"discount_desc": "Seasonal Price",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/275790.jpg",
+"price": 32.0,
+"price_display": "$32.00 ea",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/275790/clearblue-visual-early-detect-pregnancy-tests",
+"save_amount": 4.0,
+"store": "Woolworths",
+"store_category": "Health & Wellness , Baby     First Aid & Medicinal , Pregnancy Care & Family Planning   HEALTH CARE",
+"title": "Clearblue Visual Early Detect Pregnancy Tests 7 pack",
+"unit_price": "$4.57 / 1EA",
+"was_price": 36.0
 },
 "cobram estate truffle infused olive oil 250ml": {
 "category": "pantry",
@@ -68225,6 +68169,20 @@
 "unit_price": "$8.5 / 1L",
 "was_price": 4.55
 },
+"dairy farmers protein smoothie mango 400ml": {
+"category": "drinks",
+"discount_desc": "Seasonal Price",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/6050651.jpg",
+"price": 3.4,
+"price_display": "$3.40 ea",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/6050651/dairy-farmers-protein-smoothie-mango",
+"save_amount": 1.15,
+"store": "Woolworths",
+"store_category": "Container Bonus Credits , Lunch Box , Dairy, Eggs & Fridge , Dinner     High Protein , Dairy , Drinks , Milk   DAIRY - MILK",
+"title": "Dairy Farmers Protein Smoothie Mango 400mL",
+"unit_price": "$8.5 / 1L",
+"was_price": 4.55
+},
 "dairy farmers protein smoothie vanilla 400ml": {
 "category": "drinks",
 "discount_desc": "Seasonal Price",
@@ -68266,34 +68224,6 @@
 "title": "Dairy Farmers Protein Smoothie+ Drink Chocolate 400mL",
 "unit_price": "$8.5 / 1L",
 "was_price": 4.55
-},
-"deep heat original heat rub 100g": {
-"category": "health_vitamins",
-"discount_desc": "Seasonal Price",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/043854.jpg",
-"price": 7.3,
-"price_display": "$7.30 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/43854/deep-heat-original-heat-rub",
-"save_amount": 1.9,
-"store": "Woolworths",
-"store_category": "Health & Wellness     First Aid & Medicinal   HEALTH CARE",
-"title": "Deep Heat Original Heat Rub 100g",
-"unit_price": "$7.3 / 100G",
-"was_price": 9.2
-},
-"demazin hayfever allergy relief tablets 10 pack": {
-"category": "health_vitamins",
-"discount_desc": "Seasonal Price",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/918902.jpg",
-"price": 6.5,
-"price_display": "$6.50 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/918902/demazin-hayfever-allergy-relief-tablets",
-"save_amount": 3.5,
-"store": "Woolworths",
-"store_category": "Health & Wellness     First Aid & Medicinal   HEALTH CARE",
-"title": "Demazin Hayfever Allergy Relief Tablets 10 pack",
-"unit_price": "$0.65 / 1EA",
-"was_price": 10.0
 },
 "dettol multipurpose cleaner surface spray disinfectant apple 750ml": {
 "category": "household",
@@ -68602,34 +68532,6 @@
 "title": "Edgell Red Kidney Beans Fibre Rich 400g",
 "unit_price": "$4.88 / 1KG",
 "was_price": 2.2
-},
-"fairy 5 power action dishwashing tablets lemon 52 pack": {
-"category": "household",
-"discount_desc": "Seasonal Price",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/6052004.jpg",
-"price": 31.8,
-"price_display": "$31.80 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/6052004/fairy-5-power-action-dishwashing-tablets-lemon",
-"save_amount": 28.2,
-"store": "Woolworths",
-"store_category": "Cleaning & Maintenance     Kitchen   CLEANSING",
-"title": "Fairy 5 Power Action Dishwashing Tablets Lemon 52 pack",
-"unit_price": "$0.61 / 1EA",
-"was_price": 60.0
-},
-"fairy platinum plus lemon dishwashing tablets 42 pack": {
-"category": "household",
-"discount_desc": "Seasonal Price",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/154893.jpg",
-"price": 28.0,
-"price_display": "$28.00 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/154893/fairy-platinum-plus-lemon-dishwashing-tablets",
-"save_amount": 18.0,
-"store": "Woolworths",
-"store_category": "Cleaning & Maintenance     Kitchen   CLEANSING",
-"title": "Fairy Platinum Plus Lemon Dishwashing Tablets 42 pack",
-"unit_price": "$0.67 / 1EA",
-"was_price": 46.0
 },
 "grove juice orange pulp free 1.5l": {
 "category": "drinks",
@@ -69163,20 +69065,6 @@
 "unit_price": "$0.6 / 100G",
 "was_price": 6.65
 },
-"mentholatum ice gel therapy 100g": {
-"category": "health_vitamins",
-"discount_desc": "Seasonal Price",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/096246.jpg",
-"price": 5.35,
-"price_display": "$5.35 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/96246/mentholatum-ice-gel-therapy",
-"save_amount": 1.35,
-"store": "Woolworths",
-"store_category": "Health & Wellness     First Aid & Medicinal   HEALTH CARE",
-"title": "Mentholatum Ice Gel Therapy 100g",
-"unit_price": "$5.35 / 100G",
-"was_price": 6.7
-},
 "metamucil natural granular fibre powder 114 doses 798g": {
 "category": "health_vitamins",
 "discount_desc": "Seasonal Price",
@@ -69356,6 +69244,20 @@
 "store": "Woolworths",
 "store_category": "Bakery     Packaged Bread & Bakery   PROPRIETARY BAKERY",
 "title": "Mission Pita Bread Pockets Plain 420g",
+"unit_price": "$0.86 / 100G",
+"was_price": 4.5
+},
+"mission pita bread pockets wholemeal 420g": {
+"category": "bakery",
+"discount_desc": "Seasonal Price",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/774126.jpg",
+"price": 3.6,
+"price_display": "$3.60 ea",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/774126/mission-pita-bread-pockets-wholemeal",
+"save_amount": 0.9,
+"store": "Woolworths",
+"store_category": "Bakery     Packaged Bread & Bakery   PROPRIETARY BAKERY",
+"title": "Mission Pita Bread Pockets Wholemeal 420g",
 "unit_price": "$0.86 / 100G",
 "was_price": 4.5
 },
@@ -69930,6 +69832,20 @@
 "store": "Woolworths",
 "store_category": "Snacks & Confectionery , Lunch Box     Chips , Snacks   SNACKS",
 "title": "Smith's Original Potato Chips 19g x 8 pack",
+"unit_price": "$2.96 / 100G",
+"was_price": 6.0
+},
+"smith's salt & vinegar potato chips 19g x 8 pack": {
+"category": "snacks",
+"discount_desc": "Seasonal Price",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/6019910.jpg",
+"price": 4.5,
+"price_display": "$4.50 ea",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/6019910/smith-s-salt-vinegar-potato-chips",
+"save_amount": 1.5,
+"store": "Woolworths",
+"store_category": "Snacks & Confectionery , Lunch Box     Chips , Snacks   SNACKS",
+"title": "Smith's Salt & Vinegar Potato Chips 19g x 8 pack",
 "unit_price": "$2.96 / 100G",
 "was_price": 6.0
 },
@@ -70676,7 +70592,7 @@
 "was_price": 6.5
 }
 },
-"last_full": 1793132567.094525
+"last_full": 1793177713.489684
 }
 },
 "items": {
@@ -71139,7 +71055,7 @@
 "store": "Woolworths",
 "store_category": "Snacks & Confectionery     Biscuits & Crackers   BISCUITS",
 "title": "Arnott's Shapes Light & Crispy Sour Cream & Chives Crackers 120g",
-"unit_price": "$1.67 / 100G",
+"unit_price": "",
 "was_price": 4.0
 },
 "arnott's shapes light & crispy vinegar & sea salt crackers 120g": {
@@ -77089,7 +77005,7 @@
 "store": "Woolworths",
 "store_category": "Halloween     Costumes & Accessories   STATIONERY",
 "title": "Halloween Kids Felt Mask Pumpkin each",
-"unit_price": "$1.5 / 1EA",
+"unit_price": "",
 "was_price": 3.0
 },
 "halloween kids felt mask spider each": {
@@ -77467,7 +77383,7 @@
 "store": "Woolworths",
 "store_category": "Personal Care , Container Bonus Credits     Hair Care , Personal Care & Household   TOILETRIES",
 "title": "Head & Shoulders 2 In 1 Itchy Scalp Care Shampoo & Conditioner 750mL",
-"unit_price": "$1.8 / 100ML",
+"unit_price": "",
 "was_price": 27.0
 },
 "head & shoulders 2 in 1 smooth & silky anti dandruff shampoo & conditioner 350ml": {
@@ -77484,31 +77400,17 @@
 "unit_price": "$2.14 / 100ML",
 "was_price": 15.0
 },
-"head & shoulders 2-in-1 shampoo & conditioner apple fresh 350ml": {
+"head & shoulders 2-in-1 shampoo & conditioner apple fresh 750ml": {
 "category": "health_vitamins",
 "discount_desc": "1/2 PRICE",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/583287.jpg",
-"price": 7.5,
-"price_display": "$7.50 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/583287/head-shoulders-2-in-1-shampoo-conditioner-apple-fresh",
-"save_amount": 7.5,
-"store": "Woolworths",
-"store_category": "Personal Care , Container Bonus Credits     Hair Care , Personal Care & Household   TOILETRIES",
-"title": "Head & Shoulders 2-in-1 Shampoo & Conditioner Apple Fresh 350mL",
-"unit_price": "$2.14 / 100ML",
-"was_price": 15.0
-},
-"head & shoulders 2-in-1 shampoo & conditioner clean & balanced 750ml": {
-"category": "health_vitamins",
-"discount_desc": "1/2 PRICE",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/588533.jpg",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/588292.jpg",
 "price": 13.5,
 "price_display": "$13.50 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/588533/head-shoulders-2-in-1-shampoo-conditioner-clean-balanced",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/588292/head-shoulders-2-in-1-shampoo-conditioner-apple-fresh",
 "save_amount": 13.5,
 "store": "Woolworths",
 "store_category": "Personal Care , Container Bonus Credits     Hair Care , Personal Care & Household   TOILETRIES",
-"title": "Head & Shoulders 2-in-1 Shampoo & Conditioner Clean & Balanced 750mL",
+"title": "Head & Shoulders 2-in-1 Shampoo & Conditioner Apple Fresh 750mL",
 "unit_price": "$1.8 / 100ML",
 "was_price": 27.0
 },
@@ -77526,20 +77428,6 @@
 "unit_price": "$1.8 / 100ML",
 "was_price": 27.0
 },
-"head & shoulders 2-in-1 shampoo & conditioner smooth & silky 750ml": {
-"category": "health_vitamins",
-"discount_desc": "1/2 PRICE",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/588401.jpg",
-"price": 13.5,
-"price_display": "$13.50 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/588401/head-shoulders-2-in-1-shampoo-conditioner-smooth-silky",
-"save_amount": 13.5,
-"store": "Woolworths",
-"store_category": "Personal Care , Container Bonus Credits     Hair Care , Personal Care & Household   TOILETRIES",
-"title": "Head & Shoulders 2-in-1 Shampoo & Conditioner Smooth & Silky 750mL",
-"unit_price": "$1.8 / 100ML",
-"was_price": 27.0
-},
 "head & shoulders 72hr itch defense shampoo 345ml": {
 "category": "health_vitamins",
 "discount_desc": "1/2 PRICE",
@@ -77554,19 +77442,19 @@
 "unit_price": "$2.32 / 100ML",
 "was_price": 16.0
 },
-"head & shoulders 72hr oil control shampoo 345ml": {
+"head & shoulders 72hr oil control shampoo 645ml": {
 "category": "health_vitamins",
 "discount_desc": "1/2 PRICE",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/6082252.jpg",
-"price": 8.0,
-"price_display": "$8.00 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/6082252/head-shoulders-72hr-oil-control-shampoo",
-"save_amount": 8.0,
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/6081824.jpg",
+"price": 13.5,
+"price_display": "$13.50 ea",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/6081824/head-shoulders-72hr-oil-control-shampoo",
+"save_amount": 13.5,
 "store": "Woolworths",
 "store_category": "Personal Care , Container Bonus Credits     Hair Care , Personal Care & Household   TOILETRIES",
-"title": "Head & Shoulders 72Hr Oil Control Shampoo 345mL",
-"unit_price": "$2.32 / 100ML",
-"was_price": 16.0
+"title": "Head & Shoulders 72Hr Oil Control Shampoo 645mL",
+"unit_price": "$2.09 / 100ML",
+"was_price": 27.0
 },
 "head & shoulders 72hr scalp hydration shampoo 345ml": {
 "category": "health_vitamins",
@@ -77581,6 +77469,20 @@
 "title": "Head & Shoulders 72Hr Scalp Hydration Shampoo 345mL",
 "unit_price": "$2.32 / 100ML",
 "was_price": 16.0
+},
+"head & shoulders anti-dandruff & itch spray 50ml": {
+"category": "health_vitamins",
+"discount_desc": "1/2 PRICE",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/6081812.jpg",
+"price": 3.5,
+"price_display": "$3.50 ea",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/6081812/head-shoulders-anti-dandruff-itch-spray",
+"save_amount": 3.5,
+"store": "Woolworths",
+"store_category": "Beauty , Personal Care , Container Bonus Credits     Personal Care & Household , Hair Care , Hair Care   TOILETRIES",
+"title": "Head & Shoulders Anti-Dandruff & Itch Spray 50mL",
+"unit_price": "$7 / 100ML",
+"was_price": 7.0
 },
 "head & shoulders apple fresh anti dandruff shampoo 400ml": {
 "category": "health_vitamins",
@@ -79777,7 +79679,7 @@
 "store": "Woolworths",
 "store_category": "Container Bonus Credits , Freezer     Freezer , Ice Cream   ICE CREAM",
 "title": "Magnum White Chocolate & Cookies Ice Cream Sticks 4 pack",
-"unit_price": "$1.5 / 100ML",
+"unit_price": "",
 "was_price": 12.0
 },
 "magnum white chocolate ice cream sticks 4 pack": {
@@ -79933,6 +79835,20 @@
 "title": "Mars Bar Slice With Rice Crispsies Fun Size Bars 180g 12 pack",
 "unit_price": "$2.08 / 100G",
 "was_price": 7.5
+},
+"mars chocolate bar with nougat & caramel 47g": {
+"category": "snacks",
+"discount_desc": "1/2 PRICE",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/160905.jpg",
+"price": 1.5,
+"price_display": "$1.50 ea",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/160905/mars-chocolate-bar-with-nougat-caramel",
+"save_amount": 1.5,
+"store": "Woolworths",
+"store_category": "Halloween , Lunch Box , Snacks & Confectionery     Buckets & Treats , Snacks , Confectionery   CONFECTIONERY",
+"title": "Mars Chocolate Bar with Nougat & Caramel 47g",
+"unit_price": "$3.19 / 100G",
+"was_price": 3.0
 },
 "mars milk chocolate fun size bars 192g 12 pack": {
 "category": "snacks",
@@ -83070,6 +82986,20 @@
 "unit_price": "$5.88 / 100ML",
 "was_price": 23.5
 },
+"nivea spf 50 sun kids protect & play roll on sunscreen 65ml": {
+"category": "health_vitamins",
+"discount_desc": "1/2 PRICE",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/764346.jpg",
+"price": 7.5,
+"price_display": "$7.50 ea",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/764346/nivea-spf-50-sun-kids-protect-play-roll-on-sunscreen",
+"save_amount": 7.5,
+"store": "Woolworths",
+"store_category": "Beauty , Lunch Box , Personal Care     Skincare & Body , Accessories , Sun Protection   TOILETRIES",
+"title": "Nivea SPF 50 Sun Kids Protect & Play Roll On Sunscreen 65mL",
+"unit_price": "$11.54 / 100ML",
+"was_price": 15.0
+},
 "nivea spf 50 sun sensitive protect sunscreen lotion 200ml": {
 "category": "health_vitamins",
 "discount_desc": "1/2 PRICE",
@@ -84120,6 +84050,20 @@
 "unit_price": "$5.67 / 100ML",
 "was_price": 17.0
 },
+"olay niacinamide + vitamin c moisturiser 50g": {
+"category": "health_vitamins",
+"discount_desc": "1/2 PRICE",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/206943.jpg",
+"price": 30.0,
+"price_display": "$30.00 ea",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/206943/olay-niacinamide-vitamin-c-moisturiser",
+"save_amount": 30.0,
+"store": "Woolworths",
+"store_category": "Personal Care , Beauty     Skincare & Body   TOILETRIES",
+"title": "Olay Niacinamide + Vitamin C Moisturiser 50g",
+"unit_price": "$60 / 100G",
+"was_price": 60.0
+},
 "olay regenerist advanced anti ageing face cream cleanser 100g": {
 "category": "health_vitamins",
 "discount_desc": "1/2 PRICE",
@@ -84133,6 +84077,20 @@
 "title": "Olay Regenerist Advanced Anti Ageing Face Cream Cleanser 100g",
 "unit_price": "$8.75 / 100G",
 "was_price": 17.5
+},
+"olay regenerist collagen peptide cream spf30 50g": {
+"category": "health_vitamins",
+"discount_desc": "1/2 PRICE",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/443297.jpg",
+"price": 30.0,
+"price_display": "$30.00 ea",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/443297/olay-regenerist-collagen-peptide-cream-spf30",
+"save_amount": 30.0,
+"store": "Woolworths",
+"store_category": "Personal Care , Beauty     Skincare & Body   TOILETRIES",
+"title": "Olay Regenerist Collagen Peptide Cream SPF30 50g",
+"unit_price": "$60 / 100G",
+"was_price": 60.0
 },
 "olay regenerist collagen peptide moisturiser skin care 50g": {
 "category": "health_vitamins",
@@ -84232,20 +84190,6 @@
 "unit_price": "$60 / 100G",
 "was_price": 60.0
 },
-"olay regenerist retinol 24 max night serum 30ml": {
-"category": "health_vitamins",
-"discount_desc": "1/2 PRICE",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/520571.jpg",
-"price": 35.0,
-"price_display": "$35.00 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/520571/olay-regenerist-retinol-24-max-night-serum",
-"save_amount": 35.0,
-"store": "Woolworths",
-"store_category": "Personal Care , Beauty     Skincare & Body   TOILETRIES",
-"title": "Olay Regenerist Retinol 24 Max Night Serum 30mL",
-"unit_price": "$116.67 / 100ML",
-"was_price": 70.0
-},
 "olay regenerist retinol 24 night face serum 30ml": {
 "category": "health_vitamins",
 "discount_desc": "1/2 PRICE",
@@ -84272,6 +84216,20 @@
 "store_category": "Gift Ideas , Beauty , Personal Care     Gifts for Her , Skincare & Body   TOILETRIES",
 "title": "Olay Regenerist Retinol 24 Night Moisturiser Face Cream 50g",
 "unit_price": "$60 / 100G",
+"was_price": 60.0
+},
+"olay regenerist retinol 24 overnight wrinkle concentrate 10ml": {
+"category": "health_vitamins",
+"discount_desc": "1/2 PRICE",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/6081247.jpg",
+"price": 30.0,
+"price_display": "$30.00 ea",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/6081247/olay-regenerist-retinol-24-overnight-wrinkle-concentrate",
+"save_amount": 30.0,
+"store": "Woolworths",
+"store_category": "Personal Care , Beauty     Skincare & Body   TOILETRIES",
+"title": "Olay Regenerist Retinol 24 Overnight Wrinkle Concentrate 10mL",
+"unit_price": "$300 / 100ML",
 "was_price": 60.0
 },
 "olay regenerist retinol24 max cream 50g": {
@@ -84315,20 +84273,6 @@
 "title": "Olay Regenerist Ultra Firming Serum 30mL",
 "unit_price": "$116.67 / 100ML",
 "was_price": 70.0
-},
-"olay regenerist whips face cream moisturiser uv spf 30 50g": {
-"category": "health_vitamins",
-"discount_desc": "1/2 PRICE",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/053227.jpg",
-"price": 30.0,
-"price_display": "$30.00 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/53227/olay-regenerist-whips-face-cream-moisturiser-uv-spf-30",
-"save_amount": 30.0,
-"store": "Woolworths",
-"store_category": "Beauty , Personal Care     Skincare & Body   TOILETRIES",
-"title": "Olay Regenerist Whips Face Cream Moisturiser UV SPF 30 50g",
-"unit_price": "$60 / 100G",
-"was_price": 60.0
 },
 "olay spf50 super fluid moisturiser 50ml": {
 "category": "health_vitamins",
@@ -85268,17 +85212,17 @@
 "unit_price": "$1.75 / 100ML",
 "was_price": 21.0
 },
-"pantene miracles collagen repair & protect silicone-free shampoo 650ml": {
+"pantene miracles hyaluron clarify & hydrate silicone-free shampoo 650ml": {
 "category": "health_vitamins",
 "discount_desc": "1/2 PRICE",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/573713.jpg",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/6004379.jpg",
 "price": 10.5,
 "price_display": "$10.50 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/573713/pantene-miracles-collagen-repair-protect-silicone-free-shampoo",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/6004379/pantene-miracles-hyaluron-clarify-hydrate-silicone-free-shampoo",
 "save_amount": 10.5,
 "store": "Woolworths",
 "store_category": "Personal Care     Hair Care   TOILETRIES",
-"title": "Pantene Miracles Collagen Repair & Protect Silicone-Free Shampoo 650mL",
+"title": "Pantene Miracles Hyaluron Clarify & Hydrate Silicone-Free Shampoo 650mL",
 "unit_price": "$1.62 / 100ML",
 "was_price": 21.0
 },
@@ -85322,6 +85266,20 @@
 "store_category": "Personal Care     Hair Care   TOILETRIES",
 "title": "Pantene Miracles Keratin Sleek & Smooth Intensive Conditioner 600mL",
 "unit_price": "$1.75 / 100ML",
+"was_price": 21.0
+},
+"pantene miracles keratin sleek & smooth silicone-free shampoo 650ml": {
+"category": "health_vitamins",
+"discount_desc": "1/2 PRICE",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/573706.jpg",
+"price": 10.5,
+"price_display": "$10.50 ea",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/573706/pantene-miracles-keratin-sleek-smooth-silicone-free-shampoo",
+"save_amount": 10.5,
+"store": "Woolworths",
+"store_category": "Personal Care     Hair Care   TOILETRIES",
+"title": "Pantene Miracles Keratin Sleek & Smooth Silicone-Free Shampoo 650mL",
+"unit_price": "$1.62 / 100ML",
 "was_price": 21.0
 },
 "pantene pro-v classic clean conditioner 800ml": {
@@ -85477,6 +85435,20 @@
 "title": "Pantene Pro-V Sunkiss Glow Hair Spray 200mL",
 "unit_price": "$6 / 100ML",
 "was_price": 24.0
+},
+"pantene pro-v ultimate 10 repair & protect conditioner 800ml": {
+"category": "health_vitamins",
+"discount_desc": "1/2 PRICE",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/6059975.jpg",
+"price": 10.5,
+"price_display": "$10.50 ea",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/6059975/pantene-pro-v-ultimate-10-repair-protect-conditioner",
+"save_amount": 10.5,
+"store": "Woolworths",
+"store_category": "Personal Care     Hair Care   TOILETRIES",
+"title": "Pantene Pro-V Ultimate 10 Repair & Protect Conditioner 800mL",
+"unit_price": "$1.31 / 100ML",
+"was_price": 21.0
 },
 "pantene pro-v ultimate 10 repair & protect shampoo 900ml": {
 "category": "health_vitamins",
@@ -85729,20 +85701,6 @@
 "title": "Radiant Active Clean Liquid Laundry Capsules Detergent Washing 28 pack",
 "unit_price": "$0.39 / 1EA",
 "was_price": 22.0
-},
-"radiant advanced stain lifter capsules 45 pack": {
-"category": "household",
-"discount_desc": "1/2 PRICE",
-"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/6040106.jpg",
-"price": 19.5,
-"price_display": "$19.50 ea",
-"product_url": "https://www.woolworths.com.au/shop/productdetails/6040106/radiant-advanced-stain-lifter-capsules",
-"save_amount": 19.5,
-"store": "Woolworths",
-"store_category": "Cleaning & Maintenance     Laundry   CLEANSING",
-"title": "Radiant Advanced Stain Lifter Capsules 45 pack",
-"unit_price": "$0.43 / 1EA",
-"was_price": 39.0
 },
 "radiant mixed colour laundry capsules 28 pack": {
 "category": "household",
@@ -89374,14 +89332,14 @@
 "category": "household",
 "discount_desc": "1/2 PRICE",
 "image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/107061.jpg",
-"price": 6.38,
-"price_display": "$6.38 ea",
+"price": 6.37,
+"price_display": "$6.37 ea",
 "product_url": "https://www.woolworths.com.au/shop/productdetails/107061/sistema-klip-it-plus-square-lunch-food-container-5-5l",
-"save_amount": 6.37,
+"save_amount": 6.38,
 "store": "Woolworths",
 "store_category": "Lunch Box , Home & Lifestyle , Cleaning & Maintenance     Accessories , Kitchen , Kitchenware & Storage   DOMESTICWARE",
 "title": "Sistema Klip It Plus Square Lunch Food Container 5.5L each",
-"unit_price": "",
+"unit_price": "$6.37 / 1EA",
 "was_price": 12.75
 },
 "sistema max to go lunch cube container assorted 2l each": {
@@ -90000,6 +89958,20 @@
 "unit_price": "$1.85 / 100G",
 "was_price": 4.8
 },
+"snickers chocolate bar peanuts caramel nougat 44g": {
+"category": "snacks",
+"discount_desc": "1/2 PRICE",
+"image_url": "https://cdn1.woolworths.media/content/wowproductimages/large/206890.jpg",
+"price": 1.5,
+"price_display": "$1.50 ea",
+"product_url": "https://www.woolworths.com.au/shop/productdetails/206890/snickers-chocolate-bar-peanuts-caramel-nougat",
+"save_amount": 1.5,
+"store": "Woolworths",
+"store_category": "Lunch Box , Snacks & Confectionery     Snacks , Confectionery   CONFECTIONERY",
+"title": "Snickers Chocolate Bar Peanuts Caramel Nougat 44g",
+"unit_price": "$3.41 / 100G",
+"was_price": 3.0
+},
 "snickers honeycomb chocolate bar 44g": {
 "category": "snacks",
 "discount_desc": "1/2 PRICE",
@@ -90207,7 +90179,7 @@
 "store": "Woolworths",
 "store_category": "Dinner , Freezer     Sides & Starters , Air Fryer Ready Meals , Chips & Wedges   FREEZER - VEGETABLES",
 "title": "Strong Roots Proper Potato Chips 750g",
-"unit_price": "$4.67 / 1KG",
+"unit_price": "",
 "was_price": 7.0
 },
 "sunrice coconut rice cups 125g x 2 pack": {
@@ -90473,7 +90445,7 @@
 "store": "Woolworths",
 "store_category": "Lunch Box , Health & Wellness     Dietary Needs , Health Foods   HEALTH FOODS",
 "title": "Table Of Plenty Air Popped Mini Rice Cakes Salt & Vinegar Snack 6 pack",
-"unit_price": "",
+"unit_price": "$3.33 / 100G",
 "was_price": 6.0
 },
 "table of plenty mini rice cakes berry yoghurt 60g": {
@@ -91513,6 +91485,6 @@
 "was_price": 3.5
 }
 },
-"last_full": 1793154105.712532,
+"last_full": 1793177510.3753414,
 "week": "2026-10-28"
 }
