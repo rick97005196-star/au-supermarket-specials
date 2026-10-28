@@ -165203,7 +165203,7 @@
     "ja": "The Deli パストラミ 150g",
     "ko": "The Deli 파스트라미 150g",
     "src": "ai",
-    "qa_tries": 1
+    "qa_tries": 2
   },
   "Youfoodz Nourish Creamy Mushroom Chicken With Roast Veggies 320g": {
     "zh": "Youfoodz 奶油蘑菇雞肉烤時蔬 320克",
@@ -165428,11 +165428,11 @@
     "src": "ai"
   },
   "Yumi's Mini Avocado Dip 3x65g 195g": {
-    "zh": "Yumi's 迷你酪梨沾醬 65克 x 3入",
-    "ja": "Yumi's ミニ アボカドディップ 65g x 3個入",
-    "ko": "Yumi's 미니 아보카도 딥 65g x 3개입",
+    "zh": "Yumi's 迷你酪梨沾醬 65克 x 3入 195克",
+    "ja": "Yumi's ミニ アボカドディップ 65g x 3個入 195g",
+    "ko": "Yumi's 미니 아보카도 딥 65g x 3개입 195g",
     "src": "ai",
-    "qa_tries": 1
+    "qa_tries": 2
   },
   "Winton Road Barossa Valley Rose 750ml 1 Each": {
     "zh": "Winton Road Barossa Valley 玫瑰紅酒 750毫升",
@@ -165513,10 +165513,11 @@
     "src": "ai"
   },
   "McCain Pub Size Parma Veal Schnitzels & Veg 480g": {
-    "zh": "McCain 帕瑪森小牛肉排與蔬菜 480克",
-    "ja": "McCain パルマ風仔牛シュニッツェル＆野菜 480g",
-    "ko": "McCain 파르마식 송아지 슈니첼 & 야채 480g",
-    "src": "ai"
+    "zh": "McCain 帕瑪森風味小牛肉炸肉排與蔬菜 480克",
+    "ja": "McCain パブサイズ パルマ風仔牛のシュニッツェル＆野菜 480g",
+    "ko": "McCain 펍 사이즈 파르마 송아지 슈니첼 & 채소 480g",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Don Artusi Calabrese Traditional Style 80g": {
     "zh": "Don Artusi 卡拉布里亞傳統風味臘腸 80克",
