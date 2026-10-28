@@ -168111,11 +168111,11 @@
     "src": "ai"
   },
   "Philips Avent Soother Bpa Free 18 Months 2 Pack": {
-    "zh": "Philips Avent 不含雙酚A安撫奶嘴 18個月以上 2入",
+    "zh": "Philips Avent 安撫奶嘴 不含雙酚A 18個月以上 2入",
     "ja": "Philips Avent おしゃぶり BPAフリー 18ヶ月以上 2個入",
     "ko": "Philips Avent 공갈 젖꼭지 BPA 프리 18개월 이상 2개입",
     "src": "ai",
-    "qa_tries": 1
+    "qa_tries": 2
   },
   "Rascals Premium Nappies Size 4 (10-15kg) 72 Pack": {
     "zh": "Rascals 頂級尿布 4號 (10-15公斤) 72入",
@@ -168262,16 +168262,18 @@
     "src": "ai"
   },
   "Purina One Digestive Care Jelly Treat With Real Tuna Flakes Cat Treats 4x14g 56g": {
-    "zh": "Purina One 腸胃護理鮪魚肉凍貓零食 14克 x 4入",
-    "ja": "Purina One ディジェスティブケア ツナフレーク入りゼリーおやつ 14g x 4個入",
-    "ko": "Purina One 소화기 케어 참치 플레이크 젤리 간식 14g x 4개입",
-    "src": "ai"
+    "zh": "Purina One 腸胃護理鮪魚肉絲果凍貓零食 14克 x 4入 56克",
+    "ja": "Purina One 消化ケア ツナフレーク入りゼリーおやつ 14g x 4個入 56g",
+    "ko": "Purina One 소화 케어 참치 플레이크 젤리 간식 14g x 4개입 56g",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Protea Foods Lekker Peri Peri Biltong Slices 100g": {
-    "zh": "Protea Foods Lekker 霹靂辣味風乾牛肉片 100克",
-    "ja": "Protea Foods Lekker ペリペリ ビルトン スライス 100g",
-    "ko": "Protea Foods Lekker 페리페리 빌통 슬라이스 100g",
-    "src": "ai"
+    "zh": "Protea Foods Lekker 霹靂辣味肉乾切片 100克",
+    "ja": "Protea Foods Lekker ペリペリ味 ビルトン スライス 100g",
+    "ko": "Protea Foods Lekker 페리페리맛 빌통 슬라이스 100g",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Depend Real Fit Incontinence Underwear Regular Women Extra Large 8 Pack": {
     "zh": "Depend Real Fit 女性成人失禁內褲 一般型 加大號 8入",
@@ -168346,10 +168348,11 @@
     "src": "ai"
   },
   "Purina One Immune Support Puree Treat With Real Chicken 4x14g 56g": {
-    "zh": "Purina One 免疫保健雞肉泥貓零食 14克 x 4入",
-    "ja": "Purina One 免疫サポート チキンピューレおやつ 14g x 4個入",
-    "ko": "Purina One 면역 지원 치킨 퓨레 간식 14g x 4개입",
-    "src": "ai"
+    "zh": "Purina One 免疫力提升雞肉泥貓零食 14克 x 4入 56克",
+    "ja": "Purina One 免疫サポート チキンピューレおやつ 14g x 4個入 56g",
+    "ko": "Purina One 면역 지원 닭고기 퓨레 간식 14g x 4개입 56g",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Nature's Gift Grain Free Hearty Casserole With Beef Kangaroo Dog Food 8x100g 8 Pack": {
     "zh": "Nature's Gift 無穀物牛肉袋鼠肉燉菜狗糧 100克 x 8入",
@@ -168427,6 +168430,252 @@
     "zh": "Fussy Cat 無穀物幼貓肉末濕貓糧 80克 x 12入",
     "ja": "Fussy Cat グレインフリー 子猫用 ミンス ウェットキャットフード 80g x 12個入",
     "ko": "Fussy Cat 그레인 프리 자묘용 다진 고기 습식 사료 80g x 12개입",
+    "src": "ai"
+  },
+  "Only Organic Pear Gold Kiwifruit & Oats Baby Food Pouch 8+ Months 120g": {
+    "zh": "Only Organic 梨子黃金奇異果燕麥嬰兒泥 120克 (8個月以上)",
+    "ja": "Only Organic 洋梨・ゴールデンキウイ・オーツ麦 ベビーフードパウチ 120g (8ヶ月以上)",
+    "ko": "Only Organic 배 골드키위 오트밀 이유식 파우치 120g (8개월 이상)",
+    "src": "ai"
+  },
+  "Dr Beckmann Pet Stain & Odour Remover 650mL": {
+    "zh": "Dr Beckmann 寵物污漬異味清潔劑 650毫升",
+    "ja": "Dr Beckmann ペット用シミ・ニオイ取り 650mL",
+    "ko": "Dr Beckmann 반려동물 얼룩 및 냄새 제거제 650mL",
+    "src": "ai"
+  },
+  "Colgate Optic White Luminous Express Teeth Whitening 2% Hydrogen Peroxide Toothpaste 85g": {
+    "zh": "Colgate Optic White Luminous Express 美白牙膏 85克 (2%過氧化氫)",
+    "ja": "Colgate Optic White Luminous Express ホワイトニング歯磨き粉 85g (過酸化水素2%)",
+    "ko": "Colgate Optic White Luminous Express 미백 치약 85g (과산화수소 2%)",
+    "src": "ai"
+  },
+  "Higher Living Organic Rooibos 40 Pack": {
+    "zh": "Higher Living 有機博士茶 40入",
+    "ja": "Higher Living オーガニックルイボスティー 40個入",
+    "ko": "Higher Living 유기농 루이보스차 40개입",
+    "src": "ai"
+  },
+  "Bunjie Baby Tear-free Gentle Shampoo 500mL": {
+    "zh": "Bunjie 嬰兒溫和不流淚洗髮精 500毫升",
+    "ja": "Bunjie ベビー用低刺激シャンプー 500mL",
+    "ko": "Bunjie 베이비 저자극 샴푸 500mL",
+    "src": "ai"
+  },
+  "Muscle Nation Ready To Drink Shake Choc Honeycomb 400mL": {
+    "zh": "Muscle Nation 巧克力蜂巢口味蛋白飲 400毫升",
+    "ja": "Muscle Nation プロテインシェイク チョコレートハニカム味 400mL",
+    "ko": "Muscle Nation 단백질 쉐이크 초콜릿 허니콤맛 400mL",
+    "src": "ai"
+  },
+  "L & P Lemon & Paeroa Soft Drink 1.5L": {
+    "zh": "L & P 檸檬汽水 1.5公升",
+    "ja": "L & P レモン＆パエロア 炭酸飲料 1.5L",
+    "ko": "L & P 레몬 & 파에로아 탄산음료 1.5L",
+    "src": "ai"
+  },
+  "Quest Baked Brownie Chocolate 56g": {
+    "zh": "Quest 巧克力烘焙布朗尼 56克",
+    "ja": "Quest ベイクドブラウニー チョコレート 56g",
+    "ko": "Quest 베이크드 브라우니 초콜릿 56g",
+    "src": "ai"
+  },
+  "Barilla Protein Plus Spaghetti Pasta 400g": {
+    "zh": "Barilla Protein Plus 義大利麵 400克",
+    "ja": "Barilla Protein Plus スパゲッティ 400g",
+    "ko": "Barilla Protein Plus 스파게티 400g",
+    "src": "ai"
+  },
+  "Nando's Perinaise Garlic Peri Peri Mayo 265g": {
+    "zh": "Nando's 蒜味霹靂霹靂美乃滋 265克",
+    "ja": "Nando's ペリネーズ ガーリックペリペリマヨネーズ 265g",
+    "ko": "Nando's 페리네이즈 갈릭 페리페리 마요네즈 265g",
+    "src": "ai"
+  },
+  "MTR Rice Noodle Vermicelli 440g": {
+    "zh": "MTR 米粉 440克",
+    "ja": "MTR ライスヌードル ビーフン 440g",
+    "ko": "MTR 쌀국수 버미셀리 440g",
+    "src": "ai"
+  },
+  "Applaws Taste Toppers Chicken Bone Broth Dog Food 200g": {
+    "zh": "Applaws 雞肉骨湯狗罐頭 200克",
+    "ja": "Applaws テイストトッパーズ チキンボーンブロス ドッグフード 200g",
+    "ko": "Applaws 테이스트 토퍼 치킨 본 브로스 반려견 사료 200g",
+    "src": "ai"
+  },
+  "Mayver's Smooth Dark Roast Natural Peanut Butter 375g": {
+    "zh": "Mayver's 深焙滑順天然花生醬 375克",
+    "ja": "Mayver's ピーナッツバター ダークロースト スムース 375g",
+    "ko": "Mayver's 땅콩버터 다크로스트 스무스 375g",
+    "src": "ai"
+  },
+  "Mayvers Hulled Tahini 385g": {
+    "zh": "Mayver's 去皮芝麻醬 385克",
+    "ja": "Mayver's 皮なしタヒニ 385g",
+    "ko": "Mayver's 껍질 벗긴 타히니 385g",
+    "src": "ai"
+  },
+  "Optimum Senior 7+ Years All Breeds Dry Dog Food With Chicken Vegetables & Rice 2.7Kg": {
+    "zh": "Optimum 7歲以上高齡犬雞肉蔬菜米飯乾糧 2.7公斤",
+    "ja": "Optimum シニア犬用 7歳以上 全犬種用 チキン・野菜・米入りドライフード 2.7kg",
+    "ko": "Optimum 시니어 7세 이상 전견종용 치킨 야채 쌀 건식 사료 2.7kg",
+    "src": "ai"
+  },
+  "Nature's Gift Grain Gree Hearty Cassarole Beef Lamb Dog Food 100g 8 Pack": {
+    "zh": "Nature's Gift 無穀物牛肉羊肉燉肉狗罐頭 100克 (8入)",
+    "ja": "Nature's Gift グレインフリー ビーフ＆ラムのシチュー ドッグフード 100g (8個入)",
+    "ko": "Nature's Gift 그레인 프리 소고기 양고기 스튜 반려견 사료 100g (8개입)",
+    "src": "ai"
+  },
+  "Vitapet Dry Dog Food Adult Lamb 7kg": {
+    "zh": "Vitapet 成犬羊肉乾糧 7公斤",
+    "ja": "Vitapet 成犬用 ラム肉ドライフード 7kg",
+    "ko": "Vitapet 성견용 양고기 건식 사료 7kg",
+    "src": "ai"
+  },
+  "Queen Organic Vanilla Bean Paste 140g": {
+    "zh": "Queen 有機香草豆莢醬 140克",
+    "ja": "Queen オーガニック バニラビーンズペースト 140g",
+    "ko": "Queen 유기농 바닐라 빈 페이스트 140g",
+    "src": "ai"
+  },
+  "Glico Pocky Biscuits Strawberry 39g": {
+    "zh": "Glico Pocky 草莓餅乾棒 39克",
+    "ja": "Glico ポッキー 苺 39g",
+    "ko": "Glico 포키 딸기 39g",
+    "src": "ai"
+  },
+  "Purina One Healthy Kitten 1-12 Months With Chicken Dry Cat Food 1.4Kg": {
+    "zh": "Purina One 1-12個月幼貓雞肉乾糧 1.4公斤",
+    "ja": "Purina One 子猫用 1-12ヶ月 チキン入りドライキャットフード 1.4kg",
+    "ko": "Purina One 1-12개월 자묘용 치킨 건식 사료 1.4kg",
+    "src": "ai"
+  },
+  "Moccona Ristretto Specialty Blend Instant Coffee 200g": {
+    "zh": "Moccona Ristretto 特選即溶咖啡 200克",
+    "ja": "Moccona リストレット スペシャルブレンド インスタントコーヒー 200g",
+    "ko": "Moccona 리스트레토 스페셜 블렌드 인스턴트 커피 200g",
+    "src": "ai"
+  },
+  "Muscle Nation Ready To Drink Shake Vanilla 400mL": {
+    "zh": "Muscle Nation 香草口味蛋白飲 400毫升",
+    "ja": "Muscle Nation プロテインシェイク バニラ味 400mL",
+    "ko": "Muscle Nation 단백질 쉐이크 바닐라맛 400mL",
+    "src": "ai"
+  },
+  "Yoosh Aloe Yoghurt Drink Mango 500mL": {
+    "zh": "Yoosh 蘆薈芒果優格飲 500毫升",
+    "ja": "Yoosh アロエヨーグルトドリンク マンゴー味 500mL",
+    "ko": "Yoosh 알로에 요거트 음료 망고맛 500mL",
+    "src": "ai"
+  },
+  "Barilla Chifferi Elbow Pasta 500g": {
+    "zh": "Barilla 彎管義大利麵 500克",
+    "ja": "Barilla チフェリ エルボパスタ 500g",
+    "ko": "Barilla 치페리 엘보 파스타 500g",
+    "src": "ai"
+  },
+  "DJ&A 4 Veg Chips Original 90g": {
+    "zh": "DJ&A 綜合蔬菜脆片 90克",
+    "ja": "DJ&A 4種野菜チップス オリジナル 90g",
+    "ko": "DJ&A 4종 야채 칩 오리지널 90g",
+    "src": "ai"
+  },
+  "Fodmapped Chicken & Vegetable Soup 500g": {
+    "zh": "Fodmapped 雞肉蔬菜湯 500克",
+    "ja": "Fodmapped チキン＆ベジタブルスープ 500g",
+    "ko": "Fodmapped 치킨 & 야채 스프 500g",
+    "src": "ai"
+  },
+  "Barilla Al Bronzo Pasta Fusilli 500g": {
+    "zh": "Barilla Al Bronzo 螺旋麵 500克",
+    "ja": "Barilla Al Bronzo パスタ フジッリ 500g",
+    "ko": "Barilla Al Bronzo 파스타 푸실리 500g",
+    "src": "ai"
+  },
+  "Infuzions Veggie Rings Aussie BBQ 90g": {
+    "zh": "Infuzions 蔬菜圈澳洲烤肉口味 90克",
+    "ja": "Infuzions ベジリング オージーBBQ味 90g",
+    "ko": "Infuzions 야채링 호주식 바비큐맛 90g",
+    "src": "ai"
+  },
+  "Loacker Quadratini Wafers Biscuits Double Choc 125g": {
+    "zh": "Loacker Quadratini 雙倍巧克力威化餅乾 125克",
+    "ja": "Loacker Quadratini ウエハース ダブルチョコ 125g",
+    "ko": "Loacker Quadratini 웨하스 더블 초코 125g",
+    "src": "ai"
+  },
+  "Purina One Senior 7+ Dry Cat Food Chicken 1.4kg": {
+    "zh": "Purina One 7歲以上成貓乾糧雞肉口味 1.4公斤",
+    "ja": "Purina One シニア7+ キャットフード チキン 1.4kg",
+    "ko": "Purina One 시니어 7+ 캣푸드 치킨 1.4kg",
+    "src": "ai"
+  },
+  "Vittoria Coffee Ground Special Italian Blend 1kg": {
+    "zh": "Vittoria Coffee 特選義式咖啡粉 1公斤",
+    "ja": "Vittoria Coffee コーヒー粉 スペシャルイタリアンブレンド 1kg",
+    "ko": "Vittoria Coffee 커피 가루 스페셜 이탈리안 블렌드 1kg",
+    "src": "ai"
+  },
+  "Optimum Real Kangaroo & Vegetables Adult Wet Dog Food Can 700g": {
+    "zh": "Optimum 袋鼠肉蔬菜成犬濕糧罐頭 700克",
+    "ja": "Optimum カンガルー＆ベジタブル 成犬用ウェットフード缶 700g",
+    "ko": "Optimum 캥거루 & 야채 성견용 습식 사료 캔 700g",
+    "src": "ai"
+  },
+  "Only Organic Sweet Potato & Pumpkin Pouch 120g": {
+    "zh": "Only Organic 地瓜南瓜泥 120克",
+    "ja": "Only Organic サツマイモ＆カボチャ パウチ 120g",
+    "ko": "Only Organic 고구마 & 단호박 파우치 120g",
+    "src": "ai"
+  },
+  "Temptations Kitten Cat Treats Tuna Flavour 85g": {
+    "zh": "Temptations 幼貓鮪魚口味零食 85克",
+    "ja": "Temptations 子猫用おやつ ツナ味 85g",
+    "ko": "Temptations 아기 고양이 간식 참치맛 85g",
+    "src": "ai"
+  },
+  "Depend Real Fit Incontinence Underwear Super Women Large 8 Pack": {
+    "zh": "Depend Real Fit 女性成人紙尿褲 Super L號 8入",
+    "ja": "Depend Real Fit 大人用パンツ Super 女性用 Lサイズ 8個入",
+    "ko": "Depend Real Fit 성인용 기저귀 Super 여성용 L사이즈 8개입",
+    "src": "ai"
+  },
+  "Sustagen High Protein Drink Chocolate 3x250ml 750mL": {
+    "zh": "Sustagen 高蛋白巧克力飲品 250毫升 x 3入 750毫升",
+    "ja": "Sustagen 高タンパクドリンク チョコレート 250ml x 3本 750ml",
+    "ko": "Sustagen 고단백 음료 초콜릿 250ml x 3개입 750ml",
+    "src": "ai"
+  },
+  "Goulburn Valley Apricots In Juice 700g": {
+    "zh": "Goulburn Valley 果汁漬杏桃 700克",
+    "ja": "Goulburn Valley アプリコット ジュース漬け 700g",
+    "ko": "Goulburn Valley 살구 주스 절임 700g",
+    "src": "ai"
+  },
+  "Cetaphil Moisturising Cream 100g": {
+    "zh": "Cetaphil 潤膚霜 100克",
+    "ja": "Cetaphil モイスチャライジングクリーム 100g",
+    "ko": "Cetaphil 모이스처라이징 크림 100g",
+    "src": "ai"
+  },
+  "Johnson's Daily Essentials Face Cleansing Wipes For Normal Skin 25 Pack": {
+    "zh": "Johnson's Daily Essentials 一般膚質臉部卸妝棉 25入",
+    "ja": "Johnson's Daily Essentials フェイスクレンジングワイプ 普通肌用 25個入",
+    "ko": "Johnson's Daily Essentials 페이스 클렌징 티슈 일반 피부용 25개입",
+    "src": "ai"
+  },
+  "Only Organic Stage 1 Carrot & Sweetcorn 120g": {
+    "zh": "Only Organic 1階段紅蘿蔔玉米泥 120克",
+    "ja": "Only Organic ステージ1 人参＆スイートコーン 120g",
+    "ko": "Only Organic 1단계 당근 & 스위트콘 120g",
+    "src": "ai"
+  },
+  "Philips Sonicare Intercare Refill Brush Heads White 2 Pack": {
+    "zh": "Philips Sonicare Intercare 替換刷頭 白色 2入",
+    "ja": "Philips Sonicare Intercare 替えブラシ ホワイト 2個入",
+    "ko": "Philips Sonicare Intercare 교체용 칫솔모 화이트 2개입",
     "src": "ai"
   }
 }
