@@ -174727,9 +174727,10 @@
   },
   "Mayvers Smunchy Natural Almond Butter 240g": {
     "zh": "Mayver's 顆粒天然杏仁醬 240克",
-    "ja": "Mayvers スマンチー ナチュラル アーモンドバター 240g",
-    "ko": "Mayvers 스먼치 내추럴 아몬드 버터 240g",
-    "src": "ai"
+    "ja": "Mayver's スマンチー ナチュラル アーモンドバター 240g",
+    "ko": "Mayver's 스먼치 내추럴 아몬드 버터 240g",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Colgate Toothbrush Kids Minecraft Battery Powered 1 Pack": {
     "zh": "Colgate 兒童麥塊電動牙刷 1入",
@@ -174739,10 +174740,10 @@
   },
   "Mayver's Smooth Natural Hazelnut Cacao & Cashew Butter 240g": {
     "zh": "Mayver's 滑順天然榛果可可腰果醬 240克",
-    "ja": "Mayver's スムース ナチュラル ヘーゼルナッツ カカオ ＆ カシューナッツバター 240g",
-    "ko": "Mayver's 스무스 내추럴 헤이즐넛 카카오 & 캐슈넛 버터 240g",
+    "ja": "Mayver's スムーズ ナチュラル ヘーゼルナッツ カカオ ＆ カシューバター 240g",
+    "ko": "Mayver's 스무스 내추럴 헤이즐넛 카카오 & 캐슈 버터 240g",
     "src": "ai",
-    "qa_tries": 1
+    "qa_tries": 2
   },
   "Mae Ploy Sweet Chilli Sauce 730mL": {
     "zh": "Mae Ploy 泰式甜辣醬 730毫升",
@@ -174763,17 +174764,18 @@
     "src": "ai"
   },
   "Health Lab Gluten Free Holy Hazelnut Nut-butter Filled Ball 40g": {
-    "zh": "Health Lab 無麩質榛果堅果醬夾心球 40克",
-    "ja": "Health Lab グルテンフリー ホーリーヘーゼルナッツ ナッツバターフィルドボール 40g",
-    "ko": "Health Lab 글루텐 프리 홀리 헤이즐넛 넛버터 필드 볼 40g",
+    "zh": "Health Lab 無麩質榛果堅果醬內餡能量球 40克",
+    "ja": "Health Lab グルテンフリー ホーリーヘーゼルナッツ ナッツバターフィリング ボール 40g",
+    "ko": "Health Lab 글루텐 프리 홀리 헤이즐넛 너트 버터 필드 볼 40g",
     "src": "ai",
-    "qa_tries": 1
+    "qa_tries": 2
   },
   "Purina One Adult Dry Cat Food Hairball Chicken 1.4kg": {
-    "zh": "Purina One 成貓去毛球乾貓糧 1.4公斤",
-    "ja": "Purina One 成猫用ドライキャットフード 毛玉ケア チキン 1.4kg",
-    "ko": "Purina One 어른 건식 고양이 사료 헤어볼 치킨 1.4kg",
-    "src": "ai"
+    "zh": "Purina One 成貓毛球控制乾貓糧雞肉口味 1.4公斤",
+    "ja": "Purina One 成猫用 ドライキャットフード ヘアボール チキン 1.4kg",
+    "ko": "Purina One 성묘용 건식 고양이 사료 헤어볼 닭고기 1.4kg",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Depend Real Fit Night Defence Underwear Men 8 Pack": {
     "zh": "Depend 輕便防漏夜用失禁男性內褲 8入",
@@ -174874,10 +174876,11 @@
     "src": "ai"
   },
   "Air Wick Pure Scented Oils Refill Lemon Blossom & Jasmine 2x19ml 18mL": {
-    "zh": "Air Wick 純淨芳香精油補充包檸檬花與茉莉香 2入（共38毫升）",
-    "ja": "Air Wick ピュア センテッドオイル 詰め替え レモンブロッサム＆ジャスミン 2x19ml 18ml",
-    "ko": "Air Wick 퓨어 센티드 오일 리필 레몬 블로썸 & 자스민 2x19ml 18mL",
-    "src": "ai"
+    "zh": "Air Wick 絕淨芳香精油補充包 檸檬花與茉莉香 2x19毫升 18毫升",
+    "ja": "Air Wick ピュア 芳香オイル 詰め替え レモンブロッサム＆ジャスミンの香り 2x19ml 18mL",
+    "ko": "Air Wick 퓨어 향기 오일 리필 레몬 블로썸 & 자스민 향 2x19ml 18mL",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Whittaker's Original Peanut Slab Milk Chocolate Bar 50g": {
     "zh": "Whittaker's 經典花生磚牛奶巧克力條 50克",
@@ -174967,6 +174970,222 @@
     "zh": "Poppin 微波爆米花 三倍奶油口味 100克",
     "ja": "Poppin 電子レンジ用ポップコーン トリプルバター味 100g",
     "ko": "Poppin 전자레인지 팝콘 트리플 버터맛 100g",
+    "src": "ai"
+  },
+  "Optimum Adult Wet Dog Food With Beef & Rice Can 700g": {
+    "zh": "Optimum 成犬牛肉米飯濕糧罐頭 700克",
+    "ja": "Optimum 成犬用ウェットドッグフード 牛肉＆ライス缶 700g",
+    "ko": "Optimum 성견용 습식 사료 소고기 & 쌀 캔 700g",
+    "src": "ai"
+  },
+  "Kiddylicious Veggie Straws 12g": {
+    "zh": "Kiddylicious 蔬菜薯條 12克",
+    "ja": "Kiddylicious ベジタブルストロー 12g",
+    "ko": "Kiddylicious 베지터블 스트로우 12g",
+    "src": "ai"
+  },
+  "Kiddylicious Gluten Free Strawberry & Banana Smoothie Melts 6g": {
+    "zh": "Kiddylicious 無麩質草莓香蕉優格豆 6克",
+    "ja": "Kiddylicious グルテンフリー ストロベリー&バナナ スムージーメルト 6g",
+    "ko": "Kiddylicious 글루텐 프리 스트로베리 앤 바나나 스무디 멜트 6g",
+    "src": "ai"
+  },
+  "Red Tractor Organic Cacao Powder 300g": {
+    "zh": "Red Tractor 有機可可粉 300克",
+    "ja": "Red Tractor オーガニック カカオパウダー 300g",
+    "ko": "Red Tractor 유기농 카카오 파우더 300g",
+    "src": "ai"
+  },
+  "Fussy Cat Grain Free Adult Dry Cat Food Beef & Kangaroo With Sweet Potato 500g": {
+    "zh": "Fussy Cat 無穀物成貓乾貓糧 牛肉袋鼠佐地瓜 500克",
+    "ja": "Fussy Cat グレインフリー 成猫用ドライキャットフード ビーフ&カンガルー サツマイモ入り 500g",
+    "ko": "Fussy Cat 그레인 프리 성묘용 건식 캣푸드 비프 앤 캥거루 고구마 첨가 500g",
+    "src": "ai"
+  },
+  "Strangelove Minis Salted Grapefruit 4x200ml 4 Pack": {
+    "zh": "Strangelove 迷你鹹葡萄柚氣泡水 200毫升 x 4入",
+    "ja": "Strangelove ミニ ソルテッドグレープフルーツ 200ml x 4個入",
+    "ko": "Strangelove 미니 솔티드 자몽 200ml 4개입",
+    "src": "ai"
+  },
+  "Temptations Tempting Tuna Flavour Cat Treats 85g": {
+    "zh": "Temptations 誘惑鮪魚口味貓零食 85克",
+    "ja": "Temptations 誘惑のツナフレーバー キャットトリーツ 85g",
+    "ko": "Temptations 템테이션 참치맛 캣 트릿 85g",
+    "src": "ai"
+  },
+  "Barilla Pasta Spaghetti No 5 500g": {
+    "zh": "Barilla 5號義大利直麵 500克",
+    "ja": "Barilla パスタ スパゲッティ No.5 500g",
+    "ko": "Barilla 파스타 스파게티 No 5 500g",
+    "src": "ai"
+  },
+  "Pedigree Adult Dry Dog Food With Real Chicken 8kg": {
+    "zh": "Pedigree 寶多福成犬乾狗糧 真實雞肉 8公斤",
+    "ja": "Pedigree 成犬用ドライドッグフード リアルチキン 8kg",
+    "ko": "Pedigree 페디그리 성견용 건식 독푸드 리얼 치킨 8kg",
+    "src": "ai"
+  },
+  "Pistachio Papi Smooth Pistachio Spread 200g": {
+    "zh": "Pistachio Papi 滑順開心果抹醬 200克",
+    "ja": "Pistachio Papi スムース ピスタチオスプレッド 200g",
+    "ko": "Pistachio Papi 스무스 피스타치오 스프레드 200g",
+    "src": "ai"
+  },
+  "Ziip Energy Watermelon 20 Pack": {
+    "zh": "Ziip Energy 西瓜口味能量飲 20入",
+    "ja": "Ziip Energy ウォーターメロン 20個入",
+    "ko": "Ziip Energy 수박맛 에너지 드링크 20개입",
+    "src": "ai"
+  },
+  "Tao Kae Noi Hot & Spicy Crispy Seaweed 32g": {
+    "zh": "小老板 Tao Kae Noi 麻辣酥脆海苔 32克",
+    "ja": "Tao Kae Noi ホット&スパイシー クリスピーシーウィード 32g",
+    "ko": "Tao Kae Noi 핫 앤 스파이시 크리스피 씨위드 32g",
+    "src": "ai"
+  },
+  "Lux & Bones Printed Leather Cat Collar With Bell 1 Pack": {
+    "zh": "Lux & Bones 印花皮革貓項圈附鈴鐺 1入",
+    "ja": "Lux & Bones プリントレザー キャットカラー 鈴付き 1個入",
+    "ko": "Lux & Bones 프린트 가죽 캣 컬러 방울 포함 1개입",
+    "src": "ai"
+  },
+  "Nivea Cellular Epigenetix Rejuvenating Day Cream Spf15 With Hyaluronic Acid 50mL": {
+    "zh": "妮維雅 Nivea 煥顏日霜 SPF15 含玻尿酸 50毫升",
+    "ja": "Nivea セルラー エピジェネティクス リジュベネーティング デイクリーム SPF15 ヒアルロン酸配合 50ml",
+    "ko": "Nivea 셀룰러 에피제네틱스 리쥬비네이팅 데이 크림 SPF15 히알루론산 함유 50ml",
+    "src": "ai"
+  },
+  "Suimin Origins Beef Massaman Noodle Bowl 137g": {
+    "zh": "Suimin Origins 牛肉瑪沙曼咖哩風味碗麵 137克",
+    "ja": "Suimin Origins ビーフ マッサマン ヌードルボウル 137g",
+    "ko": "Suimin Origins 비프 마사만 누들 보울 137g",
+    "src": "ai"
+  },
+  "Mortein Naturgard Easy Reach Crawling Insect Killer 320g": {
+    "zh": "Mortein 易達爬蟲類害蟲噴霧 320克",
+    "ja": "Mortein ナチュラガード イージーリーチ クロウリング インセクト キラー 320g",
+    "ko": "Mortein 네이처가드 이지 리치 크롤링 인섹트 킬러 320g",
+    "src": "ai"
+  },
+  "Mother Energy Drink Original 4x500ml 2L": {
+    "zh": "Mother 經典能量飲料 500毫升 x 4入",
+    "ja": "Mother エナジードリンク オリジナル 500ml x 4個入",
+    "ko": "Mother 에너지 드링크 오리지널 500ml 4개입",
+    "src": "ai"
+  },
+  "The Dutch Company Speculaas Spiced Cookies 450g": {
+    "zh": "The Dutch Company 香料風味餅乾 450克",
+    "ja": "The Dutch Company スペキュラース スパイスクッキー 450g",
+    "ko": "The Dutch Company 스페큘라스 스파이스 쿠키 450g",
+    "src": "ai"
+  },
+  "Moccona Mocha Kenya Style Rich & Exotic Instant Coffee 200g": {
+    "zh": "Moccona 摩卡肯亞風格濃郁異國風味即溶咖啡 200克",
+    "ja": "Moccona モカ ケニアスタイル リッチ&エキゾチック インスタントコーヒー 200g",
+    "ko": "Moccona 모카 케냐 스타일 리치 앤 이코틱 인스턴트 커피 200g",
+    "src": "ai"
+  },
+  "Patak's Lime Pickle Medium 283g": {
+    "zh": "Patak's 中辣萊姆醬 283克",
+    "ja": "Patak's ライムピクルス ミディアム 283g",
+    "ko": "Patak's 라임 피클 미디엄 283g",
+    "src": "ai"
+  },
+  "No Vac Garden Breeze Carpet Sanitiser & Deodoriser 290g": {
+    "zh": "No Vac 花園微風地毯除菌除臭粉 290克",
+    "ja": "No Vac ガーデンブリーズ カーペット サニタイザー&デオドラライザー 290g",
+    "ko": "No Vac 가든 브리즈 카펫 새니타이저 앤 디오도라이저 290g",
+    "src": "ai"
+  },
+  "Sodastream Classic Passionfruit Flavour 440mL": {
+    "zh": "Sodastream 經典百香果口味氣泡水濃縮液 440毫升",
+    "ja": "Sodastream クラシック パッションフルーツフレーバー 440ml",
+    "ko": "Sodastream 클래식 패션프루트 플레이버 440ml",
+    "src": "ai"
+  },
+  "Cetaphil Daily Exfoliating Face Cleanser 178mL": {
+    "zh": "舒特膚 Cetaphil 溫和去角質洗面乳 178毫升",
+    "ja": "Cetaphil デイリー エクスフォリエイティング フェイスクレンザー 178ml",
+    "ko": "Cetaphil 데일리 엑스폴리에이팅 페이스 클렌저 178ml",
+    "src": "ai"
+  },
+  "Kinder Chocolate Mini Santa 3 Pack 45g": {
+    "zh": "健達 Kinder 迷你聖誕老人巧克力 45克（3入）",
+    "ja": "Kinder チョコレート ミニサンタ 3個入 45g",
+    "ko": "Kinder 초콜릿 미니 산타 3개입 45g",
+    "src": "ai"
+  },
+  "Nestle Nan Supremepro 3 Toddler Milk Drink From 1 Year 800g": {
+    "zh": "雀巢 Nestle 能恩極選3號幼兒成長配方奶粉 1歲以上 800克",
+    "ja": "Nestle NAN SUPREMEpro 3 トドラーミルクドリンク 1歳から 800g",
+    "ko": "Nestle NAN SUPREMEpro 3 유아용 조제유 1세 이상 800g",
+    "src": "ai"
+  },
+  "Nature's Way Super Greens Boost 100g": {
+    "zh": "Nature's Way 超級綠藻活力粉 100克",
+    "ja": "Nature's Way スーパーグリーンズ ブースト 100g",
+    "ko": "Nature's Way 슈퍼 그린즈 부스트 100g",
+    "src": "ai"
+  },
+  "Pico Salted Caramel Chocolate 80g": {
+    "zh": "Pico 海鹽焦糖巧克力 80克",
+    "ja": "Pico 塩キャラメルチョコレート 80g",
+    "ko": "Pico 솔티드 카라멜 초콜릿 80g",
+    "src": "ai"
+  },
+  "Nando's Mild Peri-peri Sauce 250g": {
+    "zh": "Nando's 微辣 péri-périt 辣椒醬 250克",
+    "ja": "Nando's マイルド ペリペリソース 250g",
+    "ko": "Nando's 마일드 페리페리 소스 250g",
+    "src": "ai"
+  },
+  "Optimum Adult Weight Control Wet Dog Food With Chicken & Rice Can 680g": {
+    "zh": "Optimum 成犬體重控制雞肉米飯濕狗糧罐頭 680克",
+    "ja": "Optimum 成犬用 ウェットドッグフード 鶏肉＆ライス 缶 680g",
+    "ko": "Optimum 성견 체중 조절용 습식 개 사료 닭고기 & 쌀 캔 680g",
+    "src": "ai"
+  },
+  "Aerogard Extreme Protection 40% 150g": {
+    "zh": "Aerogard 極效防蚊液 40% 150克",
+    "ja": "Aerogard エクストリーム プロテクション 40% 150g",
+    "ko": "Aerogard 익스트림 프로텍션 40% 150g",
+    "src": "ai"
+  },
+  "Temptations Tantalising Turkey Flavour Cat Treats 85g": {
+    "zh": "Temptations 誘惑火雞口味貓零食 85克",
+    "ja": "Temptations ターキーフレーバー 猫のおやつ 85g",
+    "ko": "Temptations 칠면조 맛 고양이 간식 85g",
+    "src": "ai"
+  },
+  "Passage Foods Passage To Asia Pad Thai Stir Fry Sauce Pouch 200g": {
+    "zh": "Passage Foods 亞洲泰式炒河粉快炒醬包 200克",
+    "ja": "Passage Foods パッタイ 炒め用ソース パウチ 200g",
+    "ko": "Passage Foods 팟타이 볶음 소스 파우치 200g",
+    "src": "ai"
+  },
+  "Nivea Cellular Epigenetix Rejuvenating Night Cream With Hyaluronic Acid 50mL": {
+    "zh": "Nivea 妮維雅 細胞抗老緊緻修護晚霜 玻尿酸 50毫升",
+    "ja": "Nivea セルラー エピゲネティックス リジュベネーティング ナイトクリーム ヒアルロン酸配合 50mL",
+    "ko": "Nivea 셀룰러 에피제네틱스 리쥬베네이팅 나이트 크림 히알루론산 함유 50mL",
+    "src": "ai"
+  },
+  "Strangelove Minis Spiced Pineapple 200mL 4 Pack": {
+    "zh": "Strangelove 迷你辛香鳳梨氣泡飲 200毫升 4入",
+    "ja": "Strangelove ミニ スパイスド パイナップル 200mL 4個入",
+    "ko": "Strangelove 미니 스파이스드 파인애플 200mL 4개입",
+    "src": "ai"
+  },
+  "Huggies Ultra Dry Nappies Boys Size 5 (13-18kg) 32 Pack": {
+    "zh": "Huggies 好奇 超乾爽男用紙尿褲 5號 (13-18公斤) 32入",
+    "ja": "Huggies ウルトラドライ 紙おむつ 男の子用 サイズ 5 (13-18kg) 32枚入",
+    "ko": "Huggies 울트라 드라이 기저귀 남아용 사이즈 5 (13-18kg) 32개입",
+    "src": "ai"
+  },
+  "Daawat Select Basmati Rice 5kg": {
+    "zh": "Daawat 精選印度香米 5公斤",
+    "ja": "Daawat セレクト バスマティライス 5kg",
+    "ko": "Daawat 셀렉트 바스마티 라이스 5kg",
     "src": "ai"
   }
 }
