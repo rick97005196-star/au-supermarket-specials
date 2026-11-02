@@ -176109,10 +176109,11 @@
     "src": "ai"
   },
   "Candy Lovers Fruit Flavour Jelly Drink 12x75g 900g": {
-    "zh": "Candy Lovers 水果風味果凍飲 75克 x 12入",
-    "ja": "Candy Lovers フルーツ味 ゼリー飲料 75g x 12個入",
-    "ko": "Candy Lovers 과일맛 젤리음료 75g x 12개입",
-    "src": "ai"
+    "zh": "Candy Lovers 水果口味果凍飲 75克 x 12入 900克",
+    "ja": "Candy Lovers フルーツ味ゼリー飲料 75g x 12個入 900g",
+    "ko": "Candy Lovers 과일맛 젤리 음료 75g x 12개입 900g",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Celsius Energy Drink Watermelon Lemonade 330mL": {
     "zh": "Celsius 能量飲料 西瓜檸檬水口味 330毫升",
@@ -176178,6 +176179,90 @@
     "zh": "Barilla Protein Plus 螺旋麵 400克",
     "ja": "Barilla Protein Plus フジッリ パスタ 400g",
     "ko": "Barilla Protein Plus 푸실리 파스타 400g",
+    "src": "ai"
+  },
+  "Health Lab Protein Bar Cookies & Cream 50g": {
+    "zh": "Health Lab 巧克力餅乾奶油口味蛋白棒 50克",
+    "ja": "Health Lab クッキー＆クリーム味プロテインバー 50g",
+    "ko": "Health Lab 쿠키앤크림맛 단백질바 50g",
+    "src": "ai"
+  },
+  "Carman's Dark Choc Macadamia & Coconut Nut Bar 160g": {
+    "zh": "Carman's 黑巧克力夏威夷豆椰子堅果棒 160克",
+    "ja": "Carman's ダークチョコ・マカダミア＆ココナッツナッツバー 160g",
+    "ko": "Carman's 다크초코 마카다미아 & 코코넛 너트바 160g",
+    "src": "ai"
+  },
+  "Bunjie Baby Daily Sensitive Moisturising Lotion 500mL": {
+    "zh": "Bunjie Baby 日常敏感肌保濕乳液 500毫升",
+    "ja": "Bunjie Baby デイリー敏感肌用保湿ローション 500ml",
+    "ko": "Bunjie Baby 데일리 민감성 피부용 보습 로션 500ml",
+    "src": "ai"
+  },
+  "Starbucks Espresso Roast Decaf Capsules 10 Pack": {
+    "zh": "Starbucks 義式烘焙低咖啡因膠囊咖啡 10入",
+    "ja": "Starbucks エスプレッソローストデカフェカプセル 10個入",
+    "ko": "Starbucks 에스프레소 로스트 디카페인 캡슐 10개입",
+    "src": "ai"
+  },
+  "Farmer Jo Gluten Free Paleo Granola 300g": {
+    "zh": "Farmer Jo 無麩質原始飲食格蘭諾拉麥片 300克",
+    "ja": "Farmer Jo グルテンフリーパレオグラノーラ 300g",
+    "ko": "Farmer Jo 글루텐 프리 팔레오 그래놀라 300g",
+    "src": "ai"
+  },
+  "Huggies Skin Protect Newborn Nappies Size 2 48 Pack": {
+    "zh": "Huggies 肌膚防護新生兒尿布 2號 48入",
+    "ja": "Huggies スキンプロテクト新生児用おむつ サイズ2 48個入",
+    "ko": "Huggies 스킨 프로텍트 신생아용 기저귀 사이즈 2 48개입",
+    "src": "ai"
+  },
+  "Sanitarium So Good High Protein Almond Milk 1L": {
+    "zh": "Sanitarium So Good 高蛋白杏仁奶 1公升",
+    "ja": "Sanitarium So Good 高タンパクアーモンドミルク 1L",
+    "ko": "Sanitarium So Good 고단백 아몬드유 1L",
+    "src": "ai"
+  },
+  "Mamas Mild Ajvar Home Style Relish 290g": {
+    "zh": "Mamas 溫和派阿瓦爾家常風味醬 290克",
+    "ja": "Mamas マイルドアイバルホームスタイルレリッシュ 290g",
+    "ko": "Mamas 마일드 아이바르 홈스타일 렐리시 290g",
+    "src": "ai"
+  },
+  "Chef Chip Shop Curry Sauce 355g": {
+    "zh": "Chef 炸魚薯條店風味咖哩醬 355克",
+    "ja": "Chef チップショップ風カレーソース 355g",
+    "ko": "Chef 칩숍 스타일 카레 소스 355g",
+    "src": "ai"
+  },
+  "My Dog Adult Wet Dog Food Core Loaf with Gourmet Beef Can 400g": {
+    "zh": "My Dog 成犬濕糧精選牛肉肉餅罐頭 400克",
+    "ja": "My Dog 成犬用ウェットドッグフード ビーフローフ缶 400g",
+    "ko": "My Dog 성견용 습식 사료 비프 로프 캔 400g",
+    "src": "ai"
+  },
+  "Fancy Feast Savory Centers Tuna Pate Cat Food 85g": {
+    "zh": "Fancy Feast 鮪魚肉泥夾心貓罐頭 85克",
+    "ja": "Fancy Feast ツナパテキャットフード 85g",
+    "ko": "Fancy Feast 참치 파테 캣푸드 85g",
+    "src": "ai"
+  },
+  "Avalanche 99% Sugarfree Drinking Sachets Chocolate 10 Pack": {
+    "zh": "Avalanche 99%無糖巧克力沖泡飲 10入",
+    "ja": "Avalanche 99%砂糖不使用チョコレートドリンクスティック 10個入",
+    "ko": "Avalanche 99% 무설탕 초콜릿 드링크 스틱 10개입",
+    "src": "ai"
+  },
+  "Kiddylicious Veggie Straws Cheesy Flavour 12g": {
+    "zh": "Kiddylicious 起司口味蔬菜吸管餅 12克",
+    "ja": "Kiddylicious チーズ味ベジタブルストロー 12g",
+    "ko": "Kiddylicious 치즈맛 야채 스틱 과자 12g",
+    "src": "ai"
+  },
+  "Oxyshred Ultra Energy Bahama Breeze 355mL": {
+    "zh": "Oxyshred 巴哈馬微風能量飲 355毫升",
+    "ja": "Oxyshred バハマブリーズエナジードリンク 355ml",
+    "ko": "Oxyshred 바하마 브리즈 에너지 드링크 355ml",
     "src": "ai"
   }
 }
