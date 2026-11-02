@@ -2074,6 +2074,10 @@ async function loadSpecials() {
             return true;
         });
 
+        // 同款合併 (the plain list only): the exact same product at several stores is one card, the cheapest store's,
+        // naming the other stores' prices; a store tab, 三家比價 and the favourites still show every card
+        if (currentStore === 'All' && !cmpOnly && !favOnly) filtered = mergeSameProducts(filtered);
+
         // Sorting & Series Clustering
         if (sortBy === 'popular') {
             filtered = popularWithAldi(filtered);
@@ -2633,12 +2637,22 @@ function createProductCardElement(item) {
     const aldiInfo = aldiDateInfo(item);
     const valueCmp = (typeof staticSpecials !== 'undefined') ? valueCompare(item, staticSpecials) : null;
     // exact same product elsewhere wins; otherwise the same kind of product (any brand) per kg / litre / item
-    const exactText = getCrossStoreBadgeText(item);
+    // the exact same product (same name) at the other stores, cheapest first: the card says where it is cheapest and
+    // by how much ("最便宜 較 Woolworths 低 $0.16"), then every other store's price on its own line
+    // ("Woolworths：$2.81 · ALDI：$2.99"); worded differently (loose) or the same kind of product keeps the one-line note
+    const twins = (item.cross_store_matches || []).filter(m => !m.loose);
+    const cheaperBy = twins.length ? twins[0].price - _perItemPrice(item) : 0;
+    const exactText = !twins.length ? getCrossStoreBadgeText(item)
+        : cheaperBy > 0.005 ? t('cross_store_badge_cheaper', { store: twins[0].store, amount: cheaperBy.toFixed(2) })
+        : cheaperBy < -0.005 ? t('cross_store_badge_dearer', { store: twins[0].store, amount: (-cheaperBy).toFixed(2) })
+        : (twins.length >= 2 && twins[1].price <= twins[0].price + 0.005) ? t('cross_store_badge_both', { price: twins[0].price.toFixed(2) })
+        : t('cross_store_badge_tie', { store: twins[0].store });
+    const othersText = twins.map(m => t('cross_store_badge_other', { store: m.store, price: m.price.toFixed(2) })).join(' · ');
     const crossStoreBadgeText = exactText || valueCompareBadgeText(valueCmp);
-    const compareIsGood = exactText ? !!item.cross_store_cheaper : !!(valueCmp && valueCmp.verdict === 'cheaper');
+    const compareIsGood = twins.length ? cheaperBy > 0.005 : exactText ? !!item.cross_store_cheaper : !!(valueCmp && valueCmp.verdict === 'cheaper');
     // 「最便宜」: nothing the same (or of the same kind) is cheaper this week at any of the three supermarkets
     // (the same product says it in its own text: 「三家中最便宜」 or 「較 Woolworths 低 $2.50」)
-    const isCheapest = exactText ? false : !!(valueCmp && valueCmp.verdict === 'cheaper' && valueCmp.lowest);
+    const isCheapest = twins.length ? cheaperBy > 0.005 : (!exactText && !!(valueCmp && valueCmp.verdict === 'cheaper' && valueCmp.lowest));
     // unit price: ALDI always as $/kg or $/L (that's how ALDI shows value); others when sorting by unit price
     const sortVal = (document.getElementById('sortSelect') || {}).value;
     // 比價: the unit it is compared in (per kg / litre / item / 100 sheets), the same for the whole group
@@ -2696,7 +2710,7 @@ function createProductCardElement(item) {
 
             ${crossStoreBadgeText ? `
                 <span class="p-compare ${compareIsGood ? 'is-cheaper' : ''}" title="${escAttr(crossStoreBadgeText)}">
-                    <b class="cmp-kind ${exactText ? 'is-same' : ''}">${t(exactText ? 'cmp_same_item' : 'cmp_same_kind')}</b>${isCheapest ? `<b>${t('cheapest_badge')}</b>` : ''}${crossStoreBadgeText}
+                    <b class="cmp-kind ${exactText ? 'is-same' : ''}">${t(exactText ? 'cmp_same_item' : 'cmp_same_kind')}</b>${isCheapest ? `<b>${t('cheapest_badge')}</b>` : ''}${crossStoreBadgeText}${othersText ? `<span class="cmp-others">${othersText}</span>` : ''}
                 </span>
             ` : ''}
 

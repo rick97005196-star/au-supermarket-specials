@@ -30,7 +30,11 @@ const same = q.same;
 const pairs = q.pairs.map(([i, j]) => c.isSameProduct(same[i], same[j], same));
 const found = q.found.map(i => Object.fromEntries(Object.entries(c.findSameProducts(same[i], same)).map(([st, o]) => [st, same.indexOf(o)])));
 const each = same.map(x => c.perItemPrice(x));
-process.stdout.write(JSON.stringify({ calls, vc, copy: copy._cmpUp.value, pairs, found, each }));
+// 同款合併 (q.merge): m = [index of the same product at another store, loose?]; out = not in the shown list
+const ml = q.merge.map(x => Object.assign({}, x));
+for (const x of ml) x.cross_store_matches = (x.m || []).map(([i, loose]) => ({ ref: ml[i], id: ml[i].id, store: ml[i].store, loose: !!loose, price: c.perItemPrice(ml[i]) })).sort((a, b) => a.price - b.price);
+const kept = c.mergeSameProducts(ml.filter(x => !x.out)).map(x => ml.indexOf(x));
+process.stdout.write(JSON.stringify({ calls, vc, copy: copy._cmpUp.value, pairs, found, each, kept }));
 """
 
 bad = []
@@ -225,13 +229,24 @@ PAIRS = [
     (33, 28, False, 'next week is never paired with this week'),
 ]
 FOUND = [(21, {'Woolworths': 22}), (2, {}), (6, {}), (0, {})]
+MERGE = [   # 同款合併: m = [index of the same product at another store, loose?]; out = filtered out of the list
+    {'id': 'c1', 'store': 'Coles', 'title': 'Coke 1.25L', 'price': 2.50, 'm': [[1, 0], [2, 0]]},                     # 0 cheapest: stays
+    {'id': 'w1', 'store': 'Woolworths', 'title': 'Coke 1.25L', 'price': 3.00, 'm': [[0, 0], [2, 0]]},                # 1 hidden
+    {'id': 'a1', 'store': 'ALDI', 'title': 'Coke 1.25L', 'price': 2.80, 'm': [[0, 0], [1, 0]]},                      # 2 hidden
+    {'id': 'c2', 'store': 'Coles', 'title': 'Milk 2L', 'price': 3.10, 'm': [[4, 0]]},                                # 3 same price: Coles stays
+    {'id': 'w2', 'store': 'Woolworths', 'title': 'Milk 2L', 'price': 3.10, 'm': [[3, 0]]},                           # 4 hidden
+    {'id': 'c3', 'store': 'Coles', 'title': 'Batiste Original 200mL', 'price': 7.00, 'm': [[6, 1]]},                 # 5 worded differently: both stay
+    {'id': 'w3', 'store': 'Woolworths', 'title': 'Batiste Dry Shampoo Original 200mL', 'price': 6.00, 'm': [[5, 1]]},  # 6
+    {'id': 'c5', 'store': 'Coles', 'title': 'Weet-Bix 1.2kg', 'price': 5.00, 'm': [[8, 0]]},                         # 7 cheaper twin not shown: stays, still named
+    {'id': 'w5', 'store': 'Woolworths', 'title': 'Weet-Bix 1.2kg', 'price': 4.50, 'm': [[7, 0]], 'out': 1},          # 8 filtered out (another category tab)
+]
 
 res = subprocess.run(['node', '-e', JS, os.path.join(ROOT, 'static', 'compare.js')],
                      input=json.dumps({'calls': CALLS + [('cmpTypeOf', k[0]) for k in KINDS] + [('sheetPriceOf', x[0]) for x in SHEETS],
                                        'lists': {'eggs': EGGS, 'tabs': TABS, 'tp': TP},
                                        'vc': [['eggs', 0], ['eggs', 1], ['eggs', 3], ['eggs', 6],
                                               ['tabs', 0], ['tabs', 1], ['tabs', 3], ['tp', 1]],
-                                       'same': SAME, 'pairs': [p[:2] for p in PAIRS], 'found': [f[0] for f in FOUND]}),
+                                       'same': SAME, 'pairs': [p[:2] for p in PAIRS], 'found': [f[0] for f in FOUND], 'merge': MERGE}),
                      capture_output=True, text=True, encoding='utf-8')
 if res.returncode != 0:
     print(res.stderr)
@@ -288,6 +303,7 @@ for (i, want), got in zip(FOUND, out['found']):
     check(got == want, f'same product elsewhere for {SAME[i]["title"]}: {got}, want {want}')
 check(near(out['each'][3], 2.0) and near(out['each'][22], 3.5) and near(out['each'][2], 1.5),
       f'"5 for $10.00" is $2.00 each, "2 for $7.00" $3.50: {[out["each"][k] for k in (2, 3, 22)]}')
+check(out['kept'] == [0, 3, 5, 6, 7], f'同款合併 keeps the cheapest store\'s card (same price: Coles), never hides a loose pair: {out["kept"]}')
 
 # every kind compared gets a group name in all four languages (三家比價 group headers)
 I18N_JS = r'''

@@ -361,4 +361,21 @@ function findSameProducts(item, list) {
     for (const st in best) if (!best[st].tie) out[st] = best[st].o;
     return out;
 }
-if (typeof module !== 'undefined') module.exports = { unitPriceOf, eachPriceOf, sheetPriceOf, cmpPriceOf, cmpTypeOf, valueCompare, CMP_TYPES, isSameProduct, findSameProducts, perItemPrice: _perItemPrice };
+// ---------------- 同款合併: one card for the exact same product at several stores ----------------
+// The same product by name (app.js getCompareKey, same week) at two or three stores shows once in the plain list,
+// as the cheapest store's card (the card itself names the other stores' prices).
+// Only a certain match hides a card: products worded differently (loose, incl. regular prices) never merge.
+const _STORE_RANK = { Coles: 0, Woolworths: 1, ALDI: 2 };
+function mergeSameProducts(list) {
+    const shown = new Set(list.map(it => it.id));
+    return list.filter(it => {
+        const same = (it.cross_store_matches || []).filter(m => !m.loose);
+        if (!same.length) return true;
+        const mine = _perItemPrice(it);
+        // hidden when a shown twin is cheaper, or the same price at a store listed earlier (so one card stays)
+        if (same.some(m => shown.has(m.id) && (m.price < mine - 0.005 ||
+                (m.price <= mine + 0.005 && _STORE_RANK[m.store] < _STORE_RANK[it.store])))) return false;
+        return true;
+    });
+}
+if (typeof module !== 'undefined') module.exports = { unitPriceOf, eachPriceOf, sheetPriceOf, cmpPriceOf, cmpTypeOf, valueCompare, CMP_TYPES, isSameProduct, findSameProducts, mergeSameProducts, perItemPrice: _perItemPrice };
