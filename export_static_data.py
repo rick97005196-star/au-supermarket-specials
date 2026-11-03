@@ -131,10 +131,12 @@ for it in items:
         it['translations'] = {k: tr[k] for k in ('zh', 'ja', 'ko') if tr.get(k)}
 
 # ---- What visitors really look at moves products up (anonymous counts, see interest.py) ----
-from interest import apply_interest, load_interest
+from interest import apply_interest, apply_retailer_rank, load_interest
 _interest, _interest_total = load_interest()
 _moved = apply_interest(items, _interest, _interest_total)
 print(f"Visitor interest: {len(_interest)} products counted (weighted total {_interest_total:.0f}), {_moved} specials moved up")
+# 超市推薦順序: where each special sits in Coles' / Woolworths' own website list (the "popular" sort shows that order)
+print(f"Supermarket list order: {apply_retailer_rank(items)} specials ranked")
 
 # Everyday low prices and regular prices are not specials: never "熱門暢銷", never in the best-sellers at the top
 # (-1, not 0: the website recomputes a score of 0 itself)

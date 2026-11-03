@@ -193,9 +193,10 @@ def _read_pages(mem, url, to_item, time_budget):
             break                                       # refused / bot check: continue next update
         read += 1
         mem['pages'] = -(-int(sr.get('noOfResults') or 0) // int(sr.get('pageSize') or 48)) or mem.get('pages') or 1
-        for p in sr.get('results') or []:
+        for i, p in enumerate(sr.get('results') or []):
             it = to_item(p)
             if it:
+                it['rank'] = (page - 1) * int(sr.get('pageSize') or 48) + i + 1   # position in Coles' own list
                 if it['id'] not in mem['items']:
                     added += 1
                 mem['items'][it['id']] = it

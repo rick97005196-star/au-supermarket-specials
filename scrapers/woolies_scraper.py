@@ -371,7 +371,7 @@ def scrape_woolies_online_half_price(max_pages: int = 100) -> List[Dict[str, Any
             last_page = bool(total) and page * 36 >= int(total)
                 
             page_added = 0
-            for b in bundles:
+            for bi, b in enumerate(bundles):
                 for pr in b.get('Products', []):
                     # STRICT IN-STORE ONLY CHECK: Exclude online-only and marketplace products
                     if pr.get('IsOnlineOnly') is True or pr.get('IsMarketProduct') is True or pr.get('ThirdPartyProductInfo'):
@@ -449,7 +449,8 @@ def scrape_woolies_online_half_price(max_pages: int = 100) -> List[Dict[str, Any
                         'save_amount': save_amt,
                         'discount_desc': '1/2 PRICE',
                         'image_url': img,
-                        'product_url': prod_url
+                        'product_url': prod_url,
+                        'rank': (page - 1) * 36 + bi + 1,     # position in Woolworths' own list
                     })
                     page_added += 1
             
@@ -588,7 +589,7 @@ def scrape_woolies_specials_group(slug, group_id, name, kind, max_pages=150):
         raw_seen.update(codes)
         total = int(data.get('TotalRecordCount') or 0)
 
-        for b in bundles:
+        for bi, b in enumerate(bundles):
             for pr in b.get('Products', []):
                 if pr.get('IsOnlineOnly') is True or pr.get('IsMarketProduct') is True or pr.get('ThirdPartyProductInfo'):
                     continue
@@ -646,6 +647,7 @@ def scrape_woolies_specials_group(slug, group_id, name, kind, max_pages=150):
                     'discount_desc': desc,
                     'image_url': pr.get('LargeImageFile') or pr.get('MediumImageFile') or '',
                     'product_url': prod_url,
+                    'rank': (page - 1) * 36 + bi + 1,         # position in Woolworths' own list
                 })
         if total and page * 36 >= total:
             products.complete = True

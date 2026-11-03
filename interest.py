@@ -17,6 +17,7 @@ and export_static_data.py calls apply_interest() to blend it into each product's
   * products the rules exclude on purpose (TVs, appliances: score -999) stay excluded;
   * steps of 5, so tiny changes in the counts do not rewrite the data file every update.
 """
+import html
 import json
 import math
 import os
@@ -98,3 +99,45 @@ def apply_interest(items, interest=None, total=None):
             it['popularity_score'] = int(it.get('popularity_score') or 0) + b
             moved += 1
     return moved
+
+
+# ---- 超市推薦順序: the position of each special in the supermarket's own list (the scrapers' memory files) ----
+RANK_FILES = ((os.path.join(ROOT, 'data', 'woolies_web.json'), 'Woolworths'),
+              (os.path.join(ROOT, 'data', 'coles_web.json'), 'Coles'))
+
+
+def _key(title):
+    from scrapers.regions import clean_title      # the same cleaning the database applies, so both sides match
+    return product_key(clean_title(html.unescape(title or '')))
+
+
+def load_retailer_ranks(files=RANK_FILES):
+    """{(store, product key): position in the store's list}. The half-price list is read first, so it wins
+    over the other lists (groups / more) when a product is in several."""
+    out = {}
+    for path, store in files:
+        try:
+            with open(path, encoding='utf-8') as f:
+                mem = json.load(f)
+        except Exception:
+            continue
+        lists = [mem.get('items') or {}, (mem.get('more') or {}).get('items') or {}]
+        lists += [g.get('items') or {} for g in (mem.get('groups') or {}).values()]
+        for lst in lists:
+            for it in lst.values():
+                if it.get('rank') and it.get('title'):
+                    out.setdefault((store, _key(it['title'])), int(it['rank']))
+    return out
+
+
+def apply_retailer_rank(items, ranks=None):
+    """Sets 'rank' on the specials found in a supermarket's own list. Returns how many."""
+    if ranks is None:
+        ranks = load_retailer_ranks()
+    n = 0
+    for it in items:
+        r = ranks.get((it.get('store'), _key(it.get('title'))))
+        if r:
+            it['rank'] = r
+            n += 1
+    return n

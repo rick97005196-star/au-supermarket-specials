@@ -10,6 +10,7 @@ import sys
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, ROOT)
 from interest import product_key, brand_of, interest_boost, apply_interest, CONFIDENT_TOTAL  # noqa: E402
+from interest import load_retailer_ranks, apply_retailer_rank  # noqa: E402
 
 bad = []
 
@@ -67,6 +68,26 @@ items = [item('Moccona Coffee Sachets Caramel', 0, 'drinks')]
 apply_interest(items, {product_key('Moccona Classic Medium 200g'): 400.0}, CONFIDENT_TOTAL)
 check(0 < items[0]['popularity_score'] <= 70, f'brand-only boost is small but present ({items[0]["popularity_score"]})')
 
+# --- 超市推薦順序: the position in the supermarket's own list joins by store + product name ---
+import tempfile
+_tmp = tempfile.mkdtemp()
+_w, _c = os.path.join(_tmp, 'w.json'), os.path.join(_tmp, 'c.json')
+with open(_w, 'w', encoding='utf-8') as f:
+    json.dump({'items': {'tim tam 200g': {'title': 'Tim Tam 200g', 'rank': 3}},
+               'groups': {'g': {'items': {'tim tam 200g': {'title': 'Tim Tam 200g', 'rank': 40},
+                                          'milk': {'title': 'Milk &amp; Honey  1L', 'rank': 7}}}}}, f)
+with open(_c, 'w', encoding='utf-8') as f:
+    json.dump({'items': {'x': {'title': 'Tim Tam 200g', 'rank': 12}}, 'more': {'items': {'y': {'title': 'Coke 1.25L', 'rank': 90}}}}, f)
+ranks = load_retailer_ranks(((_w, 'Woolworths'), (_c, 'Coles'), (os.path.join(_tmp, 'missing.json'), 'ALDI')))
+its = [{'store': 'Woolworths', 'title': 'Tim Tam 200g'}, {'store': 'Coles', 'title': 'Tim Tam 200g'},
+       {'store': 'Woolworths', 'title': 'Milk & Honey 1L'}, {'store': 'Coles', 'title': 'Coke 1.25L'}, {'store': 'ALDI', 'title': 'Coke 1.25L'}]
+n = apply_retailer_rank(its, ranks)
+check(n == 4, f'four specials are found in the lists: {n}')
+check(its[0].get('rank') == 3 and its[1].get('rank') == 12, f'each store has its own list; the half-price list wins over a group: {its[:2]}')
+check(its[2].get('rank') == 7, f'names match after HTML entities and double spaces are cleaned: {its[2]}')
+check(its[3].get('rank') == 90, f'the all-specials list (more) counts too: {its[3]}')
+check('rank' not in its[4], f'not in any list (or no file): no rank: {its[4]}')
+
 # --- JavaScript side (functions/_lib/interest.js): same keys, weeks and scores ---
 js = r"""
 const src = require('fs').readFileSync(process.argv[1], 'utf8');
@@ -100,7 +121,7 @@ try:
 except Exception as e:
     bad.append(f'JS helpers could not be checked: {e} {res.stderr[:300]}')
 
-total = 19
+total = 24
 for b in bad:
     print('FAIL', b)
 print(f'{total - len(bad)}/{total} visitor-interest checks passed')

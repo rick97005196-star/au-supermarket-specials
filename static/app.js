@@ -1686,7 +1686,14 @@ function clusterItemsBySeries(items) {
     return result;
 }
 
-// "依熱門程度": the best sellers only, plus ALDI, which has no specials to rank (its prices are its lowest),
+// 超市推薦順序: the supermarkets' own "Recommended" / relevance order (rank = position in Coles' and Woolworths'
+// website lists, recorded by the scrapers); products without one (catalogue-only, ALDI) follow as before
+function retailerOrder(items) {
+    const ranked = items.filter(it => it.rank > 0).sort((a, b) => a.rank - b.rank || _STORE_RANK[a.store] - _STORE_RANK[b.store]);
+    return [...ranked, ...popularWithAldi(items.filter(it => !(it.rank > 0)))];
+}
+
+// the best sellers only, plus ALDI, which has no specials to rank (its prices are its lowest),
 // so it is listed after them instead of dropped
 function popularWithAldi(items) {
     const top = createDiverseBestSellers(items.filter(it => isItemPopular(it) && calculatePopularityScore(it) > 0)) || [];
@@ -2030,7 +2037,7 @@ async function loadSpecials() {
             }
 
             if (sortBy === 'popular') {
-                currentLoadedItems = popularWithAldi(currentLoadedItems);
+                currentLoadedItems = retailerOrder(currentLoadedItems);
             }
 
             renderProducts(currentLoadedItems);
@@ -2080,7 +2087,7 @@ async function loadSpecials() {
 
         // Sorting & Series Clustering
         if (sortBy === 'popular') {
-            filtered = popularWithAldi(filtered);
+            filtered = retailerOrder(filtered);
         } else if (sortBy === 'save_desc') {
             // strict order (grouping product series here broke the order, e.g. $11 before $0.95)
             filtered = strictSort(filtered, (a, b) => (b.save_amount || 0) - (a.save_amount || 0));
