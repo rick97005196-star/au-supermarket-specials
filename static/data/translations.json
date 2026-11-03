@@ -5059,9 +5059,10 @@
     "src": "ai"
   },
   "Hismile Tooth Armour Nano Xim Nh-10 Serum 20mL": {
-    "zh": "Hismile 牙齒護盾 Nano-Xim Nh-10 修護美齒精華 (20毫升)",
-    "ja": "ハイスマイル トゥースアーマー Nano-Xim Nh-10 デンタルセラム（20mL）",
-    "ko": "하이스마일 투스 아머 나노-자임 Nh-10 치아 세럼 (20mL)"
+    "zh": "Hismile 牙齒防護奈米羥基磷灰石 10 號精華液 20毫升",
+    "ja": "Hismile トゥースアーマー ナノ Xim Nh-10 セラム 20mL",
+    "ko": "Hismile 투스 아머 나노 Xim Nh-10 세럼 20mL",
+    "src": "ai"
   },
   "Ghost Energy Zero Sugar Grape Can 500mL": {
     "zh": "Ghost Energy 無糖葡萄能量飲料 罐裝 (500毫升)",
@@ -177447,10 +177448,11 @@
     "src": "ai"
   },
   "CROFTON Tier 1 Premium Kitchen Gadgets": {
-    "zh": "CROFTON 1級頂級廚房小工具",
-    "ja": "CROFTON プレミアム キッチンツール",
-    "ko": "CROFTON 프리미엄 주방 용품",
-    "src": "ai"
+    "zh": "CROFTON 1級高級廚房小工具",
+    "ja": "CROFTON ティア 1 プレミアム キッチンガジェット",
+    "ko": "CROFTON 티어 1 프리미엄 주방 용품",
+    "src": "ai",
+    "qa_tries": 1
   },
   "DELI ORIGINALS Caramelised Finishing Vinegar 250ml": {
     "zh": "DELI ORIGINALS 焦糖風味調味醋 250毫升",
@@ -177483,10 +177485,11 @@
     "src": "ai"
   },
   "La Famiglia Just For 2 Cheesy Garlic Bread 190g": {
-    "zh": "La Famiglia 起司蒜香麵包 190克",
-    "ja": "La Famiglia チーズガーリックブレッド 190g",
-    "ko": "La Famiglia 치즈 갈릭 브레드 190g",
-    "src": "ai"
+    "zh": "La Famiglia 雙人份量起司大蒜麵包 190克",
+    "ja": "La Famiglia ジャスト フォー 2 チージー ガーリックブレッド 190g",
+    "ko": "La Famiglia 저스트 포 2 치즈 갈릭 브레드 190g",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Pablo & Rusty Specialty Coffee Concentrate Pioneer 500mL": {
     "zh": "Pablo & Rusty 特選咖啡濃縮液 Pioneer 500毫升",
@@ -177810,7 +177813,8 @@
     "zh": "Hunt & Brew 秘魯摩卡冰咖啡 400毫升",
     "ja": "Hunt & Brew ペルー モカ アイスコーヒー 400mL",
     "ko": "Hunt & Brew 페루 모카 아이스 커피 400mL",
-    "src": "ai"
+    "src": "ai",
+    "qa_tries": 1
   },
   "Mirabella LED GLS BC 11W 1000lm Cool White 2 pack": {
     "zh": "Mirabella LED 燈泡 BC 11瓦 1000流明 冷白光 2入",
@@ -178407,10 +178411,11 @@
     "src": "ai"
   },
   "Nuffin Chive And Onion Dip Snack Pack 2x50g 100g": {
-    "zh": "Nuffin 細香蔥洋蔥沾醬點心包 50克 x 2入",
-    "ja": "Nuffin チャイブ＆オニオン ディップスナックパック 50g x 2パック",
-    "ko": "Nuffin 차이브 앤 어니언 딥 스낵팩 50g x 2개입",
-    "src": "ai"
+    "zh": "Nuffin 蝦夷蔥洋蔥沾醬點心盒 2入50克 100克",
+    "ja": "Nuffin チャイブ＆オニオン ディップ スナックパック 2x50g 100g",
+    "ko": "Nuffin 차이브 앤 어니언 딥 스낵 팩 2x50g 100g",
+    "src": "ai",
+    "qa_tries": 1
   },
   "BC Snacks Dark Chocolate Coconut Plant Based Protein Bar 40g": {
     "zh": "BC Snacks 黑巧克力椰子植物性高蛋白棒 40克",
@@ -179363,8 +179368,9 @@
   "Just For Men Hair Colour Real Black 100g": {
     "zh": "Just For Men 男士染髮劑 自然黑 100克",
     "ja": "Just For Men ヘアカラー リアルブラック 100g",
-    "ko": "Just For Men 남성용 헤어 컬러 リアル 블랙 100g",
-    "src": "ai"
+    "ko": "Just For Men 헤어 컬러 리얼 블랙 100g",
+    "src": "ai",
+    "qa_tries": 1
   },
   "CLEMENTONI Premium Puzzles 100 Pieces": {
     "zh": "CLEMENTONI 高級拼圖 100片",
@@ -179847,10 +179853,11 @@
     "src": "ai"
   },
   "Heinz Garlic Kebab Sauce 295mL": {
-    "zh": "Heinz 蒜香케바브醬 295毫升",
-    "ja": "Heinz ガーリック ケバブソース 295ml",
-    "ko": "Heinz 갈릭 케밥 소스 295mL",
-    "src": "ai"
+    "zh": "Heinz 大蒜沙威瑪醬 295毫升",
+    "ja": "Heinz ガーリック ケバブソース 295mL",
+    "ko": "Heinz 마늘 케밥 소스 295mL",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Noshu Low Carb Honeycomb Indulgence Bars 5 pack": {
     "zh": "Noshu 低碳水蜂巢巧克力條 5入",
@@ -179919,10 +179926,11 @@
     "src": "ai"
   },
   "Gym Bod Cookie Dough Chunk Ultra High Protein (31g) Tub 475mL": {
-    "zh": "Gym Bod 餅乾麵糰塊超高蛋白冰淇淋 475毫升",
-    "ja": "Gym Bod クッキードッグチャンク ウルトラハイプロテイン 475mL",
-    "ko": "Gym Bod 쿠키 도우 청크 울트라 하이 프로틴 475mL",
-    "src": "ai"
+    "zh": "Gym Bod 餅乾麵糰塊超高蛋白 31克 桶裝 475毫升",
+    "ja": "Gym Bod クッキードウ チャンク ウルトラ ハイプロテイン (31g) カップ 475mL",
+    "ko": "Gym Bod 쿠키 도우 청크 울트라 하이 프로틴 (31g) 컵 475mL",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Oak Esl Chocolate Flavoured Milk 750mL": {
     "zh": "Oak Esl 巧克力調味乳 750毫升",
@@ -180477,10 +180485,11 @@
     "src": "ai"
   },
   "Baby Doll": {
-    "zh": "Baby Doll",
-    "ja": "Baby Doll",
-    "ko": "Baby Doll",
-    "src": "ai"
+    "zh": "Baby Doll 娃娃",
+    "ja": "Baby Doll ベビードール",
+    "ko": "Baby Doll 베이비 돌",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Optimum Puppy With Chicken Dry Dog Food 7Kg": {
     "zh": "Optimum 雞肉幼犬乾狗糧 7公斤",
@@ -180564,6 +180573,204 @@
     "zh": "Borg's 費塔起司菠菜土耳其薄餅 300克",
     "ja": "Borg's フェタ＆ホウレン草 ゴズレメ 300g",
     "ko": "Borg's 페타 치즈 앤 시금치 괴즐레메 300g",
+    "src": "ai"
+  },
+  "Babushka's Probiotic Kefir Yoghurt Mango 750g": {
+    "zh": "Babushka's 益生菌克菲爾優格 芒果口味 750克",
+    "ja": "Babushka's プロバイオティクス ケフィア ヨーグルト マンゴー 750g",
+    "ko": "Babushka's 프로바이오틱 케피어 요거트 망고 750g",
+    "src": "ai"
+  },
+  "Grove Mandarin Juice 1.5L": {
+    "zh": "Grove 桶柑汁 1.5公升",
+    "ja": "Grove マンダリンジュース 1.5L",
+    "ko": "Grove 만다린 주스 1.5L",
+    "src": "ai"
+  },
+  "British Sausage Co. Beef Eater Sausage 1kg": {
+    "zh": "British Sausage Co. 牛肉香腸 1公斤",
+    "ja": "British Sausage Co. ビーフイーター ソーセージ 1kg",
+    "ko": "British Sausage Co. 비프 이터 소시지 1kg",
+    "src": "ai"
+  },
+  "The Kimchi Company Original Kimchi 330g": {
+    "zh": "The Kimchi Company 經典泡菜 330克",
+    "ja": "The Kimchi Company オリジナルキムチ 330g",
+    "ko": "The Kimchi Company 오리지널 김치 330g",
+    "src": "ai"
+  },
+  "The Kimchi Company Vegan Kimchi 330g": {
+    "zh": "The Kimchi Company 純素泡菜 330克",
+    "ja": "The Kimchi Company ヴィーガンキムチ 330g",
+    "ko": "The Kimchi Company 비건 김치 330g",
+    "src": "ai"
+  },
+  "Nudie Immunity Beetroot Carrot Orange Pear Ginger 1L": {
+    "zh": "Nudie 甜菜根紅蘿蔔柳橙西洋梨生薑綜合果汁 1公升",
+    "ja": "Nudie イミュニティ ビートルート キャロット オレンジ ペア ジンジャー 1L",
+    "ko": "Nudie 이뮤니티 비트루트 캐럿 오렌지 페어 진저 1L",
+    "src": "ai"
+  },
+  "Nudie Antioxidant Carrot Tumeric Orange Apple Lime 1L": {
+    "zh": "Nudie 紅蘿蔔薑黃柳橙蘋果萊姆綜合果汁 1公升",
+    "ja": "Nudie アンチオキシダント キャロット ターメリック オレンジ アップル ライム 1L",
+    "ko": "Nudie 안티오시던트 캐럿 터머릭 오렌지 애플 라임 1L",
+    "src": "ai"
+  },
+  "Primo Cabanossi Barbeque Shapes & Tasty Cheese 50g": {
+    "zh": "Primo 煙燻小香腸 BBQ餅乾與切達起司 50克",
+    "ja": "Primo カバノッシ バーベキューシェイプス & テイスティチーズ 50g",
+    "ko": "Primo 카바노시 바베큐 셰이프 & 테이스티 치즈 50g",
+    "src": "ai"
+  },
+  "Pauls Zymil Regular Thickened Cream 300mL": {
+    "zh": "Pauls Zymil 無乳糖濃縮鮮奶油 300毫升",
+    "ja": "Pauls Zymil レギュラー シックナード クリーム 300mL",
+    "ko": "Pauls Zymil 레귤러 시크너드 크림 300mL",
+    "src": "ai"
+  },
+  "Hans American Hot Dog 375g": {
+    "zh": "Hans 美式熱狗 375克",
+    "ja": "Hans アメリカン ホットドッグ 375g",
+    "ko": "Hans 아메리칸 핫도그 375g",
+    "src": "ai"
+  },
+  "Birds Eye Golden Crunch Crinkle Cut Frozen Potato Chips 900g": {
+    "zh": "Birds Eye 黃金酥脆波浪冷凍洋芋片 900克",
+    "ja": "Birds Eye ゴールデン クランチ クリンクルカット 冷凍ポテトチップス 900g",
+    "ko": "Birds Eye 골든 크런치 크링클 컷 냉동 감자 칩 900g",
+    "src": "ai"
+  },
+  "Lo Bros Kombucha Raspberry & Blackcurrant 330mL": {
+    "zh": "Lo Bros 康普茶 覆盆子與黑醋栗口味 330毫升",
+    "ja": "Lo Bros コンブチャ ラズベリー＆ブラックカラント 330mL",
+    "ko": "Lo Bros 콤부차 라즈베리 & 블랙커런트 330mL",
+    "src": "ai"
+  },
+  "Kenilworth Pickled Onion & Chives Cheddar 165g": {
+    "zh": "Kenilworth 醃洋蔥細香蔥切達起司 165克",
+    "ja": "Kenilworth ピクルド オニオン & チャイヴ チェダー 165g",
+    "ko": "Kenilworth 피클드 어니언 & 차이브 체다 165g",
+    "src": "ai"
+  },
+  "Chobani Greek Yogurt Pouch Vanilla 140g": {
+    "zh": "Chobani 希臘優格擠壓袋 香草口味 140克",
+    "ja": "Chobani ギリシャヨーグルト パウチ バニラ 140g",
+    "ko": "Chobani 그릭 요거트 파우치 바닐라 140g",
+    "src": "ai"
+  },
+  "Pauls Plus Protein Chocolate Dessert 160g": {
+    "zh": "Pauls 蛋白質巧克力甜點 160克",
+    "ja": "Pauls プラス プロテイン チョコレート デザート 160g",
+    "ko": "Pauls 플러스 프로틴 초콜릿 디저트 160g",
+    "src": "ai"
+  },
+  "Creative Gourmet Frozen Raspberries 300g": {
+    "zh": "Creative Gourmet 冷凍覆盆莓 300克",
+    "ja": "Creative Gourmet 冷凍ラズベリー 300g",
+    "ko": "Creative Gourmet 냉동 라즈베리 300g",
+    "src": "ai"
+  },
+  "Nuttelex Buttery Spread 500g": {
+    "zh": "Nuttelex 濃郁奶油抹醬 500克",
+    "ja": "Nuttelex バッテリー スプレッド 500g",
+    "ko": "Nuttelex 버터리 스프레드 500g",
+    "src": "ai"
+  },
+  "Seng Hork Prawn & Pork Dumplings 500g": {
+    "zh": "Seng Hork 鮮蝦豬肉水餃 500克",
+    "ja": "Seng Hork プラウン & ポーク ダンプリング 500g",
+    "ko": "Seng Hork 프론 & 포크 만두 500g",
+    "src": "ai"
+  },
+  "Babushka's Probiotic Kefir Yoghurt Organic Natural 750g": {
+    "zh": "Babushka's 有機原味益生菌克菲爾優格 750克",
+    "ja": "Babushka's プロバイオティクス ケフィア ヨーグルト オーガニック ナチュラル 750g",
+    "ko": "Babushka's 프로바이오틱 케피어 요거트 오가닉 내추럴 750g",
+    "src": "ai"
+  },
+  "Flora Margarine Spread Original 1kg": {
+    "zh": "Flora 經典植物油抹醬 1公斤",
+    "ja": "Flora マーガリン スプレッド オリジナル 1kg",
+    "ko": "Flora 마가린 스프레드 오리지널 1kg",
+    "src": "ai"
+  },
+  "Soyco Tofu Hi-protein Firm Block 350g": {
+    "zh": "Soyco 高蛋白扎實豆腐塊 350克",
+    "ja": "Soyco トフ ハイプロテイン ファーム ブロック 350g",
+    "ko": "Soyco 두부 하이 프로틴 펌 블록 350g",
+    "src": "ai"
+  },
+  "McCain Lil Pizzas Ham & Pineapple 4 Pack 400g": {
+    "zh": "McCain 迷你火腿鳳梨比薩 4入 400克",
+    "ja": "McCain リル ピザ ハム & パイナップル 4個入 400g",
+    "ko": "McCain 릴 피자 햄 & 파인애플 4개입 400g",
+    "src": "ai"
+  },
+  "Sanitarium Up&go Protein Energize Choc 500mL": {
+    "zh": "Sanitarium Up&go 高蛋白活力珍愛巧克力麥芽飲料 500毫升",
+    "ja": "Sanitarium Up&go プロテイン エナジャイズ チョコ 500mL",
+    "ko": "Sanitarium Up&go 프로틴 에너자이즈 초코 500mL",
+    "src": "ai"
+  },
+  "Seng Hork Beef Dumplings 500g": {
+    "zh": "Seng Hork 牛肉水餃 500克",
+    "ja": "Seng Hork ビーフ ダンプリング 500g",
+    "ko": "Seng Hork 비프 만두 500g",
+    "src": "ai"
+  },
+  "Primo Cabanossi Jatz & Tasty Cheese 50g": {
+    "zh": "Primo 煙燻小香腸 Jatz餅乾與切達起司 50克",
+    "ja": "Primo カバノッシ ジャッツ & テイスティチーズ 50g",
+    "ko": "Primo 카바노시 쟃 & 테이스티 치즈 50g",
+    "src": "ai"
+  },
+  "Pauls Plus Protein Vanilla Dessert 160g": {
+    "zh": "Pauls 高蛋白香草甜點 160克",
+    "ja": "Pauls プラスプロテイン バニラデザート 160g",
+    "ko": "Pauls 플러스 프로틴 바닐라 디저트 160g",
+    "src": "ai"
+  },
+  "Birds Eye Frozen Mixed Winter Vegetables Green Beans Cauliflower & Broccoli 1Kg": {
+    "zh": "Birds Eye 冷凍綜合冬季蔬菜四季豆花椰菜與青花菜 1公斤",
+    "ja": "Birds Eye 冷凍ミックスウィンターベジタブル インゲン カリフラワー＆ブロッコリー 1kg",
+    "ko": "Birds Eye 냉동 혼합 윈터 야채 그린빈 컬리플라워 & 브로콜리 1kg",
+    "src": "ai"
+  },
+  "Birds Eye Golden Crunch Straight Cut Frozen Potato Chips 900g": {
+    "zh": "Birds Eye 金黃酥脆直切冷凍馬鈴薯洋芋片 900克",
+    "ja": "Birds Eye ゴールデンクランチ ストレートカット 冷凍フライドポテト 900g",
+    "ko": "Birds Eye 골든 크런치 스트레이트 컷 냉동 감자칩 900g",
+    "src": "ai"
+  },
+  "Pauls Custard Vanilla 1kg": {
+    "zh": "Pauls 卡士達香草醬 1公升",
+    "ja": "Pauls カスタード バニラ 1kg",
+    "ko": "Pauls 커스터드 바닐라 1kg",
+    "src": "ai"
+  },
+  "The British Sausage Co. Premium Angus Beef & Caramelised Onion Sausages 6 pack 450g": {
+    "zh": "The British Sausage Co. 高級安格斯牛肉與焦糖洋蔥香腸 6入 450克",
+    "ja": "The British Sausage Co. プレミアム アンガスビーフ＆キャラメルオニオンソーセージ 6パック 450g",
+    "ko": "The British Sausage Co. 프리미엄 앵거스 비프 & 카라멜라이즈드 어니언 소시지 6팩 450g",
+    "src": "ai"
+  },
+  "Farmhouse Gold Full Cream Milk 750mL": {
+    "zh": "Farmhouse Gold 全脂鮮乳 750毫升",
+    "ja": "Farmhouse Gold フルクリームミルク 750mL",
+    "ko": "Farmhouse Gold 풀 크림 우유 750mL",
+    "src": "ai"
+  },
+  "Senza Gluten & Dairy Free Garlic Bread 250g": {
+    "zh": "Senza 無麩質與無乳製品大蒜麵包 250克",
+    "ja": "Senza グルテン＆乳製品不使用 ガーリックブレッド 250g",
+    "ko": "Senza 글루텐 & 유제품 프리 갈릭 브레드 250g",
+    "src": "ai"
+  },
+  "Primo Mild Pepperoni Twiggy Pizza Shapes & Tasty Cheese 54g": {
+    "zh": "Primo 溫和義式辣香腸細條起司組 54克",
+    "ja": "Primo マイルド ペパロニ ツウィギー ピザシェイプ＆テイスティチーズ 54g",
+    "ko": "Primo 마일드 페퍼로니 트위기 피자 셰이프 & 테이스티 치즈 54g",
     "src": "ai"
   }
 }
