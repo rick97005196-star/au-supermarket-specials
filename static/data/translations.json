@@ -181685,10 +181685,11 @@
     "src": "ai"
   },
   "Remedy Sodaly Grape 4x250ml 1L": {
-    "zh": "Remedy Sodaly 葡萄氣泡水 250毫升 x 4入",
-    "ja": "Remedy Sodaly グレープ炭酸水 250ml x 4個入",
-    "ko": "Remedy Sodaly 포도 탄산수 250ml x 4개입",
-    "src": "ai"
+    "zh": "Remedy Sodaly 葡萄氣泡水 250毫升 x 4入 (1公升)",
+    "ja": "Remedy Sodaly グレープ炭酸水 250ml x 4個入 (1L)",
+    "ko": "Remedy Sodaly 포도 탄산수 250ml x 4개입 (1L)",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Barilla Pasta Penne Rigate 500g": {
     "zh": "Barilla 筆管麵 500克",
@@ -181703,10 +181704,11 @@
     "src": "ai"
   },
   "Remedy Sodaly Grapefruit 4x250ml 1L": {
-    "zh": "Remedy Sodaly 葡萄柚氣泡水 250毫升 x 4入",
-    "ja": "Remedy Sodaly グレープフルーツ炭酸水 250ml x 4個入",
-    "ko": "Remedy Sodaly 자몽 탄산수 250ml x 4개입",
-    "src": "ai"
+    "zh": "Remedy Sodaly 葡萄柚氣泡水 250毫升 x 4入 (1公升)",
+    "ja": "Remedy Sodaly グレープフルーツ炭酸水 250ml x 4個入 (1L)",
+    "ko": "Remedy Sodaly 자몽 탄산수 250ml x 4개입 (1L)",
+    "src": "ai",
+    "qa_tries": 1
   },
   "BSc X Chupa Chups Protein Water Watermelon 350g": {
     "zh": "BSc X Chupa Chups 西瓜口味蛋白水 350克",
@@ -181805,10 +181807,11 @@
     "src": "ai"
   },
   "Nippy's Iced Coffee Flavoured Milk 4x350ml 1.4L": {
-    "zh": "Nippy's 冰咖啡調味乳 350毫升 x 4入",
-    "ja": "Nippy's アイスコーヒー風味乳飲料 350ml x 4個入",
-    "ko": "Nippy's 아이스 커피맛 우유 350ml x 4개입",
-    "src": "ai"
+    "zh": "Nippy's 冰咖啡調味乳 350毫升 x 4入 (1.4公升)",
+    "ja": "Nippy's アイスコーヒーフレーバーミルク 350ml x 4個入 (1.4L)",
+    "ko": "Nippy's 아이스 커피맛 우유 350ml x 4개입 (1.4L)",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Dermal Therapy Manuka Honey Lip Balm 10g": {
     "zh": "Dermal Therapy 麥蘆卡蜂蜜護唇膏 10克",
@@ -181910,6 +181913,240 @@
     "zh": "Handee 加厚加大廚房紙巾 2入",
     "ja": "Handee 厚手大判ペーパータオル 2個入",
     "ko": "Handee 두껍고 큰 키친타월 2개입",
+    "src": "ai"
+  },
+  "Johnson's 3-in-1 Hypoallergenic Gentle Tear-Free Conditioning Baby Shampoo & Cleansing Wash 500mL": {
+    "zh": "Johnson's 三合一低敏溫和不流淚潤髮嬰兒洗髮沐浴乳 500毫升",
+    "ja": "Johnson's 3 in 1 低刺激 ジェントル ティアフリー コンディショニング ベビーシャンプー ＆ クレンジングウォッシュ 500mL",
+    "ko": "Johnson's 3 in 1 저자극 마일드 눈물없는 컨디셔닝 베이비 샴푸 앤 클렌징 워시 500mL",
+    "src": "ai"
+  },
+  "Gillette Venus Extra Smooth Women's Razor Blade 4 Pack": {
+    "zh": "Gillette Venus 女用刮鬍刀片 4入",
+    "ja": "Gillette Venus 女性用カミソリ替刃 4個入",
+    "ko": "Gillette Venus 여성용 면도날 4개입",
+    "src": "ai"
+  },
+  "Leo Coco Belgian White Chocolate & Hazelnut Spread 325g": {
+    "zh": "Leo Coco 比利時白巧克力榛果抹醬 325克",
+    "ja": "Leo Coco ベルギー産ホワイトチョコレート＆ヘーゼルナッツスプレッド 325g",
+    "ko": "Leo Coco 벨기에산 화이트 초콜릿 & 헤이즐넛 스프레드 325g",
+    "src": "ai"
+  },
+  "Tena Incontinence Pants Plus Medium 9 Pack": {
+    "zh": "Tena 成人紙尿褲 Plus 中號 9入",
+    "ja": "Tena 失禁パンツ Plus Mサイズ 9個入",
+    "ko": "Tena 성인용 기저귀 팬티 Plus M사이즈 9개입",
+    "src": "ai"
+  },
+  "Purina One Healthy Kitten With Chicken In Gravy Cat Food 12x70g 12 Pack": {
+    "zh": "Purina One 幼貓雞肉肉汁主食包 70克 x 12入",
+    "ja": "Purina One 子猫用チキングレービーキャットフード 70g x 12個入",
+    "ko": "Purina One 새끼고양이용 치킨 그레이비 캣푸드 70g x 12개입",
+    "src": "ai"
+  },
+  "Edgell Snack Time Chargrilled Corn- Black Beans With Lime & Herbs 70g": {
+    "zh": "Edgell 炭烤玉米黑豆萊姆香草點心 70克",
+    "ja": "Edgell Snack Time 炭火焼きコーン・黒豆 ライム＆ハーブ 70g",
+    "ko": "Edgell Snack Time 숯불구이 옥수수·검은콩 라임 & 허브 70g",
+    "src": "ai"
+  },
+  "Cetaphil Oily Skin Cleanser 473mL": {
+    "zh": "Cetaphil 油性肌潔膚乳 473毫升",
+    "ja": "Cetaphil オイリー肌用洗顔料 473mL",
+    "ko": "Cetaphil 지성 피부용 클렌저 473mL",
+    "src": "ai"
+  },
+  "Dermaveen Extra Hydration Intensive Moisturising Lotion Colloidal Oatmeal 1L": {
+    "zh": "Dermaveen 高保濕燕麥膠體潤膚乳 1公升",
+    "ja": "Dermaveen 高保湿コロイダルオートミールローション 1L",
+    "ko": "Dermaveen 고보습 콜로이달 오트밀 로션 1L",
+    "src": "ai"
+  },
+  "Lucas Papaw Ointment Jar 75g": {
+    "zh": "Lucas Papaw 木瓜霜罐裝 75克",
+    "ja": "Lucas Papaw パパイヤ軟膏ジャー 75g",
+    "ko": "Lucas Papaw 파파야 연고 자 75g",
+    "src": "ai"
+  },
+  "Tena Incontinence Pants Plus Large 8 Pack": {
+    "zh": "Tena 成人紙尿褲 Plus 大號 8入",
+    "ja": "Tena 失禁パンツ Plus Lサイズ 8個入",
+    "ko": "Tena 성인용 기저귀 팬티 Plus L사이즈 8개입",
+    "src": "ai"
+  },
+  "Nando's Hot Peri-peri Chilli Sauce 250g": {
+    "zh": "Nando's 辣味 Peri-peri 辣椒醬 250克",
+    "ja": "Nando's ホット Peri-peri チリソース 250g",
+    "ko": "Nando's 매운맛 Peri-peri 칠리소스 250g",
+    "src": "ai"
+  },
+  "Alula Advance+ Newborn Stage 1 Formula 800g": {
+    "zh": "Alula Advance+ 新生兒 1階段配方奶粉 800克",
+    "ja": "Alula Advance+ 新生児用ステップ1粉ミルク 800g",
+    "ko": "Alula Advance+ 신생아용 1단계 분유 800g",
+    "src": "ai"
+  },
+  "Carman's Protein Clusters Vanilla Cinnamon Crumble 425g": {
+    "zh": "Carman's 高蛋白脆片 香草肉桂口味 425克",
+    "ja": "Carman's プロテインクラスター バニラシナモンクランブル 425g",
+    "ko": "Carman's 단백질 클러스터 바닐라 시나몬 크럼블 425g",
+    "src": "ai"
+  },
+  "Providore Vine Ripened Tomato And Caramelised Onion Pasta Sauce 400g": {
+    "zh": "Providore 藤熟番茄焦糖洋蔥義大利麵醬 400克",
+    "ja": "Providore 完熟トマト＆キャラメリゼオニオン パスタソース 400g",
+    "ko": "Providore 완숙 토마토 & 카라멜라이즈 어니언 파스타 소스 400g",
+    "src": "ai"
+  },
+  "Carman's Protein Overnight Chia & Oat Sachets Creamy Vanilla Bean 240g": {
+    "zh": "Carman's 高蛋白隔夜奇亞籽燕麥包 香草豆口味 240克",
+    "ja": "Carman's プロテインオーバーナイトチアシード＆オーツ クリーミーバニラビーンズ 240g",
+    "ko": "Carman's 단백질 오버나이트 치아씨드 & 오트밀 크리미 바닐라빈 240g",
+    "src": "ai"
+  },
+  "Sanitarium Weet-bix Honey & Golden Oats Breakfast Cereal 450g": {
+    "zh": "Sanitarium Weet-bix 蜂蜜黃金燕麥早餐麥片 450克",
+    "ja": "Sanitarium Weet-bix ハニー＆ゴールデンオーツ 朝食用シリアル 450g",
+    "ko": "Sanitarium Weet-bix 허니 & 골든 오트 아침식사용 시리얼 450g",
+    "src": "ai"
+  },
+  "Lian Pho Bo Instant Rice Noodles Beef 5 Pack 300g": {
+    "zh": "Lian Pho Bo 牛肉風味即食河粉 5入 300克",
+    "ja": "Lian Pho Bo 牛肉味インスタント米麺 5個入 300g",
+    "ko": "Lian Pho Bo 소고기맛 즉석 쌀국수 5개입 300g",
+    "src": "ai"
+  },
+  "Hooleys Waves Barbeque 95g": {
+    "zh": "Hooleys Waves 烤肉口味洋芋片 95克",
+    "ja": "Hooleys Waves バーベキュー味ポテトチップス 95g",
+    "ko": "Hooleys Waves 바베큐맛 감자칩 95g",
+    "src": "ai"
+  },
+  "Amos Peelerz Mango 150g": {
+    "zh": "Amos Peelerz 芒果軟糖 150克",
+    "ja": "Amos Peelerz マンゴーグミ 150g",
+    "ko": "Amos Peelerz 망고 젤리 150g",
+    "src": "ai"
+  },
+  "Huggies Ultra Dry Nappies Girls Size 6 (16kg+) 60 Pack": {
+    "zh": "Huggies 女嬰超乾爽紙尿褲 6號 (16公斤+) 60入",
+    "ja": "Huggies 女児用ウルトラドライおむつ サイズ6 (16kg+) 60個入",
+    "ko": "Huggies 여아용 울트라 드라이 기저귀 6단계 (16kg+) 60개입",
+    "src": "ai"
+  },
+  "Happy Snack Company Chickpeas Dark Choc & Raspberry 5x20g 100g": {
+    "zh": "Happy Snack Company 黑巧克力覆盆莓鷹嘴豆 20克 x 5入",
+    "ja": "Happy Snack Company ダークチョコ＆ラズベリーひよこ豆 20g x 5個入",
+    "ko": "Happy Snack Company 다크 초콜릿 & 라즈베리 병아리콩 20g x 5개입",
+    "src": "ai"
+  },
+  "Bali Body Self Tanning Milk 240mL": {
+    "zh": "Bali Body 自助美黑乳液 240毫升",
+    "ja": "Bali Body セルフタンニングミルク 240mL",
+    "ko": "Bali Body 셀프 태닝 밀크 240mL",
+    "src": "ai"
+  },
+  "Jack N' Jill Toothpaste Apple & Watermelon 50g": {
+    "zh": "Jack N' Jill 蘋果西瓜口味牙膏 50克",
+    "ja": "Jack N' Jill アップル＆スイカ味歯磨き粉 50g",
+    "ko": "Jack N' Jill 사과 & 수박맛 치약 50g",
+    "src": "ai"
+  },
+  "DermaVeen Extra Gentle Colloidal Oatmeal Intensive Moisturise Cream 500mL": {
+    "zh": "DermaVeen 溫和燕麥膠體強效保濕霜 500毫升",
+    "ja": "DermaVeen 低刺激コロイダルオートミール高保湿クリーム 500mL",
+    "ko": "DermaVeen 저자극 콜로이달 오트밀 고보습 크림 500mL",
+    "src": "ai"
+  },
+  "Yacoya Jelly B Drinkable Konjac Jelly Yuzu Flavour 150mL": {
+    "zh": "Yacoya Jelly B 柚子口味蒟蒻飲 150毫升",
+    "ja": "Yacoya Jelly B 柚子味こんにゃくゼリー飲料 150mL",
+    "ko": "Yacoya Jelly B 유자맛 곤약 젤리 음료 150mL",
+    "src": "ai"
+  },
+  "Heritage Mill High Protein Bars Dark Choc Almond 200g": {
+    "zh": "Heritage Mill 高蛋白黑巧克力杏仁棒 200克",
+    "ja": "Heritage Mill 高タンパクダークチョコアーモンドバー 200g",
+    "ko": "Heritage Mill 고단백 다크 초콜릿 아몬드 바 200g",
+    "src": "ai"
+  },
+  "Aunt Betty's Creamy Rice High Protein 240g": {
+    "zh": "Aunt Betty's 高蛋白奶油米布丁 240克",
+    "ja": "Aunt Betty's 高タンパククリーミーライス 240g",
+    "ko": "Aunt Betty's 고단백 크리미 라이스 240g",
+    "src": "ai"
+  },
+  "Trident Dried Pitted Dates 500g": {
+    "zh": "Trident 去籽椰棗乾 500克",
+    "ja": "Trident 種抜きデーツ 500g",
+    "ko": "Trident 씨 없는 건대추야자 500g",
+    "src": "ai"
+  },
+  "Huggies Ultra Dry Nappies Boys Size 6 (16kg+) 60 Pack": {
+    "zh": "Huggies 男童超乾爽尿布 6號 (16公斤+) 60入",
+    "ja": "Huggies ウルトラドライ男児用おむつ サイズ6 (16kg+) 60個入",
+    "ko": "Huggies 울트라 드라이 남아용 기저귀 사이즈 6 (16kg+) 60개입",
+    "src": "ai"
+  },
+  "Therabreath Mouthwash Gum Care 473mL": {
+    "zh": "Therabreath 牙齦護理漱口水 473毫升",
+    "ja": "Therabreath 歯茎ケアマウスウォッシュ 473ml",
+    "ko": "Therabreath 잇몸 케어 구강청결제 473ml",
+    "src": "ai"
+  },
+  "Sirena Original Tuna & Beans 185g": {
+    "zh": "Sirena 經典鮪魚豆罐頭 185克",
+    "ja": "Sirena オリジナルツナ＆ビーンズ 185g",
+    "ko": "Sirena 오리지널 참치＆콩 185g",
+    "src": "ai"
+  },
+  "Bru Pure Instant Coffee Jar 100g": {
+    "zh": "Bru 純即溶咖啡粉 100克",
+    "ja": "Bru ピュアインスタントコーヒー 100g",
+    "ko": "Bru 퓨어 인스턴트 커피 100g",
+    "src": "ai"
+  },
+  "Vitapet Pocket Rewards Chicken With Spinach & Carrots Dog Treats 70g": {
+    "zh": "Vitapet 雞肉菠菜胡蘿蔔成犬零食 70克",
+    "ja": "Vitapet チキン・ほうれん草・人参入り成犬用おやつ 70g",
+    "ko": "Vitapet 치킨·시금치·당근 성견용 간식 70g",
+    "src": "ai"
+  },
+  "Madura Premium Blend Black Leaf Tea 200g": {
+    "zh": "Madura 特級調配紅茶葉 200克",
+    "ja": "Madura プレミアムブレンド紅茶葉 200g",
+    "ko": "Madura 프리미엄 블렌드 홍차 잎 200g",
+    "src": "ai"
+  },
+  "Munchme Nutritious Snack Almond Blueberry 120g": {
+    "zh": "Munchme 杏仁藍莓營養零食 120克",
+    "ja": "Munchme アーモンド＆ブルーベリー栄養スナック 120g",
+    "ko": "Munchme 아몬드 블루베리 영양 간식 120g",
+    "src": "ai"
+  },
+  "Tena Bariatric Pants Extra Large 12 Pack": {
+    "zh": "Tena 加大號成人紙尿褲 12入",
+    "ja": "Tena バリアトリックパンツ 特大サイズ 12個入",
+    "ko": "Tena 성인용 기저귀 팬티 특대형 12개입",
+    "src": "ai"
+  },
+  "Babylove Cosifit Newborn Nappies Size 1 (up To 5kg) 84 Pack": {
+    "zh": "Babylove Cosifit 新生兒尿布 1號 (5公斤以下) 84入",
+    "ja": "Babylove Cosifit 新生児用おむつ サイズ1 (5kgまで) 84個入",
+    "ko": "Babylove Cosifit 신생아용 기저귀 사이즈 1 (5kg 이하) 84개입",
+    "src": "ai"
+  },
+  "Kialla Organic Waffle Pancake Shake Mix Classic 325g": {
+    "zh": "Kialla 有機經典鬆餅粉 325克",
+    "ja": "Kialla オーガニッククラシックワッフル・パンケーキミックス 325g",
+    "ko": "Kialla 유기농 클래식 와플·팬케이크 믹스 325g",
+    "src": "ai"
+  },
+  "Lindt Pistachio Bon Bon 85g": {
+    "zh": "Lindt 開心果夾心巧克力 85克",
+    "ja": "Lindt ピスタチオボンボン 85g",
+    "ko": "Lindt 피스타치오 봉봉 85g",
     "src": "ai"
   }
 }
