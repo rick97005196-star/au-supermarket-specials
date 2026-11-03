@@ -180876,10 +180876,11 @@
     "src": "ai"
   },
   "Coles Asia Singapore Noodles Ready To Eat 2x200g 400g": {
-    "zh": "Coles Asia 新加坡炒麵 400克（2入）",
-    "ja": "Coles Asia シンガポールヌードル 400g（2個入）",
-    "ko": "Coles Asia 싱가포르 누들 400g（2개입）",
-    "src": "ai"
+    "zh": "Coles Asia 星洲炒米粉 即食 200克 x 2入 400克",
+    "ja": "Coles Asia シンガポールヌードル 即席 200g x 2 400g",
+    "ko": "Coles Asia 싱가포르 누들 즉석 200g x 2 400g",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Coles Strawberry Fruit Puree Blend Pouch 90g": {
     "zh": "Coles 草莓果泥吸吸包 90克",
@@ -181227,6 +181228,192 @@
     "zh": "Botanica By Air Wick 加勒比香根草與檀香自動噴霧補充罐 228毫升",
     "ja": "Botanica By Air Wick カリビアン ベチバー＆サンダルウッド 自動スプレー 付け替え 228mL",
     "ko": "Botanica By Air Wick 카리브해 베티버 & 샌달우드 자동 스프레이 리필 228mL",
+    "src": "ai"
+  },
+  "Botanica By Air Wick Vanilla & Himalayan Magnolia Automatic Spray Refill 228mL": {
+    "zh": "Botanica By Air Wick 香草與喜馬拉雅木蘭香自動噴霧補充瓶 228毫升",
+    "ja": "Botanica By Air Wick バニラ＆ヒマラヤンマグノリア 自動スプレー詰替用 228ml",
+    "ko": "Botanica By Air Wick 바닐라 & 히말라야 목련향 자동 스프레이 리필 228ml",
+    "src": "ai"
+  },
+  "Applaws Taste Toppers Dog Tin Chicken Breast With Salmon & Vegetables In Broth Dog Food 156g": {
+    "zh": "Applaws Taste Toppers 雞胸肉佐鮭魚與蔬菜高湯罐頭 156克",
+    "ja": "Applaws Taste Toppers 鶏胸肉・鮭・野菜入りスープ缶詰 156g",
+    "ko": "Applaws Taste Toppers 닭가슴살, 연어, 야채 육수 캔사료 156g",
+    "src": "ai"
+  },
+  "Ceres Organic Brown Rice Crackers Original 115g": {
+    "zh": "Ceres Organic 糙米餅經典款 115克",
+    "ja": "Ceres Organic 玄米クラッカー オリジナル 115g",
+    "ko": "Ceres Organic 현미 크래커 오리지널 115g",
+    "src": "ai"
+  },
+  "Vegeta Stock Powder Organic Gourmet 160g": {
+    "zh": "Vegeta 有機風味高湯粉 160克",
+    "ja": "Vegeta 有機ストックパウダー グルメ 160g",
+    "ko": "Vegeta 유기농 스톡 파우더 고메 160g",
+    "src": "ai"
+  },
+  "Lotte Koalas March Black Bitter Chocolate 37g": {
+    "zh": "Lotte 樂天 小熊餅乾黑巧克力口味 37克",
+    "ja": "Lotte コアラのマーチ ブラックビターチョコレート 37g",
+    "ko": "Lotte 코알라 마치 블랙 비터 초콜릿 37g",
+    "src": "ai"
+  },
+  "Botanica By Air Wick Jasmine & Sri Lankan Cinnamon Leaf Automatic Spray Refill 228mL": {
+    "zh": "Botanica By Air Wick 茉莉與斯里蘭卡肉桂葉香自動噴霧補充瓶 228毫升",
+    "ja": "Botanica By Air Wick ジャスミン＆スリランカシナモンリーフ 自動スプレー詰替用 228ml",
+    "ko": "Botanica By Air Wick 자스민 & 스리랑카 시나몬 잎향 자동 스프레이 리필 228ml",
+    "src": "ai"
+  },
+  "Chacha Roasted Sunflower Seeds Spiced 228g": {
+    "zh": "Chacha 洽洽 香瓜子五香口味 228克",
+    "ja": "Chacha ローストひまわりの種 スパイス味 228g",
+    "ko": "Chacha 볶은 해바라기씨 스파이스맛 228g",
+    "src": "ai"
+  },
+  "Coca-Cola Vanilla Zero Sugar Soft Drink Bottle 600mL": {
+    "zh": "Coca-Cola 可口可樂 香草零糖汽水 600毫升",
+    "ja": "Coca-Cola バニラ ゼロシュガー 600ml",
+    "ko": "Coca-Cola 바닐라 제로 슈가 600ml",
+    "src": "ai"
+  },
+  "Coles Finest Australian Goats Cheese 300g": {
+    "zh": "Coles Finest 澳洲山羊起司 300克",
+    "ja": "Coles Finest オーストラリア産ヤギチーズ 300g",
+    "ko": "Coles Finest 호주산 염소 치즈 300g",
+    "src": "ai"
+  },
+  "Jelly B Drinkable Konjac Jelly Peach Flavour 150mL": {
+    "zh": "Jelly B 蒟蒻果凍飲水蜜桃口味 150毫升",
+    "ja": "Jelly B 飲むこんにゃくゼリー ピーチ味 150ml",
+    "ko": "Jelly B 마시는 곤약 젤리 복숭아맛 150ml",
+    "src": "ai"
+  },
+  "Mutti Polpa Finely Chopped Tomatoes 210g": {
+    "zh": "Mutti 番茄碎 210克",
+    "ja": "Mutti トマトダイス 210g",
+    "ko": "Mutti 다진 토마토 210g",
+    "src": "ai"
+  },
+  "Jack Link's Mini Beef Sticks Original 8x13g 104g": {
+    "zh": "Jack Link's 迷你牛肉條經典款 104克（8入）",
+    "ja": "Jack Link's ミニビーフスティック オリジナル 104g (8本入)",
+    "ko": "Jack Link's 미니 비프 스틱 오리지널 104g (8개입)",
+    "src": "ai"
+  },
+  "Multix Greener Recycled Alfoil 10m": {
+    "zh": "Multix 環保再生鋁箔紙 10公尺",
+    "ja": "Multix リサイクルアルミホイル 10m",
+    "ko": "Multix 친환경 재생 알루미늄 호일 10m",
+    "src": "ai"
+  },
+  "Red Seal Toothpaste Herbal 100g": {
+    "zh": "Red Seal 草本牙膏 100克",
+    "ja": "Red Seal ハーバル歯磨き粉 100g",
+    "ko": "Red Seal 허벌 치약 100g",
+    "src": "ai"
+  },
+  "Arnott's Plain Biscuits Nice 250g": {
+    "zh": "Arnott's 椰香餅乾 250克",
+    "ja": "Arnott's ナイスビスケット 250g",
+    "ko": "Arnott's 나이스 비스킷 250g",
+    "src": "ai"
+  },
+  "Wang Bulgogi Udon Bowl 229g": {
+    "zh": "Wang 韓式烤肉烏龍麵碗 229克",
+    "ja": "Wang プルコギうどんボウル 229g",
+    "ko": "Wang 불고기 우동 볼 229g",
+    "src": "ai"
+  },
+  "Kez's Kitchen Gluten Free Choc Peanut Florentines 185g": {
+    "zh": "Kez's Kitchen 無麩質巧克力花生佛羅倫斯餅乾 185克",
+    "ja": "Kez's Kitchen グルテンフリー チョコピーナッツフロランタン 185g",
+    "ko": "Kez's Kitchen 글루텐 프리 초코 땅콩 플로랑탱 185g",
+    "src": "ai"
+  },
+  "Mr Consistent Lychee Martini Can 4 Pack 250mL": {
+    "zh": "Mr Consistent 荔枝馬丁尼罐裝 250毫升 x 4入",
+    "ja": "Mr Consistent ライチマティーニ 缶 250ml x 4個入",
+    "ko": "Mr Consistent 리치 마티니 캔 250ml x 4개입",
+    "src": "ai"
+  },
+  "Churu Cat Treats Tuna Flavour 4x14g 56g": {
+    "zh": "Churu 鮪魚口味貓肉泥 56克（4入）",
+    "ja": "Churu 猫用おやつ まぐろ味 56g (4本入)",
+    "ko": "Churu 고양이 간식 참치맛 56g (4개입)",
+    "src": "ai"
+  },
+  "Chacha Roasted Sunflower Seeds Coconut 228g": {
+    "zh": "Chacha 洽洽 香瓜子椰子口味 228克",
+    "ja": "Chacha ローストひまわりの種 ココナッツ味 228g",
+    "ko": "Chacha 볶은 해바라기씨 코코넛맛 228g",
+    "src": "ai"
+  },
+  "Mazzetti Balsamic Vinegar Gourmet Glaze 215mL": {
+    "zh": "Mazzetti 巴薩米克醋膏 215毫升",
+    "ja": "Mazzetti バルサミコ酢 グルメグレーズ 215ml",
+    "ko": "Mazzetti 발사믹 식초 고메 글레이즈 215ml",
+    "src": "ai"
+  },
+  "Glico Pocky Biscuit Stick Milk 40g": {
+    "zh": "Glico 格力高 Pocky 牛奶口味餅乾棒 40克",
+    "ja": "Glico ポッキー ミルク 40g",
+    "ko": "Glico 포키 밀크 40g",
+    "src": "ai"
+  },
+  "Vitapet Soft Chicken Tenders Dog Treats 100g": {
+    "zh": "Vitapet 軟嫩雞柳條犬用零食 100克",
+    "ja": "Vitapet ソフトチキンテンダー 犬用おやつ 100g",
+    "ko": "Vitapet 소프트 치킨 텐더 반려견 간식 100g",
+    "src": "ai"
+  },
+  "Applaws Taste Toppers Dog Tin Chicken Breast With Beef Liver & Vegetables In Broth Dog Food 156g": {
+    "zh": "Applaws Taste Toppers 雞胸肉佐牛肝與蔬菜高湯罐頭 156克",
+    "ja": "Applaws Taste Toppers 鶏胸肉・牛レバー・野菜入りスープ缶詰 156g",
+    "ko": "Applaws Taste Toppers 닭가슴살, 소간, 야채 육수 캔사료 156g",
+    "src": "ai"
+  },
+  "Churu Cat Treats Chicken & Crab Flavour Recipe 4x14g 56g": {
+    "zh": "Churu 雞肉與蟹肉口味貓肉泥 56克（4入）",
+    "ja": "Churu 猫用おやつ 鶏肉＆カニ味 56g (4本入)",
+    "ko": "Churu 고양이 간식 닭고기 & 게맛 56g (4개입)",
+    "src": "ai"
+  },
+  "Sunrice Jasmine Rice 1kg": {
+    "zh": "Sunrice 茉莉香米 1公斤",
+    "ja": "Sunrice ジャスミンライス 1kg",
+    "ko": "Sunrice 자스민 라이스 1kg",
+    "src": "ai"
+  },
+  "Kikkoman Dashi Tsuyu Sauce 150mL": {
+    "zh": "Kikkoman 柴魚風味醬油露 150毫升",
+    "ja": "Kikkoman だしつゆ 150ml",
+    "ko": "Kikkoman 다시쯔유 150ml",
+    "src": "ai"
+  },
+  "Monini Organic Premium Selection Extra Virgin Olive Oil 500mL": {
+    "zh": "Monini 有機特級初榨橄欖油 500毫升",
+    "ja": "Monini オーガニックプレミアムセレクト エキストラバージンオリーブオイル 500ml",
+    "ko": "Monini 유기농 프리미엄 셀렉션 엑스트라 버진 올리브 오일 500ml",
+    "src": "ai"
+  },
+  "Mazzetti Aged Balsamic Vinegar Gold Label 4 Seal 250mL": {
+    "zh": "Mazzetti 陳年巴薩米克醋 黃金標籤 4印章 250毫升",
+    "ja": "Mazzetti アジドバルサミコ酢 ゴールドラベル 4シール 250ml",
+    "ko": "Mazzetti 에이지드 발사믹 식초 골드 라벨 4 씰 250ml",
+    "src": "ai"
+  },
+  "Surf Life Saving Sunscreen Zinc Stick SPF 50+ Tinted 12g": {
+    "zh": "Surf Life Saving 防曬氧化鋅棒 SPF 50+ 潤色款 12克",
+    "ja": "Surf Life Saving 日焼け止め ジンクスティック SPF 50+ ティンテッド 12g",
+    "ko": "Surf Life Saving 선크림 징크 스틱 SPF 50+ 틴티드 12g",
+    "src": "ai"
+  },
+  "Cadbury Christmas Bon Bon 78g": {
+    "zh": "Cadbury 聖誕彩炮糖果 78克",
+    "ja": "Cadbury クリスマス ボンボン 78g",
+    "ko": "Cadbury 크리스마스 봉봉 78g",
     "src": "ai"
   }
 }
