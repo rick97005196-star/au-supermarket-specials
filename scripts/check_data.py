@@ -128,6 +128,14 @@ def pre():
     now_c, prev_c = counts(items), counts(prev_items)
     now_r, prev_r = ranges(items), ranges(prev_items)
     problems, block = [], False
+    try:
+        from zoneinfo import ZoneInfo
+        bne = dt.datetime.now(ZoneInfo('Australia/Brisbane'))
+    except Exception:
+        bne = dt.datetime.utcnow() + dt.timedelta(hours=10)
+    # Wednesday before 6am Brisbane (woolies_switching in scrapers/woolies_scraper.py): the Woolworths website
+    # lists are still last week's, so a smaller Woolworths set is expected and must not hold back the whole site
+    woolies_window = bne.weekday() == 2 and bne.hour < 6
 
     # Layer 2: never publish data that looks broken
     for store in STORES:
@@ -138,7 +146,7 @@ def pre():
             problems.append(f"{store} 本週特價變成 0 件（原本 {p} 件），已停止上線，網站維持原本資料")
         elif store == 'ALDI' and prev_items and not any(x.get('sf') for x in prev_items if x.get('store') == 'ALDI'):
             pass   # one-time switch to ALDI's own sale dates (older Special Buys no longer listed by ALDI drop out)
-        elif p >= 20 and now_r.get(key) == prev_r.get(key) and n < p * 0.5:
+        elif p >= 20 and now_r.get(key) == prev_r.get(key) and n < p * 0.5 and not (store == 'Woolworths' and woolies_window):
             block = True
             problems.append(f"{store} 本週特價從 {p} 件驟減到 {n} 件（同一檔期），已停止上線")
 
@@ -152,11 +160,6 @@ def pre():
     # Coles website half-price list: after the Wednesday reset it should be refilled by noon.
     # Fewer than 800 Coles specials outside that window = the website list is not coming back
     # (blocked, or the updates are not running) -> email the owner. Never blocks the update.
-    try:
-        from zoneinfo import ZoneInfo
-        bne = dt.datetime.now(ZoneInfo('Australia/Brisbane'))
-    except Exception:
-        bne = dt.datetime.utcnow() + dt.timedelta(hours=10)
     refill_window = (bne.weekday() == 2 and bne.hour < 12) or (bne.weekday() == 1 and bne.hour >= 23)
     coles_now = now_c.get(('Coles', 'current'), 0)
     if not refill_window and 0 < coles_now < 800:

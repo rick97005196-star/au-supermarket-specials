@@ -180,10 +180,12 @@ def update_all_stores(max_catalogue_pages: int = 50) -> Dict[str, Any]:
         # Save current week
         w_curr_items = woolies_data['current']['items']
         w_curr_date = woolies_data['current']['date_range']
-        if woolies_switching() and w_curr_items:
-            # Wednesday before 6am: the website lists were not read, keep the lasting prices moved in at midnight
+        switching = woolies_switching() and bool(w_curr_items)
+        if switching:
+            # Wednesday before 6am: the website lists may not be in yet, keep the lasting prices moved in at midnight
             w_curr_items = with_lasting_prices(w_curr_items, _saved_items('Woolworths', 'current'))
-        saved_w_curr = save_specials('Woolworths', w_curr_items, period='current', date_range=w_curr_date)
+        # allow_fewer: without the website lists the set is smaller than last week's full one, save it anyway
+        saved_w_curr = save_specials('Woolworths', w_curr_items, period='current', date_range=w_curr_date, allow_fewer=switching)
         print(f" Saved {saved_w_curr} Woolworths current week specials ({w_curr_date}).")
 
         # Save next week (if available)

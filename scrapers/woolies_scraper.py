@@ -471,11 +471,27 @@ def scrape_woolies_online_half_price(max_pages: int = 100) -> List[Dict[str, Any
 def woolies_switching(now=None):
     """Wednesday midnight to 6am Brisbane: Woolworths' website still lists LAST week's specials for a
     few hours after the new week starts (seen 14 Oct 2026: at 1am the Half Price list was last week's,
-    by 7am it was the new one). The website lists are not read in these hours; the site keeps showing
-    the new week's catalogue with the lasting prices prepared before Wednesday."""
+    by 7am it was the new one). In these hours a list read from the website is only kept once it no
+    longer matches last week's titles (still_last_week); until then the site keeps showing the new
+    week's catalogue with the lasting prices prepared before Wednesday."""
     import datetime as _dt
     local = (now or _dt.datetime.utcnow()) + _dt.timedelta(hours=10)
     return local.weekday() == 2 and local.hour < 6
+
+
+def woolies_week_start(now=None):
+    """The Wednesday this Woolworths week started (Brisbane date). Unlike coles_week_start() there is
+    no one-hour grace: a list accepted at Wednesday 00:30 must be filed under the NEW week."""
+    import datetime as _dt
+    local = (now or _dt.datetime.utcnow()) + _dt.timedelta(hours=10)
+    return (local.date() - _dt.timedelta(days=(local.weekday() - 2) % 7)).isoformat()
+
+
+def still_last_week(fresh, last_week_titles):
+    """True when at least half of the titles just read were in last week's list: the website has not
+    switched to the new week yet (at a real switch only ~32% of the titles stayed, seen 28 Oct 2026)."""
+    titles = {it['title'].lower() for it in fresh}
+    return not titles or len(titles & set(last_week_titles)) >= len(titles) / 2
 
 
 WOOLIES_MEMORY = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'data', 'woolies_web.json')
@@ -485,13 +501,10 @@ WOOLIES_REFRESH_HOURS = 6
 def woolies_half_price_remembered():
     """The Woolworths half-price list for this week, read politely.
     A complete read is kept for the week and only refreshed every few hours; when a read is
-    interrupted (site refused us), the items read are ADDED to the saved list, nothing is lost."""
+    interrupted (site refused us), the items read are ADDED to the saved list, nothing is lost.
+    Wednesday before 6am the list is read but only kept once it is no longer last week's."""
     import json, time as _time
-    from scrapers.coles_web import coles_week_start      # same Wednesday switch-over as Coles
-    if woolies_switching():
-        print('Woolies half-price list: Wednesday before 6am, the website may still list last week - not read this run')
-        return []
-    week = coles_week_start()
+    week = woolies_week_start()
     mem = {'week': week, 'items': {}, 'last_full': 0}
     try:
         with open(WOOLIES_MEMORY, encoding='utf-8') as f:
@@ -499,13 +512,26 @@ def woolies_half_price_remembered():
         if old.get('week') == week:
             mem = old
     except Exception:
-        pass
+        old = {}
     now = _time.time()
     if mem['items'] and now - float(mem.get('last_full') or 0) < WOOLIES_REFRESH_HOURS * 3600:
         print(f"Woolies half-price list: read completely {int((now - mem['last_full']) / 60)} min ago - using the saved list ({len(mem['items'])} specials)")
         return list(mem['items'].values())
+    switching = woolies_switching() and not mem['items']
+    last_titles = old.get('items') or {}
+    # Wednesday before 6am: three pages first show whether the website has switched (every 30 min until it has)
+    if switching and still_last_week(scrape_woolies_online_half_price(max_pages=3), last_titles):
+        print("Woolies half-price list: Wednesday before 6am, the website still lists last week - not read this run")
+        return []
     fresh = scrape_woolies_online_half_price(max_pages=300)
-    if getattr(fresh, 'complete', False) and len(fresh) >= 50:
+    complete = getattr(fresh, 'complete', False) and len(fresh) >= 50
+    if switching and (not complete or still_last_week(fresh, last_titles)):
+        # the file is left as it is: last week's titles stay the reference for the next run
+        # shortcut: with no saved list from last week a complete read is accepted as the new week, fine while
+        # auto_update.yml commits the memory file every run; revisit if that step is ever removed
+        print(f"Woolies half-price list: Wednesday before 6am, {len(fresh)} read - still last week's list or incomplete, not kept")
+        return []
+    if complete:
         mem['items'] = {it['title'].lower(): it for it in fresh}       # full list: replaces the old one
         mem['last_full'] = now
         print(f"Woolies half-price list: read completely ({len(fresh)} specials) and saved")
@@ -662,16 +688,15 @@ def woolies_groups_remembered():
     (same memory file as the Half Price list). Each list is re-read at most every 12 hours; an
     interrupted read is added to what was kept, nothing is lost."""
     import json, time as _time
-    from scrapers.coles_web import coles_week_start
-    if woolies_switching():
-        print('Woolies specials lists: Wednesday before 6am, the website may still list last week - not read this run')
-        return []
-    week = coles_week_start()
+    week = woolies_week_start()
     try:
         with open(WOOLIES_MEMORY, encoding='utf-8') as f:
             mem = json.load(f)
     except Exception:
         mem = {}
+    if woolies_switching() and not (mem.get('week') == week and mem.get('items')):
+        print("Woolies specials lists: Wednesday before 6am, the Half Price list is still last week's - not read this run")
+        return []
     groups = mem.get('groups') if mem.get('week') == week else None
     groups = groups if isinstance(groups, dict) else {}
     now = _time.time()

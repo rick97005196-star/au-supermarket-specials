@@ -133,7 +133,7 @@ def _start_offset_days(a, b):
     diff = (db - da) % 365
     return diff - 365 if diff > 182 else diff
 
-def save_specials(store: str, items: List[Dict[str, Any]], period: str = 'current', date_range: str = ''):
+def save_specials(store: str, items: List[Dict[str, Any]], period: str = 'current', date_range: str = '', allow_fewer: bool = False):
     """Replace specials for a given store and period (current / next) with the newly scraped list."""
     with get_db() as conn:
         cursor = conn.cursor()
@@ -157,8 +157,12 @@ def save_specials(store: str, items: List[Dict[str, Any]], period: str = 'curren
             cursor.execute("SELECT COUNT(*) FROM specials WHERE store = ? AND period = ? AND COALESCE(sale_from, '') = ''", (store, period))
             if cursor.fetchone()[0] > 0:
                 new_week = True
+        base = existing_count
+        if allow_fewer:    # Wednesday before 6am: the website lists are not in yet, compare with the rest only
+            cursor.execute('SELECT price, was_price, save_amount, discount_desc FROM specials WHERE store = ? AND period = ?', (store, period))
+            base = sum(1 for r in cursor.fetchall() if not is_half_price(*r))
         if existing_count >= 20 and not new_week and (
-            (not date_range and had_dated) or len(items) < existing_count * 0.6
+            (not date_range and had_dated) or len(items) < base * 0.6
         ):
             msg = f"Anti-wipeout guard: {store} ({period}) kept {existing_count} existing items (new scrape: {len(items)} items, date range '{date_range}')"
             print(f"::warning::{msg}" if os.environ.get('GITHUB_ACTIONS') else f"⚠️ {msg}")

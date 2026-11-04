@@ -56,7 +56,7 @@ check(got == {'Milk 2L': 'Save $1.00', 'Bread 650g': 'Everyday Low Price', 'Sour
       f'lasting prices join the preview, the weekly half price does not, the preview entry wins: {got}')
 check(with_lasting_prices([], cur) == [], 'no preview published yet: nothing is added')
 
-# --- Wednesday before 6am Brisbane the Woolworths website lists are not read (they may still be last week's) ---
+# --- Wednesday before 6am Brisbane: the Woolworths website lists may still be last week's (woolies_switching) ---
 import datetime  # noqa: E402
 from scrapers.woolies_scraper import woolies_switching  # noqa: E402
 utc = lambda s: datetime.datetime.strptime(s, '%Y-%m-%d %H:%M')
@@ -65,6 +65,32 @@ check(woolies_switching(utc('2026-10-13 19:59')), 'Wednesday 05:59 Brisbane: not
 check(not woolies_switching(utc('2026-10-13 20:00')), 'Wednesday 06:00 Brisbane: read again')
 check(not woolies_switching(utc('2026-10-13 13:55')), 'Tuesday 23:55 Brisbane: read as usual')
 check(not woolies_switching(utc('2026-10-14 15:00')), 'Thursday 01:00 Brisbane: read as usual')
+
+# --- the Woolworths week starts on the Brisbane date's Wednesday, with no one-hour grace ---
+from scrapers.woolies_scraper import woolies_week_start, still_last_week  # noqa: E402
+check(woolies_week_start(utc('2026-11-03 14:30')) == '2026-11-04', 'Wednesday 00:30 Brisbane: the new week')
+check(woolies_week_start(utc('2026-11-03 13:30')) == '2026-10-28', 'Tuesday 23:30 Brisbane: still last week')
+check(woolies_week_start(utc('2026-11-04 15:00')) == '2026-11-04', 'Thursday 01:00 Brisbane: this week')
+
+# --- a list read in those hours is only kept once most of its titles are new ---
+last = {f'old {i}': {} for i in range(10)}
+fresh = lambda same: [{'title': f'Old {i}'} for i in range(same)] + [{'title': f'New {i}'} for i in range(10 - same)]
+check(still_last_week(fresh(7), last), '7 of 10 titles seen last week: still last week')
+check(still_last_week(fresh(5), last), '5 of 10 titles seen last week: still last week')
+check(not still_last_week(fresh(3), last), '3 of 10 titles seen last week: the new week')
+check(still_last_week([], last), 'nothing read: treated as last week (not kept)')
+
+# --- save_specials(allow_fewer=True): the anti-wipeout guard compares with the non-half-price rows only ---
+import tempfile  # noqa: E402
+database.DB_PATH = os.path.join(tempfile.mkdtemp(), 'specials.db')
+database.init_db()
+_items = lambda n, half=0: [{'title': f'Product {i}', 'price': 5.0, 'was_price': 10.0 if i < half else 6.0,
+                             'save_amount': 5.0 if i < half else 1.0} for i in range(n)]
+rng = 'Wed 4 Nov 2026 - Tue 10 Nov 2026'
+check(database.save_specials('Woolworths', _items(100, half=50), date_range=rng) == 100, 'full set saved: 100 rows')
+check(database.save_specials('Woolworths', _items(40), date_range=rng) == 100, 'same week, 40 of 100: guard keeps the 100')
+check(database.save_specials('Woolworths', _items(40), date_range=rng, allow_fewer=True) == 40, 'allow_fewer: 40 vs 50 non-half-price rows -> saved')
+check(database.save_specials('Woolworths', _items(20), date_range=rng, allow_fewer=True) == 40, 'allow_fewer: 20 vs 40 non-half-price rows -> guard keeps the 40')
 
 for b in bad:
     print('FAIL', b)
