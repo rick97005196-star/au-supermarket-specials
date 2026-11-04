@@ -9,7 +9,7 @@ only real in-store half-price deals:
 
 coles.com.au only allows a few pages per visitor before showing a "Pardon Our Interruption" page.
 We respect that: each update reads politely until the site says stop, remembers what it read in
-data/coles_web.json, and the next update continues from the same page. The website is checked every hour on Wednesday (the day Coles specials change),
+data/coles_web.json, and the next update continues from the same page. Updates run every 10 minutes on Wednesday morning (the day Coles specials change),
 so the full list is collected within a few hours of the new week starting. The memory is cleared
 automatically when a new Coles week starts (Wednesday, Sydney time).
 

@@ -55,10 +55,12 @@ jobs:
           acct=$(api accounts | jq -r '.result[0].id // empty')
           if [ -z "$acct" ]; then echo "::notice::無法讀取 Cloudflare 帳號，略過定時規則檢查"; exit 0; fi
           crons=$(api "accounts/$acct/workers/scripts/au-specials-timer/schedules" | jq -r '[.result.schedules[]?.cron] | join(" ; ")')
-          if [ "$crons" = "1,17,47 * * * *" ]; then
+          # the expected rule is read from the timer's own settings, so a schedule change needs no edit here
+          want=$(grep -o '"crons": *\[[^]]*\]' cloudflare/update-timer/wrangler.jsonc | sed 's/"crons": *//' | jq -r 'join(" ; ")')
+          if [ -n "$want" ] && [ "$crons" = "$want" ]; then
             echo "::notice::Cloudflare 上的定時規則正確：$crons（UTC）"
           else
-            echo "::error::Cloudflare 上的定時規則不對：「$crons」"; exit 1
+            echo "::error::Cloudflare 上的定時規則不對：「$crons」，設定檔 wrangler.jsonc 寫的是「$want」"; exit 1
           fi
 
       - name: Check the GitHub key can start an update
