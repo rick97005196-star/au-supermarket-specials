@@ -182626,10 +182626,11 @@
     "src": "ai"
   },
   "UP&GO Liquid Breakfast Strawberry 3x250ml 750mL": {
-    "zh": "UP&GO 草莓風味液態早餐 250毫升 x 3入",
-    "ja": "UP&GO ストロベリー液体朝食 250ml x 3本入",
-    "ko": "UP&GO 딸기맛 액상 아침식사 250ml x 3개입",
-    "src": "ai"
+    "zh": "UP&GO 液態早餐 草莓口味 250毫升 x 3入 750毫升",
+    "ja": "UP&GO リキッドブレックファスト ストロベリー味 250ml x 3本 750ml",
+    "ko": "UP&GO 리퀴드 브렉퍼스트 딸기맛 250ml x 3개입 750ml",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Arth Rice Khichdi Spinach & Brown Rice Khichdi 250g": {
     "zh": "Arth 菠菜糙米印度雜糧粥 250克",
@@ -182647,6 +182648,90 @@
     "zh": "Maggi Mi Goreng 甜醬油炒麵杯麵 64克",
     "ja": "Maggi Mi Goreng スイートソイカップ麺 64g",
     "ko": "Maggi Mi Goreng 스위트 소이 컵라면 64g",
+    "src": "ai"
+  },
+  "Arth Pickle Mango Pickle 400g": {
+    "zh": "Arth 芒果醃漬物 400克",
+    "ja": "Arth マンゴーピクルス 400g",
+    "ko": "Arth 망고 피클 400g",
+    "src": "ai"
+  },
+  "Old El Paso Crispy Chicken Soft Taco Kit Mild 370g": {
+    "zh": "Old El Paso 酥脆雞肉軟塔可組合包 溫和口味 370克",
+    "ja": "Old El Paso クリスピーチキン ソフトタコスキット マイルド 370g",
+    "ko": "Old El Paso 크리스피 치킨 소프트 타코 키트 마일드 370g",
+    "src": "ai"
+  },
+  "Vileda Super Microfibre Plus Mop Refill 1 each": {
+    "zh": "Vileda 超細纖維拖把替換布",
+    "ja": "Vileda スーパーマイクロファイバープラス モップ替え",
+    "ko": "Vileda 슈퍼 마이크로파이버 플러스 대걸레 리필",
+    "src": "ai"
+  },
+  "Arth Rice Khichdi Masala Khichdi 250g": {
+    "zh": "Arth 印度香料米粥 250克",
+    "ja": "Arth マサラキチュリ 250g",
+    "ko": "Arth 마살라 키치디 250g",
+    "src": "ai"
+  },
+  "Arth Rice Khichdi Brown Rice & Cumin Khichdi 250g": {
+    "zh": "Arth 糙米孜然米粥 250克",
+    "ja": "Arth 玄米クミンキチュリ 250g",
+    "ko": "Arth 현미 큐민 키치디 250g",
+    "src": "ai"
+  },
+  "Old El Paso Kit Taco Mexican Style 290g": {
+    "zh": "Old El Paso 墨西哥風味塔可組合包 290克",
+    "ja": "Old El Paso タコスキット メキシカンスタイル 290g",
+    "ko": "Old El Paso 타코 키트 멕시칸 스타일 290g",
+    "src": "ai"
+  },
+  "Sukin Signature Botanical Body Wash Pump 1L": {
+    "zh": "Sukin 經典植萃沐浴乳 1公升",
+    "ja": "Sukin シグネチャー ボタニカルボディウォッシュ 1L",
+    "ko": "Sukin 시그니처 보태니컬 바디워시 1L",
+    "src": "ai"
+  },
+  "Libra Ultra Thin Pads Goodnights Long & Wide 6 Pack": {
+    "zh": "Libra 超薄夜用衛生棉 加長加寬型 6入",
+    "ja": "Libra ウルトラシン 夜用ナプキン ロング＆ワイド 6個入",
+    "ko": "Libra 울트라 씬 야간용 생리대 롱&와이드 6개입",
+    "src": "ai"
+  },
+  "Sanitarium Up&go Protein Energize Choc Ice 3x250ml 750mL": {
+    "zh": "Sanitarium Up&go 高蛋白能量飲 巧克力冰淇淋口味 250毫升 x 3入 750毫升",
+    "ja": "Sanitarium Up&go プロテインエナジー チョコレートアイス味 250ml x 3本 750ml",
+    "ko": "Sanitarium Up&go 단백질 에너지 초콜릿 아이스맛 250ml x 3개입 750ml",
+    "src": "ai"
+  },
+  "Libra Original Regular Tampons 16 Pack": {
+    "zh": "Libra 經典款衛生棉條 一般流量 16入",
+    "ja": "Libra オリジナル タンポン レギュラー 16個入",
+    "ko": "Libra 오리지널 탐폰 레귤러 16개입",
+    "src": "ai"
+  },
+  "Sorbent Extra Thick Toilet Rolls 2 Ply Hypo Allergeni 2160 Sheet 12 Pack": {
+    "zh": "Sorbent 特厚衛生紙 雙層 低敏款 2160張 12入",
+    "ja": "Sorbent 極厚トイレットペーパー 2枚重ね 低刺激 2160シート 12個入",
+    "ko": "Sorbent 엑스트라 두꺼운 화장지 2겹 저자극 2160매 12개입",
+    "src": "ai"
+  },
+  "Libra Original Super Tampons 16 Pack": {
+    "zh": "Libra 經典款衛生棉條 量多型 16入",
+    "ja": "Libra オリジナル タンポン スーパー 16個入",
+    "ko": "Libra 오리지널 탐폰 슈퍼 16개입",
+    "src": "ai"
+  },
+  "Sanitarium Up&go Energize Vanilla 3x250ml 750mL": {
+    "zh": "Sanitarium Up&go 能量飲 香草口味 250毫升 x 3入 750毫升",
+    "ja": "Sanitarium Up&go エナジー バニラ味 250ml x 3本 750ml",
+    "ko": "Sanitarium Up&go 에너지 바닐라맛 250ml x 3개입 750ml",
+    "src": "ai"
+  },
+  "Arth Mint Chatpati Sauce 450g": {
+    "zh": "Arth 薄荷酸辣醬 450克",
+    "ja": "Arth ミントチャットパティソース 450g",
+    "ko": "Arth 민트 찻파티 소스 450g",
     "src": "ai"
   }
 }
