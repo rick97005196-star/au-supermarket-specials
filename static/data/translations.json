@@ -183118,10 +183118,11 @@
     "src": "ai"
   },
   "Happy Snack Company Fava Beans Lightly Salted 6x25g 150g": {
-    "zh": "Happy Snack Company 蠶豆酥輕鹽口味 25克 x 6入",
-    "ja": "Happy Snack Company そら豆スナック うす塩味 25g x 6個入",
-    "ko": "Happy Snack Company 잠두콩 스낵 저염맛 25g x 6개입",
-    "src": "ai"
+    "zh": "Happy Snack Company 蠶豆 輕鹽口味 150克（6入）",
+    "ja": "Happy Snack Company そら豆 ライトソルト味 150g (6個入)",
+    "ko": "Happy Snack Company 잠두콩 라이트 솔트맛 150g (6개입)",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Mixa Niacinamide Bright Body Lotion 400mL": {
     "zh": "Mixa 菸鹼醯胺亮白身體乳 400毫升",
@@ -183130,10 +183131,11 @@
     "src": "ai"
   },
   "Belvita Breakfast Biscuits Strawberry Yoghurt Sandwich 5 Pack 253g": {
-    "zh": "Belvita 草莓優格夾心早餐餅乾 5入",
-    "ja": "Belvita 朝食ビスケット ストロベリーヨーグルトサンド 5個入",
-    "ko": "Belvita 아침 식사용 비스킷 딸기 요거트 샌드 5개입",
-    "src": "ai"
+    "zh": "Belvita 草莓優格夾心早餐餅乾 253克（5入）",
+    "ja": "Belvita 朝食ビスケット ストロベリーヨーグルトサンド 253g (5個入)",
+    "ko": "Belvita 아침 식사 비스킷 딸기 요거트 샌드 253g (5개입)",
+    "src": "ai",
+    "qa_tries": 1
   },
   "The Food Company Chopped Garlic 375g": {
     "zh": "The Food Company 蒜末 375克",
@@ -183178,10 +183180,11 @@
     "src": "ai"
   },
   "Happy Snack Company Fava Beans Sea Salt & Vinegar 6x25g 150g": {
-    "zh": "Happy Snack Company 蠶豆酥鹽醋口味 25克 x 6入",
-    "ja": "Happy Snack Company そら豆スナック 塩ビネガー味 25g x 6個入",
-    "ko": "Happy Snack Company 잠두콩 스낵 소금식초맛 25g x 6개입",
-    "src": "ai"
+    "zh": "Happy Snack Company 蠶豆 鹽醋口味 150克（6入）",
+    "ja": "Happy Snack Company そら豆 シーソルト＆ビネガー味 150g (6個入)",
+    "ko": "Happy Snack Company 잠두콩 씨솔트&비네거맛 150g (6개입)",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Applaws Chicken & Turkey All Breed Dog Food 2.7kg": {
     "zh": "Applaws 雞肉火雞全犬種狗糧 2.7公斤",
@@ -183235,6 +183238,97 @@
     "zh": "Happy Snack Company 鷹嘴豆輕鹽口味 150克",
     "ja": "Happy Snack Company ひよこ豆スナック うす塩味 150g",
     "ko": "Happy Snack Company 병아리콩 스낵 저염맛 150g",
+    "src": "ai"
+  },
+  "Dine Classic Collection Adult Wet Cat Food Saucy Morsels with Tuna & Cheese 7x85g Trays 7 Pack": {
+    "zh": "Dine 成貓濕糧 鮪魚起司肉汁餐盒 85克 x 7入",
+    "ja": "Dine クラシックコレクション 成猫用ウエットキャットフード ツナ＆チーズ 85g×7個",
+    "ko": "Dine 클래식 컬렉션 성묘용 습식 캣푸드 참치 & 치즈 85g x 7개입",
+    "src": "reviewed",
+    "reviewed": true
+  },
+  "Cetaphil Daily Advance Ultra Hydrating Lotion 473mL": {
+    "zh": "Cetaphil 極緻潤澤乳液 473毫升",
+    "ja": "Cetaphil デイリー アドバンス ウルトラ ハイドレーティング ローション 473mL",
+    "ko": "Cetaphil 데일리 어드밴스 울트라 하이드레이팅 로션 473mL",
+    "src": "ai"
+  },
+  "Happy Snack Company Fava Beans Red Pepper & Chilli 6 Pack 150g": {
+    "zh": "Happy Snack Company 蠶豆 紅椒辣椒口味 150克（6入）",
+    "ja": "Happy Snack Company そら豆 レッドペッパー＆チリ味 150g (6個入)",
+    "ko": "Happy Snack Company 잠두콩 레드페퍼&칠리맛 150g (6개입)",
+    "src": "ai"
+  },
+  "Kan Tong Meal Base Cooking Sauce Chicken Satay 4 Pouch 180g": {
+    "zh": "Kan Tong 雞肉沙嗲料理醬 180克（4入）",
+    "ja": "Kan Tong 料理の素 チキンサテ 180g (4個入)",
+    "ko": "Kan Tong 요리 소스 치킨 사테 180g (4개입)",
+    "src": "ai"
+  },
+  "Tena Incontinence Night Pads Maxi Long 6 Pack": {
+    "zh": "Tena 夜用失禁護墊 Maxi Long 6入",
+    "ja": "Tena 尿漏れパッド 夜用 Maxi Long 6個入",
+    "ko": "Tena 요실금 야간용 패드 Maxi Long 6개입",
+    "src": "ai"
+  },
+  "Mazzetti Organic Apple Cider Vinegar 500mL": {
+    "zh": "Mazzetti 有機蘋果醋 500毫升",
+    "ja": "Mazzetti オーガニック アップルサイダービネガー 500ml",
+    "ko": "Mazzetti 유기농 사과 식초 500ml",
+    "src": "ai"
+  },
+  "Quilton 3-ply Softness Toilet Tissue 6 Pack 1080 Sheet": {
+    "zh": "Quilton 三層柔軟衛生紙 1080張（6入）",
+    "ja": "Quilton 3枚重ね ソフトトイレットペーパー 1080シート (6個入)",
+    "ko": "Quilton 3겹 소프트 화장지 1080매 (6개입)",
+    "src": "ai"
+  },
+  "Extra White Lemon Lime Sugar Free Chewing Gum 64g": {
+    "zh": "Extra White 檸檬萊姆無糖口香糖 64克",
+    "ja": "Extra White レモンライム シュガーレスガム 64g",
+    "ko": "Extra White 레몬 라임 무설탕 껌 64g",
+    "src": "ai"
+  },
+  "Coles Bakery Custard Tarts 260g": {
+    "zh": "Coles Bakery 卡士達塔 260克",
+    "ja": "Coles Bakery カスタードタルト 260g",
+    "ko": "Coles Bakery 커스터드 타르트 260g",
+    "src": "ai"
+  },
+  "Iddy Biddy Fruit Snacks Mixed Berry 160g": {
+    "zh": "Iddy Biddy 綜合莓果水果軟糖 160克",
+    "ja": "Iddy Biddy フルーツスナック ミックスベリー 160g",
+    "ko": "Iddy Biddy 과일 스낵 믹스 베리 160g",
+    "src": "ai"
+  },
+  "Leggo's Thick & Chunky Rustic Passata 700g": {
+    "zh": "Leggo's 濃郁鄉村風番茄糊 700克",
+    "ja": "Leggo's 濃厚ラスティック パッサータ 700g",
+    "ko": "Leggo's 진한 러스틱 토마토 퓨레 700g",
+    "src": "ai"
+  },
+  "Ranong Tea 3 In 1 Thai Tea Mix 200g 10 Pack": {
+    "zh": "Ranong Tea 三合一泰式奶茶 200克（10入）",
+    "ja": "Ranong Tea 3in1 タイティーミックス 200g (10個入)",
+    "ko": "Ranong Tea 3in1 타이 티 믹스 200g (10개입)",
+    "src": "ai"
+  },
+  "Buderim Ginger Bears 175g": {
+    "zh": "Buderim 薑汁軟糖 175克",
+    "ja": "Buderim ジンジャーベア グミ 175g",
+    "ko": "Buderim 진저 젤리 175g",
+    "src": "ai"
+  },
+  "Sunraysia Pomegranate Juice 1L": {
+    "zh": "Sunraysia 紅石榴汁 1公升",
+    "ja": "Sunraysia ザクロジュース 1L",
+    "ko": "Sunraysia 석류 주스 1L",
+    "src": "ai"
+  },
+  "Bic Multi Purpose Lighter 1 each": {
+    "zh": "Bic 多功能打火機",
+    "ja": "Bic 多目的ライター",
+    "ko": "Bic 다목적 라이터",
     "src": "ai"
   }
 }
