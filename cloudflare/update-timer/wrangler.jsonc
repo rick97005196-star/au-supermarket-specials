@@ -9,7 +9,7 @@
   "preview_urls": false,
   "triggers": {
     // UTC; the code decides which of these minutes really start an update (Brisbane plan)
-    "crons": ["1,17,47 * * * *"]
+    "crons": ["1,7,17,27,37,47,57 * * * *"]
   },
   // keep the Worker's log (what it did each time) in the Cloudflare dashboard
   "observability": { "enabled": true }

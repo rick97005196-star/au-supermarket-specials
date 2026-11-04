@@ -4,7 +4,7 @@ name: 超市平常價（每週）
 # Woolworths and Coles, page by page through their food categories, a few seconds between requests:
 #   scrapers/woolies_regular.py -> static/data/regular-woolworths.json, and static/data/regular.json for the price compare
 #   scrapers/coles_regular.py   -> static/data/regular-coles.json, Thursday to Sunday only (Monday to Wednesday the
-#                                  specials update reads the Coles website every half hour)
+#                                  specials update reads the Coles website often)
 # A run reads each store for a limited time and goes on from data/regular_progress.json and
 # data/coles_regular_progress.json; a store whose week is read does nothing. A list is written only when its whole
 # week is read. A run that saves a new list puts the website online itself right after the save (GitHub starts no
@@ -12,10 +12,11 @@ name: 超市平常價（每週）
 # queue on purpose (a waiting run there would be replaced).
 on:
   schedule:
-    # 03:37 and 09:37 UTC = 13:37 and 19:37 Brisbane (UTC+10), Wednesday and Thursday
-    - cron: '37 3,9 * * 3,4'
-    # 03:37 UTC = 13:37 Brisbane, Friday to Sunday: the rest of the Coles week
-    - cron: '37 3 * * 5,6,0'
+    # 03:37 and 09:37 UTC = 13:37 and 19:37 Brisbane (UTC+10), Thursday and Friday. Not on Wednesday: then the
+    # specials update reads both supermarkets every 10 minutes to fill next week's specials, and this would compete
+    - cron: '37 3,9 * * 4,5'
+    # 03:37 UTC = 13:37 Brisbane, Saturday and Sunday: the rest of the Coles week
+    - cron: '37 3 * * 6,0'
   workflow_dispatch:
 
 concurrency:

@@ -19,7 +19,7 @@ import urllib.request
 
 TIMER_MARK = 'Cloudflare'
 # longest normal gap between two timer starts, plus room for an update that was already queued
-MAX_GAP_BUSY_DAYS = datetime.timedelta(hours=3)     # Mon-Wed: every 30 minutes
+MAX_GAP_BUSY_DAYS = datetime.timedelta(hours=3)     # Mon-Tue: every hour; Wed: every 10-30 minutes
 MAX_GAP_QUIET_DAYS = datetime.timedelta(hours=25)   # Thu-Sun: twice a day
 BRISBANE = datetime.timedelta(hours=10)             # Queensland has no daylight saving
 
@@ -30,8 +30,10 @@ def is_timer_slot(b):
     wd, h, m = b.weekday(), b.hour, b.minute        # Monday = 0
     if wd == 2 and h == 0 and m == 1:
         return True
-    if wd <= 2:
-        return m in (17, 47)
+    if wd <= 1:
+        return m == 17
+    if wd == 2:
+        return m % 10 == 7 if h < 12 else m in (17, 47)
     return m == 17 and h in (10, 22)
 
 

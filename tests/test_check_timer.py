@@ -41,7 +41,10 @@ CASES = [
 COVERED_CASES = [
     # (description, runs, now, may the backup skip?)  2026-10-06 = Tuesday, 10-08 = Thursday
     ('Tuesday: the timer started the 11:17 update', [run(bne(2026, 10, 6, 11, 17))], bne(2026, 10, 6, 11, 25), True),
-    ('Tuesday: the 11:47 start is missing', [run(bne(2026, 10, 6, 11, 17))], bne(2026, 10, 6, 11, 51), False),
+    ('Tuesday: the 12:17 start is missing', [run(bne(2026, 10, 6, 11, 17))], bne(2026, 10, 6, 12, 21), False),
+    ('Tuesday 11:50: no start planned since 11:17', [run(bne(2026, 10, 6, 11, 17))], bne(2026, 10, 6, 11, 50), True),
+    ('Wednesday morning: the timer started the 03:27 update', [run(bne(2026, 10, 7, 3, 27))], bne(2026, 10, 7, 3, 30), True),
+    ('Wednesday morning: the 03:37 start is missing', [run(bne(2026, 10, 7, 3, 27))], bne(2026, 10, 7, 3, 40), False),
     ('a start one minute early still counts', [run(bne(2026, 10, 6, 11, 16))], bne(2026, 10, 6, 11, 25), True),
     ('Thursday: the timer started the 10:17 update', [run(bne(2026, 10, 8, 10, 17))], bne(2026, 10, 8, 10, 40), True),
     ('Thursday: the 10:17 one was cancelled (replaced in the queue)',
@@ -49,7 +52,7 @@ COVERED_CASES = [
     ('Thursday: the 10:17 one failed', [run(bne(2026, 10, 8, 10, 17), conclusion='failure')], bne(2026, 10, 8, 10, 40), False),
     ('Thursday: the 10:17 one is still waiting', [run(bne(2026, 10, 8, 10, 17), conclusion=None)], bne(2026, 10, 8, 10, 40), True),
     ('Wednesday 00:01 switch-over started', [run(bne(2026, 10, 7, 0, 1))], bne(2026, 10, 7, 0, 5), True),
-    ('Wednesday 00:05: only the 23:47 one ran', [run(bne(2026, 10, 6, 23, 47))], bne(2026, 10, 7, 0, 5), False),
+    ('Wednesday 00:05: only the 23:17 one ran', [run(bne(2026, 10, 6, 23, 17))], bne(2026, 10, 7, 0, 5), False),
     ('the timer never started anything', [], bne(2026, 10, 6, 11, 25), False),
     ('a manual run does not count', [run(bne(2026, 10, 6, 11, 20), title='手動更新')], bne(2026, 10, 6, 11, 25), False),
     ('Sunday 22:17 started', [run(bne(2026, 10, 11, 22, 17))], bne(2026, 10, 11, 22, 30), True),

@@ -24,22 +24,27 @@ test('the plan for a whole week (Mon 5 Oct - Sun 11 Oct 2026, Brisbane)', () => 
     times.push(b.toISOString().slice(0, 16));
   }
   assert.deepEqual(perDay, {
-    '2026-10-05': 48, '2026-10-06': 48, '2026-10-07': 49,   // Mon, Tue, Wed (+ 00:01 switch-over)
+    '2026-10-05': 24, '2026-10-06': 24,                     // Mon, Tue: every hour
+    '2026-10-07': 97,                                        // Wed: 00:01 + 72 in the morning + 24 after noon
     '2026-10-08': 2, '2026-10-09': 2, '2026-10-10': 2, '2026-10-11': 2,
   });
   assert.ok(times.includes('2026-10-07T00:01'), 'Wednesday 00:01 switch-over');
   assert.ok(times.includes('2026-10-05T00:17'), 'Monday starts at 00:17');
+  assert.ok(!times.includes('2026-10-05T00:47'), 'Monday is every hour, not every 30 minutes');
+  assert.ok(times.includes('2026-10-07T00:07') && times.includes('2026-10-07T03:27') && times.includes('2026-10-07T11:57'),
+    'Wednesday morning every 10 minutes');
+  assert.ok(!times.includes('2026-10-07T12:07') && times.includes('2026-10-07T12:17'), 'Wednesday afternoon every 30 minutes');
   assert.ok(times.includes('2026-10-07T23:47'), 'Wednesday ends at 23:47');
   assert.ok(!times.includes('2026-10-08T00:17'), 'Thursday is not every 30 minutes');
   assert.deepEqual(times.filter((x) => x.startsWith('2026-10-09')), ['2026-10-09T10:17', '2026-10-09T22:17']);
   assert.ok(!times.includes('2026-10-06T00:01') && !times.includes('2026-10-08T00:01'), '00:01 only on Wednesday');
 });
 
-test('every run time is a minute the Cloudflare timer actually fires (1, 17, 47)', () => {
+test('every run time is a minute the Cloudflare timer actually fires (1, 7, 17, 27, 37, 47, 57)', () => {
   const cfg = readFileSync(new URL('../wrangler.jsonc', import.meta.url), 'utf8');
-  assert.match(cfg, /"crons":\s*\["1,17,47 \* \* \* \*"\]/);
+  assert.match(cfg, /"crons":\s*\["1,7,17,27,37,47,57 \* \* \* \*"\]/);
   for (let t = bne(2026, 10, 5, 0, 0); t < bne(2026, 10, 12, 0, 0); t += MIN) {
-    if (shouldRun(t)) assert.ok([1, 17, 47].includes(new Date(t).getUTCMinutes()));
+    if (shouldRun(t)) assert.ok([1, 7, 17, 27, 37, 47, 57].includes(new Date(t).getUTCMinutes()));
   }
 });
 

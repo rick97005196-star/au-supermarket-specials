@@ -12,10 +12,13 @@
 //   * If an update is already waiting in the queue, it does not add another one.
 //
 // Plan (Brisbane time, the same as the GitHub schedule):
-//   Mon 00:00 - Wed 23:59   every 30 minutes, at :17 and :47
+//   Mon 00:00 - Tue 23:59   every hour, at :17
 //   Wed 00:01               the weekly switch-over to next week's specials
+//   Wed 00:07 - 11:57       every 10 minutes, so next week's specials are complete by the morning
+//   Wed 12:17 - 23:47       every 30 minutes, at :17 and :47
 //   Thu - Sun               twice a day, 10:17 and 22:17
-// The Cloudflare timer fires at minutes 1, 17 and 47 of every hour; shouldRun() picks the times above.
+// The Cloudflare timer fires at minutes 1, 7, 17, 27, 37, 47 and 57 of every hour; shouldRun() picks
+// the times above.
 
 export const REPO = 'rick97005196-star/au-supermarket-specials';
 export const WORKFLOW = 'auto_update.yml';
@@ -29,7 +32,9 @@ export function brisbaneTime(ms) {
 export function shouldRun(ms) {
   const { day, hour, minute } = brisbaneTime(ms);
   if (day === 3 && hour === 0 && minute === 1) return 'Wednesday 00:01 weekly switch-over';
-  if (day >= 1 && day <= 3) return (minute === 17 || minute === 47) ? 'Mon-Wed every 30 minutes' : '';
+  if (day === 1 || day === 2) return minute === 17 ? 'Mon-Tue every hour' : '';
+  if (day === 3 && hour < 12) return minute % 10 === 7 ? 'Wednesday morning every 10 minutes' : '';
+  if (day === 3) return (minute === 17 || minute === 47) ? 'Wednesday afternoon every 30 minutes' : '';
   return (minute === 17 && (hour === 10 || hour === 22)) ? 'Thu-Sun twice a day' : '';
 }
 

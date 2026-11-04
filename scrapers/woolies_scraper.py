@@ -519,7 +519,7 @@ def woolies_half_price_remembered():
         return list(mem['items'].values())
     switching = woolies_switching() and not mem['items']
     last_titles = old.get('items') or {}
-    # Wednesday before 6am: three pages first show whether the website has switched (every 30 min until it has)
+    # Wednesday before 6am: three pages first show whether the website has switched (every 10 min until it has)
     if switching and still_last_week(scrape_woolies_online_half_price(max_pages=3), last_titles):
         print("Woolies half-price list: Wednesday before 6am, the website still lists last week - not read this run")
         return []

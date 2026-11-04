@@ -8,8 +8,8 @@ the website shows), and every product sold at its plain shelf price is kept. Out
 
     python scrapers/coles_regular.py
 
-Reads only Thursday to Sunday (Brisbane): Monday to Wednesday the specials update reads the Coles website every
-half hour, and the two are kept apart. One run reads for at most TIME_BUDGET and keeps its place in
+Reads only Thursday to Sunday (Brisbane): Monday to Wednesday the specials update reads the Coles website
+often, and the two are kept apart. One run reads for at most TIME_BUDGET and keeps its place in
 data/coles_regular_progress.json, so the next run goes on where it stopped. The list is written only when every
 category is read; until then last week's stays (the website drops lists older than 15 days). When Coles stops
 answering or shows its bot check, what was read is kept and the run fails (exit 1). Delete the progress file to

@@ -25,7 +25,7 @@
 - **資料庫**：SQLite3 (`data/specials.db`)。
 - **爬蟲工具**：`requests` + `beautifulsoup4`（高效純 HTTP 爬蟲）+ `curl_cffi`。
 - **AI 翻譯引擎**：Google Gemini API (`gemini-2.5-flash`) + 本地澳洲超市專業名詞字典修復庫。
-- **CI/CD 自動化**：GitHub Actions 爬取與部署 (`.github/workflows/auto_update.yml`)。準時啟動靠 Cloudflare 定時器 (`cloudflare/update-timer`，週一至週三每 30 分鐘、週三 00:01 換週、週四至週日每天兩次)，GitHub 自己的排程常被略過，只當備援：備援排程開始時，若定時器已經啟動過最近一個時段的更新，就自動跳過、不重複更新；定時器停擺時會寄信通知 (`scripts/check_timer.py`)。
+- **CI/CD 自動化**：GitHub Actions 爬取與部署 (`.github/workflows/auto_update.yml`)。準時啟動靠 Cloudflare 定時器 (`cloudflare/update-timer`，週一、週二每小時、週三 00:01 換週、週三 00:00–12:00 每 10 分鐘、週三下午每 30 分鐘、週四至週日每天兩次)，GitHub 自己的排程常被略過，只當備援：備援排程開始時，若定時器已經啟動過最近一個時段的更新，就自動跳過、不重複更新；定時器停擺時會寄信通知 (`scripts/check_timer.py`)。
 - **託管平台**：Cloudflare Pages (Direct Upload / Wrangler)。
 
 ---
