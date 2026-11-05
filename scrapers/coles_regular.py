@@ -12,8 +12,9 @@ Reads only Thursday to Sunday (Brisbane): Monday to Wednesday the specials updat
 often, and the two are kept apart. One run reads for at most TIME_BUDGET and keeps its place in
 data/coles_regular_progress.json, so the next run goes on where it stopped. The list is written only when every
 category is read; until then last week's stays (the website drops lists older than 15 days). When Coles stops
-answering or shows its bot check, what was read is kept and the run fails (exit 1). Delete the progress file to
-read the whole week again. Requests go through scrapers/polite.py: several seconds apart, never around a refusal.
+answering or shows its bot check, what was read is kept and the run only warns (exit 0): the bot check is
+common and a failure email each time is noise; the daily site report shows how far the week got. Delete the
+progress file to read the whole week again. Requests go through scrapers/polite.py: several seconds apart, never around a refusal.
 """
 import math
 import os
@@ -54,7 +55,7 @@ def read_page(token, n):
     """Page n of one category as (rows, more pages?), or None when Coles stops answering."""
     data = _get(BROWSE.format(token, n))
     if data is None:
-        print(f"::error::Coles stopped answering at {token} page {n}")
+        print(f"::warning::Coles stopped answering at {token} page {n} (bot check?) - the next run goes on from here")
         return None
     results = data.get('results') or []
     rows = []
@@ -77,15 +78,15 @@ def main():
         print("This week's Coles regular prices are already read - nothing to do")
         return 0
 
-    pages, refused = read_pages(prog, FOOD, read_page, TIME_BUDGET)
+    pages, _ = read_pages(prog, FOOD, read_page, TIME_BUDGET)
     if not pages:
-        print("::error::Coles answered no page - nothing changed")
-        return 1
+        print("::warning::Coles answered no page - nothing changed")
+        return 0
     if not prog['done']:
         save_json(PROGRESS, prog)
         print(f"Read {pages} pages, {len(prog['rows'])} regular prices so far; next run starts at "
               f"{prog['dep']} page {prog['page']} - requests {summary()}")
-        return 1 if refused else 0
+        return 0
 
     rows = sorted(prog['rows'], key=lambda row: row[0])
     if len(rows) < MIN_ROWS:

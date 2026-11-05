@@ -101,7 +101,7 @@ check(cr.main() == 0 and calls == [] and files() == [None, None], 'Monday to Wed
 
 on(datetime.date(2026, 10, 22))                                         # a Thursday
 answers(page(60, base, special), None)                                  # page 1 of 2, then a refusal
-check(cr.main() == 1, 'a refused run fails')
+check(cr.main() == 0, 'a refused run only warns')
 prog = saved(cr.PROGRESS)
 check(calls == [browse('bakery', 1), browse('bakery', 2)], f'pages asked: {calls}')
 check(prog['dep'] == 'bakery' and prog['page'] == 2 and [r[0] for r in prog['rows']] == ['123']
@@ -110,7 +110,7 @@ check(not os.path.exists(cr.LIST), "a part-read week keeps last week's list")
 
 before = files()
 answers(None)
-check(cr.main() == 1 and files() == before, 'read nothing, changed nothing')
+check(cr.main() == 0 and files() == before, 'read nothing, changed nothing')
 
 answers(page(60, bread), page(1, base))                                 # page 2, then pantry (123 again)
 check(cr.main() == 0, 'the run that finishes the week succeeds')

@@ -9,7 +9,9 @@ price is kept. Output:
     static/data/regular.json              {"updated_at", "items": [...]}
         the few the price compare needs (which ones: scripts/regular_match.cjs, with the website's own rules)
 
-    python scrapers/woolies_regular.py
+    python scrapers/woolies_regular.py           read on, as below
+    python scrapers/woolies_regular.py --match   only regular.json again: the saved list against this week's
+                                                 specials (every specials update runs it; no request)
 
 One run reads for at most TIME_BUDGET and keeps its place in data/regular_progress.json, so the next run goes on
 where it stopped. The files above are written only when every department is read; until then last week's stay
@@ -162,6 +164,24 @@ def save_json(path, data):
         json.dump(data, f, ensure_ascii=False, separators=(',', ':'))
 
 
+def keep_for_compare(rows):
+    items = [dict(zip(ROW, row), store='Woolworths', was_price=0.0, save_amount=0.0, discount_desc=REGULAR_DESC)
+             for row in rows]
+    return sorted(match('keep', items), key=lambda x: x['id'])
+
+
+def rematch():
+    lst = load_json(LIST)
+    kept = keep_for_compare(lst.get('items') or [])
+    if not kept:
+        print("::warning::No saved Woolworths regular price matches this week's specials - regular.json is kept")
+        return 0
+    # the list's own date: the website drops regular prices older than 15 days by it
+    save_json(OUT, {'updated_at': lst['updated_at'], 'items': kept})
+    print(f"{len(kept)} of the {len(lst['items'])} saved Woolworths regular prices are kept for the price compare")
+    return 0
+
+
 def main():
     today = _brisbane_today()
     prog = load_json(PROGRESS)
@@ -204,9 +224,7 @@ def main():
         print(f"::error::Only {len(rows)} regular prices in the whole week (a full week has about 15,000) -"
               " Woolworths may have changed its pages; last week's lists are kept")
         return 1
-    items = [dict(zip(ROW, row), store='Woolworths', was_price=0.0, save_amount=0.0, discount_desc=REGULAR_DESC)
-             for row in rows]
-    kept = sorted(match('keep', items), key=lambda x: x['id'])
+    kept = keep_for_compare(rows)
     updated = today.isoformat()
     save_json(LIST, {'updated_at': updated, 'store': 'Woolworths', 'items': rows})
     if kept:
@@ -222,4 +240,4 @@ def main():
 
 
 if __name__ == '__main__':
-    sys.exit(main())
+    sys.exit(rematch() if sys.argv[1:] == ['--match'] else main())

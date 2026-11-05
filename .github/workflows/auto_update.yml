@@ -155,6 +155,11 @@ jobs:
         if: steps.check.outputs.changed == 'true' && steps.check.outputs.block != 'true'
         run: git fetch origin main && git checkout FETCH_HEAD -- static
 
+      - name: Match the saved regular prices to these specials
+        # deployed, not committed: a commit here could put back an older list over the regular-price run's own save
+        if: steps.check.outputs.changed == 'true' && steps.check.outputs.block != 'true'
+        run: python scrapers/woolies_regular.py --match || echo "::warning::Regular prices not matched again - the saved regular.json goes up"
+
       - name: Build CSS (pre-built Tailwind, fast on phones)
         if: steps.check.outputs.changed == 'true' && steps.check.outputs.block != 'true'
         run: npx -y tailwindcss@3 -c tailwind.config.js -i tailwind.input.css -o static/tw.css --minify || echo "CSS build skipped, using committed static/tw.css"

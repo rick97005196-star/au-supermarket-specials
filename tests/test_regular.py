@@ -66,7 +66,7 @@ week = [
     item('c1', 'Coles', 'Arnotts Shapes Pizza 190g', 3.0),             # to look up
     item('a1', 'ALDI', 'ARNOTTS Shapes Pizza 190g', 2.9),              # to look up
     item('c2', 'Coles', 'Arnotts Tim Tam Original 200g', 3.6),         # Woolworths special already there
-    item('c3', 'Coles', 'Pringles Original 134g', 3.0),                # no Woolworths special of this brand
+    item('c3', 'Coles', 'Pringles Original 134g', 3.0),                # no Woolworths special of this brand: looked up too
     item('a2', 'ALDI', 'ARNOTTS FARM Cookies 200g', 2.0),              # an ALDI brand, not Arnott's
     item('c4', 'Coles', 'Arnotts Jatz Original 225g', 2.5, period='next'),   # next week
 ]
@@ -75,14 +75,15 @@ wr.SPECIALS = os.path.join(tmp, 'specials.json')
 with open(wr.SPECIALS, 'w', encoding='utf-8') as f:
     json.dump(week, f)
 targets = wr.match('targets')
-check(sorted(t['id'] for t in targets) == ['a1', 'c1'], f'looked up: {targets}')
+check(sorted(t['id'] for t in targets) == ['a1', 'c1', 'c3'], f'looked up: {targets}')
 
 cands = [wr.to_item(base),                                                   # same product: kept
          wr.to_item(dict(base, Stockcode=124, PackageSize='380g', InstorePrice=6.0)),   # other size
          wr.to_item(dict(base, Stockcode=125, Name="Arnott's Tim Tam Original", PackageSize='200g', InstorePrice=6.0)),
-         wr.to_item(dict(base, Stockcode=126, Name="Arnott's Shapes Pizza Party Pack", InstorePrice=3.6))]
+         wr.to_item(dict(base, Stockcode=126, Name="Arnott's Shapes Pizza Party Pack", InstorePrice=3.6)),
+         wr.to_item(dict(base, Stockcode=127, Name='Pringles Original', PackageSize='134g', InstorePrice=4.0))]
 kept = wr.match('keep', cands)
-check([k['id'] for k in kept] == ['w123'], f'kept: {[k["id"] for k in kept]}')
+check([k['id'] for k in kept] == ['w123', 'w127'], f'kept: {[k["id"] for k in kept]}')
 
 # --- one week read in parts: each run goes on where the last one stopped; the lists are written only when every
 # department is read, and a run that read nothing changes no file ---
@@ -165,6 +166,16 @@ check(all(len(r) == len(wr.ROW) and isinstance(r[wr.ROW.index('category')], str)
 check([it['id'] for it in out['items']] == ['w123'] and out['updated_at'] == today,
       f'the price compare keeps only matched prices, under today: {out}')
 check(saved(wr.PROGRESS) == {'started': today, 'done': True}, 'the finished week is remembered without its rows')
+
+# --- every specials update matches the saved list again (no request to Woolworths) ---
+wr.save_json(wr.OUT, {'updated_at': '2026-10-14', 'items': []})
+check(wr.rematch() == 0 and saved(wr.OUT) == out, f'matched again from the saved list: {saved(wr.OUT)}')
+before = files()
+with open(wr.SPECIALS, 'w', encoding='utf-8') as f:
+    json.dump([x for x in week if x['id'] not in ('c1', 'a1')], f)
+check(wr.rematch() == 0 and files() == before, 'nothing matches: the price compare keeps what it had')
+with open(wr.SPECIALS, 'w', encoding='utf-8') as f:
+    json.dump(week, f)
 
 wr.polite = answers()
 check(wr.main() == 0, 'week already read: nothing to do, no request')
