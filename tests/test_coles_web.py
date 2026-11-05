@@ -109,6 +109,13 @@ check((read, added, start, mem['cursor'], mem['pages_done']) == (1, 1, 2, 1, 0) 
       f'every page read: list complete, next read starts at page 1: {mem}')
 check(sorted(mem['items']) == ['10', '1497888'], f'only the price cut and the multi-buy are kept: {sorted(mem["items"])}')
 
+# --- sponsored tiles (adId) are skipped: they would shift every best-seller position ---
+answers[:] = [{'noOfResults': 2, 'pageSize': 48, 'results': [dict(product(30, 3, 6), adId='ad1'), product(31, 3, 6), product(32, 2, 4)]}]
+ads = {'cursor': 1, 'pages': 0, 'items': {}}
+coles_web._read_pages(ads, '{page}', product_to_item, 60)
+check({k: v['rank'] for k, v in ads['items'].items()} == {'31': 1, '32': 2},
+      f'the advert is skipped and the first real product is number 1: {ads["items"]}')
+
 # --- the database keeps a "SPECIAL" (like an everyday price) but still drops a product with no deal at all ---
 work = tempfile.mkdtemp()
 database.DB_DIR = os.path.join(work, 'data')             # where export_static_data.py reads it from

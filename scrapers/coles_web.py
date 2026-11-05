@@ -29,8 +29,10 @@ from scrapers.regions import SPECIAL_DESC
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 MEMORY_FILE = os.path.join(ROOT, 'data', 'coles_web.json')
-LIST_URL = 'https://www.coles.com.au/on-special?filter_Special=halfprice&page={page}'
-MORE_URL = 'https://www.coles.com.au/on-special?page={page}'          # All specials (half price included)
+# sortBy=salesDescending = the website's "Best seller" order (Coles' own sales): each special's 'rank' is its
+# place in that order, and interest.apply_best_sellers() moves the best sellers up the 熱門 order
+LIST_URL = 'https://www.coles.com.au/on-special?filter_Special=halfprice&sortBy=salesDescending&page={page}'
+MORE_URL = 'https://www.coles.com.au/on-special?sortBy=salesDescending&page={page}'   # All specials (half price included)
 IMG_BASE = 'https://productimages.coles.com.au/productimages'
 NEXT_DATA = re.compile(r'<script id="__NEXT_DATA__"[^>]*>(.*?)</script>', re.S)
 
@@ -193,10 +195,11 @@ def _read_pages(mem, url, to_item, time_budget):
             break                                       # refused / bot check: continue next update
         read += 1
         mem['pages'] = -(-int(sr.get('noOfResults') or 0) // int(sr.get('pageSize') or 48)) or mem.get('pages') or 1
-        for i, p in enumerate(sr.get('results') or []):
+        # sponsored tiles (adId) sit among the results: they are not in sales order and would shift every position
+        for i, p in enumerate([p for p in sr.get('results') or [] if not p.get('adId')]):
             it = to_item(p)
             if it:
-                it['rank'] = (page - 1) * int(sr.get('pageSize') or 48) + i + 1   # position in Coles' own list
+                it['rank'] = (page - 1) * int(sr.get('pageSize') or 48) + i + 1   # position in Coles' best-seller list
                 if it['id'] not in mem['items']:
                     added += 1
                 mem['items'][it['id']] = it

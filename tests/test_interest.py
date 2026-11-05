@@ -88,6 +88,19 @@ check(its[2].get('rank') == 7, f'names match after HTML entities and double spac
 check(its[3].get('rank') == 90, f'the all-specials list (more) counts too: {its[3]}')
 check('rank' not in its[4], f'not in any list (or no file): no rank: {its[4]}')
 
+# --- 熱門: Coles' best-seller order moves products up; the same brand at Woolworths moves up too ---
+from interest import apply_best_sellers, BEST_SELLER_TOP  # noqa: E402
+ranks = {('Coles', 'tim tam 200g'): 12, ('Coles', 'coke 1.25l'): 90, ('Woolworths', 'milk & honey 1l'): 1,
+         ('Coles', 'slow seller 1kg'): BEST_SELLER_TOP + 1}
+its = [item('Tim Tam 200g', 0), item('Tim Tam Double Coat 200g', 0), item('Milk & Honey 1L', 0),
+       item('Coke 1.25L', -999), item('Slow Seller 1kg', 0)]
+apply_best_sellers(its, ranks)
+s = [it['popularity_score'] for it in its]
+check(s[0] > s[1] > 0, f'a Coles best seller moves up most, another product of its brand (any store) a little: {s}')
+check(s[2] == 0, f'a Woolworths list position is not a sales rank: {s}')
+check(s[3] == -999, f'a product the rules exclude stays excluded: {s}')
+check(s[4] == 0, f'below the top {BEST_SELLER_TOP}: no points: {s}')
+
 # --- JavaScript side (functions/_lib/interest.js): same keys, weeks and scores ---
 js = r"""
 const src = require('fs').readFileSync(process.argv[1], 'utf8');
@@ -121,7 +134,7 @@ try:
 except Exception as e:
     bad.append(f'JS helpers could not be checked: {e} {res.stderr[:300]}')
 
-total = 24
+total = 28
 for b in bad:
     print('FAIL', b)
 print(f'{total - len(bad)}/{total} visitor-interest checks passed')

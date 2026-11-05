@@ -141,3 +141,20 @@ def apply_retailer_rank(items, ranks=None):
             it['rank'] = r
             n += 1
     return n
+
+
+# ---- 熱門: Coles' "Best seller" order (its own sales) moves products up like visitor interest does ----
+BEST_SELLER_TOP = 300
+
+
+def apply_best_sellers(items, ranks=None):
+    """The top BEST_SELLER_TOP of each Coles list (scrapers/coles_web.py reads them in best-seller order) move up
+    the same way as products visitors look at a lot; the same product or brand at Woolworths / ALDI moves up too.
+    Returns how many items moved."""
+    if ranks is None:
+        ranks = load_retailer_ranks()
+    sales = {}
+    for (store, k), r in ranks.items():
+        if store == 'Coles' and r <= BEST_SELLER_TOP:
+            sales[k] = max(sales.get(k, 0), BEST_SELLER_TOP + 1 - r)
+    return apply_interest(items, sales, CONFIDENT_TOTAL)
