@@ -1702,35 +1702,15 @@ function popularWithAldi(items) {
     return [...top, ...clusterItemsBySeries(aldi.filter(it => !isRegularPrice(it))), ...clusterItemsBySeries(aldi.filter(isRegularPrice))];
 }
 
-// Opening view: best sellers ("熱門暢銷", max 2 per brand) first, taking turns between departments
-// so the first screen shows snacks, drinks, meat, pantry… instead of one category; then the rest.
+// Opening view: best sellers ("熱門暢銷", max 2 per brand) first, most popular at the top
+// (createDiverseBestSellers already sorts them by popularity score); then the rest.
 function popularFirst(items) {
     const top = createDiverseBestSellers(items) || [];
     if (!top.length) return [0, 1, 2].flatMap(tier => clusterItemsBySeries(items.filter(it => priceTier(it) === tier)));
-    const queues = new Map();
-    top.forEach(it => {
-        const c = it.category || 'other';
-        if (!queues.has(c)) queues.set(c, []);
-        queues.get(c).push(it);
-    });
-    // the departments people browse most come first on the opening screen
-    const APPEAL = ['snacks', 'drinks', 'meat', 'dairy_eggs', 'pantry', 'frozen', 'bakery', 'seafood',
-                    'produce', 'household', 'health_vitamins', 'liquor', 'pet'];
-    const order = [...queues.keys()].sort((a, b) =>
-        (APPEAL.indexOf(a) < 0 ? 99 : APPEAL.indexOf(a)) - (APPEAL.indexOf(b) < 0 ? 99 : APPEAL.indexOf(b)));
-    queues.forEach(q => q.sort((a, b) => calculatePopularityScore(b) - calculatePopularityScore(a) ||
-        (isItemHalfPrice(b) - isItemHalfPrice(a)) || ((b.save_amount || 0) - (a.save_amount || 0))));
-    const mixed = [];
-    while (mixed.length < top.length) {
-        for (const c of order) {
-            const q = queues.get(c);
-            if (q.length) mixed.push(q.shift());
-        }
-    }
     const topSet = new Set(top);
     const rest = items.filter(it => !topSet.has(it));
     // everyday low prices are not specials: after all the specials
-    return [...mixed, ...[0, 1, 2].flatMap(tier => clusterItemsBySeries(rest.filter(it => priceTier(it) === tier)))];
+    return [...top, ...[0, 1, 2].flatMap(tier => clusterItemsBySeries(rest.filter(it => priceTier(it) === tier)))];
 }
 
 // Sort items by comparator while clustering identical product lines together
