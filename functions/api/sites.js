@@ -1,5 +1,5 @@
 /**
- * Cloudflare Pages Function: /api/sites  - browsing statistics of all 6 sites, for the owner page
+ * Cloudflare Pages Function: /api/sites  - browsing statistics of all 7 sites, for the owner page
  *
  *   GET /api/sites   owner reads the statistics   (Authorization: Bearer <password>)
  *
@@ -15,7 +15,8 @@ const SITES = [
     { code: 'qld', name: '集簽職缺', host: 'workingholiday-qld.pages.dev' },
     { code: 'deals', name: '活動優惠', host: 'au-deals-map.pages.dev' },
     { code: 'road', name: '交通法規', host: 'au-road-guide.pages.dev' },
-    { code: 'birthday', name: '生日優惠', host: 'au-birthday-deals.pages.dev' }
+    { code: 'birthday', name: '生日優惠', host: 'au-birthday-deals.pages.dev' },
+    { code: 'stores', name: '商店對照', host: 'au-store-guide.pages.dev' }
 ];
 const ALL = { code: 'all', name: '全部網站', host: '' };
 const API = 'https://api.cloudflare.com/client/v4';
