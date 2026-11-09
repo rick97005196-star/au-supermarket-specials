@@ -186377,10 +186377,11 @@
     "src": "ai"
   },
   "Nippy's Iced Chocolate Flavoured Milk 4x350ml 1.4L": {
-    "zh": "Nippy's 巧克力調味乳 350毫升 x 4入",
-    "ja": "Nippy's チョコレート風味ミルク 350ml x 4本入",
-    "ko": "Nippy's 초콜릿 맛 우유 350ml x 4개입",
-    "src": "ai"
+    "zh": "Nippy's 冰巧克力調味乳 350毫升 x 4入 (1.4公升)",
+    "ja": "Nippy's アイスチョコレートフレーバーミルク 350ml x 4個入 (1.4L)",
+    "ko": "Nippy's 아이스 초콜릿향 우유 350ml x 4개입 (1.4L)",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Tandaco Southern Fried Chicken Coating Mix 75g": {
     "zh": "Tandaco 南方風味炸雞裹粉 75克",
@@ -186389,10 +186390,11 @@
     "src": "ai"
   },
   "Squid Fish Sauce 300mL": {
-    "zh": "Squid 魚露 300毫升",
-    "ja": "Squid ナンプラー 300ml",
-    "ko": "Squid 피쉬소스 300ml",
-    "src": "ai"
+    "zh": "Squid 魷魚魚露 300毫升",
+    "ja": "Squid イカ魚醤 300ml",
+    "ko": "Squid 오징어 액젓 300ml",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Leggo's Sugo Passata Basil & Parsley 700g": {
     "zh": "Leggo's 羅勒巴西里義大利麵醬 700克",
@@ -186434,6 +186436,12 @@
     "zh": "Sanitarium Weet-bix 多穀物早餐麥片 575克",
     "ja": "Sanitarium Weet-bix マルチグレイン朝食シリアル 575g",
     "ko": "Sanitarium Weet-bix 멀티그레인 아침 시리얼 575g",
+    "src": "ai"
+  },
+  "Boss Iced Coffee Latte 4x237ml 948mL": {
+    "zh": "Boss 冰拿鐵咖啡 237毫升 x 4入 (948毫升)",
+    "ja": "Boss アイスカフェラテ 237ml x 4個入 (948ml)",
+    "ko": "Boss 아이스 카페라떼 237ml x 4개입 (948ml)",
     "src": "ai"
   }
 }
