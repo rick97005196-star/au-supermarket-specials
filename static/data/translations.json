@@ -184648,10 +184648,11 @@
     "src": "ai"
   },
   "Peters Lifesavers Icy Poles 530ml Pk 8": {
-    "zh": "Peters Lifesavers 冰棒 8入",
-    "ja": "Peters Lifesavers アイスキャンディー 8個入",
-    "ko": "Peters Lifesavers 아이스바 8개입",
-    "src": "ai"
+    "zh": "Peters Lifesavers 冰棒 530毫升 8入",
+    "ja": "Peters Lifesavers アイスキャンディー 530ml 8個入",
+    "ko": "Peters Lifesavers 아이스바 530ml 8개입",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Barossa Fine Foods No Added Nitrite Leg Ham – Sliced or Shaved – From the Deli": {
     "zh": "Barossa Fine Foods 無添加亞硝酸鹽腿肉火腿 – 切片或刨片 – 熟食區",
@@ -185380,10 +185381,11 @@
     "src": "ai"
   },
   "YoPRO 15g Protein Yoghurt Pot 160g": {
-    "zh": "YoPRO 高蛋白優格 160克",
-    "ja": "YoPRO プロテインヨーグルト 160g",
-    "ko": "YoPRO 단백질 요거트 160g",
-    "src": "ai"
+    "zh": "YoPRO 15克蛋白質優格 160克",
+    "ja": "YoPRO 15gタンパク質 ヨーグルト 160g",
+    "ko": "YoPRO 15g 단백질 요거트 160g",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Berocca Energy Effervescent Tablets 45 Pack": {
     "zh": "Berocca 發泡錠 45入",
@@ -185398,10 +185400,11 @@
     "src": "ai"
   },
   "Anzac Biscuits, Choc Chip or Funfetti Cookies Pk 24# – Excludes Mixed Cookie & Biscuit Pk 24": {
-    "zh": "Anzac 餅乾、巧克力豆或彩糖餅乾 24入（不含綜合餅乾 24入）",
-    "ja": "Anzac ビスケット、チョコチップまたはファンフェッティクッキー 24個入（ミックスクッキー 24個入を除く）",
-    "ko": "Anzac 비스킷, 초코칩 또는 펀페티 쿠키 24개입（혼합 쿠키 24개입 제외）",
-    "src": "ai"
+    "zh": "Anzac 餅乾、巧克力豆 或 糖粒餅乾 24入（不含綜合餅乾）",
+    "ja": "Anzac ビスケット、チョコチップ または ファンフェッティ クッキー 24個入（ミックスクッキーを除く）",
+    "ko": "Anzac 비스킷, 초코칩 또는 펀페티 쿠키 24개입（혼합 쿠키 제외）",
+    "src": "ai",
+    "qa_tries": 1
   },
   "QV Baby Moisturising Cream Pump 500g": {
     "zh": "QV Baby 嬰兒保濕乳霜 500克",
@@ -185487,14 +185490,18 @@
     "ko": "Kardelen 터키 빵 롤 오리지널 또는 씨앗 및 마늘 Pk 4"
   },
   "Hellmann's Squeezy Real Mayonnaise 400-432g": {
-    "zh": "Hellmann's Squeezy Real Mayonnaise 400-432g",
-    "ja": "ヘルマンズ スクイージー リアルマヨネーズ 400-432g",
-    "ko": "헬만스 스퀴지 리얼 마요네즈 400-432g"
+    "zh": "Hellmann's 擠壓式美乃滋 400-432克",
+    "ja": "Hellmann's スクイーズボトル リアルマヨネーズ 400-432g",
+    "ko": "Hellmann's 스퀴즈 리얼 마요네즈 400-432g",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Lindt Lindor Cornet 268-272g or Lindt Lindor Gift Box 232-235g": {
-    "zh": "Lindt Lindor Cornet 268-272g or Lindt Lindor Gift Box 232-235g",
-    "ja": "リンツ リンドール コルネット 268-272g または リンツ リンドール ギフトボックス 232-235g",
-    "ko": "Lindt Lindor 코넷 268-272g 또는 Lindt Lindor 선물 상자 232-235g"
+    "zh": "Lindt Lindor 巧克力球 268-272克 或 禮盒 232-235克",
+    "ja": "Lindt Lindor コルネット 268-272g または ギフトボックス 232-235g",
+    "ko": "Lindt Lindor 코넷 268-272g 또는 선물 상자 232-235g",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Musashi High Protein Bar 90g": {
     "zh": "Musashi 高蛋白棒 90 克",
@@ -185502,34 +185509,44 @@
     "ko": "무사시 하이프로틴바 90g"
   },
   "Mad About Corn Giant Inca Corn 60g": {
-    "zh": "Mad About Corn Giant Inca Corn 60g",
-    "ja": "マッドアバウトコーン ジャイアントインカコーン 60g",
-    "ko": "매드어바웃콘 자이언트 잉카 옥수수 60g"
+    "zh": "Mad About Corn 印加巨型玉米豆 60克",
+    "ja": "Mad About Corn ジャイアント インカコーン 60g",
+    "ko": "Mad About Corn 자이언트 잉카 콘 60g",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Coles Made Easy Slow Cooked Lamb Shoulder in Garlic & Herb Sauce 550g": {
-    "zh": "Coles Made Easy Slow Cooked Lamb Shoulder in Garlic & Herb Sauce 550g",
-    "ja": "コールズ メイド・イージー じっくり煮込んだラム肩肉のガーリック＆ハーブソース 550g",
-    "ko": "콜스 메이드 이지 마늘 & 허브 소스 양고기 어깨살 550g"
+    "zh": "Coles Made Easy 蒜香香草慢燉羊肩肉 550克",
+    "ja": "Coles Made Easy ガーリック＆ハーブソース じっくり煮込んだラム肩肉 550g",
+    "ko": "Coles Made Easy 갈릭 & 허브 소스 슬로우 쿡 양 어깨살 550g",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Jack Daniels Double Jack & Cola Cans 4x375mL": {
-    "zh": "Jack Daniels Double Jack & Cola Cans 4x375mL",
-    "ja": "ジャックダニエル ダブルジャック＆コーラ 缶 4x375mL",
-    "ko": "잭 다니엘스 더블 잭 & 콜라 캔 4x375mL"
+    "zh": "Jack Daniels Double Jack 可樂調酒 375毫升 x 4入",
+    "ja": "Jack Daniels Double Jack & コーラ 缶 375ml x 4個入",
+    "ko": "Jack Daniels Double Jack & 콜라 캔 375ml x 4개입",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Arfum Oud Laundry Liquid 2 Litre": {
-    "zh": "Arfum 沉香木洗衣液 2 公升",
-    "ja": "アルファム ウード ランドリーリキッド 2リットル",
-    "ko": "Arfum Oud 세탁액 2 리터"
+    "zh": "Arfum 烏木香洗衣精 2公升",
+    "ja": "Arfum ウードの香り 洗濯用洗剤 2L",
+    "ko": "Arfum 우드 향 세탁 세제 2L",
+    "src": "ai"
   },
   "Just Caught Seafood Snacking Varieties 260-400g": {
-    "zh": "剛捕獲的海鮮零食品種260-400g",
-    "ja": "獲れたて海鮮おつまみ各種 260～400g",
-    "ko": "방금 잡은 해산물 스낵 종류 260-400g"
+    "zh": "Just Caught 海鮮零食 多款口味 260-400克",
+    "ja": "Just Caught シーフードスナック 各種 260-400g",
+    "ko": "Just Caught 해산물 스낵 각종 260-400g",
+    "src": "ai"
   },
   "Unreal High Protein Custard Pouch 175g": {
-    "zh": "Unreal High Protein Custard Pouch 175g",
-    "ja": "アンリアル ハイプロテイン カスタード パウチ 175g",
-    "ko": "언리얼 고단백 커스터드 파우치 175g"
+    "zh": "Unreal 高蛋白卡士達醬 175克",
+    "ja": "Unreal 高タンパク カスタードパウチ 175g",
+    "ko": "Unreal 고단백 커스터드 파우치 175g",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Lindt Advent Calendar 109g": {
     "zh": "Lindt 降臨節日曆 109g",
@@ -185537,9 +185554,10 @@
     "ko": "린트 어드벤트 캘린더 109g"
   },
   "Cobram Extra Virgin Olive Oil 375mL": {
-    "zh": "Cobram 特級初榨橄欖油 375mL",
-    "ja": "コブラム エクストラバージン オリーブオイル 375mL",
-    "ko": "코브람 엑스트라 버진 올리브 오일 375mL"
+    "zh": "Cobram 特級初榨橄欖油 375毫升",
+    "ja": "Cobram エキストラバージン オリーブオイル 375ml",
+    "ko": "Cobram 엑스트라 버진 올리브 오일 375ml",
+    "src": "ai"
   },
   "Lyca $250 Starter Pack": {
     "zh": "Lyca $250 美元入門包",
@@ -185547,9 +185565,11 @@
     "ko": "Lyca $250 스타터 팩"
   },
   "Monetta Wafers 350g": {
-    "zh": "Monetta Wafers 350g",
-    "ja": "モネッタウエハース 350g",
-    "ko": "모네타 웨이퍼 350g"
+    "zh": "Monetta 威化餅乾 350克",
+    "ja": "Monetta ウエハース 350g",
+    "ko": "Monetta 웨하스 350g",
+    "src": "ai",
+    "qa_tries": 1
   },
   "NEW Dairy Farmers 16G Protein Snack Pot 160g": {
     "zh": "NEW 酪農 16G 蛋白質零食罐裝 160 克",
@@ -185557,9 +185577,10 @@
     "ko": "새 상품 Dairy Farmers 16G 단백질 스낵 포트 160g"
   },
   "Christmas Tree 2.7m Jingle Jollys LED Xmas Tree Party Decorations 2590 Tips": {
-    "zh": "聖誕樹 2.7m Jingle Jollys LED 聖誕樹派對裝飾品 2590 個提示",
-    "ja": "クリスマスツリー 2.7m ジングルジョリー LED クリスマスツリー パーティー デコレーション 2590 ヒント",
-    "ko": "크리스마스 트리 2.7m 징글 졸리스 LED 크리스마스 트리 파티 장식 팁 2590개"
+    "zh": "Jingle Jollys 2.7公尺 LED 聖誕樹 2590枝",
+    "ja": "Jingle Jollys 2.7m LED クリスマスツリー 2590枝",
+    "ko": "Jingle Jollys 2.7m LED 크리스마스 트리 2590가지",
+    "src": "ai"
   },
   "Sheep Dog Peanut Butter Whiskey 700mL": {
     "zh": "綿羊狗花生醬威士忌 700mL",
@@ -185577,14 +185598,16 @@
     "ko": "MCoBeauty 에이지 리지스트 액티브 골드 하이드로겔 나이트 리페어 아이 패치 팩 5"
   },
   "Coopers Dark Ale Bottles 6x375mL": {
-    "zh": "Coopers 黑啤酒瓶 6x375mL",
-    "ja": "クーパーズ ダークエールボトル 6x375mL",
-    "ko": "쿠퍼스 다크 에일 병 6x375mL"
+    "zh": "Coopers 黑啤酒 375毫升 x 6入",
+    "ja": "Coopers ダークエール 瓶 375ml x 6本入",
+    "ko": "Coopers 다크 에일 병 375ml x 6개입",
+    "src": "ai"
   },
   "Arnott's Jatz or Shapes Crackers 120g-225g": {
-    "zh": "Arnott's 爵士餅乾或造型餅乾 120g-225g",
-    "ja": "アーノッツ ジャズ オア シェイプス クラッカー 120g-225g",
-    "ko": "Arnott's Jatz 또는 Shapes 크래커 120g-225g"
+    "zh": "Arnott's Jatz 或 Shapes 餅乾 120-225克",
+    "ja": "Arnott's Jatz または Shapes クラッカー 120-225g",
+    "ko": "Arnott's Jatz 또는 Shapes 크래커 120-225g",
+    "src": "ai"
   },
   "Optus $200 Prepaid SIM Starter Kit": {
     "zh": "Optus 200 美元預付費 SIM 入門套件",
@@ -185838,7 +185861,8 @@
     "zh": "Motorola G06",
     "ja": "Motorola G06",
     "ko": "Motorola G06",
-    "src": "ai"
+    "src": "ai",
+    "qa_tries": 1
   },
   "Voost Effervescent Tablets 20 Pack": {
     "zh": "Voost 發泡錠 20入",
@@ -185922,6 +185946,42 @@
     "zh": "Nivea Men 黑白隱形清新噴霧止汗劑 250毫升",
     "ja": "Nivea Men インビジブル ブラック＆ホワイト フレッシュ デオドラントスプレー 250ml",
     "ko": "Nivea Men 인비저블 블랙 앤 화이트 프레시 데오도란트 스프레이 250ml",
+    "src": "ai"
+  },
+  "Sirena Tuna in Oil Italian Style 185g": {
+    "zh": "Sirena 義式油漬鮪魚 185克",
+    "ja": "Sirena ツナ オイル漬け イタリアンスタイル 185g",
+    "ko": "Sirena 참치 오일 절임 이탈리안 스타일 185g",
+    "src": "ai"
+  },
+  "Queen Sugar Free Maple Flavoured Syrup 355mL": {
+    "zh": "Queen 無糖楓糖風味糖漿 355毫升",
+    "ja": "Queen 砂糖不使用 メープル風味シロップ 355ml",
+    "ko": "Queen 무설탕 메이플 향 시럽 355ml",
+    "src": "ai"
+  },
+  "Coles Melon Watermelon Whole Seedless approx. 8kg": {
+    "zh": "Coles 無籽西瓜 約8公斤",
+    "ja": "Coles 種なしスイカ 約8kg",
+    "ko": "Coles 씨 없는 수박 약 8kg",
+    "src": "ai"
+  },
+  "The Deli Mild Twiggy Sticks 200g": {
+    "zh": "The Deli 溫和風味細肉條 200克",
+    "ja": "The Deli マイルド ツイギースティック 200g",
+    "ko": "The Deli 마일드 트위기 스틱 200g",
+    "src": "ai"
+  },
+  "Fantastic Rice Crackers Original 100g": {
+    "zh": "Fantastic 米餅 經典款 100克",
+    "ja": "Fantastic ライスクラッカー オリジナル 100g",
+    "ko": "Fantastic 쌀과자 오리지널 100g",
+    "src": "ai"
+  },
+  "CSR White Sugar 1kg": {
+    "zh": "CSR 白砂糖 1公斤",
+    "ja": "CSR 白砂糖 1kg",
+    "ko": "CSR 백설탕 1kg",
     "src": "ai"
   }
 }
