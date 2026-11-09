@@ -186165,11 +186165,11 @@
     "src": "ai"
   },
   "Happy Happy Soy Boy Milk 1L": {
-    "zh": "Happy Soy Boy 豆漿 1公升",
+    "zh": "Happy Soy Boy 豆奶 1公升",
     "ja": "Happy Soy Boy 豆乳 1L",
     "ko": "Happy Soy Boy 두유 1L",
     "src": "ai",
-    "qa_tries": 1
+    "qa_tries": 2
   },
   "Coles White Chocolate & Macadamia Cookies 6 Pack": {
     "zh": "Coles 白巧克力夏威夷豆餅乾 6入",
@@ -186304,10 +186304,11 @@
     "src": "ai"
   },
   "Kiddylicious Veggie Straws 4x12g 48g": {
-    "zh": "Kiddylicious 蔬菜薯條 12克 x 4入",
-    "ja": "Kiddylicious ベジタブルストロー 12g x 4個入",
-    "ko": "Kiddylicious 야채 스틱 12g x 4개입",
-    "src": "ai"
+    "zh": "Kiddylicious 蔬菜薯條 48克（12克 x 4入）",
+    "ja": "Kiddylicious ベジタブルストロー 48g（12g x 4個入）",
+    "ko": "Kiddylicious 야채 스틱 48g（12g x 4개입）",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Great Northern Super Crisp Lager Bottle 330ml 24 Pack": {
     "zh": "Great Northern Super Crisp 拉格啤酒 330毫升 x 24入",
@@ -186355,6 +186356,84 @@
     "zh": "Simson's Pantry 迷你捲餅超值組 12入 336克",
     "ja": "Simson's Pantry ミニラップ バリューパック 12個入 336g",
     "ko": "Simson's Pantry 미니 랩 가성비팩 12개입 336g",
+    "src": "ai"
+  },
+  "La Espanola Extra Virgin Olive Oil 4L": {
+    "zh": "La Espanola 特級初榨橄欖油 4公升",
+    "ja": "La Espanola エキストラバージンオリーブオイル 4L",
+    "ko": "La Espanola 엑스트라 버진 올리브유 4L",
+    "src": "ai"
+  },
+  "Natural Chip Co. Honey Soy Chicken Potato Chips 175g": {
+    "zh": "Natural Chip Co. 蜂蜜醬油雞汁洋芋片 175克",
+    "ja": "Natural Chip Co. ハニーソイチキンポテトチップス 175g",
+    "ko": "Natural Chip Co. 허니소이 치킨 감자칩 175g",
+    "src": "ai"
+  },
+  "Fantastic Rice Crackers Seaweed 100g": {
+    "zh": "Fantastic 海苔米餅 100克",
+    "ja": "Fantastic 海苔ライスクラッカー 100g",
+    "ko": "Fantastic 김 맛 쌀과자 100g",
+    "src": "ai"
+  },
+  "Nippy's Iced Chocolate Flavoured Milk 4x350ml 1.4L": {
+    "zh": "Nippy's 巧克力調味乳 350毫升 x 4入",
+    "ja": "Nippy's チョコレート風味ミルク 350ml x 4本入",
+    "ko": "Nippy's 초콜릿 맛 우유 350ml x 4개입",
+    "src": "ai"
+  },
+  "Tandaco Southern Fried Chicken Coating Mix 75g": {
+    "zh": "Tandaco 南方風味炸雞裹粉 75克",
+    "ja": "Tandaco サザンフライドチキンコーティングミックス 75g",
+    "ko": "Tandaco 서던 프라이드 치킨 튀김가루 75g",
+    "src": "ai"
+  },
+  "Squid Fish Sauce 300mL": {
+    "zh": "Squid 魚露 300毫升",
+    "ja": "Squid ナンプラー 300ml",
+    "ko": "Squid 피쉬소스 300ml",
+    "src": "ai"
+  },
+  "Leggo's Sugo Passata Basil & Parsley 700g": {
+    "zh": "Leggo's 羅勒巴西里義大利麵醬 700克",
+    "ja": "Leggo's バジル＆パセリトマトピューレ 700g",
+    "ko": "Leggo's 바질 & 파슬리 토마토 퓨레 700g",
+    "src": "ai"
+  },
+  "Clearwipe Lens Cleaner 60 Pack": {
+    "zh": "Clearwipe 鏡片清潔擦拭紙 60入",
+    "ja": "Clearwipe レンズクリーナー 60個入",
+    "ko": "Clearwipe 렌즈 클리너 60개입",
+    "src": "ai"
+  },
+  "Cadbury Dairy Milk Chocolate Christmas Santa Sharepack 12 Pack 144g": {
+    "zh": "Cadbury 聖誕老人牛奶巧克力分享包 144克（12入）",
+    "ja": "Cadbury クリスマスサンタミルクチョコレートシェアパック 144g（12個入）",
+    "ko": "Cadbury 크리스마스 산타 밀크 초콜릿 쉐어팩 144g（12개입）",
+    "src": "ai"
+  },
+  "Simson's Pantry Preservative Free Mixed Wholegrain Large Wraps 8 Pack 528g": {
+    "zh": "Simson's Pantry 無防腐劑綜合全穀大捲餅 528克（8入）",
+    "ja": "Simson's Pantry 保存料不使用ミックス全粒粉ラージラップ 528g（8枚入）",
+    "ko": "Simson's Pantry 무방부제 혼합 통곡물 대형 랩 528g（8개입）",
+    "src": "ai"
+  },
+  "The Deli Hot Hungarian Salami 150g": {
+    "zh": "The Deli 辣味匈牙利莎樂美腸 150克",
+    "ja": "The Deli ホットハンガリアンサラミ 150g",
+    "ko": "The Deli 매운 헝가리안 살라미 150g",
+    "src": "ai"
+  },
+  "Brown Brothers Prosecco Nv 750ml 1 Each": {
+    "zh": "Brown Brothers Prosecco 氣泡酒 750毫升",
+    "ja": "Brown Brothers プロセッコ NV 750ml",
+    "ko": "Brown Brothers 프로세코 NV 750ml",
+    "src": "ai"
+  },
+  "Sanitarium Weet-bix Multi-grain Breakfast Cereal 575g": {
+    "zh": "Sanitarium Weet-bix 多穀物早餐麥片 575克",
+    "ja": "Sanitarium Weet-bix マルチグレイン朝食シリアル 575g",
+    "ko": "Sanitarium Weet-bix 멀티그레인 아침 시리얼 575g",
     "src": "ai"
   }
 }
