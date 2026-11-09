@@ -186168,7 +186168,8 @@
     "zh": "Happy Soy Boy 豆漿 1公升",
     "ja": "Happy Soy Boy 豆乳 1L",
     "ko": "Happy Soy Boy 두유 1L",
-    "src": "ai"
+    "src": "ai",
+    "qa_tries": 1
   },
   "Coles White Chocolate & Macadamia Cookies 6 Pack": {
     "zh": "Coles 白巧克力夏威夷豆餅乾 6入",
@@ -186189,88 +186190,171 @@
     "src": "ai"
   },
   "Vegeta Gluten Free Real Gourmet Stock Powder Canned 250g": {
-    "zh": "Vegeta 無麩質真正美味高湯粉罐裝 250 克",
-    "ja": "ベジータ グルテンフリー リアルグルメストックパウダー 缶詰 250g",
-    "ko": "베지터 글루텐 프리 리얼 고메 스톡 파우더 통조림 250g"
+    "zh": "Vegeta 無麩質 頂級高湯粉 罐裝 250克",
+    "ja": "Vegeta グルテンフリー リアルグルメ ストックパウダー 缶 250g",
+    "ko": "Vegeta 글루텐 프리 리얼 고메 스톡 파우더 캔 250g",
+    "src": "ai"
   },
   "Coles Stone Baked By Laurent Mini White Sourdough 1 Each": {
-    "zh": "Coles Stone Baked By Laurent 迷你白色酵母 1 個",
-    "ja": "コールズ ストーン ベイクド バイ ローラン ミニ ホワイト サワードウ 各 1 個",
-    "ko": "콜스 스톤 베이크드 바이 로랑 미니 화이트 사워도우 각 1개"
+    "zh": "Coles Stone Baked By Laurent 迷你白酸種麵包",
+    "ja": "Coles Stone Baked By Laurent ミニホワイトサワードウ",
+    "ko": "Coles Stone Baked By Laurent 미니 화이트 사워도우",
+    "src": "ai"
   },
   "Dole Pineapple Pieces In Juice 432g": {
-    "zh": "都樂鳳梨片果汁 432g",
-    "ja": "ドール パイナップル果汁入り 432g",
-    "ko": "돌 파인애플 피스 인 주스 432g"
+    "zh": "Dole 鳳梨切塊果汁罐頭 432克",
+    "ja": "Dole パイナップル果汁漬け 432g",
+    "ko": "Dole 파인애플 과즙 절임 432g",
+    "src": "ai"
   },
   "Aeroplane Cool Lime Jelly Crystals 85g": {
-    "zh": "飛機清涼酸橙果凍結晶 85g",
-    "ja": "エアプレーンクールライムゼリークリスタル 85g",
-    "ko": "에어플레인 쿨 라임 젤리 크리스탈 85g"
+    "zh": "Aeroplane 清涼萊姆果凍粉 85克",
+    "ja": "Aeroplane クールライム ゼリーの素 85g",
+    "ko": "Aeroplane 쿨 라임 젤리 가루 85g",
+    "src": "ai"
   },
   "Sunrice Mini Bites Rockin Chicken 6 Pack 120g": {
-    "zh": "Sunrice Mini Bites Rockin 雞肉 6 包 120 克",
-    "ja": "サンライス ミニバイツ ロッキンチキン 6パック 120g",
-    "ko": "선라이스 미니바이츠 로킨치킨 6팩 120g"
+    "zh": "Sunrice 迷你米餅 烤雞口味 120克（6入）",
+    "ja": "Sunrice ミニバイト ロッキンチキン味 120g（6個入）",
+    "ko": "Sunrice 미니 바이트 로킨 치킨맛 120g (6개입)",
+    "src": "ai"
   },
   "Spam Classic Ham 340g": {
-    "zh": "Spam 經典火腿 340g",
-    "ja": "スパムクラシックハム 340g",
-    "ko": "스팸클래식햄 340g"
+    "zh": "Spam 經典火腿午餐肉 340克",
+    "ja": "Spam クラシックハム 340g",
+    "ko": "Spam 클래식 햄 340g",
+    "src": "ai"
   },
   "Old El Paso Family Regular Tortillas Fajita 16 Pack 640g": {
-    "zh": "老埃爾帕索家庭普通玉米餅法吉塔 16 包 640 克",
-    "ja": "オールド エルパソ ファミリー レギュラー トルティーヤ ファヒータ 16 パック 640g",
-    "ko": "올드 엘파소 패밀리 레귤러 토르티야 화히타 16팩 640g"
+    "zh": "Old El Paso 家庭號墨西哥餅皮 16入 640克",
+    "ja": "Old El Paso ファミリーサイズ トルティーヤ 16枚入 640g",
+    "ko": "Old El Paso 패밀리 사이즈 또띠아 16개입 640g",
+    "src": "ai"
   },
   "Jensens Organic Garlic 220g": {
-    "zh": "Jensens 有機大蒜 220 克",
-    "ja": "ジェンセンス オーガニック ガーリック 220g",
-    "ko": "젠센스 유기농 마늘 220g"
+    "zh": "Jensens 有機蒜泥 220克",
+    "ja": "Jensens オーガニック ガーリック 220g",
+    "ko": "Jensens 유기농 다진 마늘 220g",
+    "src": "ai"
   },
   "Noshu 95% Sugar Free Banana Bread Slices 240g": {
-    "zh": "Noshu 95% 無糖香蕉麵包片 240g",
-    "ja": "濃州 95%無糖バナナブレッド スライス 240g",
-    "ko": "노슈 95% 무설탕 바나나빵 조각 240g"
+    "zh": "Noshu 95%無糖香蕉麵包切片 240克",
+    "ja": "Noshu 95%砂糖不使用 バナナブレッドスライス 240g",
+    "ko": "Noshu 95% 무설탕 바나나 브레드 슬라이스 240g",
+    "src": "ai"
   },
   "Coles Stone Baked By Laurent Mini White Pane Di Casa 1 Each": {
-    "zh": "Coles Stone Baked By Laurent 迷你白窗格 Di Casa 各 1 個",
-    "ja": "コールズ ストーン ベイクド バイ ローラン ミニ ホワイト パン ディ カーサ 各 1 個",
-    "ko": "Coles Stone Baked By Laurent 미니 화이트 페인 디 카사 1개"
+    "zh": "Coles Stone Baked By Laurent 迷你白麵包",
+    "ja": "Coles Stone Baked By Laurent ミニホワイトパン",
+    "ko": "Coles Stone Baked By Laurent 미니 화이트 브레드",
+    "src": "ai"
   },
   "Providore Creamy Tomato Vodka Pasta Sauce 400g": {
-    "zh": "Providore 奶油番茄伏特加義大利麵醬 400g",
-    "ja": "プロヴィドール クリーミートマトウォッカパスタソース 400g",
-    "ko": "프로비도르 크리미 토마토 보드카 파스타 소스 400g"
+    "zh": "Providore 奶油番茄伏特加義大利麵醬 400克",
+    "ja": "Providore クリーミートマトウォッカ パスタソース 400g",
+    "ko": "Providore 크리미 토마토 보드카 파스타 소스 400g",
+    "src": "ai"
   },
   "Helga's Gluten Free White Bread Slices 470g": {
-    "zh": "Helga's 無麩質白麵包片 470g",
-    "ja": "Helga's グルテンフリー白パン スライス 470g",
-    "ko": "헬가 글루텐 프리 화이트 브레드 슬라이스 470g"
+    "zh": "Helga's 無麩質白吐司 470克",
+    "ja": "Helga's グルテンフリー ホワイト食パン 470g",
+    "ko": "Helga's 글루텐 프리 화이트 식빵 470g",
+    "src": "ai"
   },
   "Sunrice Premium Long Grain Rice 1kg": {
-    "zh": "Sunrice 優質長粒米 1kg",
-    "ja": "サンライス プレミアム長粒米 1kg",
-    "ko": "선라이스 프리미엄 장립쌀 1kg"
+    "zh": "Sunrice 特級長米 1公斤",
+    "ja": "Sunrice プレミアムロンググレインライス 1kg",
+    "ko": "Sunrice 프리미엄 장립종 쌀 1kg",
+    "src": "ai"
   },
   "Coles Hawaiian Pizza Roll 2 Pack": {
-    "zh": "Coles 夏威夷披薩捲 2 包",
-    "ja": "コールズ ハワイアンピザロール 2個パック",
-    "ko": "Coles 하와이안 피자 롤 2팩"
+    "zh": "Coles 夏威夷披薩捲 2入",
+    "ja": "Coles ハワイアンピザロール 2個入",
+    "ko": "Coles 하와이안 피자 롤 2개입",
+    "src": "ai"
   },
   "Tetley Tea Bags 100 Pack 180g": {
-    "zh": "Tetley 茶包 100 包 180 克",
-    "ja": "テトリー ティーバッグ 100パック 180g",
-    "ko": "테틀리 티백 100팩 180g"
+    "zh": "Tetley 茶包 180克（100入）",
+    "ja": "Tetley ティーバッグ 180g（100個入）",
+    "ko": "Tetley 티백 180g (100개입)",
+    "src": "ai"
   },
   "Marion's Kitchen Crispy Chilli Oil 190g": {
-    "zh": "Marion's Kitchen 脆辣椒油 190g",
-    "ja": "マリオンズキッチン クリスピーラー油 190g",
-    "ko": "마리온스 키친 크리스피 칠리 오일 190g"
+    "zh": "Marion's Kitchen 香脆辣油 190克",
+    "ja": "Marion's Kitchen クリスピーチリオイル 190g",
+    "ko": "Marion's Kitchen 크리스피 칠리 오일 190g",
+    "src": "ai"
   },
   "Aeroplane Strawberry Jelly Crystals 85g": {
-    "zh": "飛機草莓果凍晶體 85g",
-    "ja": "飛行機いちごゼリークリスタル 85g",
-    "ko": "비행기 딸기 젤리 크리스탈 85g"
+    "zh": "Aeroplane 草莓果凍粉 85克",
+    "ja": "Aeroplane ストロベリー ゼリーの素 85g",
+    "ko": "Aeroplane 딸기 젤리 가루 85g",
+    "src": "ai"
+  },
+  "The Deli Continental Chorizo 250g": {
+    "zh": "The Deli 歐式西班牙臘腸 250克",
+    "ja": "The Deli コンチネンタルチョリソー 250g",
+    "ko": "The Deli 컨티넨탈 초리조 250g",
+    "src": "ai"
+  },
+  "Mentos Multipack Mint 112g": {
+    "zh": "Mentos 薄荷糖多入組 112克",
+    "ja": "Mentos マルチパック ミント 112g",
+    "ko": "Mentos 멀티팩 민트 112g",
+    "src": "ai"
+  },
+  "Kiddylicious Veggie Straws 4x12g 48g": {
+    "zh": "Kiddylicious 蔬菜薯條 12克 x 4入",
+    "ja": "Kiddylicious ベジタブルストロー 12g x 4個入",
+    "ko": "Kiddylicious 야채 스틱 12g x 4개입",
+    "src": "ai"
+  },
+  "Great Northern Super Crisp Lager Bottle 330ml 24 Pack": {
+    "zh": "Great Northern Super Crisp 拉格啤酒 330毫升 x 24入",
+    "ja": "Great Northern Super Crisp ラガービール 330ml x 24本入",
+    "ko": "Great Northern Super Crisp 라거 맥주 330ml x 24개입",
+    "src": "ai"
+  },
+  "XXXX Gold Block Can 375ml 30 Pack": {
+    "zh": "XXXX Gold 啤酒罐裝 375毫升 x 30入",
+    "ja": "XXXX Gold ビール缶 375ml x 30本入",
+    "ko": "XXXX Gold 맥주 캔 375ml x 30개입",
+    "src": "ai"
+  },
+  "Helgas Mini Loaf Traditional Wholemeal 360g": {
+    "zh": "Helgas 迷你全麥吐司 360克",
+    "ja": "Helgas ミニ食パン トラディショナル全粒粉 360g",
+    "ko": "Helgas 미니 식빵 전통 통밀 360g",
+    "src": "ai"
+  },
+  "Mission Wholewheat Pita Pocket 4 Pack 420g": {
+    "zh": "Mission 全麥口袋餅 4入 420克",
+    "ja": "Mission 全粒粉ピタパン 4個入 420g",
+    "ko": "Mission 통밀 피타 브레드 4개입 420g",
+    "src": "ai"
+  },
+  "Natural Chip Co. Sea Salt & Vinegar Potato Chips 175g": {
+    "zh": "Natural Chip Co. 海鹽醋口味洋芋片 175克",
+    "ja": "Natural Chip Co. シーソルト＆ビネガー ポテトチップス 175g",
+    "ko": "Natural Chip Co. 씨솔트 & 비네거 감자칩 175g",
+    "src": "ai"
+  },
+  "Felix Gravy Lovers Meat Selection Cat Food 12x85g 12 Pack": {
+    "zh": "Felix Gravy Lovers 肉類綜合口味成貓主食包 85克 x 12入",
+    "ja": "Felix Gravy Lovers 肉類アソート 成猫用キャットフード 85g x 12個入",
+    "ko": "Felix Gravy Lovers 육류 모둠 성묘용 캣푸드 85g x 12개입",
+    "src": "ai"
+  },
+  "Fyfe Family Eggs Free Range 12 Pack 700g": {
+    "zh": "Fyfe Family 放牧雞蛋 12入 700克",
+    "ja": "Fyfe Family 放し飼い卵 12個入 700g",
+    "ko": "Fyfe Family 방목 계란 12개입 700g",
+    "src": "ai"
+  },
+  "Simson's Pantry Nap Mini Wraps Value Pack 12 Pack 336g": {
+    "zh": "Simson's Pantry 迷你捲餅超值組 12入 336克",
+    "ja": "Simson's Pantry ミニラップ バリューパック 12個入 336g",
+    "ko": "Simson's Pantry 미니 랩 가성비팩 12개입 336g",
+    "src": "ai"
   }
 }
