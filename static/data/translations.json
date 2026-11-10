@@ -187071,10 +187071,11 @@
     "src": "ai"
   },
   "Kiddylicious Veggie Straws Cheesy Flavour 4x12g 48g": {
-    "zh": "Kiddylicious 蔬菜薯條 起司口味 12克 x 4入",
-    "ja": "Kiddylicious ベジストロー チーズ味 12g x 4個入",
-    "ko": "Kiddylicious 베지 스트로우 치즈맛 12g x 4개입",
-    "src": "ai"
+    "zh": "Kiddylicious 蔬菜薯條 起司口味 4入 48克",
+    "ja": "Kiddylicious ベジストロー チーズ風味 4個入 48g",
+    "ko": "Kiddylicious 베지 스트로우 치즈맛 4개입 48g",
+    "src": "ai",
+    "qa_tries": 1
   },
   "MasterFoods Garlic & Herb Salt 62g": {
     "zh": "MasterFoods 蒜香草鹽 62克",
@@ -187089,10 +187090,11 @@
     "src": "ai"
   },
   "Healtheries Potato Stix Fun Mix Variety Multipack Kids Lunchbox Snacks 12x20g 240g": {
-    "zh": "Healtheries 馬鈴薯條 綜合款 20克 x 12入",
-    "ja": "Healtheries ポテトスティック バラエティパック 20g x 12個入",
-    "ko": "Healtheries 포테이토 스틱 버라이어티 팩 20g x 12개입",
-    "src": "ai"
+    "zh": "Healtheries 馬鈴薯細條 綜合多款口味 12入 240克",
+    "ja": "Healtheries ポテトスティック ファンミックス バラエティ マルチパック 12個入 240g",
+    "ko": "Healtheries 포테이토 스틱 펀 믹스 버라이어티 멀티팩 12개입 240g",
+    "src": "ai",
+    "qa_tries": 1
   },
   "B Francois Brut Nv 750ml 1 Each": {
     "zh": "B Francois 氣泡酒 750毫升",
@@ -187113,16 +187115,18 @@
     "src": "ai"
   },
   "Nutella Hazelnut Chocolate Spread 12 Pack 180g": {
-    "zh": "Nutella 榛果巧克力醬 15克 x 12入",
-    "ja": "Nutella ヘーゼルナッツチョコレートスプレッド 12個入 180g",
+    "zh": "Nutella 能多益榛果巧克力醬 12入 180克",
+    "ja": "Nutella ヘーゼルナッツ チョコレートスプレッド 12個入 180g",
     "ko": "Nutella 헤이즐넛 초콜릿 스프레드 12개입 180g",
-    "src": "ai"
+    "src": "ai",
+    "qa_tries": 1
   },
   "Hot Kids Want Want Rice Crackers Shelly Senbei 150g": {
-    "zh": "旺旺 雪餅 150克",
-    "ja": "Hot Kids Want ライスキーパーク 雪の宿 150g",
-    "ko": "Hot Kids Want 쌀과자 셜리 센베이 150g",
-    "src": "ai"
+    "zh": "Hot Kids 旺旺雪餅米餅 150克",
+    "ja": "Hot Kids ワンワン ライスクラッカー 雪の宿 150g",
+    "ko": "Hot Kids 원원 쌀과자 셜리 센베이 150g",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Simply Wholesome Nourish Bowl Lentils & Ancient Grains 220g": {
     "zh": "Simply Wholesome 扁豆古穀物碗 220克",
@@ -187134,6 +187138,66 @@
     "zh": "Gravox 傳統減鹽肉汁粉 120克",
     "ja": "Gravox トラディショナル 減塩グレイビーミックス 缶 120g",
     "ko": "Gravox 트래디셔널 저염 그레이비 믹스 캔 120g",
+    "src": "ai"
+  },
+  "Chang's Crispy Noodle Salad Dressing 280mL": {
+    "zh": "Chang's 香脆麵沙拉醬 280毫升",
+    "ja": "Chang's クリスピーヌードル サラダドレッシング 280ml",
+    "ko": "Chang's 크리스피 누들 샐러드 드레싱 280ml",
+    "src": "ai"
+  },
+  "Harmony No Waste Seed Mix 1kg": {
+    "zh": "Harmony 無浪費種子混合包 1公斤",
+    "ja": "Harmony ノーウェスト シードミックス 1kg",
+    "ko": "Harmony 노 웨이스트 씨드 믹스 1kg",
+    "src": "ai"
+  },
+  "Always Fresh Capers Vinegar 230g": {
+    "zh": "Always Fresh 酸豆醋漬罐 230克",
+    "ja": "Always Fresh ケーパー ビネガー 230g",
+    "ko": "Always Fresh 케이퍼 비네거 230g",
+    "src": "ai"
+  },
+  "Jensens Organic Ginger 210g": {
+    "zh": "Jensens 有機生薑 210克",
+    "ja": "Jensens オーガニック ジンジャー 210g",
+    "ko": "Jensens 오가닉 진저 210g",
+    "src": "ai"
+  },
+  "Aeroplane Lemon Delicious Jelly Crystals 85g": {
+    "zh": "Aeroplane 檸檬果凍粉 85克",
+    "ja": "Aeroplane レモン デリシャス ゼリークリスタル 85g",
+    "ko": "Aeroplane 레몬 딜리셔스 젤리 크리스탈 85g",
+    "src": "ai"
+  },
+  "Wirra Wirra Mclaren Vale Vineyards Shiraz 750ml 1 Each": {
+    "zh": "Wirra 麥克勞倫維爾葡萄園希哈紅葡萄酒 750毫升",
+    "ja": "Wirra マクラーレン ヴェール ヴィンヤーズ シラーズ 750ml",
+    "ko": "Wirra 맥클라렌 베일 빈야드 쉬라즈 750ml",
+    "src": "ai"
+  },
+  "Helgas Mini White 335g": {
+    "zh": "Helga's 迷你白吐司 335克",
+    "ja": "Helga's ミニ ホワイト 335g",
+    "ko": "Helga's 미니 화이트 335g",
+    "src": "ai"
+  },
+  "Coles Stone Baked By Laurent Mini Parmesan & Onion Pane Di Casa 1 Each": {
+    "zh": "Coles 帕馬森起司洋蔥迷你義式鄉村麵包",
+    "ja": "Coles ストーンベイクド バイ ローラン ミニ パルメザン＆オニオン パネ ディ カサ",
+    "ko": "Coles 스톤 베이크드 바이 로랑 미니 파마산 & 어니언 파네 디 카사",
+    "src": "ai"
+  },
+  "Gaviscon Dual Action Chewable Tablets Heartburn & Indigestion Relief Peppermint 16 Pack": {
+    "zh": "Gaviscon 雙效咀嚼錠 薄荷口味 16入",
+    "ja": "Gaviscon デュアルアクション チュアブルタブレット ペパーミント 16個入",
+    "ko": "Gaviscon 듀얼 액션 츄어블 타블렛 페퍼민트 16개입",
+    "src": "ai"
+  },
+  "Beerenberg Chilli Jam 190g": {
+    "zh": "Beerenberg 辣椒果醬 190克",
+    "ja": "Beerenberg チリジャム 190g",
+    "ko": "Beerenberg 칠리 잼 190g",
     "src": "ai"
   }
 }
