@@ -190247,10 +190247,11 @@
     "src": "ai"
   },
   "Bundaberg Brewed Drink Tropical 4x375ml 1.5L": {
-    "zh": "Bundaberg 熱帶水果風味氣泡飲 375毫升 x 4入",
-    "ja": "Bundaberg トロピカル炭酸飲料 375ml x 4本入",
-    "ko": "Bundaberg 트로피칼 탄산음료 375ml x 4개입",
-    "src": "ai"
+    "zh": "Bundaberg 氣泡飲熱帶水果口味 375毫升 x 4入（1.5公升）",
+    "ja": "Bundaberg ブリュー・ドリンク トロピカル 375ml x 4本入（1.5L）",
+    "ko": "Bundaberg 브루드 드링크 트로피컬 375ml x 4개입（1.5L）",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Uncle Tobys Quick Oats Porridge 500g": {
     "zh": "Uncle Tobys 即食燕麥片 500克",
@@ -190259,10 +190260,11 @@
     "src": "ai"
   },
   "Activia No Added Sugar Yoghurt Mango 4x125g 500g": {
-    "zh": "Activia 無加糖芒果優格 125克 x 4入",
-    "ja": "Activia 砂糖不使用 ヨーグルト マンゴー 125g x 4個入",
-    "ko": "Activia 무가당 요거트 망고 125g x 4개입",
-    "src": "ai"
+    "zh": "Activia 無加糖芒果優格 125克 x 4入 (500克)",
+    "ja": "Activia 砂糖不使用マンゴーヨーグルト 125g x 4個入 (500g)",
+    "ko": "Activia 무가당 망고 요거트 125g x 4개입 (500g)",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Carmelina Borlotti Beans 400g": {
     "zh": "Carmelina 蔓越莓豆罐頭 400克",
@@ -190334,6 +190336,162 @@
     "zh": "Nutella & Go Nutella 榛果可可醬沾餅乾棒 48克",
     "ja": "Nutella & Go ヌテラ＆ゴー チョコレートスプレッド＆スティック 48g",
     "ko": "Nutella & Go 누텔라 앤 고 초코 스프레드 & 스틱 48g",
+    "src": "ai"
+  },
+  "Tetley All Rounder Pure Black Tea Bags 200 Pack 400g": {
+    "zh": "Tetley 純黑茶包 200入 400克",
+    "ja": "Tetley オールラウンダー ピュアブラックティー ティーバッグ 200個入 400g",
+    "ko": "Tetley 올라운더 퓨어 블랙 티백 200개입 400g",
+    "src": "ai"
+  },
+  "Snacktacular Disney Fruit Pouch Raspberry Blueberry 5X90g 450g": {
+    "zh": "Snacktacular Disney 覆盆莓藍莓果泥 90克 x 5入 450克",
+    "ja": "Snacktacular Disney フルーツパウチ ラズベリーブルーベリー 90g x 5個入 450g",
+    "ko": "Snacktacular Disney 과일 파우치 라즈베리 블루베리 90g x 5개입 450g",
+    "src": "ai"
+  },
+  "Coles Stone Baked By Laurent Square Rolls 4 Pack": {
+    "zh": "Coles Stone Baked By Laurent 方形餐包 4入",
+    "ja": "Coles Stone Baked By Laurent スクエアロール 4個入",
+    "ko": "Coles Stone Baked By Laurent 사각 롤 4개입",
+    "src": "ai"
+  },
+  "Mr Kipling Apple Pies 6 Pack 315g": {
+    "zh": "Mr Kipling 蘋果派 315克（6入）",
+    "ja": "Mr Kipling アップルパイ 315g（6個入）",
+    "ko": "Mr Kipling 애플 파이 315g（6개입）",
+    "src": "ai"
+  },
+  "Helga's Health Plus High Fibre White 680g": {
+    "zh": "Helga's Health Plus 高纖白吐司 680克",
+    "ja": "Helga's Health Plus 高食物繊維ホワイトブレッド 680g",
+    "ko": "Helga's Health Plus 고식이섬유 화이트 브레드 680g",
+    "src": "ai"
+  },
+  "Funday Caramel Flavoured White Chocolate Raspberry & Cream Bites 50g": {
+    "zh": "Funday 焦糖風味白巧克力覆盆莓奶油球 50克",
+    "ja": "Funday キャラメルフレーバー ホワイトチョコレート ラズベリー＆クリームバイト 50g",
+    "ko": "Funday 캐러멜 향 화이트 초콜릿 라즈베리 & 크림 바이트 50g",
+    "src": "ai"
+  },
+  "Wonder Gluten Free Wholemeal 500g": {
+    "zh": "Wonder 無麩質全麥吐司 500克",
+    "ja": "Wonder グルテンフリー 全粒粉ブレッド 500g",
+    "ko": "Wonder 글루텐 프리 통밀 브레드 500g",
+    "src": "ai"
+  },
+  "Cadbury Milk Chocolate Mini Rolls Cakes 5 Pack 115g": {
+    "zh": "Cadbury 牛奶巧克力迷你蛋糕捲 115克（5入）",
+    "ja": "Cadbury ミルクチョコレート ミニロールケーキ 115g（5個入）",
+    "ko": "Cadbury 밀크 초콜릿 미니 롤 케이크 115g（5개입）",
+    "src": "ai"
+  },
+  "Fussy Cat Grain Free Twice As Tasty Bites & Gravy Poultry Wet Cat Food 12x80g 12 Pack": {
+    "zh": "Fussy Cat 無穀物肉汁禽肉濕貓糧 80克 x 12入",
+    "ja": "Fussy Cat グレインフリー グレービーソース入り家禽肉ウェットキャットフード 80g x 12個入",
+    "ko": "Fussy Cat 그레인 프리 그레이비 가금류 습식 캣푸드 80g x 12개입",
+    "src": "ai"
+  },
+  "Laurent Almond Croissant 1 Each": {
+    "zh": "Laurent 杏仁可頌 1入",
+    "ja": "Laurent アーモンドクロワッサン 1個入",
+    "ko": "Laurent 아몬드 크루아상 1개입",
+    "src": "ai"
+  },
+  "Beerenberg Australian Raspberry Jam 300g": {
+    "zh": "Beerenberg 澳洲覆盆莓果醬 300克",
+    "ja": "Beerenberg オーストラリア産ラズベリージャム 300g",
+    "ko": "Beerenberg 호주산 라즈베리 잼 300g",
+    "src": "ai"
+  },
+  "Only Organic Carrot Apple Rice Cakes 8 Months+ 35g": {
+    "zh": "Only Organic 紅蘿蔔蘋果米餅 8個月以上 35克",
+    "ja": "Only Organic 人参とリンゴのライスケーキ 8ヶ月〜 35g",
+    "ko": "Only Organic 당근 사과 라이스 케이크 8개월 이상 35g",
+    "src": "ai"
+  },
+  "Angel Delight Bubble Jelly Mango & Passionfruit Boba 520g": {
+    "zh": "Angel Delight 芒果百香果波波果凍 520克",
+    "ja": "Angel Delight マンゴー＆パッションフルーツ ボバゼリー 520g",
+    "ko": "Angel Delight 망고 & 패션후르츠 보바 젤리 520g",
+    "src": "ai"
+  },
+  "Coles Finest By Laurent Sourdough Pane Di Casa With Sesame 1 Each": {
+    "zh": "Coles Finest By Laurent 芝麻酸種麵包 1入",
+    "ja": "Coles Finest By Laurent サワードウ パネ・ディ・カーサ（セサミ） 1個入",
+    "ko": "Coles Finest By Laurent 사워도우 파네 디 카사 (참깨) 1개입",
+    "src": "ai"
+  },
+  "Vitapet Jerhigh Chicken Sticks Dog Treats 100g": {
+    "zh": "Vitapet Jerhigh 雞肉條狗零食 100克",
+    "ja": "Vitapet Jerhigh チキンスティック ドッグトリーツ 100g",
+    "ko": "Vitapet Jerhigh 치킨 스틱 강아지 간식 100g",
+    "src": "ai"
+  },
+  "San Remo Instant Pasta Cannelloni 250g": {
+    "zh": "San Remo 義大利管麵 250克",
+    "ja": "San Remo インスタントパスタ カネロニ 250g",
+    "ko": "San Remo 인스턴트 파스타 카넬로니 250g",
+    "src": "ai"
+  },
+  "Mckenzie's Whole Black Peppercorns Refills 200g": {
+    "zh": "Mckenzie's 黑胡椒粒補充包 200克",
+    "ja": "Mckenzie's ホールブラックペッパー 詰め替え用 200g",
+    "ko": "Mckenzie's 통후추 리필 200g",
+    "src": "ai"
+  },
+  "OB Finest Gluten Free Specialty Crackers Fig & Pistachio 130g": {
+    "zh": "OB Finest 無麩質無花果開心果餅乾 130克",
+    "ja": "OB Finest グルテンフリー スペシャリティクラッカー イチジク＆ピスタチオ 130g",
+    "ko": "OB Finest 글루텐 프리 스페셜티 크래커 무화과 & 피스타치오 130g",
+    "src": "ai"
+  },
+  "Carman's Protein Bars Violet Crumble 5 Pack 200g": {
+    "zh": "Carman's Violet Crumble 蛋白棒 200克（5入）",
+    "ja": "Carman's Violet Crumble プロテインバー 200g（5個入）",
+    "ko": "Carman's Violet Crumble 단백질 바 200g（5개입）",
+    "src": "ai"
+  },
+  "Bio Shredded Cheddar Cheese 200g": {
+    "zh": "Bio 切達起司絲 200克",
+    "ja": "Bio シュレッドチェダーチーズ 200g",
+    "ko": "Bio 슈레드 체다 치즈 200g",
+    "src": "ai"
+  },
+  "Beechworth Honey 100% Pure Australian Honey Jar 950g": {
+    "zh": "Beechworth Honey 100% 純澳洲蜂蜜罐 950克",
+    "ja": "Beechworth Honey 100% 純粋オーストラリア産ハチミツ 950g",
+    "ko": "Beechworth Honey 100% 순수 호주산 꿀 950g",
+    "src": "ai"
+  },
+  "Coles Bakery BBQ Cheese And Bacon Tear & Share 1 each": {
+    "zh": "Coles Bakery BBQ 起司培根手撕麵包 1入",
+    "ja": "Coles Bakery BBQ チーズ＆ベーコン ティア＆シェアブレッド 1個入",
+    "ko": "Coles Bakery BBQ 치즈 & 베이컨 티어 앤 쉐어 브레드 1개입",
+    "src": "ai"
+  },
+  "Carmelina 4 Bean Mix 400g": {
+    "zh": "Carmelina 綜合四豆罐頭 400克",
+    "ja": "Carmelina 4種豆ミックス 400g",
+    "ko": "Carmelina 4종 콩 믹스 400g",
+    "src": "ai"
+  },
+  "Miso Tasty White Miso Paste 200g": {
+    "zh": "Miso Tasty 白味噌醬 200克",
+    "ja": "Miso Tasty 白味噌 200g",
+    "ko": "Miso Tasty 백된장 200g",
+    "src": "ai"
+  },
+  "Extra White Soft Chew Spearmint Sugar Free Chewing Gum 67g": {
+    "zh": "Extra White 薄荷無糖口香糖 67克",
+    "ja": "Extra White ソフトチュー スペアミント シュガーレスガム 67g",
+    "ko": "Extra White 소프트 츄 스피어민트 무설탕 껌 67g",
+    "src": "ai"
+  },
+  "Bundaberg Brewed Drink Burgundee 4x375ml 1.5L": {
+    "zh": "Bundaberg 氣泡飲 Burgundee 口味 375毫升 x 4入（1.5公升）",
+    "ja": "Bundaberg ブリュー・ドリンク Burgundee 375ml x 4本入（1.5L）",
+    "ko": "Bundaberg 브루드 드링크 Burgundee 375ml x 4개입（1.5L）",
     "src": "ai"
   }
 }
