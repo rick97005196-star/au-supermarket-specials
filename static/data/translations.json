@@ -193556,16 +193556,18 @@
     "src": "ai"
   },
   "Remedy Kombucha Organic Drinks Lemon Ginger 4x250ml 1L": {
-    "zh": "Remedy Kombucha 有機康普茶 檸檬薑口味 250毫升 x 4入",
-    "ja": "Remedy Kombucha オーガニックコンブチャ レモンジンジャー味 250ml x 4個入",
-    "ko": "Remedy Kombucha 유기농 콤부차 레몬생강맛 250ml x 4개입",
-    "src": "ai"
+    "zh": "Remedy 有機檸檬薑味康普茶 250毫升 x 4入（1公升）",
+    "ja": "Remedy オーガニック レモンジンジャー コンブチャ 250ml x 4個入（1L）",
+    "ko": "Remedy 유기농 레몬 생강 콤부차 250ml x 4개입（1L）",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Devondale Moo Flavoured Milk Chocolate Multipack 6x200ml 1.2L": {
-    "zh": "Devondale Moo 調味乳 巧克力口味 200毫升 x 6入",
-    "ja": "Devondale Moo フレーバーミルク チョコレート味 200ml x 6本入",
-    "ko": "Devondale Moo 가공유 초콜릿맛 200ml x 6개입",
-    "src": "ai"
+    "zh": "Devondale Moo 巧克力調味乳 200毫升 x 6入（1.2公升）",
+    "ja": "Devondale Moo チョコレートフレーバーミルク 200ml x 6個入（1.2L）",
+    "ko": "Devondale Moo 초콜릿 맛 우유 200ml x 6개입（1.2L）",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Carmelina Black Beans 400g": {
     "zh": "Carmelina 黑豆罐頭 400克",
@@ -193703,6 +193705,120 @@
     "zh": "Ingham's 裹粉雞塊 400克",
     "ja": "Ingham's 衣付きチキンナゲット 400g",
     "ko": "Ingham's 튀김옷 입힌 치킨 너겟 400g",
+    "src": "ai"
+  },
+  "Baby Mum-mum First Rice Rusk Apple & Pumpkin +6 Months 36g": {
+    "zh": "Baby Mum-Mum 嬰兒米餅 蘋果南瓜口味 6個月以上 36克",
+    "ja": "Baby Mum-Mum ベビー用ライスラスク りんご＆かぼちゃ味 生後6ヶ月以上 36g",
+    "ko": "Baby Mum-Mum 유아용 쌀과자 사과&호박 맛 6개월 이상 36g",
+    "src": "ai"
+  },
+  "Red Bull Energy Drink Sugar Free 8x250ml 2L": {
+    "zh": "Red Bull 無糖能量飲料 250毫升 x 8入（2公升）",
+    "ja": "Red Bull シュガーフリー エナジードリンク 250ml x 8個入（2L）",
+    "ko": "Red Bull 무설탕 에너지 드링크 250ml x 8개입（2L）",
+    "src": "ai"
+  },
+  "Coles Stone Baked By Laurent Light Sourdough Hamburger Rolls 4 Pack": {
+    "zh": "Coles Stone Baked By Laurent 輕酸種漢堡麵包 4入",
+    "ja": "Coles Stone Baked By Laurent ライトサワードウ ハンバーガーロール 4個入",
+    "ko": "Coles Stone Baked By Laurent 라이트 사워도우 햄버거 롤 4개입",
+    "src": "ai"
+  },
+  "Coles Bakery Mini Apple Crown 5 Pack": {
+    "zh": "Coles Bakery 迷你蘋果皇冠麵包 5入",
+    "ja": "Coles Bakery ミニアップルクラウン 5個入",
+    "ko": "Coles Bakery 미니 애플 크라운 5개입",
+    "src": "ai"
+  },
+  "Inghams Sweet Chilli Tenders 400g": {
+    "zh": "Inghams 甜辣味雞柳 400克",
+    "ja": "Inghams スイートチリ チキンテンダー 400g",
+    "ko": "Inghams 스위트 칠리 치킨 텐더 400g",
+    "src": "ai"
+  },
+  "La Espanola Extra Virgin Olive Oil Spray 200mL": {
+    "zh": "La Espanola 特級初榨橄欖油噴霧 200毫升",
+    "ja": "La Espanola エクストラバージン オリーブオイル スプレー 200ml",
+    "ko": "La Espanola 엑스트라 버진 올리브유 스프레이 200ml",
+    "src": "ai"
+  },
+  "Carman's Protein Bars Salted Caramel Nut Butter 5 Pack 200g": {
+    "zh": "Carman's 海鹽焦糖堅果醬蛋白棒 200克（5入）",
+    "ja": "Carman's ソルテッドキャラメル ナッツバター プロテインバー 200g（5個入）",
+    "ko": "Carman's 솔티드 카라멜 너트 버터 단백질바 200g（5개입）",
+    "src": "ai"
+  },
+  "ABC Sweet Soy Sauce 620mL": {
+    "zh": "ABC 甜醬油 620毫升",
+    "ja": "ABC スイートソイソース 620ml",
+    "ko": "ABC 스위트 간장 620ml",
+    "src": "ai"
+  },
+  "Wonder Gluten Free White 470g": {
+    "zh": "Wonder 無麩質白吐司 470克",
+    "ja": "Wonder グルテンフリー ホワイトブレッド 470g",
+    "ko": "Wonder 글루텐 프리 화이트 식빵 470g",
+    "src": "ai"
+  },
+  "SPC Baked Beans in Rich Tomato Salt Reduced 425g": {
+    "zh": "SPC 減鹽濃郁番茄焗豆 425克",
+    "ja": "SPC 減塩 濃厚トマトソース ベイクドビーンズ 425g",
+    "ko": "SPC 저염 진한 토마토 소스 베이크드 빈스 425g",
+    "src": "ai"
+  },
+  "Coles Stone Baked By Laurent Pane Di Casa Rolls 4 Pack": {
+    "zh": "Coles Stone Baked By Laurent Pane Di Casa 麵包捲 4入",
+    "ja": "Coles Stone Baked By Laurent Pane Di Casa ロール 4個入",
+    "ko": "Coles Stone Baked By Laurent Pane Di Casa 롤 4개입",
+    "src": "ai"
+  },
+  "Riverina Fetta Greek Style 200g": {
+    "zh": "Riverina 希臘式菲達起司 200克",
+    "ja": "Riverina ギリシャ風フェタチーズ 200g",
+    "ko": "Riverina 그리스식 페타 치즈 200g",
+    "src": "ai"
+  },
+  "Ayam 100% Natural Light Coconut Milk 270mL": {
+    "zh": "Ayam 100%天然低脂椰奶 270毫升",
+    "ja": "Ayam 100%ナチュラル ライトココナッツミルク 270ml",
+    "ko": "Ayam 100% 천연 라이트 코코넛 밀크 270ml",
+    "src": "ai"
+  },
+  "Inghams Crumbed Tenders 400g": {
+    "zh": "Inghams 裹粉雞柳 400克",
+    "ja": "Inghams クラムド チキンテンダー 400g",
+    "ko": "Inghams 크럼드 치킨 텐더 400g",
+    "src": "ai"
+  },
+  "Primo Stacker Leg Ham Cheese & Crackers 50g": {
+    "zh": "Primo Stacker 火腿起司餅乾組合 50克",
+    "ja": "Primo Stacker レッグハム チーズ＆クラッカー 50g",
+    "ko": "Primo Stacker 햄 치즈 & 크래커 50g",
+    "src": "ai"
+  },
+  "Helga's Health Plus Protein Wholemeal 700g": {
+    "zh": "Helga's Health Plus 高蛋白全麥吐司 700克",
+    "ja": "Helga's Health Plus プロテイン ホールミールブレッド 700g",
+    "ko": "Helga's Health Plus 단백질 통밀 식빵 700g",
+    "src": "ai"
+  },
+  "Coles Made Easy Family Classics Slow Cooked Pork & Beef Meatballs In Tomato Sauce 800g": {
+    "zh": "Coles Made Easy 慢燉番茄醬豬牛丸 800克",
+    "ja": "Coles Made Easy スロークック トマトソース ポーク＆ビーフ ミートボール 800g",
+    "ko": "Coles Made Easy 슬로우 쿡 토마토 소스 돼지고기 & 소고기 미트볼 800g",
+    "src": "ai"
+  },
+  "Atiru Marlborough Sauvignon Blanc 750ml 1 Each": {
+    "zh": "Atiru Marlborough 白蘇維濃白葡萄酒 750毫升",
+    "ja": "Atiru Marlborough ソーヴィニヨン・ブラン 750ml",
+    "ko": "Atiru Marlborough 소비뇽 블랑 750ml",
+    "src": "ai"
+  },
+  "Tip Top The One Bread Digestive Health White 680g": {
+    "zh": "Tip Top The One 消化健康白吐司 680克",
+    "ja": "Tip Top The One ダイジェスティブヘルス ホワイトブレッド 680g",
+    "ko": "Tip Top The One 소화 건강 화이트 식빵 680g",
     "src": "ai"
   }
 }
