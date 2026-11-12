@@ -193744,11 +193744,11 @@
     "src": "ai"
   },
   "Carman's Protein Bars Salted Caramel Nut Butter 5 Pack 200g": {
-    "zh": "Carman's 高蛋白棒海鹽焦糖堅果醬口味 5入 200克",
-    "ja": "Carman's プロテインバー ソルテッドキャラメル ナッツバター 5個入 200g",
-    "ko": "Carman's 프로틴 바 솔티드 카라멜 넛 버터 5개입 200g",
+    "zh": "Carman's 鹽味焦糖堅果奶油蛋白棒 5入 200克",
+    "ja": "Carman's ソルティキャラメルナッツバター プロテインバー 5個入 200g",
+    "ko": "Carman's 솔티드 카라멜 넛 버터 프로틴 바 5개입 200g",
     "src": "ai",
-    "qa_tries": 1
+    "qa_tries": 2
   },
   "ABC Sweet Soy Sauce 620mL": {
     "zh": "ABC 甜醬油 620毫升",
@@ -193898,6 +193898,102 @@
     "zh": "Jif Cream 多用途清潔劑一般款 500毫升",
     "ja": "Jif Cream クリーム多目的クリーナー レギュラー 500mL",
     "ko": "Jif Cream 크림 다목적 클리너 레귤러 500mL",
+    "src": "ai"
+  },
+  "Helga's Soft White Rolls 4 pack": {
+    "zh": "Helga's 柔軟白餐包 4入",
+    "ja": "Helga's ソフトホワイトロール 4個入",
+    "ko": "Helga's 소프트 화이트 롤 4개입",
+    "src": "ai"
+  },
+  "MARKET FARE Cauliflower 500g": {
+    "zh": "MARKET FARE 花椰菜 500克",
+    "ja": "MARKET FARE カリフラワー 500g",
+    "ko": "MARKET FARE 콜리플라워 500g",
+    "src": "ai"
+  },
+  "EXPRESSI Brazil Coffee Pods 16 Pack 124g": {
+    "zh": "EXPRESSI 巴西咖啡膠囊 16入 124克",
+    "ja": "EXPRESSI ブラジルコーヒーポッド 16個入 124g",
+    "ko": "EXPRESSI 브라질 커피 포드 16개입 124g",
+    "src": "ai"
+  },
+  "Woolworths Original Salted Corn Chips 175g": {
+    "zh": "Woolworths 經典鹽味玉米片 175克",
+    "ja": "Woolworths オリジナル塩味コーンチップス 175g",
+    "ko": "Woolworths 오리지널 짭짤한 콘칩 175g",
+    "src": "ai"
+  },
+  "Oral-B Fresh Clean Soft Toothbrush 7 pack": {
+    "zh": "Oral-B 清新潔淨軟毛牙刷 7入",
+    "ja": "Oral-B フレッシュクリーン 柔らかめ歯ブラシ 7本入",
+    "ko": "Oral-B 프레시 클린 부드러운 칫솔 7개입",
+    "src": "ai"
+  },
+  "Menissez Bake At Home White Baguettes 2 pack": {
+    "zh": "Menissez 居家烘焙白法式長棍麵包 2入",
+    "ja": "Menissez ベイクアットホーム ホワイトバゲット 2個入",
+    "ko": "Menissez 홈베이킹 화이트 바게트 2개입",
+    "src": "ai"
+  },
+  "Menissez Premium Petits Paves 4 pack": {
+    "zh": "Menissez 頂級方型小麵包 4入",
+    "ja": "Menissez プレミアム プチパヴェ 4個入",
+    "ko": "Menissez 프리미엄 쁘띠 파베 4개입",
+    "src": "ai"
+  },
+  "Woolworths Supreme Cheese Corn Chips 175g": {
+    "zh": "Woolworths 至尊起司玉米片 175克",
+    "ja": "Woolworths シュプリームチーズ コーンチップス 175g",
+    "ko": "Woolworths 슈프림 치즈 콘칩 175g",
+    "src": "ai"
+  },
+  "Wonder White Rolls 4 pack": {
+    "zh": "Wonder White 餐包 4入",
+    "ja": "Wonder White ロール 4個入",
+    "ko": "Wonder White 롤 4개입",
+    "src": "ai"
+  },
+  "Nivea Pearl & Beauty 72h Antiperspirant Roll On Deodorant 50mL": {
+    "zh": "Nivea 珍珠煥亮 72小時止汗滾珠 50毫升",
+    "ja": "Nivea パール＆ビューティー 72時間制汗ロールオン 50ml",
+    "ko": "Nivea 펄 앤 뷰티 72시간 데오드란트 롤온 50ml",
+    "src": "ai"
+  },
+  "Menissez Bake At Home White Dinner Rolls 6 pack": {
+    "zh": "Menissez 居家烘焙白餐包 6入",
+    "ja": "Menissez ベイクアットホーム ホワイトディナーロール 6個入",
+    "ko": "Menissez 홈베이킹 화이트 디너롤 6개입",
+    "src": "ai"
+  },
+  "NEW True Dates Flavoured Date Snacks 100g": {
+    "zh": "True Dates 調味椰棗零食 100克",
+    "ja": "True Dates フレーバーデーツスナック 100g",
+    "ko": "True Dates 맛있는 대추야자 스낵 100g",
+    "src": "ai"
+  },
+  "NEW QB's Snacks Crunchy Cheese 40g": {
+    "zh": "QB's Snacks 酥脆起司 40克",
+    "ja": "QB's Snacks クランチチーズ 40g",
+    "ko": "QB's Snacks 크런치 치즈 40g",
+    "src": "ai"
+  },
+  "NEW Tom & Luke Snacka Balls 132g": {
+    "zh": "Tom & Luke 能量球 132克",
+    "ja": "Tom & Luke スナッカボール 132g",
+    "ko": "Tom & Luke 스내카 볼 132g",
+    "src": "ai"
+  },
+  "NEW Double D Smart Sweet 50g": {
+    "zh": "Double D 聰明糖果 50克",
+    "ja": "Double D スマートスイーツ 50g",
+    "ko": "Double D 스마트 스위트 50g",
+    "src": "ai"
+  },
+  "NEW Koja x Bec Judd After Bars 112g": {
+    "zh": "Koja x Bec Judd 能量棒 112克",
+    "ja": "Koja x Bec Judd アフターバー 112g",
+    "ko": "Koja x Bec Judd 애프터 바 112g",
     "src": "ai"
   }
 }
