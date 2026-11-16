@@ -1490,3 +1490,17 @@ html:root .p-regular, html:root .tag.is-sale.is-regular { color: var(--ink-3); b
         word-break: keep-all; overflow-wrap: anywhere; }
     .more-filters:not(.is-open) { display: none; }
 }
+
+/* v15.5 – Phones: form text 16px (below that an iPhone zooms in on tap); tap areas of about 40px, same look */
+@media (max-width: 1023px) { input, select, textarea { font-size: 16px !important; } }
+/* text links: the box grows through padding, an equal negative margin keeps the layout where it was */
+html:root .brand-link { padding-block: 5px; margin-block: -5px; }
+html:root .ft-email a { display: inline-block; padding-bottom: 20px; margin-bottom: -20px; }   /* downwards only: the 告訴我們 link is right above */
+/* filled buttons: a transparent layer around them (::before on the group tabs, their ::after is the underline) */
+html:root :is(.cart-btn, .seg-lg .seg-btn, .cat-grid .chip, .suggest-chip) { position: relative; }
+html:root :is(.cart-btn, .seg-lg .seg-btn, .cat-grid .chip, .suggest-chip, .fb-fab)::after,
+html:root .cat-group::before { content: ''; position: absolute; inset: -3px 0; border-radius: inherit; }
+html:root .suggest-row .suggest-chip::after { inset: -4px -2px; }   /* .suggest-row: outweighs the :is() rule above */
+html:root .cat-group::before { inset: -4px 0 0; }
+/* the search-word row scrolls sideways and cuts off what sticks out: 4px more padding, 4px less margin, same height */
+html:root .toolbar > .suggest-row { padding: 5px 0; margin-top: 8px; margin-bottom: -4px; }
