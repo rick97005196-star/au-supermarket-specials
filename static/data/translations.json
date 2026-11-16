@@ -195114,9 +195114,10 @@
   },
   "Voltaren Pain Relief Gel 12 Hourly 100g": {
     "zh": "Voltaren 12小時長效止痛凝膠 100克",
-    "ja": "Voltaren 12時間鎮痛ジェル 100g",
-    "ko": "Voltaren 12시간 진통 젤 100g",
-    "src": "ai"
+    "ja": "Voltaren 12時間持続鎮痛ジェル 100g",
+    "ko": "Voltaren 12시간 지속 통증 완화 젤 100g",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Jameson Dry & Lime 4.8% Cans 4x330mL": {
     "zh": "Jameson 威士忌乾薑萊姆調酒 4.8% 330毫升 x 4入",
@@ -195263,10 +195264,11 @@
     "src": "ai"
   },
   "Luxury MSC Certified Thawed Raw Lobster Tails": {
-    "zh": "Luxury MSC認證解凍生龍蝦尾",
+    "zh": "Luxury MSC認證 解凍生龍蝦尾",
     "ja": "Luxury MSC認証 解凍生ロブスターテール",
-    "ko": "Luxury MSC 인증 해동 생 랍스터 테일",
-    "src": "ai"
+    "ko": "Luxury MSC인증 해동 생 랍스터 꼬리",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Haagen Dazs Ice Cream Pint 457ml": {
     "zh": "Haagen Dazs 冰淇淋品脫杯 457毫升",
@@ -195479,10 +195481,11 @@
     "src": "ai"
   },
   "Arnott's Marie or Milk Arrowroot Biscuits 250g": {
-    "zh": "Arnott's Marie 或 Milk Arrowroot 餅乾 250克",
-    "ja": "Arnott's Marie または Milk Arrowroot ビスケット 250g",
-    "ko": "Arnott's Marie 또는 Milk Arrowroot 비스킷 250g",
-    "src": "ai"
+    "zh": "Arnott's 瑪莉餅乾或牛奶箭根餅乾 250克",
+    "ja": "Arnott's マリービスケットまたはミルクアロールートビスケット 250g",
+    "ko": "Arnott's 마리 비스킷 또는 밀크 애로우루트 비스킷 250g",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Farmers Union 15g Protein Pot or Pouch 150g": {
     "zh": "Farmers Union 15克蛋白質優格杯或袋裝 150克",
@@ -195582,9 +195585,10 @@
   },
   "Swisse Ultiboost Calm + Sleep, Multivitamin or Magnesium Gummies Pk 60": {
     "zh": "Swisse Ultiboost 舒緩助眠、綜合維他命或鎂軟糖 60入",
-    "ja": "Swisse Ultiboost カーム＋スリープ、マルチビタミンまたはマグネシウム グミ 60個入",
-    "ko": "Swisse Ultiboost 카ーム + 슬립, 멀티비타민 또는 마그네슘 구미 60개입",
-    "src": "ai"
+    "ja": "Swisse Ultiboost リラックス・睡眠サポート、マルチビタミンまたはマグネシウムグミ 60個入",
+    "ko": "Swisse Ultiboost 진정 및 수면, 종합비타민 또는 마그네슘 구미 60개입",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Ultimates Indulge Wet Dog Food Tray Pk 6 x 100g": {
     "zh": "Ultimates Indulge 濕式成犬餐盒 100克 x 6入",
@@ -195992,6 +195996,60 @@
     "zh": "澳洲小番茄",
     "ja": "オーストラリア産ミニトマト",
     "ko": "호주산 방울토마토",
+    "src": "ai"
+  },
+  "JINDURRA STATION Beef Porterhouse Steak": {
+    "zh": "JINDURRA STATION 牛肉紐約客牛排",
+    "ja": "JINDURRA STATION 牛肉ポーターハウスステーキ",
+    "ko": "JINDURRA STATION 소고기 채끝 스테이크",
+    "src": "ai"
+  },
+  "BAKERS LIFE Pikelets 8 Pack 200g": {
+    "zh": "BAKERS LIFE 迷你鬆餅 200克（8入）",
+    "ja": "BAKERS LIFE ミニパンケーキ 200g（8個入）",
+    "ko": "BAKERS LIFE 미니 팬케이크 200g（8개입）",
+    "src": "ai"
+  },
+  "STONEMILL Honey, Soy & Garlic Marinade 375g": {
+    "zh": "STONEMILL 蜂蜜醬油蒜味醃料 375克",
+    "ja": "STONEMILL ハチミツ・醤油・ガーリックマリネ 375g",
+    "ko": "STONEMILL 꿀 간장 마늘 마리네이드 375g",
+    "src": "ai"
+  },
+  "JINDURRA STATION Beef Chuck Casserole": {
+    "zh": "JINDURRA STATION 牛肉燉肉塊",
+    "ja": "JINDURRA STATION 牛肉煮込み用肉",
+    "ko": "JINDURRA STATION 소고기 찜용",
+    "src": "ai"
+  },
+  "STONEMILL Smokey BBQ Marinade 375g": {
+    "zh": "STONEMILL 煙燻烤肉風味醃料 375克",
+    "ja": "STONEMILL スモーキーBBQマリネ 375g",
+    "ko": "STONEMILL 스모키 BBQ 마리네이드 375g",
+    "src": "ai"
+  },
+  "STONEMILL Teriyaki Marinade 375g": {
+    "zh": "STONEMILL 照燒風味醃料 375克",
+    "ja": "STONEMILL 照り焼きマリネ 375g",
+    "ko": "STONEMILL 데리야끼 마리네이드 375g",
+    "src": "ai"
+  },
+  "DELI ORIGINALS Garlic Aioli 320g": {
+    "zh": "DELI ORIGINALS 蒜味美乃滋 320克",
+    "ja": "DELI ORIGINALS ガーリックアイオリソース 320g",
+    "ko": "DELI ORIGINALS 마늘 아이올리 소스 320g",
+    "src": "ai"
+  },
+  "STONEMILL Crushed Ginger 230g": {
+    "zh": "STONEMILL 薑泥 230克",
+    "ja": "STONEMILL おろし生姜 230g",
+    "ko": "STONEMILL 다진 생강 230g",
+    "src": "ai"
+  },
+  "STONEMILL Satay Marinade 375g": {
+    "zh": "STONEMILL 沙嗲風味醃料 375克",
+    "ja": "STONEMILL サテマリネ 375g",
+    "ko": "STONEMILL 사테 마리네이드 375g",
     "src": "ai"
   }
 }
