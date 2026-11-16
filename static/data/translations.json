@@ -195113,11 +195113,11 @@
     "src": "ai"
   },
   "Voltaren Pain Relief Gel 12 Hourly 100g": {
-    "zh": "Voltaren 12小時長效止痛凝膠 100克",
-    "ja": "Voltaren 12時間持続鎮痛ジェル 100g",
-    "ko": "Voltaren 12시간 지속 통증 완화 젤 100g",
+    "zh": "Voltaren 12小時止痛凝膠 100克",
+    "ja": "Voltaren 12時間鎮痛ジェル 100g",
+    "ko": "Voltaren 12시간 진통 젤 100g",
     "src": "ai",
-    "qa_tries": 1
+    "qa_tries": 2
   },
   "Jameson Dry & Lime 4.8% Cans 4x330mL": {
     "zh": "Jameson 威士忌乾薑萊姆調酒 4.8% 330毫升 x 4入",
@@ -195264,11 +195264,11 @@
     "src": "ai"
   },
   "Luxury MSC Certified Thawed Raw Lobster Tails": {
-    "zh": "Luxury MSC認證 解凍生龍蝦尾",
+    "zh": "Luxury MSC認證解凍生龍蝦尾",
     "ja": "Luxury MSC認証 解凍生ロブスターテール",
-    "ko": "Luxury MSC인증 해동 생 랍스터 꼬리",
+    "ko": "Luxury MSC 인증 해동 생 랍스터 꼬리",
     "src": "ai",
-    "qa_tries": 1
+    "qa_tries": 2
   },
   "Haagen Dazs Ice Cream Pint 457ml": {
     "zh": "Haagen Dazs 冰淇淋品脫杯 457毫升",
@@ -196050,6 +196050,18 @@
     "zh": "STONEMILL 沙嗲風味醃料 375克",
     "ja": "STONEMILL サテマリネ 375g",
     "ko": "STONEMILL 사테 마리네이드 375g",
+    "src": "ai"
+  },
+  "Coles Finest. Artichoke & Spinach Dip 170g": {
+    "zh": "Coles Finest 朝鮮薊菠菜沾醬 170克",
+    "ja": "Coles Finest アーティチョーク＆ほうれん草ディップ 170g",
+    "ko": "Coles Finest 아티초크 & 시금치 딥 170g",
+    "src": "ai"
+  },
+  "Fireball Cinnamon Whiskey 50ml 1 Each": {
+    "zh": "Fireball 肉桂威士忌 50毫升",
+    "ja": "Fireball シナモンウイスキー 50ml",
+    "ko": "Fireball 시나몬 위스키 50ml",
     "src": "ai"
   }
 }
