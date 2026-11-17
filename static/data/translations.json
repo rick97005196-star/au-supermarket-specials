@@ -197515,10 +197515,11 @@
     "src": "ai"
   },
   "True Blue Freeze Dried Raw Coated Dry Cat Food Chicken 1kg": {
-    "zh": "True Blue 冷凍乾燥生肉塗層乾貓糧 Chicken 1公斤",
-    "ja": "True Blue フリーズドライ生肉コーティングキャットフード Chicken 1kg",
-    "ko": "True Blue 동결건조 생식 코팅 캣푸드 Chicken 1kg",
-    "src": "ai"
+    "zh": "True Blue 冷凍乾燥生肉塗層乾貓糧 雞肉口味 1公斤",
+    "ja": "True Blue フリーズドライ生肉コーティングドライキャットフード チキン 1kg",
+    "ko": "True Blue 동결건조 생고기 코팅 건식 캣푸드 닭고기 1kg",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Poni Lip Rehab Mask Clear 15g": {
     "zh": "Poni 護唇修復膜 透明款 15克",
@@ -197869,10 +197870,11 @@
     "src": "ai"
   },
   "True Blue Freeze Dried Raw Coated Dry Cat Food Beef 1kg": {
-    "zh": "True Blue 冷凍乾燥生肉塗層乾貓糧 Beef 1公斤",
-    "ja": "True Blue フリーズドライ生肉コーティングキャットフード Beef 1kg",
-    "ko": "True Blue 동결건조 생식 코팅 캣푸드 Beef 1kg",
-    "src": "ai"
+    "zh": "True Blue 冷凍乾燥生肉塗層乾貓糧 牛肉口味 1公斤",
+    "ja": "True Blue フリーズドライ生肉コーティングドライキャットフード ビーフ 1kg",
+    "ko": "True Blue 동결건조 생고기 코팅 건식 캣푸드 소고기 1kg",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Moro Tradicional Mild Taste Olive Oil 500mL": {
     "zh": "Moro Tradicional 溫和風味橄欖油 500毫升",
@@ -198833,13 +198835,172 @@
     "src": "ai"
   },
   "Joseph Joseph Duo Sink Tidy 1 Each": {
-    "zh": "Joseph Duo Sink Tidy 1 Each",
-    "ja": "ジョゼフジョセフ デュオシンク タイディ 各1",
-    "ko": "Joseph 듀오 싱크대 Tidy 1개"
+    "zh": "Joseph Duo 水槽收納架",
+    "ja": "Joseph Duo シンク整理スタンド",
+    "ko": "Joseph Duo 싱크대 정리대",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Wotnot Naturals Natural Zinc Sunscreen Spf50 Clear Matte 125g": {
-    "zh": "Wotnot Naturals 天然鋅防曬霜 Spf50 透明霧面 125 克",
-    "ja": "Wotnot Naturals ナチュラル ジンク サンスクリーン SPF50 クリア マット 125g",
-    "ko": "Wotnot Naturals 천연 아연 자외선 차단제 Spf50 투명 매트 125g"
+    "zh": "Wotnot Naturals 天然氧化鋅防曬乳 SPF50 透明霧面 125克",
+    "ja": "Wotnot Naturals 天然亜鉛サンスクリーン SPF50 クリアマット 125g",
+    "ko": "Wotnot Naturals 천연 아연 선크림 SPF50 투명 매트 125g",
+    "src": "ai"
+  },
+  "Hismile Stain Id Mouthwash Strong Mint 237mL": {
+    "zh": "Hismile Stain iD 漱口水 強力薄荷 237毫升",
+    "ja": "Hismile Stain iD マウスウォッシュ ストロングミント 237ml",
+    "ko": "Hismile Stain iD 구강청결제 스트롱 민트 237ml",
+    "src": "ai"
+  },
+  "Joseph Joseph Duo Compact Hand Held Spiralizer 1 Each": {
+    "zh": "Joseph Duo 輕便手持螺旋切絲器",
+    "ja": "Joseph Duo コンパクトハンドヘルドスパイラライザー",
+    "ko": "Joseph Duo 콤팩트 핸드헬드 스파이럴라이저",
+    "src": "ai"
+  },
+  "QV Skin Lotion 250mL": {
+    "zh": "QV 身體乳液 250毫升",
+    "ja": "QV スキンローション 250mL",
+    "ko": "QV 스킨 로션 250mL",
+    "src": "ai"
+  },
+  "Nivea Caring Day Cream Spf30 Face Moisturiser 50mL": {
+    "zh": "Nivea 滋潤日間防曬保濕霜 SPF30 50毫升",
+    "ja": "Nivea ケアリングデイクリーム SPF30 フェイスモイスチャライザー 50mL",
+    "ko": "Nivea 케어링 데이 크림 SPF30 페이스 모이스처라이저 50mL",
+    "src": "ai"
+  },
+  "Maharajah's Choice Himalayan Salt Chips 52g": {
+    "zh": "Maharajah's Choice 喜馬拉雅鹽味洋芋片 52克",
+    "ja": "Maharajah's Choice ヒマラヤソルトチップス 52g",
+    "ko": "Maharajah's Choice 히말라야 솔트 칩 52g",
+    "src": "ai"
+  },
+  "Got2b Glued Wax Stick Sleek Hair Styling 50g": {
+    "zh": "Got2b Glued 造型髮蠟棒 50克",
+    "ja": "Got2b Glued ワックススティック スリークヘアスタイリング 50g",
+    "ko": "Got2b Glued 왁스 스틱 슬릭 헤어 스타일링 50g",
+    "src": "ai"
+  },
+  "Got2b Curlz Defining Jelly Hair Styling Gel 150mL": {
+    "zh": "Got2b Curlz 捲髮造型果凍膠 150毫升",
+    "ja": "Got2b Curlz ディファイニングジェリー ヘアスタイリングジェル 150mL",
+    "ko": "Got2b Curlz 디파이닝 젤리 헤어 스타일링 젤 150mL",
+    "src": "ai"
+  },
+  "Berocca Hydrate Blackcurrant 40 Pack": {
+    "zh": "Berocca Hydrate 黑醋栗發泡錠 40入",
+    "ja": "Berocca Hydrate ブラックカラント 40個入",
+    "ko": "Berocca Hydrate 블랙커런트 40개입",
+    "src": "ai"
+  },
+  "Joseph Joseph Duo Easy Clean Garlic Press 1 Each": {
+    "zh": "Joseph Duo 易潔大蒜壓泥器",
+    "ja": "Joseph Duo イージークリーンガーリックプレス",
+    "ko": "Joseph Duo 이지 클린 갈릭 프레스",
+    "src": "ai"
+  },
+  "Metamucil Fibre Thins Cinammon Spice 24 Pack": {
+    "zh": "Metamucil 纖維餅乾 肉桂香料口味 24入",
+    "ja": "Metamucil ファイバーシンズ シナモンスパイス 24個入",
+    "ko": "Metamucil 파이버 씬 시나몬 스파이스 24개입",
+    "src": "ai"
+  },
+  "Hero Rescue Balm + Red Correct 15mL": {
+    "zh": "Hero Rescue Balm + 紅色校正修護霜 15毫升",
+    "ja": "Hero Rescue Balm + レッドコレクト 15mL",
+    "ko": "Hero Rescue Balm + 레드 코렉트 15mL",
+    "src": "ai"
+  },
+  "Wotnot Naturals Natural Zinc Sunscreen Sensitive Spf30 150g": {
+    "zh": "Wotnot Naturals 敏感肌天然氧化鋅防曬乳 SPF30 150克",
+    "ja": "Wotnot Naturals ナチュラルジンク日焼け止め 敏感肌用 SPF30 150g",
+    "ko": "Wotnot Naturals 내추럴 징크 선크림 민감성 피부용 SPF30 150g",
+    "src": "ai"
+  },
+  "Metamucil 72 Dose Wild Berry Dietary Fibre Supplement 425g": {
+    "zh": "Metamucil 野莓膳食纖維粉 425克",
+    "ja": "Metamucil ワイルドベリー 食物繊維サプリメント 425g",
+    "ko": "Metamucil 와일드 베리 식이섬유 보충제 425g",
+    "src": "ai"
+  },
+  "Biore Paint & Peel Pimple Patch 15mL": {
+    "zh": "Biore 塗抹式痘痘貼 15毫升",
+    "ja": "Biore ペイント＆ピール ニキビパッチ 15mL",
+    "ko": "Biore 페인트 & 필 여드름 패치 15mL",
+    "src": "ai"
+  },
+  "Carmex Lip Balm Minis SPF 15 15g": {
+    "zh": "Carmex 迷你護唇膏 SPF 15 15克",
+    "ja": "Carmex リップバーム ミニ SPF 15 15g",
+    "ko": "Carmex 립밤 미니 SPF 15 15g",
+    "src": "ai"
+  },
+  "Hero Mighty Body Pimple Patch 4 Pack": {
+    "zh": "Hero Mighty Body 身體痘痘貼 4入",
+    "ja": "Hero Mighty Body ニキビパッチ 4個入",
+    "ko": "Hero Mighty Body 여드름 패치 4개입",
+    "src": "ai"
+  },
+  "Joseph Joseph Duo Loaf Tin 1 Each": {
+    "zh": "Joseph Duo 吐司烤模",
+    "ja": "Joseph Duo ローフ型",
+    "ko": "Joseph Duo 로프 팬",
+    "src": "ai"
+  },
+  "Metamucil 72 Dose Lemon Lime Fibre Supplement 425g": {
+    "zh": "Metamucil 檸檬萊姆膳食纖維粉 425克",
+    "ja": "Metamucil レモンライム 食物繊維サプリメント 425g",
+    "ko": "Metamucil 레몬 라임 식이섬유 보충제 425g",
+    "src": "ai"
+  },
+  "Invisible Zinc Junior Mineral Sunscreen Spf50 60g": {
+    "zh": "Invisible Zinc 兒童礦物防曬乳 SPF50 60克",
+    "ja": "Invisible Zinc ジュニアミネラル日焼け止め SPF50 60g",
+    "ko": "Invisible Zinc 주니어 미네랄 선크림 SPF50 60g",
+    "src": "ai"
+  },
+  "Quick Screen 3 In 1 Sunscreen Serum & Primer Spf50 45mL": {
+    "zh": "Quick Screen 三合一防曬精華妝前乳 SPF50 45毫升",
+    "ja": "Quick Screen 3 in 1 日焼け止め美容液＆プライマー SPF50 45mL",
+    "ko": "Quick Screen 3 in 1 선크림 세럼 & 프라이머 SPF50 45mL",
+    "src": "ai"
+  },
+  "Schwarzkopf Live Colour Permanent Intense Bleach Max Blonde 00b 1 Each": {
+    "zh": "Schwarzkopf Live Colour 持久強效漂髮劑 Max Blonde 00b",
+    "ja": "Schwarzkopf Live Colour パーマネント インテンスブリーチ Max Blonde 00b",
+    "ko": "Schwarzkopf Live Colour 퍼머넌트 인텐스 블리치 Max Blonde 00b",
+    "src": "ai"
+  },
+  "Joseph Joseph Duo 12-cup Muffin Tray 1 Each": {
+    "zh": "Joseph Duo 12格馬芬烤盤",
+    "ja": "Joseph Duo 12カップ マフィン型",
+    "ko": "Joseph Duo 12구 머핀 팬",
+    "src": "ai"
+  },
+  "Joseph Joseph Duo Silicone Trivet Set 2 Pack": {
+    "zh": "Joseph Duo 矽膠隔熱墊 2入",
+    "ja": "Joseph Duo シリコントリベットセット 2個入",
+    "ko": "Joseph Duo 실리콘 트리벳 세트 2개입",
+    "src": "ai"
+  },
+  "Wotnot Naturals Natural Zinc Sunscreen Spf30 3 Months 100g": {
+    "zh": "Wotnot Naturals 天然氧化鋅防曬乳 SPF30 3個月以上 100克",
+    "ja": "Wotnot Naturals 天然亜鉛サンスクリーン SPF30 生後3ヶ月以上 100g",
+    "ko": "Wotnot Naturals 천연 아연 선크림 SPF30 3개월 이상 100g",
+    "src": "ai"
+  },
+  "Got2b Curlz Flexible Curl Mousse Hair Styling 200mL": {
+    "zh": "Got2b Curlz 彈力捲髮慕斯 200毫升",
+    "ja": "Got2b Curlz フレキシブルカールムース ヘアスタイリング 200mL",
+    "ko": "Got2b Curlz 유연한 컬 무스 헤어 스타일링 200mL",
+    "src": "ai"
+  },
+  "Joseph Joseph Duo Multi-function Chopping Board 1 Each": {
+    "zh": "Joseph Duo 多功能砧板",
+    "ja": "Joseph Duo 多機能まな板",
+    "ko": "Joseph Duo 다기능 도마",
+    "src": "ai"
   }
 }
