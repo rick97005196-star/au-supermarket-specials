@@ -4793,9 +4793,10 @@
     "src": "ai"
   },
   "Essano Collagen Boost Plumping Daily Moisturiser 100mL": {
-    "zh": "Essano 膠原蛋白澎潤保濕日霜 (100毫升)",
-    "ja": "エッサーノ コラーゲンブースト プランピング デイリーモイスチャライザー 保湿乳液（100mL）",
-    "ko": "에사노 콜라겐 부스트 플럼핑 데일리 수분 크림 (100mL)"
+    "zh": "Essano 膠原蛋白彈力保濕日霜 100毫升",
+    "ja": "Essano コラーゲンブースト プランピング デイモイスチャライザー 100ml",
+    "ko": "Essano 콜라겐 부스트 플럼핑 데이 모이스처라이저 100ml",
+    "src": "ai"
   },
   "Mayver's Smooth or Crunchy Peanut Butter 375g": {
     "zh": "Mayver's 滑順或顆粒花生醬 375克",
@@ -6971,9 +6972,10 @@
     "src": "ai"
   },
   "Essano Rosehip Oil Certified Organic 20mL": {
-    "zh": "Essano 有機認證天然純玫瑰果油 (20毫升裝)",
-    "ja": "エッサーノ オーガニック認定 ローズヒップオイル（20mL）",
-    "ko": "에사노 유기농 인증 로즈힙 오일 (20mL)"
+    "zh": "Essano 有機認證玫瑰果油 20毫升",
+    "ja": "Essano ローズヒップオイル オーガニック認証 20ml",
+    "ko": "Essano 로즈힙 오일 유기농 인증 20ml",
+    "src": "ai"
   },
   "Nescafe Spiced Chai Coffee Latte 8 pack": {
     "zh": "Nescafe 雀巢 香料印度奶茶拿鐵隨身包 8入",
@@ -11685,9 +11687,10 @@
     "src": "ai"
   },
   "Essano Collagen Boost Restorative Night Cream 50mL": {
-    "zh": "艾仙諾 Essano 膠原蛋白活膚修護晚霜 (50毫升)",
-    "ja": "エッサーノ コラーゲンブースト リペア ナイトクリーム（50ml）",
-    "ko": "에사노 콜라겐 부스트 리스토러티브 나이트 크림 (50ml)"
+    "zh": "Essano 膠原蛋白修護晚霜 50毫升",
+    "ja": "Essano コラーゲンブースト リストラティブ ナイトクリーム 50ml",
+    "ko": "Essano 콜라겐 부스트 리스토러티브 나이트 크림 50ml",
+    "src": "ai"
   },
   "Coles Snackers Delight Platter": {
     "zh": "Coles 歡樂點心冷盤拼盤 (起司臘腸乾酪盤)",
@@ -12073,9 +12076,11 @@
     "ko": "콜스 심플리 3겹 화장지 롤휴지 (24롤입)"
   },
   "Bonds No Show Footlets Nude (3-8 & 8-11) each": {
-    "zh": "Bonds 隱形淺口防滑船襪 裸色款 (單雙裝)",
-    "ja": "ボンズ 脱げない フットカバー 浅履き靴下 ヌードベージュ（1足）",
-    "ko": "본즈 페이크삭스 덧선 덧신 누드베이지 (켤레당)"
+    "zh": "Bonds 隱形襪 膚色 (3-8號 & 8-11號)",
+    "ja": "Bonds フットカバー ヌード (サイズ3-8 & 8-11)",
+    "ko": "Bonds 덧신 누드 (사이즈 3-8 & 8-11)",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Cadbury Dairy Milk Snack Chocolate Block 180g": {
     "zh": "Cadbury Dairy Milk Snack 牛奶巧克力 180克",
@@ -13253,19 +13258,22 @@
     "src": "ai"
   },
   "1000Hour Lash & Brow Dye Kit Dark Brown each": {
-    "zh": "1000Hour 睫毛與染眉膏套組 深棕色 (單入裝)",
-    "ja": "1000Hour まつ毛＆眉毛カラーリングキット ダークブラウン（1個入）",
-    "ko": "1000Hour 속눈썹 & 눈썹 염색 키트 다크 브라운 (개당)"
+    "zh": "1000Hour 睫毛眉毛染劑組 深棕色",
+    "ja": "1000Hour まつげ・眉毛用染毛キット ダークブラウン",
+    "ko": "1000Hour 속눈썹 및 눈썹 염색 키트 다크 브라운",
+    "src": "ai"
   },
   "1000Hour Microblading Pen Dark Brown each": {
-    "zh": "1000Hour 仿真霧眉紋繡眉筆 深棕色 (單入裝)",
-    "ja": "1000Hour マイクロブレーディング アイブロウペン ダークブラウン（1本入）",
-    "ko": "1000Hour 마이크로블레이딩 눈썹 타투 펜 다크 브라운 (개당)"
+    "zh": "1000Hour 霧眉筆 深棕色",
+    "ja": "1000Hour マイクロブレーディングペン ダークブラウン",
+    "ko": "1000Hour 마이크로블레이딩 펜 다크 브라운",
+    "src": "ai"
   },
   "1000Hour Microblading Pen Medium Brown each": {
-    "zh": "1000Hour 仿真霧眉紋繡眉筆 中棕色 (單入裝)",
-    "ja": "1000Hour マイクロブレーディング アイブロウペン ミディアムブラウン（1本入）",
-    "ko": "1000Hour 마이크로블레이딩 눈썹 타투 펜 미디엄 브라운 (개당)"
+    "zh": "1000Hour 霧眉筆 中棕色",
+    "ja": "1000Hour マイクロブレーディングペン ミディアムブラウン",
+    "ko": "1000Hour 마이크로블레이딩 펜 미디엄 브라운",
+    "src": "ai"
   },
   "2X Dining Chair Anti-scratch Leather Padded Seat Kitchen Chair 1EA": {
     "zh": "防刮皮革軟墊餐椅/廚房椅 2入組 (1組)",
@@ -13675,24 +13683,28 @@
     "ko": "본즈 컴피 탑스 불투명 타이즈 블랙 Sml-Med (개당)"
   },
   "Bonds Comfy Tops Semi Opaque Tights Black Med-Lge each": {
-    "zh": "Bonds 舒適高腰半微透透氣褲襪 黑色 M-L (單件裝)",
-    "ja": "ボンズ コンフィートップス セミ不透明タイツ ブラック M-L（1足）",
-    "ko": "본즈 컴피 탑스 세미 불투명 타이즈 블랙 Med-Lge (개당)"
+    "zh": "Bonds 舒適半透明褲襪 黑色 Med-Lge號",
+    "ja": "Bonds コンフィトップス セミオペーク タイツ ブラック Med-Lgeサイズ",
+    "ko": "Bonds 컴피 탑스 반투명 타이즈 블랙 Med-Lge 사이즈",
+    "src": "ai"
   },
   "Bonds Comfy Tops Semi Opaque Tights Black Sml-Med each": {
-    "zh": "Bonds 舒適高腰半微透透氣褲襪 黑色 S-M (單件裝)",
-    "ja": "ボンズ コンフィートップス セミ不透明タイツ ブラック S-M（1足）",
-    "ko": "본즈 컴피 탑스 세미 불투명 타이즈 블랙 Sml-Med (개당)"
+    "zh": "Bonds 舒適半透明褲襪 黑色 Sml-Med號",
+    "ja": "Bonds コンフィトップス セミオペーク タイツ ブラック Sml-Medサイズ",
+    "ko": "Bonds 컴피 탑스 반투명 타이즈 블랙 Sml-Med 사이즈",
+    "src": "ai"
   },
   "Bonds Comfy Tops Slimming Sheer Tights Black Lge each": {
-    "zh": "Bonds 舒適塑身超薄微透絲襪 黑色 L (單件裝)",
-    "ja": "ボンズ コンフィートップス シェイプアップ 着圧シアータイツ ブラック L（1足）",
-    "ko": "본즈 컴피 탑스 슬리밍 시어 투명 스타킹 블랙 L (개당)"
+    "zh": "Bonds 舒適塑形透膚褲襪 黑色 Lge號",
+    "ja": "Bonds コンフィトップス スリムシアータイツ ブラック Lgeサイズ",
+    "ko": "Bonds 컴피 탑스 슬리밍 시어 타이즈 블랙 Lge 사이즈",
+    "src": "ai"
   },
   "Bonds Comfy Tops Slimming Sheer Tights Black Med each": {
-    "zh": "Bonds 舒適塑身超薄微透絲襪 黑色 M (單件裝)",
-    "ja": "ボンズ コンフィートップス シェイプアップ 着圧シアータイツ ブラック M（1足）",
-    "ko": "본즈 컴피 탑스 슬리밍 시어 투명 스타킹 블랙 M (개당)"
+    "zh": "Bonds 舒適塑形透膚褲襪 黑色 Med號",
+    "ja": "Bonds コンフィトップス スリムシアータイツ ブラック Medサイズ",
+    "ko": "Bonds 컴피 탑스 슬리밍 시어 타이즈 블랙 Med 사이즈",
+    "src": "ai"
   },
   "Bonds Comfy Tops Slimming Sheer Tights Black Sml each": {
     "zh": "Bonds 舒適塑身超薄微透絲襪 黑色 S (單件裝)",
@@ -13788,19 +13800,22 @@
     "src": "ai"
   },
   "Bonds No Show Footlets Black (3-8 & 8-11) each": {
-    "zh": "Bonds 隱形淺口船型襪 黑色 (尺寸 3-8 或 8-11 單雙裝)",
-    "ja": "ボンズ 脱げにくい浅履きフットカバーソックス ブラック（3-8 / 8-11 各1足）",
-    "ko": "본즈 노쇼 풋렛 덧신 양말 블랙 (사이즈 3-8 / 8-11 개당)"
+    "zh": "Bonds 隱形襪 黑色 (3-8號 & 8-11號)",
+    "ja": "Bonds ノーショー フットレット ブラック (3-8 & 8-11)",
+    "ko": "Bonds 노쇼 풋렛 블랙 (3-8 & 8-11)",
+    "src": "ai"
   },
   "Bonds Sheer Relief Compression Hosiery 40 Denier Size Ave/T each": {
-    "zh": "Bonds 輕盈舒壓彈性壓力絲襪 40丹 尺寸 Ave/T (單件裝)",
-    "ja": "ボンズ シアリーフ 着圧ストッキング 40デニール サイズ Ave/T（1足）",
-    "ko": "본즈 시어 릴리프 압박 스타킹 40데니아 사이즈 Ave/T (개당)"
+    "zh": "Bonds 舒緩壓力透膚褲襪 40丹尼 Ave/T號",
+    "ja": "Bonds シアーリリーフ 着圧ストッキング 40デニール サイズAve/T",
+    "ko": "Bonds 시어 릴리프 압박 스타킹 40데니아 사이즈 Ave/T",
+    "src": "ai"
   },
   "Bonds Sheer Relief Compression Hosiery 40 Denier Size T/XT each": {
-    "zh": "Bonds 輕盈舒壓彈性壓力絲襪 40丹 尺寸 T/XT (單件裝)",
-    "ja": "ボンズ シアリーフ 着圧ストッキング 40デニール サイズ T/XT（1足）",
-    "ko": "본즈 시어 릴리프 압박 스타킹 40데니아 사이즈 T/XT (개당)"
+    "zh": "Bonds 壓力褲襪 40丹尼 T/XT號",
+    "ja": "Bonds 着圧ストッキング 40デニール サイズT/XT",
+    "ko": "Bonds 압박 스타킹 40데니어 사이즈 T/XT",
+    "src": "ai"
   },
   "Bosisto's Desert Lime & Eucalyptus Hand Wash 500mL": {
     "zh": "Bosisto's 沙漠萊姆尤加利洗手乳 500毫升",
@@ -20389,9 +20404,10 @@
     "src": "ai"
   },
   "Ultimates Indulge Chicken Loaf Wet Dog Food 100g x 6 pack": {
-    "zh": "Ultimates Indulge 雞肉麵包濕狗糧 100 克 x 6 包",
-    "ja": "アルティメッツ インダルジ チキンローフ ウェット ドッグフード 100g×6パック",
-    "ko": "Ultimates 인덜지 치킨 로프 웨트 도그 푸드 100g x 6팩"
+    "zh": "Ultimates Indulge 雞肉肉泥濕犬糧 100克 x 6入",
+    "ja": "Ultimates Indulge チキンローフ ウェットドッグフード 100g x 6個入",
+    "ko": "Ultimates Indulge 치킨 로프 습식 도그푸드 100g x 6개입",
+    "src": "ai"
   },
   "Garnier Pure Active 3-In-1 Clay Wash Scrub & Mask 150mL": {
     "zh": "Garnier 三合一抗痘泥膜洗面乳 150毫升",
@@ -20542,9 +20558,10 @@
     "src": "ai"
   },
   "Ultimates Indulge Adult Wet Dog Food Loaf With Lamb 100g x 6 pack": {
-    "zh": "Ultimates Indulge 成犬濕糧肉餅 (羊肉味) 100g x 6包",
-    "ja": "Ultimates Indulge 成犬用ウェットフード ラム肉ローフ 100g x 6個パック",
-    "ko": "Ultimates Indulge 성견용 습식 사료 (램 로프) 100g x 6팩"
+    "zh": "Ultimates Indulge 成犬濕糧肉泥 羊肉口味 100克 x 6入",
+    "ja": "Ultimates Indulge 成犬用ウェットドッグフード ローフ ラム 100g x 6個入",
+    "ko": "Ultimates Indulge 성견용 습식 도그푸드 로프 양고기 100g x 6개입",
+    "src": "ai"
   },
   "Sistema Ultra Square Food Container 1.3L each": {
     "zh": "Sistema 極致正方形保鮮盒 1.3公升",
@@ -22006,10 +22023,11 @@
     "src": "ai"
   },
   "Schick Quattro 4 Titanium Blades 12 pack": {
-    "zh": "Schick 鈦金四刀片刮鬍刀片 12入",
-    "ja": "Schick クアトロ チタニウム 替刃 12個入",
-    "ko": "Schick 콰트로 티타늄 면도날 12입",
-    "src": "ai"
+    "zh": "Schick Quattro 4鈦金刀片 12入",
+    "ja": "Schick Quattro 4 チタン替刃 12個入",
+    "ko": "Schick Quattro 4 티타늄 면도날 12개입",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Sistema Ultra Large Square Food Container 4L each": {
     "zh": "Sistema 極致超大正方形保鮮盒 4公升",
@@ -197426,19 +197444,22 @@
     "src": "ai"
   },
   "Macro Organic Frozen Mango 450g": {
-    "zh": "Macro 有機冷凍芒果 450g",
-    "ja": "マクロ オーガニック冷凍マンゴー 450g",
-    "ko": "매크로 유기농 냉동 망고 450g"
+    "zh": "Macro Organic 冷凍芒果 450克",
+    "ja": "Macro Organic 冷凍マンゴー 450g",
+    "ko": "Macro Organic 냉동 망고 450g",
+    "src": "ai"
   },
   "Cenovis Mega Magnesium Tablets 100 pack": {
-    "zh": "Cenovis Mega 鎂片 100 片",
-    "ja": "セノビス メガマグネシウム タブレット 100 パック",
-    "ko": "세노비스 메가 마그네슘 정제 100팩"
+    "zh": "Cenovis 強效鎂錠 100入",
+    "ja": "Cenovis メガマグネシウム タブレット 100個入",
+    "ko": "Cenovis 메가 마그네슘 정제 100개입",
+    "src": "ai"
   },
   "Well Naturally Chocolate Coated Almonds Dark 80g": {
-    "zh": "Well Naturally 黑巧克力杏仁 80 克",
-    "ja": "ウェルナチュラリー チョコレートコーティング アーモンド ダーク 80g",
-    "ko": "웰 내츄럴 초콜릿 코팅 아몬드 다크 80g"
+    "zh": "Well Naturally 黑巧克力杏仁 80克",
+    "ja": "Well Naturally チョコレートコーティングアーモンド ダーク 80g",
+    "ko": "Well Naturally 초콜릿 코팅 아몬드 다크 80g",
+    "src": "ai"
   },
   "Skara Hungarian Salami 100g": {
     "zh": "Skara 匈牙利薩拉米 100g",
@@ -197446,14 +197467,16 @@
     "ko": "스카라 헝가리안 살라미 100g"
   },
   "Maggi Fusian Mi Goreng Hot & Spicy Flavour Instant Noodles 360g 5 pack": {
-    "zh": "Maggi Fusian Mi Goreng 辣味泡麵 360g 5 包",
-    "ja": "マギー フュージョン ミーゴレン ピリ辛味即席麺 360g 5個パック",
-    "ko": "매기 푸시안 미고렝 매운맛 인스턴트 누들 360g 5팩"
+    "zh": "Maggi Fusian 印尼炒麵 香辣風味 360克（5入）",
+    "ja": "Maggi Fusian ミーゴレン ホット＆スパイシー味 360g（5個入）",
+    "ko": "Maggi Fusian 미고랭 핫&스파이시맛 360g（5개입）",
+    "src": "ai"
   },
   "V Energy Drink Grape Zero Sugar Can 500mL": {
-    "zh": "V能量飲料葡萄零糖罐裝500mL",
-    "ja": "V エナジードリンク グレープゼロシュガー 缶 500mL",
-    "ko": "V 에너지드링크 포도제로 설탕캔 500mL"
+    "zh": "V 能量飲料 葡萄口味 無糖罐裝 500毫升",
+    "ja": "V エナジードリンク グレープ ゼロシュガー 缶 500ml",
+    "ko": "V 에너지 드링크 포도 무설탕 캔 500ml",
+    "src": "ai"
   },
   "Swisse Magnesium Glycinate + Electrolytes Powder Lemon Lime 144g": {
     "zh": "Swisse 甘氨酸鎂 + 電解質粉紅檸檬青檸 144 克",
@@ -197461,24 +197484,28 @@
     "ko": "스위스 마그네슘 글리시네이트 + 전해질 분말 레몬 라임 144g"
   },
   "Decor Premium Glass Clips Container 640mL each": {
-    "zh": "Decor 優質玻璃夾容器，每個 640mL",
-    "ja": "デコールプレミアム ガラスクリップ容器 各640mL",
-    "ko": "데코 프리미엄 유리 클립 용기 각 640mL"
+    "zh": "Decor 高級玻璃密封保鮮盒 640毫升",
+    "ja": "Decor プレミアム ガラスクリップコンテナ 640ml",
+    "ko": "Decor 프리미엄 유리 클립 용기 640ml",
+    "src": "ai"
   },
   "Ecostore Ultrapower Laundry Liquid Detergent Citrus Fresh 2L": {
-    "zh": "Ecostore Ultrapower 柑橘清新洗衣液 2L",
-    "ja": "エコストア ウルトラパワー 洗濯用液体洗剤 シトラスフレッシュ 2L",
-    "ko": "에코스토어 울트라파워 세탁 액체세제 시트러스 프레쉬 2L"
+    "zh": "Ecostore 強效洗衣精 清新柑橘香 2公升",
+    "ja": "Ecostore ウルトラパワー ランドリーリキッド シトラスフレッシュの香り 2L",
+    "ko": "Ecostore 울트라 파워 세탁 세제 시트러스 프레시 향 2L",
+    "src": "ai"
   },
   "Blackmores Calcium & D3 + K2 Tablets 60 pack": {
-    "zh": "Blackmores 鈣 & D3 + K2 片 60 片",
-    "ja": "ブラックモアズ カルシウム & D3 + K2 タブレット 60 パック",
-    "ko": "블랙모어스 칼슘 & D3 + K2 정제 60팩"
+    "zh": "Blackmores 鈣 + D3 + K2 錠 60入",
+    "ja": "Blackmores カルシウム＆D3 + K2 錠 60個入",
+    "ko": "Blackmores 칼슘 & D3 + K2 정 60개입",
+    "src": "ai"
   },
   "Up&Go Protein Energize Liquid Breakfast Choc 250mL x 3 pack": {
-    "zh": "Up&Go 蛋白質能量液體早餐巧克力 250mL x 3 包",
-    "ja": "アップ&ゴー プロテイン エナジャイズ リキッド ブレックファスト チョコレート 250mL×3個パック",
-    "ko": "Up&Go 프로틴 에너자이즈 리퀴드 브렉퍼스트 초콜릿 250mL x 3팩"
+    "zh": "Up&Go Protein Energize 高蛋白液態早餐 巧克力口味 250毫升 x 3入",
+    "ja": "Up&Go Protein Energize リキッドブレックファスト チョコ 250ml x 3個入",
+    "ko": "Up&Go Protein Energize 리퀴드 브렉퍼스트 초코 250ml x 3개입",
+    "src": "ai"
   },
   "True Blue Freeze Dried Raw Coated Dry Cat Food Chicken 1kg": {
     "zh": "True Blue 凍乾生塗乾貓糧雞肉 1kg",
@@ -197491,44 +197518,54 @@
     "ko": "포니 립 리햅 마스크 클리어 15g"
   },
   "Nando's Medium Rub Spice Seasoning 25g": {
-    "zh": "Nando's 中磨香料調味料 25g",
-    "ja": "Nando's ミディアムラブスパイスシーズニング 25g",
-    "ko": "난도 미디엄 러브 스파이스 시즈닝 25g"
+    "zh": "Nando's 中辣香料調味粉 25克",
+    "ja": "Nando's ミディアム スパイスシーズニング 25g",
+    "ko": "Nando's 미디엄 스파이스 시즈닝 25g",
+    "src": "ai"
   },
   "Whiskas Kitten 2-12 Months Wet Cat Food Mixed Favourites In Jelly 85g x 12 pack": {
-    "zh": "Whiskas 小貓 2-12 個月濕貓糧混合最愛果凍 85 克 x 12 包",
-    "ja": "ウィスカス 子猫 2-12ヵ月 ウェットキャットフード ミックスフェイバリットインゼリー 85g×12個パック",
-    "ko": "Whiskas 새끼 고양이 2-12개월 습식 고양이 사료 혼합 인기 젤리 85g x 12팩"
+    "zh": "Whiskas 2-12個月幼貓 綜合果凍貓濕糧 85克 x 12入",
+    "ja": "Whiskas 子猫用 2-12ヶ月 ミックスフェイバリット ゼリー キャットフード 85g x 12個入",
+    "ko": "Whiskas 2-12개월 자묘용 믹스 페이보릿 젤리 습식 캣푸드 85g x 12개입",
+    "src": "ai"
   },
   "Annabel Karmel Little Meals Frozen Butter Chicken & Rice 200g": {
-    "zh": "Annabel Karmel Little Meals 冷凍奶油雞肉飯 200 克",
-    "ja": "アナベル カルメル リトルミールズ 冷凍バターチキン&ライス 200g",
-    "ko": "Annabel Karmel 작은 식사 냉동 버터 치킨 & 라이스 200g"
+    "zh": "Annabel Karmel 兒童冷凍奶油雞肉飯 200克",
+    "ja": "Annabel Karmel 冷凍バターチキン＆ライス 200g",
+    "ko": "Annabel Karmel 냉동 버터 치킨 & 라이스 200g",
+    "src": "ai"
   },
   "Gym Bod Pistachio Choc Top Protein Ice Cream Tub 475mL": {
-    "zh": "Gym Bod 開心果巧克力頂級蛋白質冰淇淋桶 475mL",
-    "ja": "ジム ボッド ピスタチオ チョコ トップ プロテイン アイスクリーム タブ 475mL",
-    "ko": "Gym Bod 피스타치오 초크 탑 프로틴 아이스크림 통 475mL"
+    "zh": "Gym Bod 開心果巧克力脆皮高蛋白冰淇淋 475毫升",
+    "ja": "Gym Bod ピスタチオチョコトッププロテインアイスクリーム 475ml",
+    "ko": "Gym Bod 피스타치오 초코탑 단백질 아이스크림 475ml",
+    "src": "ai"
   },
   "Billie's Bowl Biscuits Dog Treats Assorted Flavours 1kg": {
-    "zh": "Billie's Bowl Biscuits Dog Treats Assorted Flavours 1kg",
-    "ja": "ビリーズボウル ビスケット ドッグトリート アソートフレーバー 1kg",
-    "ko": "빌리즈볼 비스킷 강아지 간식 다양한 맛 1kg"
+    "zh": "Billie's Bowl 狗餅乾 綜合口味 1公斤",
+    "ja": "Billie's Bowl 犬用ビスケット アソート 1kg",
+    "ko": "Billie's Bowl 강아지 비스킷 모둠 1kg",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Daily Skincare Cellular Resurfacing Exfoliator 100mL": {
-    "zh": "日常護膚細胞煥膚去角質霜 100mL",
-    "ja": "デイリー スキンケア セルラー リサーフェシング エクスフォリエーター 100mL",
-    "ko": "데일리 스킨케어 셀룰러 리서페이싱 엑스폴리에이터 100mL"
+    "zh": "Daily Skincare 細胞煥膚去角質霜 100毫升",
+    "ja": "Daily Skincare セルラー リサーフェシング エクスフォリエーター 100ml",
+    "ko": "Daily Skincare 셀룰러 리서페이싱 각질제거제 100ml",
+    "src": "ai"
   },
   "Maggi 2 Minute Noodles Honey Soy Chicken 350g 5 pack": {
-    "zh": "美極 (Maggi) 2 分鐘面蜜汁豆油雞 350g 5 包",
-    "ja": "マギー 2分ヌードル ハニーソイチキン 350g 5パック",
-    "ko": "마기 2분면 허니간장 치킨 350g 5팩"
+    "zh": "Maggi 2分鐘蜂蜜醬油雞肉風味麵 350克（5入）",
+    "ja": "Maggi 2分麺 ハニーソイチキン味 350g（5個入）",
+    "ko": "Maggi 2분 면 허니소이 치킨맛 350g（5개입）",
+    "src": "ai",
+    "qa_tries": 1
   },
   "V Energy Drink Strawberry Crush 500mL": {
-    "zh": "V 能量飲料草莓碎 500mL",
-    "ja": "V エナジードリンク ストロベリークラッシュ 500mL",
-    "ko": "V 에너지 드링크 스트로베리 크러쉬 500mL"
+    "zh": "V 能量飲料 草莓口味 500毫升",
+    "ja": "V エナジードリンク ストロベリークラッシュ 500ml",
+    "ko": "V 에너지 드링크 딸기 크러쉬 500ml",
+    "src": "ai"
   },
   "Spirax A4 Notebook 240 Pages Assorted each": {
     "zh": "Spirax A4 筆記本 240 頁各裝",
@@ -197536,74 +197573,88 @@
     "ko": "스파이렉스 A4 노트북 240페이지 모듬 각 권"
   },
   "Whiskas 1+ Years Wet Cat Food Favourites Beef In Gravy Pouch 85g x 12 pack": {
-    "zh": "Whiskas 1+ 年濕貓糧最愛牛肉肉汁袋裝 85 克 x 12 包",
-    "ja": "ウィスカス 1歳以上用 ウェットキャットフード フェイバリットビーフイングレイビーパウチ 85g×12パック",
-    "ko": "Whiskas 1년 이상 습식 고양이 사료 인기 쇠고기 그레이비 파우치 85g x 12팩"
+    "zh": "Whiskas 1歲以上 牛肉肉汁貓濕糧 85克 x 12入",
+    "ja": "Whiskas 1歳以上用 ビーフ グレービーソース パウチ 85g x 12個入",
+    "ko": "Whiskas 1세 이상용 비프 그레이비 파우치 습식 캣푸드 85g x 12개입",
+    "src": "ai"
   },
   "Poni Faux Lash Mascara Black 13.5mL": {
-    "zh": "Poni 假睫毛黑睫毛膏 13.5mL",
-    "ja": "ポニ フェイクラッシュマスカラ ブラック 13.5mL",
-    "ko": "포니 페이크 래쉬 마스카라 블랙 13.5mL"
+    "zh": "Poni 假睫毛感睫毛膏 黑色 13.5毫升",
+    "ja": "Poni フォウラッシュ マスカラ ブラック 13.5ml",
+    "ko": "Poni 포 래쉬 마스카라 블랙 13.5ml",
+    "src": "ai"
   },
   "Woolworths Frozen Mixed Berries 1kg": {
-    "zh": "Woolworths 冷凍混合莓 1 公斤",
-    "ja": "ウールワース 冷凍ミックスベリー 1kg",
-    "ko": "울워스 냉동 혼합베리 1kg"
+    "zh": "Woolworths 冷凍綜合莓果 1公斤",
+    "ja": "Woolworths 冷凍ミックスベリー 1kg",
+    "ko": "Woolworths 냉동 혼합 베리 1kg",
+    "src": "ai"
   },
   "Maggi 2 Minute Oriental Flavour Instant Noodles 370g 5 pack": {
-    "zh": "美極 2 分鐘東方風味泡麵 370g 5 包",
-    "ja": "マギー 2分オリエンタル味即席麺 370g 5個パック",
-    "ko": "매기 2분 오리엔탈맛 인스턴트 누들 370g 5팩"
+    "zh": "Maggi 2分鐘東方風味泡麵 370克（5入）",
+    "ja": "Maggi 2分インスタント麺 オリエンタル味 370g（5個入）",
+    "ko": "Maggi 2분 인스턴트 누들 오리엔탈맛 370g（5개입）",
+    "src": "ai"
   },
   "Lady Jayne Gem Tip Rainbow Brush Large each": {
-    "zh": "Lady Jayne 寶石尖彩虹刷 大號每支",
-    "ja": "レディ ジェイン ジェムチップ レインボーブラシ 大 各",
-    "ko": "레이디제인 젬팁 레인보우 브러쉬 라지 각"
+    "zh": "Lady Jayne Gem Tip 彩虹髮梳 大號",
+    "ja": "Lady Jayne Gem Tip レインボーブラシ ラージ",
+    "ko": "Lady Jayne Gem Tip 레인보우 브러시 라지",
+    "src": "ai"
   },
   "Nature's Way Magnesium Glycinate Muscle & Recovery Tablets 60 pack": {
-    "zh": "Nature's Way 甘氨酸鎂肌肉恢復片 60 片",
-    "ja": "Nature's Way グリシン酸マグネシウム マッスル & リカバリー タブレット 60 パック",
-    "ko": "Nature's Way 마그네슘 글리시네이트 근육 및 회복 정제 60팩"
+    "zh": "Nature's Way 甘胺酸鎂肌肉修復錠 60入",
+    "ja": "Nature's Way グリシン酸マグネシウム 筋肉リカバリー錠 60個入",
+    "ko": "Nature's Way 마그네슘 글리시네이트 근육 회복정 60개입",
+    "src": "ai"
   },
   "Essano Hydration Toning Mist 120mL": {
-    "zh": "Essano 保濕爽膚噴霧 120mL",
-    "ja": "エッサーノ ハイドレーション トーニング ミスト 120mL",
-    "ko": "에사노 하이드레이션 토닝 미스트 120mL"
+    "zh": "Essano 保濕調理噴霧 120毫升",
+    "ja": "Essano ハイドレーション トーニングミスト 120ml",
+    "ko": "Essano 하이드레이션 토닝 미스트 120ml",
+    "src": "ai"
   },
   "Nuffin Chive & Onion Dip 50g x 2 pack": {
-    "zh": "Nuffin 香蔥洋蔥醬 50 克 x 2 包",
-    "ja": "ナフィン ニラ＆オニオンディップ 50g×2パック",
-    "ko": "너핀 차이브 앤 양파 딥 50g x 2팩"
+    "zh": "Nuffin 蝦夷蔥洋蔥沾醬 50克 x 2入",
+    "ja": "Nuffin チャイブ＆オニオン ディップ 50g x 2個入",
+    "ko": "Nuffin 차이브 & 어니언 딥 50g x 2개입",
+    "src": "ai"
   },
   "Le Tan SPF30+ Coconut Sunscreen Spray 250mL": {
-    "zh": "Le Tan SPF30+ 椰子防曬噴霧 250mL",
-    "ja": "ル・タン SPF30+ ココナッツ日焼け止めスプレー 250mL",
-    "ko": "르탄 SPF30+ 코코넛 선스크린 스프레이 250mL"
+    "zh": "Le Tan SPF30+ 椰子防曬噴霧 250毫升",
+    "ja": "Le Tan SPF30+ ココナッツ日焼け止めスプレー 250ml",
+    "ko": "Le Tan SPF30+ 코코넛 선스크린 스프레이 250ml",
+    "src": "ai"
   },
   "Maggi 2 Minute Beef Flavour Instant Noodles 370g 5 pack": {
-    "zh": "美極 2 分鐘牛肉口味泡麵 370g 5 包",
-    "ja": "マギー 2分ビーフ味即席麺 370g 5個パック",
-    "ko": "매기 2분 쇠고기맛 인스턴트 누들 370g 5팩"
+    "zh": "Maggi 2分鐘牛肉風味泡麵 370克（5入）",
+    "ja": "Maggi 2分インスタント麺 ビーフ味 370g（5個入）",
+    "ko": "Maggi 2분 인스턴트 누들 비프맛 370g（5개입）",
+    "src": "ai"
   },
   "Bega Lactose Free Cheese Stringers 160g": {
-    "zh": "Bega 無乳糖起司絲 160 克",
-    "ja": "Bega 乳糖フリー チーズストリンガー 160g",
-    "ko": "베가 유당 프리 치즈 스트링거 160g"
+    "zh": "Bega 無乳糖起司條 160克",
+    "ja": "Bega 乳糖不使用 チーズスティック 160g",
+    "ko": "Bega 락토프리 치즈 스트링 160g",
+    "src": "ai"
   },
   "Cadbury Delights Assortment Gift Box 180g": {
-    "zh": "吉百利歡樂什錦禮盒裝 180g",
-    "ja": "キャドバリー ディライツ アソート ギフトボックス 180g",
-    "ko": "캐드버리 딜라이트 모듬 선물 상자 180g"
+    "zh": "Cadbury 綜合巧克力禮盒 180克",
+    "ja": "Cadbury デライツ アソートギフトボックス 180g",
+    "ko": "Cadbury 딜라이트 종합 선물 세트 180g",
+    "src": "ai"
   },
   "Cutex Nail Polish Remover Ultra Powerful 100mL": {
-    "zh": "Cutex 超強效指甲油去除劑 100mL",
-    "ja": "キューテックス マニキュアリムーバー ウルトラパワフル 100mL",
-    "ko": "큐텍스 매니큐어 리무버 울트라 파워풀 100mL"
+    "zh": "Cutex 強力去光水 100毫升",
+    "ja": "Cutex ネイルポリッシュリムーバー ウルトラパワフル 100ml",
+    "ko": "Cutex 네일 폴리쉬 리무버 울트라 파워풀 100ml",
+    "src": "ai"
   },
   "MasterFoods Perfect For Lamb Spice Blend 20g": {
-    "zh": "MasterFoods 完美羊肉香料混合物 20 克",
-    "ja": "MasterFoods パーフェクトフォーラム スパイスブレンド 20g",
-    "ko": "MasterFoods 퍼펙트 포 램 스파이스 블렌드 20g"
+    "zh": "MasterFoods 羊肉專用香料粉 20克",
+    "ja": "MasterFoods ラム肉用スパイスブレンド 20g",
+    "ko": "MasterFoods 양고기 요리용 스파이스 블렌드 20g",
+    "src": "ai"
   },
   "Bonds Comfy Tops Semi Opaque Knee High Nude 1 Size each": {
     "zh": "Bonds 舒適上衣半透明及膝裸色 各 1 碼",
@@ -197611,29 +197662,35 @@
     "ko": "Bonds 편안한 상의 반투명 무릎 하이 누드 1 사이즈 각"
   },
   "WaterWipes Sensitive Newborn & Baby Wipes Fragrance Free 99.9% Water 60 pack": {
-    "zh": "WaterWipes 敏感新生兒和嬰兒濕紙巾 無香料 99.9% 水 60 片裝",
-    "ja": "WaterWipes センシティブ新生児 & ベビーワイプ 無香料 99.9% 水 60 パック",
-    "ko": "WaterWipes Sensitive 신생아 및 아기 물티슈 무향 99.9% 물 60팩"
+    "zh": "WaterWipes 敏感肌新生兒嬰兒濕紙巾 無香精 99.9%純水 60入",
+    "ja": "WaterWipes 敏感肌用 新生児・ベビー用ワイプ 無香料 99.9%水 60個入",
+    "ko": "WaterWipes 민감성 신생아 및 유아용 물티슈 무향 99.9% 정제수 60개입",
+    "src": "ai"
   },
   "Millie Moon Sensitive Baby Wipes 80 pack": {
-    "zh": "Millie Moon 敏感嬰兒濕紙巾 80 片裝",
-    "ja": "ミリームーン センシティブ ベビーワイプ 80 パック",
-    "ko": "밀리 문 센서티브 베이비 물티슈 80팩"
+    "zh": "Millie Moon 敏感肌嬰兒濕紙巾 80入",
+    "ja": "Millie Moon 敏感肌用ベビーワイプ 80個入",
+    "ko": "Millie Moon 민감성 아기 물티슈 80개입",
+    "src": "ai"
   },
   "Bonds Instatan Sheer Stockings Slim Tight Light Brown Medium each": {
-    "zh": "Bonds Instatan Sheer Stockings Slim Tight Light Brown Medium each",
-    "ja": "ボンズ インスタタン シアー ストッキング スリム タイト ライトブラウン M 各色",
-    "ko": "Bonds Instatan 시어 스타킹 슬림 타이트 라이트 브라운 미디엄 각"
+    "zh": "Bonds 絲襪 淺棕色 Medium",
+    "ja": "Bonds インスタタン シアー ストッキング ライトブラウン Medium",
+    "ko": "Bonds 인스타탄 시어 스타킹 라이트 브라운 Medium",
+    "src": "ai",
+    "qa_tries": 1
   },
   "True Blue Freeze Dried Raw Coated Dry Cat Food Kangaroo 1kg": {
-    "zh": "True Blue 冷凍乾燥生塗乾袋鼠貓糧 1kg",
-    "ja": "トゥルーブルー フリーズドライ ローコーティング ドライ キャットフード カンガルー 1kg",
-    "ko": "트루블루 동결건조 생 코팅 건조 고양이 사료 캥거루 1kg"
+    "zh": "True Blue 冷凍乾燥生肉塗層乾貓糧 袋鼠肉口味 1公斤",
+    "ja": "True Blue フリーズドライ生肉コーティングキャットフード カンガルー 1kg",
+    "ko": "True Blue 동결건조 생고기 코팅 캣푸드 캥거루 1kg",
+    "src": "ai"
   },
   "VOOST Sport+ Energy Hydration Sticks Berry 10 pack": {
-    "zh": "VOOST Sport+ 莓果能量水合棒 10 包",
-    "ja": "VOOST スポーツ+ エナジー ハイドレーション スティック ベリー 10 パック",
-    "ko": "VOOST 스포츠+ 에너지 하이드레이션 스틱 베리 10팩"
+    "zh": "VOOST Sport+ 能量補水粉條 莓果口味 10入",
+    "ja": "VOOST Sport+ エナジーハイドレーション スティック ベリー 10個入",
+    "ko": "VOOST Sport+ 에너지 하이드레이션 스틱 베리 10개입",
+    "src": "ai"
   },
   "Poni No Budge Tinted Brow Gel Light/Medium 7mL": {
     "zh": "Poni No Budge 有色眉膠 淡色/中色 7mL",
@@ -197641,9 +197698,10 @@
     "ko": "포니 노 버지 틴티드 브로우 젤 라이트/미디엄 7mL"
   },
   "Turtle Wax Wet Look Tyre Shine Spray 350g": {
-    "zh": "Turtle Wax 濕感輪胎光亮噴霧 350g",
-    "ja": "タートルワックス ウェットルック タイヤシャインスプレー 350g",
-    "ko": "터틀 왁스 웨트룩 타이어 샤인 스프레이 350g"
+    "zh": "Turtle Wax 濕亮感輪胎亮光噴霧 350克",
+    "ja": "Turtle Wax ウェットルック タイヤシャインスプレー 350g",
+    "ko": "Turtle Wax 웻룩 타이어 샤인 스프레이 350g",
+    "src": "ai"
   },
   "Tip Top Gourmet Pizza Bases White 2 pack": {
     "zh": "Tip Top 美味披薩餅底 白色 2 包",
@@ -197651,124 +197709,150 @@
     "ko": "Tip Top Gourmet Pizza Bases 화이트 2팩"
   },
   "Blistex Lip Conditioner SPF 30 7g": {
-    "zh": "Blistex 唇部潤髮乳 SPF 30 7g",
-    "ja": "ブリステックス リップコンディショナー SPF 30 7g",
-    "ko": "블리스텍스 립 컨디셔너 SPF 30 7g"
+    "zh": "Blistex 護唇調理膏 SPF 30 7克",
+    "ja": "Blistex リップコンディショナー SPF 30 7g",
+    "ko": "Blistex 립 컨디셔너 SPF 30 7g",
+    "src": "ai"
   },
   "Nuffin Hommus Dip 50g x 2 pack": {
-    "zh": "Nuffin Hommus Dip 50 克 x 2 包",
-    "ja": "ナフィン オムスディップ 50g×2パック",
-    "ko": "너핀 홈무스 딥 50g x 2팩"
+    "zh": "Nuffin 鷹嘴豆泥沾醬 50克 x 2入",
+    "ja": "Nuffin フムス ディップ 50g x 2個入",
+    "ko": "Nuffin 후무스 딥 50g x 2개입",
+    "src": "ai"
   },
   "Maggi Fusian Mi Goreng Soy & Mild Spice Flavour Instant Noodles 360g 5 pack": {
-    "zh": "Maggi Fusian Mi Goreng 醬油口味泡麵 360g 5 包",
-    "ja": "マギー フュージアン ミーゴレン ソイ&マイルドスパイス味即席麺 360g 5個パック",
-    "ko": "매기 푸시안 미고랭 간장 & 순한 향신료 맛 인스턴트 누들 360g 5팩"
+    "zh": "Maggi Fusian 印尼炒麵 醬油微辣風味 360克（5入）",
+    "ja": "Maggi Fusian ミーゴレン 醤油＆マイルドスパイス味 360g（5個入）",
+    "ko": "Maggi Fusian 미고랭 간장&마일드 스파이스맛 360g（5개입）",
+    "src": "ai"
   },
   "Ecostore Laundry Liquid Eucalyptus 1L": {
-    "zh": "Ecostore 尤加利洗衣液 1L",
-    "ja": "エコストア ランドリーリキッド ユーカリ 1L",
-    "ko": "에코스토어 세탁액형 유칼립투스 1L"
+    "zh": "Ecostore 洗衣精 尤加利香 1公升",
+    "ja": "Ecostore ランドリーリキッド ユーカリの香り 1L",
+    "ko": "Ecostore 세탁 세제 유칼립투스 향 1L",
+    "src": "ai"
   },
   "Captain's Table Cracked Black Pepper Water Crackers 125g": {
-    "zh": "Captain's Table 黑胡椒水餅乾 125g",
-    "ja": "キャプテンズテーブル ひび割れブラックペッパーウォータークラッカー 125g",
-    "ko": "캡틴스테이블 흑후추 크래커 125g"
+    "zh": "Captain's Table 黑胡椒水餅乾 125克",
+    "ja": "Captain's Table クラックドブラックペッパー ウォータークラッカー 125g",
+    "ko": "Captain's Table 크랙 블랙 페퍼 워터 크래커 125g",
+    "src": "ai"
   },
   "Poni Stay Sharp Liquid Eyeliner Black 0.5g": {
-    "zh": "Poni Stay Sharp Liquid Eyeliner Black 0.5g",
-    "ja": "ポニー ステイシャープ リキッドアイライナー ブラック 0.5g",
-    "ko": "포니 스테이 샤프 리퀴드 아이라이너 블랙 0.5g"
+    "zh": "Poni 極細液態眼線筆 黑色 0.5克",
+    "ja": "Poni ステイシャープ リキッドアイライナー ブラック 0.5g",
+    "ko": "Poni 스테이 샤프 리퀴드 아이라이너 블랙 0.5g",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Blistex Intensive Repair Lip Balm 7g": {
-    "zh": "Blistex 強化修護潤唇膏 7g",
-    "ja": "ブリステックス インテンシブ リペア リップ バーム 7g",
-    "ko": "블리스텍스 인텐시브 리페어 립밤 7g"
+    "zh": "Blistex 強效修護護唇膏 7克",
+    "ja": "Blistex インテンシブリペア リップバーム 7g",
+    "ko": "Blistex 인텐시브 리페어 립밤 7g",
+    "src": "ai"
   },
   "Ethical Zinc SPF 50 Natural Clear Zinc Sunscreen Stick 50g": {
-    "zh": "Ethical Zinc SPF 50 Natural Clear Zinc Sunscreen Stick 50g",
-    "ja": "エシカル ジンク SPF 50 ナチュラル クリア ジンク 日焼け止めスティック 50g",
-    "ko": "에티컬 징크 SPF 50 내추럴 클리어 징크 선스크린 스틱 50g"
+    "zh": "Ethical Zinc SPF 50 天然透明防曬棒 50克",
+    "ja": "Ethical Zinc SPF 50 ナチュラル クリア 日焼け止めスティック 50g",
+    "ko": "Ethical Zinc SPF 50 내추럴 클리어 선스크린 스틱 50g",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Woolworths Frozen Blackberries 500g": {
-    "zh": "Woolworths 冷凍黑莓 500 克",
-    "ja": "ウールワース 冷凍ブラックベリー 500g",
-    "ko": "울워스 냉동 블랙베리 500g"
+    "zh": "Woolworths 冷凍黑莓 500克",
+    "ja": "Woolworths 冷凍ブラックベリー 500g",
+    "ko": "Woolworths 냉동 블랙베리 500g",
+    "src": "ai"
   },
   "Booby Tape Silicone Nipple Covers each": {
-    "zh": "誘殺膠帶 矽膠奶嘴套 每個",
-    "ja": "ブービーテープ シリコンニップルカバー 各1個",
-    "ko": "부비 테이프 실리콘 젖꼭지 커버 각"
+    "zh": "Booby Tape 矽膠乳貼",
+    "ja": "Booby Tape シリコンニップルカバー",
+    "ko": "Booby Tape 실리콘 니플 커버",
+    "src": "ai"
   },
   "OMO Expert Wonder Wash Laundry Detergent Dazzling White 1.94L": {
-    "zh": "OMO Expert Wonder Wash 洗衣液 炫白 1.94L",
-    "ja": "OMO エキスパート ワンダーウォッシュ 洗濯洗剤 ダズリングホワイト 1.94L",
-    "ko": "OMO 엑스퍼트 원더워시 세탁세제 데즐링 화이트 1.94L"
+    "zh": "OMO Expert 亮白洗衣精 1.94公升",
+    "ja": "OMO Expert ワンダーウォッシュ 洗濯洗剤 ダズリングホワイト 1.94L",
+    "ko": "OMO Expert 원더 워시 세탁세제 대즐링 화이트 1.94L",
+    "src": "ai"
   },
   "MasterFoods Perfect For Fish Spice Blend 20g": {
-    "zh": "MasterFoods 完美魚香料混合 20 克",
-    "ja": "MasterFoods パーフェクトフォーフィッシュスパイスブレンド 20g",
-    "ko": "MasterFoods 퍼펙트 포 피시 스파이스 블렌드 20g"
+    "zh": "MasterFoods 魚類專用香料粉 20克",
+    "ja": "MasterFoods 魚料理用スパイスブレンド 20g",
+    "ko": "MasterFoods 생선 요리용 스파이스 블렌드 20g",
+    "src": "ai"
   },
   "DJ & A Veggie Crisps Original 90g": {
-    "zh": "DJ & A 素洋芋片 原味 90g",
-    "ja": "DJ&A ベジクリスプス オリジナル 90g",
-    "ko": "DJ&A 베지 크리스프스 오리지널 90g"
+    "zh": "DJ & A 經典蔬菜脆片 90克",
+    "ja": "DJ & A ベジタブルクリスプ オリジナル 90g",
+    "ko": "DJ & A 야채 칩 오리지널 90g",
+    "src": "ai"
   },
   "Blackmores Cholesterol Health Capsules 60 pack": {
-    "zh": "Blackmores 膽固醇健康膠囊 60 包",
-    "ja": "ブラックモアズ コレステロール ヘルス カプセル 60 パック",
-    "ko": "블랙모어스 콜레스테롤 건강 캡슐 60팩"
+    "zh": "Blackmores 膽固醇健康膠囊 60入",
+    "ja": "Blackmores コレステロールヘルス カプセル 60個入",
+    "ko": "Blackmores 콜레스테롤 헬스 캡슐 60개입",
+    "src": "ai"
   },
   "Woolworths Frozen Raspberries 500g": {
-    "zh": "Woolworths 冷凍覆盆子 500 克",
-    "ja": "ウールワース 冷凍ラズベリー 500g",
-    "ko": "울워스 냉동 라즈베리 500g"
+    "zh": "Woolworths 冷凍覆盆莓 500克",
+    "ja": "Woolworths 冷凍ラズベリー 500g",
+    "ko": "Woolworths 냉동 라즈베리 500g",
+    "src": "ai"
   },
   "Nando's Peri Peri Rub Garlic Medium 25g": {
-    "zh": "Nando's Peri 大蒜中號 25 克",
-    "ja": "Nando's ペリペリラブガーリック 中 25g",
-    "ko": "난도 페리페리 럽 마늘 미디엄 25g"
+    "zh": "Nando's 蒜味中辣 Peri 香料粉 25克",
+    "ja": "Nando's ペリペリラブ ガーリック ミディアム 25g",
+    "ko": "Nando's 페리페리 럽 갈릭 미디엄 25g",
+    "src": "ai"
   },
   "Macro Organic Frozen Strawberries 450g": {
-    "zh": "Macro 有機冷凍草莓 450g",
-    "ja": "マクロ オーガニック冷凍いちご 450g",
-    "ko": "매크로 유기농 냉동 딸기 450g"
+    "zh": "Macro Organic 冷凍草莓 450克",
+    "ja": "Macro Organic 冷凍ストロベリー 450g",
+    "ko": "Macro Organic 냉동 딸기 450g",
+    "src": "ai"
   },
   "Bonds Insta Tan Slim Sheer Tights Medium Brown Size XL each": {
-    "zh": "Bonds Insta Tan 修身透明緊身褲中型棕色 XL 碼",
-    "ja": "ボンズ インスタタンスリムシアータイツ ミディアムブラウン 各XLサイズ",
-    "ko": "Bonds Insta Tan 슬림 시어 타이츠 미디엄 브라운 사이즈 XL 각 1개"
+    "zh": "Bonds 仿曬塑形透膚褲襪 中棕色 XL號",
+    "ja": "Bonds インスタタン スリムシアータイツ ミディアムブラウン サイズXL",
+    "ko": "Bonds 인스타 탄 슬림 시어 타이즈 미디엄 브라운 사이즈 XL",
+    "src": "ai"
   },
   "Bonds Instatan Sheer Stockings Slim Tight Light Brown Small each": {
-    "zh": "Bonds Instatan 透明絲襪修身緊身淺棕色小號",
-    "ja": "ボンズ インスタタン シアーストッキング スリムタイト ライトブラウン S 各色",
-    "ko": "Bonds Instatan 시어 스타킹 슬림 타이트 라이트 브라운 스몰 각"
+    "zh": "Bonds 仿曬塑形透膚絲襪 淺棕色 Small號",
+    "ja": "Bonds インスタタン シアーストッキング スリムタイト ライトブラウン Smallサイズ",
+    "ko": "Bonds 인스타 탄 시어 스타킹 슬림 타이트 라이트 브라운 Small 사이즈",
+    "src": "ai"
   },
   "V Energy Grape Burst Drink 500mL": {
-    "zh": "V能量葡萄爆飲500mL",
-    "ja": "Vエナジー グレープバーストドリンク 500mL",
-    "ko": "V 에너지 포도 버스트 드링크 500mL"
+    "zh": "V 能量飲料 葡萄爆發口味 500毫升",
+    "ja": "V エナジードリンク グレープバースト 500ml",
+    "ko": "V 에너지 드링크 포도 버스트 500ml",
+    "src": "ai"
   },
   "Bonds Fashion Skinny Legs Medium/ Large each": {
-    "zh": "Bonds 時尚瘦腿中/大號各",
-    "ja": "Bonds ファッション スキニー レッグ M/L 各",
-    "ko": "본즈 패션 스키니 레그 미디엄/라지 각각"
+    "zh": "Bonds 時尚緊身褲 Medium/ Large號",
+    "ja": "Bonds ファッション スキニーレッグス Medium/ Largeサイズ",
+    "ko": "Bonds 패션 스키니 레그 Medium/ Large 사이즈",
+    "src": "ai"
   },
   "Mazzetti Vinegar Balsamic Glaze 215mL": {
-    "zh": "Mazzetti 醋香醋釉 215mL",
-    "ja": "マゼッティビネガー バルサミコグレーズ 215mL",
-    "ko": "마제티 식초 발사믹 글레이즈 215mL"
+    "zh": "Mazzetti 巴薩米克醋膏 215毫升",
+    "ja": "Mazzetti バルサミコグレーズ 215ml",
+    "ko": "Mazzetti 발사믹 글레이즈 215ml",
+    "src": "ai"
   },
   "Oreo Cookie Top Ice Cream Cones 400mL": {
-    "zh": "奧利奧餅乾頂冰淇淋甜筒 400mL",
-    "ja": "オレオ クッキートップ アイスクリームコーン 400mL",
-    "ko": "오레오 쿠키탑 아이스크림콘 400mL"
+    "zh": "Oreo 餅乾脆皮冰淇淋甜筒 400毫升",
+    "ja": "Oreo クッキートップ アイスクリームコーン 400ml",
+    "ko": "Oreo 쿠키 탑 아이스크림 콘 400ml",
+    "src": "ai"
   },
   "Nature's Way Kids Smart Vit C + Zinc Effervescent Tablets 15 pack": {
-    "zh": "Nature's Way Kids Smart 維生素 C + 鋅泡騰片 15 片",
-    "ja": "Nature's Way キッズ スマート ビタミン C + 亜鉛発泡タブレット 15 パック",
-    "ko": "네이쳐스웨이 키즈 스마트 Vit C + 아연 발포정 15팩"
+    "zh": "Nature's Way 兒童維他命C+鋅發泡錠 15入",
+    "ja": "Nature's Way キッズスマート ビタミンC+亜鉛発泡錠 15個入",
+    "ko": "Nature's Way 키즈 스마트 비타민C+아연 발포정 15개입",
+    "src": "ai"
   },
   "True Blue Freeze Dried Raw Coated Dry Cat Food Beef 1kg": {
     "zh": "True Blue 冷凍乾燥生塗乾貓糧牛肉 1kg",
@@ -197776,104 +197860,126 @@
     "ko": "트루블루 동결건조 생 코팅 건조 고양이 사료 쇠고기 1kg"
   },
   "Moro Tradicional Mild Taste Olive Oil 500mL": {
-    "zh": "摩洛傳統淡味橄欖油 500mL",
-    "ja": "モロ トラディショナル マイルドテイスト オリーブオイル 500mL",
-    "ko": "모로 트래디셔널 마일드한 맛 올리브 오일 500mL"
+    "zh": "Moro Tradicional 溫和風味橄欖油 500毫升",
+    "ja": "Moro Tradicional マイルドテイストオリーブオイル 500ml",
+    "ko": "Moro Tradicional 마일드 올리브유 500ml",
+    "src": "ai"
   },
   "Nature's Own Magnesium Capsules 200 pack": {
-    "zh": "Nature's Own Magnesium Capsules 200 pack",
-    "ja": "Nature's Own マグネシウム カプセル 200 パック",
-    "ko": "네이처스 오운 마그네슘 캡슐 200팩"
+    "zh": "Nature's Own 鎂膠囊 200入",
+    "ja": "Nature's Own マグネシウム カプセル 200個入",
+    "ko": "Nature's Own 마그네슘 캡슐 200개입",
+    "src": "ai",
+    "qa_tries": 1
   },
   "MasterFoods Korean BBQ Spice Blend 20g": {
-    "zh": "MasterFoods 韓國燒烤混合香料 20 克",
-    "ja": "MasterFoods コリアンBBQスパイスブレンド 20g",
-    "ko": "마스터푸드 코리안 바비큐 스파이스 블렌드 20g"
+    "zh": "MasterFoods 韓式烤肉香料粉 20克",
+    "ja": "MasterFoods 韓国風BBQスパイスブレンド 20g",
+    "ko": "MasterFoods 한국식 BBQ 스파이스 블렌드 20g",
+    "src": "ai"
   },
   "Blistex Lip Conditioning Balm SPF 30 4.25g": {
-    "zh": "Blistex 唇部護理膏 SPF 30 4.25g",
-    "ja": "ブリステックス リップコンディショニングバーム SPF 30 4.25g",
-    "ko": "블리스텍스 립 컨디셔닝 밤 SPF 30 4.25g"
+    "zh": "Blistex 護唇調理膏 SPF 30 4.25克",
+    "ja": "Blistex リップコンディショニングバーム SPF 30 4.25g",
+    "ko": "Blistex 립 컨디셔닝 밤 SPF 30 4.25g",
+    "src": "ai"
   },
   "Annabel Karmel Little Meals Frozen Spaghetti & Meatballs 200g": {
-    "zh": "Annabel Karmel 小餐冷凍義大利麵和肉丸 200 克",
-    "ja": "アナベル カルメル リトルミールズ 冷凍スパゲッティ＆ミートボール 200g",
-    "ko": "Annabel Karmel 작은 식사 냉동 스파게티 & 미트볼 200g"
+    "zh": "Annabel Karmel 兒童冷凍義大利肉醬麵 200克",
+    "ja": "Annabel Karmel 冷凍スパゲッティ＆ミートボール 200g",
+    "ko": "Annabel Karmel 냉동 스파게티 & 미트볼 200g",
+    "src": "ai"
   },
   "Activia Probiotic Yoghurt Pouch Mango Passionfruit 140g": {
-    "zh": "Activia 益生菌優格袋裝芒果百香果 140g",
-    "ja": "アクティビア プロバイオティック ヨーグルト パウチ マンゴー パッションフルーツ 140g",
-    "ko": "액티비아 프로바이오틱 요거트 파우치 망고 패션프루트 140g"
+    "zh": "Activia 益生菌優格袋裝 芒果百香果口味 140克",
+    "ja": "Activia プロバイオティクスヨーグルトパウチ マンゴーパッションフルーツ味 140g",
+    "ko": "Activia 프로바이오틱스 요거트 파우치 망고 패션후르츠맛 140g",
+    "src": "ai"
   },
   "Bonds Insta Tan Slimming Sheer Tights Light XL each": {
-    "zh": "Bonds Insta Tan 修身透明緊身褲 淺 XL 碼",
-    "ja": "ボンズ インスタタン スリミングシアータイツ ライト XL 各",
-    "ko": "Bonds Insta Tan 슬리밍 쉬어 타이츠 라이트 XL 각"
+    "zh": "Bonds 仿曬塑形透膚褲襪 淺色 XL號",
+    "ja": "Bonds インスタタン スリムシアータイツ ライト XLサイズ",
+    "ko": "Bonds 인스타 탄 슬리밍 시어 타이즈 라이트 XL 사이즈",
+    "src": "ai"
   },
   "Bonds Ladies Seamless Under Short Size 16-18 Assorted each": {
-    "zh": "Bonds 女款無縫下短尺寸 16-18 各裝",
-    "ja": "ボンズ レディース シームレス アンダー ショート サイズ 16～18 各アソート",
-    "ko": "본드 여성용 심리스 언더 숏 사이즈 16-18 모듬 각"
+    "zh": "Bonds 女款無痕安全褲 16-18號 綜合款",
+    "ja": "Bonds レディース シームレス アンダーショーツ サイズ16-18 アソート",
+    "ko": "Bonds 여성용 심리스 언더 쇼츠 사이즈 16-18 모음",
+    "src": "ai"
   },
   "Little Bellies Coconut Melts Mango & Banana 20g": {
-    "zh": "Little Bellies 椰子融化芒果香蕉 20 克",
-    "ja": "リトルベリーズ ココナッツメルツ マンゴー＆バナナ 20g",
-    "ko": "리틀 벨리스 코코넛 멜트 망고 & 바나나 20g"
+    "zh": "Little Bellies 椰子入口即化餅乾 芒果香蕉口味 20克",
+    "ja": "Little Bellies ココナッツメルト マンゴー＆バナナ 20g",
+    "ko": "Little Bellies 코코넛 멜트 망고&바나나 20g",
+    "src": "ai"
   },
   "Annabel Karmel Little Meals Frozen Veggie Pasta Bake 200g": {
-    "zh": "Annabel Karmel 小餐冷凍蔬菜烘焙義大利麵 200 克",
-    "ja": "アナベル カルメル リトルミールズ 冷凍ベジパスタベイク 200g",
-    "ko": "Annabel Karmel 작은 식사 냉동 야채 파스타 베이크 200g"
+    "zh": "Annabel Karmel 兒童冷凍蔬菜焗烤麵 200克",
+    "ja": "Annabel Karmel 冷凍野菜のパスタベイク 200g",
+    "ko": "Annabel Karmel 냉동 야채 파스타 베이크 200g",
+    "src": "ai"
   },
   "Bonds Comfy Tops Slimming Sheer Tights Black Small each": {
-    "zh": "Bonds Comfy Tops Slimming Sheer Tights Black Small each",
-    "ja": "ボンズ コンフィトップス スリミングシアータイツ ブラック S 各色",
-    "ko": "Bonds 컴피 탑 슬리밍 시어 타이츠 블랙 스몰 각"
+    "zh": "Bonds 舒適透膚塑型褲襪 黑色 Small",
+    "ja": "Bonds コンフィトップ スリムシアータイツ ブラック Small",
+    "ko": "Bonds 컴피 탑 슬리밍 시어 타이즈 블랙 Small",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Fuze Tea Peach Black Iced Tea 1.25L": {
-    "zh": "福澤茶桃紅冰茶1.25L",
-    "ja": "フューズティー ピーチブラックアイスティー 1.25L",
-    "ko": "퓨즈티 복숭아 블랙 아이스티 1.25L"
+    "zh": "Fuze Tea 水蜜桃紅茶 1.25公升",
+    "ja": "Fuze Tea ピーチブラックアイスティー 1.25L",
+    "ko": "Fuze Tea 복숭아 홍차 1.25L",
+    "src": "ai"
   },
   "Cenovis High Strength Vitamin C 1000mg Tablets 200 pack": {
-    "zh": "Cenovis 高強度維生素 C 1000 毫克錠劑 200 包",
-    "ja": "セノビス 高強度ビタミンC 1000mg 錠剤 200 パック",
-    "ko": "세노비스 고강도 비타민C 1000mg 정제 200팩"
+    "zh": "Cenovis 高濃度維他命C錠 1000毫克 200入",
+    "ja": "Cenovis 高濃度ビタミンCタブレット 1000mg 200個入",
+    "ko": "Cenovis 고농축 비타민C 정제 1000mg 200개입",
+    "src": "ai"
   },
   "Bonds Insta Tan Slim Sheer Tights Medium Brown Size M each": {
-    "zh": "Bonds Insta Tan 修身透明緊身褲中型棕色 M 碼",
-    "ja": "ボンズ インスタタンスリムシアータイツ ミディアムブラウン 各Mサイズ",
-    "ko": "본즈 인스타 탠 슬림 시어 타이츠 미디엄 브라운 사이즈 각 M"
+    "zh": "Bonds 仿曬塑形透膚褲襪 中棕色 M號",
+    "ja": "Bonds インスタタン スリムシアータイツ ミディアムブラウン サイズM",
+    "ko": "Bonds 인스타 탄 슬림 시어 타이즈 미디엄 브라운 사이즈 M",
+    "src": "ai"
   },
   "Maggi 2 Minute Noodles Sweet Chilli & Sour Cream 345g 5 pack": {
-    "zh": "Maggi 2 分鐘麵條甜辣酸奶油 345 克 5 包",
-    "ja": "マギー 2分ヌードル スイートチリ＆サワークリーム 345g 5個パック",
-    "ko": "매기 2분 누들 스위트 칠리 & 사워 크림 345g 5팩"
+    "zh": "Maggi 2分鐘泡麵 甜辣酸奶油口味 345克（5入）",
+    "ja": "Maggi 2分インスタント麺 スイートチリ＆サワークリーム味 345g（5個入）",
+    "ko": "Maggi 2분 인스턴트 누들 스위트 칠리&사워크림맛 345g（5개입）",
+    "src": "ai"
   },
   "Oreo Milk Chocolate Wafer Stick Cookies 128g 10 pack": {
-    "zh": "奧利奧牛奶巧克力威化棒餅乾 128 克 10 包",
-    "ja": "オレオ ミルクチョコレートウエハース スティッククッキー 128g 10個パック",
-    "ko": "오레오 밀크초콜릿 웨이퍼스틱 쿠키 128g 10팩"
+    "zh": "Oreo 牛奶巧克力威化捲心酥 128克 10入",
+    "ja": "Oreo ミルクチョコレート ウエハーススティッククッキー 128g 10個入",
+    "ko": "Oreo 밀크 초콜릿 웨하스 스틱 쿠키 128g 10개입",
+    "src": "ai"
   },
   "True Blue Freeze Dried Raw Coated Dry Cat Food Ocean Fish 1kg": {
-    "zh": "True Blue 凍乾生塗層乾貓糧海洋魚 1 公斤",
-    "ja": "トゥルーブルー フリーズドライ ローコーティング ドライ キャットフード オーシャンフィッシュ 1kg",
-    "ko": "트루블루 동결건조 생 코팅 건조 고양이 사료 해양 생선 1kg"
+    "zh": "True Blue 冷凍乾燥生肉塗層乾貓糧 海魚口味 1公斤",
+    "ja": "True Blue フリーズドライ生肉コーティングキャットフード オーシャンフィッシュ 1kg",
+    "ko": "True Blue 동결건조 생고기 코팅 캣푸드 오션피쉬 1kg",
+    "src": "ai"
   },
   "Up&Go Liquid Breakfast Vanilla Ice 250mL x 3 pack": {
-    "zh": "Up&Go 液體早餐香草冰 250mL x 3 包",
-    "ja": "アップ&ゴー リキッドブレックファスト バニラアイス 250mL×3パック",
-    "ko": "업앤고 리퀴드 브렉퍼스트 바닐라 아이스 250mL x 3팩"
+    "zh": "Up&Go 液態早餐 冰香草口味 250毫升 x 3入",
+    "ja": "Up&Go リキッドブレックファスト バニラアイス 250ml x 3個入",
+    "ko": "Up&Go 리퀴드 브렉퍼스트 바닐라 아이스 250ml x 3개입",
+    "src": "ai"
   },
   "Whole Earth Monk Fruit Sweetener Granules 200g": {
-    "zh": "全地羅漢果甜味劑顆粒 200g",
-    "ja": "ホールアース モンクフルーツ甘味料顆粒 200g",
-    "ko": "홀 어스 몽크 과일 감미료 과립 200g"
+    "zh": "Whole Earth 羅漢果代糖顆粒 200克",
+    "ja": "Whole Earth 羅漢果甘味料顆粒 200g",
+    "ko": "Whole Earth 나한과 감미료 과립 200g",
+    "src": "ai"
   },
   "Vital All In One Daily Supplement Powder Lemon & Ginger Flavour 240g": {
-    "zh": "Vital 多效合一每日補充粉紅檸檬薑口味 240 克",
-    "ja": "Vital オールインワンデイリーサプリメントパウダー レモン＆ジンジャー風味 240g",
-    "ko": "바이탈 올인원 데일리 보충제 파우더 레몬&진저맛 240g"
+    "zh": "Vital All In One 綜合營養補充粉 檸檬薑味 240克",
+    "ja": "Vital All In One デイリーサプリメントパウダー レモン＆ジンジャー風味 240g",
+    "ko": "Vital All In One 데일리 서플리먼트 파우더 레몬&진저 맛 240g",
+    "src": "ai"
   },
   "Poni No Budge Tinted Brow Gel Medium/Dark 7mL": {
     "zh": "Poni No Budge 有色眉膠 中色/深色 7mL",
@@ -197881,34 +197987,40 @@
     "ko": "포니 노버지 틴티드 브로우 젤 미디엄/다크 7mL"
   },
   "Nature's Way Kids Smart Multi-Vitamin Effervescent Tablets 15 pack": {
-    "zh": "Nature's Way Kids Smart 多種維生素泡騰片 15 片",
-    "ja": "Nature's Way キッズ スマート マルチビタミン発泡タブレット 15 パック",
-    "ko": "Nature's Way 키즈 스마트 멀티 비타민 발포성 정제 15팩"
+    "zh": "Nature's Way 兒童綜合維他命發泡錠 15入",
+    "ja": "Nature's Way キッズスマート マルチビタミン発泡錠 15個入",
+    "ko": "Nature's Way 키즈 스마트 종합비타민 발포정 15개입",
+    "src": "ai"
   },
   "Fuze Tea Lemon Black Iced Tea 1.25L": {
-    "zh": "Fuze Tea 檸檬紅冰茶 1.25L",
-    "ja": "フューズティー レモンブラックアイスティー 1.25L",
-    "ko": "퓨즈티 레몬블랙 아이스티 1.25L"
+    "zh": "Fuze Tea 檸檬紅茶 1.25公升",
+    "ja": "Fuze Tea レモンブラックアイスティー 1.25L",
+    "ko": "Fuze Tea 레몬 홍차 1.25L",
+    "src": "ai"
   },
   "Nuffin Fetta & Cracked Pepper Dip 50g x 2 pack": {
-    "zh": "Nuffin Fetta 和碎胡椒醬 50 克 x 2 包",
-    "ja": "ナフィンフェッタ＆クラックドペッパーディップ 50g×2パック",
-    "ko": "너핀페타 & 크랙 페퍼 딥 50g x 2팩"
+    "zh": "Nuffin 費塔起司黑胡椒沾醬 50克 x 2入",
+    "ja": "Nuffin フェタ＆クラックドペッパー ディップ 50g x 2個入",
+    "ko": "Nuffin 페타 & 크랙드 페퍼 딥 50g x 2개입",
+    "src": "ai"
   },
   "Muscle Nation Whey Protein Daily Shake Vanilla Ice Cream 300g": {
-    "zh": "Muscle Nation 乳清蛋白每日奶昔香草冰淇淋 300 克",
-    "ja": "マッスルネイション ホエイプロテイン デイリーシェイク バニラアイスクリーム 300g",
-    "ko": "머슬네이션 웨이 프로틴 데일리 쉐이크 바닐라 아이스크림 300g"
+    "zh": "Muscle Nation 乳清蛋白飲 香草冰淇淋口味 300克",
+    "ja": "Muscle Nation ホエイプロテイン デイリーシェイク バニラアイスクリーム味 300g",
+    "ko": "Muscle Nation 유청 단백질 쉐이크 바닐라 아이스크림맛 300g",
+    "src": "ai"
   },
   "Whiskas Adult 1 + Years Wet Cat Food Mixed Favourites In Jelly 85g x 12 pack": {
     "zh": "Whiskas Adult 1 + Years Wet Cat Food Mixed Favourites In Jelly 85g x 12 pack",
     "ja": "ウィスカス アダルト 1歳以上用 ウェットキャットフード ミックスフェイバリットインゼリー 85g×12個パック",
-    "ko": "Whiskas 성인 1세 이상 습식 고양이 사료 혼합 즐겨찾기 젤리 85g x 12팩"
+    "ko": "Whiskas 성인 1세 이상 습식 고양이 사료 혼합 즐겨찾기 젤리 85g x 12팩",
+    "qa_tries": 1
   },
   "Macro Organic Frozen Mixed Berries 450g": {
-    "zh": "Macro 有機冷凍混合漿果 450 克",
-    "ja": "マクロ オーガニック冷凍ミックスベリー 450g",
-    "ko": "매크로 유기농 냉동 혼합베리 450g"
+    "zh": "Macro Organic 冷凍綜合莓果 450克",
+    "ja": "Macro Organic 冷凍ミックスベリー 450g",
+    "ko": "Macro Organic 냉동 혼합 베리 450g",
+    "src": "ai"
   },
   "QV Cream 100g": {
     "zh": "QV 霜 100g",
@@ -197921,19 +198033,23 @@
     "ko": "Whiskas 성인 1세 이상 습식 고양이 사료 인기 쇠고기 젤리 85g x 12팩"
   },
   "Jarrah Instant Coffee Smooth Brew 200g": {
-    "zh": "紅柳桉樹即溶咖啡 柔滑沖泡 200 公克",
-    "ja": "ジャラ インスタントコーヒー スムースブリュー 200g",
-    "ko": "자라 인스턴트 커피 스무스 브루 200g"
+    "zh": "Jarrah 即溶咖啡 柔順風味 200克",
+    "ja": "Jarrah インスタントコーヒー スムースブリュー 200g",
+    "ko": "Jarrah 인스턴트 커피 스무스 브루 200g",
+    "src": "ai"
   },
   "Up&Go Liquid Breakfast Strawberry 250mL x 3 pack": {
-    "zh": "Up&Go 液體早餐草莓 250mL x 3 包",
-    "ja": "アップ&ゴー リキッドブレックファスト ストロベリー 250mL×3パック",
-    "ko": "업앤고 리퀴드 브렉퍼스트 스트로베리 250mL x 3팩"
+    "zh": "Up&Go 液態早餐 草莓口味 250毫升 x 3入",
+    "ja": "Up&Go リキッドブレックファスト ストロベリー 250ml x 3個入",
+    "ko": "Up&Go 리퀴드 브렉퍼스트 딸기 250ml x 3개입",
+    "src": "ai"
   },
   "Blackmores Gut Immune Biotic Tablets 60 pack": {
-    "zh": "Blackmores 腸道免疫生物片 60 片",
-    "ja": "ブラックモアズ ガット イミューン バイオティック タブレット 60 パック",
-    "ko": "Blackmores Gut Immune Biotic Tablets 60 pack"
+    "zh": "Blackmores 腸道免疫益生菌錠 60入",
+    "ja": "Blackmores 腸内免疫プロバイオティクス錠 60個入",
+    "ko": "Blackmores 장 면역 유산균 정 60개입",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Scholl Shock Reducer Shoe Base Insoles each": {
     "zh": "Scholl 避震器鞋底鞋墊各",
@@ -197941,14 +198057,16 @@
     "ko": "Scholl Shock Reducer 신발 밑창 각"
   },
   "Nescafe Iced Coffee Latte Can 237mL": {
-    "zh": "雀巢冰咖啡拿鐵罐裝 237mL",
-    "ja": "ネスカフェ アイスコーヒー ラテ 缶 237mL",
-    "ko": "네스카페 아이스 커피 라떼 캔 237mL"
+    "zh": "Nescafe 冰拿鐵咖啡罐裝 237毫升",
+    "ja": "Nescafe アイスカフェラテ 缶 237ml",
+    "ko": "Nescafe 아이스 카페라떼 캔 237ml",
+    "src": "ai"
   },
   "Maison & Muse Interior & Leather Protect Car Wipes 25 pack": {
-    "zh": "Maison & Muse 內裝與皮革保護車濕巾 25 片裝",
-    "ja": "メゾン＆ミューズ インテリア＆レザープロテクト カーワイプ 25枚パック",
-    "ko": "Maison & Muse 인테리어 및 가죽 보호 자동차 물티슈 25팩"
+    "zh": "Maison & Muse 內裝與皮革保護濕巾 25入",
+    "ja": "Maison & Muse インテリア＆レザー保護用カーワイプ 25個入",
+    "ko": "Maison & Muse 인테리어 및 가죽 보호용 차량용 물티슈 25개입",
+    "src": "ai"
   },
   "Swisse Magnesium Glycinate + K2 + D3 Tablets 30 pack": {
     "zh": "Swisse 甘胺酸鎂 + K2 + D3 片 30 片",
@@ -197961,14 +198079,16 @@
     "ko": "Bonds 편안한 상의 반투명 니하이 블랙 1 사이즈 각"
   },
   "Bonds Ladies Seamless Under Short Size 14-16 Assorted each": {
-    "zh": "Bonds 女士無縫下短尺寸 14-16 各裝",
-    "ja": "ボンズ レディース シームレス アンダー ショート サイズ 14～16 各アソート",
-    "ko": "본드 여성용 심리스 언더 숏 사이즈 14-16 모듬 각"
+    "zh": "Bonds 女款無痕安全褲 14-16號 綜合款",
+    "ja": "Bonds レディース シームレス アンダーショーツ サイズ14-16 アソート",
+    "ko": "Bonds 여성용 심리스 언더 쇼츠 사이즈 14-16 모음",
+    "src": "ai"
   },
   "Bonds Instatan Sheer Stockings Slim Tight Light Brown Large each": {
-    "zh": "Bonds Instatan 透明絲襪 修身緊身 淺棕色 大號 每隻",
-    "ja": "ボンズ インスタタン シアーストッキング スリムタイト ライトブラウン L 各色",
-    "ko": "Bonds Instatan 시어 스타킹 슬림 타이트 라이트 브라운 라지 각"
+    "zh": "Bonds 仿曬塑形透膚絲襪 淺棕色 Large號",
+    "ja": "Bonds インスタタン シアーストッキング スリムタイト ライトブラウン Largeサイズ",
+    "ko": "Bonds 인스타 탄 시어 스타킹 슬림 타이트 라이트 브라운 Large 사이즈",
+    "src": "ai"
   },
   "Poni Volume Please Mascara Black 8mL": {
     "zh": "Poni Volume Please 睫毛膏黑色 8mL",
@@ -197976,34 +198096,40 @@
     "ko": "포니 볼륨 플리즈 마스카라 블랙 8mL"
   },
   "Eylure London 3/4 Length Lash No 002 each": {
-    "zh": "Eylure London 3/4 長度睫毛 每條編號 002",
-    "ja": "エイルアロンドン 3/4レングスラッシュ No002 各1本",
-    "ko": "Eylure London 3/4 랭스 래쉬 No 002 각"
+    "zh": "Eylure London 3/4長度假睫毛 002號",
+    "ja": "Eylure London 3/4レングス ラッシュ No.002",
+    "ko": "Eylure London 3/4 길이 속눈썹 No.002",
+    "src": "ai"
   },
   "Macro Organic Frozen Raspberries 450g": {
-    "zh": "Macro 有機冷凍覆盆子 450 克",
-    "ja": "マクロ オーガニック 冷凍ラズベリー 450g",
-    "ko": "매크로 유기농 냉동 라즈베리 450g"
+    "zh": "Macro Organic 冷凍覆盆莓 450克",
+    "ja": "Macro Organic 冷凍ラズベリー 450g",
+    "ko": "Macro Organic 냉동 라즈베리 450g",
+    "src": "ai"
   },
   "Maggi 2 Minute Chicken Flavour Instant Noodles 360g 5 pack": {
-    "zh": "美極 2 分鐘雞肉口味泡麵 360g 5 包",
-    "ja": "マギー 2分チキン味即席麺 360g 5個パック",
-    "ko": "매기 2분 치킨맛 인스턴트 누들 360g 5팩"
+    "zh": "Maggi 2分鐘雞肉風味泡麵 360克（5入）",
+    "ja": "Maggi 2分インスタント麺 チキン味 360g（5個入）",
+    "ko": "Maggi 2분 인스턴트 누들 치킨맛 360g（5개입）",
+    "src": "ai"
   },
   "Air Wick Essential Mist Happiness Pineapple Diffuser Refill 20mL": {
-    "zh": "Air Wick Essential 幸福薄霧鳳梨擴香器補充裝 20mL",
-    "ja": "エアウィック エッセンシャルミスト ハピネス パイナップルディフューザー 詰め替え 20mL",
-    "ko": "에어윅 에센셜 미스트 해피니스 파인애플 디퓨저 리필 20mL"
+    "zh": "Air Wick 精油噴霧 鳳梨香氛補充瓶 20毫升",
+    "ja": "Air Wick エッセンシャルミスト ハピネス パイナップルの香り 詰替用 20mL",
+    "ko": "Air Wick 에센셜 미스트 해피니스 파인애플향 리필 20mL",
+    "src": "ai"
   },
   "Poni Erase It Concealer Beige 6.3mL": {
-    "zh": "Poni Erase It 遮瑕膏米色 6.3mL",
-    "ja": "ポニー イレースイット コンシーラー ベージュ 6.3mL",
-    "ko": "포니 이레이즈 잇 컨실러 베이지 6.3mL"
+    "zh": "Poni 遮瑕膏 米色 6.3毫升",
+    "ja": "Poni イレースイット コンシーラー ベージュ 6.3ml",
+    "ko": "Poni 이레이즈 잇 컨실러 베이지 6.3ml",
+    "src": "ai"
   },
   "Daily Skincare Supercalm Cleanser 100mL": {
-    "zh": "日常保養超鎮靜潔顏乳 100mL",
-    "ja": "デイリー スキンケア スーパーカーム クレンザー 100mL",
-    "ko": "데일리 스킨케어 슈퍼캄 클렌저 100mL"
+    "zh": "Daily Skincare 超舒緩洗面乳 100毫升",
+    "ja": "Daily Skincare スーパーカーム クレンザー 100ml",
+    "ko": "Daily Skincare 슈퍼캄 클렌저 100ml",
+    "src": "ai"
   },
   "Whiskas Adult 1 + Years Wet Cat Food Tuna Favourites In Jelly 85g x 12 pack": {
     "zh": "Whiskas 成人 1 歲以上濕貓糧鮪魚最愛果凍 85 克 x 12 包",
@@ -198016,14 +198142,16 @@
     "ko": "스카라우드 훈제 지중해 프로슈토 100g"
   },
   "Bonds Sports Leggings Black Medium- Large each": {
-    "zh": "Bonds 運動緊身褲黑色中號至大號各",
-    "ja": "Bonds スポーツレギンス ブラック M-L 各1",
-    "ko": "본즈 스포츠 레깅스 블랙 중형-대형 각각"
+    "zh": "Bonds 運動緊身褲 黑色 M-L號",
+    "ja": "Bonds スポーツレギンス ブラック サイズM-L",
+    "ko": "Bonds 스포츠 레깅스 블랙 사이즈 M-L",
+    "src": "ai"
   },
   "Billie's Bowl Dog Treat Straps With Aussie Beef 180g": {
-    "zh": "Billie's Bowl 澳洲牛肉狗零食帶 180 克",
-    "ja": "ビリーズボウル 犬用おやつストラップ オージービーフ入り 180g",
-    "ko": "호주산 쇠고기를 곁들인 Billie's Bowl 개 간식 스트랩 180g"
+    "zh": "Billie's Bowl 澳洲牛肉條寵物零食 180克",
+    "ja": "Billie's Bowl オーストラリア産ビーフ 犬用おやつ 180g",
+    "ko": "Billie's Bowl 호주산 소고기 반려견 간식 180g",
+    "src": "ai"
   },
   "Whiskas Adult 1 + Years Wet Cat Food Chicken Favourites in Jelly 85g x 12 pack": {
     "zh": "Whiskas 成人 1 歲以上濕貓糧雞肉最愛果凍 85 克 x 12 包",
@@ -198031,9 +198159,10 @@
     "ko": "Whiskas 성인 1세 이상 습식 고양이 사료 치킨 인기 젤리 85g x 12팩"
   },
   "Maison & Muse Glass & Screen Car Wipes 25 pack": {
-    "zh": "Maison & Muse 玻璃與螢幕汽車濕紙巾 25 片裝",
-    "ja": "メゾン＆ミューズ ガラス＆スクリーン カーワイプ 25枚パック",
-    "ko": "Maison & Muse 유리 및 스크린 차량용 물티슈 25팩"
+    "zh": "Maison & Muse 玻璃與螢幕清潔濕巾 25入",
+    "ja": "Maison & Muse ガラス＆スクリーン用カーワイプ 25個入",
+    "ko": "Maison & Muse 유리 및 스크린용 차량용 물티슈 25개입",
+    "src": "ai"
   },
   "Skara Smoked Chorizo 200g": {
     "zh": "斯卡拉煙燻香腸 200 克",
@@ -198041,24 +198170,29 @@
     "ko": "스카라 훈제 초리조 200g"
   },
   "NOWAY! Collagen Beauty Ball White Choc Cranberry 40g": {
-    "zh": "決不！膠原蛋白美容球白巧克力蔓越莓 40 克",
-    "ja": "とんでもない！コラーゲンビューティーボール ホワイトチョコクランベリー 40g",
-    "ko": "안 돼요! 콜라겐 뷰티볼 화이트초크 크랜베리 ​​40g"
+    "zh": "NOWAY! 膠原蛋白美顏球 白巧克力蔓越莓口味 40克",
+    "ja": "NOWAY! コラーゲンビューティーボール ホワイトチョコ＆クランベリー味 40g",
+    "ko": "NOWAY! 콜라겐 뷰티 볼 화이트 초콜릿 크랜베리맛 40g",
+    "src": "ai"
   },
   "Billie's Bowl Dog Treat Straps With Aussie Kangaroo 180g": {
-    "zh": "Billie's Bowl Dog Treat Straps With Aussie Kangaroo 180g",
-    "ja": "ビリーズボウル 犬用おやつストラップ オージーカンガルー付き 180g",
-    "ko": "호주 캥거루가 포함된 Billie's Bowl 개 간식 스트랩 180g"
+    "zh": "Billie's Bowl 澳洲袋鼠肉條狗零食 180克",
+    "ja": "Billie's Bowl 犬用おやつ カンガルー肉ジャーキー 180g",
+    "ko": "Billie's Bowl 강아지 간식 캥거루 육포 180g",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Whiskas Kitten Wet Cat Food Chicken In Gravy Pouch 85g x 12 pack": {
-    "zh": "Whiskas 小貓濕貓糧雞肉肉汁袋裝 85 克 x 12 包",
-    "ja": "ウィスカス キトゥン ウェットキャットフード チキンイングレービーパウチ 85g×12個パック",
-    "ko": "Whiskas 키튼 웨트 고양이 사료 치킨 그레이비 파우치 85g x 12팩"
+    "zh": "Whiskas 幼貓濕糧雞肉肉汁包 85克 x 12入",
+    "ja": "Whiskas 子猫用ウェットキャットフード チキングレイビーパウチ 85g x 12個入",
+    "ko": "Whiskas 새끼고양이용 습식 캣푸드 치킨 그레이비 파우치 85g x 12개입",
+    "src": "ai"
   },
   "Annabel Karmel Little Meals Frozen Cottage Pie 200g": {
-    "zh": "Annabel Karmel 小餐冷凍小屋派 200 克",
-    "ja": "アナベル カルメル リトルミールズ フローズンコテージパイ 200g",
-    "ko": "애나벨 카르멜 리틀 밀스 냉동 코티지 파이 200g"
+    "zh": "Annabel Karmel 兒童冷凍牧羊人派 200克",
+    "ja": "Annabel Karmel 冷凍コテージパイ 200g",
+    "ko": "Annabel Karmel 냉동 코티지 파이 200g",
+    "src": "ai"
   },
   "Robert Timms Cold Brew Medium Roast Coffee Bags 7 pack": {
     "zh": "Robert Timms 冷萃中度烘焙咖啡袋 7 包",
@@ -198071,124 +198205,152 @@
     "ko": "스파톤 철분 보충제 28팩"
   },
   "Biore SPF 50 UV Aqua Rich Glow Effect Moisturiser 50mL": {
-    "zh": "Biore SPF 50 UV Aqua Rich Glow Effect Moisturiser 50mL",
-    "ja": "ビオレ SPF50 UV アクアリッチ グロウエフェクト モイスチャライザー 50mL",
-    "ko": "비오레 SPF 50 UV 아쿠아 리치 글로우 이펙트 모이스처라이저 50mL"
+    "zh": "Biore SPF 50 UV 水感防曬保濕乳 50毫升",
+    "ja": "Biore SPF 50 UV アクアリッチ グロウエフェクト 保湿クリーム 50mL",
+    "ko": "Biore SPF 50 UV 아쿠아 리치 글로우 이펙트 모이스처라이저 50mL",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Blistex Lip Revitalizer Balm Peptide Enhanced 3.7g": {
-    "zh": "Blistex 唇部再生膏肽增強型 3.7 克",
-    "ja": "ブリステックス リップ リバイタライザー バーム ペプチド強化 3.7g",
-    "ko": "블리스텍스 립 리바이탈라이저 밤 펩타이드 강화 3.7g"
+    "zh": "Blistex 胜肽活膚護唇膏 3.7克",
+    "ja": "Blistex リップリバイタライザーバーム ペプチド配合 3.7g",
+    "ko": "Blistex 립 리바이탈라이저 밤 펩타이드 강화 3.7g",
+    "src": "ai"
   },
   "MasterFoods Perfect for Chicken Spice Blend 20g": {
-    "zh": "MasterFoods 完美雞肉香料混合物 20 克",
-    "ja": "マスターフーズ パーフェクトフォーチキン スパイスブレンド 20g",
-    "ko": "마스터푸드 퍼펙트 치킨 스파이스 블렌드 20g"
+    "zh": "MasterFoods 雞肉專用香料粉 20克",
+    "ja": "MasterFoods 鶏肉料理用スパイスブレンド 20g",
+    "ko": "MasterFoods 닭고기 요리용 스파이스 블렌드 20g",
+    "src": "ai"
   },
   "Voltaren Pain Relief Gel 50g": {
-    "zh": "扶他林止痛凝膠 50 克",
-    "ja": "ボルタレン鎮痛ジェル 50g",
-    "ko": "볼타렌 통증 완화 젤 50g"
+    "zh": "Voltaren 止痛凝膠 50克",
+    "ja": "Voltaren 鎮痛ジェル 50g",
+    "ko": "Voltaren 통증 완화 젤 50g",
+    "src": "ai"
   },
   "Nando's Peri Peri Rub Smokey BBQ Medium 25g": {
-    "zh": "Nando's Peri 擦煙燻燒烤中型 25 克",
+    "zh": "Nando's 煙燻烤肉中辣 Peri 香料粉 25克",
     "ja": "Nando's ペリペリラブ スモーキーBBQ ミディアム 25g",
-    "ko": "난도 페리페리 럽 스모키 BBQ 미디엄 25g"
+    "ko": "Nando's 페리페리 럽 스모키 BBQ 미디엄 25g",
+    "src": "ai"
   },
   "VOOST Sport+ Magnesium Hydration Sticks Citrus 10 pack": {
-    "zh": "VOOST Sport+ 柑橘口味鎂水袋棒 10 包",
-    "ja": "VOOST Sport+ マグネシウム ハイドレーション スティック シトラス 10 パック",
-    "ko": "VOOST 스포츠+ 마그네슘 하이드레이션 스틱 시트러스 10팩"
+    "zh": "VOOST Sport+ 鎂補水粉條 柑橘口味 10入",
+    "ja": "VOOST Sport+ マグネシウムハイドレーション スティック シトラス 10個入",
+    "ko": "VOOST Sport+ 마그네슘 하이드레이션 스틱 시트러스 10개입",
+    "src": "ai"
   },
   "1000Hour Lash & Brow Dye Kit Medium Brown each": {
-    "zh": "1000 小時睫毛和眉毛染色套裝中棕色各一套",
-    "ja": "1000時間ラッシュ＆ブロウダイキット ミディアムブラウン 各",
-    "ko": "1000아워 래쉬 & 브로우 염색 키트 미디엄 브라운 각 1종"
+    "zh": "1000Hour 睫毛眉毛染劑組 中棕色",
+    "ja": "1000Hour まつげ・眉毛用染毛キット ミディアムブラウン",
+    "ko": "1000Hour 속눈썹 및 눈썹 염색 키트 미디엄 브라운",
+    "src": "ai"
   },
   "Duo Striplash Adhesive Clear 7g": {
-    "zh": "Duo Striplash 透明黏合劑 7 克",
-    "ja": "デュオ ストリップラッシュ 接着剤 クリア 7g",
-    "ko": "듀오 스트리플래시 접착 클리어 7g"
+    "zh": "Duo 假睫毛膠 透明款 7克",
+    "ja": "Duo ストリップラッシュ アドヒーシブ クリア 7g",
+    "ko": "Duo 속눈썹 접착제 투명 7g",
+    "src": "ai"
   },
   "Annabel Karmel Little Meals Frozen Mac & Cheese Pasta 200g": {
-    "zh": "Annabel Karmel Little Meals 冷凍通心粉和起司義大利麵 200 克",
-    "ja": "アナベル カルメル リトルミールズ 冷凍マカロニ＆チーズパスタ 200g",
-    "ko": "Annabel Karmel 작은 식사 냉동 맥 앤 치즈 파스타 200g"
+    "zh": "Annabel Karmel 兒童冷凍起司通心粉 200克",
+    "ja": "Annabel Karmel 冷凍マカロニ＆チーズパスタ 200g",
+    "ko": "Annabel Karmel 냉동 마카로니 & 치즈 파스타 200g",
+    "src": "ai"
   },
   "Aveeno Baby Daily Lotion 227g": {
-    "zh": "Aveeno 嬰兒日常乳液 227 克",
-    "ja": "アヴィーノ ベビーデイリーローション 227g",
-    "ko": "아비노 베이비 데일리 로션 227g"
+    "zh": "Aveeno Baby 日常保濕乳液 227克",
+    "ja": "Aveeno Baby デイリーローション 227g",
+    "ko": "Aveeno Baby 데일리 로션 227g",
+    "src": "ai"
   },
   "Your Spud Co Jacket Potato 800g": {
-    "zh": "Your Spud Co 夾克馬鈴薯 800 克",
-    "ja": "ユア スパッド コー ジャケット ポテト 800g",
-    "ko": "유어스퍼드코 자켓포테이토 800g"
+    "zh": "Your Spud Co 烤馬鈴薯 800克",
+    "ja": "Your Spud Co ベイクドポテト 800g",
+    "ko": "Your Spud Co 구운 감자 800g",
+    "src": "ai"
   },
   "Bega Stringers Cheese Cheese 160g": {
-    "zh": "Bega Stringers 起司 160g",
-    "ja": "ベガ ストリンガーズ チーズ 160g",
-    "ko": "베가 스트링거 치즈 치즈 160g"
+    "zh": "Bega 起司條 160克",
+    "ja": "Bega チーズスティック 160g",
+    "ko": "Bega 치즈 스트링 160g",
+    "src": "ai"
   },
   "Bonds Fashion Skinny Leggings 150D L/XL each": {
-    "zh": "Bonds 時尚緊身緊身褲每條 150D L/XL",
-    "ja": "Bonds ファッション スキニー レギンス 150D L/XL 各",
-    "ko": "본즈 패션 스키니 레깅스 150D L/XL 각"
+    "zh": "Bonds 時尚緊身內搭褲 150D L/XL號",
+    "ja": "Bonds ファッション スキニーレギンス 150D L/XLサイズ",
+    "ko": "Bonds 패션 스키니 레깅스 150D L/XL 사이즈",
+    "src": "ai"
   },
   "Maggi 2 Minute Wholegrain Chicken Flavour Instant Noodles 345g 5 pack": {
-    "zh": "Maggi 2 分鐘全麥雞肉口味泡麵 345g 5 包",
-    "ja": "マギー 2分全粒チキン味即席麺 345g 5個パック",
-    "ko": "Maggi 2분 통곡물 치킨맛 인스턴트 누들 345g 5팩"
+    "zh": "Maggi 2分鐘全穀雞肉風味泡麵 345克（5入）",
+    "ja": "Maggi 2分インスタント麺 全粒粉チキン味 345g（5個入）",
+    "ko": "Maggi 2분 인스턴트 누들 통곡물 치킨맛 345g（5개입）",
+    "src": "ai"
   },
   "Nando's Lemon & Herb Rub Spice Seasoning 25g": {
-    "zh": "Nando's 檸檬香草香料調味料 25 克",
-    "ja": "Nando's Lemon & Herb Rub Spice Seasoning 25g",
-    "ko": "난도 레몬&허브 럽 스파이스 시즈닝 25g"
+    "zh": "Nando's 檸檬香草風味調味粉 25克",
+    "ja": "Nando's レモン＆ハーブ スパイスシーズニング 25g",
+    "ko": "Nando's 레몬 & 허브 스파이스 시즈닝 25g",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Lady Jayne Flexi Glide Hair Brush Large each": {
-    "zh": "Lady Jayne Flexi 滑動髮刷 大號",
-    "ja": "レディ ジェイン フレキシ グライド ヘアブラシ L 各",
-    "ko": "레이디 제인 플렉시 글라이드 헤어 브러시 대형 각 1개"
+    "zh": "Lady Jayne Flexi Glide 髮梳 大號",
+    "ja": "Lady Jayne Flexi Glide ヘアブラシ ラージ",
+    "ko": "Lady Jayne Flexi Glide 헤어 브러시 라지",
+    "src": "ai"
   },
   "Natpat Buzz Patch Mosquito Repellent Sticker Patches 16 pack": {
-    "zh": "Natpat Buzz Patch Mosquito Repellent Sticker Patches 16 pack",
-    "ja": "Natpat Buzz Patch 蚊よけステッカー パッチ 16 パック",
-    "ko": "Natpat Buzz 패치 모기 구충제 스티커 패치 16팩"
+    "zh": "Natpat 防蚊貼片 16入",
+    "ja": "Natpat 虫除けパッチ 16個入",
+    "ko": "Natpat 모기 기피 패치 16개입",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Linda Mccartney's Frozen Mozzarella Burgers NULL 227g 2 pack": {
-    "zh": "Linda McCartney's 冷凍馬蘇里拉漢堡 NULL 227 克 2 包",
-    "ja": "リンダ マッカートニーズ フローズン モッツァレラバーガー NULL 227g 2個パック",
-    "ko": "Linda Mccartney 프로즌 모짜렐라 버거 NULL 227g 2팩"
+    "zh": "Linda Mccartney's 冷凍莫札瑞拉起司漢堡 227克（2入）",
+    "ja": "Linda Mccartney's 冷凍モッツァレラバーガー 227g（2個入）",
+    "ko": "Linda Mccartney's 냉동 모짜렐라 버거 227g（2개입）",
+    "src": "ai"
   },
   "Blackmores Iron Glycinate Tablets 30 pack": {
-    "zh": "Blackmores Iron Glycinate Tablets 30 pack",
-    "ja": "ブラックモアズ 鉄グリシネート タブレット 30 パック",
-    "ko": "블랙모어스 아이언 글리시네이트 정제 30팩"
+    "zh": "Blackmores 甘胺酸亞鐵錠 30入",
+    "ja": "Blackmores 鉄分サプリメント 30個入",
+    "ko": "Blackmores 철분제 30개입",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Nivea Caring Cleansing Cream Wash 150mL": {
-    "zh": "妮維雅護理潔面乳 150mL",
-    "ja": "ニベア ケアリング クレンジング クリーム ウォッシュ 150mL",
-    "ko": "니베아 케어링 클렌징 크림 워시 150mL"
+    "zh": "Nivea 滋養潔面乳 150毫升",
+    "ja": "Nivea ケアリング クレンジングクリームウォッシュ 150ml",
+    "ko": "Nivea 케어링 클렌징 크림 워시 150ml",
+    "src": "ai"
   },
   "Air Wick Essential Mist Peace Lavender & Eucalyptus Diffuser Refill 20mL": {
-    "zh": "Air Wick Essential Mist Peace 薰衣草與尤加利擴香器補充裝 20mL",
-    "ja": "エアウィック エッセンシャルミスト ピース ラベンダー&ユーカリ ディフューザー 詰め替え 20mL",
-    "ko": "에어윅 에센셜 미스트 피스 라벤더 & 유칼립투스 디퓨저 리필 20mL"
+    "zh": "Air Wick 精油噴霧 薰衣草尤加利香氛補充瓶 20毫升",
+    "ja": "Air Wick エッセンシャルミスト ピース ラベンダー＆ユーカリの香り 詰替用 20mL",
+    "ko": "Air Wick 에센셜 미스트 피스 라벤더 & 유칼립투스향 리필 20mL",
+    "src": "ai"
   },
   "Bonds Ladies Seamless Under Short Size 12-14 Assorted each": {
-    "zh": "Bonds 女款無縫下短尺寸 12-14 各裝",
-    "ja": "ボンズ レディース シームレス アンダー ショート サイズ 12～14 各アソート",
-    "ko": "본드 여성용 심리스 언더 숏 사이즈 12-14 모듬 각"
+    "zh": "Bonds 女款無痕安全褲 12-14號 綜合款",
+    "ja": "Bonds レディース シームレス アンダーショーツ サイズ12-14 アソート",
+    "ko": "Bonds 여성용 심리스 언더 쇼츠 사이즈 12-14 모음",
+    "src": "ai"
   },
   "Activia Probiotic Yoghurt Pouch Vanilla 140g": {
-    "zh": "Activia 益生菌優格袋裝香草口味 140g",
-    "ja": "アクティビア プロバイオティック ヨーグルト パウチ バニラ 140g",
-    "ko": "액티비아 프로바이오틱 요거트 파우치 바닐라 140g"
+    "zh": "Activia 益生菌優格袋裝 香草口味 140克",
+    "ja": "Activia プロバイオティクスヨーグルトパウチ バニラ味 140g",
+    "ko": "Activia 프로바이오틱스 요거트 파우치 바닐라맛 140g",
+    "src": "ai"
   },
   "Cadbury Christmas Classics Chocolate Box 415g": {
-    "zh": "吉百利聖誕經典巧克力盒裝 415g",
-    "ja": "キャドバリー クリスマス クラシック チョコレート ボックス 415g",
-    "ko": "캐드버리 크리스마스 클래식 초콜릿 박스 415g"
+    "zh": "Cadbury 聖誕經典巧克力禮盒 415克",
+    "ja": "Cadbury クリスマス クラシック チョコレートボックス 415g",
+    "ko": "Cadbury 크리스마스 클래식 초콜릿 박스 415g",
+    "src": "ai"
   },
   "Tip Top Gourmet Pizza Bases Wholemeal 2 pack": {
     "zh": "Tip Top 美味披薩底全麥 2 包",
@@ -198196,34 +198358,42 @@
     "ko": "Tip Top 고메 피자 베이스 통밀 2팩"
   },
   "Vital All In One Daily Health Supplement Powder Original 240g": {
-    "zh": "Vital All In One Daily Health Supplement Powder Original 240g",
-    "ja": "バイタル オールインワン デイリー健康補助食品 パウダー オリジナル 240g",
-    "ko": "바이탈 올인원 데일리 헬스 보충제 파우더 오리지널 240g"
+    "zh": "Vital All In One 綜合營養補充粉 經典款 240克",
+    "ja": "Vital All In One 総合栄養サプリメントパウダー オリジナル 240g",
+    "ko": "Vital All In One 종합 영양제 파우더 오리지널 240g",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Poni Faux Lash Mascara Brown 13.5mL": {
-    "zh": "Poni 假睫毛睫毛膏 棕色 13.5mL",
-    "ja": "ポニ フェイクラッシュマスカラ ブラウン 13.5mL",
-    "ko": "포니 페이크 래쉬 마스카라 브라운 13.5mL"
+    "zh": "Poni 假睫毛感睫毛膏 棕色 13.5毫升",
+    "ja": "Poni フォウラッシュ マスカラ ブラウン 13.5ml",
+    "ko": "Poni 포 래쉬 마스카라 브라운 13.5ml",
+    "src": "ai"
   },
   "Up&Go Liquid Breakfast Choc Ice 250mL x 3 pack": {
-    "zh": "Up&Go 液體早餐巧克力冰 250mL x 3 包",
-    "ja": "アップ&ゴー 液体朝食チョコアイス 250mL×3パック",
-    "ko": "업앤고 리퀴드 브렉퍼스트 초크 아이스 250mL x 3팩"
+    "zh": "Up&Go 液態早餐 冰巧克力口味 250毫升 x 3入",
+    "ja": "Up&Go リキッドブレックファスト チョコアイス 250ml x 3個入",
+    "ko": "Up&Go 리퀴드 브렉퍼스트 초코 아이스 250ml x 3개입",
+    "src": "ai"
   },
   "Whiskas 1+ Years Mixed Favourites In Gravy Wet Cat Food 85g x 12 pack": {
-    "zh": "Whiskas 1 年以上混合最愛肉汁濕貓糧 85 克 x 12 包",
-    "ja": "ウィスカス 1 年以上ミックス フェイバリット グレービー ウェット キャット フード 85g × 12 パック",
-    "ko": "Whiskas 1+ Years Mixed Favorites In Gravy 습식 고양이 사료 85g x 12 팩"
+    "zh": "Whiskas 1歲以上 綜合肉汁貓濕糧 85克 x 12入",
+    "ja": "Whiskas 1歳以上用 ミックスフェイバリット グレービーソース キャットフード 85g x 12個入",
+    "ko": "Whiskas 1세 이상용 믹스 페이보릿 그레이비 습식 캣푸드 85g x 12개입",
+    "src": "ai"
   },
   "Woolworths Frozen Strawberries 1kg": {
-    "zh": "Woolworths 冷凍草莓 1 公斤",
-    "ja": "ウールワース 冷凍イチゴ 1kg",
-    "ko": "울워스 냉동 딸기 1kg"
+    "zh": "Woolworths 冷凍草莓 1公斤",
+    "ja": "Woolworths 冷凍ストロベリー 1kg",
+    "ko": "Woolworths 냉동 딸기 1kg",
+    "src": "ai"
   },
   "Hero Mighty Patch The Original Pimple Patch 24 Pack": {
-    "zh": "Hero Mighty Patch The Original Pimple Patch 24 Pack",
-    "ja": "ヒーロー マイティ パッチ オリジナル ピンプル パッチ 24 パック",
-    "ko": "히어로 마이티 패치 오리지널 핌플 패치 24 팩"
+    "zh": "Hero Mighty Patch 經典款痘痘貼 24入",
+    "ja": "Hero Mighty Patch オリジナル ニキビパッチ 24個入",
+    "ko": "Hero Mighty Patch 오리지널 여드름 패치 24개입",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Revlon ColorStay Eyeliner 205 Sapphire 0.28g": {
     "zh": "Revlon ColorStay 眼線筆 205 藍寶石 0.28 克",
@@ -198231,44 +198401,53 @@
     "ko": "레브론 컬러스테이 아이라이너 205 사파이어 0.28g"
   },
   "Nature's Way Collagen Peptides Powder Unflavoured 400g": {
-    "zh": "Nature's Way 膠原蛋白勝肽粉 原味 400g",
-    "ja": "Nature's Way コラーゲンペプチドパウダー 無香料 400g",
-    "ko": "네이쳐스웨이 콜라겐 펩타이드 파우더 무맛 400g"
+    "zh": "Nature's Way 膠原蛋白胜肽粉 原味 400克",
+    "ja": "Nature's Way コラーゲンペプチドパウダー 無味 400g",
+    "ko": "Nature's Way 콜라겐 펩타이드 파우더 무맛 400g",
+    "src": "ai"
   },
   "Bonds Insta Tan Slim Sheer Tights Medium Brown Size L each": {
-    "zh": "Bonds Insta Tan 修身透明緊身褲中型棕色，每件 L 碼",
-    "ja": "ボンズ インスタタンスリムシアータイツ ミディアムブラウン 各Lサイズ",
-    "ko": "Bonds Insta Tan 슬림 시어 타이츠 미디엄 브라운 사이즈 L 각 1개"
+    "zh": "Bonds 仿曬塑形透膚褲襪 中棕色 L號",
+    "ja": "Bonds インスタタン スリムシアータイツ ミディアムブラウン サイズL",
+    "ko": "Bonds 인스타 탄 슬림 시어 타이즈 미디엄 브라운 사이즈 L",
+    "src": "ai"
   },
   "Biore SPF 50 UV Aqua Rich Lightweight Moisturiser 50mL": {
-    "zh": "Biore SPF 50 UV 水豐富輕盈保濕霜 50mL",
-    "ja": "ビオレ SPF50 UV アクアリッチ 軽量保湿剤 50mL",
-    "ko": "비오레 SPF 50 UV 아쿠아 리치 라이트웨이트 모이스처라이저 50mL"
+    "zh": "Biore SPF 50 水感防曬保濕乳 50毫升",
+    "ja": "Biore SPF 50 UV アクアリッチ 保湿ジェル 50mL",
+    "ko": "Biore SPF 50 UV 아쿠아 리치 보습 젤 50mL",
+    "src": "ai"
   },
   "Whiskas 1+ Years Wet Cat Food Chicken In Gravy Pouch 85g x 12 pack": {
-    "zh": "Whiskas 1 年以上濕貓糧雞肉肉汁袋裝 85 克 x 12 包",
-    "ja": "ウィスカス 1歳以上 ウェットキャットフード チキン グレイビーパウチ入り 85g×12パック",
-    "ko": "Whiskas 1년 이상 습식 고양이 사료 치킨 그레이비 파우치 85g x 12팩"
+    "zh": "Whiskas 1歲以上 雞肉肉汁貓濕糧 85克 x 12入",
+    "ja": "Whiskas 1歳以上用 チキン グレービーソース パウチ 85g x 12個入",
+    "ko": "Whiskas 1세 이상용 치킨 그레이비 파우치 습식 캣푸드 85g x 12개입",
+    "src": "ai"
   },
   "Millie Moon 99% Pure Water Wipes 72 pack": {
-    "zh": "Millie Moon 99% 純水濕紙巾 72 片裝",
-    "ja": "Millie Moon 99% 純水ワイプ 72 パック",
-    "ko": "밀리문 99% 순수물티슈 72팩"
+    "zh": "Millie Moon 99%純水濕紙巾 72入",
+    "ja": "Millie Moon 99%純水ウェットティッシュ 72個入",
+    "ko": "Millie Moon 99%순수 물티슈 72개입",
+    "src": "ai"
   },
   "Bega Cheese Snack Stringers Cheddar Cheese 160g": {
-    "zh": "Bega Cheese 零食 Stringers 切達乾酪 160 克",
-    "ja": "ベガチーズスナックストリンガー チェダーチーズ 160g",
-    "ko": "베가치즈 스낵 스트링거 체다치즈 160g"
+    "zh": "Bega 切達起司條 160克",
+    "ja": "Bega チェダーチーズスティック 160g",
+    "ko": "Bega 체다 치즈 스트링 160g",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Bonds Comfy Tops Fleecy Tights Black Tl-Xt each": {
-    "zh": "Bonds 舒適上衣羊毛緊身褲黑色 Tl-Xt 各",
-    "ja": "Bonds コンフィトップス フリースタイツ ブラック Tl-Xt 各",
-    "ko": "Bonds 편안한 상의 플리스 타이츠 검정색 Tl-Xt 각각"
+    "zh": "Bonds 舒適刷毛褲襪 黑色 Tl-Xt號",
+    "ja": "Bonds コンフィトップス 裏起毛タイツ ブラック Tl-Xtサイズ",
+    "ko": "Bonds 컴피 탑스 기모 타이즈 블랙 Tl-Xt 사이즈",
+    "src": "ai"
   },
   "Up&Go Liquid Breakfast Banana 250mL x 3 pack": {
-    "zh": "Up&Go 液體早餐香蕉 250mL x 3 包",
-    "ja": "アップ&ゴー 液体朝食バナナ 250mL×3パック",
-    "ko": "업앤고 리퀴드 브렉퍼스트 바나나 250mL x 3팩"
+    "zh": "Up&Go 液態早餐 香蕉口味 250毫升 x 3入",
+    "ja": "Up&Go リキッドブレックファスト バナナ 250ml x 3個入",
+    "ko": "Up&Go 리퀴드 브렉퍼스트 바나나 250ml x 3개입",
+    "src": "ai"
   },
   "Sun Zapper SPF 50 Mixed Sunscreen Sticks Assorted 12g x 3 pack": {
     "zh": "Sun Zapper SPF 50 混合防曬棒什錦 12 克 x 3 包",
@@ -198276,33 +198455,105 @@
     "ko": "썬 재퍼 SPF 50 혼합 자외선 차단제 스틱 모듬 12g x 3팩"
   },
   "L'Oreal Paris Men Expert Pure Carbon 5 in 1 Shower Gel 1L": {
-    "zh": "巴黎歐萊雅男士專家純碳五合一沐浴乳 1L",
-    "ja": "ロレアル パリ メン エキスパート ピュア カーボン 5 in 1 シャワージェル 1L",
-    "ko": "로레알 파리 맨 엑스퍼트 퓨어 카본 5 in 1 샤워 젤 1L"
+    "zh": "L'Oreal Paris Men Expert 炭黑5合1沐浴乳 1公升",
+    "ja": "L'Oreal Paris Men Expert ピュアカーボン 5in1 シャワージェル 1L",
+    "ko": "L'Oreal Paris Men Expert 퓨어 카본 5in1 샤워젤 1L",
+    "src": "ai"
   },
   "Up&Go Protein Energize Liquid Breakfast Vanilla 250mL x 3 pack": {
-    "zh": "Up&Go 蛋白質能量液體早餐香草口味 250mL x 3 包",
-    "ja": "アップ&ゴー プロテイン エナジャイズ リキッド ブレックファスト バニラ 250mL×3個パック",
-    "ko": "Up&Go 프로틴 에너자이즈 리퀴드 브렉퍼스트 바닐라 250mL x 3팩"
+    "zh": "Up&Go Protein Energize 高蛋白液態早餐 香草口味 250毫升 x 3入",
+    "ja": "Up&Go Protein Energize リキッドブレックファスト バニラ 250ml x 3個入",
+    "ko": "Up&Go Protein Energize 리퀴드 브렉퍼스트 바닐라 250ml x 3개입",
+    "src": "ai"
   },
   "Ecostore Ultra Sensitive Fragrance Free Laundry Liquid 1L": {
-    "zh": "Ecostore 超敏感無香洗衣精 1L",
-    "ja": "Ecostore ウルトラセンシティブ無香料ランドリーリキッド 1L",
-    "ko": "에코스토어 울트라 센시티브 무향 세탁액 1L"
+    "zh": "Ecostore 極致敏感肌洗衣精 無香精 1公升",
+    "ja": "Ecostore ウルトラセンシティブ 無香料 ランドリーリキッド 1L",
+    "ko": "Ecostore 울트라 센시티브 무향 세탁 세제 1L",
+    "src": "ai"
   },
   "V Energy Drink Drink 500mL": {
-    "zh": "V能量飲料500mL",
-    "ja": "V エナジードリンクドリンク 500mL",
-    "ko": "V 에너지드링크 드링크 500mL"
+    "zh": "V 能量飲料 500毫升",
+    "ja": "V エナジードリンク 500ml",
+    "ko": "V 에너지 드링크 500ml",
+    "src": "ai"
   },
   "Darrell Lea Christmas Liquorice Strawberry & Apple Flavour 275g": {
-    "zh": "Darrell Lea 聖誕甘草草莓蘋果口味 275g",
-    "ja": "ダレル・リー クリスマスリコリス ストロベリー＆アップル味 275g",
-    "ko": "대럴 레아 크리스마스 감초 딸기&사과맛 275g"
+    "zh": "Darrell Lea 聖誕甘草糖 草莓與蘋果口味 275克",
+    "ja": "Darrell Lea クリスマス リコリス ストロベリー＆アップルフレーバー 275g",
+    "ko": "Darrell Lea 크리스마스 리코리스 딸기 & 사과 맛 275g",
+    "src": "ai"
   },
   "NOWAY! Collagen Beauty Ball Caramel Cashew 40g": {
-    "zh": "決不！膠原蛋白美容球焦糖腰果40g",
-    "ja": "とんでもない！コラーゲンビューティーボール キャラメルカシュー 40g",
-    "ko": "안 돼요! 콜라겐 뷰티볼 카라멜 캐슈넛 40g"
+    "zh": "NOWAY! 膠原蛋白美顏球 焦糖腰果口味 40克",
+    "ja": "NOWAY! コラーゲンビューティーボール キャラメルカシューナッツ味 40g",
+    "ko": "NOWAY! 콜라겐 뷰티 볼 캐러멜 캐슈넛맛 40g",
+    "src": "ai"
+  },
+  "Invisible Zinc 4hr Water Resistant SPF 50+ 100mL": {
+    "zh": "Invisible Zinc 4小時防水防曬乳 SPF 50+ 100毫升",
+    "ja": "Invisible Zinc 4時間耐水性日焼け止め SPF 50+ 100mL",
+    "ko": "Invisible Zinc 4시간 방수 선크림 SPF 50+ 100mL",
+    "src": "ai"
+  },
+  "Gem Skin-Loving 5 Blade Razor Refills 4 Pack": {
+    "zh": "Gem 護膚5刀片刮鬍刀替換刀片 4入",
+    "ja": "Gem スキンラビング 5枚刃カミソリ 替刃 4個入",
+    "ko": "Gem 스킨 러빙 5중날 면도날 리필 4개입",
+    "src": "ai"
+  },
+  "Metamucil Powder 72 Dose Daily Fibre Supplement Smooth Orange 425g": {
+    "zh": "Metamucil 膳食纖維粉 柳橙口味 425克",
+    "ja": "Metamucil 食物繊維パウダー オレンジ風味 425g",
+    "ko": "Metamucil 식이섬유 파우더 오렌지맛 425g",
+    "src": "ai"
+  },
+  "Colgate Total Active Prevention Fresh Toothpaste 200g": {
+    "zh": "Colgate 全效防護牙膏 清新口味 200克",
+    "ja": "Colgate トータル アクティブ プレベンション 歯磨き粉 200g",
+    "ko": "Colgate 토탈 액티브 프리벤션 치약 200g",
+    "src": "ai"
+  },
+  "TN Dickinsons Witch Hazel Cleansing Pads 60 Pack": {
+    "zh": "TN Dickinsons 金縷梅潔膚棉片 60入",
+    "ja": "TN Dickinsons ウィッチヘーゼル クレンジングパッド 60個入",
+    "ko": "TN Dickinsons 위치하젤 클렌징 패드 60개입",
+    "src": "ai"
+  },
+  "Simple Hydrating Light Moisturiser Kind To Skin 125mL": {
+    "zh": "Simple 清透保濕乳液 125毫升",
+    "ja": "Simple ハイドレーティング ライト モイスチャライザー 125mL",
+    "ko": "Simple 하이드레이팅 라이트 모이스처라이저 125mL",
+    "src": "ai"
+  },
+  "Voltaren Pain Relief Gel 100g": {
+    "zh": "Voltaren 止痛凝膠 100克",
+    "ja": "Voltaren 鎮痛ジェル 100g",
+    "ko": "Voltaren 진통 젤 100g",
+    "src": "ai"
+  },
+  "Biore Ultra Pore Strips 6 Pack": {
+    "zh": "Biore 毛孔潔淨鼻貼 6入",
+    "ja": "Biore 毛穴すっきりパック 6個入",
+    "ko": "Biore 모공 클린 코팩 6개입",
+    "src": "ai"
+  },
+  "Thursday Plantation Tea Tree Face Wash For Acne 150mL": {
+    "zh": "Thursday Plantation 茶樹抗痘洗面乳 150毫升",
+    "ja": "Thursday Plantation ティーツリー 洗顔料 150mL",
+    "ko": "Thursday Plantation 티트리 여드름용 세안제 150mL",
+    "src": "ai"
+  },
+  "QV Cream 250g": {
+    "zh": "QV 潤膚霜 250克",
+    "ja": "QV クリーム 250g",
+    "ko": "QV 크림 250g",
+    "src": "ai"
+  },
+  "St Ives Apricot Facial Scrub Fresh Skin 150mL": {
+    "zh": "St Ives 杏桃磨砂膏 150毫升",
+    "ja": "St Ives アプリコット スクラブ洗顔料 150mL",
+    "ko": "St Ives 살구 스크럽 세안제 150mL",
+    "src": "ai"
   }
 }
