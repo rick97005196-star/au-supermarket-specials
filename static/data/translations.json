@@ -199484,11 +199484,11 @@
     "src": "ai"
   },
   "British Sausage Co Smoked Back Bacon 200g": {
-    "zh": "British Sausage Co. 煙燻里肌培根 200克",
+    "zh": "British Sausage Co. 煙燻背脊培根 200克",
     "ja": "British Sausage Co. スモークバックベーコン 200g",
-    "ko": "British Sausage Co. 훈제 등심 베이컨 200g",
+    "ko": "British Sausage Co. 훈제 백 베이컨 200g",
     "src": "ai",
-    "qa_tries": 1
+    "qa_tries": 2
   },
   "Oral B 3dwhite Strengthens Enamel Whitening Toothpaste 110g": {
     "zh": "Oral B 3D White 琺瑯質強化美白牙膏 110克",
@@ -199553,8 +199553,9 @@
   "British Sausage Co. Smoked Streaky Bacon 175g": {
     "zh": "British Sausage Co. 煙燻五花培根 175克",
     "ja": "British Sausage Co. スモークストリーキーベーコン 175g",
-    "ko": "British Sausage Co. 훈제 삼겹 베이컨 175g",
-    "src": "ai"
+    "ko": "British Sausage Co. 훈제 스트리키 베이컨 175g",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Kikkoman Gluten Free Soy Sauce 250mL": {
     "zh": "Kikkoman 無麩質醬油 250毫升",
@@ -199608,6 +199609,72 @@
     "zh": "Yumi's 無麩質咖哩南瓜菠菜蔬菜球 225克",
     "ja": "Yumi's グルテンフリーカレーパンプキン＆ほうれん草ベジバイト 225g",
     "ko": "Yumi's 글루텐 프리 카레 호박 시금치 베지 바이트 225g",
+    "src": "ai"
+  },
+  "Ultimates Beef Mince In Gravy Dog Food 400g": {
+    "zh": "Ultimates 牛肉碎肉肉汁成犬罐頭 400克",
+    "ja": "Ultimates 牛ひき肉グレイビーソース 成犬用ドッグフード 400g",
+    "ko": "Ultimates 소고기 다짐육 그레이비 성견용 사료 400g",
+    "src": "ai"
+  },
+  "UFC Bean Sprouts 410g": {
+    "zh": "UFC 豆芽菜 410克",
+    "ja": "UFC もやし 410g",
+    "ko": "UFC 숙주나물 410g",
+    "src": "ai"
+  },
+  "Patak's Korma Curry Paste Mild 290g": {
+    "zh": "Patak's 溫和科爾馬咖哩醬 290克",
+    "ja": "Patak's コルマカレーペースト マイルド 290g",
+    "ko": "Patak's 코르마 커리 페이스트 마일드 290g",
+    "src": "ai"
+  },
+  "Bosisto's Eucalyptus Spray 200g": {
+    "zh": "Bosisto's 尤加利噴霧 200克",
+    "ja": "Bosisto's ユーカリプタススプレー 200g",
+    "ko": "Bosisto's 유칼립투스 스프레이 200g",
+    "src": "ai"
+  },
+  "Carman's Protein Slice Bar Choc Peanut 5 Pack 175g": {
+    "zh": "Carman's 巧克力花生蛋白能量棒 175克（5入）",
+    "ja": "Carman's プロテインスライスバー チョコレートピーナッツ 175g（5個入）",
+    "ko": "Carman's 프로틴 슬라이스 바 초콜릿 피넛 175g（5개입）",
+    "src": "ai"
+  },
+  "Bfree Sweet Potato Wraps 210g": {
+    "zh": "Bfree 地瓜捲餅皮 210克",
+    "ja": "Bfree さつまいもラップ 210g",
+    "ko": "Bfree 고구마 랩 210g",
+    "src": "ai"
+  },
+  "Mayver's Crunchy Dark Roast Natural Peanut Butter 375g": {
+    "zh": "Mayver's 顆粒深焙天然花生醬 375克",
+    "ja": "Mayver's クランチー ダークロースト ナチュラルピーナッツバター 375g",
+    "ko": "Mayver's 크런치 다크 로스트 천연 땅콩버터 375g",
+    "src": "ai"
+  },
+  "Lotus Biscoff Smooth Spread 720g": {
+    "zh": "Lotus Biscoff 滑順抹醬 720克",
+    "ja": "Lotus Biscoff スムーススプレッド 720g",
+    "ko": "Lotus Biscoff 스무스 스프레드 720g",
+    "src": "ai"
+  },
+  "Carman's Protein Brownie Choc Nut Fudge 5 Pack 175g": {
+    "zh": "Carman's 巧克力堅果軟糖蛋白布朗尼 175克（5入）",
+    "ja": "Carman's プロテインブラウニー チョコレートナッツファッジ 175g（5個入）",
+    "ko": "Carman's 프로틴 브라우니 초콜릿 넛 퍼지 175g（5개입）",
+    "src": "ai"
+  },
+  "Ingham's Four Chicken Kyivs Creamy Garlic 600g": {
+    "zh": "Ingham's 奶油大蒜雞肉基輔炸雞 600克（4入）",
+    "ja": "Ingham's チキンキエフ クリーミーガーリック 600g（4個入）",
+    "ko": "Ingham's 치킨 키예프 크리미 갈릭 600g（4개입）",
+    "src": "ai"
+  },
+  "Nanna's Classic Apple Crumble 550g": {
+    "zh": "Nanna's 經典蘋果奶酥 550克",
+    "ja": "Nanna's クラシックアップルクランブル 550g",
+    "ko": "Nanna's 클래식 애플 크럼블 550g",
     "src": "ai"
   }
 }
