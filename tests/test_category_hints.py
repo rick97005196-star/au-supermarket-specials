@@ -85,7 +85,7 @@ def main():
             ('Zqx Assorted Baking Spice 255g', '', '', 'pantry', 'guessed'),
             # a food aisle outranks a non-food word ("Bottle", "Table"); a non-food aisle does not
             ('Woolworths Lemonade Bottle 1.25L', 'Drinks     Soft Drinks   CARBONATED SOFT DRINKS', '', 'drinks', 'aisle'),
-            ('Zqx Pink Moscato Bottle 750mL', 'Beer, Wine & Spirits     Wine   WINE', '', 'liquor', 'aisle'),
+            ('Zqx Pink Fizz Bottle 750mL', 'Beer, Wine & Spirits     Wine   WINE', '', 'liquor', 'aisle'),
             ('STONEMILL Table Salt 750g', 'ALDI Pantry', '', 'pantry', 'aisle'),
             ('Zqx Table Salt 750g', 'Pantry', '', 'pantry', 'aisle'),
             ('Zqx Drink Bottle 750mL', 'Home & Lifestyle     Kitchen   KITCHENWARE', '', 'household', 'rule'),

@@ -33,9 +33,9 @@ _SUPPLEMENT_BRANDS = r"(?:blackmores|swisse|nature'?s\s*(?:way|own)|centrum|calt
 _RULES = [
     # ---- added after the full review of ~6,000 products (Oct 2026); each line is a pattern, not one product ----
     # not food, although a food word is in the name (stand MIXER, cake TINS, fruit & citrus FOOD for plants…)
-    ('household', r"\b(?:sugar\s*soap|stand\s*mixer|hand\s*mixer|food\s*chopper|snack\s*containers?|food\s*containers?|bento\s*(?:box|containers?)|container\s*bags|phone\s*holder|baking\s*accessories|silicone\s*baking|cake\s*tins?|loaf\s*tin|bakeware|doormats?|leggings?|fertilis\w*|brunnings|(?:fruit\s*&\s*citrus|rose\s*&\s*flower|plant|lawn|garden)\s*food|growing\s*mix|potting\s*mix|seaweed\s*concentrate|gardenlife|trampoline|backpack|scrub\s*brush|soap\s*dispens\w*|dip\s*station|home\s*gym|meerkat|facial\s*tissues?|tissues?\s*(?:box|pack|\d))\b"),
+    ('household', r"\b(?:sugar\s*soap|white\s*king|stand\s*mixer|hand\s*mixer|food\s*chopper|snack\s*containers?|food\s*containers?|bento\s*(?:box|containers?)|container\s*bags|phone\s*holder|baking\s*accessories|silicone\s*baking|cake\s*tins?|loaf\s*tin|bakeware|doormats?|leggings?|fertilis\w*|brunnings|(?:fruit\s*&\s*citrus|rose\s*&\s*flower|plant|lawn|garden)\s*food|growing\s*mix|potting\s*mix|seaweed\s*concentrate|gardenlife|trampoline|backpack|scrub\s*brush|soap\s*dispens\w*|dip\s*station|home\s*gym|meerkat|facial\s*tissues?|tissues?\s*(?:box|pack|\d))\b"),
     # personal care the old rules missed (nail, hair styling, oral care, first aid, skin patches)
-    ('health_vitamins', r"\b(?:pore\s*strips?|hand\s*saniti[sz]\w*|ointment|mighty\s*patch|pimple\s*patch|teeth\s*whitening|whitening\s*strips|hismile|baby\s*bath|shave\s*(?:gel|foam|cream)|king\s*of\s*shaves|detangl\w*|face\s*care|body\s*cream|neat\s*feat|arch\s*cushion|metatarsal|heat\s*protection|slick\s*styler|texturising|curl\s*enhancer|volume\s*powder|volumising|all\s*in\s*one\s*treatment|interdental|piksters|sally\s*hansen|miracle\s*gel|top\s*coat|nail\s*strengthener|hair\s*bleach|bleach\s*hair|post\s*bleach|band[\s-]*aids?|elastoplast|instant\s*natural\s*protein|protein\s*powder)\b|\b(?:protein|creatine)\b[^,]*\bpowder\b"),
+    ('health_vitamins', r"\b(?:shower\s*milk|pore\s*strips?|hand\s*saniti[sz]\w*|ointment|mighty\s*patch|pimple\s*patch|teeth\s*whitening|whitening\s*strips|hismile|baby\s*bath|shave\s*(?:gel|foam|cream)|king\s*of\s*shaves|detangl\w*|face\s*care|body\s*cream|neat\s*feat|arch\s*cushion|metatarsal|heat\s*protection|slick\s*styler|texturising|curl\s*enhancer|volume\s*powder|volumising|all\s*in\s*one\s*treatment|interdental|piksters|sally\s*hansen|miracle\s*gel|top\s*coat|nail\s*strengthener|hair\s*bleach|bleach\s*hair|post\s*bleach|band[\s-]*aids?|elastoplast|instant\s*natural\s*protein|protein\s*powder)\b|\b(?:protein|creatine)\b[^,]*\bpowder\b"),
     # supplements that do not say "tablets/capsules" (powders, cubes, kids' chews)
     ('health_vitamins', r"^(?!.*\b(?:drinks?(?!\s*cubes)|water|gatorade|powerade|sports\s*drink)\b).*\b(?:hair\s*(?:scalp\s*)?skin\s*(?:&\s*)?nails?|beauty\s*from\s*within|prebiotic\s*fibre|hydrat(?:e|ion)\s*(?:powder|drink\s*cubes)|rapid\s*hydration|electrolytes?|vitality\s*greens|greens\s*\+\s*\w+|ozi\s*choice|waterdrop|sup\s*gummies)\b"),
     # frozen: battered/crumbed seafood snacks, Ingham's frozen chicken, chocolate-brand ice creams (sold in mL),
@@ -53,7 +53,7 @@ _RULES = [
     # pantry: spreads, pastes, rubs, baking mixes, cereal, canned fish, pickles, baby snacks
     ('pantry', r"^(?!.*\b(?:up\s*&\s*go|up&go|liquid\s*breakfast)\b).*\b(?:conserve|toppings?|pappadams?|peri-?naise|(?:bbq|spice|peri-?peri)\s*rub|rub\s*\d|(?:curry|korma|tikka|masala|butter\s*chicken|laksa|tom\s*yum|rendang|vindaloo|madras|valcom)\s*paste|paste\s*\d|maraschino|sprinkles|(?:cookie|brownie|cake|muffin|pancake|pizza\s*dough)\s*mix|icing|baking\s*(?:nuts|chips|melts)|muesli(?!\s*bars?)|granola(?!\s*bars?)|cereal(?!\s*(?:bars?|biscuits?|bites))|doritos\s*dip|salsa|mi\s*goreng|indomie|suimin|chicken\s*salt|chippy\s*salt|pickled|nutella(?!.*\b(?:frozen|dessert|ice|biscuits?|ml)\b)|john\s*west|sirena|greenseas|safcol|broth|(?:flavoured\s*)?mixed\s*fruit|(?<!freeze )dried\s*fruit(?!\s*crisps)|little\s*bellies)\b"),
     # dairy fridge items without a dairy keyword
-    ('dairy_eggs', r"\b(?:fett?a(?![^,]*\b(?:pies?|rolls?|pastr\w*|pizza|parcels?|gozleme|triangles?|spinach|salad))|blue\s*cheese|tasmanian\s*blue|dairy\s*blend|proactiv|margarine|buttery\s*spread|protein\s*dessert|progo|cracker\s*barrel|cheese\s*(?:block|slices)|dairy\s*snack|hommus|hummus|tzatziki)\b|(?<!doritos )\bdips?\b(?!\s*station)"),
+    ('dairy_eggs', r"\b(?:fett?a(?![^,]*\b(?:pies?|rolls?|pastr\w*|pizza|parcels?|gozleme|triangles?|spinach|salad))|blue\s*cheese|tasmanian\s*blue|dairy\s*blend|proactiv|margarine|buttery\s*spread|protein\s*dessert|progo|cracker\s*barrel|cheese\s*(?:block|slices)|dairy\s*snack|hommus|hummus|tzatziki)\b|(?<!doritos )(?<!skinny )\bdips?\b(?!\s*station)"),
     ('dairy_eggs', r"^(?!.*\b(?:sticks|frozen|coated|melts|bars?|bites|ice|raisins|drops|clusters|tops|wash|lotion|soap|shampoo|cream|mask|scrub|dog|cat|trail\s*mix|nuts?|muesli|biscuits?|pouch)\b).*\byogh?urt\b"),
     # drinks: flavoured milk, smoothies, iced coffee / mocha, fruit drinks
     ('drinks', r"^(?!.*\b(?:lip|stain|eyeshadow|mcobeauty|nail|polish|blush|foundation|concealer|candles?|diffuser|cookies?|biscuits?|lollies|chews|pouch|rafferty'?s|baby|powder)\b).*\b(?:flavoured\s*milk|protein\s*smoothie|smoothie(?!\s*drops)|milkshakes?(?!\s*lollies)|(?:blackcurrant|fruit|apple|orange)\s*drink|matcha\s*latte|dare|iced\s*coffee|mocha)\b"),
@@ -150,7 +150,7 @@ def classify_product(title: str, raw_cat: str = "", product_url: str = "", use_h
     is_not_drink = bool(re.search(r'\b(?:ham|highlighter|highlight|glow|stick|wand|lip|eyeshadow|mcobeauty|nail|candle)\b', tl))
     if not is_ginger_ale and not is_cider_vinegar and not is_scotch_finger and not is_scotch_fillet and not is_hair_product and not is_food_product and not is_not_drink:
         if not re.search(r'\b(?:sauce|biscuit|chocolate|ice\s*cream|non[- ]alcoholic|zero\s*alcohol)\b', tl):
-            if re.search(r'\b(?:beer|lager|pale\s*ale|ipa\b|xpa\b|draught|stout|cider|seltzer|vodka|whisky|whiskey|gin\b|rum\b|bourbon|tequila|wine|shiraz|sauvignon|chardonnay|pinot|prosecco|champagne|liqueur|brandy|scotch\b|alcoholic|tempranillo|merlot|semillon|riesling|cabernet)\b', tl) or \
+            if re.search(r'\b(?:beer|lager|pale\s*ale|ipa\b|xpa\b|draught|stout|cider|seltzer|vodka|whisky|whiskey|gin\b|rum\b|bourbon|tequila|wine|shiraz|sauvignon|chardonnay|pinot|prosecco|champagne|liqueur|brandy|scotch\b|alcoholic|tempranillo|merlot|semillon|riesling|cabernet|moscato|grenache|tawny|malbec|sangiovese|verdelho|viognier|nebbiolo)\b', tl) or \
                re.search(r'\b(?:-196|\b196\b|\bhard\s*rated|vodka\s*cruiser|smirnoff|heineken|corona\b|\bperoni\b|carlton|great\s*northern|coopers|asahi|guinness|stella\s*artois|somersby|balter|stone\s*&\s*wood|canadian\s*club|jack\s*daniels?|jim\s*beam|bundaberg\s*rum|xxxx\s*gold|\bmoretti\b|wild\s*turkey)\b', tl):
                 return 'liquor'
 
@@ -324,7 +324,7 @@ def classify_product(title: str, raw_cat: str = "", product_url: str = "", use_h
     # (Fresh chilled milk, fresh eggs, butter/margarine, cheese blocks/slices, chilled yogurt, chilled dips)
     # Exclude: Hand cream, body cream, curl cream, instant mac & cheese
     # -------------------------------------------------------------
-    is_non_dairy_cream = bool(re.search(r'\b(?:hand\s*cream|body\s*cream|face\s*cream|curl|sculpting|shaving|ice\s*cream)\b', tl))
+    is_non_dairy_cream = bool(re.search(r'\b(?:hand\s*cream|body\s*cream|face\s*cream|(?:all\s*in\s*one|intensive|night|day|eye)\s*cream|snail|hyaluronic|retinol|curl|sculpting|shaving|ice\s*cream)\b', tl))
     if not is_non_dairy_cream and not is_pasta_sauce_mix:
         if re.search(r'\b(?:fresh\s*milk|almond\s*milk|oat\s*milk|soy\s*milk|lite\s*milk|full\s*cream\s*milk|long\s*life.*milk|dairy\s*farmers|paul\'?s|devondale)\b', tl) or \
            re.search(r'\b(?:eggs?|free\s*range\s*eggs?)\b', tl) or \
@@ -332,7 +332,7 @@ def classify_product(title: str, raw_cat: str = "", product_url: str = "", use_h
            re.search(r'\b(?:cheese|cheddar|mozzarella|parmesan|feta|brie|camembert|cream\s*cheese|ricotta|bega\s*cheese|tasty\s*cheese|haloumi|d[\'’]affinois)\b', tl) or \
            re.search(r'\b(?:yogurt|yoghurt|chobani|goplain|jalna|gippsland|danone|yoplait|yo\s*pro|snack\s*pot|rokeby)\b', tl) or \
            re.search(r'\b(?:cream\b|cr[eè]me\s*fra[iî]che|sour\s*cream|custard|antipasto|dip\b|dips\b|hommus|tzatziki|obela|black\s*swan|meredith\s*dairy)\b', tl):
-            if not re.search(r'\b(?:soup|noodle|ramen|pasta|biscuit|wafers?|chips|chocolate|coconut\s*milk|canned|peanut\s*butter|sausage\s*roll|garlic\s*bread|meat\s*pie|beef|chicken|steak|lamb|pork|kransky|sausages?|frankfurts?|ham|porterhouse|simmer\s*sauce)\b', tl):
+            if not re.search(r'\b(?:soup|noodle|ramen|pasta|biscuit|wafers?|chips|chocolate|coconut\s*milk|canned|peanut\s*butter|sausage\s*roll|garlic\s*bread|meat\s*pie|beef|chicken|steak|lamb|pork|kransky|sausages?|frankfurts?|ham|porterhouse|simmer\s*sauce|salmon|fish|prawns?|barramundi|seafood)\b', tl):
                 return 'dairy_eggs'
 
     # -------------------------------------------------------------
@@ -366,7 +366,7 @@ def classify_product(title: str, raw_cat: str = "", product_url: str = "", use_h
             return 'produce'
 
     # Plain milk that no rule above caught (e.g. "Pauls Smarter White Milk 2L")
-    if re.search(r'\bmilk\b', tl) and not re.search(r'\b(?:shampoo|conditioner|lotion|body|serum|toner|diffuser|refill|candle|wash|mask|cream|hair)\b', tl):
+    if re.search(r'\bmilk\b', tl) and not re.search(r'\b(?:shower|bath|soap|shampoo|conditioner|lotion|body|serum|toner|diffuser|refill|candle|wash|mask|cream|hair)\b', tl):
         return 'dairy_eggs'
 
     if re.search(r'\bfrozen\b', tl):
@@ -406,7 +406,8 @@ _GUESS_SWEETS = re.compile(r"\b(?:choc\w*|lolli\w*|lolly|gumm\w*|candy|candies|s
                            r"biscuits?|cookies?|wafers?|marzipan|pralines?|truffles?|caramels?|sour\s*straps?|warheads|"
                            r"mozartkugeln|baumkuchen|lebkuchen|stollen|zimtsterne|pops|snacks?)\b")
 _GUESS_PERSONAL_CARE = re.compile(r"\b(?:hair|nails?|lip|lashes|brow|skin|facial|face\s*(?:mask|wash)|shampoo|"
-                                  r"conditioner|body\s*wash|makeup|make-up|cosmetic\w*|perfume|fragrance)\b")
+                                  r"conditioner|body\s*wash|makeup|make-up|cosmetic\w*|perfume|fragrance|"
+                                  r"serum|snail|hyaluronic|retinol|niacinamide|(?:all\s*in\s*one|intensive|night|day|eye)\s*cream)\b")
 
 
 # Titles that reached the last-resort guess above (no rule, no AI answer, no aisle recognised them)

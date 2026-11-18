@@ -2197,6 +2197,12 @@ async function loadSpecials() {
                 if (emptyTitle) emptyTitle.textContent = t('cmp_none_title');
                 if (emptySub) emptySub.textContent = t('cmp_none_sub');
                 if (emptyAction) emptyAction.classList.add('hidden');
+            } else if (priceType === 'regular' && (currentStore === 'Coles' || currentStore === 'Woolworths')
+                       && !(regularLists || []).some(x => x.store === currentStore)) {
+                // that supermarket's regular-price list is missing (Coles' website stops the weekly reader part-way)
+                if (emptyTitle) emptyTitle.textContent = t('regular_none_title', { store: currentStore });
+                if (emptySub) emptySub.textContent = t('regular_none_sub');
+                if (emptyAction) emptyAction.classList.add('hidden');
             } else if (currentPeriod === 'next') {
                 if (emptyTitle) {
                     emptyTitle.textContent = currentLang === 'zh' ? '下週特價型錄尚未公布' : (currentLang === 'ja' ? '来週のチラシはまだ公開されていません' : (currentLang === 'ko' ? '다음 주 세일 카탈로그가 아직 공개되지 않았습니다' : 'Next Week Specials Not Released Yet'));
