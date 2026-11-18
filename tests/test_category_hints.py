@@ -33,7 +33,10 @@ AISLES = [
     # ALDI online shop aisles (the reader adds "ALDI " so one-word aisles are not taken for our own keys)
     ('ALDI Fruits Vegetables', 'produce'), ('ALDI Pantry', 'pantry'), ('ALDI Bakery', 'bakery'), ('ALDI Drinks', 'drinks'),
     ('ALDI Deli Chilled Meats', 'dairy_eggs'), ('ALDI Meat Seafood', 'meat'), ('ALDI Freezer', 'frozen'), ('ALDI Baby', ''),
-    # nothing useful: no hint
+    # Woolworths department names given alone (the regular-price reader when a product has no aisle):
+    # real aisles, although they look like our own keys
+    ('Pantry', 'pantry'), ('Drinks', 'drinks'), ('Bakery', 'bakery'), ('Pet', 'pet'),
+    # nothing useful: no hint (our own keys are written in lower case)
     ('Groceries', ''), ('household', ''), ('pantry', ''), ('', ''), ('food and beverage groceries baby', ''),
 ]
 
@@ -80,6 +83,15 @@ def main():
             ('Zqx Metallic Gold Hair Claw Clip 2 Pack', '', '', 'health_vitamins', 'guessed'),
             ('Zqx Sheet Set Sateen 800TC Queen Bed', '', '', 'household', 'guessed'),
             ('Zqx Assorted Baking Spice 255g', '', '', 'pantry', 'guessed'),
+            # a food aisle outranks a non-food word ("Bottle", "Table"); a non-food aisle does not
+            ('Woolworths Lemonade Bottle 1.25L', 'Drinks     Soft Drinks   CARBONATED SOFT DRINKS', '', 'drinks', 'aisle'),
+            ('Zqx Pink Moscato Bottle 750mL', 'Beer, Wine & Spirits     Wine   WINE', '', 'liquor', 'aisle'),
+            ('STONEMILL Table Salt 750g', 'ALDI Pantry', '', 'pantry', 'aisle'),
+            ('Zqx Table Salt 750g', 'Pantry', '', 'pantry', 'aisle'),
+            ('Zqx Drink Bottle 750mL', 'Home & Lifestyle     Kitchen   KITCHENWARE', '', 'household', 'rule'),
+            ('Zqx Drink Bottle 750mL', '', '', 'household', 'rule'),
+            # a plain sugar sounds edible
+            ('Zqx White Sugar 2kg', '', '', 'pantry', 'guessed'),
         ]
         for title, aisle, url, want, way in checks:
             c.HINTED.clear()

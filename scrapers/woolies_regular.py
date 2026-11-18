@@ -90,6 +90,15 @@ def to_item(pr):
     }
 
 
+def aisle_of(pr, department):
+    """The product's own aisle, read the way the specials scraper reads it (so a product gets the same
+    department in both lists), or the department's name when Woolworths gives none."""
+    attrs = pr.get('AdditionalAttributes') or {}
+    text = ' '.join(str(attrs.get(k) or '') for k in
+                    ('piesdepartmentnamesjson', 'piescategorynamesjson', 'sapcategoryname')).strip()
+    return text or department
+
+
 def to_row(it, aisle):
     it['category'] = classify_product(it['title'], aisle, it['product_url'])
     return [it[k] for k in ROW]
@@ -114,7 +123,7 @@ def browse(s, dep, n):
         print(f"::error::Woolworths stopped answering ({'refused' if r is None else r.status_code}) at {name} page {n}")
         return None
     prods = [pr for b in data.get('Bundles') or [] for pr in b.get('Products') or []]
-    rows = [to_row(it, name) for it in map(to_item, prods) if it]
+    rows = [to_row(it, aisle_of(pr, name)) for pr, it in zip(prods, map(to_item, prods)) if it]
     return rows, bool(prods) and n < math.ceil(int(data.get('TotalRecordCount') or 0) / PAGE_SIZE)
 
 

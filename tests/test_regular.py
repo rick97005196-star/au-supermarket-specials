@@ -55,6 +55,19 @@ for why, change in [('on special', {'InstoreIsOnSpecial': True}), ('was price ab
                     ('no stock code', {'Stockcode': None})]:
     check(wr.to_item(dict(base, **change)) is None, f'skipped: {why}')
 
+# --- the department a regular price is filed under: the product's own aisle, as in the specials lists ---
+lemonade = dict(base, Stockcode=200, Name='Woolworths Lemonade Bottle', PackageSize='1.25L', AdditionalAttributes={
+    'piesdepartmentnamesjson': '["Drinks"]', 'piescategorynamesjson': '["Soft Drinks"]', 'sapcategoryname': 'CARBONATED SOFT DRINKS'})
+check(wr.aisle_of(lemonade, 'Drinks') == '["Drinks"] ["Soft Drinks"] CARBONATED SOFT DRINKS', 'aisle from the product')
+check(wr.aisle_of(base, 'Pantry') == 'Pantry', 'no aisle on the product: the department name')
+for prod, dep, want in [(lemonade, 'Drinks', 'drinks'),                                  # "Bottle" is not household
+                        (dict(base, Stockcode=201, Name='Saxa Table Salt Drum', PackageSize='750g'), 'Pantry', 'pantry'),
+                        (dict(base, Stockcode=202, Name='Zqx Pink Moscato Bottle', PackageSize='750mL'),
+                         'Beer, Wine & Spirits', 'liquor'),
+                        (dict(base, Stockcode=203, Name='Woolworths Essentials White Sugar', PackageSize='2kg'), 'Pantry', 'pantry')]:
+    row = dict(zip(wr.ROW, wr.to_row(wr.to_item(prod), wr.aisle_of(prod, dep))))
+    check(row['category'] == want, f"{row['title']} from {dep}: {row['category']}, expected {want}")
+
 # --- which regular prices the price compare keeps (the website's own rules) ---
 def item(i, store, title, price, **kw):
     return dict({'id': i, 'store': store, 'title': title, 'price': price, 'price_display': f'${price:.2f} ea',
