@@ -117,6 +117,10 @@ jobs:
         run: |
           python export_static_data.py
 
+      - name: Coles recent regular prices (最近原價)
+        # each Coles product's shelf price before its latest special (scrapers/coles_recent.py); never stops the update
+        run: python scrapers/coles_recent.py || echo "::warning::Coles recent regular prices not updated this time - the saved list stays"
+
       # ---- Layer 2 + 3: check the new data before it goes anywhere ----
       - name: Check data before publishing
         id: check
@@ -128,7 +132,7 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action Bot"
-          for f in data/specials.db data/catalogues.json data/coles_web.json data/woolies_web.json data/catalogue_items.json.gz data/ai_categories.json data/interest.json static/data/specials.json static/data/specials-next.json static/data/stats.json static/data/translations.json; do [ ! -f "$f" ] || git add "$f"; done
+          for f in data/specials.db data/catalogues.json data/coles_web.json data/woolies_web.json data/catalogue_items.json.gz data/ai_categories.json data/interest.json static/data/specials.json static/data/specials-next.json static/data/stats.json static/data/translations.json data/coles_was_prices.json static/data/regular-coles-recent.json; do [ ! -f "$f" ] || git add "$f"; done
           git diff --staged --quiet && exit 0
           git commit -m "Auto-update weekly specials & translations [skip ci]"
           for i in 1 2 3; do

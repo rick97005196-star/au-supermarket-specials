@@ -748,11 +748,15 @@ function loadNextInBackground() {
 // regular-price tab or searches. A product on special this week is left out (its special card already shows it):
 // by the shop's product number, or, for a catalogue special (no product number, often a whole range such as
 // "Samyang Buldak Ramen 650-700g Pk 5"), when compare.js catalogueCovered is sure it is the same product.
-// A list not refreshed for over two weeks is ignored.
+// A list not refreshed for over two weeks is ignored. Coles: when no real list of a whole week is fresh (Coles' bot
+// check stops the cloud reader; Rick's computer may read one), regular-coles-recent.json (scrapers/coles_recent.py):
+// each product's shelf price just before its latest special, shown as 最近原價 with that week (it._recent).
 const REGULAR_ROW = ['id', 'title', 'price', 'price_display', 'unit_price', 'image_url', 'product_url', 'category'];
+const isFreshList = f => !!f && Array.isArray(f.items) && Date.now() - Date.parse(f.updated_at) < 15 * 864e5;
 async function ensureRegularList() {
     if (regularLists) return regularLists;
-    const files = await Promise.all(['regular-woolworths.json', 'regular-coles.json'].map(f => fetchStaticJson(f)));
+    const files = await Promise.all(['regular-woolworths.json', 'regular-coles.json', 'regular-coles-recent.json']
+        .map(f => fetchStaticJson(f)));
     if (!files.some(Boolean)) return [];        // failed load: try again next time
     const onSpecial = new Set();                 // shop product numbers on special this week ('w123' / 'c123')
     const catalogue = [];                        // this week's catalogue specials (SaleFinder, no product number)
@@ -765,14 +769,15 @@ async function ensureRegularList() {
     }
     const catIdx = typeof catalogueIndex === 'function' ? catalogueIndex(catalogue) : new Map();
     regularLists = [];
-    files.forEach((f, i) => {
-        if (!f || !Array.isArray(f.items) || !(Date.now() - Date.parse(f.updated_at) < 15 * 864e5)) return;
-        const store = ['Woolworths', 'Coles'][i];
+    [[files[0], 'Woolworths'], [isFreshList(files[1]) ? files[1] : files[2], 'Coles']].forEach(([f, store]) => {
+        if (!isFreshList(f)) return;
+        const recent = f.kind === 'recent';
         for (const row of f.items) {
             if (!Array.isArray(row)) continue;
             const it = sanitizeProduct(Object.assign(Object.fromEntries(REGULAR_ROW.map((k, j) => [k, row[j]])),
                 { store, was_price: 0, save_amount: 0, discount_desc: 'Regular Price', period: 'current' }));
             if (!it) continue;
+            if (recent) it._recent = /^\d{4}-\d{2}-\d{2}$/.test(row[8]) ? row[8] : '-';
             if (store === 'Coles') it.id = 'c' + it.id;
             if (it.price > 0 && !onSpecial.has(String(it.id)) && !(catIdx.size && catalogueCovered(catIdx, it))) regularLists.push(it);
         }
@@ -1883,6 +1888,14 @@ function isPlainSpecial(it) {
 }
 // Regular shelf price ("一般價"): no discount at all (ALDI's range aisles, Woolworths' regular prices). Listed after
 // the specials and everyday low prices, never counted as a special, never in 熱門 or the favourite alerts.
+// 一般價, or 最近原價 for a Coles price remembered from before its last special
+function regularLabel(it) { return it && it._recent ? t('recent_badge') : t('regular_badge'); }
+function recentWeek(day) {
+    const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(day || '');
+    if (!m) return '';
+    return currentLang === 'en' ? `${+m[3]} ${['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][+m[2] - 1]}`
+                                : `${+m[2]}/${+m[3]}`;
+}
 function isRegularPrice(it) {
     return !!it && !((it.save_amount || 0) > 0) && (it.discount_desc === 'Regular Price' || !!it._regular);
 }
@@ -2506,7 +2519,7 @@ function renderSameProducts(item) {
         const pd = String(it.price_display || '').replace(/\s+/g, ' ').trim();
         // ALDI's listed items are its Special Buys and Super Savers, apart from its everyday low prices
         const status = it._regular ? t('cmp3_regular_weekly') : isEverydayPrice(it) ? t('everyday_badge')
-            : isRegularPrice(it) ? t('regular_badge') : (it.save_amount > 0 || isPlainSpecial(it) || it.store === 'ALDI') ? t('special_badge') : t('cmp3_regular');
+            : isRegularPrice(it) ? regularLabel(it) : (it.save_amount > 0 || isPlainSpecial(it) || it.store === 'ALDI') ? t('special_badge') : t('cmp3_regular');
         const cheapest = high - low > 0.05 && each - low < 0.005;
         return `
             <div class="aldi-cmp-row ${isThis ? 'is-this' : ''}" ${isThis || it._regular ? '' : 'role="button" tabindex="0"'} data-cmp-store="${st}">
@@ -2724,7 +2737,7 @@ function createProductCardElement(item) {
                         ${effectiveSave > 0 ? `<span class="p-save">${t('save_badge', { amount: effectiveSave.toFixed(2) })}</span>` : ''}
                         ${isEverydayPrice(item) ? `<span class="p-everyday">${t('everyday_badge')}</span>` : ''}
                         ${isPlainSpecial(item) ? `<span class="p-save">${t('special_badge')}</span>` : ''}
-                        ${isRegularPrice(item) ? `<span class="p-regular">${t('regular_badge')}</span>` : ''}
+                        ${isRegularPrice(item) ? `<span class="p-regular">${regularLabel(item)}</span>` : ''}
                     </div>`}
                     ${unitPriceClean && !showNormUnit ? `<div class="p-unit num mt-0.5 truncate" title="${escAttr(unitPriceClean)}">${unitPriceClean}</div>` : ''}
                 </div>
@@ -2928,8 +2941,12 @@ function openProductModal(item) {
 
     // Dates (ALDI: the deal's own day instead of the week)
     const _aldi = aldiDateInfo(item);
-    document.getElementById('modalDateRange').textContent = _aldi ? _aldi.long : (item.date_range || (currentLang === 'zh' ? '本週特價' : 'Active Specials'));
-    document.getElementById('modalDateRange').parentElement.classList.toggle('hidden', isRegularPrice(item));   // a regular price has no special period
+    const dateElem = document.getElementById('modalDateRange');
+    dateElem.textContent = item._recent ? t('recent_when', { date: recentWeek(item._recent) })
+        : _aldi ? _aldi.long : (item.date_range || (currentLang === 'zh' ? '本週特價' : 'Active Specials'));
+    const dateLabel = dateElem.parentElement.querySelector('[data-i18n="valid_period"]');
+    if (dateLabel) dateLabel.textContent = item._recent ? t('recent_label') : t('valid_period');
+    dateElem.parentElement.classList.toggle('hidden', isRegularPrice(item) && !item._recent);   // a regular price has no special period
 
     // Supermarket Price Lockup in Modal
     const p = parseSupermarketPrice(item.price_display, item.price);
@@ -2968,7 +2985,7 @@ function openProductModal(item) {
         saveBadge.textContent = t('special_badge');
         saveBadge.classList.remove('hidden');
     } else if (isRegularPrice(item)) {
-        saveBadge.textContent = t('regular_badge');
+        saveBadge.textContent = regularLabel(item);
         saveBadge.classList.remove('hidden');
     } else {
         saveBadge.classList.add('hidden');
@@ -4010,7 +4027,7 @@ function reportCurrentProduct() {
     if (btn) pickFeedbackType(btn);
     // say which price the visitor saw: a regular or everyday price is not "this week's special"
     const kind = it ? priceTypeOf(it) : '';
-    const label = kind === 'regular' ? t('regular_badge') : kind === 'everyday' ? t('everyday_badge')
+    const label = kind === 'regular' ? regularLabel(it) : kind === 'everyday' ? t('everyday_badge')
         : (currentPeriod === 'next' ? t('next_cycle') : t('current_cycle'));
     const info = it ? `【${it.store}】${it.title}  $${Number(it.price || 0).toFixed(2)}（${label}）\n` : '';
     setTimeout(() => openFeedback(info + t('fb_report_prompt')), 150);

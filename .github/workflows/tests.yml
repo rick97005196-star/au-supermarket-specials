@@ -21,6 +21,7 @@ on:
       - 'scrapers/woolies_scraper.py'
       - 'scrapers/woolies_regular.py'
       - 'scrapers/coles_regular.py'
+      - 'scrapers/coles_recent.py'
       - 'scrapers/coles_web.py'
       - 'scripts/regular_match.cjs'
       - 'database.py'
@@ -62,3 +63,5 @@ jobs:
         run: python tests/test_regular.py
       - name: Coles regular price test
         run: python tests/test_coles_regular.py
+      - name: Coles recent regular price test
+        run: python tests/test_coles_recent.py
