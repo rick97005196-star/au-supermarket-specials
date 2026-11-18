@@ -745,20 +745,25 @@ function loadNextInBackground() {
 
 // The full Woolworths / Coles regular price lists (static/data/regular-woolworths.json and regular-coles.json, read
 // each week by scrapers/woolies_regular.py and coles_regular.py): about 1-2 MB, so loaded only when someone opens the
-// regular-price tab or searches. A product on special this week is left out (its special card already shows it);
-// a list not refreshed for over two weeks is ignored.
+// regular-price tab or searches. A product on special this week is left out (its special card already shows it):
+// by the shop's product number, or, for a catalogue special (no product number, often a whole range such as
+// "Samyang Buldak Ramen 650-700g Pk 5"), when compare.js catalogueCovered is sure it is the same product.
+// A list not refreshed for over two weeks is ignored.
 const REGULAR_ROW = ['id', 'title', 'price', 'price_display', 'unit_price', 'image_url', 'product_url', 'category'];
 async function ensureRegularList() {
     if (regularLists) return regularLists;
     const files = await Promise.all(['regular-woolworths.json', 'regular-coles.json'].map(f => fetchStaticJson(f)));
     if (!files.some(Boolean)) return [];        // failed load: try again next time
     const onSpecial = new Set();                 // shop product numbers on special this week ('w123' / 'c123')
+    const catalogue = [];                        // this week's catalogue specials (SaleFinder, no product number)
     for (const it of rawSpecials || []) {
         if (it.period !== 'current') continue;
         const w = /woolworths\.com\.au\/shop\/productdetails\/(\d+)/i.exec(it.product_url || '');
         const c = /coles\.com\.au\/product\/[^?#]*-(\d+)(?:[?#]|$)/i.exec(it.product_url || '');
         if (w) onSpecial.add('w' + w[1]); else if (c) onSpecial.add('c' + c[1]);
+        else if (/salefinder\.com\.au/i.test(it.product_url || '')) catalogue.push(it);
     }
+    const catIdx = typeof catalogueIndex === 'function' ? catalogueIndex(catalogue) : new Map();
     regularLists = [];
     files.forEach((f, i) => {
         if (!f || !Array.isArray(f.items) || !(Date.now() - Date.parse(f.updated_at) < 15 * 864e5)) return;
@@ -769,7 +774,7 @@ async function ensureRegularList() {
                 { store, was_price: 0, save_amount: 0, discount_desc: 'Regular Price', period: 'current' }));
             if (!it) continue;
             if (store === 'Coles') it.id = 'c' + it.id;
-            if (it.price > 0 && !onSpecial.has(String(it.id))) regularLists.push(it);
+            if (it.price > 0 && !onSpecial.has(String(it.id)) && !(catIdx.size && catalogueCovered(catIdx, it))) regularLists.push(it);
         }
     });
     return regularLists;
@@ -3997,7 +4002,11 @@ function reportCurrentProduct() {
     closeProductModal();
     const btn = document.querySelector('#fbTypes [data-type="data_error"]');
     if (btn) pickFeedbackType(btn);
-    const info = it ? `【${it.store}】${it.title}  $${Number(it.price || 0).toFixed(2)}（${currentPeriod === 'next' ? t('next_cycle') : t('current_cycle')}）\n` : '';
+    // say which price the visitor saw: a regular or everyday price is not "this week's special"
+    const kind = it ? priceTypeOf(it) : '';
+    const label = kind === 'regular' ? t('regular_badge') : kind === 'everyday' ? t('everyday_badge')
+        : (currentPeriod === 'next' ? t('next_cycle') : t('current_cycle'));
+    const info = it ? `【${it.store}】${it.title}  $${Number(it.price || 0).toFixed(2)}（${label}）\n` : '';
     setTimeout(() => openFeedback(info + t('fb_report_prompt')), 150);
 }
 async function sendFeedback() {

@@ -378,4 +378,98 @@ function mergeSameProducts(list) {
         return true;
     });
 }
-if (typeof module !== 'undefined') module.exports = { unitPriceOf, eachPriceOf, sheetPriceOf, cmpPriceOf, cmpTypeOf, valueCompare, CMP_TYPES, isSameProduct, findSameProducts, mergeSameProducts, perItemPrice: _perItemPrice };
+// ---------------- 型錄特價 vs. 一般價清單 ----------------
+// A catalogue special (SaleFinder: no shop product number) often names a range: "Samyang Buldak Ramen 650-700g Pk 5"
+// covers each flavour of that 5 pack. The regular-price list (app.js ensureRegularList) leaves a product out only when a
+// catalogue special of the same store clearly covers it: same brand, every word of the catalogue name in the product
+// name, the product's size inside the catalogue's size or range, the same pack count, and the catalogue's "was" price
+// equal to the product's regular price (5% leeway). A catalogue name for one product (no range, no "selected") must
+// match word for word. Anything unclear stays in the list: hiding a product wrongly is worse than showing it.
+const _CAT_STOP = new Set('the and with in of for a an x pack packs pk each ea selected variety varieties range assorted or mix'.split(' '));
+const _CAT_UNIT = '(kg|g|ml|l|litres?|liters?)';
+function _catBase(qty, unit) {          // -> [basis, amount in g or mL]
+    unit = unit.toLowerCase();
+    if (unit === 'kg') return ['g', qty * 1000];
+    if (unit === 'g') return ['g', qty];
+    if (unit === 'ml') return ['ml', qty];
+    return unit === 'l' || unit.startsWith('lit') ? ['ml', qty * 1000] : null;
+}
+// "650-700g" / "650g-700g" -> { lo, hi, range }; "700g" -> lo = hi; "5 x 140g" -> 700g; null = no size or unclear
+function _catSize(t) {
+    const mx = t.match(new RegExp(`(\\d+)\\s*[x×]\\s*(\\d+(?:\\.\\d+)?)\\s*${_CAT_UNIT}\\b`));
+    if (mx) {
+        const b = _catBase(parseFloat(mx[2]) * parseInt(mx[1], 10), mx[3]);
+        return b && b[1] > 0 ? { basis: b[0], lo: b[1], hi: b[1] } : null;
+    }
+    const mr = t.match(new RegExp(`(\\d+(?:\\.\\d+)?)\\s*${_CAT_UNIT}?\\s*-\\s*(\\d+(?:\\.\\d+)?)\\s*${_CAT_UNIT}\\b`));
+    if (mr) {
+        const lo = _catBase(parseFloat(mr[1]), mr[2] || mr[4]), hi = _catBase(parseFloat(mr[3]), mr[4]);
+        if (!lo || !hi || lo[0] !== hi[0] || !(lo[1] > 0) || lo[1] > hi[1]) return null;
+        return { basis: hi[0], lo: lo[1], hi: hi[1], range: true };
+    }
+    const all = [...t.matchAll(new RegExp(`(\\d+(?:\\.\\d+)?)\\s*${_CAT_UNIT}\\b`, 'g'))];
+    if (all.length !== 1) return null;
+    const b = _catBase(parseFloat(all[0][1]), all[0][2]);
+    return b && b[1] > 0 ? { basis: b[0], lo: b[1], hi: b[1] } : null;
+}
+function _catPack(t) {    // "Pk 5" / "5 pack" / "x 5" / "5 x 140g" -> 5; 1 when none; null when two counts disagree
+    const nx = t.match(/(\d+)\s*[x×]\s*\d+(?:\.\d+)?\s*(?:kg|g|ml|l|litres?|liters?)\b/);
+    if (nx) return parseInt(nx[1], 10);
+    const counts = [...t.matchAll(/[x×]\s*(\d+)\b(?!\s*(?:kg|g|ml|l)\b)|\b(\d+)\s*(?:pk|packs?|multipack)\b|\b(?:pk|pack of)\s*(\d+)\b/g)]
+        .map(m => parseInt(m[1] || m[2] || m[3], 10));
+    if (counts.some(c => c !== counts[0])) return null;
+    return counts.length ? counts[0] : 1;
+}
+function _catInfo(item) {
+    if (item._ctlg !== undefined && item._ctlgSig === item.title) return item._ctlg;
+    item._ctlgSig = item.title;
+    const t = String(item.title || '').toLowerCase().replace(/['’]/g, '').replace(/[–—]/g, '-').replace(/(\d),(\d{3})\b/g, '$1$2');
+    const words = t.replace(/[^a-z0-9.]+/g, ' ').trim().split(' ')
+        .filter(w => w && !/\d/.test(w) && !_CAT_STOP.has(w)).map(_singular);
+    item._ctlg = words.length ? { words, set: new Set(words), size: _catSize(t), pack: _catPack(t),
+                                 range: /\b(selected|varieties|variety|range|assorted)\b/.test(t) } : null;
+    return item._ctlg;
+}
+// no size in the product name ("Samyang Buldak Carbonara Spicy Ramen 5 pack"): worked out from the shop's unit
+// price ("$1.92 / 100G" at $12.50 = about 651g), so it is only approximate
+function _catUnitSize(item) {
+    const u = _parseUnitString(item.unit_price), price = Number(item.price) || 0;
+    if (!u || !(price > 0) || !(u.value > 0)) return null;
+    return { basis: u.basis === 'kg' ? 'g' : 'ml', lo: price / u.value * 1000, hi: price / u.value * 1000, approx: true };
+}
+function catalogueCovers(cat, item) {
+    if (!cat || !item || cat.store !== item.store) return false;
+    const c = _catInfo(cat), p = _catInfo(item);
+    if (!c || !p || c.words.length < 2 || c.words[0] !== p.words[0]) return false;
+    const size = p.size || _catUnitSize(item), tol = size && size.approx ? 0.02 : 0.01;
+    if (!c.size || !size || size.range || c.size.basis !== size.basis) return false;
+    if (size.lo < c.size.lo * (1 - tol) || size.lo > c.size.hi * (1 + tol)) return false;
+    if (c.pack === null || c.pack !== p.pack) return false;
+    if (!c.words.every(w => p.set.has(w))) return false;
+    if (!c.size.range && !c.range && !p.words.every(w => c.set.has(w))) return false;
+    const was = Number(cat.was_price) || 0, now = Number(item.price) || 0, sale = _perItemPrice(cat);
+    return was > 0 && now > 0 && sale > 0 && sale < now && Math.abs(was - now) / now <= 0.05;
+}
+// store + brand -> catalogue specials, so each product is checked only against its own brand's specials
+function catalogueIndex(specials) {
+    const idx = new Map();
+    for (const c of specials || []) {
+        const info = c && _catInfo(c);
+        if (!info) continue;
+        const k = `${c.store}|${info.words[0]}`;
+        if (!idx.has(k)) idx.set(k, []);
+        idx.get(k).push(c);
+    }
+    return idx;
+}
+function _catBrand(title) {      // the first name word, found cheaply (the same rules as _catInfo)
+    for (const w of String(title || '').toLowerCase().replace(/['’]/g, '').replace(/[^a-z0-9.]+/g, ' ').trim().split(' ')) {
+        if (w && !/\d/.test(w) && !_CAT_STOP.has(w)) return _singular(w);
+    }
+    return '';
+}
+function catalogueCovered(idx, item) {
+    const cats = item && idx.get(`${item.store}|${_catBrand(item.title)}`);
+    return !!cats && cats.some(c => catalogueCovers(c, item));
+}
+if (typeof module !== 'undefined') module.exports = { unitPriceOf, eachPriceOf, sheetPriceOf, cmpPriceOf, cmpTypeOf, valueCompare, CMP_TYPES, isSameProduct, findSameProducts, mergeSameProducts, perItemPrice: _perItemPrice, catalogueCovers, catalogueIndex, catalogueCovered };

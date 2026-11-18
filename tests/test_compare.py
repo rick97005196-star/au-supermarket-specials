@@ -329,6 +329,73 @@ check(r.returncode == 0, 'i18n.js loads in node: ' + r.stderr[-300:])
 missing = json.loads(r.stdout or '[]') if r.returncode == 0 else []
 check(not missing, f'compare kinds without a group name, or 三家價格 text missing: {missing}')
 
+# 型錄特價 vs. 一般價清單 (app.js ensureRegularList): a catalogue special (SaleFinder, no product number) hides a
+# regular-price product only when it surely covers it. Visitor report 2026-11-18: Samyang Buldak 5 packs were $9.95 in
+# the catalogue but still listed at $12.50 in the 一般價 tab.
+CAT_JS = r'''
+const c = require(process.argv[1]);
+const q = JSON.parse(require('fs').readFileSync(0, 'utf8'));
+const idx = c.catalogueIndex(q.cats);
+process.stdout.write(JSON.stringify({
+    covers: q.cases.map(([ci, item]) => c.catalogueCovers(q.cats[ci], item)),
+    covered: q.covered.map(item => c.catalogueCovered(idx, item)),
+}));
+'''
+W = 'Woolworths'
+CATS = [
+    {'store': W, 'title': 'Samyang Buldak Ramen 650-700g Pk 5', 'price': 9.95, 'was_price': 12.5, 'price_display': '$9.95 each'},
+    {'store': W, 'title': 'Ocean Blue Smoked Salmon 300g', 'price': 16, 'was_price': 19, 'price_display': '$16.00 each'},
+    {'store': W, 'title': 'McCain Pickers 230-300g', 'price': 6.2, 'was_price': 7.8, 'price_display': '$6.20 each'},
+    {'store': W, 'title': 'Toscano Macarons 144g', 'price': 10, 'was_price': 11.75, 'price_display': '$10.00 each'},
+    {'store': 'Coles', 'title': 'Samyang Buldak Ramen 650-700g Pk 5', 'price': 9.5, 'was_price': 12.5, 'price_display': '$9.50 each'},
+    {'store': W, 'title': 'The Natural Confectionery Co. Snakes 260g', 'price': 3.5, 'was_price': 5.5, 'price_display': '$3.50 each'},
+    {'store': W, 'title': 'Toscano Macarons 144g', 'price': 12, 'was_price': 11.75, 'price_display': '$12.00 each'},
+]
+
+
+def reg(title, price, store=W, unit=''):
+    return {'store': store, 'title': title, 'price': price, 'price_display': f'${price:.2f} ea', 'was_price': 0,
+            'save_amount': 0, 'discount_desc': 'Regular Price', 'period': 'current', 'unit_price': unit}
+
+
+CAT_CASES = [  # (catalogue special, regular-price product, hidden?, why)
+    (0, reg('Samyang Buldak Original Spicy Ramen 700g 5 pack', 12.5), True, 'the reported product: 700g 5 pack in 650-700g Pk 5'),
+    (0, reg('Samyang Buldak Habanero Lime Spicy Ramen 675g 5 pack', 12.5), True, 'another flavour of the range'),
+    (0, reg('Samyang Buldak Original Spicy Ramen Big Bowl 105g', 3.75), False, 'one bowl, not the 5 pack'),
+    (0, reg('Samyang Buldak Carbonara Spicy Ramen 5 pack', 12.5), False, 'no size and no unit price: unsure, so it stays'),
+    (0, reg('Samyang Buldak Carbonara Spicy Ramen 5 pack', 12.5, unit='$1.92 / 100G'), True, 'no size in the name: about 651g from the unit price'),
+    (0, reg('Samyang Buldak Carbonara Spicy Ramen 5 pack', 12.5, unit='$3.57 / 100G'), False, 'unit price says about 350g: not this range'),
+    (0, reg('Samyang Buldak Original Spicy Ramen 140g', 2.5), False, 'a single packet'),
+    (0, reg('Nongshim Shin Ramyun Noodle 600g 5 pack', 12.5), False, 'another brand'),
+    (4, reg('Samyang Buldak Original Spicy Ramen 700g 5 pack', 12.5), False, 'a Coles special says nothing about Woolworths'),
+    (1, reg('Ocean Blue Smoked Salmon 300g', 19), True, 'the same single product'),
+    (1, reg('Ocean Blue Smoked Salmon Dill 300g', 19), False, 'one named product: an extra word is another product'),
+    (1, reg('Ocean Blue Smoked Salmon 150g', 10), False, 'another size'),
+    (2, reg('McCain Pickers Beer Battered Onion Rings 300g', 7.8), True, 'inside the range 230-300g'),
+    (2, reg('McCain Pickers Beer Battered Onion Rings 500g', 9.8), False, 'outside the range'),
+    (3, reg('Toscano Macarons 144g', 15), False, 'regular price far from the catalogue "was" price'),
+    (6, reg('Toscano Macarons 144g', 11.75), False, 'the "special" is not cheaper than the regular price'),
+    (5, reg('The Natural Confectionery Co. Snakes 260g', 5.5), True, '"The" is not the brand'),
+]
+CAT_COVERED = [  # (product, hidden?) against all the specials above, through the brand index
+    (reg('Samyang Buldak Cheese Spicy Ramen 700g 5 pack', 12.5), True),
+    (reg('Samyang Buldak Original Spicy Ramen Big Bowl 105g', 3.75), False),
+    (reg('Samyang Buldak Original Spicy Ramen 700g 5 pack', 12.5, 'Coles'), True),
+    (reg('Toscano Macarons 144g', 11.75), True),
+    (reg('Arnotts Tim Tam Original 200g', 5.5), False),
+]
+r = subprocess.run(['node', '-e', CAT_JS, os.path.join(ROOT, 'static', 'compare.js')],
+                   input=json.dumps({'cats': CATS, 'cases': [[ci, it] for ci, it, _, _ in CAT_CASES],
+                                     'covered': [it for it, _ in CAT_COVERED]}),
+                   capture_output=True, text=True, encoding='utf-8')
+check(r.returncode == 0, 'catalogue check runs in node: ' + r.stderr[-300:])
+cat_out = json.loads(r.stdout) if r.returncode == 0 else {'covers': [], 'covered': []}
+for (ci, it, want, why), got in zip(CAT_CASES, cat_out['covers']):
+    check(got == want, f'catalogue special hides the regular price? {why}: {CATS[ci]["title"]} / {it["title"]} -> {got}')
+for (it, want), got in zip(CAT_COVERED, cat_out['covered']):
+    check(got == want, f'catalogue index for {it["store"]} {it["title"]} ${it["price"]}: {got}, want {want}')
+check(len(cat_out['covers']) == len(CAT_CASES) and len(cat_out['covered']) == len(CAT_COVERED), 'all catalogue cases ran')
+
 for b in bad:
     print('FAIL', b)
 print(f'{total - len(bad)}/{total} price comparison checks passed')
