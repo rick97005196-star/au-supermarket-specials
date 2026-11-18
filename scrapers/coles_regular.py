@@ -15,6 +15,13 @@ category is read; until then last week's stays (the website drops lists older th
 answering or shows its bot check, what was read is kept and the run only warns (exit 0): the bot check is
 common and a failure email each time is noise; the daily site report shows how far the week got. Delete the
 progress file to read the whole week again. Requests go through scrapers/polite.py: several seconds apart, never around a refusal.
+
+On GitHub's servers Coles shows its bot check after 5 pages, so a week is never finished there. Rick's own computer
+can read it instead (tools/coles_local.py, which runs this with --local and puts the result on GitHub):
+    python scrapers/coles_regular.py --local   any day, the whole week in one sitting (about 50 minutes)
+    python scrapers/coles_regular.py --test    can this computer read Coles? 10 pages, nothing saved
+A week begun on Rick's computer is left to it ("by": "local" in the progress file), so the two never write the
+same file at once. Either way the reader stops at Coles' first bot check; it never tries to get past it.
 """
 import math
 import os
@@ -36,6 +43,8 @@ FOOD = ['meat-seafood', 'fruit-vegetables', 'dairy-eggs-fridge', 'bakery', 'deli
 READ_DAYS = (3, 4, 5, 6)     # Thursday to Sunday
 TIME_BUDGET = 30 * 60        # seconds a run reads; the whole week is about 390 pages, 50 minutes
 MIN_ROWS = 5000              # a full week has about 10,000; fewer means the pages changed - keep last week's
+LOCAL_BUDGET = 80 * 60       # on Rick's computer: the whole week in one sitting
+TEST_PAGES = 10
 
 
 def to_item(p):
@@ -66,9 +75,25 @@ def read_page(token, n):
     return rows, bool(results) and n < last
 
 
-def main():
+def try_pages():
+    """--test: the first pages of one category, to see whether Coles answers this computer. Saves nothing."""
+    ok = 0
+    while ok < TEST_PAGES and read_page('pantry', ok + 1) is not None:
+        ok += 1
+    if ok == TEST_PAGES:
+        print(f"Coles answered all {TEST_PAGES} test pages on this computer - the weekly read can run here")
+        return 0
+    print(f"Coles answered {ok} of {TEST_PAGES} test pages on this computer, then showed its bot check -"
+          " a week cannot be read here either")
+    return 1
+
+
+def main(argv=()):
+    local = '--local' in argv           # on Rick's computer: any day, the whole week in one sitting
+    if '--test' in argv:
+        return try_pages()
     today = _brisbane_today()
-    if today.weekday() not in READ_DAYS:
+    if not local and today.weekday() not in READ_DAYS:
         print("Coles regular prices are read Thursday to Sunday - nothing to do today")
         return 0
     prog = load_json(PROGRESS)
@@ -77,11 +102,16 @@ def main():
     if prog.get('done'):
         print("This week's Coles regular prices are already read - nothing to do")
         return 0
+    if prog.get('by') == 'local' and not local:
+        print("This week's Coles regular prices are being read on Rick's computer - nothing to do here")
+        return 0
 
-    pages, _ = read_pages(prog, FOOD, read_page, TIME_BUDGET)
+    pages, _ = read_pages(prog, FOOD, read_page, LOCAL_BUDGET if local else TIME_BUDGET)
     if not pages:
         print("::warning::Coles answered no page - nothing changed")
         return 0
+    if local:
+        prog['by'] = 'local'                            # only once Coles answered: a refused computer takes nothing over
     if not prog['done']:
         save_json(PROGRESS, prog)
         print(f"Read {pages} pages, {len(prog['rows'])} regular prices so far; next run starts at "
@@ -94,10 +124,10 @@ def main():
               " Coles may have changed its pages; last week's list is kept")
         return 1
     save_json(LIST, {'updated_at': today.isoformat(), 'store': 'Coles', 'items': rows})
-    save_json(PROGRESS, {'started': prog['started'], 'done': True})
+    save_json(PROGRESS, {'started': prog['started'], 'done': True, **({'by': 'local'} if local else {})})
     print(f"Saved {len(rows)} Coles regular prices - requests {summary()}")
     return 0
 
 
 if __name__ == '__main__':
-    sys.exit(main())
+    sys.exit(main(sys.argv[1:]))

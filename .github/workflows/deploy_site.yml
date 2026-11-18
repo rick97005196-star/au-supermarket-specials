@@ -12,6 +12,8 @@ on:
       - 'static/*.png'
       - 'functions/**'
       - 'tailwind.config.js'
+      # the Coles regular-price list Rick's computer puts on GitHub (tools/coles_local.py)
+      - 'static/data/regular-coles.json'
   workflow_dispatch:
 
 # Own queue: in the specials update's queue a waiting run is replaced by the next one, and that run

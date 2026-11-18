@@ -5,6 +5,8 @@ name: 超市平常價（每週）
 #   scrapers/woolies_regular.py -> static/data/regular-woolworths.json, and static/data/regular.json for the price compare
 #   scrapers/coles_regular.py   -> static/data/regular-coles.json, Thursday to Sunday only (Monday to Wednesday the
 #                                  specials update reads the Coles website often)
+#                                  Coles shows its bot check here after 5 pages; Rick's computer can read the week instead
+#                                  (tools/COLES_LOCAL.md) - a week it began is left to it
 # A run reads each store for a limited time and goes on from data/regular_progress.json and
 # data/coles_regular_progress.json; a store whose week is read does nothing. A list is written only when its whole
 # week is read. A run that saves a new list puts the website online itself right after the save (GitHub starts no

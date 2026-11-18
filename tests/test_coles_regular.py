@@ -137,6 +137,36 @@ cr.MIN_ROWS = 10
 before = files()
 answers(page(60, bread), page(1))
 check(cr.main() == 1 and files() == before, "too few prices for a whole week: last week's list stays")
+cr.MIN_ROWS = 1
+
+# --- on Rick's computer (--local): any day; a week it began is left to it; --test saves nothing ---
+for p in (cr.LIST, cr.PROGRESS):
+    if os.path.exists(p):
+        os.remove(p)
+on(datetime.date(2026, 11, 4))                                          # a Wednesday (the cloud does not read)
+answers(None)
+check(cr.main(['--local']) == 0 and files() == [None, None], 'local, refused at once: no file, nothing taken over')
+answers(page(60, base), None)
+check(cr.main(['--local']) == 0, 'local: reads on a Wednesday')
+prog = saved(cr.PROGRESS)
+check(prog.get('by') == 'local' and prog['started'] == '2026-11-04' and prog['page'] == 2, f'local week: {prog}')
+on(datetime.date(2026, 11, 5))                                          # Thursday: the cloud's day
+before = files()
+answers(page(60, bread))
+check(cr.main() == 0 and calls == [] and files() == before, "the cloud leaves a week begun on Rick's computer alone")
+answers(page(60, bread), page(1, base))
+check(cr.main(['--local']) == 0 and calls == [browse('bakery', 2), browse('pantry', 1)], f'local goes on: {calls}')
+check(saved(cr.PROGRESS) == {'started': '2026-11-04', 'done': True, 'by': 'local'}, f'local week done: {saved(cr.PROGRESS)}')
+check([r[0] for r in saved(cr.LIST)['items']] == ['123', '200'], 'local week: list written')
+on(datetime.date(2026, 11, 12))                                         # next Thursday: a new week, the cloud may read
+answers(page(60, base), None)
+check(cr.main() == 0 and saved(cr.PROGRESS).get('by') is None, 'a new week is open to the cloud again')
+
+before = files()
+answers(*[page(480, base)] * 10)
+check(cr.main(['--test']) == 0 and len(calls) == 10 and files() == before, 'test: 10 pages answered, nothing saved')
+answers(page(480, base), page(480, base), None)
+check(cr.main(['--test']) == 1 and len(calls) == 3 and files() == before, 'test: bot check after 2 pages, nothing saved')
 
 for b in bad:
     print('FAIL', b)
