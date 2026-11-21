@@ -637,6 +637,8 @@ def scrape_woolies_specials_group(slug, group_id, name, kind, max_pages=150):
             break
         raw_seen.update(codes)
         total = int(data.get('TotalRecordCount') or 0)
+        if page == 1:
+            print(f"Woolies {name} ({slug}): {total} products listed", flush=True)
 
         for bi, b in enumerate(bundles):
             for pr in b.get('Products', []):
