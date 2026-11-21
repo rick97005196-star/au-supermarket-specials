@@ -1518,7 +1518,30 @@ html:root .toolbar > .suggest-row { padding: 5px 0; margin-top: 8px; margin-bott
     #heroSection > div { gap: 10px !important; }
     #heroSection .space-y-3 > * + * { margin-top: 6px !important; }
     #heroSection .hero-title { font-size: 26px !important; line-height: 1.15; }
-    #heroSection .hero-sub, #statsRow, #statsNote { display: none !important; }
+    #heroSection .hero-sub { display: none !important; }
+    /* the counts as a small bar chart: one line per supermarket, bar length = how many it lists this week
+       (dark part = specials), the two totals on the line above */
+    html:root #mobileToolbarSlot #statsRow {
+        display: grid !important; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center;
+        gap: 7px 10px; margin: 8px 0 0 !important; padding: 10px 12px;
+    }
+    html:root #mobileToolbarSlot #statsRow .stat-divider { display: none; }
+    html:root #mobileToolbarSlot #statsRow > .stat:nth-child(1),
+    html:root #mobileToolbarSlot #statsRow > .stat:nth-child(2) {
+        grid-column: auto; flex-direction: row-reverse; justify-content: flex-end; align-items: baseline; gap: 5px; min-width: 0;
+    }
+    html:root #mobileToolbarSlot #statsRow > .stat:nth-child(1) { grid-column: 1 / 3; }
+    html:root #mobileToolbarSlot #statsRow > .stat:nth-child(2) { grid-column: 3; justify-self: end; }
+    html:root #mobileToolbarSlot #statsRow > .stat:nth-child(-n+2) .stat-value { font-size: 15px; }
+    html:root #mobileToolbarSlot #statsRow > .stat:nth-child(n+4) { display: contents; }
+    html:root #mobileToolbarSlot #statsRow > .stat:nth-child(n+4) .stat-label { grid-column: 1; font-size: 12px; }
+    html:root #mobileToolbarSlot #statsRow > .stat:nth-child(n+4) .stat-bar {
+        grid-column: 2; width: var(--share, 100%); height: 8px; margin: 0; border-radius: 4px;
+    }
+    html:root #mobileToolbarSlot #statsRow > .stat:nth-child(n+4) .stat-value { grid-column: 3; font-size: 14px; text-align: right; }
+    html:root #mobileToolbarSlot #statsRow > .stat:nth-child(n+4) .stat-sub { display: none; }
+    html:root #mobileToolbarSlot #statsRow { grid-auto-flow: row dense; }
+    #mobileToolbarSlot #statsNote { margin: 6px 4px 0; }
     #heroSection .seg { margin-top: 0; }
     #mobileToolbarSlot { padding-bottom: 8px; }
     #mobileToolbarSlot .toolbar { padding: 10px !important; }
