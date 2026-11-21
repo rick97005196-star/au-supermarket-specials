@@ -2453,17 +2453,37 @@ function fmtUnitPrice(up, keepBase) {
 
 // 同品牌放一起比價: brand + the product's own tag (energy drinks, chocolate...), compare.js brandKeyOf
 const brandGroupKey = (it) => brandKeyOf(it, tagOf(it));
-// One brand group: the unit most of its items share (per can, per kg...) decides the order, cheapest first;
-// items without that unit follow by price. The first is marked 「最便宜」 when it is really lower than the next.
+// One brand group: the unit most of its items share (per can, per kg...) decides the order; cans / bottles of
+// different sizes (Monster 250 mL and 500 mL) are compared per 100 mL instead. The same flavour / variant sits
+// together (Monster Ultra single can, 4-pack and 10-pack side by side), the variant with the lowest price first.
+// 「最便宜」 marks the cheapest of the group; 「同口味最便宜」 the cheapest size of each other flavour.
 function sortBrandGroup(g) {
     const count = {};
     g.items.forEach(it => { const u = sensibleUnitOf(it); if (u) count[u.basis] = (count[u.basis] || 0) + 1; });
-    const basis = Object.keys(count).sort((a, b) => count[b] - count[a])[0] || null;
-    const val = (it) => { const u = sensibleUnitOf(it); return u && u.basis === basis ? u.value : Infinity; };
-    g.items.sort((a, b) => (val(a) - val(b)) || (_perItemPrice(a) - _perItemPrice(b)));
+    let basis = Object.keys(count).sort((a, b) => count[b] - count[a])[0] || null;
+    if (basis === 'can' || basis === 'btl') {
+        const sizes = new Set(g.items.map(it => { const u = sensibleUnitOf(it); return u && u.ml ? Math.round(u.ml) : null; }).filter(Boolean));
+        if (sizes.size > 1 || g.items.some(it => { const u = sensibleUnitOf(it); return u && u.basis === 'L'; })) basis = '100mL';
+    }
+    const val = (it) => {
+        const u = sensibleUnitOf(it);
+        if (basis === '100mL') {
+            if (u && u.ml) return u.value / u.ml * 100;
+            const l = unitPriceOf(it);
+            return l && l.basis === 'L' ? l.value / 10 : Infinity;
+        }
+        return u && u.basis === basis ? u.value : Infinity;
+    };
+    const byPrice = (a, b) => (val(a) - val(b)) || (_perItemPrice(a) - _perItemPrice(b));
+    const variants = new Map();
+    g.items.forEach(it => { const k = variantKeyOf(it); if (!variants.has(k)) variants.set(k, []); variants.get(k).push(it); });
+    const lists = [...variants.values()].map(l => l.sort(byPrice)).sort((x, y) => byPrice(x[0], y[0]));
+    g.items = lists.flat();
     g.basis = basis;
-    const a = g.items[0], b = g.items[1];
-    g.best = (basis && b && val(a) < Infinity && val(a) < val(b) - 0.005) ? a : null;
+    g.val = val;
+    const all = [...g.items].sort(byPrice);
+    g.best = (basis && all[1] && val(all[0]) < Infinity && val(all[0]) < val(all[1]) - 0.0005) ? all[0] : null;
+    g.variantBest = new Set(lists.filter(l => l.length > 1 && val(l[0]) < Infinity && val(l[0]) < val(l[1]) - 0.0005 && l[0] !== g.best).map(l => l[0]));
 }
 // how much per can / bottle / egg / roll / item (or per kg / litre), for the price under a card
 function fmtSensibleUnit(up) {
@@ -2704,6 +2724,9 @@ function createProductCardElement(item) {
     const showNormUnit = !!up && (item.store === 'ALDI' || sortVal === 'unit_asc' || cmpOnly || countedUnit);
     const cmpG = cmpOnly && cmpGroupOf.get(item);
     const isGroupBest = !!(cmpG && cmpG.best === item);
+    const isVariantBest = !!(cmpG && cmpG.variantBest && cmpG.variantBest.has(item));
+    // cans / bottles: also per 100 mL, so a 250 mL and a 500 mL can compare fairly
+    const per100 = up && up.ml && sortVal !== 'unit_asc' ? `$${(up.value / up.ml * 100).toFixed(2)}/100mL` : '';
     const cartPayload = {
         id: item.id,
         store: item.store,
@@ -2765,7 +2788,7 @@ function createProductCardElement(item) {
                     <div class="p-price num">
                         <span class="cur">$</span><span class="dol">${p.dollars}</span><span class="cts">${p.cents}</span><span class="unit">${p.unit}</span>
                     </div>
-                    ${showNormUnit ? `<div class="p-unit-strong num" title="${escAttr(unitPriceClean || fmtSensibleUnit(up))}">${sortVal === 'unit_asc' ? fmtUnitPrice(up) : fmtSensibleUnit(up)}</div>${isGroupBest ? `<span class="p-best">${t('cheapest_badge')}</span>` : ''}` : ''}
+                    ${showNormUnit ? `<div class="p-unit-strong num" title="${escAttr(unitPriceClean || fmtSensibleUnit(up))}">${sortVal === 'unit_asc' ? fmtUnitPrice(up) : fmtSensibleUnit(up)}</div>${isGroupBest ? `<span class="p-best">${t('cheapest_badge')}</span>` : isVariantBest ? `<span class="p-best">${t('variant_cheapest')}</span>` : ''}${per100 ? `<div class="p-unit num mt-0.5">${per100}</div>` : ''}` : ''}
                     ${aldiInfo ? `<div class="p-aldi ${aldiInfo.upcoming ? 'is-upcoming' : ''} ${aldiInfo.kind === 'saver' ? 'is-saver' : ''}"><i class="fa-regular ${aldiInfo.upcoming ? 'fa-calendar' : (aldiInfo.kind === 'saver' ? 'fa-clock' : 'fa-box-open')}"></i>${aldiInfo.text}</div>` : `
                     <div class="p-was num mt-1.5">
                         ${effectiveWas > 0 ? `<s>${t('was_price')} $${effectiveWas.toFixed(2)}</s>` : ''}

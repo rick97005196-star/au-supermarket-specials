@@ -540,7 +540,7 @@ function sensibleUnitOf(item) {
         if (p && p.n >= 1 && p.n <= 60 && p.ml >= 100 && p.ml <= 1250) {
             const can = /\bcans?\b/.test(t) || (!/\bbottles?\b/.test(t) && item.category !== 'liquor' && _CAN_SIZES.includes(Math.round(p.ml)) && p.n > 1)
                 || (!/\bbottles?\b/.test(t) && /\b(energy|soft drink|red bull|monster|v energy|mother|beer|lager|ale|cider|seltzer)\b/.test(t) && _CAN_SIZES.includes(Math.round(p.ml)));
-            r = { basis: can ? 'can' : 'btl', value: per / p.n };
+            r = { basis: can ? 'can' : 'btl', value: per / p.n, ml: p.ml };
         }
     }
     if (!r && per > 0 && /\beggs\b/.test(t) && !/\b(chocolate|choc|easter|figures|nets|kinder|creme|caramel|noodles?|pasta|mayo|cooker|poacher|scotch)\b/.test(t)) {
@@ -595,4 +595,21 @@ function brandKeyOf(item, kind) {
     return key;
 }
 
-if (typeof module !== 'undefined') module.exports = { sensibleUnitOf, brandKeyOf, multiScale: _multiScale, unitPriceOf, eachPriceOf, sheetPriceOf, cmpPriceOf, cmpTypeOf, valueCompare, CMP_TYPES, isSameProduct, findSameProducts, mergeSameProducts, perItemPrice: _perItemPrice, catalogueCovers, catalogueIndex, catalogueCovered };
+// The flavour / variant inside a brand group: the name words left after the brand, sizes, counts and the words shops
+// add or leave out ("Energy Drink", "Can", "4 Pack"). Strict: "Ultra" and "Ultra Violet" stay apart.
+const _VARIANT_FILLER = new Set(('energy drink drinks soft can cans bottle bottles pack packs pk multipack multi single x each ea ' +
+    'flavour flavoured flavor mini value case of the and with in a an per approx edition range selected varieties').split(' '));
+function variantKeyOf(item) {
+    if (!item) return '';
+    if (item._vk !== undefined && item._vkT === item.title) return item._vk;
+    item._vkT = item.title;
+    const brandN = (brandKeyOf(item).split('|')[0] || '').split(' ').length;
+    const words = String(item.title || '').toLowerCase().replace(/[’']/g, '').replace(/&/g, ' ')
+        .replace(/(\d),(\d{3})\b/g, '$1$2').replace(/[^a-z0-9.\s-]/g, ' ').split(/\s+/).filter(Boolean).slice(brandN);
+    const left = words.filter(w => !/\d/.test(w) && !_VARIANT_FILLER.has(w) && !/^(ml|l|g|kg|litres?|liters?)$/.test(w) && w.length > 1)
+        .map(w => w.replace(/-/g, ''));
+    item._vk = [...new Set(left)].sort().join(' ');
+    return item._vk;
+}
+
+if (typeof module !== 'undefined') module.exports = { variantKeyOf, sensibleUnitOf, brandKeyOf, multiScale: _multiScale, unitPriceOf, eachPriceOf, sheetPriceOf, cmpPriceOf, cmpTypeOf, valueCompare, CMP_TYPES, isSameProduct, findSameProducts, mergeSameProducts, perItemPrice: _perItemPrice, catalogueCovers, catalogueIndex, catalogueCovered };
