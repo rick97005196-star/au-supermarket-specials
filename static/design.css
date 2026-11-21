@@ -1568,3 +1568,40 @@ html:root .toolbar > .suggest-row { padding: 5px 0; margin-top: 8px; margin-bott
     /* the one-time tip about the heart button waits for a bigger screen */
     #favPanel:has(> .fav-hint) { display: none !important; }
 }
+
+
+/* ==========================================================================
+   Cleaner page (2026-11-21): calmer cards, so the price and the 「最便宜」 ribbons are what stands out.
+   Nothing is removed: the details left out of the cards are in the product window (tap a card).
+   ========================================================================== */
+/* comparison note: plain one-line text instead of a coloured box; the other stores' prices are in the product window */
+html:root .p-compare {
+    background: none !important; padding: 0; border-radius: 0; gap: 4px; font-size: 11.5px; color: var(--ink-3);
+    display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; max-width: 100%;
+}
+html:root .p-compare.is-cheaper { color: var(--accent-text); }
+html:root .p-compare .cmp-kind { background: none; padding: 0; box-shadow: none !important; margin-right: 2px; }
+html:root .p-compare .cmp-others { display: none; }
+/* 熱門暢銷: a quiet label, not a second orange badge */
+html:root .p-flag, html.dark .p-flag { color: var(--ink-2); background: rgba(255,255,255,.88); font-weight: 600; }
+/* the English name: one line */
+html:root .p-subtitle { -webkit-line-clamp: 1; min-height: 1.4em; }
+html:root .p-subtitle:empty { display: none; }
+html:root .p-unit-strong { background: var(--fill, var(--surface-2)); font-weight: 600; }
+
+@media (max-width: 640px) {
+    /* denser cards: smaller picture, tighter text */
+    #productsGrid { gap: 10px !important; }
+    html:root .p-media { padding: 11%; }
+    html:root .p-body { padding: 10px 11px 12px; gap: 3px; }
+    html:root .p-meta .sep, html:root .p-meta .p-cat { display: none; }
+    html:root .p-title { font-size: 14px; line-height: 1.35; }
+    html:root .p-price .dol { font-size: 22px; }
+    html:root .p-price-row { padding-top: 6px; }
+    /* top of the page: slimmer strips */
+    .ozwh-hubnav-in { min-height: 44px; padding-top: 4px; padding-bottom: 4px; }
+    .top-disclaimer > div { padding-top: 5px; padding-bottom: 5px; font-size: 11.5px; line-height: 1.45; }
+    #mobileToolbarSlot #statsNote { margin: 5px 4px 0; font-size: 11px; }
+    html:root #mobileToolbarSlot #statsRow { padding: 9px 12px; gap: 6px 10px; box-shadow: none; border: 1px solid var(--line); }
+    #mobileToolbarSlot .toolbar { box-shadow: none; }
+}
