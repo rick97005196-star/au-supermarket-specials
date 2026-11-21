@@ -554,11 +554,34 @@ WOOLIES_GROUPS = [
     ('lower-shelf-price', 'specialsgroup.3694', 'Lower Shelf Price', 'was'),    # lasting price cuts ("Was $3.30 - 25/08")
     ('buy-more-save-more', 'specialsgroup.3668', 'Buy More Save More', 'multi'),  # "2 for $12.00"
     ('everyday-low-price', 'specialsgroup.3673', 'Everyday Low Price', 'everyday'),
+] + [
+    # Plain price cuts ("Save $0.80", was $2.55 now $1.75) are in no list above: Woolworths shows them only in each
+    # department's specials list (checked from GitHub on 21 Nov 2026: 339 of them in the first pages of 3 departments,
+    # none of them read before). Half price and multi-buys there are left to their own lists ('cut').
+    (f'{d}/{d}-specials', f'{nid}_SPECIALS', 'Specials', 'cut') for d, nid in [
+        ('fruit-veg', '1-E5BEE36E'), ('poultry-meat-seafood', '1_D5A2236'), ('deli', '1_3151F6F'),
+        ('dairy-eggs-fridge', '1_6E4F4E4'), ('bakery', '1_DEB537E'), ('freezer', '1_ACA2FC2'),
+        ('snacks-confectionery', '1_717445A'), ('pantry', '1_39FD49C'), ('international-foods', '1_F229FBE'),
+        ('drinks', '1_5AF3A0A'), ('beer-wine-spirits', '1_8E4DA6F'), ('beauty', '1_8D61DD6'),
+        ('personal-care', '1_894D0A8'), ('health-wellness', '1_9851658'), ('cleaning-maintenance', '1_2432B58'),
+        ('baby', '1_717A94B'), ('pet', '1_61D6FEB')]
 ]
 WOOLIES_GROUP_REFRESH_HOURS = 12      # these lists change slowly: read each one at most twice a day
 
 _WAS_TAG = re.compile(r'was\s*\$\s*(\d+(?:\.\d{1,2})?)', re.I)
 _MULTI_TAG = re.compile(r'\b(\d+)\s*for\s*\$\s*(\d+(?:\.\d{1,2})?)', re.I)
+
+
+def _cut_offer(price, was, tag):
+    """A plain price cut from a department's specials list -> (was, "Save $X"), or None: no saving, half price
+    (the Half Price list has it, with its own rules) or a multi-buy (the Buy More Save More list has it)."""
+    try:
+        price, was = float(price or 0), float(was or 0)
+    except (TypeError, ValueError):
+        return None
+    if not (price > 0 and was > price + 0.004) or price <= was * 0.55 or _MULTI_TAG.search(tag or ''):
+        return None
+    return was, f'Save ${was - price:.2f}'
 
 
 def _woolies_tag_text(pr):
@@ -587,12 +610,12 @@ def scrape_woolies_specials_group(slug, group_id, name, kind, max_pages=150):
         session.headers.update(HEADERS)
     _polite('woolworths', lambda: session.get('https://www.woolworths.com.au/', timeout=20))  # session cookies first
 
+    path = f'/shop/browse/{slug}' if '/' in slug else f'/shop/browse/specials/{slug}'   # department lists: own path
     page = 1
     while page <= max_pages:
         body = {
             'categoryId': group_id, 'pageNumber': page, 'pageSize': 36,
-            'sortType': 'TraderRelevance', 'url': f'/shop/browse/specials/{slug}',
-            'location': f'/shop/browse/specials/{slug}', 'formatObject': '{"name":"%s"}' % name,
+            'sortType': 'TraderRelevance', 'url': path, 'location': path, 'formatObject': '{"name":"%s"}' % name,
             'isSpecial': True, 'isBundle': False, 'isMobile': False, 'filters': [], 'token': '',
             'gpBoost': 0, 'isHideUnavailableProducts': False, 'isRegisteredRewardCardPromotion': False,
             'enableAdReRanking': False, 'groupEdmVariants': False, 'categoryVersion': 'v2',
@@ -642,6 +665,11 @@ def scrape_woolies_specials_group(slug, group_id, name, kind, max_pages=150):
                     if not was > price:
                         continue                              # no real saving: not a special
                     desc = name
+                elif kind == 'cut':
+                    got = _cut_offer(price, pr.get('InstoreWasPrice'), tag)
+                    if not got:
+                        continue
+                    was, desc = got
                 elif kind == 'multi':
                     m = _MULTI_TAG.search(tag)
                     if not m:
@@ -705,7 +733,7 @@ def woolies_groups_remembered():
         g = groups.setdefault(slug, {'items': {}, 'last_full': 0})
         if not (g['items'] and now - float(g.get('last_full') or 0) < WOOLIES_GROUP_REFRESH_HOURS * 3600):
             fresh = scrape_woolies_specials_group(slug, gid, name, kind)
-            if getattr(fresh, 'complete', False) and len(fresh) >= 20:
+            if getattr(fresh, 'complete', False) and len(fresh) >= (1 if kind == 'cut' else 20):   # a department may have few cuts
                 g['items'] = {it['title'].lower(): it for it in fresh}
                 g['last_full'] = now
             else:
@@ -761,7 +789,7 @@ def scrape_woolies_all_weeks(max_pages: int = 50) -> Dict[str, Dict[str, Any]]:
                 res['current']['items'].append(it)
                 existing_titles.add(it['title'].lower())
                 added += 1
-        print(f"Merged {added} more Woolworths specials (seasonal, lower shelf price, multi-buys, everyday low prices).")
+        print(f"Merged {added} more Woolworths specials (seasonal, lower shelf price, multi-buys, everyday low prices, price cuts).")
     except Exception as e:
         print(f"Error merging the other Woolworths specials lists: {e}")
 
