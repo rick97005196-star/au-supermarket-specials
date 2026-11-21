@@ -39,6 +39,17 @@ check(m and (m.group(1), m.group(2)) == ('2', '20.00'), 'multi-buy: "2 for $20.0
 check(_WAS_TAG.search(_woolies_tag_text({'CentreTag': None, 'HeaderTag': None})) is None, 'no tag: nothing is read')
 check(_MULTI_TAG.search(_woolies_tag_text(lower)) is None, 'a "was" price is not a multi-buy')
 
+# --- department specials lists: only plain price cuts are taken (real answers from 21 Nov 2026) ---
+from scrapers.woolies_scraper import _cut_offer, WOOLIES_GROUPS  # noqa: E402
+check(_cut_offer(1.75, 2.55, 'Save $0.80') == (2.55, 'Save $0.80'), 'a price cut: Save $0.80')
+check(_cut_offer(4.2, 4.7, 'Buy 1 get a bonus Container credit') == (4.7, 'Save $0.50'), 'a cut with a bonus offer is still a cut')
+check(_cut_offer(2.75, 5.5, '1/2 Price') is None, 'half price is left to the Half Price list')
+check(_cut_offer(10.0, 12.0, '<a title="2 for $10.00">2 for $10</a>') is None, 'a multi-buy is left to its own list')
+check(_cut_offer(3.0, 0, '') is None and _cut_offer(3.0, 3.0, '') is None, 'no saving: not a special')
+dep = [g for g in WOOLIES_GROUPS if g[3] == 'cut']
+check(len(dep) >= 15 and all(g[0].endswith('-specials') and g[1].endswith('_SPECIALS') for g in dep),
+      f'department lists: {len(dep)}')
+
 # --- a multi-buy (buy one, get one free) is only cheaper when buying two: never "half price" ---
 check(not database.is_half_price(32.0, 64.0, 32.0, '2 for $32.00'), 'buy-one-get-one-free is not half price')
 check(database.is_half_price(2.75, 5.5, 2.75, '1/2 PRICE'), 'a real half price still is')
