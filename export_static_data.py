@@ -27,7 +27,9 @@ items = [dict(r) for r in rows]
 
 # State availability (compact keys, only when needed): rg = states where it is on special,
 # rp = {state: prices} where that state's price differs. No rg = every state.
+from scrapers.regions import clean_desc
 for it in items:
+    it['discount_desc'] = clean_desc(it.get('discount_desc'), it.get('save_amount'))
     sf = it.pop('sale_from', '') or ''
     if sf:
         it['sf'] = sf          # ALDI: on sale from this date (YYYY-MM-DD)
@@ -38,6 +40,9 @@ for it in items:
     if rp:
         try:
             it['rp'] = json.loads(rp)
+            for v in it['rp'].values():
+                if isinstance(v, dict) and v.get('discount_desc'):
+                    v['discount_desc'] = clean_desc(v['discount_desc'], v.get('save_amount'))
         except Exception:
             pass
 

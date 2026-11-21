@@ -54,16 +54,34 @@ function _titleSize(title) {
     const b = _toBasis(parseFloat(all[0][1]), all[0][2]);
     return b && b.qty > 0 ? b : null;
 }
+// How many in a multipack: "375ml 10 Pack", "300mL x 12 pack", "12 Pack 100g", "Pk 6", "pack of 4".
+// Whether the size in the title is one item or the whole pack differs by product, so this is only used
+// to check against the shop's own unit price, never to work out a price on its own.
+function _packCount(title) {
+    const t = String(title || '').toLowerCase();
+    const c = [...t.matchAll(/\b(\d+)\s*(?:pk|packs?)\b|\b(?:pk|pack of)\s*(\d+)\b|[x×]\s*(\d+)\b(?!\s*(?:kg|g|ml|l|litres?|liters?)\b)/g)]
+        .map(m => parseInt(m[1] || m[2] || m[3], 10)).filter(n => n > 1);
+    return c.length && c.every(n => n === c[0]) ? c[0] : 0;
+}
+// "2 for $10": both shops print the unit price of ONE item at its normal price (was = the normal price of all
+// of them; checked on 2,075 multi-buys in Nov 2026), so their unit price is brought down to the deal price
+function _multiScale(item, per) {
+    const multi = String(item.price_display || '').match(/(\d+)\s*for\s*\$/i);
+    const was = parseFloat(item.was_price) || 0;
+    const single = multi ? was / parseInt(multi[1], 10) : 0;
+    return (single > per && per > 0) ? per / single : 1;
+}
 function unitPriceOf(item) {
     if (!item) return null;
     // keyed by the price fields: a state's own price (regionize copies the object) must never reuse another state's figure
-    const sig = `${item.price}|${item.price_display}|${item.unit_price}|${item.title}`;
+    const sig = `${item.price}|${item.price_display}|${item.unit_price}|${item.was_price}|${item.title}`;
     if (item._up !== undefined && item._upSig === sig) return item._up;
     item._upSig = sig;
     let r = null;
     const per = _perItemPrice(item);
     const disp = String(item.price_display || '').toLowerCase().trim();
-    const fromStr = _parseUnitString(item.unit_price);
+    let fromStr = _parseUnitString(item.unit_price);
+    if (fromStr) fromStr = { basis: fromStr.basis, value: fromStr.value * _multiScale(item, per) };
     // A size in the name of a container / appliance is its capacity, not what you get ("Cooler Ice Box 25L"),
     // and when the shop itself prices it "per each" there is no per-kg / litre price to work out
     const shopSaysEach = !fromStr && /\/\s*\d*\s*(ea|each)\b|per\s*\d*\s*(ea|each)\b/i.test(String(item.unit_price || ''));
@@ -75,7 +93,11 @@ function unitPriceOf(item) {
         r = { basis: 'kg', value: per };                       // priced by the kilo ("$12.00 kg")
     } else if (fromStr && fromTitle && fromStr.basis === fromTitle.basis) {
         const ratio = fromStr.value / fromTitle.value;
-        if (ratio > 0.8 && ratio < 1.25) r = fromStr;          // they agree -> the shop's own figure
+        const pack = _packCount(item.title);
+        const ok = (x) => x > 0.8 && x < 1.25;
+        if (ok(ratio)) r = fromStr;                             // they agree -> the shop's own figure
+        else if (pack > 1 && ok(ratio * pack)) r = fromStr;     // "375ml 10 Pack": the title gives one can, the shop all 10
+        else if (pack > 1 && ok(ratio / pack)) r = fromStr;     // "Eggs 12 Pack 700g" style read the other way round
         else if (ratio > 50 || ratio < 0.02) r = fromTitle;     // shop typo ("$1,599.00 per 100 g" for 1kg at $15.99)
         else r = null;                                          // unclear -> show nothing rather than a wrong number
     } else {
@@ -92,7 +114,7 @@ function eachPriceOf(item) {
     const per = _perItemPrice(item);
     const title = String(item.title || '').toLowerCase();
     const m = String(item.unit_price || '').replace(/A\$/gi, '$').match(/\$\s*(\d[\d,]*(?:\.\d+)?)\s*(?:\/|per)\s*(\d+)?\s*(?:ea|each)\b/i);
-    const fromStr = m ? parseFloat(m[1].replace(/,/g, '')) / (m[2] ? parseInt(m[2], 10) : 1) : 0;
+    const fromStr = m ? parseFloat(m[1].replace(/,/g, '')) / (m[2] ? parseInt(m[2], 10) : 1) * _multiScale(item, per) : 0;
     // a choice ("Laundry Liquid 2 Litre or Capsules 28 Pack") has no single count; "28 Washes 28 Pack" is one count
     const counts = /\bor\b|\bassorted\b|\bvarieties\b/.test(title) ? [] :
         [...title.matchAll(/\b(\d+)\s*(?:pack|pk|tablets|capsules|pods|washes)\b|\b(?:pk|pack of)\s*(\d+)\b/g)].map(x => parseInt(x[1] || x[2], 10));
@@ -106,7 +128,7 @@ function eachPriceOf(item) {
 // Rolls differ a lot in length (double / triple length), so a price per roll would mislead.
 function sheetPriceOf(item) {
     const m = String((item && item.unit_price) || '').replace(/A\$/gi, '$').match(/\$\s*(\d+(?:\.\d+)?)\s*(?:\/|per)\s*100\s*(?:sheets?|ea)\b/i);
-    const v = m ? parseFloat(m[1]) : 0;
+    const v = m ? parseFloat(m[1]) * _multiScale(item, _perItemPrice(item)) : 0;
     return (v >= 0.01 && v <= 100) ? { basis: 'sh', value: v } : null;
 }
 function cmpPriceOf(item, basis) {
@@ -472,4 +494,4 @@ function catalogueCovered(idx, item) {
     const cats = item && idx.get(`${item.store}|${_catBrand(item.title)}`);
     return !!cats && cats.some(c => catalogueCovers(c, item));
 }
-if (typeof module !== 'undefined') module.exports = { unitPriceOf, eachPriceOf, sheetPriceOf, cmpPriceOf, cmpTypeOf, valueCompare, CMP_TYPES, isSameProduct, findSameProducts, mergeSameProducts, perItemPrice: _perItemPrice, catalogueCovers, catalogueIndex, catalogueCovered };
+if (typeof module !== 'undefined') module.exports = { multiScale: _multiScale, unitPriceOf, eachPriceOf, sheetPriceOf, cmpPriceOf, cmpTypeOf, valueCompare, CMP_TYPES, isSameProduct, findSameProducts, mergeSameProducts, perItemPrice: _perItemPrice, catalogueCovers, catalogueIndex, catalogueCovered };

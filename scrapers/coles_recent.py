@@ -13,7 +13,8 @@ The website labels them 最近原價 with the week, and uses a real Coles regula
                                               image, link, category, week], ...}}  remembered for 16 weeks
     static/data/regular-coles-recent.json    {"updated_at", "store": "Coles", "kind": "recent",
                                               "items": [[id, title, price, price display, unit price, image, link,
-                                              category, week], ...]}  products seen on special in the last 12 weeks
+                                              category, week], ...]}  products seen on special in the last 6 weeks,
+                                              plus the shelf prices the weekly reader got this week (week = "shelf")
 
     python scrapers/coles_recent.py                    after each specials export (auto_update.yml)
     python scrapers/coles_recent.py --seed a.json ...  also learn from older specials.json copies, oldest first
@@ -34,7 +35,8 @@ SPECIALS = os.path.join(ROOT, 'static', 'data', 'specials.json')
 MEMORY = os.path.join(ROOT, 'data', 'coles_was_prices.json')
 LIST = os.path.join(ROOT, 'static', 'data', 'regular-coles-recent.json')
 KEEP_DAYS = 16 * 7           # remembered this long after the product's last special
-LIST_DAYS = 12 * 7           # listed this long
+LIST_DAYS = 6 * 7            # listed this long (older shelf prices too often changed since: Nov 2026 check)
+PROGRESS = os.path.join(ROOT, 'data', 'coles_regular_progress.json')
 COLES_ID = re.compile(r'coles\.com\.au/product/[^?#]*-(\d+)(?:[?#]|$)', re.I)
 MULTIBUY = re.compile(r'^\s*(\d+)\s*for\s*\$', re.I)
 WEEK = re.compile(r'(\d{1,2})\s+([A-Za-z]{3})\w*\s+(\d{4})')
@@ -109,16 +111,38 @@ def department(title, link, saved):
     return categories.classify_product(title, AS_AISLE.get(saved, ''), link)
 
 
-def recent_rows(mem, specials, today):
-    """The remembered shelf prices of products not on special this week, seen on special in the last LIST_DAYS."""
+def shelf_rows(progress, today):
+    """Real Coles shelf prices read this week by scrapers/coles_regular.py: Coles stops it after a few pages, so its
+    list is never finished and written, but what it did read is today's price - better than one from a past special."""
+    from scrapers.woolies_regular import is_fresh
+    if not isinstance(progress, dict) or not is_fresh(progress.get('started'), today):
+        return {}
+    out = {}
+    for row in progress.get('rows') or []:
+        if isinstance(row, list) and len(row) >= 8 and row[0] and row[1]:
+            try:
+                if float(row[2]) > 0:
+                    out[str(row[0])] = row[:8]
+            except (TypeError, ValueError):
+                pass
+    return out
+
+
+def recent_rows(mem, specials, today, shelf=None):
+    """The remembered shelf prices of products not on special this week, seen on special in the last LIST_DAYS;
+    a shelf price read this week (`shelf`, week "shelf") replaces the remembered one."""
     on_special = {coles_id(it) for it in specials if isinstance(it, dict) and it.get('store') == 'Coles'
                   and it.get('period', 'current') == 'current'} - {None}
     since = (today - datetime.timedelta(days=LIST_DAYS)).isoformat()
+    shelf = shelf or {}
     rows = []
     for key, (title, price, unit, image, link, category, week) in sorted(mem.items()):
-        if key in on_special or week < since or not title:
+        if key in on_special or key in shelf or week < since or not title:
             continue
         rows.append([key, title, price, f'${price:.2f}', unit, image, link, department(title, link, category), week])
+    for key, row in sorted(shelf.items()):
+        if key not in on_special:
+            rows.append(list(row) + ['shelf'])
     return rows
 
 
@@ -153,7 +177,7 @@ def main(argv, today=None):
         print('::warning::No specials.json to learn from - the saved Coles recent prices stay')
         return 0
     learned = remember(mem, specials, today)
-    rows = recent_rows(mem, specials, today)
+    rows = recent_rows(mem, specials, today, shelf_rows(load(PROGRESS), today))
     save(MEMORY, {'updated_at': today.isoformat(), 'items': mem})
     save(LIST, {'updated_at': today.isoformat(), 'store': 'Coles', 'kind': 'recent', 'items': rows})
     print(f'Coles recent regular prices: {learned} learned this time, {len(mem)} remembered, '

@@ -54,6 +54,16 @@ check(set(rows) == {'Coles Bakery Loaf 680g', 'Coles Naan Bread 3 Pack 250g', "H
       f'saved: {sorted(rows)}')
 check(all(rows[t][1] == 0 and rows[t][2] == 0 for t in rows if 'Wraps' not in t), 'everyday items are never popular')
 
+# --- catalogue offers with a whole promotion text: the first line when it names the offer, else what it saves ---
+from scrapers.regions import clean_desc
+check(clean_desc('1/2 PRICE') == '1/2 PRICE', 'short offer unchanged')
+check(clean_desc('BETTER THAN 1/2 PRICE       \r\n\r\n\r\nOnly at Coles.') == 'BETTER THAN 1/2 PRICE', 'first line kept')
+check(clean_desc('Collect 10x Everyday Reward PointsΔ \r\n\r\nΔOffer runs from 00:01 18/11/2026 until 23:59 15/12/2026.', 1.6)
+      == 'Save $1.60', 'small-print dates no longer read as 1/2')
+check(clean_desc('Australian Made.\r\n\r\nOn sale for 2 weeks.', 0) == 'Special', 'no offer, no saving: Special')
+check(clean_desc('Everyday Low Price (selected stores only) and more text that runs on') .startswith('Everyday Low Price'),
+      'everyday prices untouched')
+
 for b in bad:
     print('FAIL', b)
 print(f'{total - len(bad)}/{total} everyday-price checks passed')

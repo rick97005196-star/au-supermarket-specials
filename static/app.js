@@ -777,7 +777,8 @@ async function ensureRegularList() {
             const it = sanitizeProduct(Object.assign(Object.fromEntries(REGULAR_ROW.map((k, j) => [k, row[j]])),
                 { store, was_price: 0, save_amount: 0, discount_desc: 'Regular Price', period: 'current' }));
             if (!it) continue;
-            if (recent) it._recent = /^\d{4}-\d{2}-\d{2}$/.test(row[8]) ? row[8] : '-';
+            // "shelf": a Coles shelf price read this week (shown as 一般價), otherwise the week of its last special
+            if (recent && row[8] !== 'shelf') it._recent = /^\d{4}-\d{2}-\d{2}$/.test(row[8]) ? row[8] : '-';
             if (store === 'Coles') it.id = 'c' + it.id;
             if (it.price > 0 && !onSpecial.has(String(it.id)) && !(catIdx.size && catalogueCovered(catIdx, it))) regularLists.push(it);
         }
@@ -2308,9 +2309,13 @@ function parseSupermarketPrice(priceDisplay, price) {
     };
 }
 
-function formatSupermarketUnitPrice(unitPrice) {
+function formatSupermarketUnitPrice(unitPrice, item) {
     if (!unitPrice || typeof unitPrice !== 'string') return '';
-    return unitPrice.replace(/A\$/gi, '$').trim();
+    let s = unitPrice.replace(/A\$/gi, '$').trim();
+    // "2 for $10": the shop's unit price is one item at its normal price -> the deal's own unit price (compare.js)
+    const k = item ? _multiScale(item, _perItemPrice(item)) : 1;
+    if (k !== 1) s = s.replace(/\$\s*(\d[\d,]*(?:\.\d+)?)/, (_, v) => '$' + (parseFloat(v.replace(/,/g, '')) * k).toFixed(2));
+    return s;
 }
 
 // High-Performance Batch Rendering & Infinite Scrolling State
@@ -2642,7 +2647,7 @@ function createProductCardElement(item) {
     }
 
     const p = parseSupermarketPrice(item.price_display, item.price);
-    const unitPriceClean = formatSupermarketUnitPrice(item.unit_price);
+    const unitPriceClean = formatSupermarketUnitPrice(item.unit_price, item);
     const translated = getProductTranslation(item, currentLang);
     const catStyle = CATEGORY_STYLES[item.category] || { emoji: '🏷️' };
     const aldiInfo = aldiDateInfo(item);
@@ -2999,7 +3004,7 @@ function openProductModal(item) {
         unitPriceElem.textContent = fmtUnitPrice(modalUp);
         unitPriceBox.classList.remove('hidden');
     } else if (item.unit_price) {
-        unitPriceElem.textContent = formatSupermarketUnitPrice(item.unit_price);
+        unitPriceElem.textContent = formatSupermarketUnitPrice(item.unit_price, item);
         unitPriceBox.classList.remove('hidden');
     } else {
         unitPriceElem.textContent = '--';
