@@ -330,6 +330,14 @@ def translate_batch_with_gemini(titles, api_key, notes=None):
                 _gemini_state['disabled'] = True  # key/model/quota problem: no point retrying this run
             return {}
         except Exception as e:
+            # Read timeouts and half-written JSON happen now and then (2026-11-21: 13 of 40 batches timed
+            # out and were lost). Try once more, on the next model when there is one, instead of giving up.
+            if attempt == 0 and ('timed out' in str(e) or isinstance(e, (json.JSONDecodeError, TimeoutError))):
+                if len(cands) > 1:  # just this batch: the model list itself stays as it is
+                    model = cands[1]
+                    url = f"{GEMINI_API_BASE}/models/{model}:generateContent"
+                print(f"  Gemini {type(e).__name__}: {e} - trying once more with {model}")
+                continue
             gh_warning(f"Gemini translation failed: {e}")
             return {}
     return {}
