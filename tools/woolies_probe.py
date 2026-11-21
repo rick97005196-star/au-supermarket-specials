@@ -60,4 +60,6 @@ for cid, name, _ in wanted:
                     k = ('multi' if _MULTI_TAG.search(tag) else 'half' if w and p <= w * 0.55 else
                          'cut (Save $X)' if w > p else 'other: ' + re.sub(r'\s+', ' ', tag)[:40])
                 kinds[k] = kinds.get(k, 0) + 1
+                if k.startswith('cut'):
+                    print('CUT', pr.get('Stockcode'), p, w, re.sub(r'\s+', ' ', _woolies_tag_text(pr))[:50])
     print(f'{name} id={cid} total={total} first pages:', json.dumps(kinds, ensure_ascii=False))
