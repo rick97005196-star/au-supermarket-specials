@@ -72,9 +72,21 @@ dep = {r[0]: r[7] for r in rows}
 check(dep['4'] == 'liquor', f"today's rules fix an old department: {dep['4']}")
 check(dep['5'] == 'liquor', f'no rule knows it: the saved department stands in for its aisle: {dep["5"]}')
 
+# --- shelf prices the weekly reader got this week replace the remembered ones; last week's are not used ---
+prog = {'started': '2026-11-19', 'rows': [['1', 'Twisties 140g', 4.2, '$4.20', '$3.00/ 100g', '/1.jpg', 'https://www.coles.com.au/product/t-1', 'snacks'],
+                                          ['2', 'Red Onion 1kg', 5.0, '$5.00', '', '', 'https://www.coles.com.au/product/r-2', 'produce'],
+                                          ['7', 'Bad', 0, '', '', '', '', 'pantry']]}
+shelf = cr.shelf_rows(prog, today)
+check(sorted(shelf) == ['1', '2'], f'shelf rows with a price: {sorted(shelf)}')
+check(cr.shelf_rows(dict(prog, started='2026-11-05'), today) == {}, "last week's shelf prices are not used")
+rows = cr.recent_rows(mem, [special(2, 'Red Onion 1kg', 3.0, 4.8, 'Save $1.80')], today, shelf)
+got = {r[0]: (r[2], r[8]) for r in rows}
+check(got.get('1') == (4.2, 'shelf') and '2' not in got and got.get('4') == (30.0, '2026-11-04'),
+      f'shelf price replaces the remembered one, on special still left out: {got}')
+
 # --- a run: learns from specials.json, writes both files; no specials: nothing changes ---
 tmp = tempfile.mkdtemp()
-cr.SPECIALS, cr.MEMORY, cr.LIST = (os.path.join(tmp, f) for f in ('specials.json', 'mem.json', 'recent.json'))
+cr.SPECIALS, cr.MEMORY, cr.LIST, cr.PROGRESS = (os.path.join(tmp, f) for f in ('specials.json', 'mem.json', 'recent.json', 'progress.json'))
 with open(cr.SPECIALS, 'w', encoding='utf-8') as f:
     json.dump([special(1, 'Twisties 140g', 1.9, 3.8, '1/2 PRICE', '$1.36/ 100g', week='Wed 18 Nov 2026 - Tue 24 Nov 2026')], f)
 old = os.path.join(tmp, 'old.json')

@@ -80,6 +80,7 @@ CALLS = [
     ('unitPriceOf', {'title': 'Olive Oil 1L', 'price': 7.0, 'price_display': '2 for $12.00'}),
     # sold per item: no per-kg price
     ('unitPriceOf', {'title': 'Fairy Dishwashing Tablets 46 Pack', 'price': 24.0, 'unit_price': '$0.52 / 1EA'}),
+    # (added at the END of CALLS below: multipacks and multi-buys, Nov 2026)
     # price per item
     ('eachPriceOf', {'title': 'Fairy Dishwashing Tablets', 'price': 24.0, 'unit_price': '$0.49/ 1ea'}),
     ('eachPriceOf', {'title': 'ALMAT Laundry Capsules 50 Pack', 'price': 11.99, 'unit_price': '($0.24 per 1 each)'}),
@@ -96,6 +97,18 @@ CALLS = [
     ('cmpTypeOf', {'title': 'Cadbury Mini Eggs 200g', 'price': 6.0}),
     ('cmpTypeOf', TABS[3]),
 ]
+# Nov 2026, real titles: the title gives one can / tub, the shop's unit price the whole pack -> the shop's figure
+# (these were shown with no unit price at all); "2 for $X": the shop prints one item at its normal price
+MULTI = [
+    ({'title': 'Coca-Cola Classic Soft Drink Multipack Cans 375ml 10 Pack', 'price': 11.5, 'unit_price': '$3.07/ 1L'}, 'L', 3.07),
+    ({'title': 'Kirks Pasito Soft Drink Cans 375mL x 10 pack', 'price': 8.0, 'price_display': '$8.00 ea', 'unit_price': '$2.13 / 1L'}, 'L', 2.13),
+    ({'title': 'BROOKLEA Stampede Chocolate Dairy Snack 12 Pack 100g', 'price': 6.19, 'unit_price': '($0.52 per 100 g)'}, 'kg', 5.2),
+    ({'title': 'Cadbury Dairy Milk Snack Chocolate Block 180g', 'price': 10.0, 'price_display': '2 for $10.00', 'was_price': 16.0,
+      'unit_price': '$4.44/ 100g'}, 'kg', 27.75),
+    ({'title': 'Pepsi Soft Drink 375ml 10 Pack', 'price': 24.0, 'price_display': '2 for $24.00', 'was_price': 32.0,
+      'unit_price': '$4.27/ 1L'}, 'L', 3.2),
+]
+CALLS += [('unitPriceOf', m[0]) for m in MULTI]
 
 # the kinds added in Oct 2026: (item, expected kind key or None, what it guards). Real titles from the data.
 KINDS = [
@@ -271,6 +284,8 @@ check(out['calls'][15] == 'eggs||C', f'cage eggs: {out["calls"][15]}')
 check(out['calls'][16] is None, f'mayonnaise is not eggs: {out["calls"][16]}')
 check(out['calls'][17] is None, f'chocolate eggs are not eggs: {out["calls"][17]}')
 check(out['calls'][18] is None, f'dishwasher cleaner is not tablets: {out["calls"][18]}')
+for (item, basis, want), got in zip(MULTI, out['calls'][len(CALLS) - len(MULTI):len(CALLS)]):
+    check(got and got['basis'] == basis and near(got['value'], want, 0.02), f'multipack / multi-buy {item["title"]}: {got}, want {want}/{basis}')
 check(near(out['copy'], 10.0), f"a state's own price gets its own figure: {out['copy']}")
 
 n = len(CALLS)

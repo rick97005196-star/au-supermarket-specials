@@ -155,6 +155,26 @@ def clean_title(title):
     return re.sub(r'\s{2,}', ' ', t).strip()
 
 
+_OFFER = re.compile(r'1/2|half|save|\bwas\b|\d+\s*for\s*\$|\d+\s*%\s*off|special|price|super ?saver|buys?\b', re.I)
+
+
+def clean_desc(desc, save=0):
+    """Catalogue offers sometimes carry a whole promotion text ("Collect 10x Everyday Reward PointsΔ\r\n\r\nΔWhen you
+    boost ... 18/11/2026 ..."): keep the first line when it names the offer, otherwise say what it saves. Without this,
+    dates in the small print ("11/2026") read as "1/2" and made 15 products a week look half price (Nov 2026)."""
+    d = str(desc or '')
+    first = re.sub(r'\s+', ' ', re.split(r'[\r\n]', d.strip(), maxsplit=1)[0]).strip()
+    if (first == d.strip() and len(first) <= 40) or d.startswith('Everyday Low Price'):
+        return d                                   # already short; everyday prices are recognised by their start
+    if first and len(first) <= 40 and _OFFER.search(first):
+        return first
+    try:
+        save = float(save or 0)
+    except (TypeError, ValueError):
+        save = 0
+    return f'Save ${save:.2f}' if save > 0 else SPECIAL_DESC
+
+
 def _key_map(items):
     """(title, n) -> item. Items with the same name (e.g. one multi-buy + one 1/2 price) are told
     apart by the kind of offer, so they are matched to the same offer in other states."""
