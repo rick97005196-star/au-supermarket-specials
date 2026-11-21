@@ -37,6 +37,7 @@ LIST = os.path.join(ROOT, 'static', 'data', 'regular-coles-recent.json')
 KEEP_DAYS = 16 * 7           # remembered this long after the product's last special
 LIST_DAYS = 6 * 7            # listed this long (older shelf prices too often changed since: Nov 2026 check)
 PROGRESS = os.path.join(ROOT, 'data', 'coles_regular_progress.json')
+SHELF = os.path.join(ROOT, 'data', 'coles_shelf_prices.json')      # shelf prices the cloud read in the last 6 weeks
 COLES_ID = re.compile(r'coles\.com\.au/product/[^?#]*-(\d+)(?:[?#]|$)', re.I)
 MULTIBUY = re.compile(r'^\s*(\d+)\s*for\s*\$', re.I)
 WEEK = re.compile(r'(\d{1,2})\s+([A-Za-z]{3})\w*\s+(\d{4})')
@@ -111,38 +112,50 @@ def department(title, link, saved):
     return categories.classify_product(title, AS_AISLE.get(saved, ''), link)
 
 
-def shelf_rows(progress, today):
-    """Real Coles shelf prices read this week by scrapers/coles_regular.py: Coles stops it after a few pages, so its
-    list is never finished and written, but what it did read is today's price - better than one from a past special."""
+def shelf_rows(progress, today, shelf=None):
+    """Real Coles shelf prices read by scrapers/coles_regular.py: Coles stops it after a few pages, so its list is
+    never finished and written, but what it did read is a real shelf price - better than one from a past special.
+    id -> 9 fields: the 8 row fields + "shelf" when read this week, else the day it was read (`shelf`: the
+    6-week memory, data/coles_shelf_prices.json; `progress`: this week's reading)."""
     from scrapers.woolies_regular import is_fresh
-    if not isinstance(progress, dict) or not is_fresh(progress.get('started'), today):
-        return {}
+    week = (today - datetime.timedelta(days=(today.weekday() - 2) % 7)).isoformat()
+    since = (today - datetime.timedelta(days=LIST_DAYS)).isoformat()
     out = {}
-    for row in progress.get('rows') or []:
-        if isinstance(row, list) and len(row) >= 8 and row[0] and row[1]:
+
+    def add(row, day):
+        if isinstance(row, list) and len(row) >= 8 and row[0] and row[1] and day >= since:
             try:
                 if float(row[2]) > 0:
-                    out[str(row[0])] = row[:8]
+                    out[str(row[0])] = list(row[:8]) + ['shelf' if day >= week else day]
             except (TypeError, ValueError):
                 pass
+
+    for row in sorted(((shelf or {}).get('items') or {}).values(), key=lambda r: str(r[-1]) if r else ''):
+        if isinstance(row, list) and len(row) >= 9:
+            add(row[:8], str(row[8]))
+    if isinstance(progress, dict) and is_fresh(progress.get('started'), today):
+        for row in progress.get('rows') or []:
+            add(row, today.isoformat())
     return out
 
 
 def recent_rows(mem, specials, today, shelf=None):
     """The remembered shelf prices of products not on special this week, seen on special in the last LIST_DAYS;
-    a shelf price read this week (`shelf`, week "shelf") replaces the remembered one."""
+    a shelf price read in the cloud (`shelf`) replaces the remembered one unless the special is newer."""
     on_special = {coles_id(it) for it in specials if isinstance(it, dict) and it.get('store') == 'Coles'
                   and it.get('period', 'current') == 'current'} - {None}
     since = (today - datetime.timedelta(days=LIST_DAYS)).isoformat()
-    shelf = shelf or {}
+    shelf = dict(shelf or {})
     rows = []
+    newer = lambda key, week: shelf[key][8] == 'shelf' or shelf[key][8] >= week      # the shelf price is newer
     for key, (title, price, unit, image, link, category, week) in sorted(mem.items()):
-        if key in on_special or key in shelf or week < since or not title:
+        if key in on_special or (key in shelf and newer(key, week)) or week < since or not title:
             continue
+        shelf.pop(key, None)                            # a newer special's price wins over an older shelf price
         rows.append([key, title, price, f'${price:.2f}', unit, image, link, department(title, link, category), week])
     for key, row in sorted(shelf.items()):
         if key not in on_special:
-            rows.append(list(row) + ['shelf'])
+            rows.append(list(row[:8]) + [row[8] if len(row) > 8 else 'shelf'])
     return rows
 
 
@@ -177,7 +190,7 @@ def main(argv, today=None):
         print('::warning::No specials.json to learn from - the saved Coles recent prices stay')
         return 0
     learned = remember(mem, specials, today)
-    rows = recent_rows(mem, specials, today, shelf_rows(load(PROGRESS), today))
+    rows = recent_rows(mem, specials, today, shelf_rows(load(PROGRESS), today, load(SHELF)))
     save(MEMORY, {'updated_at': today.isoformat(), 'items': mem})
     save(LIST, {'updated_at': today.isoformat(), 'store': 'Coles', 'kind': 'recent', 'items': rows})
     print(f'Coles recent regular prices: {learned} learned this time, {len(mem)} remembered, '
