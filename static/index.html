@@ -261,11 +261,9 @@
                     <input type="checkbox" id="halfPriceOnly" onchange="loadSpecials()" class="hidden">
                     <select id="sortSelect" onchange="loadSpecials()" class="select-pill flex-1 sm:flex-none min-w-0" aria-label="排序方式">
                         <option value="relevance" data-i18n="sort_relevance">熱門（預設）</option>
-                        <option value="popular" data-i18n="sort_popular">超市推薦順序</option>
-                        <option value="save_desc" data-i18n="sort_save_desc">依折扣金額</option>
+                        <option value="same" data-i18n="sort_same">同款放一起比價</option>
                         <option value="price_asc" data-i18n="sort_price_asc">價格：低至高</option>
-                        <option value="price_desc" data-i18n="sort_price_desc">價格：高至低</option>
-                        <option value="unit_asc" data-i18n="sort_unit_asc">依單位價格（低至高）</option>
+                        <option value="unit_asc" data-i18n="sort_unit_asc">單位價格：低至高</option>
                     </select>
                 </div>
             </div>
@@ -623,11 +621,11 @@
 
     <!-- 澳洲打工度假資訊平台 sign-in and saved items (window.OZWH) -->
     <script src="https://au-working-holiday.pages.dev/api/sdk.js" data-site="supermarket" defer></script>
-    <script src="./i18n.js?v=10.9" defer></script>
+    <script src="./i18n.js?v=11.0" defer></script>
     <script src="./category-icons.js?v=2.0" defer></script>
     <script src="./category-rules.js?v=2.0" defer></script>
     <script src="./compare.js?v=1.6" defer></script>
-    <script src="./app.js?v=14.0" defer></script>
+    <script src="./app.js?v=14.1" defer></script>
     <script>
         // Light / dark switch: the choice is kept in this site's browser storage only (each site has its own address)
         (function () {
