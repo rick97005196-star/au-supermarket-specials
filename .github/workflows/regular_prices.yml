@@ -59,7 +59,7 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action Bot"
           for f in static/data/regular.json static/data/regular-woolworths.json static/data/regular-coles.json \
-                   data/regular_progress.json data/coles_regular_progress.json; do
+                   data/regular_progress.json data/coles_regular_progress.json data/coles_shelf_prices.json; do
             if [ -e "$f" ]; then git add "$f"; fi
           done
           git diff --staged --quiet && exit 0

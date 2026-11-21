@@ -84,6 +84,18 @@ got = {r[0]: (r[2], r[8]) for r in rows}
 check(got.get('1') == (4.2, 'shelf') and '2' not in got and got.get('4') == (30.0, '2026-11-04'),
       f'shelf price replaces the remembered one, on special still left out: {got}')
 
+# --- the 6-week shelf memory: this week's read is "shelf", an older one keeps its day; a newer special wins ---
+row = lambda i, p: [i, f'P{i} 1kg', p, f'${p:.2f}', '', '', f'https://www.coles.com.au/product/p-{i}', 'pantry']
+mem6 = {'items': {'1': row('1', 4.0) + ['2026-11-19'], '4': row('4', 28.0) + ['2026-10-29'],
+                  '8': row('8', 9.0) + ['2026-10-29'], '9': row('9', 2.0) + ['2026-09-01']}}
+sh = cr.shelf_rows({}, today, mem6)
+check({k: v[8] for k, v in sh.items()} == {'1': 'shelf', '4': '2026-10-29', '8': '2026-10-29'},
+      f'shelf memory: this week / older / too old: {sh}')
+rows = cr.recent_rows(mem, [], today, sh)
+got = {r[0]: (r[2], r[8]) for r in rows}
+check(got.get('4') == (30.0, '2026-11-04') and got.get('8') == (9.0, '2026-10-29') and got.get('1') == (4.0, 'shelf'),
+      f'a newer special wins over an older shelf price: {got}')
+
 # --- a run: learns from specials.json, writes both files; no specials: nothing changes ---
 tmp = tempfile.mkdtemp()
 cr.SPECIALS, cr.MEMORY, cr.LIST, cr.PROGRESS = (os.path.join(tmp, f) for f in ('specials.json', 'mem.json', 'recent.json', 'progress.json'))

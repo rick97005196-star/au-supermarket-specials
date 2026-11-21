@@ -20,6 +20,10 @@ On GitHub's servers Coles shows its bot check after 5 pages, so a week is never 
 can read it instead (tools/coles_local.py, which runs this with --local and puts the result on GitHub):
     python scrapers/coles_regular.py --local   any day, the whole week in one sitting (about 50 minutes)
     python scrapers/coles_regular.py --test    can this computer read Coles? 10 pages, nothing saved
+On GitHub the place where a week stopped is carried into the next week (instead of starting again at the first
+category), so week after week the cloud gets further through the shop, and every shelf price it reads is kept in
+data/coles_shelf_prices.json for 6 weeks with the day it was read; scrapers/coles_recent.py lists them.
+
 A week begun on Rick's computer is left to it ("by": "local" in the progress file), so the two never write the
 same file at once. Either way the reader stops at Coles' first bot check; it never tries to get past it.
 """
@@ -37,6 +41,8 @@ from scrapers.woolies_regular import ROW, is_fresh, load_json, read_pages, save_
 
 LIST = os.path.join(ROOT, 'static', 'data', 'regular-coles.json')
 PROGRESS = os.path.join(ROOT, 'data', 'coles_regular_progress.json')
+SHELF = os.path.join(ROOT, 'data', 'coles_shelf_prices.json')   # {"updated_at", "items": {id: [<ROW fields>, day read]}}
+SHELF_DAYS = 6 * 7           # a shelf price read in the cloud is kept this long
 BROWSE = 'https://www.coles.com.au/browse/{}?page={}'
 FOOD = ['meat-seafood', 'fruit-vegetables', 'dairy-eggs-fridge', 'bakery', 'deli', 'pantry',
         'chips-chocolates-snacks', 'international-foods', 'health-dietary', 'drinks', 'frozen']
@@ -75,6 +81,19 @@ def read_page(token, n):
     return rows, bool(results) and n < last
 
 
+def remember_shelf(rows, today):
+    """Keep every shelf price read in the cloud with the day it was read; forget those older than SHELF_DAYS."""
+    import datetime
+    items = load_json(SHELF).get('items') or {}
+    for row in rows:
+        if isinstance(row, list) and len(row) >= len(ROW) and row[0]:
+            items[str(row[0])] = list(row[:len(ROW)]) + [today.isoformat()]
+    since = (today - datetime.timedelta(days=SHELF_DAYS)).isoformat()
+    items = {k: v for k, v in items.items() if isinstance(v, list) and str(v[-1]) >= since}
+    save_json(SHELF, {'updated_at': today.isoformat(), 'items': items})
+    return len(items)
+
+
 def try_pages():
     """--test: the first pages of one category, to see whether Coles answers this computer. Saves nothing."""
     ok = 0
@@ -98,7 +117,12 @@ def main(argv=()):
         return 0
     prog = load_json(PROGRESS)
     if not is_fresh(prog.get('started'), today):        # a new week (specials change on Wednesday): start over
+        last = prog
         prog = {'started': today.isoformat()}
+        # in the cloud a week is never finished (bot check after a few pages): go on where last week stopped,
+        # so the cloud does not read the same first pages every week
+        if not local and last.get('by') != 'local' and not last.get('done') and last.get('dep') in FOOD:
+            prog.update(dep=last['dep'], page=last.get('page') or 1, carried=True)
     if prog.get('done'):
         print("This week's Coles regular prices are already read - nothing to do")
         return 0
@@ -112,6 +136,9 @@ def main(argv=()):
         return 0
     if local:
         prog['by'] = 'local'                            # only once Coles answered: a refused computer takes nothing over
+    else:
+        kept = remember_shelf(prog['rows'], today)
+        print(f"{kept} Coles shelf prices read in the cloud in the last 6 weeks are kept")
     if not prog['done']:
         save_json(PROGRESS, prog)
         print(f"Read {pages} pages, {len(prog['rows'])} regular prices so far; next run starts at "
@@ -119,6 +146,12 @@ def main(argv=()):
         return 0
 
     rows = sorted(prog['rows'], key=lambda row: row[0])
+    if prog.get('carried') and not local and len(rows) < MIN_ROWS:
+        # the cloud reached the last category in a week that began part-way: start again at the first one
+        prog.update(done=False, dep=FOOD[0], page=1)
+        save_json(PROGRESS, prog)
+        print(f"The cloud reached the end of the shop - the next run starts again at {FOOD[0]}")
+        return 0
     if len(rows) < MIN_ROWS:
         print(f"::error::Only {len(rows)} regular prices in the whole week (a full week has about 10,000) -"
               " Coles may have changed its pages; last week's list is kept")

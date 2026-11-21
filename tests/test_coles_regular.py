@@ -89,6 +89,7 @@ def on(day):
 tmp = tempfile.mkdtemp()
 cr.LIST = os.path.join(tmp, 'regular-coles.json')
 cr.PROGRESS = os.path.join(tmp, 'coles_regular_progress.json')
+cr.SHELF = os.path.join(tmp, 'coles_shelf_prices.json')
 cr.FOOD = ['bakery', 'pantry']
 cr.MIN_ROWS = 1
 bread = dict(base, id=200, brand='Coles', name='White Bread', size='700g', pricing={'now': 2.6})
@@ -161,6 +162,35 @@ check([r[0] for r in saved(cr.LIST)['items']] == ['123', '200'], 'local week: li
 on(datetime.date(2026, 11, 12))                                         # next Thursday: a new week, the cloud may read
 answers(page(60, base), None)
 check(cr.main() == 0 and saved(cr.PROGRESS).get('by') is None, 'a new week is open to the cloud again')
+
+# --- in the cloud a part-read week is carried on next week, and what it read is kept for 6 weeks ---
+for p in (cr.LIST, cr.PROGRESS, cr.SHELF):
+    if os.path.exists(p):
+        os.remove(p)
+on(datetime.date(2026, 11, 19))                                         # Thursday
+answers(page(60, base), None)                                           # bakery page 1, then the bot check
+check(cr.main() == 0 and saved(cr.PROGRESS)['page'] == 2, 'cloud stops at bakery page 2')
+shelf = saved(cr.SHELF)['items']
+check(list(shelf) == ['123'] and shelf['123'][-1] == '2026-11-19' and len(shelf['123']) == len(cr.ROW) + 1,
+      f'shelf price kept with the day it was read: {shelf}')
+on(datetime.date(2026, 11, 26))                                         # next Thursday: a new week
+answers(page(60, bread), None)
+check(cr.main() == 0 and calls == [browse('bakery', 2), browse('pantry', 1)], f'new week goes on where last week stopped: {calls}')
+prog = saved(cr.PROGRESS)
+check(prog['started'] == '2026-11-26' and prog.get('carried') and prog['dep'] == 'pantry', f'carried: {prog}')
+check(sorted(saved(cr.SHELF)['items']) == ['123', '200'], 'both weeks remembered')
+cr.MIN_ROWS = 10
+answers(page(1, base))                                                  # pantry: the last category
+check(cr.main() == 0 and not os.path.exists(cr.LIST), 'end of the shop in a carried week: no list, no error')
+prog = saved(cr.PROGRESS)
+check(not prog['done'] and prog['dep'] == 'bakery' and prog['page'] == 1, f'starts again at the first category: {prog}')
+cr.MIN_ROWS = 1
+on(datetime.date(2027, 1, 14))                                          # 7 weeks later
+answers(None)
+check(cr.main() == 0, 'refused at once')
+answers(page(60, bread), None)
+cr.main()
+check(list(saved(cr.SHELF)['items']) == ['200'], f'forgotten after 6 weeks: {saved(cr.SHELF)["items"].keys()}')
 
 before = files()
 answers(*[page(480, base)] * 10)
