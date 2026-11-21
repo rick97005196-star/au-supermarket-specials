@@ -47,7 +47,7 @@ check(_cut_offer(2.75, 5.5, '1/2 Price') is None, 'half price is left to the Hal
 check(_cut_offer(10.0, 12.0, '<a title="2 for $10.00">2 for $10</a>') is None, 'a multi-buy is left to its own list')
 check(_cut_offer(3.0, 0, '') is None and _cut_offer(3.0, 3.0, '') is None, 'no saving: not a special')
 dep = [g for g in WOOLIES_GROUPS if g[3] == 'cut']
-check(len(dep) >= 15 and all(g[0].endswith('-specials') and g[1].endswith('_SPECIALS') for g in dep),
+check(len(dep) >= 12 and all(g[0].endswith('-specials') and g[1].endswith('_SPECIALS') for g in dep),
       f'department lists: {len(dep)}')
 
 # --- a multi-buy (buy one, get one free) is only cheaper when buying two: never "half price" ---

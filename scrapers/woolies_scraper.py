@@ -556,17 +556,19 @@ WOOLIES_GROUPS = [
     ('everyday-low-price', 'specialsgroup.3673', 'Everyday Low Price', 'everyday'),
 ] + [
     # Plain price cuts ("Save $0.80", was $2.55 now $1.75) are in no list above: Woolworths shows them only in each
-    # department's specials list (checked from GitHub on 21 Nov 2026: 339 of them in the first pages of 3 departments,
-    # none of them read before). Half price and multi-buys there are left to their own lists ('cut').
+    # department's specials list (checked from GitHub on 21 Nov 2026: about 1,100 in the first 3 pages of 14
+    # departments, none of them read before). Half price and multi-buys there are left to their own lists ('cut').
     (f'{d}/{d}-specials', f'{nid}_SPECIALS', 'Specials', 'cut') for d, nid in [
         ('fruit-veg', '1-E5BEE36E'), ('poultry-meat-seafood', '1_D5A2236'), ('deli', '1_3151F6F'),
         ('dairy-eggs-fridge', '1_6E4F4E4'), ('bakery', '1_DEB537E'), ('freezer', '1_ACA2FC2'),
         ('snacks-confectionery', '1_717445A'), ('pantry', '1_39FD49C'), ('international-foods', '1_F229FBE'),
-        ('drinks', '1_5AF3A0A'), ('beer-wine-spirits', '1_8E4DA6F'), ('beauty', '1_8D61DD6'),
-        ('personal-care', '1_894D0A8'), ('health-wellness', '1_9851658'), ('cleaning-maintenance', '1_2432B58'),
+        ('drinks', '1_5AF3A0A'), ('beer-wine-spirits', '1_8E4DA6F'), ('health-wellness', '1_9851658'),
         ('baby', '1_717A94B'), ('pet', '1_61D6FEB')]
+    # not beauty, personal care, cleaning: 3,000-6,300 products each, mostly Everyday Market sellers (online only),
+    # which would add about 40 minutes to every full read. 14 lists = about 8,800 products, about 18 minutes.
 ]
 WOOLIES_GROUP_REFRESH_HOURS = 12      # these lists change slowly: read each one at most twice a day
+WOOLIES_CUT_REFRESH_HOURS = 24        # the department lists are long (about 18 minutes): once a day
 
 _WAS_TAG = re.compile(r'was\s*\$\s*(\d+(?:\.\d{1,2})?)', re.I)
 _MULTI_TAG = re.compile(r'\b(\d+)\s*for\s*\$\s*(\d+(?:\.\d{1,2})?)', re.I)
@@ -637,6 +639,8 @@ def scrape_woolies_specials_group(slug, group_id, name, kind, max_pages=150):
             break
         raw_seen.update(codes)
         total = int(data.get('TotalRecordCount') or 0)
+        if page == 1 and kind == 'cut':
+            print(f"Woolies {slug}: {total} products listed", flush=True)
 
         for bi, b in enumerate(bundles):
             for pr in b.get('Products', []):
@@ -731,7 +735,8 @@ def woolies_groups_remembered():
     out = []
     for slug, gid, name, kind in WOOLIES_GROUPS:
         g = groups.setdefault(slug, {'items': {}, 'last_full': 0})
-        if not (g['items'] and now - float(g.get('last_full') or 0) < WOOLIES_GROUP_REFRESH_HOURS * 3600):
+        hours = WOOLIES_CUT_REFRESH_HOURS if kind == 'cut' else WOOLIES_GROUP_REFRESH_HOURS
+        if not (g['items'] and now - float(g.get('last_full') or 0) < hours * 3600):
             fresh = scrape_woolies_specials_group(slug, gid, name, kind)
             if getattr(fresh, 'complete', False) and len(fresh) >= (1 if kind == 'cut' else 20):   # a department may have few cuts
                 g['items'] = {it['title'].lower(): it for it in fresh}
