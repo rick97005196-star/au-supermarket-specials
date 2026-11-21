@@ -40,11 +40,10 @@ def page(cid, slug, n):
     return polite('woolworths', lambda: s.post('https://www.woolworths.com.au/apis/ui/browse/category', json=body, timeout=30))
 
 
-wanted = [n for n in nodes if n[1].rstrip('/').endswith('/specials')][:1] + \
-         [n for n in nodes if 'pantry-specials' in n[1]][:1]
+wanted = [n for n in nodes if n[0] in ('1_39FD49C_SPECIALS', '1_717445A_SPECIALS', '1_6E4F4E4_SPECIALS')]
 for cid, name, _ in wanted:
     kinds, total = {}, 0
-    for n in (1, 2, 3):
+    for n in (1, 2, 3, 4, 5):
         r = page(cid, name.strip('/'), n)
         if r is None or r.status_code != 200:
             print(name, 'stopped', None if r is None else r.status_code)
