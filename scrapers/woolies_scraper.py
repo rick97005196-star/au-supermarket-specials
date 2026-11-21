@@ -670,6 +670,10 @@ def scrape_woolies_specials_group(slug, group_id, name, kind, max_pages=150):
                         continue                              # no real saving: not a special
                     desc = name
                 elif kind == 'cut':
+                    # in the shop only: Woolworths marks the in-store special itself (every price cut checked on
+                    # 21 Nov 2026 had it; none of 231 online-only specials would pass these rules)
+                    if pr.get('InstoreIsOnSpecial') is False:
+                        continue
                     got = _cut_offer(price, pr.get('InstoreWasPrice'), tag)
                     if not got:
                         continue
