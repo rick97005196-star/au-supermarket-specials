@@ -922,10 +922,14 @@ function updateStatsDisplay() {
     // big number = everything listed for the store, bar = the specials' share: ALDI is mostly everyday low prices
     const everyday = activeInfo.everyday_by_store;
     const regular = activeInfo.regular_by_store;
+    const allOf = (store) => (byStore[store] || 0) + ((everyday && everyday[store]) || 0) + ((regular && regular[store]) || 0);
+    const statMax = Math.max(1, ...['Woolworths', 'Coles', 'ALDI'].map(allOf));
     [['Woolworths', 'Woolies'], ['Coles', 'Coles'], ['ALDI', 'Aldi']].forEach(([store, id]) => {
         const sp = byStore[store] || 0, all = sp + ((everyday && everyday[store]) || 0) + ((regular && regular[store]) || 0);
         document.getElementById('stat' + id).textContent = all;
         document.getElementById('statBar' + id).style.width = all ? (sp / all * 100) + '%' : '0';
+        // phone: each store's bar is as long as its share of the biggest store (a small bar chart)
+        document.getElementById('statBar' + id).parentNode.style.setProperty('--share', (all && statMax ? Math.max(8, all / statMax * 100) : 0) + '%');
         document.getElementById('statSub' + id).textContent = t('stat_store_specials', { n: sp });
     });
     document.getElementById('statsNote').hidden = !everyday;
@@ -4220,7 +4224,7 @@ if (document.readyState === 'loading') {
 
 
 
-// Phone: the search box and filters sit right under the week title, above the categories, so they are the first
+// Phone: the search box and filters (then the store counts) sit right under the week title, above the categories, so they are the first
 // thing to reach; on a wider screen they go back to the top of the product list
 function placeToolbar() {
     const bar = document.getElementById('mainToolbar'), slot = document.getElementById('mobileToolbarSlot');
@@ -4229,6 +4233,14 @@ function placeToolbar() {
     const phone = window.matchMedia('(max-width: 640px)').matches;
     if (phone && bar.parentNode !== slot) slot.appendChild(bar);
     else if (!phone && bar.parentNode !== main) main.insertBefore(bar, main.firstChild);
+    // the counts per supermarket (a small bar chart) follow the search box on a phone, so search stays on top
+    const hero = document.getElementById('heroSection');
+    ['statsRow', 'statsNote'].forEach(id => {
+        const el = document.getElementById(id);
+        if (!el || !hero) return;
+        if (phone && el.parentNode !== slot) slot.appendChild(el);
+        else if (!phone && el.parentNode !== hero) hero.appendChild(el);
+    });
 }
 placeToolbar();
 try { window.matchMedia('(max-width: 640px)').addEventListener('change', placeToolbar); } catch (e) { /* old Safari */ }
