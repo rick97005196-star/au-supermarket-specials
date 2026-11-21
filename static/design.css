@@ -1044,6 +1044,8 @@ html.dark .qty-btn:active { background: rgba(0,0,0,.1); }
     font-size: 12px; font-weight: 700; letter-spacing: -0.01em; color: var(--ink); background: var(--surface-2);
     white-space: nowrap; max-width: 100%; overflow: hidden; text-overflow: ellipsis;
 }
+/* 同品牌放一起比價: the cheapest of the group */
+.p-best { display: inline-block; margin: 5px 0 0 6px; font-size: 12px; font-weight: 700; color: var(--sale); white-space: nowrap; }
 .p-compare { flex-wrap: wrap; line-height: 1.35; max-width: 100%; }
 /* 同款 / 同類: a small box at the start of the badge; the same product gets an outline */
 .p-compare .cmp-kind { font-weight: 600; padding: 0 5px; border-radius: 4px; background: var(--surface); }
@@ -1504,3 +1506,28 @@ html:root .suggest-row .suggest-chip::after { inset: -4px -2px; }   /* .suggest-
 html:root .cat-group::before { inset: -4px 0 0; }
 /* the search-word row scrolls sideways and cuts off what sticks out: 4px more padding, 4px less margin, same height */
 html:root .toolbar > .suggest-row { padding: 5px 0; margin-top: 8px; margin-bottom: -4px; }
+
+
+/* ==========================================================================
+   Phone (≤ 640px): find things fast. Search and filters right under the week title, the long
+   introduction and the counts left out, one row of category chips, so the products start on the first screen.
+   ========================================================================== */
+#mobileToolbarSlot:empty { display: none; }
+@media (max-width: 640px) {
+    #heroSection { padding-top: 14px !important; padding-bottom: 8px !important; }
+    #heroSection > div { gap: 10px !important; }
+    #heroSection .space-y-3 > * + * { margin-top: 6px !important; }
+    #heroSection .hero-title { font-size: 26px !important; line-height: 1.15; }
+    #heroSection .hero-sub, #statsRow, #statsNote { display: none !important; }
+    #heroSection .seg { margin-top: 0; }
+    #mobileToolbarSlot { padding-bottom: 8px; }
+    #mobileToolbarSlot .toolbar { padding: 10px !important; }
+    #mobileToolbarSlot .toolbar > * + * { margin-top: 8px !important; }
+    .top-disclaimer { padding-top: 6px !important; padding-bottom: 6px !important; font-size: 12px; }
+    .cat-grid { grid-template-rows: auto; padding: 6px 0 8px; gap: 6px; }
+    .cat-grid .chip { height: 36px; font-size: 13px; padding: 0 12px 0 5px; gap: 7px; }
+    .cat-grid .chip-icon { width: 26px; height: 26px; }
+    main { padding-top: 12px !important; }
+    /* the one-time tip about the heart button waits for a bigger screen */
+    #favPanel:has(> .fav-hint) { display: none !important; }
+}

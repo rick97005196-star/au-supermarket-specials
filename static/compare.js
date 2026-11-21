@@ -494,4 +494,105 @@ function catalogueCovered(idx, item) {
     const cats = item && idx.get(`${item.store}|${_catBrand(item.title)}`);
     return !!cats && cats.some(c => catalogueCovers(c, item));
 }
-if (typeof module !== 'undefined') module.exports = { multiScale: _multiScale, unitPriceOf, eachPriceOf, sheetPriceOf, cmpPriceOf, cmpTypeOf, valueCompare, CMP_TYPES, isSameProduct, findSameProducts, mergeSameProducts, perItemPrice: _perItemPrice, catalogueCovers, catalogueIndex, catalogueCovered };
+
+// ---------------- A sensible unit for the price under each card ----------------
+// What people actually count: cans / bottles of drink, eggs, toilet rolls, items in a multipack; else per kg / litre.
+// Only from what the title says outright (a count, "4x500ml"); a pack weight never becomes a guessed count.
+const _DRINK_CATS = new Set(['drinks', 'liquor']);
+const _NOT_DRINK = /\b(powder|concentrate|syrup|tea bags?|capsules|pods|beans|ground|instant|sachets?|jelly|ice blocks?|icy poles?|tablets?|batter|fries|chips|nuts|cask|vinegar|sauce|oil|marinade|dressing|stock|broth)\b/;
+function _drinkPack(t) {      // -> { n, ml } a pack of n containers of ml each, or null
+    const U = '(ml|l|litres?|liters?)';
+    const toMl = (q, u) => (u === 'ml' ? q : q * 1000);
+    let m = t.match(new RegExp(`(\\d+)\\s*[x×]\\s*(\\d+(?:\\.\\d+)?)\\s*${U}\\b`));        // 4x500ml, 30x375mL
+    if (m) return { n: parseInt(m[1], 10), ml: toMl(parseFloat(m[2]), m[3]) };
+    m = t.match(new RegExp(`(\\d+(?:\\.\\d+)?)\\s*${U}\\s*[x×]\\s*(\\d+)\\b`));              // 375ml x 24
+    if (m) return { n: parseInt(m[3], 10), ml: toMl(parseFloat(m[1]), m[2]) };
+    if (/\bor\b|\bassorted\b|\bvarieties\b|\d\s*(ml|l)?\s*[-–\/]\s*\d/.test(t)) return null;
+    const sizes = [...t.matchAll(new RegExp(`(\\d+(?:\\.\\d+)?)\\s*${U}\\b`, 'g'))].map(x => toMl(parseFloat(x[1]), x[2]));
+    if (!sizes.length) return null;
+    const ml = Math.min(...sizes);
+    const packs = [...t.matchAll(/\b(\d+)\s*(?:pk|packs?|cans|bottles)\b|\b(?:pk|pack of|case of)\s*(\d+)\b/g)].map(x => parseInt(x[1] || x[2], 10));
+    if (packs.length && !packs.every(n => n === packs[0])) return null;
+    const n = packs.length ? packs[0] : 1;
+    // "4 Pack 2L": a bigger size must be the whole pack, else it is unclear
+    if (sizes.some(s => s !== ml && Math.abs(s - ml * n) > 1)) return null;
+    return { n, ml };
+}
+function _countIn(t, words) {     // "12 Pack", "Pk 24", "24 Rolls", "Dozen"
+    const c = [...t.matchAll(new RegExp(`\\b(\\d+)\\s*(?:pk|packs?|${words})\\b|\\b(?:pk|pack of)\\s*(\\d+)\\b`, 'g'))].map(x => parseInt(x[1] || x[2], 10));
+    if (/\bhalf dozen\b/.test(t)) c.push(6);
+    else if (/\bdozen\b/.test(t)) c.push(12);
+    return c.length && c.every(n => n === c[0]) && c[0] > 0 ? c[0] : 0;
+}
+const _CAN_SIZES = [250, 275, 300, 330, 355, 375, 440, 473, 500];
+function sensibleUnitOf(item) {
+    if (!item) return null;
+    const sig = `${item.price}|${item.price_display}|${item.unit_price}|${item.was_price}|${item.title}`;
+    if (item._su !== undefined && item._suSig === sig) return item._su;
+    item._suSig = sig;
+    const per = _perItemPrice(item);
+    const t = String(item.title || '').toLowerCase().replace(/(\d),(\d{3})\b/g, '$1$2');
+    let r = null;
+    if (per > 0 && (_DRINK_CATS.has(item.category) || /\b(cans?|bottles?)\b/.test(t)) && !_NOT_DRINK.test(t)
+        && !/\d\s*(kg|g)\b/.test(t)) {
+        // drinks in cans / bottles up to 1.25 L: per can or bottle (a 2 L bottle or a cask stays per litre)
+        const p = _drinkPack(t);
+        if (p && p.n >= 1 && p.n <= 60 && p.ml >= 100 && p.ml <= 1250) {
+            const can = /\bcans?\b/.test(t) || (!/\bbottles?\b/.test(t) && item.category !== 'liquor' && _CAN_SIZES.includes(Math.round(p.ml)) && p.n > 1)
+                || (!/\bbottles?\b/.test(t) && /\b(energy|soft drink|red bull|monster|v energy|mother|beer|lager|ale|cider|seltzer)\b/.test(t) && _CAN_SIZES.includes(Math.round(p.ml)));
+            r = { basis: can ? 'can' : 'btl', value: per / p.n };
+        }
+    }
+    if (!r && per > 0 && /\beggs\b/.test(t) && !/\b(chocolate|choc|easter|figures|nets|kinder|creme|caramel|noodles?|pasta|mayo|cooker|poacher|scotch)\b/.test(t)) {
+        const n = _countIn(t, 'eggs');
+        if (n >= 4 && n <= 60) r = { basis: 'egg', value: per / n };
+    }
+    if (!r && per > 0 && /\b(toilet (?:tissue|paper|rolls?)|paper towels?)\b/.test(t) && !/\b(bleach|cleaner|gel|holder|wipes)\b/.test(t)) {
+        const xs = t.match(/\b(\d+)\s*[x×]\s*(\d+)\s*(?:pack|pk)\b/);      // "2 x 60 pack": 2 rolls of 60 sheets
+        const n = xs ? Math.min(parseInt(xs[1], 10), parseInt(xs[2], 10)) : _countIn(t, 'rolls?');
+        if (n >= 1 && n <= 64) r = { basis: 'roll', value: per / n };
+    }
+    if (!r) {
+        // a pack sold by the count (dishwasher tablets, nappies, multipacks): per item; things weighed (meat,
+        // fruit & veg, deli) and anything priced by the kilo keep per kg
+        const byKilo = /^\$?\s*\d[\d,]*(\.\d+)?\s*(\/\s*|per\s+)?kg$/.test(String(item.price_display || '').toLowerCase().trim());
+        const ea = !byKilo && !['meat', 'seafood', 'fruit_veg', 'deli'].includes(item.category) ? eachPriceOf(item) : null;
+        r = ea || unitPriceOf(item);
+        if (!r && per > 0 && /\bper kg\b/.test(t)) r = { basis: 'kg', value: per };     // "Cut Watermelon per kg" 
+    }
+    if (r && !(r.value >= 0.01 && r.value <= 3000)) r = null;
+    item._su = r;
+    return r;
+}
+
+// ---------------- Same brand together (同品牌放一起比價) ----------------
+// Brand = the first word of the name (ALDI writes it in capitals first: "LODGE FARMS Free Range Eggs"), two words when
+// that brand is known to be two ("Red Bull", "Sunny Queen"), within one category; the supermarkets' own brands sell
+// everything, so they are also split by the product word ("Coles … Eggs").
+const _TWO_WORD_BRANDS = new Set(['red bull', 'red rock', 'dairy farmers', 'sunny queen', 'old el', 'san remo', 'john west',
+    'uncle tobys', 'golden circle', 'king island', 'black swan', 'mount franklin', 'pure harvest', 'blue dragon',
+    'la espanola', 'the natural', 'v energy', 'mr muscle', 'head shoulders', 'oral b', 'cold power', 'morning fresh']);
+// a first word that is not a brand on its own (Mr Kipling / Mr Muscle, Sour Patch, Old El Paso)
+const _BRAND_PREFIX = new Set('the mr mrs dr st la le el old sour sweet big little king uncle aunt grandma nanna country'.split(' '));
+const _OWN_BRAND_WORDS = new Set(['coles', 'woolworths', 'macro', 'essentials', 'homebrand', 'woolies']);
+const _NAME_FILLER = new Set('pack pk packs each ea x kg g ml l litre litres per approx bag tray punnet bulk value family large small medium mini with and or the of in'.split(' '));
+function brandKeyOf(item, kind) {
+    if (!item) return '';
+    kind = kind || item.category || '';
+    if (item._bk !== undefined && item._bkT === item.title + '|' + kind) return item._bk;
+    item._bkT = item.title + '|' + kind;
+    const raw = String(item.title || '').replace(/[’']/g, '').replace(/&/g, ' ');
+    const words = raw.toLowerCase().replace(/[^a-z0-9\s-]/g, ' ').split(/\s+/).filter(Boolean);
+    let brand = words[0] || '';
+    const two = words.slice(0, 2).join(' ');
+    if (_BRAND_PREFIX.has(brand) || _TWO_WORD_BRANDS.has(two)) brand = two;
+    let key = `${brand}|${kind}`;
+    if (_OWN_BRAND_WORDS.has(words[0])) {
+        const name = words.slice(1).filter(w => !/\d/.test(w) && !_NAME_FILLER.has(w) && w.length > 1);
+        key += '|' + (name[name.length - 1] || '').replace(/ies$/, 'y').replace(/([^s])s$/, '$1');
+    }
+    item._bk = key;
+    return key;
+}
+
+if (typeof module !== 'undefined') module.exports = { sensibleUnitOf, brandKeyOf, multiScale: _multiScale, unitPriceOf, eachPriceOf, sheetPriceOf, cmpPriceOf, cmpTypeOf, valueCompare, CMP_TYPES, isSameProduct, findSameProducts, mergeSameProducts, perItemPrice: _perItemPrice, catalogueCovers, catalogueIndex, catalogueCovered };

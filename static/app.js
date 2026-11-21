@@ -2054,10 +2054,6 @@ async function loadSpecials() {
 
         // Enrich with cross-supermarket comparison info (before filtering: 比價 needs it)
         enrichCrossStoreComparisons(staticSpecials);
-        // a Woolworths regular price alone does not make a 比價 group: it is no card of its own
-        // 同款放一起比價 is strict: the same product by name (not one worded differently, which can be another flavour
-        // or variant), or the same plain kind per kg / litre / item (compare.js CMP_TYPES)
-        const isComparable = (it) => (it.cross_store_matches || []).some(m => !m.loose && !m.ref._regular) || valueCompare(it, staticSpecials);
         const isListed = (it) => it.store === 'ALDI' || it.save_amount > 0 || isEverydayPrice(it) || isPlainSpecial(it) || isRegularPrice(it);
 
         const favMatchIds = favOnly ? new Set(matchFavorites(staticSpecials).map(x => x.id)) : null;
@@ -2074,7 +2070,6 @@ async function loadSpecials() {
             // ALDI never marks prices down (no "was" price), its prices are its lowest: kept, after the half-price items
             if (discountOnly && it.store !== 'ALDI' && !isItemHalfPrice(it)) return false;
             if (favOnly && !favMatchIds.has(it.id)) return false;
-            if (cmpOnly && !isComparable(it)) return false;
             if (currentSearch) {
                 const sc = scoreSearchMatch(it, currentSearch);
                 if (!sc) return false;
@@ -2137,31 +2132,29 @@ async function loadSpecials() {
         cmpHalfOn = false;
         lastCmpGroups = 0;
         if (cmpOnly) {
-            // the filters (store, half price, category, search...) pick WHICH kinds to show, in their sorted order;
-            // each kind then lists all three supermarkets' items of that week, cheapest per unit first
-            // the same product worded differently at another store joins the same group (the lowest name key of the pair)
-            const keyOf = (it) => (valueCompare(it, staticSpecials) ? `k:${cmpTypeOf(it)}`
-                : `p:${[it, ...(it.cross_store_matches || []).filter(m => !m.loose).map(m => m.ref).filter(r => !r._regular)].map(getCompareKey).sort()[0]}`);
-            const valOf = (it) => { const vc = valueCompare(it, staticSpecials); return vc ? vc.mine.value : _perItemPrice(it); };
+            // 同品牌放一起比價: the same brand's products of one kind (Monster single cans and 4-packs) in one group,
+            // all three supermarkets; the filters (store, half price, category, search...) pick WHICH brands, in their
+            // sorted order; each group cheapest per can / bottle / egg / roll / item / kg / litre first
             const half = discountOnly ? filtered.filter(isItemHalfPrice) : [];
             const groups = new Map();
             for (const it of (discountOnly ? half : filtered)) {
-                const k = keyOf(it);
+                const k = brandGroupKey(it);
                 if (!groups.has(k)) groups.set(k, { key: k, items: [], stores: new Set() });
             }
             for (const it of staticSpecials) {
-                if (it.period !== currentPeriod || !isListed(it) || !isComparable(it)) continue;
-                const g = groups.get(keyOf(it));
+                if (it.period !== currentPeriod || !isListed(it)) continue;
+                const g = groups.get(brandGroupKey(it));
                 if (g) { g.items.push(it); g.stores.add(it.store); }
             }
             filtered = [];
             for (const g of groups.values()) {
-                g.items.sort((a, b) => valOf(a) - valOf(b));
+                if (g.items.length < 2) continue;
+                sortBrandGroup(g);
                 g.items.forEach(it => cmpGroupOf.set(it, g));
                 filtered.push(...g.items);
             }
             cmpHalfOn = half.length > 0;
-            lastCmpGroups = groups.size;
+            lastCmpGroups = new Set(cmpGroupOf.values()).size;
         }
         renderCmpExplain();
 
@@ -2448,7 +2441,8 @@ function aldiDateInfo(item) {
     return { kind: 'buy', upcoming: false, text: t('aldi_since_short', { d }), long: t('aldi_on_sale_since', { d }) };
 }
 
-const _cmpUnit = (basis) => (basis === 'ea' ? t('unit_each') : (basis === 'sh' ? t('unit_100sheets') : basis));
+const _cmpUnit = (basis) => (basis === 'ea' ? t('unit_each') : basis === 'sh' ? t('unit_100sheets')
+    : ['can', 'btl', 'egg', 'roll'].includes(basis) ? t('unit_' + basis) : basis);
 // keepBase: always per kg / litre, so products compared side by side use one unit
 function fmtUnitPrice(up, keepBase) {
     if (!up) return '';
@@ -2457,6 +2451,35 @@ function fmtUnitPrice(up, keepBase) {
     return `$${up.value.toFixed(2)}/${_cmpUnit(up.basis)}`;
 }
 
+// 同品牌放一起比價: brand + the product's own tag (energy drinks, chocolate...), compare.js brandKeyOf
+const brandGroupKey = (it) => brandKeyOf(it, tagOf(it));
+// One brand group: the unit most of its items share (per can, per kg...) decides the order, cheapest first;
+// items without that unit follow by price. The first is marked 「最便宜」 when it is really lower than the next.
+function sortBrandGroup(g) {
+    const count = {};
+    g.items.forEach(it => { const u = sensibleUnitOf(it); if (u) count[u.basis] = (count[u.basis] || 0) + 1; });
+    const basis = Object.keys(count).sort((a, b) => count[b] - count[a])[0] || null;
+    const val = (it) => { const u = sensibleUnitOf(it); return u && u.basis === basis ? u.value : Infinity; };
+    g.items.sort((a, b) => (val(a) - val(b)) || (_perItemPrice(a) - _perItemPrice(b)));
+    g.basis = basis;
+    const a = g.items[0], b = g.items[1];
+    g.best = (basis && b && val(a) < Infinity && val(a) < val(b) - 0.005) ? a : null;
+}
+// how much per can / bottle / egg / roll / item (or per kg / litre), for the price under a card
+function fmtSensibleUnit(up) {
+    if (!up) return '';
+    if (up.basis === 'kg' || up.basis === 'L') return fmtUnitPrice(up);
+    return `$${up.value.toFixed(2)}/${_cmpUnit(up.basis)}`;
+}
+// "Monster · 能量飲料": the brand as written on the first product, then the kind of product
+function brandGroupName(g) {
+    const first = g.items[0];
+    const brand = g.key.split('|')[0];
+    const words = String(first.title || '').replace(/[’']/g, '').split(/\s+/);
+    let name = words.slice(0, brand.split(' ').length).join(' ').replace(/,$/, '');
+    if (name.length > 2 && name === name.toUpperCase()) name = name.toLowerCase().replace(/(^|[\s-])([a-z])/g, (m, a, c) => a + c.toUpperCase());
+    return [name, getCleanCategoryLabel(tagOf(first))].filter(Boolean).join(' · ');
+}
 // fx codes shared by several kinds (compare.js): one label set per family
 const CMP_FX_FAMILY = { chicken_mince: 'mince', beef_mince: 'mince', pork_mince: 'mince', lamb_mince: 'mince',
     pork_chops: 'chops', lamb_chops: 'chops', beef_scotch: 'beef', beef_rump: 'beef', beef_sirloin: 'beef',
@@ -2475,12 +2498,11 @@ function cmpGroupName(g) {
 function cmpGroupHeader(g) {
     const el = document.createElement('div');
     el.className = 'cmp-group';
-    const vc = g.key.startsWith('k:') && valueCompare(g.items[0], staticSpecials);
-    const meta = vc ? t('cmp_group_unit', { u: _cmpUnit(vc.basis), n: g.items.length }) : t('cmp_group_price', { n: g.items.length });
+    const meta = g.basis ? t('cmp_group_unit', { u: _cmpUnit(g.basis), n: g.items.length }) : t('cmp_group_price', { n: g.items.length });
     const dots = ['Woolworths', 'Coles', 'ALDI'].filter(s => g.stores.has(s))
         .map(s => `<span class="cmp-group-store"><i class="store-dot ${s === 'Coles' ? 'dot-coles' : (s === 'ALDI' ? 'dot-aldi' : 'dot-woolies')}"></i>${s}</span>`).join('');
     el.innerHTML = `<span class="cmp-group-name"></span><span class="cmp-group-meta">${meta}</span><span class="cmp-group-stores">${dots}</span>`;
-    el.firstChild.textContent = cmpGroupName(g);
+    el.firstChild.textContent = brandGroupName(g);
     return el;
 }
 // The box above the list while comparing: what the groups mean, and how the other filters act on them
@@ -2675,8 +2697,13 @@ function createProductCardElement(item) {
     // unit price: ALDI always as $/kg or $/L (that's how ALDI shows value); others when sorting by unit price
     const sortVal = (document.getElementById('sortSelect') || {}).value;
     // 比價: the unit it is compared in (per kg / litre / item / 100 sheets), the same for the whole group
-    const up = (cmpOnly && valueCmp) ? valueCmp.mine : unitPriceOf(item);
-    const showNormUnit = !!up && (item.store === 'ALDI' || sortVal === 'unit_asc' || cmpOnly);
+    // the price per can / bottle / egg / roll / item when that is how it is counted, else per kg / litre;
+    // sorting by unit price keeps per kg / litre, the order it sorts by
+    const up = sortVal === 'unit_asc' ? unitPriceOf(item) : sensibleUnitOf(item);
+    const countedUnit = !!up && !['kg', 'L', 'sh'].includes(up.basis);
+    const showNormUnit = !!up && (item.store === 'ALDI' || sortVal === 'unit_asc' || cmpOnly || countedUnit);
+    const cmpG = cmpOnly && cmpGroupOf.get(item);
+    const isGroupBest = !!(cmpG && cmpG.best === item);
     const cartPayload = {
         id: item.id,
         store: item.store,
@@ -2738,7 +2765,7 @@ function createProductCardElement(item) {
                     <div class="p-price num">
                         <span class="cur">$</span><span class="dol">${p.dollars}</span><span class="cts">${p.cents}</span><span class="unit">${p.unit}</span>
                     </div>
-                    ${showNormUnit ? `<div class="p-unit-strong num" title="${escAttr(unitPriceClean || fmtUnitPrice(up, cmpOnly))}">${fmtUnitPrice(up, cmpOnly)}</div>` : ''}
+                    ${showNormUnit ? `<div class="p-unit-strong num" title="${escAttr(unitPriceClean || fmtSensibleUnit(up))}">${sortVal === 'unit_asc' ? fmtUnitPrice(up) : fmtSensibleUnit(up)}</div>${isGroupBest ? `<span class="p-best">${t('cheapest_badge')}</span>` : ''}` : ''}
                     ${aldiInfo ? `<div class="p-aldi ${aldiInfo.upcoming ? 'is-upcoming' : ''} ${aldiInfo.kind === 'saver' ? 'is-saver' : ''}"><i class="fa-regular ${aldiInfo.upcoming ? 'fa-calendar' : (aldiInfo.kind === 'saver' ? 'fa-clock' : 'fa-box-open')}"></i>${aldiInfo.text}</div>` : `
                     <div class="p-was num mt-1.5">
                         ${effectiveWas > 0 ? `<s>${t('was_price')} $${effectiveWas.toFixed(2)}</s>` : ''}
@@ -4169,3 +4196,16 @@ if (document.readyState === 'loading') {
 }
 
 
+
+// Phone: the search box and filters sit right under the week title, above the categories, so they are the first
+// thing to reach; on a wider screen they go back to the top of the product list
+function placeToolbar() {
+    const bar = document.getElementById('mainToolbar'), slot = document.getElementById('mobileToolbarSlot');
+    const main = document.querySelector('main');
+    if (!bar || !slot || !main) return;
+    const phone = window.matchMedia('(max-width: 640px)').matches;
+    if (phone && bar.parentNode !== slot) slot.appendChild(bar);
+    else if (!phone && bar.parentNode !== main) main.insertBefore(bar, main.firstChild);
+}
+placeToolbar();
+try { window.matchMedia('(max-width: 640px)').addEventListener('change', placeToolbar); } catch (e) { /* old Safari */ }
