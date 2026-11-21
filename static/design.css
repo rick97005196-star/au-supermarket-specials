@@ -1499,7 +1499,7 @@ html:root .p-regular, html:root .tag.is-sale.is-regular { color: var(--ink-3); b
 .filter-caret { font-size: 11px; transition: transform .15s ease; }
 .filter-toggle[aria-expanded="true"] .filter-caret { transform: rotate(180deg); }
 @media (max-width: 767px) {
-    .cmp-row { display: grid; grid-template-columns: 1fr; gap: 8px; width: 100%; }
+    .cmp-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; width: 100%; }
     .cmp-row .toggle-pill { display: inline-flex; justify-content: center; min-width: 0; height: auto; min-height: 40px;
         padding: 6px 10px; gap: 6px; white-space: normal; line-height: 1.2; text-align: center; }
     .cmp-hint { display: block; grid-column: 1 / -1; margin: 0; font-size: 12px; line-height: 1.45; color: var(--ink-3);
@@ -1605,3 +1605,15 @@ html:root .p-unit-strong { background: var(--fill, var(--surface-2)); font-weigh
     html:root #mobileToolbarSlot #statsRow { padding: 9px 12px; gap: 6px 10px; box-shadow: none; border: 1px solid var(--line); }
     #mobileToolbarSlot .toolbar { box-shadow: none; }
 }
+
+/* v15.6 – 三家比價 back in sight (it was only in the sort menu) + a one-line tip on the first visits */
+.toggle-pill.cmp-pill { display: inline-flex; align-items: center; gap: 6px; }
+.toggle-pill.cmp-pill .fa-scale-balanced { color: var(--accent); }
+.toggle-pill.cmp-pill.is-on-accent .fa-scale-balanced { color: inherit; }
+.first-tip { display: flex; align-items: flex-start; gap: 8px; padding: 8px 10px; border-radius: var(--r-box-xs, 6px);
+    background: color-mix(in srgb, var(--accent) 9%, transparent); color: var(--ink-2); font-size: 13px; line-height: 1.5; }
+.first-tip[hidden] { display: none; }
+.first-tip > i { margin-top: 3px; color: var(--accent); }
+.first-tip > span { flex: 1; min-width: 0; }
+.first-tip-x { flex: none; padding: 2px 8px; border: 1px solid var(--line-strong); border-radius: var(--r-box-xs, 6px);
+    background: transparent; color: var(--ink); font-size: 12.5px; font-weight: 600; cursor: pointer; white-space: nowrap; }

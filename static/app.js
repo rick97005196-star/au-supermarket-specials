@@ -1349,6 +1349,27 @@ function toggleCmpOnly() {
     loadSpecials();
 }
 
+// First visit: a one-line tip under the search box; 知道了 (or the 4th visit) hides it for good
+function dismissFirstTip() {
+    const el = document.getElementById('firstTip');
+    if (el) el.hidden = true;
+    try { localStorage.setItem('firstTipDone', '1'); } catch (e) {}
+}
+(function initFirstTip() {
+    const show = () => {
+        const el = document.getElementById('firstTip');
+        if (!el) return;
+        try {
+            if (localStorage.getItem('firstTipDone')) return;
+            const n = +(localStorage.getItem('firstTipSeen') || 0) + 1;
+            localStorage.setItem('firstTipSeen', String(n));
+            if (n > 3) { localStorage.setItem('firstTipDone', '1'); return; }
+        } catch (e) {}
+        el.hidden = false;
+    };
+    document.readyState === 'loading' ? document.addEventListener('DOMContentLoaded', show) : show();
+})();
+
 // Phones: price type, 1/2 price and sort fold under one button (always shown on wider screens)
 function toggleFilters() {
     const open = document.getElementById('moreFilters').classList.toggle('is-open');
@@ -2531,6 +2552,8 @@ function cmpGroupHeader(g) {
 }
 // The box above the list while comparing: what the groups mean, and how the other filters act on them
 function renderCmpExplain() {
+    const pill = document.getElementById('cmpPill');
+    if (pill) { pill.classList.toggle('is-on-accent', cmpOnly); pill.setAttribute('aria-pressed', String(cmpOnly)); }
     const box = document.getElementById('cmpExplain');
     if (!box) return;
     box.hidden = !cmpOnly;
