@@ -98,7 +98,7 @@ check(got.get('4') == (30.0, '2026-11-04') and got.get('8') == (9.0, '2026-10-29
 
 # --- a run: learns from specials.json, writes both files; no specials: nothing changes ---
 tmp = tempfile.mkdtemp()
-cr.SPECIALS, cr.MEMORY, cr.LIST, cr.PROGRESS = (os.path.join(tmp, f) for f in ('specials.json', 'mem.json', 'recent.json', 'progress.json'))
+cr.SPECIALS, cr.MEMORY, cr.LIST, cr.PROGRESS, cr.SHELF = (os.path.join(tmp, f) for f in ('specials.json', 'mem.json', 'recent.json', 'progress.json', 'shelf.json'))
 with open(cr.SPECIALS, 'w', encoding='utf-8') as f:
     json.dump([special(1, 'Twisties 140g', 1.9, 3.8, '1/2 PRICE', '$1.36/ 100g', week='Wed 18 Nov 2026 - Tue 24 Nov 2026')], f)
 old = os.path.join(tmp, 'old.json')
