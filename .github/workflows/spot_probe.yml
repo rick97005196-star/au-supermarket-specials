@@ -1,0 +1,16 @@
+name: spot check probe
+on:
+  push:
+    branches: [claude/spot-check-probe]
+jobs:
+  probe:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with: {python-version: '3.11'}
+      - run: pip install requests beautifulsoup4 curl_cffi
+      - run: python scripts/_probe_salefinder.py || true
+      - run: python scripts/spot_check.py 40 || true
+      - run: cat data/spot_check.json
