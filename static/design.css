@@ -1045,7 +1045,21 @@ html.dark .qty-btn:active { background: rgba(0,0,0,.1); }
     white-space: nowrap; max-width: 100%; overflow: hidden; text-overflow: ellipsis;
 }
 /* 同品牌放一起比價: the cheapest of the group */
-.p-best { display: inline-block; margin: 5px 0 0 6px; font-size: 12px; font-weight: 700; color: var(--sale); white-space: nowrap; }
+/* 同品牌放一起比價: the cheapest of the group (gold crown) and the cheapest size of each flavour (green tag):
+   a ribbon on the picture and a coloured frame round the card, easy to spot while scrolling */
+:root { --best: #c98a00; --best-soft: #fff4d6; --flavour: #11834a; --flavour-soft: #e3f5ea; }
+html.dark { --best: #f2b630; --best-soft: #3a2e10; --flavour: #4cc985; --flavour-soft: #12301f; }
+.p-best-ribbon {
+    position: absolute; z-index: 3; left: 8px; bottom: 8px; display: inline-flex; align-items: center; gap: 5px;
+    max-width: calc(100% - 56px); padding: 4px 10px 4px 8px; border-radius: 999px;
+    font-size: 12px; font-weight: 700; line-height: 1.2; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    background: var(--best); color: #fff; box-shadow: 0 2px 8px color-mix(in srgb, var(--best) 40%, transparent);
+}
+.p-best-ribbon i { font-size: 11px; }
+.p-best-ribbon.is-flavour { background: var(--flavour); box-shadow: 0 2px 8px color-mix(in srgb, var(--flavour) 35%, transparent); }
+html.dark .p-best-ribbon { color: #1a1300; }
+html:root .p-card.is-best { border-color: var(--best); box-shadow: 0 0 0 2px var(--best), var(--shadow-sm); background: linear-gradient(var(--best-soft), var(--surface) 45%); }
+html:root .p-card.is-flavour-best { border-color: var(--flavour); box-shadow: 0 0 0 1.5px var(--flavour), var(--shadow-sm); }
 .p-compare { flex-wrap: wrap; line-height: 1.35; max-width: 100%; }
 /* 同款 / 同類: a small box at the start of the badge; the same product gets an outline */
 .p-compare .cmp-kind { font-weight: 600; padding: 0 5px; border-radius: 4px; background: var(--surface); }

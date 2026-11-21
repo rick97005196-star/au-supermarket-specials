@@ -2729,6 +2729,7 @@ function createProductCardElement(item) {
     const cmpG = cmpOnly && cmpGroupOf.get(item);
     const isGroupBest = !!(cmpG && cmpG.best === item);
     const isVariantBest = !!(cmpG && cmpG.variantBest && cmpG.variantBest.has(item));
+    if (isGroupBest) card.classList.add('is-best'); else if (isVariantBest) card.classList.add('is-flavour-best');
     // cans / bottles: also per 100 mL, so a 250 mL and a 500 mL can compare fairly
     const per100 = up && up.ml && sortVal !== 'unit_asc' ? `$${(up.value / up.ml * 100).toFixed(2)}/100mL` : '';
     const cartPayload = {
@@ -2760,6 +2761,8 @@ function createProductCardElement(item) {
             ${isItemPopular(item) ? `
                 <span class="p-flag"><i class="fa-solid fa-star text-[8px]"></i>${t('popular_badge')}</span>
             ` : ''}
+            ${isGroupBest ? `<span class="p-best-ribbon"><i class="fa-solid fa-crown"></i>${t('cheapest_badge')}</span>`
+                : isVariantBest ? `<span class="p-best-ribbon is-flavour"><i class="fa-solid fa-tag"></i>${t('variant_cheapest')}</span>` : ''}
             <button type="button" class="p-fav" data-fav-key="${escAttr(favProductKey(item))}" aria-pressed="false"><i class="fa-regular fa-heart"></i></button>
             <img
                 class="p-img"
@@ -2792,7 +2795,7 @@ function createProductCardElement(item) {
                     <div class="p-price num">
                         <span class="cur">$</span><span class="dol">${p.dollars}</span><span class="cts">${p.cents}</span><span class="unit">${p.unit}</span>
                     </div>
-                    ${showNormUnit ? `<div class="p-unit-strong num" title="${escAttr(unitPriceClean || fmtSensibleUnit(up))}">${sortVal === 'unit_asc' ? fmtUnitPrice(up) : fmtSensibleUnit(up)}</div>${isGroupBest ? `<span class="p-best">${t('cheapest_badge')}</span>` : isVariantBest ? `<span class="p-best">${t('variant_cheapest')}</span>` : ''}${per100 ? `<div class="p-unit num mt-0.5">${per100}</div>` : ''}` : ''}
+                    ${showNormUnit ? `<div class="p-unit-strong num" title="${escAttr(unitPriceClean || fmtSensibleUnit(up))}">${sortVal === 'unit_asc' ? fmtUnitPrice(up) : fmtSensibleUnit(up)}</div>${per100 ? `<div class="p-unit num mt-0.5">${per100}</div>` : ''}` : ''}
                     ${aldiInfo ? `<div class="p-aldi ${aldiInfo.upcoming ? 'is-upcoming' : ''} ${aldiInfo.kind === 'saver' ? 'is-saver' : ''}"><i class="fa-regular ${aldiInfo.upcoming ? 'fa-calendar' : (aldiInfo.kind === 'saver' ? 'fa-clock' : 'fa-box-open')}"></i>${aldiInfo.text}</div>` : `
                     <div class="p-was num mt-1.5">
                         ${effectiveWas > 0 ? `<s>${t('was_price')} $${effectiveWas.toFixed(2)}</s>` : ''}
