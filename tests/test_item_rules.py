@@ -35,3 +35,11 @@ assert not bad(store='ALDI', price=1299.0, was_price=0, save_amount=0, discount_
 assert not bad(product_url='https://www.salefinder.com.au/1/x', discount_desc='Save $2.50')
 assert not bad(was_price=0, save_amount=0, discount_desc='Everyday Low Price')
 print('item rules OK')
+
+# Woolworths 目錄裡的 Everyday Market 網路商品（2026-11-21 抽查發現：彈跳床、吧台冰箱、升降桌）
+SF = dict(OK, product_url='https://www.salefinder.com.au/68975/food-and-beverage/groceries/home-and-outdoor/x/1/',
+          discount_desc='Save $350.00', price=624.0, was_price=974.0, save_amount=350.0)
+assert bad(**{k: v for k, v in SF.items() if k != 'title'}, title='VULY Ultra 2 Medium 11ft Trampoline')
+assert bad(**{k: v for k, v in SF.items() if k != 'title'}, title='Some Brand Stand Mixer')          # 家居類 $60 以上
+assert not bad(**dict(SF, price=12.0, was_price=24.0, save_amount=12.0, discount_desc='1/2 PRICE', title='Sistema Container'))
+print('marketplace rules OK')

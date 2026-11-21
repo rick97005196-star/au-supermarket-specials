@@ -1,0 +1,29 @@
+name: 資料抽查（和超市官網逐筆比對）
+
+# 每天隨機抽 Woolworths、Coles、ALDI 各 30 件網站上的特價，一件一件打開超市官網的商品頁比對價格與原價。
+# 慢慢讀（scrapers/polite.py），超市網站說停就停，不繞過機器人檢查。
+# 不符比例超過 10% → 這次執行標成失敗，GitHub 會寄信通知。結果在執行頁的摘要。
+on:
+  schedule:
+    - cron: '43 23 * * *'     # 布里斯本每天早上 09:43
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: spot-check
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+      - run: pip install requests beautifulsoup4 curl_cffi
+      - name: 抽查
+        run: python scripts/spot_check.py 30

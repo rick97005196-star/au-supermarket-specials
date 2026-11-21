@@ -24,6 +24,24 @@ SAVE_RE = re.compile(r'\bSave\s+\$\s*(\d+(?:\.\d{1,2})?)', re.I)
 MULTI_RE = re.compile(r'(\d+)\s*for\s*\$\s*(\d+(?:\.\d{1,2})?)', re.I)
 
 
+# Woolworths' printed catalogue also advertises Everyday Market products (sent by other sellers, online
+# only - not on the shelf in any Woolworths shop). Checked 21 Nov 2026: trampolines, bar fridges, standing
+# desks, stand mixers and $280 serums from these sellers were on the site as "Woolworths specials".
+MARKET_BRANDS = re.compile(r'\b(?:VULY|AirMyFun|Devanti|Artiss|Vevare|Baccarat|Swisswin|Gardeon|Giantz|Keezi|'
+                           r'Everfit|Alfordson|Oikiture|Levede|i\.?Pet|Bestway\s+Inflatable|Classic\s+\d+m\s+Retractable)\b', re.I)
+MARKET_AISLES = ('/home-and-outdoor/', '/beauty/')
+MARKET_PRICE = 60.0
+
+
+def looks_online_market(store, url, title, price):
+    """True for a Woolworths catalogue product that is (almost certainly) an Everyday Market online product."""
+    if store != 'Woolworths' or 'salefinder.com.au' not in (url or ''):
+        return False
+    if MARKET_BRANDS.search(title or ''):
+        return True
+    return any(a in url for a in MARKET_AISLES) and (price or 0) >= MARKET_PRICE
+
+
 def _num(x):
     try:
         return float(x)
@@ -45,6 +63,8 @@ def problems(it, today=None, range_end=None):
     if ONLINE_WORDS.search(title) or ONLINE_WORDS.search(desc):
         bad.append('網路限定（本站只收實體門市特價）')
 
+    if looks_online_market(store, it.get('product_url'), title, _num(it.get('price'))):
+        bad.append('Woolworths 目錄裡的 Everyday Market 網路商品（門市沒賣）')
     price, was, save = _num(it.get('price')), _num(it.get('was_price')) or 0.0, _num(it.get('save_amount')) or 0.0
     if price is None or price <= 0:
         bad.append(f"價格不正確：{it.get('price')}")

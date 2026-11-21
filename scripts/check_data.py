@@ -135,7 +135,10 @@ def item_check():
             totals[st] = totals.get(st, 0) + 1
             why = item_problems(it, today, range_end)
             if why:
-                bad_by_store[st] = bad_by_store.get(st, 0) + 1
+                # Everyday Market products from the saved catalogue are expected (the scraper skips them from now
+                # on): they are removed but do not count as "the data looks broken"
+                if not all('Everyday Market' in w for w in why):
+                    bad_by_store[st] = bad_by_store.get(st, 0) + 1
                 removed.append({'store': st, 'title': it.get('title'), 'url': it.get('product_url'), 'why': why})
             else:
                 keep.append(it)

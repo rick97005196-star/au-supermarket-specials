@@ -18,6 +18,10 @@ HEADERS = {
 
 BASE_URL = 'https://www.salefinder.com.au'
 
+import os as _os, sys as _sys
+_sys.path.insert(0, _os.path.join(_os.path.dirname(_os.path.dirname(_os.path.abspath(__file__))), 'scripts'))
+from item_rules import looks_online_market as _looks_online_market  # noqa: E402
+
 # ---- Robust HTTP: behave like a real Chrome browser and retry, so a busy/blocked moment
 #      on the catalogue site doesn't make a whole weekly update fail ----
 import threading as _threading
@@ -267,6 +271,10 @@ def scrape_woolies_catalogue_items(base_list_url: str, initial_soup: BeautifulSo
                     if not (everyday and price > 0):
                         continue
                     discount_desc = everyday_desc(discount_desc)
+
+                # Everyday Market products advertised in the catalogue are online only (scripts/item_rules.py)
+                if _looks_online_market('Woolworths', product_url, html.unescape(title), price):
+                    continue
 
                 products.append({
                     'store': 'Woolworths',
