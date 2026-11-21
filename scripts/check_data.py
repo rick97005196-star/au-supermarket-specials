@@ -113,7 +113,50 @@ GUESS_ALERT = 25        # more guessed products than this in one week -> email t
 TRANSLATION_ALERT = 30  # more products with translation problems than this -> email the owner
 
 
+ITEM_BLOCK_SHARE = 0.03   # more than 3% of one store's products break the rules -> scraper broken: hold the update
+
+
+def item_check():
+    """Layer 1: every product must pass scripts/item_rules.py. Products that break a rule are taken off
+    the site (the files are rewritten without them). Returns (problems for the owner, block?)."""
+    sys.path.insert(0, os.path.join(ROOT, 'scripts'))
+    from item_rules import problems as item_problems
+    today = today_au()
+    alerts, block, removed = [], False, []
+    totals, bad_by_store = {}, {}
+    for name in ('specials.json', 'specials-next.json'):
+        path = os.path.join(DATA, name)
+        if not os.path.exists(path):
+            continue
+        items = load(path)
+        keep = []
+        for it in items:
+            st = it.get('store')
+            totals[st] = totals.get(st, 0) + 1
+            why = item_problems(it, today, range_end)
+            if why:
+                bad_by_store[st] = bad_by_store.get(st, 0) + 1
+                removed.append({'store': st, 'title': it.get('title'), 'url': it.get('product_url'), 'why': why})
+            else:
+                keep.append(it)
+        if len(keep) != len(items):
+            with open(path, 'w', encoding='utf-8') as f:
+                json.dump(keep, f, ensure_ascii=False, separators=(',', ':'))
+    with open(os.path.join(ROOT, 'data', 'item_check.json'), 'w', encoding='utf-8') as f:
+        json.dump({'checked': sum(totals.values()), 'removed': removed}, f, ensure_ascii=False, indent=1)
+    print(f"::notice::逐筆檢查：{sum(totals.values())} 件中 {len(removed)} 件不符規則，已下架"
+          + ('，例如：' + '；'.join(f"{r['store']} {(r['title'] or '')[:30]}→{r['why'][0]}" for r in removed[:6]) if removed else ''))
+    for st, n in bad_by_store.items():
+        if totals.get(st) and n / totals[st] > ITEM_BLOCK_SHARE and n >= 20:
+            block = True
+            alerts.append(f"{st} 有 {n} 件（{n * 100 // totals[st]}%）資料不合理，可能是超市網站改版，已停止上線，網站維持原本資料")
+        elif n >= 5:
+            alerts.append(f"{st} 有 {n} 件資料不合理，已自動下架（詳見 data/item_check.json）")
+    return alerts, block
+
+
 def pre():
+    item_alerts, item_block = item_check()
     items = load(os.path.join(DATA, 'specials.json'))
     if os.path.exists(os.path.join(DATA, 'specials-next.json')):   # next week has its own file
         items += load(os.path.join(DATA, 'specials-next.json'))
@@ -127,7 +170,7 @@ def pre():
 
     now_c, prev_c = counts(items), counts(prev_items)
     now_r, prev_r = ranges(items), ranges(prev_items)
-    problems, block = [], False
+    problems, block = list(item_alerts), item_block
     try:
         from zoneinfo import ZoneInfo
         bne = dt.datetime.now(ZoneInfo('Australia/Brisbane'))

@@ -45,6 +45,8 @@ jobs:
         run: python tests/test_categories.py
       - name: Timer alarm test
         run: python tests/test_check_timer.py
+      - name: Per-product rules (item_rules.py)
+        run: python tests/test_item_rules.py
       - name: Unknown-product placement test
         run: python tests/test_category_hints.py
       - name: Visitor-interest order test
