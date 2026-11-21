@@ -49,7 +49,7 @@
 
     <!-- Pre-built styles (no in-browser compiling = faster on phones) -->
     <link rel="stylesheet" href="./tw.css?v=6.1">
-    <link rel="stylesheet" href="./design.css?v=15.5">
+    <link rel="stylesheet" href="./design.css?v=15.6">
 
     <!-- Non-blocking fonts & icons: text shows immediately with the phone's own fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -127,7 +127,7 @@
     </div>
 
     <!-- ===================== Hero ===================== -->
-    <section class="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 pt-8 sm:pt-12 pb-6 sm:pb-8">
+    <section id="heroSection" class="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 pt-8 sm:pt-12 pb-6 sm:pb-8">
         <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
             <div class="space-y-3 min-w-0">
                 <div class="flex items-center gap-3 flex-wrap">
@@ -202,6 +202,9 @@
     </section>
 
     <!-- ===================== Category nav (sticky) ===================== -->
+    <!-- phone: the search box and filters move here, above the categories (app.js placeToolbar) -->
+    <div id="mobileToolbarSlot" class="max-w-7xl mx-auto w-full px-4"></div>
+
     <nav id="stickyCategoryNav" class="cat-nav top-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div id="categoryGroups" class="cat-groups no-scrollbar" role="toolbar" aria-label="分類"></div>
@@ -219,7 +222,7 @@
     <main class="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-5 sm:py-7 flex-1 space-y-5">
 
         <!-- Toolbar: search + filters -->
-        <div class="toolbar p-3 sm:p-4 space-y-3">
+        <div id="mainToolbar" class="toolbar p-3 sm:p-4 space-y-3">
             <div class="relative">
                 <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 t-ink-3 text-[14px]"></i>
                 <input type="search" id="searchInput" aria-label="搜尋特價商品" placeholder="搜尋特價商品" enterkeyhint="search" class="search-field" oninput="debounceSearch()" autocomplete="off" />
@@ -261,7 +264,7 @@
                     <input type="checkbox" id="halfPriceOnly" onchange="loadSpecials()" class="hidden">
                     <select id="sortSelect" onchange="loadSpecials()" class="select-pill flex-1 sm:flex-none min-w-0" aria-label="排序方式">
                         <option value="relevance" data-i18n="sort_relevance">熱門（預設）</option>
-                        <option value="same" data-i18n="sort_same">同款放一起比價</option>
+                        <option value="same" data-i18n="sort_same">同品牌放一起比價</option>
                         <option value="price_asc" data-i18n="sort_price_asc">價格：低至高</option>
                         <option value="unit_asc" data-i18n="sort_unit_asc">單位價格：低至高</option>
                     </select>
@@ -621,11 +624,11 @@
 
     <!-- 澳洲打工度假資訊平台 sign-in and saved items (window.OZWH) -->
     <script src="https://au-working-holiday.pages.dev/api/sdk.js" data-site="supermarket" defer></script>
-    <script src="./i18n.js?v=11.0" defer></script>
+    <script src="./i18n.js?v=11.1" defer></script>
     <script src="./category-icons.js?v=2.0" defer></script>
     <script src="./category-rules.js?v=2.0" defer></script>
-    <script src="./compare.js?v=1.6" defer></script>
-    <script src="./app.js?v=14.1" defer></script>
+    <script src="./compare.js?v=1.7" defer></script>
+    <script src="./app.js?v=14.2" defer></script>
     <script>
         // Light / dark switch: the choice is kept in this site's browser storage only (each site has its own address)
         (function () {
