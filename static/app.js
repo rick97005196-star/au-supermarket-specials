@@ -1338,10 +1338,10 @@ function toggleHalfPricePill() {
 let cmpOnly = false;
 let cmpGroupOf = new Map();     // item -> its compare group {key, items, stores}, rebuilt on every load
 let cmpHalfOn = false, lastCmpGroups = 0;
+// turned on by the sort menu's 同款放一起比價 ("same"); the box above the list can turn it off again
 function toggleCmpOnly() {
-    cmpOnly = !cmpOnly;
-    const pill = document.getElementById('cmpPill');
-    if (pill) { pill.classList.toggle('is-on-accent', cmpOnly); pill.setAttribute('aria-pressed', String(cmpOnly)); }
+    const sel = document.getElementById('sortSelect');
+    if (sel) sel.value = (sel.value === 'same') ? 'relevance' : 'same';
     loadSpecials();
 }
 
@@ -2003,6 +2003,7 @@ async function loadSpecials() {
 
     const discountOnly = document.getElementById('halfPriceOnly').checked;
     const sortBy = document.getElementById('sortSelect').value;
+    cmpOnly = sortBy === 'same';          // 同款放一起比價: the same product / same kind at the three stores, cheapest first
     updateFilterCount();
 
     if (!isStaticMode) {
@@ -2054,7 +2055,9 @@ async function loadSpecials() {
         // Enrich with cross-supermarket comparison info (before filtering: 比價 needs it)
         enrichCrossStoreComparisons(staticSpecials);
         // a Woolworths regular price alone does not make a 比價 group: it is no card of its own
-        const isComparable = (it) => (it.cross_store_matches || []).some(m => !m.ref._regular) || valueCompare(it, staticSpecials);
+        // 同款放一起比價 is strict: the same product by name (not one worded differently, which can be another flavour
+        // or variant), or the same plain kind per kg / litre / item (compare.js CMP_TYPES)
+        const isComparable = (it) => (it.cross_store_matches || []).some(m => !m.loose && !m.ref._regular) || valueCompare(it, staticSpecials);
         const isListed = (it) => it.store === 'ALDI' || it.save_amount > 0 || isEverydayPrice(it) || isPlainSpecial(it) || isRegularPrice(it);
 
         const favMatchIds = favOnly ? new Set(matchFavorites(staticSpecials).map(x => x.id)) : null;
@@ -2138,7 +2141,7 @@ async function loadSpecials() {
             // each kind then lists all three supermarkets' items of that week, cheapest per unit first
             // the same product worded differently at another store joins the same group (the lowest name key of the pair)
             const keyOf = (it) => (valueCompare(it, staticSpecials) ? `k:${cmpTypeOf(it)}`
-                : `p:${[it, ...(it.cross_store_matches || []).map(m => m.ref).filter(r => !r._regular)].map(getCompareKey).sort()[0]}`);
+                : `p:${[it, ...(it.cross_store_matches || []).filter(m => !m.loose).map(m => m.ref).filter(r => !r._regular)].map(getCompareKey).sort()[0]}`);
             const valOf = (it) => { const vc = valueCompare(it, staticSpecials); return vc ? vc.mine.value : _perItemPrice(it); };
             const half = discountOnly ? filtered.filter(isItemHalfPrice) : [];
             const groups = new Map();
