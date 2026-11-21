@@ -11,7 +11,7 @@ const c = require(process.argv[1]);
 const cases = JSON.parse(process.argv[2]);
 console.log(JSON.stringify(cases.map(x => {
     const u = c.sensibleUnitOf(x.item);
-    return { u: u ? [u.basis, Math.round(u.value * 100) / 100] : null, k: c.brandKeyOf(x.item, x.kind) };
+    return { u: u ? [u.basis, Math.round(u.value * 100) / 100] : null, k: c.brandKeyOf(x.item, x.kind), v: c.variantKeyOf(x.item) };
 })));
 """
 
@@ -23,6 +23,7 @@ def it(title, price, display=None, unit='', cat='drinks', store='Coles', was=0):
 
 UNITS = [   # (item, expected [basis, value] or None)
     (it('Monster Energy Drink Ultra 4x500ml 2L', 10.50, unit='$5.25/ 1L'), ['can', 2.63]),
+    (it('Monster Energy Cans Green 6x250ml 1.5L', 10.50), ['can', 1.75]),
     (it('Monster Energy Drink Lando Norris 500mL 4 Pack', 10.50, unit='$5.25/ 1L'), ['can', 2.63]),
     (it('Monster Energy Drink Bad Apple 500mL', 4.70, '2 for $7.90', '$9.40/ 1L', was=9.40), ['can', 3.95]),
     (it('Coca-Cola Soft Drink 30x375mL', 32.00, '$32.00 each'), ['can', 1.07]),
@@ -48,6 +49,14 @@ KEYS = [   # (item, kind, expected brand key)
     (it("Smith's Thinly Cut Potato Chips 175g", 3.0), 'chips', 'smiths|chips'),
 ]
 
+VARIANTS = [   # (title A, title B, same flavour?)
+    ('Monster Energy Drink Ultra Violet 4x500ml 2L', 'Monster Energy Ultra Violet Cans 500mL x 4 pack', True),
+    ('Monster Energy Drink Green 4x500ml 2L', 'Monster Energy Cans Green 6x250ml 1.5L', True),
+    ('Monster Energy Ultra Can 500mL', 'Monster Energy Cans Ultra 6x250ml 1.5L', True),
+    ('Monster Energy Drink Ultra 4x500ml 2L', 'Monster Energy Drink Ultra Violet 4x500ml 2L', False),   # strict
+    ('Monster Energy Drink Peach 4x500ml 2L', 'Monster Energy Ultra Peachy Keen Can 500mL', False),
+]
+
 fails = 0
 
 
@@ -58,7 +67,8 @@ def check(cond, msg):
         print('FAIL', msg)
 
 
-cases = [{'item': x[0]} for x in UNITS] + [{'item': x[0], 'kind': x[1]} for x in KEYS]
+cases = [{'item': x[0]} for x in UNITS] + [{'item': x[0], 'kind': x[1]} for x in KEYS] + \
+    [{'item': it(t, 1.0)} for v in VARIANTS for t in v[:2]]
 r = subprocess.run(['node', '-e', JS, os.path.join(ROOT, 'static', 'compare.js'), json.dumps(cases)], capture_output=True, text=True)
 check(r.returncode == 0, 'node runs: ' + r.stderr[-300:])
 out = json.loads(r.stdout) if r.returncode == 0 else []
@@ -67,5 +77,10 @@ for (item, want), got in zip(UNITS, out[:len(UNITS)]):
     check(ok, f"unit {item['title']}: want {want}, got {got['u']}")
 for (item, kind, want), got in zip(KEYS, out[len(UNITS):]):
     check(got['k'] == want, f"brand {item['title']}: want {want}, got {got['k']}")
-print(f'{len(UNITS) + len(KEYS) - fails}/{len(UNITS) + len(KEYS)} sensible-unit checks passed')
+vo = out[len(UNITS) + len(KEYS):]
+for n, (a, b, same) in enumerate(VARIANTS):
+    if len(vo) > 2 * n + 1:
+        check((vo[2 * n]['v'] == vo[2 * n + 1]['v']) == same, f"variant {a} / {b}: {vo[2 * n]['v']!r} vs {vo[2 * n + 1]['v']!r}")
+total = len(UNITS) + len(KEYS) + len(VARIANTS)
+print(f'{total - fails}/{total} sensible-unit checks passed')
 sys.exit(1 if fails else 0)
