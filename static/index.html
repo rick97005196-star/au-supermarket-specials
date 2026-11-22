@@ -49,7 +49,7 @@
 
     <!-- Pre-built styles (no in-browser compiling = faster on phones) -->
     <link rel="stylesheet" href="./tw.css?v=6.1">
-    <link rel="stylesheet" href="./design.css?v=16.3">
+    <link rel="stylesheet" href="./design.css?v=16.4">
 
     <!-- Non-blocking fonts & icons: text shows immediately with the phone's own fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -209,9 +209,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div id="categoryGroups" class="cat-groups no-scrollbar" role="toolbar" aria-label="分類"></div>
             <div class="cat-wrap">
-                <div id="categoryBar" class="cat-grid no-scrollbar">
-                    <!-- Injected via app.js -->
-                </div>
+                <div id="categoryBar" class="cat-grid no-scrollbar"></div><!-- 內容由 app.js 填入；保持空白，CSS :empty 才能先留位置 -->
                 <button type="button" id="catPrev" class="cat-arrow cat-arrow-left" onclick="scrollCategories(-1)" aria-label="上一組分類" data-i18n-aria="aria_cat_prev"><i class="fa-solid fa-chevron-left"></i></button>
                 <button type="button" id="catNext" class="cat-arrow cat-arrow-right" onclick="scrollCategories(1)" aria-label="更多分類" data-i18n-aria="aria_cat_next"><i class="fa-solid fa-chevron-right"></i></button>
             </div>
@@ -287,6 +285,8 @@
             </div>
         </div>
 
+        <!-- 手機：在畫面第一次畫出來之前，先把搜尋列與統計搬到分類上方（和 app.js placeToolbar 相同），避免載入時整頁往下跳 -->
+        <script>(function(){try{if(!matchMedia('(max-width: 640px)').matches)return;var slot=document.getElementById('mobileToolbarSlot'),bar=document.getElementById('mainToolbar');if(!slot||!bar)return;slot.appendChild(bar);['statsRow','statsNote'].forEach(function(id){var el=document.getElementById(id);if(el)slot.appendChild(el);});}catch(e){}})();</script>
         <!-- My regulars (favourites): after the search box, so search is the first thing on screen -->
         <section id="favPanel" class="fav-panel hidden" aria-live="polite"></section>
 

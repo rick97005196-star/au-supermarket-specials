@@ -1637,3 +1637,7 @@ html:root .p-unit-strong { background: var(--fill, var(--surface-2)); font-weigh
     #statsRow { margin-top: 14px; }
     #resultsCountText { font-size: 13.5px; }
 }
+
+/* 2026-11-22 載入時不跳動：先替 JS 才填入的「熱門搜尋」與手機分類列留好位置 */
+#searchSuggest:empty { min-height: 42px; }
+@media (max-width: 640px) { #categoryBar:empty { min-height: 50px; } #categoryGroups:empty { min-height: 36px; } }
