@@ -113,6 +113,10 @@ jobs:
       - name: Download visitor interest
         run: python scripts/fetch_interest.py || echo "::warning::visitor interest skipped this time"
 
+      # 本週熱門 (default order): what Australians discuss most this week on OzBargain (buzz.py)
+      - name: Download this week's discussions
+        run: python scripts/fetch_buzz.py || echo "::warning::this week's discussions skipped this time"
+
       - name: Export Static Data for Cloudflare Pages
         run: |
           python export_static_data.py
@@ -132,7 +136,7 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action Bot"
-          for f in data/specials.db data/catalogues.json data/coles_web.json data/woolies_web.json data/catalogue_items.json.gz data/ai_categories.json data/interest.json static/data/specials.json static/data/specials-next.json static/data/stats.json static/data/translations.json data/coles_was_prices.json static/data/regular-coles-recent.json; do [ ! -f "$f" ] || git add "$f"; done
+          for f in data/specials.db data/catalogues.json data/coles_web.json data/woolies_web.json data/catalogue_items.json.gz data/ai_categories.json data/interest.json data/buzz.json static/data/specials.json static/data/specials-next.json static/data/stats.json static/data/translations.json data/coles_was_prices.json static/data/regular-coles-recent.json; do [ ! -f "$f" ] || git add "$f"; done
           git diff --staged --quiet && exit 0
           git commit -m "Auto-update weekly specials & translations [skip ci]"
           for i in 1 2 3; do

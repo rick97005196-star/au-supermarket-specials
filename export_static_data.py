@@ -145,6 +145,10 @@ _ranks = load_retailer_ranks()
 print(f"Supermarket list order: {apply_retailer_rank(items, _ranks)} specials ranked")
 # 熱門: what Australians buy most at Coles (its best-seller order) moves those products and brands up
 print(f"Coles best sellers: {apply_best_sellers(items, _ranks)} specials moved up")
+# 本週熱門: the specials discussed most on OzBargain this week come first on the website (strict matching, buzz.py)
+from buzz import apply_buzz, load_deals
+_deals = load_deals()
+print(f"This week's discussions: {len(_deals)} OzBargain deals, {apply_buzz(items, _deals, skip=lambda it: is_everyday(it) or is_regular(it))} specials matched")
 
 # Everyday low prices and regular prices are not specials: never "熱門暢銷", never in the best-sellers at the top
 # (-1, not 0: the website recomputes a score of 0 itself)

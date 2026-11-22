@@ -15,6 +15,7 @@ on:
       - 'scripts/ai_categorize.py'
       - 'data/ai_categories.json'
       - 'interest.py'
+      - 'buzz.py'
       - 'functions/**'
       - 'scrapers/regions.py'
       - 'scrapers/coles_scraper.py'
@@ -51,6 +52,8 @@ jobs:
         run: python tests/test_category_hints.py
       - name: Visitor-interest order test
         run: python tests/test_interest.py
+      - name: This week's discussions (本週熱門) matching test
+        run: python tests/test_buzz.py
       - name: Everyday low price test
         run: python tests/test_everyday.py
       - name: Price comparison test
