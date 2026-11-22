@@ -7,5 +7,6 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - run: |
-          for u in "https://www.ozbargain.com.au/deals/coles/feed" "https://www.ozbargain.com.au/deals/woolworths/feed" "https://www.ozbargain.com.au/deals/aldi/feed" "https://www.ozbargain.com.au/deals/coles/feed?page=1" "https://www.reddit.com/r/AussieFrugal/new.json?limit=5" "https://www.reddit.com/r/AussieFrugal/new/.rss" "https://old.reddit.com/r/australia/search.json?q=coles&restrict_sr=1&t=week"; do
-            echo "=== $u"; curl -s -o out.txt -w "%{http_code} %{size_download}\n" -A "au-specials-buzz/1.0 (weekly popularity)" "$u" || true; head -c 5000 out.txt; echo; done
+          for u in "https://www.ozbargain.com.au/deals/coles.com.au/feed" "https://www.ozbargain.com.au/deals/woolworths.com.au/feed" "https://www.ozbargain.com.au/deals/aldi.com.au/feed" "https://www.ozbargain.com.au/tag/coles/feed" "https://www.ozbargain.com.au/deals/feed"; do
+            echo "=== $u"; curl -s -o out.txt -w "%{http_code} %{size_download}\n" -A "au-specials-buzz/1.0 (weekly popularity)" "$u" || true; head -c 6000 out.txt; echo; done
+          curl -s -A "au-specials-buzz/1.0" https://www.ozbargain.com.au/wiki/list_of_rss_feeds | grep -o 'href="[^"]*feed[^"]*"' | sort -u | head -60
