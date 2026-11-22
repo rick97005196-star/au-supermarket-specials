@@ -1380,6 +1380,49 @@ function updateFilterCount() {
     if (!el) return;
     const n = (priceType !== 'all') + document.getElementById('halfPriceOnly').checked + (document.getElementById('sortSelect').value !== 'relevance');
     el.textContent = n; el.hidden = !n;
+    updateClearAllBtn();
+}
+
+// 清除全部: one tap puts every choice back to how the page opens (all supermarkets, all categories, no search,
+// all price types, no half-price-only, 本週熱門 order, no favourites filter). Shown only when something is set.
+function hasActiveChoices() {
+    const half = document.getElementById('halfPriceOnly');
+    const sort = document.getElementById('sortSelect');
+    return currentStore !== 'All' || currentCategory !== 'all' || !!(currentSearch || '').trim() || priceType !== 'all' ||
+        !!(half && half.checked) || !!(sort && sort.value !== 'relevance') || favOnly;
+}
+function updateClearAllBtn() {
+    const btn = document.getElementById('clearAllBtn');
+    if (btn) btn.hidden = !hasActiveChoices();
+}
+function clearAllFilters() {
+    currentStore = 'All';
+    document.querySelectorAll('.store-tab').forEach(tab => tab.classList.toggle('is-active', tab.dataset.store === 'All'));
+    currentCategory = 'all';
+    renderCategoryBar();
+    const bar = document.getElementById('categoryBar');
+    if (bar) bar.scrollTo({ left: 0 });
+    const input = document.getElementById('searchInput');
+    if (input) input.value = '';
+    currentSearch = '';
+    const clearBtn = document.getElementById('clearSearchBtn');
+    if (clearBtn) clearBtn.classList.add('hidden');
+    renderSearchSuggestions();
+    priceType = 'all';
+    document.querySelectorAll('.type-tab').forEach(tab => tab.classList.toggle('is-active', tab.dataset.type === 'all'));
+    const half = document.getElementById('halfPriceOnly');
+    if (half) half.checked = false;
+    updateHalfPricePillStyle();
+    const sort = document.getElementById('sortSelect');
+    if (sort) sort.value = 'relevance';
+    if (favOnly) { favOnly = false; renderFavPanel(); }
+    // a link with ?q= would bring the search back on reload
+    try {
+        const u = new URL(location.href);
+        if (u.searchParams.has('q')) { u.searchParams.delete('q'); history.replaceState(history.state, '', u.pathname + u.search + u.hash); }
+    } catch (e) {}
+    loadSpecials();
+    showToast(t('clear_all_done'));
 }
 
 function updateHalfPricePillStyle() {
