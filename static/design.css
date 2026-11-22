@@ -1622,3 +1622,8 @@ html:root .p-unit-strong { background: var(--fill, var(--surface-2)); font-weigh
 .modal-buzz { font-size: 12px; color: var(--ink-2); margin-bottom: 4px; }
 .modal-buzz i { color: var(--sale); margin-right: 2px; }
 .modal-buzz a { color: inherit; text-decoration: underline; margin-left: 4px; }
+
+/* 清除全部: next to 篩選・排序, only while something is chosen; on phones a full row under the two buttons */
+.toggle-pill.clear-all-pill[hidden] { display: none; }
+.clear-all-pill i { color: var(--ink-3); }
+@media (max-width: 767px) { .cmp-row .clear-all-pill { grid-column: 1 / -1; } }
