@@ -20417,7 +20417,7 @@
   },
   "Purina One Indoor Advantage with Chicken In Gravy 1+ Years Wet Cat Food 70g x 12 pack": {
     "zh": "Purina One 室內成貓雞肉肉汁濕糧 1歲以上 70克 x 12入",
-    "ja": "ピュリナ ワン 室内猫用 グレービー仕立て チキン 70g x 12個",
+    "ja": "ピュリナ ワン 室内猫用 グレービー仕立て チキン 1歳以上 70g x 12個",
     "ko": "퓨리나 원 인도어 어드밴티지 닭고기 그레이비 1년 이상 습식 캣푸드 70g x 12팩",
     "src": "reviewed",
     "reviewed": true
@@ -130137,11 +130137,12 @@
     "src": "ai"
   },
   "Voost Magnesium 200mg Natural Citrus 20 Effervescent Tablets 1 Pack": {
-    "zh": "Voost 鎂發泡錠 天然柑橘口味 20錠 1入",
+    "zh": "Voost 鎂發泡錠 200mg 天然柑橘口味 20錠 1入",
     "ja": "Voost マグネシウム 200mg 天然柑橘風味 発泡錠 20錠 1個入",
     "ko": "Voost 마그네슘 200mg 천연 감귤 맛 발포정 20정 1개입",
-    "src": "ai",
-    "qa_tries": 2
+    "src": "reviewed",
+    "qa_tries": 2,
+    "reviewed": true
   },
   "Bonne Maman Blackberry Jam 370g": {
     "zh": "Bonne Maman 黑莓果醬 370克",

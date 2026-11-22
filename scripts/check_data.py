@@ -245,7 +245,7 @@ def pre():
         print(f"::notice::翻譯檢查：本週 {len(cur_items)} 件中 {len(bad_tr)} 件有問題"
               + ('，例如：' + '；'.join(t[:35] for t in bad_tr[:5]) if bad_tr else ''))
         if len(bad_tr) > TRANSLATION_ALERT:
-            problems.append(f"{len(bad_tr)} 件商品的翻譯有問題或沒有翻譯（AI 翻譯可能暫時無法使用）")
+            problems.append(f"{len(bad_tr)} 件商品（本週共 {len(cur_items)} 件）的翻譯沒通過檢查，AI 重試 2 次仍不行，需要人工看一下")
     except Exception as e:
         print(f"[WARN] translation check skipped: {e}")
 
