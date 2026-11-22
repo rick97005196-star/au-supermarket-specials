@@ -6,7 +6,5 @@ jobs:
   probe:
     runs-on: ubuntu-24.04
     steps:
-      - run: |
-          for u in "https://www.ozbargain.com.au/deals/coles.com.au/feed" "https://www.ozbargain.com.au/deals/woolworths.com.au/feed" "https://www.ozbargain.com.au/deals/aldi.com.au/feed" "https://www.ozbargain.com.au/tag/coles/feed" "https://www.ozbargain.com.au/deals/feed"; do
-            echo "=== $u"; curl -s -o out.txt -w "%{http_code} %{size_download}\n" -A "au-specials-buzz/1.0 (weekly popularity)" "$u" || true; head -c 6000 out.txt; echo; done
-          curl -s -A "au-specials-buzz/1.0" https://www.ozbargain.com.au/wiki/list_of_rss_feeds | grep -o 'href="[^"]*feed[^"]*"' | sort -u | head -60
+      - uses: actions/checkout@v5
+      - run: python scripts/fetch_buzz.py --force && python tools/buzz_dryrun.py && echo ---- && cat data/buzz.json | python -c "import json,sys; d=json.load(sys.stdin); [print(x['store'], x['votes_pos'], x['comments'], x['posted'][:10], x['title']) for x in d['deals']]"
