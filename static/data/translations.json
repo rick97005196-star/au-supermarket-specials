@@ -206845,10 +206845,11 @@
     "src": "ai"
   },
   "Carman's Protein Bars Salted Caramel Nut Butter 5 pack": {
-    "zh": "Carman's 海鹽焦糖堅果醬蛋白棒 5入",
-    "ja": "Carman's プロテインバー 塩キャラメルナッツバター 5個入",
-    "ko": "Carman's 프로틴바 솔티드 카라멜 넛버터 5개입",
-    "src": "ai"
+    "zh": "Carman's 高蛋白棒 海鹽焦糖堅果奶油口味 5入",
+    "ja": "Carman's プロテインバー ソルテッドキャラメルナッツバター 5個入",
+    "ko": "Carman's 프로틴 바 솔티드 카라멜 너트 버터 5개입",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Tommee Tippee Natural Start Fast Flow Teats 2 pack": {
     "zh": "Tommee Tippee 自然親餵奶嘴 高流量（2入）",
@@ -206949,9 +206950,10 @@
     "src": "ai"
   },
   "Spam Ham Lite 340g": {
-    "zh": "垃圾火腿精簡版 340g",
-    "ja": "スパムハムライト 340g",
-    "ko": "스팸햄 라이트 340g"
+    "zh": "Spam 減鹽火腿肉 340克",
+    "ja": "Spam ハム ライト 340g",
+    "ko": "Spam 햄 라이트 340g",
+    "src": "ai"
   },
   "Bickford's No Added Sugar Lemon Lime & Bitters 750mL": {
     "zh": "Bickford's 無添加糖 檸檬萊姆苦精風味飲 750毫升",
@@ -207250,9 +207252,10 @@
     "src": "ai"
   },
   "Kraft Easy Mac & Cheese Dinner Macaroni Pasta Cheese Noodles 8 pack": {
-    "zh": "卡夫簡易通心粉和起司晚餐通心粉義大利麵起司麵條 8 包",
-    "ja": "クラフト イージーマック & チーズ ディナー マカロニ パスタ チーズ ヌードル 8 パック",
-    "ko": "크래프트 이지 맥 앤 치즈 디너 마카로니 파스타 치즈 누들 8팩"
+    "zh": "Kraft 快速通心起司麵 8入",
+    "ja": "Kraft イージーマック＆チーズディナー マカロニパスタチーズヌードル 8個入",
+    "ko": "Kraft 이지 맥 앤 치즈 디너 마카로니 파스타 치즈 누들 8개입",
+    "src": "ai"
   },
   "FUNDAY No Sugar Added Milk Chocolate Raspberry Bullets 50g": {
     "zh": "FUNDAY 無添加糖牛奶巧克力覆盆子軟糖 50克",
@@ -215887,6 +215890,12 @@
     "zh": "Toscano 義式迷你披薩餅皮 4入 360克",
     "ja": "Toscano イタリアン ミニ ピザ生地 4個入 360g",
     "ko": "Toscano 이탈시안 미니 피자 도우 4개입 360g",
+    "src": "ai"
+  },
+  "Woolworths Himalayan Pink Fine Table Salt 750g": {
+    "zh": "Woolworths 喜馬拉雅粉紅細鹽 750克",
+    "ja": "Woolworths ヒマラヤピンクファイン食塩 750g",
+    "ko": "Woolworths 히말라야 핑크 고운 식소금 750g",
     "src": "ai"
   }
 }
