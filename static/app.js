@@ -1749,6 +1749,16 @@ function popularFirst(items) {
     return [...top, ...[0, 1, 2].flatMap(tier => clusterItemsBySeries(rest.filter(it => priceTier(it) === tier)))];
 }
 
+// 本週熱門 (default order): the specials Australians discuss most this week (OzBargain votes + comments, matched
+// strictly in buzz.py, field 'bz') come first, most discussed on top; everything else keeps the usual order after them
+function buzzScore(it) { return (it && it.bz > 0 && !isEverydayPrice(it) && !isRegularPrice(it)) ? it.bz : 0; }
+function buzzFirst(items, orderRest) {
+    const hot = items.filter(it => buzzScore(it) > 0);
+    const rest = hot.length ? items.filter(it => !(buzzScore(it) > 0)) : items;
+    hot.sort((a, b) => buzzScore(b) - buzzScore(a) || calculatePopularityScore(b) - calculatePopularityScore(a));
+    return [...hot, ...(orderRest ? orderRest(rest) : rest)];
+}
+
 // Sort items by comparator while clustering identical product lines together
 function strictSort(items, comparator) {
     return [...items].sort((a, b) => comparator(a, b) || (a.title || '').localeCompare(b.title || ''));
@@ -2129,12 +2139,12 @@ async function loadSpecials() {
         } else if (currentStore === 'ALDI') {
             // ALDI: in the order they go on sale (Super Savers, then Wednesday, then Saturday); its everyday
             // range (no sale date) after the specials
-            filtered = strictSort(filtered, (a, b) => priceTier(a) - priceTier(b) || (a.sf || '').localeCompare(b.sf || '') ||
-                (/super/i.test(b.discount_desc || '') - /super/i.test(a.discount_desc || '')));
+            filtered = buzzFirst(strictSort(filtered, (a, b) => priceTier(a) - priceTier(b) || (a.sf || '').localeCompare(b.sf || '') ||
+                (/super/i.test(b.discount_desc || '') - /super/i.test(a.discount_desc || ''))));
         } else {
             // Default & relevance: this week's best sellers first (what people come for), mixed across
             // departments, then everything else grouped by product line
-            filtered = popularFirst(filtered);
+            filtered = buzzFirst(filtered, popularFirst);
         }
         if (discountOnly) filtered = [...filtered.filter(isItemHalfPrice), ...filtered.filter(it => !isItemHalfPrice(it))];
         if ((priceType === 'regular' || (priceType === 'all' && currentSearch)) && !favOnly && !cmpOnly && !discountOnly && currentPeriod === 'current') {
@@ -2781,7 +2791,9 @@ function createProductCardElement(item) {
                 <div class="p-half"><img src="${halfPriceBadgeSrc}" alt="半價" /></div>
             ` : ''}
             ${aldiInfo ? `<span class="p-aldi-tag ${aldiInfo.kind === 'saver' ? 'is-saver' : ''}">${aldiInfo.kind === 'saver' ? t('aldi_tag_saver') : t('aldi_tag_buy')}</span>` : ''}
-            ${isItemPopular(item) ? `
+            ${buzzScore(item) > 0 ? `
+                <span class="p-flag is-buzz"><i class="fa-solid fa-fire text-[8px]"></i>${t('buzz_badge')}</span>
+            ` : isItemPopular(item) ? `
                 <span class="p-flag"><i class="fa-solid fa-star text-[8px]"></i>${t('popular_badge')}</span>
             ` : ''}
             ${isGroupBest ? `<span class="p-best-ribbon"><i class="fa-solid fa-crown"></i>${t('cheapest_badge')}</span>`
@@ -2995,6 +3007,15 @@ function openProductModal(item) {
             if (spanText) spanText.textContent = t('popular_modal_tag');
         } else {
             popularBadge.classList.add('hidden');
+        }
+    }
+    const buzzBox = document.getElementById('modalBuzz');
+    if (buzzBox) {
+        const d = buzzScore(item) > 0 && item.bzd;
+        buzzBox.classList.toggle('hidden', !d);
+        if (d) {
+            buzzBox.innerHTML = `<i class="fa-solid fa-fire"></i> ${t('buzz_modal', { v: d.v, c: d.c })} ` +
+                `<a href="https://www.ozbargain.com.au/node/${encodeURIComponent(d.id)}" target="_blank" rel="noopener nofollow">${t('buzz_link')}</a>`;
         }
     }
 
