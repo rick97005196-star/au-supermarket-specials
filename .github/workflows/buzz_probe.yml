@@ -6,5 +6,14 @@ jobs:
   probe:
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v5
-      - run: python scripts/fetch_buzz.py --force && python tools/buzz_dryrun.py && echo ---- && cat data/buzz.json | python -c "import json,sys; d=json.load(sys.stdin); [print(x['store'], x['votes_pos'], x['comments'], x['posted'][:10], x['title']) for x in d['deals']]"
+      - run: |
+          UA="au-supermarket-specials/1.0 (weekly popularity of supermarket specials; reads public RSS)"
+          for u in "https://www.ozbargain.com.au/deals/coles.com.au/feed?page=1" "https://www.ozbargain.com.au/deals/coles.com.au/feed?page=2" "https://www.ozbargain.com.au/cat/groceries/feed" "https://www.ozbargain.com.au/cat/groceries/feed?page=1"; do echo "=== $u"; curl -s -A "$UA" "$u" | grep -o '<title>[^<]*</title>\|<pubDate>[^<]*' | head -30; sleep 1; done
+          curl -s -A "$UA" -o p1.html -w "%{http_code} %{size_download}\n" "https://www.ozbargain.com.au/deals/coles.com.au?page=1"
+          grep -o 'node/[0-9]*' p1.html | sort | uniq -c | head -50
+          python3 - <<'PY'
+          import re
+          s=open('p1.html',encoding='utf-8',errors='replace').read()
+          i=s.find('class="node node-ozbdeal')
+          print(s[i:i+6000])
+          PY
