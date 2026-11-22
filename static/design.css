@@ -1627,3 +1627,13 @@ html:root .p-unit-strong { background: var(--fill, var(--surface-2)); font-weigh
 .toggle-pill.clear-all-pill[hidden] { display: none; }
 .clear-all-pill i { color: var(--ink-3); }
 @media (max-width: 767px) { .cmp-row .clear-all-pill { grid-column: 1 / -1; } }
+
+/* 2026-11-22 手機首頁：讓第一排商品更早出現（免責聲明一行、縮小上方留白） */
+@media (max-width: 639px) {
+    .top-disclaimer > div { padding-top: 6px; padding-bottom: 6px; }
+    .top-disclaimer i { display: none; }
+    .top-disclaimer + section { padding-top: 12px !important; padding-bottom: 16px !important; }
+    #heroSection .space-y-3 > * + * { margin-top: 8px; }
+    #statsRow { margin-top: 14px; }
+    #resultsCountText { font-size: 13.5px; }
+}
