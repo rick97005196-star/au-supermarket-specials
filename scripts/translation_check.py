@@ -20,7 +20,7 @@ try:
     _S2T = OpenCC('s2t')
 except Exception:          # converter not installed: fall back to a short list of common ones
     _S2T = None
-VARIANT_OK = set('皂唇郁胜里床群采游托栗台干岩面着松谷只系制余卷斗向注布占咸酸才克并借准舍')
+VARIANT_OK = set('秘皂唇郁胜里床群采游托栗台干岩面着松谷只系制余卷斗向注布占咸酸才克并借准舍')
 COMMON_SIMPLIFIED = set('黄强麦螨鸡鱼虾猪饼条这为发买卖们个来时对长东车门问间关头声体觉观见样热电话语说请让认计记读写书儿过还进边运远选钱铁银锅饭馆汤饮酱鲜鲑鳕鸭鹅肠脏药剂护肤洁净纸湿装听两处专业产员价质优择饰卫厨厅红绿蓝杂粮枣荞萝苹赠减满额')
 
 
@@ -55,7 +55,7 @@ FOOD_TERMS = [
     (r'\bsquid\b|\bcalamari\b', ['魷', '花枝', '透抽', '中卷', '小卷']),
     (r'\bchicken\b', ['雞']),
     (r'\bbeef\b', ['牛']),
-    (r'\bpork\b', ['豬']),
+    (r'\bpork\b', ['豬', '叉燒']),                                 # BBQ Pork Buns = 叉燒包
     (r'\blamb\b', ['羊']),
     (r'\bbacon\b', ['培根']),
     (r'\bham\b', ['火腿']),
@@ -64,7 +64,7 @@ FOOD_TERMS = [
     (r'(?<!shea )(?<!cocoa )(?<!peanut )(?<!body )(?<!lip )\bbutter\b(?!\s*(?:chicken|me up|balm))', ['奶油', '牛油', '黃油', '酥']),
     (r'\by[o]?gh?urt\b', ['優格', '優酪', '乳']),
     (r'(?<!soy )(?<!oat )(?<!almond )(?<!dairy )\bmilk\b(?!\s*(?:choc|to water|thistle))', ['奶', '乳']),
-    (r'\beggs?\b', ['蛋']),
+    (r'\beggs?\b', ['蛋', '奶黃', '卡士達']),                       # Egg Custard Bao = 奶黃包
     (r'\brice\b', ['米', '飯', '河粉', '粿']),                     # rice noodles = 河粉 / 米粉 / 米線
     (r'\bnoodles?\b', ['麵', '粉絲', '米粉', '冬粉', '河粉', '米線', '粿條']),
     (r'\bbread\b', ['麵包', '吐司', '餅']),
@@ -79,11 +79,11 @@ FOOD_TERMS = [
 REVERSE_TERMS = [
     ('鮭魚', r'salmon|trout'),
     ('鮪魚', r'tuna'),
-    ('牛肉', r'beef|steak|wagyu|angus|brisket|mince|porterhouse|rump|scotch fillet|meatball|burger|bolognese|lasagne|pie|massaman|rendang|pho|jerky|stroganoff|kransky|bully'),
+    ('牛肉', r'beef|steak|wagyu|angus|brisket|mince|porterhouse|rump|scotch fillet|meatball|burger|bolognese|lasagne|pie|massaman|rendang|pho|jerky|stroganoff|kransky|bully|pastrami|corned|silverside'),
     ('豬肉', r'pork|ham|bacon|kransky|salami|chorizo|prosciutto|sausage|dumpling|gyoza|dim sim|bun|char siu|schnitzel|ribs|cocktail|frankfurt|mince|belly|knuckle'),
     ('羊肉', r'lamb|mutton|goat'),
     ('雞肉', r'chicken|poultry'),
-    ('蝦', r'prawn|shrimp|seafood|tempura'),
+    ('蝦', r'prawn|shrimp|seafood|tempura|lobster|crayfish|marron|yabby|bugs?\b'),
     ('多利魚', r'dory'),
 ]
 
@@ -101,10 +101,11 @@ def _numbers(text):
     t = text or ''
     for k, v in CN_NUM.items():
         t = t.replace(k, ' ' + v + ' ')
-    t = re.sub(r'\d+(?:\.\d+)?\s*%', ' ', t)
+    t = re.sub(r'\d+(?:\.\d+)?\s*(?:%|percent\b|pct\b)', ' ', t, flags=re.I)   # 6pct / 100 Percent = 6% / 100%
+    t = re.sub(r'\d+\s*-?\s*ply\b', ' ', t, flags=re.I)                          # 1 Ply = 單層
     t = re.split(r'\b(?:excludes?|excluding|不含)\b', t, flags=re.I)[0]
     t = re.sub(r'\d+\s*-?\s*(?:in|合)\s*-?\s*(?:1|one)\b|\ball\s*in\s*(?:1|one)\b', ' ', t, flags=re.I)
-    t = re.sub(r'\d+/\d+|(?<![\w.])-\d+|\bB\d+|Q\d+|\bG\d+\b|\b(?:pro|mach|retinol|t-inspire)\s*\d+|(?<![\d.])1\s*each\b|\d+\s*(?:hr|hour|h)\b|\d+\s*小時', ' ', t, flags=re.I)
+    t = re.sub(r'\d+/\d+|(?<![\w.])-\d+|\bB\d+|Q\d+|\bG\d+\b|\b(?:pro|mach|retinol|t-inspire)\s*\d+|(?<![\d.])1\s*each\b|\d+\s*-?\s*(?:hrs?|hours?|hourly|h)\b|\d+\s*小時', ' ', t, flags=re.I)
     t = re.sub(r'\bSPF\s*(\d+)\+?', r' \1 ', t, flags=re.I)
     t = re.sub(r'(?<=\d),(?=\d{3})', '', t)
     nums = set(re.findall(r'\d+(?:\.\d+)?', t))
@@ -134,11 +135,16 @@ def problems(title, tr, style=False):
         for w, good in MAINLAND_WORDS.items():
             if w in zh.replace('酸奶油', ''):
                 out.append(f'中文用了大陸/香港用語「{w}」（台灣說「{good}」）')
+        # food words that are only part of a brand ("British Sausage Co", "The Organic Milk Co") or
+        # not food at all ("Head Lice Treatment ... Eggs") are not ingredients
+        en_food = re.sub(r"\b[\w']+\s+co\b\.?", ' ', en)
+        if 'lice' in en_food:
+            en_food = re.sub(r'\beggs?\b', ' ', en_food)
         for pat, need in FOOD_TERMS:
-            m = re.search(pat, en)
+            m = re.search(pat, en_food)
             if m and not any(n in zh for n in need):
                 out.append(f'中文漏了食材：英文有「{m.group(0)}」')
-        zh_meat = zh.replace('火雞', '')          # 火雞肉 (turkey) is not 雞肉 (chicken)
+        zh_meat = zh.replace('火雞', '').replace('蝦夷蔥', '')   # 蝦夷蔥 = chives, not prawns          # 火雞肉 (turkey) is not 雞肉 (chicken)
         for zw, back in REVERSE_TERMS:
             if zw in zh_meat and not re.search(back, en):
                 out.append(f'中文食材錯誤：寫了「{zw}」，但英文沒有這個食材')
@@ -152,6 +158,10 @@ def problems(title, tr, style=False):
     if re.search(r'\b(?:telstra|optus|vodafone|lebara|dodo|boost|sim)\b', en):
         return out                      # phone plans / SIM cards keep their English names
     want = {n for n in _numbers(title) if not re.search(rf'(?<![\d.]){re.escape(n)}\s*billion', en)}
+    # "12x20g 240g": the total is just 12 x 20, so "20克 x 12入" already says it
+    for a, b in re.findall(r'(\d+)\s*x\s*(\d+(?:\.\d+)?)', en):
+        total = float(a) * float(b)
+        want = {n for n in want if float(n) != total}
     for lang, txt in (('中文', zh), ('日文', ja), ('韓文', ko)):
         if txt and want:
             have = _numbers(txt)
@@ -173,7 +183,7 @@ def problems(title, tr, style=False):
         out.append('韓文裡混入日文假名')
     # a pack count written twice ("85克 x 12入 12入裝" reads like 144)
     for lang, txt in (('中文', zh), ('日文', ja), ('韓文', ko)):
-        m = re.search(r'(?<![\d.])(\d+)\s*(?:入|個入|本入|袋入|개입)(?!\d).{0,12}?(?<![\d.])\1\s*(?:入|個入|本入|袋入|개입)', txt or '')
+        m = re.search(r'(?<![\d.])(\d+)\s*(?:入|個入|本入|袋入|개입)(?!\d)[^\u4e00-\u9fff\u3040-\u30ff\uac00-\ud7a3]{0,12}?(?<![\d.])\1\s*(?:入|個入|本入|袋入|개입)', txt or '')
         if m:
             out.append(f'{lang}重複寫了包裝數量「{m.group(0)}」')
     # the brand (first word of the title, kept in English in zh) should also stay in English in ja / ko.
