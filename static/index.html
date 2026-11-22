@@ -361,6 +361,12 @@
                     <span data-i18n="return_current">返回查看「本週特價」</span>
                 </button>
             </div>
+            <div id="emptyClearWrap" class="pt-2 hidden">
+                <button type="button" onclick="clearAllFilters()" class="btn-primary">
+                    <i class="fa-solid fa-rotate-left"></i>
+                    <span data-i18n="clear_all">清除全部</span>
+                </button>
+            </div>
         </div>
 
         <!-- Feedback -->
@@ -644,7 +650,7 @@
     <script src="./category-icons.js?v=2.0" defer></script>
     <script src="./category-rules.js?v=2.0" defer></script>
     <script src="./compare.js?v=1.8" defer></script>
-    <script src="./app.js?v=14.8" defer></script>
+    <script src="./app.js?v=14.9" defer></script>
     <script>
         // Light / dark switch: the choice is kept in this site's browser storage only (each site has its own address)
         (function () {

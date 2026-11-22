@@ -2272,6 +2272,7 @@ async function loadSpecials() {
             const emptyTitle = document.getElementById('emptyStateTitle');
             const emptySub = document.getElementById('emptyStateSub');
             const emptyAction = document.getElementById('emptyStateAction');
+            const emptyClear = document.getElementById('emptyClearWrap');
             if (!rawSpecials) {
                 // the specials file could not be downloaded (offline / bad connection)
                 if (emptyTitle) emptyTitle.textContent = t('load_failed_title');
@@ -2304,10 +2305,19 @@ async function loadSpecials() {
                     emptyTitle.textContent = currentLang === 'zh' ? '沒有符合條件的特價商品' : (currentLang === 'ja' ? '該当する商品が見つかりませんでした' : (currentLang === 'ko' ? '조건에 맞는 특가 상품이 없습니다' : 'No matching specials found'));
                 }
                 if (emptySub) {
-                    emptySub.textContent = currentLang === 'zh' ? '請選擇其他分類或調整搜尋關鍵字' : (currentLang === 'ja' ? '他のカテゴリーを選択するか検索条件を変更してください' : (currentLang === 'ko' ? '다른 카테고리를 선택하거나 검색어를 변경해보세요' : 'Try selecting another category or adjusting your search filters'));
+                    // 有搜尋字時說清楚：可能這週剛好沒特價，換個說法（中英文都可以）或清除條件
+                    const q = (currentSearch || '').trim();
+                    emptySub.textContent = q
+                        ? (currentLang === 'zh' ? `「${q}」這週可能剛好沒有特價。可以換個說法試試（中文、英文都可以），或清除全部條件看所有特價。`
+                          : currentLang === 'ja' ? `「${q}」は今週特売がないかもしれません。別の言い方（英語も可）で試すか、条件をすべてクリアしてください。`
+                          : currentLang === 'ko' ? `'${q}'은(는) 이번 주 특가가 없을 수 있습니다. 다른 표현(영어 가능)으로 검색하거나 조건을 모두 지워 보세요.`
+                          : `"${q}" may not be on special this week. Try another word, or clear all filters to see every special.`)
+                        : (currentLang === 'zh' ? '請選擇其他分類或調整搜尋關鍵字' : (currentLang === 'ja' ? '他のカテゴリーを選択するか検索条件を変更してください' : (currentLang === 'ko' ? '다른 카테고리를 선택하거나 검색어를 변경해보세요' : 'Try selecting another category or adjusting your search filters')));
                 }
                 if (emptyAction) emptyAction.classList.add('hidden');
+                if (emptyClear) emptyClear.classList.toggle('hidden', !hasActiveChoices());
             }
+            if (emptyClear && !(rawSpecials && !favOnly && !cmpOnly && currentPeriod !== 'next')) emptyClear.classList.add('hidden');
             empty.classList.remove('hidden');
             return;
         }
