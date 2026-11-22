@@ -3997,10 +3997,11 @@
     "src": "ai"
   },
   "Kinder Joy Chocolate Egg Assorted each": {
-    "zh": "Kinder Joy 健達 奇趣蛋 綜合款",
-    "ja": "Kinder Joy チョコエッグ 詰め合わせ",
-    "ko": "Kinder Joy 초코 에그 모음",
-    "src": "ai"
+    "zh": "Kinder Joy 綜合款巧克力蛋",
+    "ja": "Kinder Joy チョコレートエッグ アソート",
+    "ko": "Kinder Joy 초콜릿 에그 모음",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Arnott's Shapes Nacho Cheese Cracker Biscuits 160g": {
     "zh": "Arnott's Shapes 納趣起司口味餅乾 160克",
@@ -203810,9 +203811,10 @@
     "src": "ai"
   },
   "Cat Amongst The Pigeons Flyway Shiraz Bottles 750mL": {
-    "zh": "鴿子中的貓 Flyway 設拉子瓶裝 750mL",
-    "ja": "キャット アモンスト ザ ピジョンズ フライウェイ シラーズ ボトル 750mL",
-    "ko": "Cat Betweenst The Pigeons 플라이웨이 쉬라즈 병 750mL"
+    "zh": "Cat Amongst The Pigeons Flyway 希哈紅酒 750毫升",
+    "ja": "Cat Amongst The Pigeons Flyway シラーズ 750ml",
+    "ko": "Cat Amongst The Pigeons Flyway 쉬라즈 750ml",
+    "src": "ai"
   },
   "Mayver's Low Carb High Protein Bars Peanut Caramel 4 pack": {
     "zh": "Mayver's 低碳水高蛋白花生焦糖棒 4入",
@@ -203828,10 +203830,11 @@
     "qa_tries": 1
   },
   "Avalanche 99% Sugar Free Coffee Sachets Strong Cappuccino 10 pack": {
-    "zh": "Avalanche 99% 無糖特濃卡布奇諾 10入",
-    "ja": "Avalanche 99% シュガーフリー コーヒーサシェ ストロングカプチーノ 10個入",
-    "ko": "Avalanche 99% 슈가 프리 커피 스틱 스트롱 카푸치노 10개입",
-    "src": "ai"
+    "zh": "Avalanche 99% 無糖強烈卡布奇諾咖啡沖泡包 10入",
+    "ja": "Avalanche 99% 砂糖不使用 ストロングカプチーノコーヒー 10本入",
+    "ko": "Avalanche 99% 무설탕 스트롱 카푸치노 커피 10개입",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Ainsley Harriott Couscous Moroccan Medley 100g": {
     "zh": "Ainsley Harriott 摩洛哥什錦風味北非小米 100克",
@@ -204351,9 +204354,10 @@
     "src": "ai"
   },
   "Healtheries Potato Stix Roast 20g x 6 pack": {
-    "zh": "Healtheries 烤馬鈴薯泥 20 克 x 6 包",
-    "ja": "ヘルスリーズ ポテトスティックス ロースト 20g×6パック",
-    "ko": "헬더리 감자 스틱스 로스트 20g x 6팩"
+    "zh": "Healtheries 烤肉風味馬鈴薯條 20克 x 6入",
+    "ja": "Healtheries ポテトスティック ロースト 20g x 6個入",
+    "ko": "Healtheries 포테이토 스틱 로스트 20g x 6개입",
+    "src": "ai"
   },
   "Voltaren Pain Relief Gel Pain Relief Emulgel 100g": {
     "zh": "Voltaren 止痛凝膠 100克",
@@ -204452,9 +204456,10 @@
     "src": "ai"
   },
   "Cadbury Raspberry Mini Rolls 125g 5 pack": {
-    "zh": "吉百利覆盆子迷你捲 125 克 5 包",
-    "ja": "キャドバリー ラズベリー ミニロール 125g 5パック",
-    "ko": "캐드버리 라즈베리 미니롤 125g 5팩"
+    "zh": "Cadbury 覆盆莓迷你蛋糕捲 125克（5入）",
+    "ja": "Cadbury ラズベリー ミニロール 125g 5個入",
+    "ko": "Cadbury 라즈베리 미니 롤 125g 5개입",
+    "src": "ai"
   },
   "Woolworths Honey Soy Wings with RSPCA Approved Chicken per 120g": {
     "zh": "Woolworths 蜂蜜醬油雞翅（RSPCA認證雞肉） 每120克",
@@ -204463,9 +204468,10 @@
     "src": "ai"
   },
   "Gordon's London Dry Gin 1L": {
-    "zh": "Gordon's 倫敦乾杜松子酒 1L",
-    "ja": "ゴードンズ ロンドン ドライ ジン 1L",
-    "ko": "고든스 런던 드라이 진 1L"
+    "zh": "Gordon's 倫敦琴酒 1公升",
+    "ja": "Gordon's ロンドンドライジン 1L",
+    "ko": "Gordon's 런던 드라이 진 1L",
+    "src": "ai"
   },
   "Leggo's Pizza Sauce Double Concentrate Garlic Onion & Herbs Squeeze 400g": {
     "zh": "Leggo's 披薩醬（雙倍濃縮大蒜洋蔥香料）擠壓瓶 400克",
@@ -204492,9 +204498,10 @@
     "src": "ai"
   },
   "Carman's Energy Bar Mango Ripple 5 pack": {
-    "zh": "Carman's 能量棒芒果波紋 5 包",
-    "ja": "カーマンズ エナジーバー マンゴーリップル 5本パック",
-    "ko": "카맨의 에너지바 망고 리플 5팩"
+    "zh": "Carman's 能量棒 芒果口味 5入",
+    "ja": "Carman's エナジーバー マンゴー 5本入",
+    "ko": "Carman's 에너지 바 망고 5개입",
+    "src": "ai"
   },
   "Dare Dairy Snack Pouch Mocha 150g": {
     "zh": "Dare 摩卡口味乳製品點心袋 150克",
@@ -204685,9 +204692,10 @@
     "src": "ai"
   },
   "Hakubaku Organic Japanese Soba Buckwheat Noodles 98% Ff 270g": {
-    "zh": "Hakubaku 有機日本蕎麥麵 98% Ff 270g",
-    "ja": "はくばく 有機国産そば 98%FF 270g",
-    "ko": "하쿠바쿠 유기농 일본 소바 메밀 국수 98% Ff 270g"
+    "zh": "Hakubaku 有機日式蕎麥麵 270克",
+    "ja": "Hakubaku オーガニック 日本そば 270g",
+    "ko": "Hakubaku 유기농 일본식 메밀국수 270g",
+    "src": "ai"
   },
   "Bickford's Cherry Juice 1L": {
     "zh": "Bickford's 櫻桃汁 1公升",
@@ -204708,9 +204716,10 @@
     "src": "ai"
   },
   "Cat Amongst The Pigeons Fat Cat Chardonnay 750mL": {
-    "zh": "鴿子中的貓 肥貓夏多內 750mL",
-    "ja": "キャット アモンスト ザ ピジョン ファット キャット シャルドネ 750mL",
-    "ko": "비둘기 속의 고양이 팻캣 샤르도네 750mL"
+    "zh": "Cat Amongst The Pigeons Fat Cat 夏多內白酒 750毫升",
+    "ja": "Cat Amongst The Pigeons Fat Cat シャルドネ 750ml",
+    "ko": "Cat Amongst The Pigeons Fat Cat 샤르도네 750ml",
+    "src": "ai"
   },
   "Regal Vita Mince Chicken Salmon Chilled Pet Food 90g x 8 pack": {
     "zh": "Regal Vita 雞肉鮭魚冷藏寵物肉泥 90克 x 8入",
@@ -204761,9 +204770,10 @@
     "src": "ai"
   },
   "Hawke's Brewing Co Mid Lager Cans 375mL x 6 pack": {
-    "zh": "Hawke's Brewing Co 中啤酒罐 375mL x 6 包",
-    "ja": "Hawke's Brewing Co ミッドラガー缶 375mL×6パック",
-    "ko": "Hawke's Brewing Co 미드 라거 캔 375mL x 6팩"
+    "zh": "Hawke's Brewing Co 中濃度拉格啤酒 375毫升 x 6入",
+    "ja": "Hawke's Brewing Co ミッドラガー缶 375ml x 6個入",
+    "ko": "Hawke's Brewing Co 미드 라거 캔 375ml x 6개입",
+    "src": "ai"
   },
   "Bisko Bakehouse Traditional Shortbread Mr & Mrs Claus 150g": {
     "zh": "Bisko Bakehouse 傳統奶油酥餅 耶誕老人與夫人造型 150克",
@@ -205170,9 +205180,10 @@
     "qa_tries": 1
   },
   "Cadbury Milk Chocolate Covered Hazelnuts 250g": {
-    "zh": "吉百利榛果牛奶巧克力 250 克",
-    "ja": "キャドバリー ミルクチョコレートカバードヘーゼルナッツ 250g",
-    "ko": "캐드버리 밀크 초콜릿 커버드 헤이즐넛 250g"
+    "zh": "Cadbury 牛奶巧克力榛果 250克",
+    "ja": "Cadbury ミルクチョコレートコーティング ヘーゼルナッツ 250g",
+    "ko": "Cadbury 밀크 초콜릿 코팅 헤이즐넛 250g",
+    "src": "ai"
   },
   "Devondale Extra Soft Spreadable Butter 500g": {
     "zh": "Devondale 特軟抹醬奶油 500克",
@@ -205187,9 +205198,10 @@
     "src": "ai"
   },
   "Carman's Protein Bar Cinnamon Scroll 5 pack": {
-    "zh": "Carman's 蛋白質棒肉桂捲軸 5 包",
-    "ja": "カーマンズ プロテイン バー シナモン スクロール 5 パック",
-    "ko": "카맨 프로틴 바 시나몬 스크롤 5팩"
+    "zh": "Carman's 高蛋白棒 肉桂捲口味 5入",
+    "ja": "Carman's プロテインバー シナモンロール 5本入",
+    "ko": "Carman's 단백질 바 시나몬 롤 5개입",
+    "src": "ai"
   },
   "Sandhurst Burger Slaw 500g": {
     "zh": "Sandhurst 漢堡涼拌捲心菜 500克",
@@ -205228,9 +205240,10 @@
     "src": "ai"
   },
   "Hard Rated Lemon 6% Cans 330mL x 10 pack": {
-    "zh": "硬級檸檬 6% 罐裝 330mL x 10 包",
-    "ja": "ハードレーテッドレモン 6％缶 330mL×10パック",
-    "ko": "하드 레이티드 레몬 6% 캔 330mL x 10팩"
+    "zh": "Hard Rated 檸檬調酒 6% 330毫升 x 10入",
+    "ja": "Hard Rated レモン 6% 330ml x 10缶入",
+    "ko": "Hard Rated 레몬 6% 330ml x 10캔입",
+    "src": "ai"
   },
   "Nyal Cough Medicine For Dry Coughs 200mL": {
     "zh": "Nyal 乾咳止咳藥水 200毫升",
@@ -205257,9 +205270,10 @@
     "src": "ai"
   },
   "Castello Greek Style Cheese Cubes In Brine 410g": {
-    "zh": "Castello 希臘風味鹽水起司塊 410g",
-    "ja": "カステッロ ギリシャ風チーズキューブ塩漬け 410g",
-    "ko": "카스텔로 그리스 스타일 치즈 큐브 인 브라인 410g"
+    "zh": "Castello 希臘式鹽水起司塊 410克",
+    "ja": "Castello ギリシャ風チーズキューブ 塩水漬け 410g",
+    "ko": "Castello 그리스식 치즈 큐브 염수 절임 410g",
+    "src": "ai"
   },
   "Cottee's Ice Magic Chocolate Ice Cream Topping 220g": {
     "zh": "Cottee's Ice Magic 巧克力冰淇淋淋醬 220克",
@@ -205323,9 +205337,10 @@
     "src": "ai"
   },
   "Carman's Protein Clusters Cranberry & Coconut 425g": {
-    "zh": "Carman's 蛋白簇蔓越莓和椰子 425g",
-    "ja": "カーマンズ プロテイン クラスター クランベリー & ココナッツ 425g",
-    "ko": "카르맨 단백질 클러스터 크랜베리 ​​& 코코넛 425g"
+    "zh": "Carman's 蔓越莓椰子蛋白脆片 425克",
+    "ja": "Carman's プロテインクラスター クランベリー＆ココナッツ 425g",
+    "ko": "Carman's 프로틴 클러스터 크랜베리 & 코코넛 425g",
+    "src": "ai"
   },
   "Gaviscon Extra Strength Peppermint Tablets for Acid Reflux Relief 24 pack": {
     "zh": "Gaviscon 強效薄荷咀嚼錠 胃食道逆流緩解用 24入",
@@ -205360,9 +205375,10 @@
     "src": "ai"
   },
   "Hahn Ultra Zero Carb Cans 375mL x 6 pack": {
-    "zh": "Hahn 超零碳水化合物罐 375mL x 6 包",
-    "ja": "ハーン ウルトラゼロカーボ缶 375mL×6パック",
-    "ko": "Hahn 울트라 제로 탄수화물 캔 375mL x 6팩"
+    "zh": "Hahn Ultra 零碳水啤酒 375毫升 x 6入",
+    "ja": "Hahn Ultra ゼロ炭水化物 ビール 375ml x 6缶入",
+    "ko": "Hahn Ultra 제로 탄수화물 맥주 375ml x 6캔입",
+    "src": "ai"
   },
   "Ocean Chef King Snapper Portions King Snapper Portions 1kg": {
     "zh": "Ocean Chef 紅鯛魚排 1公斤",
@@ -205408,14 +205424,16 @@
     "src": "ai"
   },
   "Health Lab Cookie Dough Custard Filled Balls 40g x 5 pack": {
-    "zh": "Health Lab 餅乾麵團蛋奶凍填充球 40 克 x 5 包",
-    "ja": "ヘルスラボ クッキー生地 カスタード入りボール 40g×5個パック",
-    "ko": "헬스랩 쿠키 반죽 커스터드 볼 40g x 5팩"
+    "zh": "Health Lab 卡士達夾心餅乾麵團球 40克 x 5入",
+    "ja": "Health Lab クッキー生地カスタード入りボール 40g x 5個入",
+    "ko": "Health Lab 쿠키 도우 커스터드 필드 볼 40g x 5개입",
+    "src": "ai"
   },
   "Carman's Clusters Aussie Oat Honey Crunch 450g": {
-    "zh": "Carman's Clusters 澳洲燕麥蜂蜜脆餅 450g",
-    "ja": "カーマンズ クラスター オージー オーツ ハニー クランチ 450g",
-    "ko": "카맨 클러스터 호주 귀리 허니 크런치 450g"
+    "zh": "Carman's 澳洲燕麥脆片 蜂蜜口味 450克",
+    "ja": "Carman's オーストラリア産オーツ麦 ハニークランチ 450g",
+    "ko": "Carman's 호주산 오트밀 허니 크런치 450g",
+    "src": "ai"
   },
   "Robert Mondavi Private Selection Bourbon Barrel Aged Chardonnay Bottle 750mL": {
     "zh": "Robert Mondavi Private Selection 波本桶陳年夏多內白酒 750毫升",
@@ -205467,9 +205485,10 @@
     "src": "ai"
   },
   "Hard Rated Orange Lemon Cans 375mL x 24 pack": {
-    "zh": "硬級橘色檸檬罐 375mL x 24 包",
-    "ja": "ハードオレンジレモン缶 375mL×24パック",
-    "ko": "하드 등급 오렌지 레몬 캔 375mL x 24팩"
+    "zh": "Hard Rated 柳橙檸檬氣泡酒 375毫升 x 24入",
+    "ja": "Hard Rated オレンジレモン缶 375ml x 24個入",
+    "ko": "Hard Rated 오렌지 레몬 캔 375ml x 24개입",
+    "src": "ai"
   },
   "Sheep Dog Peanut Butter Whiskey Liqueur 700mL": {
     "zh": "Sheep Dog 花生醬威士忌利口酒 700毫升",
@@ -205604,11 +205623,11 @@
     "src": "ai"
   },
   "Smirnoff Ice Double Black Orange 6pct Cans 375mL x 4 pack": {
-    "zh": "Smirnoff Ice 6%酒精濃度雙黑柳橙調酒 375毫升 x 4入",
-    "ja": "Smirnoff Ice ダブルブラック オレンジ 6% 缶 375mL x 4個入",
-    "ko": "Smirnoff Ice 더블 블랙 오렌지 6% 캔 375mL x 4개입",
+    "zh": "Smirnoff Ice 雙倍黑橘子調酒 6% 375毫升 x 4入",
+    "ja": "Smirnoff Ice ダブルブラックオレンジ 6% 375ml x 4個入",
+    "ko": "Smirnoff Ice 더블 블랙 오렌지 6% 375ml x 4개입",
     "src": "ai",
-    "qa_tries": 1
+    "qa_tries": 2
   },
   "Ocean Spray Craisins Reduced Sugar 150g": {
     "zh": "Ocean Spray 減糖蔓越莓乾 150克",
@@ -205743,9 +205762,10 @@
     "src": "ai"
   },
   "HP Original BBQ Sauce 99% Fat Free Brown Sauce 390mL": {
-    "zh": "HP 原廠燒烤醬 99% 無脂棕色醬 390mL",
-    "ja": "HP オリジナル BBQ ソース 99% 無脂肪ブラウンソース 390mL",
-    "ko": "HP 오리지널 바베큐 소스 99% 무지방 브라운 소스 390mL"
+    "zh": "HP 經典BBQ 99%零脂肪棕醬 390毫升",
+    "ja": "HP オリジナル BBQソース 99%脂肪ゼロ ブラウンソース 390ml",
+    "ko": "HP 오리지널 BBQ 소스 99% 지방 무첨가 브라운 소스 390ml",
+    "src": "ai"
   },
   "Whole Kids Teething Rusk 6m+ 8 pack": {
     "zh": "Whole Kids 磨牙餅 6個月以上 8入",
@@ -205836,9 +205856,10 @@
     "src": "ai"
   },
   "Calbee Grill-A-Corn BBQ Flavour 80g": {
-    "zh": "Calbee Grill-玉米烤肉口味 80g",
-    "ja": "カルビー グリル・ア・コーン BBQ味 80g",
-    "ko": "칼비 그릴어콘 바비큐맛 80g"
+    "zh": "Calbee 烤玉米條 BBQ口味 80克",
+    "ja": "Calbee グリルコーン BBQ味 80g",
+    "ko": "Calbee 그릴 콘 BBQ 맛 80g",
+    "src": "ai"
   },
   "Ingham's Sweet Chilli Chicken Tenders 1kg": {
     "zh": "Ingham's 甜辣雞柳條 1公斤",
@@ -205872,14 +205893,16 @@
     "src": "ai"
   },
   "Carman's Protein Bars Peanut Butter 4 pack": {
-    "zh": "Carman's 蛋白棒花生醬 4 包",
-    "ja": "カーマンズ プロテイン バー ピーナッツバター 4 パック",
-    "ko": "Carman's 프로틴바 땅콩버터 4팩"
+    "zh": "Carman's 花生醬蛋白棒 4入",
+    "ja": "Carman's プロテインバー ピーナッツバター 4個入",
+    "ko": "Carman's 프로틴바 피넛버터 4개입",
+    "src": "ai"
   },
   "Gelativo Mango Sorbet Cups 125mL x 4 pack": {
-    "zh": "Gelativo 芒果冰淇淋杯 125mL x 4 件裝",
-    "ja": "ジェラティーボ マンゴーシャーベットカップ 125mL×4個パック",
-    "ko": "젤라티보 망고 셔벗 컵 125mL x 4팩"
+    "zh": "Gelativo 芒果雪酪杯 125毫升 x 4入",
+    "ja": "Gelativo マンゴーソルベ カップ 125ml x 4個入",
+    "ko": "Gelativo 망고 소르베 컵 125ml x 4개입",
+    "src": "ai"
   },
   "Suntory -196 Lemon 9% Cans 250mL x 4 pack": {
     "zh": "Suntory -196 檸檬沙瓦 9% 250毫升 x 4入",
@@ -206774,14 +206797,16 @@
     "src": "ai"
   },
   "Gaviscon Dual Action Heartburn & Indigestion Chewable Tablets 32 pack": {
-    "zh": "Gaviscon 雙效胃灼熱和消化不良咀嚼片 32 片",
-    "ja": "Gaviscon デュアル アクション胸焼けおよび消化不良チュアブル タブレット 32 パック",
-    "ko": "개비스콘 듀얼 액션 속쓰림 및 소화불량 츄어블 정제 32팩"
+    "zh": "Gaviscon 雙效胃灼熱與消化不良咀嚼錠 32入",
+    "ja": "Gaviscon デュアルアクション 胸焼け・消化不良用 チュアブル錠 32個入",
+    "ko": "Gaviscon 듀얼 액션 속쓰림 및 소화불량 츄어블정 32개입",
+    "src": "ai"
   },
   "Goulburn River Trout Hot Smoked Rainbow Trout 350g": {
-    "zh": "古爾本河鱒魚熱燻虹鱒魚 350g",
-    "ja": "ゴールバーン リバートラウト ホットスモークニジマス 350g",
-    "ko": "골번 강 송어 핫 훈제 무지개 송어 350g"
+    "zh": "Goulburn River Trout 熱燻虹鱒 350克",
+    "ja": "Goulburn River Trout ホットスモーク レインボートラウト 350g",
+    "ko": "Goulburn River Trout 핫 훈제 무지개송어 350g",
+    "src": "ai"
   },
   "Amos Peelerz Assorted Fruit Mix Lollies 140g": {
     "zh": "Amos Peelerz 剝皮軟糖 綜合水果口味 140g",
@@ -206820,9 +206845,10 @@
     "src": "ai"
   },
   "Carman's Protein Bars Salted Caramel Nut Butter 5 pack": {
-    "zh": "Carman's 蛋白棒鹹焦糖堅果奶油 5 包",
-    "ja": "カーマンズ プロテイン バー ソルテッド キャラメル ナッツ バター 5 パック",
-    "ko": "Carman's 프로틴 바 솔티드 카라멜 너트 버터 5팩"
+    "zh": "Carman's 海鹽焦糖堅果醬蛋白棒 5入",
+    "ja": "Carman's プロテインバー 塩キャラメルナッツバター 5個入",
+    "ko": "Carman's 프로틴바 솔티드 카라멜 넛버터 5개입",
+    "src": "ai"
   },
   "Tommee Tippee Natural Start Fast Flow Teats 2 pack": {
     "zh": "Tommee Tippee 自然親餵奶嘴 高流量（2入）",
@@ -206940,9 +206966,10 @@
     "src": "ai"
   },
   "Campos Liquid Coffee Sachets Vanilla 8 pack": {
-    "zh": "Campos 液體咖啡袋香草 8 包",
-    "ja": "Campos リキッドコーヒーサシェ バニラ 8 パック",
-    "ko": "Campos 리퀴드 커피 향낭 바닐라 8팩"
+    "zh": "Campos 香草風味液態咖啡沖泡包 8入",
+    "ja": "Campos リキッドコーヒー バニラ 8本入",
+    "ko": "Campos 리퀴드 커피 바닐라 8개입",
+    "src": "ai"
   },
   "Ruffie Frozen Chicken Pad Thai With Rice Noodles Bowl 350g": {
     "zh": "Ruffie 冷凍雞肉泰式炒河粉碗 350克",
@@ -206987,9 +207014,10 @@
     "src": "ai"
   },
   "Hart & Soul Chicken Bone Broth Soup 350g": {
-    "zh": "Hart & Soul 雞骨湯 350g",
-    "ja": "ハートアンドソウル 鶏ガラスープ 350g",
-    "ko": "하트앤소울 닭뼈육수 수프 350g"
+    "zh": "Hart & Soul 雞骨高湯 350克",
+    "ja": "Hart & Soul チキンボーンブロススープ 350g",
+    "ko": "Hart & Soul 치킨 본 브로스 수프 350g",
+    "src": "ai"
   },
   "Vita Pet Duck Tenders Dog Treats 100g": {
     "zh": "Vita Pet 鴨肉條犬用零食 100克",
@@ -207028,9 +207056,10 @@
     "src": "ai"
   },
   "Bosisto's Lavender Spray 125g": {
-    "zh": "Bosisto's 薰衣草噴霧 125g",
-    "ja": "ボシスト ラベンダー スプレー 125g",
-    "ko": "보시스토 라벤더 스프레이 125g"
+    "zh": "Bosisto's 薰衣草香氛噴霧 125克",
+    "ja": "Bosisto's ラベンダーの香りスプレー 125g",
+    "ko": "Bosisto's 라벤더 향 스프레이 125g",
+    "src": "ai"
   },
   "Arkadia Chai Tea Vanilla 240g": {
     "zh": "Arkadia 香草印度奶茶粉 240克",
@@ -207093,9 +207122,10 @@
     "src": "ai"
   },
   "Cadbury Milk Chocolate Mini Rolls 115g 5 pack": {
-    "zh": "吉百利牛奶巧克力迷你捲 115 克 5 包",
-    "ja": "キャドバリー ミルクチョコレート ミニロール 115g 5個パック",
-    "ko": "캐드버리 밀크초콜릿 미니롤 115g 5팩"
+    "zh": "Cadbury 牛奶巧克力迷你蛋糕捲 115克（5入）",
+    "ja": "Cadbury ミルクチョコレート ミニロール 115g 5個入",
+    "ko": "Cadbury 밀크 초콜릿 미니 롤 115g 5개입",
+    "src": "ai"
   },
   "Open Paddock Chicken Kibble & Air Dried Meat Dog Food 6kg": {
     "zh": "Open Paddock 雞肉乾糧與風乾肉塊成犬飼料 6公斤",
@@ -207231,14 +207261,16 @@
     "src": "ai"
   },
   "Goodness Bake Classic Caramel Slice 220g": {
-    "zh": "Goodness Bake 經典焦糖片 220g",
-    "ja": "グッドネスベイク クラシックキャラメルスライス 220g",
-    "ko": "굿니스 베이크 클래식 카라멜 슬라이스 220g"
+    "zh": "Goodness Bake 經典焦糖切片餅乾 220克",
+    "ja": "Goodness Bake クラシックキャラメルスライス 220g",
+    "ko": "Goodness Bake 클래식 카라멜 슬라이스 220g",
+    "src": "ai"
   },
   "Castello Extra Creamy Mild Blue Cheese 100g": {
-    "zh": "Castello 特級奶油溫和藍紋乳酪 100 克",
-    "ja": "カステッロ エクストラクリーミーマイルドブルーチーズ 100g",
-    "ko": "카스텔로 엑스트라 크리미 마일드 블루치즈 100g"
+    "zh": "Castello 特濃溫和藍紋起司 100克",
+    "ja": "Castello エクストラクリーミー マイルドブルーチーズ 100g",
+    "ko": "Castello 엑스트라 크리미 마일드 블루치즈 100g",
+    "src": "ai"
   },
   "Abe's Bagels Thins Natural 6 pack": {
     "zh": "Abe's 經典原味貝果薄片 6入",
@@ -207247,9 +207279,10 @@
     "src": "ai"
   },
   "Grant Burge Merlot Hillcot Merlot 750mL": {
-    "zh": "Grant Burge 梅洛 Hillcot 梅洛 750mL",
-    "ja": "グラント バージ メルロー ヒルコット メルロー 750mL",
-    "ko": "그랜트 버지 메를로 힐콧 메를로 750mL"
+    "zh": "Grant Burge Hillcot 梅洛紅酒 750毫升",
+    "ja": "Grant Burge メルロー ヒルコット メルロー 750ml",
+    "ko": "Grant Burge 메를로 힐콧 메를로 750ml",
+    "src": "ai"
   },
   "La Mesita White Corn Tortilla Strips 400g": {
     "zh": "La Mesita 白玉米脆餅條 400克",
@@ -207258,9 +207291,10 @@
     "src": "ai"
   },
   "Galliano Liqueur Vanilla 500mL": {
-    "zh": "加利亞諾香草利口酒 500mL",
-    "ja": "ガリアーノ リキュール バニラ 500mL",
-    "ko": "갈리아노 리큐어 바닐라 500mL"
+    "zh": "Galliano 香草利口酒 500毫升",
+    "ja": "Galliano リキュール バニラ 500ml",
+    "ko": "Galliano 리큐르 바닐라 500ml",
+    "src": "ai"
   },
   "Mumm Cordon Rouge 750mL": {
     "zh": "Mumm Cordon Rouge 香檳 750毫升",
@@ -207300,9 +207334,10 @@
     "src": "ai"
   },
   "Heinz Baked Beans Fuego Chilli 420g": {
-    "zh": "亨氏焗豆火地果辣椒 420g",
-    "ja": "ハインツ ベイクドビーンズ フエゴチリ 420g",
-    "ko": "하인즈 베이크드 빈즈 푸에고 칠리 420g"
+    "zh": "Heinz 茄汁焗豆 火辣辣椒口味 420克",
+    "ja": "Heinz ベイクドビーンズ フエゴチリ 420g",
+    "ko": "Heinz 베이크드 빈스 푸에고 칠리 420g",
+    "src": "ai"
   },
   "Vitawerx Protein Milk Chocolate Block 100g": {
     "zh": "Vitawerx 高蛋白牛奶巧克力磚 100克",
@@ -207330,9 +207365,10 @@
     "src": "ai"
   },
   "Castello Soft Mild Blue Cheese 300g": {
-    "zh": "Castello 軟淡藍紋乳酪 300g",
-    "ja": "カステッロ ソフトマイルドブルーチーズ 300g",
-    "ko": "카스텔로 소프트 마일드 블루치즈 300g"
+    "zh": "Castello 軟質溫和藍紋起司 300克",
+    "ja": "Castello ソフトマイルドブルーチーズ 300g",
+    "ko": "Castello 소프트 마일드 블루치즈 300g",
+    "src": "ai"
   },
   "Remedy Organic Switchel Blood Orange 750mL": {
     "zh": "Remedy 有機血橙氣泡飲 750毫升",
@@ -209218,11 +209254,11 @@
     "src": "ai"
   },
   "Old Fat Unicorn Gsm 750mL": {
-    "zh": "Old Fat Unicorn GSM 紅葡萄酒 750毫升",
-    "ja": "Old Fat Unicorn GSM 750mL",
-    "ko": "Old Fat Unicorn GSM 750mL",
+    "zh": "Old Fat Unicorn GSM 紅酒 750毫升",
+    "ja": "Old Fat Unicorn GSM 赤ワイン 750ml",
+    "ko": "Old Fat Unicorn GSM 레드와인 750ml",
     "src": "ai",
-    "qa_tries": 1
+    "qa_tries": 2
   },
   "Lee Kum Kee Gluten Free Soy Sauce Soy Sauce 250mL": {
     "zh": "Lee Kum Kee 無麩質醬油 250毫升",
@@ -209706,10 +209742,10 @@
   },
   "Mr Chen's BBQ Pork Buns 550g": {
     "zh": "Mr Chen's 叉燒包 550克",
-    "ja": "Mr Chen's BBQ ポーク バオ 550g",
-    "ko": "Mr Chen's 바비큐 포크 번 550g",
+    "ja": "Mr Chen's チャーシューまん 550g",
+    "ko": "Mr Chen's 차슈 바오 550g",
     "src": "ai",
-    "qa_tries": 1
+    "qa_tries": 2
   },
   "Dare Iced Double Espresso Protein No Added Sugar 500mL": {
     "zh": "Dare 冰咖啡雙倍濃縮蛋白飲無加糖 500毫升",
@@ -211995,11 +212031,11 @@
     "src": "ai"
   },
   "Yangarra GSM 750mL": {
-    "zh": "Yangarra GSM 紅葡萄酒 750毫升",
-    "ja": "Yangarra GSM 750mL",
-    "ko": "Yangarra GSM 750mL",
+    "zh": "Yangarra GSM 紅酒 750毫升",
+    "ja": "Yangarra GSM 赤ワイン 750ml",
+    "ko": "Yangarra GSM 레드와인 750ml",
     "src": "ai",
-    "qa_tries": 1
+    "qa_tries": 2
   },
   "McGuigan Black Label Mid Red Bottle 750mL": {
     "zh": "McGuigan Black Label 中濃度紅葡萄酒 750毫升",
@@ -212080,11 +212116,11 @@
     "src": "ai"
   },
   "Hard Rated Lemon Lime 6pct Cans 330mL x 10 pack": {
-    "zh": "Hard Rated 6%酒精濃度檸檬萊姆調酒 330毫升 x 10入",
-    "ja": "Hard Rated レモンライム 6% 缶 330mL x 10個入",
-    "ko": "Hard Rated 레몬 라임 6% 캔 330mL x 10개입",
+    "zh": "Hard Rated 檸檬萊姆調酒 6% 330毫升 x 10入",
+    "ja": "Hard Rated レモンライム 6% 330ml x 10個入",
+    "ko": "Hard Rated 레몬 라임 6% 330ml x 10개입",
     "src": "ai",
-    "qa_tries": 1
+    "qa_tries": 2
   },
   "Fever-Tree Premium Indian Tonic Water Bottles 200mL x 4 pack": {
     "zh": "Fever-Tree 頂級通寧水 200毫升 x 4入",
@@ -214284,10 +214320,10 @@
   },
   "Tak Hing Egg Custard Bao 4 pack": {
     "zh": "Tak Hing 奶黃包 4入",
-    "ja": "Tak Hing エッグカスタード バオ 4個入",
-    "ko": "Tak Hing 에그 커스터드 번 4개입",
+    "ja": "Tak Hing カスタードまん 4個入",
+    "ko": "Tak Hing 커스터드 바오 4개입",
     "src": "ai",
-    "qa_tries": 1
+    "qa_tries": 2
   },
   "Macy and Tailor Oven Baked Pressed Pretzels Sea Salt 180g": {
     "zh": "Macy and Tailor 烤海鹽蝴蝶餅 180克",
@@ -214578,9 +214614,10 @@
     "src": "ai"
   },
   "Health Lab Choc Chip Protein Balls 40g x 5 pack": {
-    "zh": "Health Lab 巧克力片蛋白球 40 克 x 5 包",
-    "ja": "ヘルスラボ チョコチッププロテインボール 40g×5個パック",
-    "ko": "헬스랩 초코칩 프로틴볼 40g x 5팩"
+    "zh": "Health Lab 巧克力豆蛋白球 40克 x 5入",
+    "ja": "Health Lab チョコチッププロテインボール 40g x 5個入",
+    "ko": "Health Lab 초코칩 프로틴 볼 40g x 5개입",
+    "src": "ai"
   },
   "Well & Good Gluten Free Choc Fudge Brownie Mix 400g": {
     "zh": "Well & Good 無麩質巧克力軟糖布朗尼預拌粉 400克",
@@ -214602,9 +214639,10 @@
     "qa_tries": 1
   },
   "Go Get Squeaker Tennis Ball Medium Dog Toy 3 pack": {
-    "zh": "Go Get Squeaker 網球中型狗狗玩具 3 件裝",
-    "ja": "ゴーゲット スクイーカー テニス ボール 中型犬用おもちゃ 3 個パック",
-    "ko": "Go Get Squeaker 테니스 공 중형견 장난감 3팩"
+    "zh": "Go Get 發聲網球中型犬玩具 3入",
+    "ja": "Go Get スクイーカー テニスボール 中型犬用おもちゃ 3個入",
+    "ko": "Go Get 스퀴커 테니스공 중형견 장난감 3개입",
+    "src": "ai"
   },
   "Lay's Prawn Cocktail 150g": {
     "zh": "Lay's 樂事 雞尾酒蝦口味洋芋片 150克",
@@ -214625,9 +214663,10 @@
     "src": "ai"
   },
   "Carman's Protein Bars Iced Coffee Limited Edition 5 pack": {
-    "zh": "Carman's 蛋白質棒冰咖啡限量版 5 包",
-    "ja": "カーマンズ プロテイン バー アイスコーヒー 限定版 5 パック",
-    "ko": "카맨 프로틴바 아이스 커피 한정판 5팩"
+    "zh": "Carman's 高蛋白棒 冰咖啡口味 限量版 5入",
+    "ja": "Carman's プロテインバー アイスコーヒー 限定版 5本入",
+    "ko": "Carman's 단백질 바 아이스 커피 한정판 5개입",
+    "src": "ai"
   },
   "Uncle Tobys Plus Protein Breakfast Cereal 410g": {
     "zh": "Uncle Tobys Plus 高蛋白早餐麥片 410克",
@@ -214686,9 +214725,10 @@
     "src": "ai"
   },
   "Carman's Protein Bars Dark Choc & Cranberry 5 pack": {
-    "zh": "Carman's 蛋白棒黑巧克力與蔓越莓 5 包",
-    "ja": "カーマンズ プロテイン バー ダーク チョコ & クランベリー 5 パック",
-    "ko": "Carman's 프로틴 바 다크 초크 & 크랜베리 ​​5팩"
+    "zh": "Carman's 高蛋白棒 黑巧克力蔓越莓口味 5入",
+    "ja": "Carman's プロテインバー ダークチョコ＆クランベリー 5本入",
+    "ko": "Carman's 단백질 바 다크 초콜릿 & 크랜베리 5개입",
+    "src": "ai"
   },
   "Balter Eazy Hazy Cans 375mL x 4 Pack": {
     "zh": "Balter Eazy Hazy 渾濁啤酒 375毫升 x 4入",
@@ -214857,9 +214897,10 @@
     "src": "ai"
   },
   "Carman's Clusters Aussie Oat Crunchy Berry Crunch 450g": {
-    "zh": "Carman's Clusters 澳洲燕麥脆莓脆片 450g",
-    "ja": "カーマンズ クラスター オージー オーツ クランチー ベリー クランチ 450g",
-    "ko": "Carman's Clusters 호주 귀리 크런치 베리 크런치 450g"
+    "zh": "Carman's 澳洲燕麥脆片 莓果口味 450克",
+    "ja": "Carman's オーストラリア産オーツ麦 クランチベリー 450g",
+    "ko": "Carman's 호주산 오트밀 크런치 베리 450g",
+    "src": "ai"
   },
   "All Natural Bakery Bars Oat Slice Yog Peach & Mango 100g": {
     "zh": "All Natural Bakery 優格桃子芒果燕麥棒 100克",
@@ -215006,9 +215047,10 @@
     "src": "ai"
   },
   "Calbee Potato Chips Pizza Flavoured 55g": {
-    "zh": "Calbee 披薩口味洋芋片 55g",
-    "ja": "カルビー ポテトチップス ピザ味 55g",
-    "ko": "칼비 포테이토칩 피자맛 55g"
+    "zh": "Calbee 洋芋片 披薩口味 55克",
+    "ja": "Calbee ポテトチップス ピザ味 55g",
+    "ko": "Calbee 감자칩 피자 맛 55g",
+    "src": "ai"
   },
   "BC Snacks High Protein Bars Chocolate Brownie Crunch 4 pack": {
     "zh": "BC Snacks 高蛋白巧克力布朗尼酥脆棒 4入",
@@ -215153,14 +215195,16 @@
     "src": "ai"
   },
   "Carman's Protein Brownie Choc Nut Fudge 5 pack": {
-    "zh": "Carman's 蛋白質布朗尼巧克力堅果軟糖 5 包",
-    "ja": "カーマンズ プロテイン ブラウニー チョコ ナッツ ファッジ 5 パック",
-    "ko": "카맨 프로틴 브라우니 초크 너트 퍼지 5팩"
+    "zh": "Carman's 巧克力堅果軟糖蛋白布朗尼 5入",
+    "ja": "Carman's プロテインブラウニー チョコナッツファッジ 5個入",
+    "ko": "Carman's 프로틴 브라우니 초코 넛 퍼지 5개입",
+    "src": "ai"
   },
   "Castello Mini Cheeses Creamy Blue 5 pack": {
-    "zh": "Castello 迷你起司奶油藍 5 包",
-    "ja": "カステッロ ミニチーズ クリーミーブルー 5個パック",
-    "ko": "카스텔로 미니치즈 크리미블루 5팩"
+    "zh": "Castello 迷你奶油藍紋起司 5入",
+    "ja": "Castello ミニチーズ クリーミーブルー 5個入",
+    "ko": "Castello 미니 치즈 크리미 블루 5개입",
+    "src": "ai"
   },
   "Steggles Little Roast Chicken 1.1kg": {
     "zh": "Steggles 烤全雞 1.1公斤",
@@ -215230,9 +215274,10 @@
     "src": "ai"
   },
   "Grandin Sparkling Brut NV 750mL": {
-    "zh": "Grandin 起泡乾型香檳 NV 750mL",
-    "ja": "グランディン スパークリング ブリュット NV 750mL",
-    "ko": "그랜딘 스파클링 브뤼 NV 750mL"
+    "zh": "Grandin 不甜氣泡酒 750毫升",
+    "ja": "Grandin スパークリング ブリュット NV 750ml",
+    "ko": "Grandin 스파클링 브뤼 NV 750ml",
+    "src": "ai"
   },
   "Nicabate Quit Smoking Chewing Gum Regular Strength 2mg Nicotine 30 pack": {
     "zh": "Nicabate 戒菸口香糖 一般型 2毫克尼古丁 30入",
@@ -215241,9 +215286,10 @@
     "src": "ai"
   },
   "Healtheries Potato Stix Salt & Vinegar 120g 6 pack": {
-    "zh": "Healtheries 馬鈴薯 Stix 鹽醋 120 克 6 包",
-    "ja": "ヘルスリーズ ポテトスティックス ソルト＆ビネガー 120g 6パック",
-    "ko": "헬써리 감자스틱 소금&식초 120g 6팩"
+    "zh": "Healtheries 鹽醋風味馬鈴薯條 120克（6入）",
+    "ja": "Healtheries ポテトスティック ソルト＆ビネガー 120g（6個入）",
+    "ko": "Healtheries 포테이토 스틱 솔트 앤 비네거 120g（6개입）",
+    "src": "ai"
   },
   "Bickford's Super Berry Fruit Juice 1L": {
     "zh": "Bickford's 超級莓果汁 1公升",
@@ -215325,9 +215371,10 @@
     "src": "ai"
   },
   "Harris Freeze Dried Instant Coffee Smooth 300g": {
-    "zh": "Harris 凍乾即溶咖啡 300g",
-    "ja": "ハリス フリーズドライ インスタントコーヒー スムース 300g",
-    "ko": "해리스 동결건조 인스턴트 커피 스무스 300g"
+    "zh": "Harris 冷凍乾燥即溶咖啡 順口款 300克",
+    "ja": "Harris フリーズドライインスタントコーヒー スムース 300g",
+    "ko": "Harris 동결건조 인스턴트 커피 스무스 300g",
+    "src": "ai"
   },
   "Darrell Lea Christmas Crunchy Chocolate Balls 150g": {
     "zh": "Darrell Lea 聖誕節脆心巧克力球 150克",
@@ -215407,9 +215454,10 @@
     "src": "ai"
   },
   "Cadbury Milk Chocolate Coated Cherry & Almonds Bites 245g": {
-    "zh": "吉百利牛奶巧克力塗層櫻桃杏仁片 245 克",
-    "ja": "キャドバリー ミルクチョコレートコーティング チェリー&アーモンドバイツ 245g",
-    "ko": "캐드버리 밀크 초콜릿 코팅 체리 & 아몬드 바이츠 245g"
+    "zh": "Cadbury 牛奶巧克力櫻桃杏仁球 245克",
+    "ja": "Cadbury ミルクチョコレートコーティング チェリー＆アーモンドバイト 245g",
+    "ko": "Cadbury 밀크 초콜릿 코팅 체리 & 아몬드 바이트 245g",
+    "src": "ai"
   },
   "Tommee Tippee Classic Start Teats Medium Flow 3M+ 2 pack": {
     "zh": "Tommee Tippee 經典款奶嘴 中流量 3個月以上（2入）",
@@ -215431,11 +215479,11 @@
     "src": "ai"
   },
   "Frank's RedHot Dip'n Sauce Secret Chicken 354mL": {
-    "zh": "Frank's RedHot 秘製炸雞沾醬 354毫升",
-    "ja": "Frank's RedHot ディップソース シークレット チキン 354mL",
-    "ko": "Frank's RedHot 딥 소스 시크릿 치킨 354mL",
+    "zh": "Frank's RedHot 秘製雞肉沾醬 354毫升",
+    "ja": "Frank's RedHot シークレットチキンディップソース 354ml",
+    "ko": "Frank's RedHot 시크릿 치킨 디핑 소스 354ml",
     "src": "ai",
-    "qa_tries": 1
+    "qa_tries": 2
   },
   "Coco & Lucas' Frozen Butter Chicken & Jasmine Rice 220g": {
     "zh": "Coco & Lucas' 冷凍奶油雞肉香米飯 220克",
@@ -215488,11 +215536,11 @@
     "src": "ai"
   },
   "Vodka Cruiser Blueberry 10pct Cans 200mL x 4 pack": {
-    "zh": "Vodka Cruiser 藍莓風味10%酒精汽泡酒 200毫升 x 4入",
-    "ja": "Vodka Cruiser ブルーベリー 10% 缶 200mL x 4個入",
-    "ko": "Vodka Cruiser 블루베리 10% 캔 200mL x 4개입",
+    "zh": "Vodka Cruiser 藍莓調酒 10% 200毫升 x 4入",
+    "ja": "Vodka Cruiser ブルーベリー 10% 200ml x 4個入",
+    "ko": "Vodka Cruiser 블루베리 10% 200ml x 4개입",
     "src": "ai",
-    "qa_tries": 1
+    "qa_tries": 2
   },
   "19 Crimes Mid Strength Shiraz Bottle 750mL": {
     "zh": "19 Crimes 中濃度希拉茲紅葡萄酒 750毫升",
@@ -215597,9 +215645,10 @@
     "src": "ai"
   },
   "Gippsland Dairy Twist Yoghurt Strawberries & Cream 700g": {
-    "zh": "Gippsland Dairy Twist 優格草莓與奶油 700 克",
-    "ja": "ギップスランド デイリー ツイストヨーグルト ストロベリー＆クリーム 700g",
-    "ko": "깁스랜드 데어리 트위스트 요거트 딸기 & 크림 700g"
+    "zh": "Gippsland Dairy 草莓奶油風味優格 700克",
+    "ja": "Gippsland Dairy ツイストヨーグルト ストロベリー＆クリーム 700g",
+    "ko": "Gippsland Dairy 트위스트 요거트 스트로베리 & 크림 700g",
+    "src": "ai"
   },
   "Panadol Liquid Capsules With Paracetamol 500mg 16 pack": {
     "zh": "Panadol 乙醯胺酚液體膠囊 500毫克 16入",
@@ -215615,9 +215664,10 @@
     "qa_tries": 1
   },
   "Cadbury Milk Chocolate Covered Fruit & Nut 275g": {
-    "zh": "吉百利水果堅果牛奶巧克力 275 克",
-    "ja": "キャドバリー ミルクチョコレートカバード フルーツ&ナッツ 275g",
-    "ko": "캐드버리 밀크 초콜릿 커버드 과일 & 견과류 275g"
+    "zh": "Cadbury 牛奶巧克力水果堅果 275克",
+    "ja": "Cadbury ミルクチョコレートコーティング フルーツ＆ナッツ 275g",
+    "ko": "Cadbury 밀크 초콜릿 코팅 과일 & 견과류 275g",
+    "src": "ai"
   },
   "Australia's Own Lower Cholesterol Long Life Milk 1L": {
     "zh": "Australia's Own 低膽固醇保久乳 1公升",
@@ -215656,9 +215706,10 @@
     "src": "ai"
   },
   "Hard Rated Vodka Lemon, Zero Sugar Can 375mL x 24 case": {
-    "zh": "硬式檸檬伏特加，零糖罐裝 375mL x 24 箱",
-    "ja": "ハードレーテッド ウォッカ レモン ゼロシュガー 缶 375mL×24ケース",
-    "ko": "하드 등급 보드카 레몬 제로 슈거 캔 375mL x 24케이스"
+    "zh": "Hard Rated 伏特加檸檬氣泡酒 零糖款 375毫升 x 24入",
+    "ja": "Hard Rated ウォッカレモン ゼロシュガー缶 375ml x 24個入",
+    "ko": "Hard Rated 보드카 레몬 제로 슈가 캔 375ml x 24개입",
+    "src": "ai"
   },
   "Cottee's Thick 'n' Rich Caramel Sauce Ice Cream Topping 575g": {
     "zh": "Cottee's Thick 'n' Rich 焦糖醬冰淇淋淋醬 575克",
@@ -215673,9 +215724,10 @@
     "src": "ai"
   },
   "Carman's Protein Caramelised Biscuit Bars 5 pack": {
-    "zh": "Carman's 蛋白質焦糖餅乾棒 5 包",
-    "ja": "カーマンズ プロテイン キャラメリゼ ビスケット バー 5 パック",
-    "ko": "Carman's 프로틴 캐러멜라이즈 비스킷 바 5팩"
+    "zh": "Carman's 焦糖餅乾蛋白棒 5入",
+    "ja": "Carman's プロテインバー キャラメルビスケット 5個入",
+    "ko": "Carman's 프로틴바 카라멜라이즈드 비스킷 5개입",
+    "src": "ai"
   },
   "Yoplait Vanilla Yoghurt Punnets 160g x 6 pack": {
     "zh": "Yoplait 香草優格 160克 x 6入",
@@ -215726,9 +215778,10 @@
     "src": "ai"
   },
   "Health Lab Double Chocolate Protein Balls 40g x 5 pack": {
-    "zh": "Health Lab 雙巧克力蛋白球 40 克 x 5 包",
-    "ja": "ヘルスラボ ダブルチョコレートプロテインボール 40g×5個パック",
-    "ko": "헬스랩 더블초콜릿 프로틴볼 40g x 5팩"
+    "zh": "Health Lab 雙倍巧克力蛋白球 40克 x 5入",
+    "ja": "Health Lab ダブルチョコレートプロテインボール 40g x 5個入",
+    "ko": "Health Lab 더블 초콜릿 프로틴 볼 40g x 5개입",
+    "src": "ai"
   },
   "Arnott's Malt 'O' Milk Biscuits 250g": {
     "zh": "Arnott's 麥芽牛奶餅乾 250克",
