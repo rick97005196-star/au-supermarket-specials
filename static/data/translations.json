@@ -217705,10 +217705,11 @@
     "src": "ai"
   },
   "Ferrero Rocher T3 Star 37.5g": {
-    "zh": "Ferrero Rocher 星型巧克力 37.5克",
-    "ja": "Ferrero Rocher スターチョコレート 37.5g",
-    "ko": "Ferrero Rocher 별 모양 초콜릿 37.5g",
-    "src": "ai"
+    "zh": "Ferrero Rocher T3 星型巧克力 37.5克",
+    "ja": "Ferrero Rocher T3 スター 37.5g",
+    "ko": "Ferrero Rocher T3 스타 37.5g",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Yellowglen Nv Pink 750ml 1 Each": {
     "zh": "Yellowglen NV 粉紅氣泡酒 750毫升",
@@ -217738,6 +217739,48 @@
     "zh": "Fancy Feast Petite Delights 雞肉、鮭魚與白肉魚貓罐頭 40克 x 6入",
     "ja": "Fancy Feast Petite Delights チキン・サーモン・白身魚入り猫用フード 40g x 6個入",
     "ko": "Fancy Feast Petite Delights 닭고기, 연어, 흰살생선 캣푸드 40g x 6개입",
+    "src": "ai"
+  },
+  "Taylors Jaraman Chardonnay 750ml 1 Each": {
+    "zh": "Taylors Jaraman 夏多內白葡萄酒 750毫升",
+    "ja": "Taylors Jaraman シャルドネ 750ml",
+    "ko": "Taylors Jaraman 샤르도네 750ml",
+    "src": "ai"
+  },
+  "Ferrero Rocher Christmas Crackers 5 Pack 62.5g": {
+    "zh": "Ferrero Rocher 聖誕拉炮巧克力 62.5克（5入）",
+    "ja": "Ferrero Rocher クリスマス クラッカー 62.5g（5個入）",
+    "ko": "Ferrero Rocher 크리스마스 크래커 62.5g（5개입）",
+    "src": "ai"
+  },
+  "Mildara Limestone Coast Cabernet Sauvignon 750ml 1 Each": {
+    "zh": "Mildara Limestone Coast 卡本內蘇維濃紅葡萄酒 750毫升",
+    "ja": "Mildara Limestone Coast カベルネ・ソーヴィニヨン 750ml",
+    "ko": "Mildara Limestone Coast 카베르네 소비뇽 750ml",
+    "src": "ai"
+  },
+  "Fancy Feast Delights Shredded Cat Food With Whitefish Salmon And Tuna 6x40g 240g": {
+    "zh": "Fancy Feast Delights 貓罐頭 白身魚、鮭魚與鮪魚口味 40克 x 6入",
+    "ja": "Fancy Feast Delights 猫用フード 白身魚・鮭・鮪 40g x 6個入",
+    "ko": "Fancy Feast Delights 고양이 사료 흰살생선·연어·참치 맛 40g x 6개입",
+    "src": "ai"
+  },
+  "Bonne Maman Plum Conserve 370g": {
+    "zh": "Bonne Maman 李子果醬 370克",
+    "ja": "Bonne Maman プラム コンサーブ 370g",
+    "ko": "Bonne Maman 자두 콩피튀르 370g",
+    "src": "ai"
+  },
+  "Coles Asia Sweet Chilli Sauce 310mL": {
+    "zh": "Coles Asia 甜辣醬 310毫升",
+    "ja": "Coles Asia スイートチリソース 310ml",
+    "ko": "Coles Asia 스위트 칠리소스 310ml",
+    "src": "ai"
+  },
+  "Grant's Triple Wood Scotch Whisky 700ml 1 Each": {
+    "zh": "Grant's Triple Wood 蘇格蘭威士忌 700毫升",
+    "ja": "Grant's Triple Wood スコッチウイスキー 700ml",
+    "ko": "Grant's Triple Wood 스카치 위스키 700ml",
     "src": "ai"
   }
 }
