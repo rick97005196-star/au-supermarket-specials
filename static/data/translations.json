@@ -216562,9 +216562,9 @@
     "src": "ai"
   },
   "Telstra T-Prime": {
-    "zh": "Telstra T-Prime",
-    "ja": "Telstra T-Prime",
-    "ko": "Telstra T-Prime",
+    "zh": "Telstra T-Prime 手機",
+    "ja": "Telstra T-Prime スマートフォン",
+    "ko": "Telstra T-Prime 스마트폰",
     "src": "ai"
   },
   "Handee Ultra Paper Towel 2 Pack": {
@@ -216634,10 +216634,11 @@
     "src": "ai"
   },
   "L'Oréal Paris Infallible 3 Second Mist 75mL": {
-    "zh": "L'Oréal Paris 定妝噴霧 75毫升",
-    "ja": "L'Oréal Paris インファリブル 3セカンドミスト 75ml",
-    "ko": "L'Oréal Paris 인팔리블 3 세컨드 미스트 75ml",
-    "src": "ai"
+    "zh": "L'Oréal Paris Infallible 3秒定妝噴霧 75毫升",
+    "ja": "L'Oréal Paris Infallible 3秒セッティングミスト 75ml",
+    "ko": "L'Oréal Paris Infallible 3초 세팅 미스트 75ml",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Funday Share Bags 135g": {
     "zh": "Funday 分享包軟糖 135克",
@@ -217030,10 +217031,11 @@
     "src": "ai"
   },
   "Nutella Chocolate Hazelnut Spread 750g": {
-    "zh": "Nutella 巧克榛果醬 750克",
+    "zh": "Nutella 巧克力榛果抹醬 750克",
     "ja": "Nutella チョコレートヘーゼルナッツスプレッド 750g",
     "ko": "Nutella 초콜릿 헤이즐넛 스프레드 750g",
-    "src": "ai"
+    "src": "ai",
+    "qa_tries": 1
   },
   "Sensodyne Repair & Protect Sensitive Toothpaste 100g": {
     "zh": "Sensodyne 抗敏修護護齦牙膏 100克",
@@ -217432,10 +217434,11 @@
     "src": "ai"
   },
   "Infuzions 90g": {
-    "zh": "Infuzions 餅乾 90克",
-    "ja": "Infuzions 90g",
-    "ko": "Infuzions 90g",
-    "src": "ai"
+    "zh": "Infuzions 洋芋片 90克",
+    "ja": "Infuzions ポテトチップス 90g",
+    "ko": "Infuzions 감자칩 90g",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Philadelphia Cream Cheese Spread Tub 215-250g – From the Fridge": {
     "zh": "Philadelphia 奶油乳酪抹醬盒 215-250克",
