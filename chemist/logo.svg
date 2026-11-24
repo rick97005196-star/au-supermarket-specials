@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="10 10 100 100" role="img" aria-label="小黃屋特價查詢">
+  <!-- 膠囊（右上，斜放） -->
+  <g transform="rotate(35 88 30)">
+    <rect x="74" y="22" width="30" height="15" rx="7.5" fill="#FFFFFF" stroke="#2A2F36" stroke-width="3.5"/>
+    <path d="M89 22H96.5A7.5 7.5 0 0 1 96.5 37H89Z" fill="#F28B7D"/>
+    <rect x="74" y="22" width="30" height="15" rx="7.5" fill="none" stroke="#2A2F36" stroke-width="3.5"/>
+    <path d="M89 22V37" stroke="#2A2F36" stroke-width="3"/>
+  </g>
+  <!-- 藥瓶蓋 -->
+  <rect x="30" y="22" width="44" height="16" rx="4" fill="#5FA8A0" stroke="#2A2F36" stroke-width="4" stroke-linejoin="round"/>
+  <path d="M38 26V34M46 26V34M54 26V34M62 26V34" stroke="#2A2F36" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- 藥瓶身（黃色），右側陰影 -->
+  <path d="M26 44Q26 38 32 38H72Q78 38 78 44V98Q78 104 72 104H32Q26 104 26 98Z" fill="#FFE7A3"/>
+  <path d="M68 38H72Q78 38 78 44V98Q78 104 72 104H68Z" fill="#F5CF6E"/>
+  <path d="M26 44Q26 38 32 38H72Q78 38 78 44V98Q78 104 72 104H32Q26 104 26 98Z" fill="none" stroke="#2A2F36" stroke-width="4" stroke-linejoin="round"/>
+  <!-- 標籤 -->
+  <rect x="31" y="54" width="42" height="36" rx="4" fill="#FFFFFF" stroke="#2A2F36" stroke-width="3" stroke-linejoin="round"/>
+  <!-- 綠色加號（不是紅十字） -->
+  <path d="M52 45V51M49 48H55" stroke="#2F7D46" stroke-width="3" stroke-linecap="round"/>
+  <!-- 臉 -->
+  <ellipse cx="44" cy="68" rx="3.8" ry="4.8" fill="#2A2F36"/>
+  <ellipse cx="60" cy="68" rx="3.8" ry="4.8" fill="#2A2F36"/>
+  <circle cx="45.3" cy="66.2" r="1.4" fill="#fff"/>
+  <circle cx="61.3" cy="66.2" r="1.4" fill="#fff"/>
+  <path d="M47.5 76q4.5 5 9 0" fill="none" stroke="#2A2F36" stroke-width="3" stroke-linecap="round"/>
+  <!-- 特價標籤 -->
+  <g transform="rotate(-12 92 88)">
+    <path d="M86 73C88 77 89 80 90 82" fill="none" stroke="#2A2F36" stroke-width="2.5" stroke-linecap="round"/>
+    <rect x="78" y="78" width="28" height="22" rx="6" fill="#FFD84D" stroke="#2A2F36" stroke-width="4" stroke-linejoin="round"/>
+    <text x="92" y="94" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="800" fill="#2A2F36">%</text>
+  </g>
+</svg>

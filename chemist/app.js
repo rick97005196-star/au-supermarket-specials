@@ -44,19 +44,23 @@ function safeUrl(u, img) {
 }
 function norm(s) { return String(s || '').toLowerCase().normalize('NFKD').replace(/[̀-ͯ]/g, '').replace(/['’`]/g, '').replace(/\s+/g, ' '); }
 function money(n) { return '$' + Number(n).toFixed(2); }
-function dateZh(r) {
-  // "Thu 12 Nov 2026 - Wed 25 Nov 2026" -> "11/12（四）到 11/25（三）"
-  const M = { Jan: 1, Feb: 2, Mar: 3, Apr: 4, May: 5, Jun: 6, Jul: 7, Aug: 8, Sep: 9, Oct: 10, Nov: 11, Dec: 12 };
-  const W = { Mon: '一', Tue: '二', Wed: '三', Thu: '四', Fri: '五', Sat: '六', Sun: '日' };
-  const p = String(r || '').split(/\s+-\s+/).map((s) => s.match(/^(\w{3})\s+(\d{1,2})\s+(\w{3})/));
-  if (p.length !== 2 || !p[0] || !p[1]) return r || '';
-  const f = (m) => `${M[m[3]] || m[3]}/${m[2]}（${W[m[1]] || m[1]}）`;
-  return `${f(p[0])}到 ${f(p[1])}`;
-}
 
 // 'cerave-moisturising-cream-454g' -> 'Cerave Moisturising Cream 454g' (same as scrapers/chemist_all.py)
 function nameFromSlug(slug) {
   return String(slug || '').split('-').filter(Boolean).map((w) => (/^\d/.test(w) ? w : w[0].toUpperCase() + w.slice(1))).join(' ');
+}
+
+// "Thu 12 Nov 2026 - Wed 25 Nov 2026" -> "11月12日 – 11月25日"
+function heroDate(r) {
+  const M = { Jan: 1, Feb: 2, Mar: 3, Apr: 4, May: 5, Jun: 6, Jul: 7, Aug: 8, Sep: 9, Oct: 10, Nov: 11, Dec: 12 };
+  const p = [...String(r || '').matchAll(/(\d{1,2})\s+([A-Za-z]{3})/g)].slice(0, 2);
+  return p.length === 2 ? p.map((m) => `${M[m[2]]}月${m[1]}日`).join(' – ') : (r || '');
+}
+function ago(d) {
+  const min = Math.max(0, Math.round((Date.now() - d.getTime()) / 60000));
+  if (min < 60) return `${min} 分鐘前更新`;
+  if (min < 48 * 60) return `${Math.round(min / 60)} 小時前更新`;
+  return `${Math.round(min / 1440)} 天前更新`;
 }
 
 function terms(q) {
@@ -108,32 +112,42 @@ function render() {
   } else if (!list.length) empty.textContent = '找不到符合的商品，試試英文品牌名。';
 }
 
+function priceHTML(display, price) {
+  // "$5.50" -> <sup>$</sup>5<sup>.50</sup> like the supermarket site; "2 for $36.99" / "From $9.99" kept in words
+  const txt = display || money(price);
+  const m = txt.match(/^(From\s+)?\$(\d+)(?:\.(\d{2}))?$/i);
+  if (m) return `<sup>$</sup>${m[2]}${m[3] ? `<sup>.${m[3]}</sup>` : ''}${m[1] ? '<small>起</small>' : ''}`;
+  const two = txt.match(/^(\d+)\s*for\s*\$([\d.]+)$/i);
+  if (two) return `<sup>$</sup>${esc(two[2])}<small>${esc(two[1])} 件</small>`;
+  return esc(txt);
+}
+
 function card(it) {
   const url = safeUrl(it.url);
-  const tagOpen = url ? `<a class="card" href="${esc(url)}" target="_blank" rel="noopener">` : '<div class="card">';
-  const tagClose = url ? '</a>' : '</div>';
-  const img = safeUrl(it.image_url, true);
-  const pic = img ? `<div class="pic"><img src="${esc(img)}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer"></div>` : '';
-  const zh = it.zh ? `<div class="zh">${esc(it.zh)}</div>` : '';
-  const en = `<div class="${it.zh ? 'en' : 'zh'}">${esc(it.title)}</div>`;
+  const open = (cls) => (url ? `<a class="card ${cls}" href="${esc(url)}" target="_blank" rel="noopener">` : `<div class="card ${cls}">`);
+  const close = url ? '</a>' : '</div>';
+  const dept = `<div class="dept">${esc(DEPT_NAME[it.dept] || '')}</div>`;
   if (!it.special) {
-    return `${tagOpen}<div class="info">${en}<div class="dept">${esc(DEPT_NAME[it.dept] || '')}</div><div class="go">目前沒有型錄特價・<b>到官網看價格</b> ↗</div></div>${tagClose}`;
+    // the shop's own product photo (same address pattern as its product pages); hidden if there is none
+    const thumb = /^\d+$/.test(it.pid) ? `<span class="thumb"><img src="https://static.chemistwarehouse.com.au/ams/media/pi/${it.pid}/2DF_200.jpg" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.parentNode.remove()"></span>` : '';
+    return `${open('row')}${thumb}<div class="info">${dept}<div class="zh">${esc(it.title)}</div></div><span class="go">官網看價 ↗</span>${close}`;
   }
-  let now = esc(it.price_display || money(it.price));
-  if (/^From\s+/i.test(it.price_display || '')) now = esc(it.price_display.replace(/^From\s+/i, '')) + ' 起';
-  let extra = '';
+  const img = safeUrl(it.image_url, true);
+  const pic = `<div class="pic">${img ? `<img src="${esc(img)}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer">` : ''}</div>`;
+  const half = /1\/2 price/i.test(it.discount_desc);
+  const badge = half ? '<span class="badge half">半價</span>' : (it.period === 'next' ? '<span class="badge">下一檔型錄</span>' : '');
+  const title = it.zh ? `<div class="zh">${esc(it.zh)}</div><div class="en">${esc(it.title)}</div>` : `<div class="zh">${esc(it.title)}</div>`;
+  let extra = '<span class="special-note">型錄特價</span>';
   if (it.was_price > 0 && it.save_amount > 0) {
     const lab = /off RRP/i.test(it.discount_desc) ? '建議售價' : '原價';
-    const half = /1\/2 price/i.test(it.discount_desc) ? '半價・' : '';
-    extra = `<span class="was">${lab} ${money(it.was_price)}</span><span class="save">${half}省 ${money(it.save_amount)}</span>`;
+    extra = `<span class="was">${lab} <s>${money(it.was_price)}</s></span><span class="save">省 ${money(it.save_amount)}</span>`;
   }
-  const tag = it.period === 'next' ? '下一檔型錄' : '型錄特價';
-  return `${tagOpen}${pic}<div class="info"><span class="tag">${tag}</span>${zh}${en}<div class="price"><span class="now">${now}</span>${extra}</div></div>${tagClose}`;
+  return `${open('')}${pic}${badge}${dept}${title}<div class="price"><div class="now">${priceHTML(it.price_display, it.price)}</div>${extra}</div>${close}`;
 }
 
 function setScope(scope) {
   state.scope = scope; state.dept = ''; state.shown = PAGE;
-  document.querySelectorAll('.seg button').forEach((b) => b.setAttribute('aria-selected', String(b.dataset.scope === scope)));
+  document.querySelectorAll('.seg-btn').forEach((b) => { const on = b.dataset.scope === scope; b.setAttribute('aria-selected', String(on)); b.classList.toggle('is-active', on); });
   render();
 }
 
@@ -143,7 +157,7 @@ async function main() {
     const r = await fetch('data/products.json', { cache: 'no-cache' });
     data = await r.json();
   } catch (e) {
-    $('sub').textContent = '資料載入失敗，請重新整理。';
+    $('heroDate').textContent = '資料載入失敗，請重新整理';
     return;
   }
   SPECIALS = (data.specials || []).map((x) => Object.assign(x, { special: true }));
@@ -155,12 +169,16 @@ async function main() {
   }));
   ALL = SPECIALS.concat(listed);
   for (const it of ALL) it._s = norm(`${it.title} ${it.zh || ''} ${DEPT_NAME[it.dept] || ''}`);
-  const ranges = (data.date_ranges || []).map(dateZh).join('、');
-  $('sub').textContent = `本期型錄 ${ranges}，${SPECIALS.length} 件特價`;
+  $('heroDate').textContent = (data.date_ranges || []).map(heroDate).join('、') || '小黃屋特價';
+  $('statSpecial').textContent = SPECIALS.length;
+  $('statSave').textContent = SPECIALS.filter((x) => x.save_amount > 0).length;
+  $('statHalf').textContent = SPECIALS.filter((x) => /1\/2 price/i.test(x.discount_desc)).length;
+  $('statAll').textContent = ALL.length.toLocaleString();
   $('nSpecial').textContent = SPECIALS.length;
   $('nAll').textContent = ALL.length.toLocaleString();
   if (!(data.products || []).length) $('nAll').textContent = SPECIALS.length;
   const d = data.updated ? new Date(data.updated) : null;
+  if (d && !isNaN(d)) $('updatedAgo').textContent = ago(d);
   if (d && !isNaN(d)) $('updated').textContent = `資料更新：${d.toLocaleString('zh-TW', { timeZone: 'Australia/Sydney', dateStyle: 'medium', timeStyle: 'short' })}（雪梨時間）`;
   render();
 }
@@ -174,6 +192,11 @@ $('q').addEventListener('input', (e) => {
 $('clear').addEventListener('click', () => { $('q').value = ''; $('clear').hidden = true; state.q = ''; state.shown = PAGE; render(); $('q').focus(); });
 $('sort').addEventListener('change', (e) => { state.sort = e.target.value; state.shown = PAGE; render(); });
 document.querySelector('.seg').addEventListener('click', (e) => { const b = e.target.closest('button'); if (b) setScope(b.dataset.scope); });
+['魚油', '維他命', '益生菌', '膠原蛋白', '防曬', '止痛', '感冒', '牙膏', '香水', 'Swisse'].forEach((w) => {
+  const b = document.createElement('button'); b.type = 'button'; b.textContent = w;
+  b.addEventListener('click', () => { $('q').value = w; $('clear').hidden = false; state.q = w; state.dept = ''; state.shown = PAGE; render(); });
+  $('hot').appendChild(b);
+});
 $('chips').addEventListener('click', (e) => { const b = e.target.closest('.chip'); if (b) { state.dept = b.dataset.dept; state.shown = PAGE; render(); } });
 $('more').addEventListener('click', () => { state.shown += PAGE; render(); });
 $('empty').addEventListener('click', (e) => { if (e.target.id === 'toAll') setScope('all'); });
