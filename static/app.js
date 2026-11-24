@@ -679,10 +679,10 @@ function regionize(list) {
 }
 
 // ---------- Stores ----------
-// Chemist Warehouse (小黃屋): its printed catalogue (about two weeks, in store). Not a supermarket: left out of
-// the 三家比價 comparisons (same product / same kind / same brand), shown with its own tab and colour.
+// Chemist Warehouse (小黃屋): since 2026-11-24 it has its own site (chemist/, au-pharmacy-specials.pages.dev).
+// specials.json still carries its catalogue (the same update reads it), but this site leaves it out when loading.
 const CW_STORE = 'Chemist Warehouse';
-const STORE_LIST = ['Woolworths', 'Coles', 'ALDI', CW_STORE];
+const STORE_LIST = ['Woolworths', 'Coles', 'ALDI'];
 function storeDotClass(s) { return s === 'Coles' ? 'dot-coles' : s === 'ALDI' ? 'dot-aldi' : s === CW_STORE ? 'dot-cw' : 'dot-woolies'; }
 function storeColorVar(s) { return s === 'Coles' ? 'var(--coles)' : s === 'ALDI' ? 'var(--aldi)' : s === CW_STORE ? 'var(--cw)' : 'var(--woolies)'; }
 function storeLabel(s) { return s === CW_STORE ? t('store_cw') : s; }
@@ -732,7 +732,7 @@ async function getStaticSpecials(force) {
             // an older specials.json still carries next week itself (the two files may go online a moment apart)
             const all = Array.isArray(next) ? data.filter(x => x && x.period !== 'next').concat(next) : data;
             rawHasNext = Array.isArray(next) || data.some(x => x && x.period === 'next');
-            rawSpecials = all.map(sanitizeProduct).filter(Boolean);
+            rawSpecials = all.map(sanitizeProduct).filter(x => x && x.store !== CW_STORE);   // 小黃屋: own site
             staticRegular = regularPrices(reg);
             weekRoll = null;
             rawSpecials = rollWeek(rawSpecials);

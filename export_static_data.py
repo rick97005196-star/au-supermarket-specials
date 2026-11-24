@@ -223,6 +223,8 @@ def _region_stats(region):
         for it in items:
             if it.get('period') != period or ('rg' in it and region not in it['rg']):
                 continue
+            if it.get('store') == 'Chemist Warehouse':
+                continue               # 小黃屋 has its own site (chemist/): not in the supermarket numbers
             p = dict(it, **(it.get('rp', {}).get(region) or {}))
             if is_everyday(p):
                 everyday += 1          # listed on the site, but not a special: not in the specials numbers

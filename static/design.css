@@ -1646,3 +1646,6 @@ html:root .p-unit-strong { background: var(--fill, var(--surface-2)); font-weigh
 #searchSuggest:empty { min-height: 42px; }
 @media (max-width: 640px) { #categoryBar:empty { min-height: 50px; } #categoryGroups:empty { min-height: 36px; } }
 @media (min-width: 641px) { #categoryBar:empty { min-height: 98px; } #categoryGroups:empty { min-height: 34px; } }
+/* link to the stand-alone 小黃屋 site (2026-11-24) */
+.cw-link { margin: 10px 0 0; font-size: 13px; }
+.cw-link a { color: var(--ink-2, inherit); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--cw); }
