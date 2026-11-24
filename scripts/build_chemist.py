@@ -103,6 +103,21 @@ def product_id(url):
     return m.group(1) if m else ''
 
 
+def ended(date_range, today=None):
+    """'Thu 12 Nov 2026 - Wed 25 Nov 2026' -> True once 25 Nov has passed in Sydney (the catalogue's last day counts)."""
+    m = re.findall(r'(\d{1,2})\s+([A-Za-z]{3})\w*\s+(\d{4})', date_range or '')
+    if len(m) < 2:
+        return False
+    try:
+        end = _dt.datetime.strptime(' '.join(m[-1]), '%d %b %Y').date()
+    except ValueError:
+        return False
+    if today is None:
+        from zoneinfo import ZoneInfo
+        today = _dt.datetime.now(ZoneInfo('Australia/Sydney')).date()
+    return today > end
+
+
 def _special(it):
     tr = it.get('translations') or {}
     return {
@@ -128,11 +143,11 @@ def _special(it):
 def build():
     with open(SRC, encoding='utf-8') as f:
         items = json.load(f)
-    specials = [_special(it) for it in items if it.get('store') == STORE]
+    specials = [_special(it) for it in items if it.get('store') == STORE and not ended(it.get('date_range'))]
     if not specials:
-        # never publish a site without the catalogue: keep what is online
-        print('build_chemist: no Chemist Warehouse catalogue items found - nothing written')
-        return 1
+        # between two catalogues (the old one ended, the new one is not out yet): the site still shows every
+        # product and says the next catalogue is not out yet - an ended catalogue must never stay on show
+        print('build_chemist: no catalogue on now - the site shows all products and "next catalogue not out yet"')
     for sp in specials:
         # a catalogue item that is not in the vitamins rules is still a health item in a pharmacy catalogue
         sp['dept'] = department(sp['title'], fallback='vitamins')

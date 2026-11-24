@@ -61,6 +61,15 @@ function heroDate(r) {
   const p = [...String(r || '').matchAll(/(\d{1,2})\s+([A-Za-z]{3})/g)].slice(0, 2);
   return p.length === 2 ? p.map((m) => T().date(M[m[2]], +m[1])).join(' – ') : (r || '');
 }
+function ended(r) {
+  const p = [...String(r || '').matchAll(/(\d{1,2})\s+([A-Za-z]{3})\w*\s+(\d{4})/g)];
+  if (p.length < 2) return false;
+  const M = { Jan: 1, Feb: 2, Mar: 3, Apr: 4, May: 5, Jun: 6, Jul: 7, Aug: 8, Sep: 9, Oct: 10, Nov: 11, Dec: 12 };
+  const e = p[p.length - 1];
+  const end = `${e[3]}-${String(M[e[2]]).padStart(2, '0')}-${String(e[1]).padStart(2, '0')}`;
+  const today = new Intl.DateTimeFormat('en-CA', { timeZone: 'Australia/Sydney' }).format(new Date());   // YYYY-MM-DD
+  return today > end;
+}
 function ago(d) {
   const min = Math.max(0, Math.round((Date.now() - d.getTime()) / 60000));
   if (min < 60) return T().ago(min, 'm');
@@ -189,7 +198,11 @@ function texts() {
     hot.appendChild(b);
   });
   if (DATA) {
-    $('heroDate').textContent = (DATA.date_ranges || []).map(heroDate).join(', ') || t.title;
+    const gap = !SPECIALS.length;     // between two catalogues
+    document.body.classList.toggle('no-catalogue', gap);
+    $('heroDate').textContent = gap ? t.noCat : [...new Set(SPECIALS.map((x) => x.date_range))].map(heroDate).join(', ');
+    document.querySelector('.hero-sub').textContent = gap ? t.noCatSub : t.heroSub;
+    document.querySelector('.live-dot').textContent = gap ? t.noCatLive : t.live;
     const d = DATA.updated ? new Date(DATA.updated) : null;
     if (d && !isNaN(d)) {
       $('updatedAgo').textContent = ago(d);
@@ -215,7 +228,8 @@ async function main() {
     $('heroDate').textContent = T().failed;
     return;
   }
-  SPECIALS = (DATA.specials || []).map((x) => Object.assign(x, { special: true }));
+  // a catalogue whose last day has passed (Sydney) is never shown, even if the update has not run yet
+  SPECIALS = (DATA.specials || []).filter((x) => !ended(x.date_range)).map((x) => Object.assign(x, { special: true }));
   // other products come compact: [product number, link text, department]
   const depts = DATA.depts || [];
   LISTED = (DATA.products || []).map((r, i) => ({
@@ -229,6 +243,7 @@ async function main() {
   $('statAll').textContent = ALL.length.toLocaleString();
   $('nSpecial').textContent = SPECIALS.length;
   $('nAll').textContent = ALL.length.toLocaleString();
+  if (!SPECIALS.length) setScope('all');   // nothing on special right now: show every product
   texts();
   index();
   render();
