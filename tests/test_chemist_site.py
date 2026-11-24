@@ -36,7 +36,10 @@ cases = {
     'Rimmel Cosmetics Range': 'makeup',
     'Cetaphil Sun SPF 50 Ultra Light Lotion 100ml': 'skin',
     'Blackmores Omega Super Strength Fish Oil 150 Capsules': 'vitamins',
-    'Dog Flea Treatment Large': 'other',
+    'Dog Flea Treatment Large': 'pet',
+    'Archline Orthotic Foam Thongs Arch Support Flip Flops Euro Size 36': 'health',
+    'Neat Feat Gel Heel Cups': 'health',
+    'Ocean Road Black Home Soy Candle 380g': 'other',
 }
 for title, want in cases.items():
     assert department(title) == want, (title, department(title), want)
