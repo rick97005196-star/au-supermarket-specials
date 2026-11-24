@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>小黃屋特價查詢</title>
+<meta name="description" content="Chemist Warehouse（小黃屋）門市型錄特價，和全店商品一起搜尋。">
+<meta name="theme-color" content="#FFD45C">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css?v=1">
+</head>
+<body>
+<div class="ozwh-hubnav">
+  <div class="ozwh-hubnav-in wrap">
+    <nav class="ozwh-hubnav-crumb" aria-label="目前位置">
+      <a href="https://au-working-holiday.pages.dev/"><img src="hub.svg" width="26" height="26" alt=""><span>澳洲打工度假資訊平台</span></a>
+      <span class="ozwh-hubnav-sep" aria-hidden="true">›</span>
+      <span class="ozwh-hubnav-here" aria-current="page">小黃屋特價查詢</span>
+    </nav>
+    <a class="ozwh-hubnav-btn" href="https://au-working-holiday.pages.dev/"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10.5L12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg><span>所有網站</span></a>
+  </div>
+</div>
+
+<div class="note" role="note"><div class="wrap">特價只收門市實體型錄，以門市標示為準；網路限定優惠不收。</div></div>
+
+<header class="head wrap">
+  <h1>小黃屋特價查詢 <small>Chemist Warehouse</small></h1>
+  <p class="sub" id="sub">載入中…</p>
+</header>
+
+<div class="bar" id="bar">
+  <div class="wrap">
+    <label class="search">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+      <input id="q" type="search" placeholder="搜尋商品，例如 魚油、Swisse、防曬" autocomplete="off" enterkeyhint="search" aria-label="搜尋商品">
+      <button id="clear" class="clear" type="button" aria-label="清除搜尋" hidden>×</button>
+    </label>
+    <div class="row">
+      <div class="seg" role="tablist" aria-label="顯示範圍">
+        <button type="button" role="tab" data-scope="special" aria-selected="true">型錄特價 <span id="nSpecial"></span></button>
+        <button type="button" role="tab" data-scope="all" aria-selected="false">全部商品 <span id="nAll"></span></button>
+      </div>
+      <select id="sort" aria-label="排序">
+        <option value="pop">熱門優先</option>
+        <option value="save">省最多</option>
+        <option value="low">價格低到高</option>
+        <option value="name">依名稱</option>
+      </select>
+    </div>
+    <div class="chips" id="chips" role="group" aria-label="分類"></div>
+  </div>
+</div>
+
+<main class="wrap">
+  <p class="count" id="count" aria-live="polite"></p>
+  <div class="grid" id="grid"></div>
+  <div class="more"><button id="more" type="button" hidden>顯示更多</button></div>
+  <p class="empty" id="empty" hidden>找不到符合的商品。試試英文品牌名，或切到「全部商品」。</p>
+</main>
+
+<footer class="foot wrap">
+  <p><b>資料怎麼來的：</b>特價來自小黃屋官網上的門市實體型錄（約兩週一檔），每天自動更新；「全部商品」來自小黃屋官網公開的商品清單，每週更新一次。</p>
+  <p>沒有特價的商品不顯示價格，請點進官網看。官方說明官網價格和門市相同，但網路限定活動除外。</p>
+  <p>本站與 Chemist Warehouse 無關，資訊僅供參考，實際價格與庫存以門市為準。<a href="https://au-working-holiday.pages.dev/disclaimer/">完整說明</a></p>
+  <p id="updated"></p>
+</footer>
+<script src="app.js?v=1"></script>
+</body>
+</html>

@@ -180,6 +180,15 @@ jobs:
           rm -f static/data/translations.json   # 7 MB the website never reads (specials.json carries the translations); stays in the repo
           npx -y wrangler@4 pages deploy static --project-name=au-supermarket-specials --branch=main
 
+      # 小黃屋 has its own site (chemist/): the same catalogue numbers, with every product the shop sells
+      - name: Deploy the 小黃屋 site
+        if: steps.check.outputs.changed == 'true' && steps.check.outputs.block != 'true'
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: |
+          python scripts/build_chemist.py && npx -y wrangler@4 pages deploy chemist --project-name=au-pharmacy-specials --branch=main \
+            || echo "::warning::小黃屋 site not updated this time - the site online stays as it is"
+
       # ---- Layer 4: make sure the live website really shows the new data ----
       - name: Verify live website
         if: steps.check.outputs.changed == 'true' && steps.check.outputs.block != 'true'

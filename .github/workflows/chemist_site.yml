@@ -1,0 +1,70 @@
+name: 小黃屋網站（全部商品清單＋上架）
+
+# The stand-alone 小黃屋 (Chemist Warehouse) site, au-pharmacy-specials.pages.dev, built from chemist/.
+#  * prices: the printed in-store catalogue, already read by the specials update (static/data/specials.json);
+#    that update also puts this site online when the catalogue changes (auto_update.yml)
+#  * every product the shop sells: the shop's public product sitemap, read here once a week
+#    (scrapers/chemist_all.py, names and links only)
+on:
+  schedule:
+    - cron: '37 17 * * 4'     # Friday 3:37 AM Brisbane time, once a week
+  push:
+    branches: [main]
+    paths:
+      - 'chemist/**'
+      - 'scripts/build_chemist.py'
+      - 'scrapers/chemist_all.py'
+      - '.github/workflows/chemist_site.yml'
+  workflow_dispatch:
+
+concurrency:
+  group: chemist-site
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  site:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: main
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+      - name: Read every product the shop sells (once a week)
+        run: |
+          pip install -q requests
+          python scrapers/chemist_all.py || echo "::warning::product list not read this time - the saved list is used"
+      - name: Save the product list
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action Bot"
+          [ -f data/chemist_all.json ] || exit 0
+          git add data/chemist_all.json
+          git diff --staged --quiet && exit 0
+          git commit -m "小黃屋 product list [skip ci]"
+          for i in 1 2 3; do
+            git pull --rebase -X theirs origin main && git push origin main && exit 0
+            git rebase --abort 2>/dev/null || true
+            sleep 20
+          done
+          echo "::warning::product list not saved this time"
+      - name: Use the newest catalogue
+        # the specials update may have saved a newer catalogue while this ran
+        run: git fetch origin main && git checkout FETCH_HEAD -- static/data/specials.json
+      - name: Build
+        run: python scripts/build_chemist.py
+      - name: Deploy to Cloudflare Pages
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: |
+          npx -y wrangler@4 pages project list | grep -q 'au-pharmacy-specials' \
+            || npx -y wrangler@4 pages project create au-pharmacy-specials --production-branch=main
+          npx -y wrangler@4 pages deploy chemist --project-name=au-pharmacy-specials --branch=main
