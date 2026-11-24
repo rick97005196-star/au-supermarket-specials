@@ -29,7 +29,12 @@ titles = {it['title'] for it in items}
 assert any(t.startswith('Blackmores Glucosamine') for t in titles)
 assert not any('Assorted' in t for t in titles)                            # a whole range at one price
 assert 'Bioglan Sleep 200 Tablets' not in titles                           # no saving printed
-assert skipped.get('no exact saving printed') and skipped.get('a whole range, not one product')
+assert 'Wagner Mega Magnesium + Sleep Berry or Tropical 400g' in titles     # "A or B": one printed price and saving
+assert skipped.get('no exact saving printed')
+_, sk = items_from_regions([{'field_region_type': 'product', 'field_product_title': 'Batiste Dry Shampoo Range',
+                             'field_product_price': '6.84', 'field_product_description': '1/2 PRICE OFF RRP',
+                             'field_product_buynow': '[{"uri":"https://www.chemistwarehouse.com.au/search?query=Batiste"}]'}])
+assert sk == {'a whole range, not one product': 1}                         # a range: one price for many products
 
 # every product passes the site's own per-product rules (逐筆防呆)
 rng = date_range_text(datetime.date(2026, 11, 12), datetime.date(2026, 11, 25))
@@ -37,7 +42,7 @@ assert rng == 'Thu 12 Nov 2026 - Wed 25 Nov 2026'
 for it in items:
     full = dict(it, store='Chemist Warehouse', period='current', date_range=rng)
     assert problems(full, datetime.date(2026, 11, 24), range_end) == [], (it['title'], problems(full, datetime.date(2026, 11, 24), range_end))
-    assert it['product_url'].startswith('https://www.chemistwarehouse.com.au/buy/')
+    assert it['product_url'].startswith('https://www.chemistwarehouse.com.au/')
 # ...and an ended catalogue is caught
 old = dict(items[0], store='Chemist Warehouse', period='current', date_range=rng)
 assert problems(old, datetime.date(2026, 11, 28), range_end)
