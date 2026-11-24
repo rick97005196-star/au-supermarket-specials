@@ -27,14 +27,28 @@ regions = json.load(open(os.path.join(ROOT, 'tests', 'fixtures', 'cw_regions.jso
 items, skipped = items_from_regions(regions)
 titles = {it['title'] for it in items}
 assert any(t.startswith('Blackmores Glucosamine') for t in titles)
-assert not any('Assorted' in t for t in titles)                            # a whole range at one price
-assert 'Bioglan Sleep 200 Tablets' not in titles                           # no saving printed
-assert 'Wagner Mega Magnesium + Sleep Berry or Tropical 400g' in titles     # "A or B": one printed price and saving
-assert skipped.get('no exact saving printed')
-_, sk = items_from_regions([{'field_region_type': 'product', 'field_product_title': 'Batiste Dry Shampoo Range',
-                             'field_product_price': '6.84', 'field_product_description': '1/2 PRICE OFF RRP',
-                             'field_product_buynow': '[{"uri":"https://www.chemistwarehouse.com.au/search?query=Batiste"}]'}])
-assert sk == {'a whole range, not one product': 1}                         # a range: one price for many products
+by = {it['title']: it for it in items}
+assert len(items) == sum(1 for r in regions if r.get('field_region_type') == 'product')   # every catalogue product listed
+# no saving printed -> listed as "特價" at the printed price, with no was price
+sleep = by['Bioglan Sleep 200 Tablets']
+assert sleep['discount_desc'] == 'Special' and sleep['save_amount'] == 0 and sleep['was_price'] == 0
+assert by['Wagner Mega Magnesium + Sleep Berry or Tropical 400g']['save_amount'] > 0      # "A or B": printed exact saving
+# a whole range / "From $X" / "2 for $X": never an exact saving; the display says what the price is
+def one(**kw):
+    r = {'field_region_type': 'product', 'field_product_title': 'X', 'field_product_price': '36.99',
+         'field_product_description': '$10.00 OFF RRP', 'field_currency_symbol': '$',
+         'field_product_buynow': '[{"uri":"https://www.chemistwarehouse.com.au/buy/1/x"}]'}
+    r.update(kw)
+    return items_from_regions([r])[0][0]
+assert one()['save_amount'] == 10.0
+assert one(field_product_title='Batiste Dry Shampoo Range')['discount_desc'] == 'Special'
+m = one(field_currency_symbol='2 for $', field_product_description='')
+assert m['price_display'] == '2 for $36.99' and m['price'] == 36.99 and m['discount_desc'] == 'Special'
+f = one(field_currency_symbol='From $')
+assert f['price_display'] == 'From $36.99' and f['save_amount'] == 0
+assert one(field_product_buynow='[]')['product_url'].startswith('https://www.chemistwarehouse.com.au/search?query=')
+assert not items_from_regions([{'field_region_type': 'product', 'field_product_title': 'X Online Only',
+                                'field_product_price': '5'}])[0]                 # online only: never listed
 
 # every product passes the site's own per-product rules (逐筆防呆)
 rng = date_range_text(datetime.date(2026, 11, 12), datetime.date(2026, 11, 25))
