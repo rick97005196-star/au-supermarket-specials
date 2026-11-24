@@ -53,14 +53,14 @@
   ],
   "QLD": [
    {
-    "date_range": "Wed 18 Nov 2026 - Tue 24 Nov 2026",
-    "id": 68931,
-    "url": "https://www.salefinder.com.au/coles-catalogue/coles-catalogue-qld-metro/68931/list"
-   },
-   {
     "date_range": "Wed 25 Nov 2026 - Tue 1 Dec 2026",
     "id": 69081,
     "url": "https://www.salefinder.com.au/coles-catalogue/coles-catalogue-qld-metro/69081/list"
+   },
+   {
+    "date_range": "Wed 18 Nov 2026 - Tue 24 Nov 2026",
+    "id": 68931,
+    "url": "https://www.salefinder.com.au/coles-catalogue/coles-catalogue-qld-metro/68931/list"
    },
    {
     "date_range": "Wed 11 Nov 2026 - Tue 17 Nov 2026",
@@ -140,14 +140,14 @@
  "Woolworths": {
   "ACT": [
    {
-    "date_range": "Wed 18 Nov 2026 - Tue 24 Nov 2026",
-    "id": 68963,
-    "url": "https://www.salefinder.com.au/woolworths-catalogue/weekly-catalogue-nsw/68963/list"
-   },
-   {
     "date_range": "Wed 25 Nov 2026 - Tue 1 Dec 2026",
     "id": 69110,
     "url": "https://www.salefinder.com.au/woolworths-catalogue/weekly-catalogue-nsw/69110/list"
+   },
+   {
+    "date_range": "Wed 18 Nov 2026 - Tue 24 Nov 2026",
+    "id": 68963,
+    "url": "https://www.salefinder.com.au/woolworths-catalogue/weekly-catalogue-nsw/68963/list"
    },
    {
     "date_range": "Wed 11 Nov 2026 - Tue 17 Nov 2026",
@@ -156,16 +156,6 @@
    }
   ],
   "NSW": [
-   {
-    "date_range": "Wed 18 Nov 2026 - Tue 24 Nov 2026",
-    "id": 68963,
-    "url": "https://www.salefinder.com.au/woolworths-catalogue/weekly-catalogue-nsw/68963/list"
-   },
-   {
-    "date_range": "Wed 18 Nov 2026 - Tue 24 Nov 2026",
-    "id": 68980,
-    "url": "https://www.salefinder.com.au/woolworths-catalogue/weekly-catalogue-nsw/68980/list"
-   },
    {
     "date_range": "Wed 25 Nov 2026 - Tue 1 Dec 2026",
     "id": 69110,
@@ -177,17 +167,22 @@
     "url": "https://www.salefinder.com.au/woolworths-catalogue/weekly-catalogue-nsw/69129/list"
    },
    {
+    "date_range": "Wed 18 Nov 2026 - Tue 24 Nov 2026",
+    "id": 68963,
+    "url": "https://www.salefinder.com.au/woolworths-catalogue/weekly-catalogue-nsw/68963/list"
+   },
+   {
+    "date_range": "Wed 18 Nov 2026 - Tue 24 Nov 2026",
+    "id": 68980,
+    "url": "https://www.salefinder.com.au/woolworths-catalogue/weekly-catalogue-nsw/68980/list"
+   },
+   {
     "date_range": "Wed 11 Nov 2026 - Tue 17 Nov 2026",
     "id": 68850,
     "url": "https://www.salefinder.com.au/woolworths-catalogue/weekly-catalogue-nsw/68850/list"
    }
   ],
   "NT": [
-   {
-    "date_range": "Wed 18 Nov 2026 - Tue 24 Nov 2026",
-    "id": 68965,
-    "url": "https://www.salefinder.com.au/woolworths-catalogue/weekly-catalogue-nt/68965/list"
-   },
    {
     "date_range": "Wed 25 Nov 2026 - Tue 1 Dec 2026",
     "id": 69112,
@@ -199,22 +194,17 @@
     "url": "https://www.salefinder.com.au/woolworths-catalogue/weekly-catalogue-nt/69140/list"
    },
    {
+    "date_range": "Wed 18 Nov 2026 - Tue 24 Nov 2026",
+    "id": 68965,
+    "url": "https://www.salefinder.com.au/woolworths-catalogue/weekly-catalogue-nt/68965/list"
+   },
+   {
     "date_range": "Wed 11 Nov 2026 - Tue 17 Nov 2026",
     "id": 68852,
     "url": "https://www.salefinder.com.au/woolworths-catalogue/weekly-catalogue-nt/68852/list"
    }
   ],
   "QLD": [
-   {
-    "date_range": "Wed 18 Nov 2026 - Tue 24 Nov 2026",
-    "id": 68869,
-    "url": "https://www.salefinder.com.au/woolworths-catalogue/weekly-catalogue-qld/68869/list"
-   },
-   {
-    "date_range": "Wed 18 Nov 2026 - Tue 24 Nov 2026",
-    "id": 68975,
-    "url": "https://www.salefinder.com.au/woolworths-catalogue/weekly-catalogue-qld/68975/list"
-   },
    {
     "date_range": "Wed 25 Nov 2026 - Tue 1 Dec 2026",
     "id": 68985,
@@ -226,6 +216,16 @@
     "url": "https://www.salefinder.com.au/woolworths-catalogue/weekly-catalogue-qld/69124/list"
    },
    {
+    "date_range": "Wed 18 Nov 2026 - Tue 24 Nov 2026",
+    "id": 68869,
+    "url": "https://www.salefinder.com.au/woolworths-catalogue/weekly-catalogue-qld/68869/list"
+   },
+   {
+    "date_range": "Wed 18 Nov 2026 - Tue 24 Nov 2026",
+    "id": 68975,
+    "url": "https://www.salefinder.com.au/woolworths-catalogue/weekly-catalogue-qld/68975/list"
+   },
+   {
     "date_range": "Wed 11 Nov 2026 - Tue 17 Nov 2026",
     "id": 68748,
     "url": "https://www.salefinder.com.au/woolworths-catalogue/weekly-catalogue-qld/68748/list"
@@ -233,14 +233,14 @@
   ],
   "SA": [
    {
-    "date_range": "Wed 18 Nov 2026 - Tue 24 Nov 2026",
-    "id": 68962,
-    "url": "https://www.salefinder.com.au/woolworths-catalogue/weekly-catalogue-sa/68962/list"
-   },
-   {
     "date_range": "Wed 25 Nov 2026 - Tue 1 Dec 2026",
     "id": 69109,
     "url": "https://www.salefinder.com.au/woolworths-catalogue/weekly-catalogue-sa/69109/list"
+   },
+   {
+    "date_range": "Wed 18 Nov 2026 - Tue 24 Nov 2026",
+    "id": 68962,
+    "url": "https://www.salefinder.com.au/woolworths-catalogue/weekly-catalogue-sa/68962/list"
    },
    {
     "date_range": "Wed 11 Nov 2026 - Tue 17 Nov 2026",
@@ -249,11 +249,6 @@
    }
   ],
   "TAS": [
-   {
-    "date_range": "Wed 18 Nov 2026 - Tue 24 Nov 2026",
-    "id": 68964,
-    "url": "https://www.salefinder.com.au/woolworths-catalogue/weekly-catalogue-tas/68964/list"
-   },
    {
     "date_range": "Wed 25 Nov 2026 - Tue 1 Dec 2026",
     "id": 69111,
@@ -265,22 +260,17 @@
     "url": "https://www.salefinder.com.au/woolworths-catalogue/weekly-catalogue-tas/69139/list"
    },
    {
+    "date_range": "Wed 18 Nov 2026 - Tue 24 Nov 2026",
+    "id": 68964,
+    "url": "https://www.salefinder.com.au/woolworths-catalogue/weekly-catalogue-tas/68964/list"
+   },
+   {
     "date_range": "Wed 11 Nov 2026 - Tue 17 Nov 2026",
     "id": 68851,
     "url": "https://www.salefinder.com.au/woolworths-catalogue/weekly-catalogue-tas/68851/list"
    }
   ],
   "VIC": [
-   {
-    "date_range": "Wed 18 Nov 2026 - Tue 24 Nov 2026",
-    "id": 68960,
-    "url": "https://www.salefinder.com.au/woolworths-catalogue/weekly-catalogue-vic/68960/list"
-   },
-   {
-    "date_range": "Wed 18 Nov 2026 - Tue 24 Nov 2026",
-    "id": 68977,
-    "url": "https://www.salefinder.com.au/woolworths-catalogue/weekly-catalogue-vic/68977/list"
-   },
    {
     "date_range": "Wed 25 Nov 2026 - Tue 1 Dec 2026",
     "id": 69107,
@@ -292,17 +282,22 @@
     "url": "https://www.salefinder.com.au/woolworths-catalogue/weekly-catalogue-vic/69126/list"
    },
    {
+    "date_range": "Wed 18 Nov 2026 - Tue 24 Nov 2026",
+    "id": 68960,
+    "url": "https://www.salefinder.com.au/woolworths-catalogue/weekly-catalogue-vic/68960/list"
+   },
+   {
+    "date_range": "Wed 18 Nov 2026 - Tue 24 Nov 2026",
+    "id": 68977,
+    "url": "https://www.salefinder.com.au/woolworths-catalogue/weekly-catalogue-vic/68977/list"
+   },
+   {
     "date_range": "Wed 11 Nov 2026 - Tue 17 Nov 2026",
     "id": 68840,
     "url": "https://www.salefinder.com.au/woolworths-catalogue/weekly-catalogue-vic/68840/list"
    }
   ],
   "WA": [
-   {
-    "date_range": "Wed 18 Nov 2026 - Tue 24 Nov 2026",
-    "id": 68961,
-    "url": "https://www.salefinder.com.au/woolworths-catalogue/weekly-catalogue-wa/68961/list"
-   },
    {
     "date_range": "Wed 25 Nov 2026 - Tue 1 Dec 2026",
     "id": 69108,
@@ -312,6 +307,11 @@
     "date_range": "Wed 25 Nov 2026 - Tue 1 Dec 2026",
     "id": 69137,
     "url": "https://www.salefinder.com.au/woolworths-catalogue/weekly-catalogue-wa/69137/list"
+   },
+   {
+    "date_range": "Wed 18 Nov 2026 - Tue 24 Nov 2026",
+    "id": 68961,
+    "url": "https://www.salefinder.com.au/woolworths-catalogue/weekly-catalogue-wa/68961/list"
    },
    {
     "date_range": "Wed 11 Nov 2026 - Tue 17 Nov 2026",
@@ -325,7 +325,7 @@
    "full_discovery": 1795511874.915244
   },
   "Woolworths": {
-   "full_discovery": 1795522717.8254092
+   "full_discovery": 1795526276.17898
   }
  }
 }
