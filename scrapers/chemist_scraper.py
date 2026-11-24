@@ -13,7 +13,8 @@ Strict rules (in-store specials only, exact numbers only):
   * "UP TO ...", "N% OFF" without an amount, cashback and products with no printed saving are left out
     (no exact "was" price to show)
   * anything that says online only / web only is left out
-  * a whole range at one price ("Assorted Range", no link to one product) is left out
+  * a whole range at one price ("Assorted Range", "Selected ...") is left out; two named products at one
+    printed price and saving ("A or B 100ml EDT") are kept
 """
 import json
 import os
@@ -152,9 +153,12 @@ def items_from_regions(regions) -> Tuple[List[Dict[str, Any]], Dict[str, int]]:
         if save <= 0:
             skip('no exact saving printed'); continue
         url = _first_uri(r.get('field_product_buynow'))
-        if not re.match(r'^https://(?:www\.)?chemistwarehouse\.com\.au/buy/\d+/', url) \
-                or re.search(r'\b(?:assorted|selected|range)\b', title, re.I):
+        if re.search(r'\b(?:assorted|selected|range)\b', title, re.I):
             skip('a whole range, not one product'); continue    # one price for many products: not exact
+        # "A or B" (e.g. "Calvin Klein Eternity or Obsession 100ml EDP"): two named products, the same printed
+        # price and the same printed saving -> exact. The catalogue links these to a search, not one product page.
+        if not re.match(r'^https://(?:www\.)?chemistwarehouse\.com\.au/(?:buy/\d+/|search\?|shop-online/)', url):
+            skip('no link to Chemist Warehouse'); continue
         img = _first_uri(r.get('field_product_image')) or _first_uri(r.get('field_product_image_url'))
         if not img.startswith('https://'):
             img = ''
