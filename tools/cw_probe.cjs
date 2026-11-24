@@ -1,29 +1,17 @@
-// Probe only: what does the Chemist Warehouse catalogue viewer load?
-const { chromium } = require('playwright');
-const fs = require('fs');
+// Probe only: Chemist Warehouse catalogue data (nexuspublications)
+const H = { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36', 'Referer': 'https://app.nexuspublications.com.au/', 'Origin': 'https://app.nexuspublications.com.au' };
+async function j(u) { const r = await fetch(u, { headers: H }); const t = await r.text(); console.log('\n=====', r.status, u, 'len', t.length); return t; }
 (async () => {
-  const b = await chromium.launch();
-  const p = await b.newPage({ userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36' });
-  fs.mkdirSync('probe', { recursive: true });
-  let n = 0;
-  p.on('response', async r => {
-    const u = r.url(); const ct = r.headers()['content-type'] || '';
-    console.log(r.status(), ct.split(';')[0], u.slice(0, 300));
-    if (/json|text\/plain|xml/.test(ct) && !/google|facebook|doubleclick/.test(u)) {
-      try { const t = await r.text(); fs.writeFileSync(`probe/r${++n}.txt`, u + '\n' + t.slice(0, 400000)); } catch (e) {}
-    }
-  });
-  await p.goto('https://nexuspublications.com.au/a10/publications/home/3476?toolbar=no&portrait=false', { waitUntil: 'networkidle', timeout: 90000 }).catch(e => console.log('goto', e.message));
-  await p.waitForTimeout(8000);
-  fs.writeFileSync('probe/page.html', await p.content());
-  // click into first publication if listing
-  const links = await p.$$eval('a', as => as.map(a => a.href)).catch(() => []);
-  console.log('LINKS', JSON.stringify(links.slice(0, 50)));
-  await p.mouse.click(400, 300).catch(() => {});
-  await p.waitForTimeout(8000);
-  console.log('URL', p.url());
-  fs.writeFileSync('probe/page2.html', await p.content());
-  await p.goto('https://www.chemistwarehouse.com.au/catalogue', { waitUntil: 'networkidle', timeout: 90000 }).catch(e => console.log('goto2', e.message));
-  await p.waitForTimeout(5000);
-  await b.close();
+  const cats = await j('https://node.nexuspublications.com.au/client/3476/catalogues/json?_format=json');
+  console.log(cats.slice(0, 6000));
+  console.log((await j('https://node.nexuspublications.com.au/clientdomain/3476/catalogues/json?_format=json')).slice(0, 3000));
+  let ids = [...new Set([...cats.matchAll(/"(?:catalogue_id|id|nid)"\s*:\s*"?(\d{6,})/g)].map(m => m[1]))];
+  console.log('IDS', ids);
+  for (const id of ids.slice(0, 6)) {
+    const t = await j(`https://node.nexuspublications.com.au/get-catalogue-advance_search/${id}/json`);
+    console.log(t.slice(0, 15000));
+  }
+  const d = await j('https://node.nexuspublications.com.au/view/catalogue/details/name/the-house-of-wellness-november-2026/json?_format=json');
+  console.log(d.slice(0, 4000));
+  console.log((await j('https://node.nexuspublications.com.au/client/3476/category/data')).slice(0, 3000));
 })();
