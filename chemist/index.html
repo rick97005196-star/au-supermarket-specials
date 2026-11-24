@@ -6,50 +6,71 @@
 <title>小黃屋特價查詢</title>
 <meta name="description" content="Chemist Warehouse（小黃屋）門市型錄特價，和全店商品一起搜尋。">
 <meta name="theme-color" content="#f6f5f1">
+<meta name="color-scheme" content="light dark">
+<script>
+// Light / dark: the visitor's choice (ozwh-theme), otherwise the device setting; language: the visitor's choice; set before the page shows
+(function () { var t, l; try { t = localStorage.getItem('ozwh-theme'); l = localStorage.getItem('cw-lang'); } catch (e) {}
+  if (t !== 'dark' && t !== 'light') t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  var r = document.documentElement; r.classList.toggle('dark', t === 'dark'); if (t === 'dark') r.setAttribute('data-theme', 'dark');
+  if (!/^(zh|en|ja|ko)$/.test(l || '')) { var n = (navigator.language || '').slice(0, 2); l = /^(en|ja|ko)$/.test(n) ? n : 'zh'; }
+  r.lang = { zh: 'zh-Hant-TW', en: 'en', ja: 'ja', ko: 'ko' }[l]; })();
+</script>
 <link rel="icon" href="logo.svg" type="image/svg+xml">
-<link rel="stylesheet" href="style.css?v=3">
+<link rel="stylesheet" href="style.css?v=4">
 </head>
 <body>
 <header class="site-header">
   <div class="wrap head-in">
     <a href="./" class="brand" aria-label="小黃屋特價查詢">
       <img src="logo.svg" alt="" width="40" height="40" class="brand-mark">
-      <span class="brand-text"><span class="brand-name">小黃屋特價查詢</span><span class="brand-sub">Chemist Warehouse 門市型錄特價・全店商品搜尋</span></span>
+      <span class="brand-text"><span class="brand-name" data-i18n="title">小黃屋特價查詢</span><span class="brand-sub" data-i18n="sub">Chemist Warehouse 門市型錄特價・全店商品搜尋</span></span>
     </a>
+    <div class="head-actions">
+      <div class="lang-group" role="group" aria-label="Language">
+        <button type="button" class="lang-btn" data-lang="zh">繁中</button><button type="button" class="lang-btn" data-lang="en">EN</button><button type="button" class="lang-btn" data-lang="ja">日本語</button><button type="button" class="lang-btn" data-lang="ko">한국어</button>
+      </div>
+      <select id="langSelect" class="lang-select" aria-label="Language / 語言">
+        <option value="zh">繁體中文</option><option value="en">English</option><option value="ja">日本語</option><option value="ko">한국어</option>
+      </select>
+      <button id="themeBtn" type="button" class="icon-btn" aria-pressed="false" aria-label="深色模式">
+        <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2 12h2.5M19.5 12H22M4.2 19.8L6 18M18 6l1.8-1.8"/></svg>
+      </button>
+    </div>
   </div>
 </header>
 
 <div class="ozwh-hubnav">
   <div class="ozwh-hubnav-in wrap">
     <nav class="ozwh-hubnav-crumb" aria-label="目前位置">
-      <a href="https://au-working-holiday.pages.dev/"><img src="hub.svg" width="26" height="26" alt=""><span>澳洲打工度假資訊平台</span></a>
+      <a href="https://au-working-holiday.pages.dev/"><img src="hub.svg" width="26" height="26" alt=""><span data-i18n="hub">澳洲打工度假資訊平台</span></a>
       <span class="ozwh-hubnav-sep" aria-hidden="true">›</span>
-      <span class="ozwh-hubnav-here" aria-current="page">小黃屋特價查詢</span>
+      <span class="ozwh-hubnav-here" aria-current="page" data-i18n="title">小黃屋特價查詢</span>
     </nav>
-    <a class="ozwh-hubnav-btn" href="https://au-working-holiday.pages.dev/"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10.5L12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg><span>所有網站</span></a>
+    <a class="ozwh-hubnav-btn" href="https://au-working-holiday.pages.dev/"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10.5L12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg><span data-i18n="allSites">所有網站</span></a>
   </div>
 </div>
 
-<div class="top-disclaimer" role="note"><div class="wrap"><b>免責聲明</b> <span>特價只收門市實體型錄，網路限定優惠不收；實際價格與庫存以門市為準。</span> <a href="https://au-working-holiday.pages.dev/disclaimer/">閱讀完整說明</a></div></div>
+<div class="top-disclaimer" role="note"><div class="wrap"><b data-i18n="discT">免責聲明</b> <span data-i18n="disc">特價只收門市實體型錄，網路限定優惠不收；實際價格與庫存以門市為準。</span> <a href="https://au-working-holiday.pages.dev/disclaimer/" data-i18n="discMore">閱讀完整說明</a></div></div>
 
 <section class="hero wrap">
-  <div class="hero-meta"><span class="live-dot">本期型錄</span><span id="updatedAgo" class="ago"></span></div>
+  <div class="hero-meta"><span class="live-dot" data-i18n="live">本期型錄</span><span id="updatedAgo" class="ago"></span></div>
   <div class="hero-row">
     <div>
       <h1 id="heroDate">載入中…</h1>
-      <p class="hero-sub">小黃屋型錄約兩週一檔，週四換檔・價格以澳幣（AUD）標示</p>
+      <p class="hero-sub" data-i18n="heroSub">小黃屋型錄約兩週一檔，週四換檔・價格以澳幣（AUD）標示</p>
     </div>
     <div class="seg seg-lg" role="tablist" aria-label="顯示範圍">
-      <button type="button" class="seg-btn is-active" role="tab" data-scope="special" aria-selected="true">型錄特價 <span class="seg-meta" id="nSpecial"></span></button>
-      <button type="button" class="seg-btn" role="tab" data-scope="all" aria-selected="false">全部商品 <span class="seg-meta" id="nAll"></span></button>
+      <button type="button" class="seg-btn is-active" role="tab" data-scope="special" aria-selected="true"><span data-i18n="scopeSp">型錄特價</span> <span class="seg-meta" id="nSpecial"></span></button>
+      <button type="button" class="seg-btn" role="tab" data-scope="all" aria-selected="false"><span data-i18n="scopeAll">全部商品</span> <span class="seg-meta" id="nAll"></span></button>
     </div>
   </div>
   <div class="stats">
-    <div class="stat"><span class="stat-value" id="statSpecial">--</span><span class="stat-label">型錄特價</span></div>
-    <div class="stat"><span class="stat-value" id="statSave">--</span><span class="stat-label">寫明省多少</span></div>
-    <div class="stat"><span class="stat-value" id="statHalf">--</span><span class="stat-label">半價</span></div>
+    <div class="stat"><span class="stat-value" id="statSpecial">--</span><span class="stat-label" data-i18n="stSp">型錄特價</span></div>
+    <div class="stat"><span class="stat-value" id="statSave">--</span><span class="stat-label" data-i18n="stSave">寫明省多少</span></div>
+    <div class="stat"><span class="stat-value" id="statHalf">--</span><span class="stat-label" data-i18n="stHalf">半價</span></div>
     <span class="stat-divider" aria-hidden="true"></span>
-    <div class="stat"><span class="stat-value" id="statAll">--</span><span class="stat-label">全店商品</span></div>
+    <div class="stat"><span class="stat-value" id="statAll">--</span><span class="stat-label" data-i18n="stAll">全店商品</span></div>
   </div>
 </section>
 
@@ -63,17 +84,17 @@
   <div class="panel">
     <label class="search">
       <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
-      <input id="q" type="search" placeholder="搜尋商品（可輸入中、英文，例如：魚油、Swisse、防曬）" autocomplete="off" enterkeyhint="search" aria-label="搜尋商品">
+      <input id="q" type="search" placeholder="搜尋商品（可輸入中、英文，例如：魚油、Swisse、防曬）" data-i18n-ph="ph" autocomplete="off" enterkeyhint="search" aria-label="搜尋商品">
       <button id="clear" class="clear" type="button" aria-label="清除搜尋" hidden>×</button>
     </label>
-    <div class="hot" id="hot"><span>熱門搜尋</span></div>
+    <div class="hot" id="hot"><span data-i18n="hot">熱門搜尋</span></div>
     <div class="tools">
       <p class="count" id="count" aria-live="polite"></p>
       <select id="sort" aria-label="排序">
-        <option value="pop">熱門優先（預設）</option>
-        <option value="save">省最多</option>
-        <option value="low">價格低到高</option>
-        <option value="name">依名稱</option>
+        <option value="pop" data-i18n="sPop">熱門優先（預設）</option>
+        <option value="save" data-i18n="sSave">省最多</option>
+        <option value="low" data-i18n="sLow">價格低到高</option>
+        <option value="name" data-i18n="sName">依名稱</option>
       </select>
     </div>
   </div>
@@ -84,12 +105,15 @@
 
 <footer class="foot">
   <div class="wrap">
-    <p><b>資料怎麼來的</b>　特價來自小黃屋官網上的門市實體型錄，每天自動更新；「全部商品」來自小黃屋官網公開的商品清單，每週更新一次。</p>
-    <p>沒有特價的商品不顯示價格，請點進官網看。官方說明官網價格和門市相同，但網路限定活動除外；寫明「線上限定」的商品不列出。</p>
-    <p>本站與 Chemist Warehouse 無關，資訊僅供參考。<a href="https://au-working-holiday.pages.dev/">瀏覽其他網站</a>・<a href="https://au-working-holiday.pages.dev/?from=pharmacy#suggest">告訴我們</a></p>
+    <p data-i18n-html="f1"><b>資料怎麼來的</b>　特價來自小黃屋官網上的門市實體型錄，每天自動更新；「全部商品」來自小黃屋官網公開的商品清單，每週更新一次。</p>
+    <p data-i18n="f2">沒有特價的商品不顯示價格，請點進官網看。官方說明官網價格和門市相同，但網路限定活動除外；寫明「線上限定」的商品不列出。</p>
+    <p><span data-i18n="f3">本站與 Chemist Warehouse 無關，資訊僅供參考。</span><a href="https://au-working-holiday.pages.dev/" data-i18n="f4">瀏覽其他網站</a>・<a href="https://au-working-holiday.pages.dev/?from=pharmacy#suggest" data-i18n="f5">告訴我們</a></p>
     <p id="updated"></p>
   </div>
 </footer>
-<script src="app.js?v=3"></script>
+<script src="i18n.js?v=1"></script>
+<script src="app.js?v=4"></script>
+<script src="https://au-working-holiday.pages.dev/feedback-widget.js" data-site="pharmacy" defer></script>
+<script src="https://au-working-holiday.pages.dev/platform.js" data-site="pharmacy" defer></script>
 </body>
 </html>
