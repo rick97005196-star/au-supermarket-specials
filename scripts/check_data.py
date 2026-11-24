@@ -24,6 +24,9 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA = os.path.join(ROOT, 'static', 'data')
 LIVE = 'https://au-supermarket-specials.pages.dev'
 STORES = ('Woolworths', 'Coles', 'ALDI', 'Chemist Warehouse')
+# Chemist Warehouse (小黃屋) has its own site and its own catalogue dates: a problem there is reported, but never
+# holds back the supermarket site. When its catalogue ends before the next one is listed it has 0 products: expected.
+NO_BLOCK_STORES = ('Chemist Warehouse',)
 
 
 def out(key, value):
@@ -150,7 +153,9 @@ def item_check():
     print(f"::notice::逐筆檢查：{sum(totals.values())} 件中 {len(removed)} 件不符規則，已下架"
           + ('，例如：' + '；'.join(f"{r['store']} {(r['title'] or '')[:30]}→{r['why'][0]}" for r in removed[:6]) if removed else ''))
     for st, n in bad_by_store.items():
-        if totals.get(st) and n / totals[st] > ITEM_BLOCK_SHARE and n >= 20:
+        if totals.get(st) and n / totals[st] > ITEM_BLOCK_SHARE and n >= 20 and st in NO_BLOCK_STORES:
+            alerts.append(f"{st} 有 {n} 件資料不合理，已自動下架（不影響超市網站上線）")
+        elif totals.get(st) and n / totals[st] > ITEM_BLOCK_SHARE and n >= 20:
             block = True
             alerts.append(f"{st} 有 {n} 件（{n * 100 // totals[st]}%）資料不合理，可能是超市網站改版，已停止上線，網站維持原本資料")
         elif n >= 5:
@@ -184,9 +189,17 @@ def pre():
     woolies_window = bne.weekday() == 2 and bne.hour < 6
 
     # Layer 2: never publish data that looks broken
+    today = today_au()
     for store in STORES:
         key = (store, 'current')
         n, p = now_c.get(key, 0), prev_c.get(key, 0)
+        if store in NO_BLOCK_STORES:
+            prev_end = range_end(prev_r.get(key))
+            if p >= 20 and n == 0 and prev_end and prev_end < today:
+                print(f"::notice::{store} 這一檔型錄已結束（{prev_r.get(key)}），下一檔還沒公布，暫時 0 件")
+            elif p >= 20 and (n == 0 or (now_r.get(key) == prev_r.get(key) and n < p * 0.5)):
+                problems.append(f"{store} 本期從 {p} 件變成 {n} 件（不影響超市網站上線）")
+            continue
         if p >= 20 and n == 0:
             block = True
             problems.append(f"{store} 本週特價變成 0 件（原本 {p} 件），已停止上線，網站維持原本資料")
@@ -197,7 +210,6 @@ def pre():
             problems.append(f"{store} 本週特價從 {p} 件驟減到 {n} 件（同一檔期），已停止上線")
 
     # Layer 3: data that is getting old = the scraper is probably broken
-    today = today_au()
     for store in STORES:
         rng = now_r.get((store, 'current'))
         end = range_end(rng)
@@ -241,8 +253,23 @@ def pre():
         sys.path.insert(0, os.path.join(ROOT, 'scripts'))
         from translation_check import problems as tr_problems
         cur_items = [it for it in items if it.get('period') == 'current']
-        bad_tr = [it['title'] for it in cur_items if tr_problems(it.get('title') or '', it.get('translations'))]
+        # A product new on the site this run whose only problem is "not translated yet" is waiting for the
+        # translator (it does about 700 a run; a new week brings thousands): not counted. It is counted from the
+        # next run on if it is still not translated, and a wrong translation always counts.
+        live = {x.get('title') for x in (prev_items or [])}
+        waiting = lambda it, why: it.get('title') not in live and prev_items is not None and \
+            all(w.endswith('沒有翻譯') for w in why)
+        bad_tr, new_wait = [], 0
+        for it in cur_items:
+            why = tr_problems(it.get('title') or '', it.get('translations'))
+            if not why:
+                continue
+            if waiting(it, why):
+                new_wait += 1
+            else:
+                bad_tr.append(it['title'])
         print(f"::notice::翻譯檢查：本週 {len(cur_items)} 件中 {len(bad_tr)} 件有問題"
+              + (f"（另有 {new_wait} 件新商品等待翻譯，下次更新補上）" if new_wait else '')
               + ('，例如：' + '；'.join(t[:35] for t in bad_tr[:5]) if bad_tr else ''))
         if len(bad_tr) > TRANSLATION_ALERT:
             problems.append(f"{len(bad_tr)} 件商品（本週共 {len(cur_items)} 件）的翻譯沒通過檢查，AI 重試 2 次仍不行，需要人工看一下")
