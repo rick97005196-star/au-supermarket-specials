@@ -109,7 +109,7 @@ def init_db():
         ''')
         conn.commit()
 
-from categories import classify_product, is_popular_product, calculate_popularity_score
+from categories import classify_product, classify_for_store, is_popular_product, calculate_popularity_score
 
 
 _MONTHS = {m: i for i, m in enumerate(['jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec'], 1)}
@@ -132,6 +132,24 @@ def _start_offset_days(a, b):
     db = datetime(2001, b[0], b[1]).timetuple().tm_yday
     diff = (db - da) % 365
     return diff - 365 if diff > 182 else diff
+
+# Stores whose catalogue does not follow the supermarkets' Wednesday week (Chemist Warehouse: about two
+# weeks, from a Thursday). Their dates never become the site-wide "this week" dates.
+OWN_DATES = ('Chemist Warehouse',)
+
+
+def clear_store_period(store: str, period: str) -> int:
+    """Remove a store's specials for one period (its catalogue has ended and no new one is on yet)."""
+    with get_db() as conn:
+        c = conn.cursor()
+        c.execute('DELETE FROM specials WHERE store = ? AND period = ?', (store, period))
+        n = c.rowcount
+        c.execute("DELETE FROM metadata WHERE key = ?", (f'date_range_{store.lower()}_{period}',))
+        conn.commit()
+    if n:
+        print(f" Removed {n} {store} {period} specials (that catalogue has ended).")
+    return n
+
 
 def save_specials(store: str, items: List[Dict[str, Any]], period: str = 'current', date_range: str = '', allow_fewer: bool = False):
     """Replace specials for a given store and period (current / next) with the newly scraped list."""
@@ -229,7 +247,7 @@ def save_specials(store: str, items: List[Dict[str, Any]], period: str = 'curren
                 continue
 
             aisle = (item.get('store_category') or '').strip()
-            cat = classify_product(title, aisle, item.get('product_url', ''))
+            cat = classify_for_store(store, title, aisle, item.get('product_url', ''))
             is_pop = 1 if is_popular_product(title) else 0
             score = calculate_popularity_score({
                 'title': title, 'price': price, 'was_price': was_price,
@@ -273,7 +291,7 @@ def save_specials(store: str, items: List[Dict[str, Any]], period: str = 'curren
                 'INSERT OR REPLACE INTO metadata (key, value) VALUES (?, ?)',
                 (f'date_range_{store.lower()}_{period}', date_range)
             )
-            if any(m in date_range for m in ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec', '2026', '2027', '2028']):
+            if store not in OWN_DATES and any(m in date_range for m in ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec', '2026', '2027', '2028']):
                 cursor.execute(
                     'INSERT OR REPLACE INTO metadata (key, value) VALUES (?, ?)',
                     (f'date_range_{period}', date_range)
@@ -326,7 +344,8 @@ def promote_next_week(store: str, today=None) -> int:
         c.execute("UPDATE specials SET period = 'current' WHERE store = ? AND period = 'next' AND date_range = ?", (store, dr))
         moved = c.rowcount
         c.execute("INSERT OR REPLACE INTO metadata (key, value) VALUES (?, ?)", (f'date_range_{store.lower()}_current', dr))
-        c.execute("INSERT OR REPLACE INTO metadata (key, value) VALUES (?, ?)", ('date_range_current', dr))
+        if store not in OWN_DATES:
+            c.execute("INSERT OR REPLACE INTO metadata (key, value) VALUES (?, ?)", ('date_range_current', dr))
         c.execute("DELETE FROM metadata WHERE key = ?", (f'date_range_{store.lower()}_next',))
         conn.commit()
         print(f" {store}: next week ({dr}) has started - moved {moved} preview items to this week.")

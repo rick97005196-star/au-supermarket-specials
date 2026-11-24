@@ -125,6 +125,61 @@ def _aldi_range_kept(new_items):
     return [it for it in saved if it['title'].lower() not in have]
 
 
+CW = 'Chemist Warehouse'
+CW_EVERY_HOURS = 6
+
+
+def _meta(key, value=None):
+    from database import get_db
+    with get_db() as conn:
+        if value is None:
+            row = conn.execute("SELECT value FROM metadata WHERE key = ?", (key,)).fetchone()
+            return row[0] if row else None
+        conn.execute("INSERT OR REPLACE INTO metadata (key, value) VALUES (?, ?)", (key, value))
+        conn.commit()
+
+
+def _cw_saved_range_over(today):
+    """The saved Chemist Warehouse catalogue has ended (or nothing is saved)."""
+    from database import get_db, _range_dates
+    with get_db() as conn:
+        rngs = [r[0] for r in conn.execute("SELECT DISTINCT date_range FROM specials WHERE store = ? AND period = 'current'", (CW,))]
+    ends = [_range_dates(r)[1] for r in rngs if _range_dates(r)]
+    return not ends or max(ends) < today
+
+
+def update_chemist_warehouse(now=None):
+    import datetime as _dt
+    from scrapers.chemist_scraper import scrape_chemist_warehouse, _today
+    from database import clear_store_period
+    now = now or _dt.datetime.utcnow()
+    today = _today()
+    last = _meta('cw_last_read')
+    if last and not _cw_saved_range_over(today):
+        try:
+            if (now - _dt.datetime.strptime(last, '%Y-%m-%d %H:%M:%S')).total_seconds() < CW_EVERY_HOURS * 3600:
+                print(f" Chemist Warehouse was read less than {CW_EVERY_HOURS} hours ago - keeping the saved catalogue")
+                return {'status': 'kept'}
+        except ValueError:
+            pass
+    data = scrape_chemist_warehouse()
+    if not data.get('listed'):
+        return {'status': 'error: catalogue list not readable (saved catalogue kept)'}
+    res = {'status': 'success'}
+    for period in ('current', 'next'):
+        items, rng = data[period]['items'], data[period]['date_range']
+        if items:
+            res[period] = save_specials(CW, items, period=period, date_range=rng)
+            print(f" Saved {res[period]} Chemist Warehouse {period} specials ({rng}).")
+        else:
+            # nothing read for this period: an old (expired) catalogue may never stay on the site
+            res[period] = 0
+            if period == 'next' or _cw_saved_range_over(today):
+                clear_store_period(CW, period)
+    _meta('cw_last_read', now.strftime('%Y-%m-%d %H:%M:%S'))
+    return res
+
+
 def update_all_stores(max_catalogue_pages: int = 50) -> Dict[str, Any]:
     """Runs all supermarket scrapers for both current week and next week preview."""
     print("=" * 65)
@@ -136,7 +191,7 @@ def update_all_stores(max_catalogue_pages: int = 50) -> Dict[str, Any]:
 
     # Wednesday safety net: yesterday's "next week" becomes "this week" before anything is scraped
     from database import promote_next_week
-    for _store in ('Coles', 'Woolworths'):
+    for _store in ('Coles', 'Woolworths', 'Chemist Warehouse'):
         try:
             promote_next_week(_store)
         except Exception as e:
@@ -253,10 +308,18 @@ def update_all_stores(max_catalogue_pages: int = 50) -> Dict[str, Any]:
         print(f" ALDI update error: {e}")
         results['ALDI'] = {'status': f'error: {e}'}
 
+    # 4. Chemist Warehouse (小黃屋): its printed catalogue, about two weeks long, read at most every 6 hours
+    try:
+        results['Chemist Warehouse'] = update_chemist_warehouse()
+    except Exception as e:
+        print(f" Chemist Warehouse update error: {e}")
+        results['Chemist Warehouse'] = {'status': f'error: {e}'}
+
     try:
         from scrapers.polite import summary
         counts, blocked = summary()
-        names = {'salefinder': '型錄網站', 'woolworths': 'Woolworths', 'coles': 'Coles 官網', 'aldi': 'ALDI'}
+        names = {'salefinder': '型錄網站', 'woolworths': 'Woolworths', 'coles': 'Coles 官網', 'aldi': 'ALDI',
+                 'chemistwarehouse': 'Chemist Warehouse 型錄'}
         txt = '、'.join(f"{names.get(k, k)} {v} 次" for k, v in counts.items()) or '0 次'
         print(f"::notice::本次更新對各網站的請求：{txt}" + (f"（被拒絕而停止：{'、'.join(names.get(k, k) for k in blocked)}）" if blocked else ''))
     except Exception:

@@ -26,8 +26,9 @@ OUT = os.path.join(ROOT, 'data', 'buzz.json')
 FEEDS = [('Coles', 'https://www.ozbargain.com.au/deals/coles.com.au/feed'),
          ('Woolworths', 'https://www.ozbargain.com.au/deals/woolworths.com.au/feed'),
          ('ALDI', 'https://www.ozbargain.com.au/deals/aldi.com.au/feed'),
+         ('Chemist Warehouse', 'https://www.ozbargain.com.au/deals/chemistwarehouse.com.au/feed'),
          (None, 'https://www.ozbargain.com.au/cat/groceries/feed')]
-STORES = ('Coles', 'Woolworths', 'ALDI')
+STORES = ('Coles', 'Woolworths', 'ALDI', 'Chemist Warehouse')
 WINDOW_DAYS = 8
 REFRESH_HOURS = 6
 OZB = '{https://www.ozbargain.com.au}'

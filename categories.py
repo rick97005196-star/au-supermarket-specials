@@ -112,6 +112,17 @@ def _is_pet(tl):
                 re.search(r"\b(?:purina|whiskas|pedigree|dine\b|felix|fancy\s*feast|supercoat|optimum\s*(?:dog|cat|adult|puppy)|schmackos|my\s*dog|fussy\s*cat|temptations(?=.*\b(?:cat|treats?)\b)|hartz(?!\s*soft\s*drink)|billie'?s\s*bowl|vip\s*petfoods|open\s*paddock|the\s*paw\s*grocer)\b", tl))
 
 
+# Chemist Warehouse (小黃屋) sells vitamins, medicines, beauty, fragrance and personal care: all of it is the site's
+# 美妝保健 department (pet medicines: 寵物). The supermarket rules would misread it ("Grape" chewable -> fruit).
+PHARMACY_STORES = ('Chemist Warehouse',)
+
+
+def classify_for_store(store: str, title: str, raw_cat: str = "", product_url: str = "") -> str:
+    if store in PHARMACY_STORES:
+        return 'pet' if _is_pet(f" {(title or '').lower()} ") else 'health_vitamins'
+    return classify_product(title, raw_cat, product_url)
+
+
 def classify_product(title: str, raw_cat: str = "", product_url: str = "", use_hints: bool = True) -> str:
     """
     Logically sound, real-world supermarket department classifier for Australian specials.

@@ -116,7 +116,7 @@ if os.path.exists(trans_path):
             translations = {}
 
 import categories
-from categories import classify_product, is_popular_product, calculate_popularity_score
+from categories import classify_for_store, is_popular_product, calculate_popularity_score
 categories.HINTED.clear()
 categories.GUESSED.clear()
 
@@ -128,7 +128,7 @@ for _k, _v in translations.items():
 for it in items:
     t = it.get('title', '')
     # rules first; products no rule knows: the AI's answer, then the supermarket's own aisle
-    it['category'] = classify_product(t, it.pop('store_category', '') or '', it.get('product_url') or '')
+    it['category'] = classify_for_store(it.get('store'), t, it.pop('store_category', '') or '', it.get('product_url') or '')
     it['is_popular'] = is_popular_product(t)
     it['popularity_score'] = calculate_popularity_score(it)
     tr = translations.get(t) or _tr_norm.get(_re2.sub(r'\s+', ' ', t).strip().lower())

@@ -24,6 +24,7 @@
     --woolies: #178841;
     --coles: #e01a22;
     --aldi: #1f3f8f;
+    --cw: #a87b00;           /* Chemist Warehouse yellow, dark enough to read on white */
     --shadow-sm: 0 1px 2px rgba(27, 27, 25, 0.04);
     --shadow-md: 0 1px 2px rgba(27, 27, 25, 0.04), 0 8px 24px -12px rgba(27, 27, 25, 0.14);
     --shadow-lg: 0 24px 60px -20px rgba(27, 27, 25, 0.28);
@@ -53,6 +54,7 @@ html.dark {
     --woolies: #3fb56b;
     --coles: #ff5a5f;
     --aldi: #7f9cf0;
+    --cw: #f2c94c;
     --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
     --shadow-md: 0 1px 2px rgba(0, 0, 0, 0.3), 0 10px 28px -14px rgba(0, 0, 0, 0.6);
     --shadow-lg: 0 24px 60px -20px rgba(0, 0, 0, 0.7);
@@ -208,6 +210,7 @@ html.dark .ozwh-hubnav a:focus-visible{outline-color:#ECEAE4}
 .dot-woolies { background: var(--woolies); }
 .dot-coles { background: var(--coles); }
 .dot-aldi { background: var(--aldi); }
+.dot-cw { background: var(--cw); }
 
 /* ---------- Segmented controls ---------- */
 .seg { display: inline-flex; padding: 4px; gap: 4px; border-radius: 999px; background: var(--surface-2); max-width: 100%; }
@@ -282,6 +285,7 @@ html.dark .ozwh-hubnav a:focus-visible{outline-color:#ECEAE4}
 .store-tab.is-active[data-store="Woolworths"] { color: var(--woolies); }
 .store-tab.is-active[data-store="Coles"] { color: var(--coles); }
 .store-tab.is-active[data-store="ALDI"] { color: var(--aldi); }
+.store-tab.is-active[data-store="Chemist Warehouse"] { color: var(--cw); }
 .toggle-pill {
     display: inline-flex; align-items: center; gap: 7px; height: 38px; padding: 0 14px; border-radius: 999px;
     font-size: 13px; font-weight: 500; color: var(--ink-2); background: var(--surface); border: 1px solid var(--line);
@@ -526,7 +530,7 @@ html.dark .chip.is-active { color: #0d1f16; }
 
 /* ---------- Store filter: all four always visible on phones ---------- */
 @media (max-width: 767px) {
-    .store-seg { display: grid; grid-template-columns: .95fr 1.25fr .9fr .8fr; width: 100%; gap: 2px; }
+    .store-seg { display: grid; grid-template-columns: .7fr 1.25fr .9fr .8fr .95fr; width: 100%; gap: 2px; }
     .store-seg .seg-btn { min-width: 0; padding: 9px 4px; font-size: 13px; gap: 5px; }
     .store-seg .store-dot { width: 7px; height: 7px; margin-right: 0; }
 }
@@ -878,7 +882,7 @@ html.dark .site-header, html.dark .cat-nav { box-shadow: 0 0.5px 0 rgba(255,255,
 .stat-bar { display: block; height: 4px; margin-top: 5px; border-radius: 2px; overflow: hidden;
     background: color-mix(in srgb, var(--bar) 22%, transparent); }
 .stat-bar i { display: block; height: 100%; width: 0; background: var(--bar); }
-.bar-woolies { --bar: var(--woolies); } .bar-coles { --bar: var(--coles); } .bar-aldi { --bar: var(--aldi); }
+.bar-woolies { --bar: var(--woolies); } .bar-coles { --bar: var(--coles); } .bar-aldi { --bar: var(--aldi); } .bar-cw { --bar: var(--cw); }
 .stat-sub { font-size: 12px; color: var(--ink-3); white-space: nowrap; }
 .stats-note { display: flex; align-items: center; gap: 6px; margin: 8px 4px 0; font-size: 12px; color: var(--ink-3); }
 .stats-note[hidden] { display: none; }

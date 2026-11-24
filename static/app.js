@@ -678,10 +678,21 @@ function regionize(list) {
     return out;
 }
 
+// ---------- Stores ----------
+// Chemist Warehouse (小黃屋): its printed catalogue (about two weeks, in store). Not a supermarket: left out of
+// the 三家比價 comparisons (same product / same kind / same brand), shown with its own tab and colour.
+const CW_STORE = 'Chemist Warehouse';
+const STORE_LIST = ['Woolworths', 'Coles', 'ALDI', CW_STORE];
+function storeDotClass(s) { return s === 'Coles' ? 'dot-coles' : s === 'ALDI' ? 'dot-aldi' : s === CW_STORE ? 'dot-cw' : 'dot-woolies'; }
+function storeColorVar(s) { return s === 'Coles' ? 'var(--coles)' : s === 'ALDI' ? 'var(--aldi)' : s === CW_STORE ? 'var(--cw)' : 'var(--woolies)'; }
+function storeLabel(s) { return s === CW_STORE ? t('store_cw') : s; }
+// Chemist Warehouse prints its saving against the RRP (supplier's recommended price) or its own everyday price
+function wasLabel(it) { return it && it.store === CW_STORE && /off RRP/i.test(it.discount_desc || '') ? t('rrp_price') : t('was_price'); }
+
 // ---------- Safety: product text comes from scraped websites + machine translation ----------
 // Every text field is cleaned once when loaded, so no "<…>" from a shop's website can ever run as
 // code on this site, and only real https links/images are used.
-const _ALLOWED_LINK = /^https:\/\/(?:www\.)?(?:coles\.com\.au|woolworths\.com\.au|aldi\.com\.au|salefinder\.com\.au)\//i;
+const _ALLOWED_LINK = /^https:\/\/(?:www\.)?(?:coles\.com\.au|woolworths\.com\.au|aldi\.com\.au|salefinder\.com\.au|chemistwarehouse\.com\.au)\//i;
 function escHTML(v) {
     return String(v == null ? '' : v).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
 }
@@ -923,8 +934,9 @@ function updateStatsDisplay() {
     const everyday = activeInfo.everyday_by_store;
     const regular = activeInfo.regular_by_store;
     const allOf = (store) => (byStore[store] || 0) + ((everyday && everyday[store]) || 0) + ((regular && regular[store]) || 0);
-    const statMax = Math.max(1, ...['Woolworths', 'Coles', 'ALDI'].map(allOf));
-    [['Woolworths', 'Woolies'], ['Coles', 'Coles'], ['ALDI', 'Aldi']].forEach(([store, id]) => {
+    const statMax = Math.max(1, ...STORE_LIST.map(allOf));
+    [['Woolworths', 'Woolies'], ['Coles', 'Coles'], ['ALDI', 'Aldi'], [CW_STORE, 'Cw']].forEach(([store, id]) => {
+        if (!document.getElementById('stat' + id)) return;
         const sp = byStore[store] || 0, all = sp + ((everyday && everyday[store]) || 0) + ((regular && regular[store]) || 0);
         document.getElementById('stat' + id).textContent = all;
         document.getElementById('statBar' + id).style.width = all ? (sp / all * 100) + '%' : '0';
@@ -1206,7 +1218,7 @@ function renderFavPanel() {
     const minis = cur.slice(0, 20).map(it => {
         const p = parseSupermarketPrice(it.price_display, it.price);
         const name = getProductTranslation(it, currentLang) || it.title;
-        const dot = it.store === 'Coles' ? 'dot-coles' : (it.store === 'ALDI' ? 'dot-aldi' : 'dot-woolies');
+        const dot = storeDotClass(it.store);
         return `<button type="button" class="fav-mini" data-id="${esc(it.id)}">
                     <span class="fav-mini-img"><img src="${esc(it.image_url || DEFAULT_FALLBACK_IMG)}" alt="" loading="lazy" onerror="this.onerror=null;this.src=DEFAULT_FALLBACK_IMG"></span>
                     <span class="fav-mini-name">${esc(name)}</span>
@@ -1885,12 +1897,14 @@ function enrichCrossStoreComparisons(list) {
     });
 
     list.forEach(it => {
+        if (it.store === CW_STORE) { it.cross_store_matches = []; return; }
         const byStore = {}, loose = new Set();
         for (const o of keyMap.get(getCompareKey(it)) || []) {
-            if (o.store !== it.store && (!byStore[o.store] || _perItemPrice(o) < _perItemPrice(byStore[o.store]))) byStore[o.store] = o;
+            if (o.store !== it.store && o.store !== CW_STORE && (!byStore[o.store] || _perItemPrice(o) < _perItemPrice(byStore[o.store]))) byStore[o.store] = o;
         }
         const found = findSameProducts(it, list);
         for (const st in found) {
+            if (st === CW_STORE) continue;
             // only when both products point at each other, so the two cards always agree
             if (!byStore[st] && findSameProducts(found[st], list)[it.store] === it) { byStore[st] = found[st]; loose.add(st); }
         }
@@ -2216,11 +2230,12 @@ async function loadSpecials() {
             const half = discountOnly ? filtered.filter(isItemHalfPrice) : [];
             const groups = new Map();
             for (const it of (discountOnly ? half : filtered)) {
+                if (it.store === CW_STORE) continue;      // not a supermarket: not in 三家比價
                 const k = brandGroupKey(it);
                 if (!groups.has(k)) groups.set(k, { key: k, items: [], stores: new Set() });
             }
             for (const it of staticSpecials) {
-                if (it.period !== currentPeriod || !isListed(it)) continue;
+                if (it.period !== currentPeriod || !isListed(it) || it.store === CW_STORE) continue;
                 const g = groups.get(brandGroupKey(it));
                 if (g) { g.items.push(it); g.stores.add(it.store); }
             }
@@ -2608,7 +2623,7 @@ function cmpGroupHeader(g) {
     el.className = 'cmp-group';
     const meta = g.basis ? t('cmp_group_unit', { u: _cmpUnit(g.basis), n: g.items.length }) : t('cmp_group_price', { n: g.items.length });
     const dots = ['Woolworths', 'Coles', 'ALDI'].filter(s => g.stores.has(s))
-        .map(s => `<span class="cmp-group-store"><i class="store-dot ${s === 'Coles' ? 'dot-coles' : (s === 'ALDI' ? 'dot-aldi' : 'dot-woolies')}"></i>${s}</span>`).join('');
+        .map(s => `<span class="cmp-group-store"><i class="store-dot ${storeDotClass(s)}"></i>${escHTML(storeLabel(s))}</span>`).join('');
     el.innerHTML = `<span class="cmp-group-name"></span><span class="cmp-group-meta">${meta}</span><span class="cmp-group-stores">${dots}</span>`;
     el.firstChild.textContent = brandGroupName(g);
     return el;
@@ -2650,7 +2665,7 @@ function renderSameProducts(item) {
     const low = Math.min(...prices), high = Math.max(...prices);
     const row = (st) => {
         const it = byStore[st], isThis = it === item;
-        const color = st === 'Coles' ? 'var(--coles)' : (st === 'ALDI' ? 'var(--aldi)' : 'var(--woolies)');
+        const color = storeColorVar(st);
         const head = `<div class="aldi-cmp-store" style="color:${color}">${st}${isThis ? ` · ${escHTML(t('aldi_cmp_this'))}` : ''}</div>`;
         if (!it) return `<div class="aldi-cmp-row is-none"><div class="min-w-0">${head}<div class="aldi-cmp-name">${escHTML(t('cmp3_none' + nx))}</div></div></div>`;
         const tr = getProductTranslation(it, currentLang);
@@ -2710,7 +2725,7 @@ function renderValueCompare(item) {
     const row = (it, up, isThis) => {
         const tr = getProductTranslation(it, currentLang);
         const name = (tr && currentLang !== 'en') ? tr : it.title;
-        const color = it.store === 'Coles' ? 'var(--coles)' : (it.store === 'ALDI' ? 'var(--aldi)' : 'var(--woolies)');
+        const color = storeColorVar(it.store);
         return `
             <div class="aldi-cmp-row ${isThis ? 'is-this' : ''}" ${isThis ? '' : 'role="button" tabindex="0"'} data-cmp-id="${escHTML(it.id)}">
                 <div class="min-w-0">
@@ -2748,6 +2763,9 @@ function createProductCardElement(item) {
     } else if (item.store === 'ALDI') {
         storeBadgeClass = 'bg-[#00205b] text-white';
         storeIcon = '<i class="fa-solid fa-store text-[9px] text-sky-200"></i>';
+    } else if (item.store === CW_STORE) {
+        storeBadgeClass = 'bg-[#f2c200] text-[#1b1b19]';
+        storeIcon = '<i class="fa-solid fa-prescription-bottle-medical text-[9px]"></i>';
     }
 
     const isHalfPrice = isItemHalfPrice(item);
@@ -2833,7 +2851,7 @@ function createProductCardElement(item) {
         date_range: item.date_range || ''
     };
 
-    const storeDotClass = item.store === 'Coles' ? 'dot-coles' : (item.store === 'ALDI' ? 'dot-aldi' : 'dot-woolies');
+    const storeDotCls = storeDotClass(item.store);
     const primaryTitle = translated || item.title;
     const secondaryTitle = translated ? item.title : '';
     const escAttr = (v) => String(v || '').replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
@@ -2864,7 +2882,7 @@ function createProductCardElement(item) {
 
         <div class="p-body">
             <div class="p-meta">
-                <span class="p-store"><i class="store-dot ${storeDotClass}"></i>${item.store}</span>
+                <span class="p-store"><i class="store-dot ${storeDotCls}"></i>${escHTML(storeLabel(item.store))}</span>
                 <span class="sep">·</span>
                 <span class="p-cat">${getCleanCategoryLabel(displayCategoryKey(item))}</span>
             </div>
@@ -2886,7 +2904,7 @@ function createProductCardElement(item) {
                     ${showNormUnit ? `<div class="p-unit-strong num" title="${escAttr(unitPriceClean || fmtSensibleUnit(up))}">${sortVal === 'unit_asc' ? fmtUnitPrice(up) : fmtSensibleUnit(up)}</div>${per100 ? `<div class="p-unit num mt-0.5">${per100}</div>` : ''}` : ''}
                     ${aldiInfo ? `<div class="p-aldi ${aldiInfo.upcoming ? 'is-upcoming' : ''} ${aldiInfo.kind === 'saver' ? 'is-saver' : ''}"><i class="fa-regular ${aldiInfo.upcoming ? 'fa-calendar' : (aldiInfo.kind === 'saver' ? 'fa-clock' : 'fa-box-open')}"></i>${aldiInfo.text}</div>` : `
                     <div class="p-was num mt-1.5">
-                        ${effectiveWas > 0 ? `<s>${t('was_price')} $${effectiveWas.toFixed(2)}</s>` : ''}
+                        ${effectiveWas > 0 ? `<s>${wasLabel(item)} $${effectiveWas.toFixed(2)}</s>` : ''}
                         ${effectiveSave > 0 ? `<span class="p-save">${t('save_badge', { amount: effectiveSave.toFixed(2) })}</span>` : ''}
                         ${isEverydayPrice(item) ? `<span class="p-everyday">${t('everyday_badge')}</span>` : ''}
                         ${isPlainSpecial(item) ? `<span class="p-save">${t('special_badge')}</span>` : ''}
@@ -2948,6 +2966,8 @@ function buildStoreSearchUrl(store, queryTerm, fallbackUrl = '') {
             return fallbackUrl;
         }
         return `https://www.aldi.com.au/products/super-savers/k/1588161426952145`;
+    } else if (store === CW_STORE) {
+        return `https://www.chemistwarehouse.com.au/search?searchtext=${q}`;
     }
     return fallbackUrl || '#';
 }
@@ -3021,6 +3041,7 @@ function openProductModal(item) {
     let storeColor = 'bg-emerald-600 text-white';
     if (item.store === 'Coles') storeColor = 'bg-rose-600 text-white';
     if (item.store === 'ALDI') storeColor = 'bg-blue-600 text-white';
+    if (item.store === CW_STORE) storeColor = 'bg-yellow-400 text-black';
 
     const isHalfPrice = isItemHalfPrice(item);
     const fallbackImg = DEFAULT_FALLBACK_IMG;
@@ -3028,8 +3049,8 @@ function openProductModal(item) {
     // Badges
     const storeBadge = document.getElementById('modalStoreBadge');
     storeBadge.className = 'tag';
-    storeBadge.style.color = item.store === 'Coles' ? 'var(--coles)' : (item.store === 'ALDI' ? 'var(--aldi)' : 'var(--woolies)');
-    storeBadge.textContent = item.store;
+    storeBadge.style.color = storeColorVar(item.store);
+    storeBadge.textContent = storeLabel(item.store);
 
     document.getElementById('modalCategoryBadge').textContent = getCategoryName(item.category);
     
@@ -3128,7 +3149,7 @@ function openProductModal(item) {
 
     const wasElem = document.getElementById('modalWasPrice');
     if (effectiveWas > 0) {
-        wasElem.textContent = `${t('was_price')} $${effectiveWas.toFixed(2)}`;
+        wasElem.textContent = `${wasLabel(item)} $${effectiveWas.toFixed(2)}`;
         wasElem.classList.remove('hidden');
     } else {
         wasElem.classList.add('hidden');
@@ -3613,7 +3634,7 @@ function repairLocalShoppingItems() {
 
 function getLocalShoppingData() {
     const items = getLocalShoppingList();
-    const grouped = {'Woolworths': [], 'Coles': [], 'ALDI': [], 'Other': []};
+    const grouped = {'Woolworths': [], 'Coles': [], 'ALDI': [], [CW_STORE]: [], 'Other': []};
     let total_cost = 0;
     let total_saved = 0;
     let total_original = 0;
@@ -3703,12 +3724,12 @@ async function loadShoppingList() {
             return;
         }
 
-        const stores = ['Woolworths', 'Coles', 'ALDI', 'Other'];
+        const stores = [...STORE_LIST, 'Other'];
         stores.forEach(store => {
             const items = data.grouped[store];
             if (!items || items.length === 0) return;
 
-            const dotClass = store === 'Coles' ? 'dot-coles' : (store === 'ALDI' ? 'dot-aldi' : 'dot-woolies');
+            const dotClass = storeDotClass(store);
 
             let storeSubtotal = items.reduce((acc, cur) => acc + (cur.price * (parseInt(cur.quantity, 10) || 1)), 0);
 
@@ -3716,7 +3737,7 @@ async function loadShoppingList() {
             section.className = 'list-section space-y-2';
             section.innerHTML = `
                 <div class="flex items-center justify-between px-1 pb-1 text-[13px]">
-                    <span class="store-label"><i class="store-dot ${dotClass}"></i>${store} <span class="t-ink-3 font-normal">(${items.reduce((n, it) => n + (parseInt(it.quantity, 10) || 1), 0)})</span></span>
+                    <span class="store-label"><i class="store-dot ${dotClass}"></i>${escHTML(storeLabel(store))} <span class="t-ink-3 font-normal">(${items.reduce((n, it) => n + (parseInt(it.quantity, 10) || 1), 0)})</span></span>
                     <span class="num font-semibold t-ink-2">${t('subtotal')} $${storeSubtotal.toFixed(2)}</span>
                 </div>
                 <div class="space-y-1.5">
@@ -3916,11 +3937,11 @@ async function copyShoppingList() {
 
         let text = `🛒 ${t('shopping_manifest')} (${new Date().toLocaleDateString()})\n`;
         text += `🇦🇺 All prices in AUD ($)\n\n`;
-        const stores = ['Woolworths', 'Coles', 'ALDI', 'Other'];
+        const stores = [...STORE_LIST, 'Other'];
         stores.forEach(st => {
             const items = data.grouped[st];
             if (items && items.length > 0) {
-                text += `【${st}】\n`;
+                text += `【${storeLabel(st)}】\n`;
                 items.forEach((it, idx) => {
                     const tag = it.expired ? `[${t('expired_tag')}]` : (it.period === 'next' ? `[${t('next_cycle')}]` : `[${t('current_cycle')}]`);
                     const itPrice = parseSupermarketPrice(it.price_display, it.price);

@@ -20,6 +20,7 @@ PACE = {
     'woolworths': (2.0, 1.5),     # Woolworths half-price list
     'coles': (6.0, 3.0),          # coles.com.au half-price list (strict bot protection)
     'aldi': (1.5, 1.0),
+    'chemistwarehouse': (3.0, 2.0),   # Chemist Warehouse catalogue viewer (2-3 requests per update)
 }
 MAX_WAIT = 120                    # never wait longer than this for one Retry-After
 
