@@ -20,6 +20,7 @@ SRC = os.path.join(ROOT, 'static', 'data', 'specials.json')
 OUT_DIR = os.path.join(ROOT, 'chemist', 'data')
 OUT = os.path.join(OUT_DIR, 'products.json')
 ALL = os.path.join(ROOT, 'data', 'chemist_all.json')   # scrapers/chemist_all.py
+NAMES = os.path.join(ROOT, 'data', 'chemist_translations.json')   # scripts/translate_chemist.py
 STORE = 'Chemist Warehouse'
 
 # Departments, checked in this order (the first that matches wins). Words are matched in the English name.
@@ -110,6 +111,8 @@ def _special(it):
         'period': it.get('period') or 'current',
         'title': it.get('title') or '',
         'zh': tr.get('zh') or '',
+        'ja': tr.get('ja') or '',
+        'ko': tr.get('ko') or '',
         'price': it.get('price') or 0,
         'price_display': it.get('price_display') or '',
         'was_price': it.get('was_price') or 0,
@@ -166,6 +169,17 @@ def build():
     }
     with open(OUT, 'w', encoding='utf-8') as f:
         json.dump(data, f, ensure_ascii=False, separators=(',', ':'))
+    # translated names of the other products, one small file per language (the page loads only the one it shows)
+    try:
+        with open(NAMES, encoding='utf-8') as f:
+            names = json.load(f)
+    except (OSError, ValueError):
+        names = {}
+    shown = {r[0] for r in listed}
+    for i, lang in enumerate(('zh', 'ja', 'ko')):
+        part = {pid: v[i] for pid, v in names.items() if pid in shown and len(v) > i and v[i]}
+        with open(os.path.join(OUT_DIR, f'names-{lang}.json'), 'w', encoding='utf-8') as f:
+            json.dump(part, f, ensure_ascii=False, separators=(',', ':'))
     counts = {}
     for d in [x['dept'] for x in specials] + [DEPT_KEYS[r[2]] for r in listed]:
         counts[d] = counts.get(d, 0) + 1

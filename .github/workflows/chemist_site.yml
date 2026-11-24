@@ -5,9 +5,11 @@ name: 小黃屋網站（全部商品清單＋上架）
 #    that update also puts this site online when the catalogue changes (auto_update.yml)
 #  * every product the shop sells: the shop's public product sitemap, read here once a week
 #    (scrapers/chemist_all.py, names and links only)
+#  * the names in 中文 / 日本語 / 한국어: a few thousand more each day until all are done (scripts/translate_chemist.py)
 on:
   schedule:
-    - cron: '37 17 * * 4'     # Friday 3:37 AM Brisbane time, once a week
+    - cron: '37 17 * * *'     # 3:37 AM Brisbane time every day: the product list itself is read once a week
+                              # (scrapers/chemist_all.py skips it for 6 days); the daily run translates more names
   push:
     branches: [main]
     paths:
@@ -27,7 +29,7 @@ permissions:
 jobs:
   site:
     runs-on: ubuntu-24.04
-    timeout-minutes: 20
+    timeout-minutes: 45
     steps:
       - uses: actions/checkout@v5
         with:
@@ -42,14 +44,17 @@ jobs:
         run: |
           pip install -q requests
           python scrapers/chemist_all.py || echo "::warning::product list not read this time - the saved list is used"
+      - name: Translate more product names (AI)
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: python scripts/translate_chemist.py || echo "::warning::names not translated this time - English is shown"
       - name: Save the product list
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action Bot"
-          [ -f data/chemist_all.json ] || exit 0
-          git add data/chemist_all.json
+          for f in data/chemist_all.json data/chemist_translations.json; do [ ! -f "$f" ] || git add "$f"; done
           git diff --staged --quiet && exit 0
-          git commit -m "小黃屋 product list [skip ci]"
+          git commit -m "小黃屋 product list and names [skip ci]"
           for i in 1 2 3; do
             git pull --rebase -X theirs origin main && git push origin main && exit 0
             git rebase --abort 2>/dev/null || true
@@ -68,3 +73,19 @@ jobs:
           npx -y wrangler@4 pages project list | grep -q 'au-pharmacy-specials' \
             || npx -y wrangler@4 pages project create au-pharmacy-specials --production-branch=main
           npx -y wrangler@4 pages deploy chemist --project-name=au-pharmacy-specials --branch=main
+      - name: Visitor statistics (Cloudflare Web Analytics, same as the other sites)
+        # turns it on once for au-pharmacy-specials.pages.dev (Cloudflare adds its counter to the pages itself);
+        # if the key may not do this, the owner turns it on in the Cloudflare dashboard - the site works either way
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          ACCOUNT: 9289bcfaff4b5d32ee32e7b83bf4a687
+          HOST: au-pharmacy-specials.pages.dev
+        run: |
+          API="https://api.cloudflare.com/client/v4/accounts/$ACCOUNT/rum/site_info"
+          list=$(curl -s -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" "$API/list?per_page=100")
+          if echo "$list" | grep -q "\"host\":\"$HOST\""; then echo "Web Analytics already on for $HOST"; exit 0; fi
+          echo "$list" | grep -q '"success":true' || { echo "::warning::Web Analytics: this key cannot read the site list - turn it on in the Cloudflare dashboard"; echo "$list" | head -c 300; exit 0; }
+          res=$(curl -s -X POST -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" -H "Content-Type: application/json" \
+                -d "{\"host\":\"$HOST\",\"auto_install\":true}" "$API")
+          echo "$res" | grep -q '"success":true' && echo "Web Analytics turned on for $HOST" \
+            || { echo "::warning::Web Analytics not turned on - do it in the Cloudflare dashboard"; echo "$res" | head -c 300; }
