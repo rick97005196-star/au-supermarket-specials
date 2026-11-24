@@ -1,9 +1,9 @@
 // 小黃屋特價查詢 — data/products.json is made by scripts/build_chemist.py
 'use strict';
 const DEPTS = [
-  ['vitamins', '維他命保健'], ['medicine', '藥品'], ['baby', '孕期母嬰'], ['skin', '護膚防曬'],
-  ['makeup', '彩妝'], ['hair', '頭髮護理'], ['fragrance', '香水'], ['oral', '口腔'],
-  ['sports', '運動營養'], ['appliance', '電器'], ['other', '其他'],
+  ['vitamins', '維他命保健'], ['medicine', '藥品'], ['health', '健康用品'], ['baby', '孕期母嬰'],
+  ['skin', '護膚防曬'], ['makeup', '彩妝美甲'], ['hair', '頭髮護理'], ['fragrance', '香水'], ['oral', '口腔'],
+  ['sports', '運動營養'], ['appliance', '電器'], ['pet', '寵物'], ['other', '其他'],
 ];
 const DEPT_NAME = Object.fromEntries(DEPTS);
 // Chinese words people type -> words in the English product names
@@ -25,6 +25,11 @@ const ZH = {
   '蛋白粉': 'protein|whey', '乳清': 'whey', '肌酸': 'creatine', '刮鬍刀': 'shaver|razor', '電動牙刷': 'electric toothbrush|oral-b io',
   '體溫計': 'thermometer', '血壓計': 'blood pressure', '隱形眼鏡': 'contact lens', '眼藥水': 'eye drops', '保險套': 'condom',
   '驗孕': 'pregnancy test', '寵物': 'dog|cat|pet', '狗': 'dog', '貓': 'cat', '除臭': 'deodorant|antiperspirant', '護唇': 'lip balm',
+  '跳蚤': 'flea|bravecto|nexgard|simparica|frontline|advocate|revolution', '驅蟲': 'worm|flea|bravecto|nexgard|simparica|drontal|milbemax', '衛生棉': 'pads|libra|kotex|u by kotex', '棉條': 'tampon', '護膝': 'knee', '護腕': 'wrist',
+  '護踝': 'ankle', '壓力襪': 'compression', '血糖': 'glucose|glucometer|accu chek', '口罩': 'mask', '乾洗手': 'sanitiser|sanitizer',
+  '紗布': 'gauze', '眼睛': 'eye', '眼藥': 'eye drops', '鼻噴劑': 'nasal spray', '曼努卡': 'manuka', '蜂蜜': 'honey', '刮鬍': 'razor|shav',
+  '面膜': 'mask', '洗手': 'hand wash', '沐浴乳': 'body wash|shower gel', '香皂': 'soap', '濕紙巾': 'wipes', '指甲': 'nail',
+  '眼影': 'eyeshadow|shadow', '眉': 'brow', '髮蠟': 'wax|pomade|styl', '吹風機': 'dryer', '離子夾': 'straightener',
 };
 const PAGE = 60;
 const $ = (id) => document.getElementById(id);
@@ -47,6 +52,11 @@ function dateZh(r) {
   if (p.length !== 2 || !p[0] || !p[1]) return r || '';
   const f = (m) => `${M[m[3]] || m[3]}/${m[2]}（${W[m[1]] || m[1]}）`;
   return `${f(p[0])}到 ${f(p[1])}`;
+}
+
+// 'cerave-moisturising-cream-454g' -> 'Cerave Moisturising Cream 454g' (same as scrapers/chemist_all.py)
+function nameFromSlug(slug) {
+  return String(slug || '').split('-').filter(Boolean).map((w) => (/^\d/.test(w) ? w : w[0].toUpperCase() + w.slice(1))).join(' ');
 }
 
 function terms(q) {
@@ -74,7 +84,7 @@ function render() {
   const s = state.sort;
   list = list.slice().sort((a, b) => {
     if (!!b.special !== !!a.special) return b.special ? 1 : -1;      // specials first
-    if (!a.special) return a.title.localeCompare(b.title);
+    if (!a.special) return a._i - b._i;                                 // already in name order
     if (s === 'save') return (b.save_amount || 0) - (a.save_amount || 0) || (b.pop || 0) - (a.pop || 0);
     if (s === 'low') return (a.price || 0) - (b.price || 0);
     if (s === 'name') return (a.zh || a.title).localeCompare(b.zh || b.title, 'zh-Hant');
@@ -137,7 +147,13 @@ async function main() {
     return;
   }
   SPECIALS = (data.specials || []).map((x) => Object.assign(x, { special: true }));
-  ALL = SPECIALS.concat(data.products || []);
+  // other products come compact: [product number, link text, department]
+  const depts = data.depts || [];
+  const listed = (data.products || []).map((r, i) => ({
+    pid: r[0], title: nameFromSlug(r[1]), url: `https://www.chemistwarehouse.com.au/buy/${r[0]}/${r[1]}`,
+    dept: depts[r[2]] || 'other', _i: i,
+  }));
+  ALL = SPECIALS.concat(listed);
   for (const it of ALL) it._s = norm(`${it.title} ${it.zh || ''} ${DEPT_NAME[it.dept] || ''}`);
   const ranges = (data.date_ranges || []).map(dateZh).join('、');
   $('sub').textContent = `本期型錄 ${ranges}，${SPECIALS.length} 件特價`;
