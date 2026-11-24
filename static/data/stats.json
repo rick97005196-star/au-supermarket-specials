@@ -7,19 +7,19 @@
       "Woolworths": 6335
     },
     "by_category": {
-      "bakery": 263,
-      "dairy_eggs": 695,
-      "drinks": 1011,
+      "bakery": 266,
+      "dairy_eggs": 680,
+      "drinks": 1021,
       "frozen": 482,
-      "health_vitamins": 2142,
+      "health_vitamins": 2143,
       "household": 758,
       "liquor": 541,
       "meat": 578,
-      "pantry": 1880,
+      "pantry": 1863,
       "pet": 354,
-      "produce": 345,
-      "seafood": 89,
-      "snacks": 1714
+      "produce": 347,
+      "seafood": 90,
+      "snacks": 1729
     },
     "half_price_count": 2631,
     "date_range": "Wed 25 Nov 2026 - Tue 1 Dec 2026",
@@ -65,7 +65,7 @@
       "ALDI": 2496
     }
   },
-  "last_updated": "2026-11-24 18:16:12",
+  "last_updated": "2026-11-24 18:41:53",
   "base_region": "QLD",
   "regions": {
     "QLD": {
@@ -360,5 +360,5 @@
   "next_ranges": [
     "Special Buys 預告 (12/02 - 12/08)"
   ],
-  "data_updated_at": "2026-11-24T18:39:39Z"
+  "data_updated_at": "2026-11-24T18:47:05Z"
 }
