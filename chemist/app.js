@@ -9,7 +9,7 @@ const ZH = {
   '褪黑激素': 'melatonin', '助眠': 'sleep', '睡': 'sleep', '維他命c': 'vitamin c', '維他命d': 'vitamin d',
   '葉酸': 'folate|folic', '孕婦': 'pregnancy|elevit', '懷孕': 'pregnancy', '哺乳': 'breastfeeding', '嬰兒': 'baby|infant',
   '奶粉': 'formula', '尿布': 'nappies|nappy', '寶寶': 'baby|kids', '兒童': 'kids|children', '小孩': 'kids|children',
-  '防曬': 'spf|sunscreen|sun', '乳液': 'lotion|moisturis', '保濕': 'moisturis|hydra', '面霜': 'cream', '精華': 'serum',
+  '防曬': 'spf|sunscreen|sun cream|sun lotion|sunblock|sun protect|sun spray', '乳液': 'lotion|moisturis', '保濕': 'moisturis|hydra', '面霜': 'cream', '精華': 'serum',
   '洗面乳': 'cleanser|face wash', '卸妝': 'makeup remover|micellar|micellaire', '身體乳': 'body lotion',
   '洗髮': 'shampoo', '洗髮精': 'shampoo', '潤髮': 'conditioner', '護髮': 'hair', '染髮': 'hair colour|hair color', '頭髮': 'hair',
   '香水': 'edp|edt|parfum|perfume', '口紅': 'lipstick|lip', '睫毛膏': 'mascara', '粉底': 'foundation', '指甲油': 'nail',
@@ -19,11 +19,12 @@ const ZH = {
   '胃酸': 'heartburn|reflux|antacid', '戒菸': 'nicotine|nicotinell|nicorette', 'ok蹦': 'bandage|plaster', '繃帶': 'bandage',
   '蛋白粉': 'protein|whey', '乳清': 'whey', '肌酸': 'creatine', '刮鬍刀': 'shaver|razor', '電動牙刷': 'electric toothbrush|oral-b io',
   '體溫計': 'thermometer', '血壓計': 'blood pressure', '隱形眼鏡': 'contact lens', '眼藥水': 'eye drops', '保險套': 'condom',
-  '驗孕': 'pregnancy test', '寵物': 'dog|cat|pet', '狗': 'dog', '貓': 'cat', '除臭': 'deodorant|antiperspirant', '護唇': 'lip balm',
+  '驗孕': 'pregnancy test', '狗': 'dog|puppy|canine', '貓': 'cats|kitten|feline|feliway|for cat|cat food|cat litter|cat treat', 'sunscreen': 'spf|sunscreen|sun cream|sun lotion|sunblock|sun protect|sun spray', '除臭': 'deodorant|antiperspirant', '護唇': 'lip balm',
   '跳蚤': 'flea|bravecto|nexgard|simparica|frontline|advocate|revolution', '驅蟲': 'worm|flea|bravecto|nexgard|simparica|drontal|milbemax', '衛生棉': 'pads|libra|kotex|u by kotex', '棉條': 'tampon', '護膝': 'knee', '護腕': 'wrist',
   '護踝': 'ankle', '壓力襪': 'compression', '血糖': 'glucose|glucometer|accu chek', '口罩': 'mask', '乾洗手': 'sanitiser|sanitizer',
   '紗布': 'gauze', '眼睛': 'eye', '眼藥': 'eye drops', '鼻噴劑': 'nasal spray', '曼努卡': 'manuka', '蜂蜜': 'honey', '刮鬍': 'razor|shav',
   '面膜': 'mask', '洗手': 'hand wash', '沐浴乳': 'body wash|shower gel', '香皂': 'soap', '濕紙巾': 'wipes', '指甲': 'nail',
+  '普拿疼': 'panadol', '必理痛': 'panadol', '普拿痛': 'panadol', '布洛芬': 'ibuprofen|nurofen', '撲熱息痛': 'paracetamol', '乙醯胺酚': 'paracetamol',
   '眼影': 'eyeshadow|shadow', '眉': 'brow', '髮蠟': 'wax|pomade|styl', '吹風機': 'dryer', '離子夾': 'straightener',
 };
 Object.assign(ZH, SYN);
@@ -43,7 +44,7 @@ function safeUrl(u, img) {
   if (img) return /^https:\/\/[^\s"'<>]+$/i.test(u) ? u : '';
   return /^https:\/\/www\.chemistwarehouse\.com\.au\/[^\s"'<>]*$/i.test(u) ? u : '';
 }
-function norm(s) { return String(s || '').toLowerCase().normalize('NFKD').replace(/[̀-ͯ]/g, '').replace(/['’`]/g, '').replace(/\s+/g, ' '); }
+function norm(s) { return String(s || '').toLowerCase().normalize('NFKD').replace(/[\u0300-\u036f]/g, '').normalize('NFC').replace(/['’`]/g, '').replace(/[^\p{L}\p{N}\p{M}]+/gu, ' '); }
 function money(n) { return '$' + Number(n).toFixed(2); }
 // 'cerave-moisturising-cream-454g' -> 'Cerave Moisturising Cream 454g' (same as scrapers/chemist_all.py)
 function nameFromSlug(slug) {
@@ -83,18 +84,26 @@ function terms(q) {
   let rest = norm(q).trim();
   for (const k of Object.keys(ZH).sort((a, b) => b.length - a.length)) {
     const nk = norm(k);
-    if (rest.includes(nk)) { out.push(ZH[k].split('|').map(norm).concat([nk])); rest = rest.split(nk).join(' '); }
+    if (rest.includes(nk)) { const g = ZH[k].split('|').map(norm).concat([nk]); g.syn = true; out.push(g); rest = rest.split(nk).join(' '); }
   }
   for (const w of rest.split(/\s+/)) if (w) out.push([w]);
   return out;
 }
-function matches(it, groups) { return groups.every((alts) => alts.some((a) => it._s.includes(a))); }
+// a known word (防曬, 魚油...) looks only at product names, so 防曬 does not pull in the whole 護膚防曬 department;
+// any other word may also match a department name (寵物, Pet...)
+// English words match from the start of a word ("pet" finds Pets, not Petroleum); Chinese / Japanese / Korean anywhere
+function hit(text, a) {
+  if (!/^[a-z0-9]/.test(a)) return text.includes(a);
+  return a.split(' ').pop().length <= 2 ? text.includes(` ${a} `) : text.includes(' ' + a);   // "c" in "vitamin c" must be a whole word
+}
+function matches(it, groups) { return groups.every((alts) => alts.some((a) => hit(it._s, a) || (!alts.syn && hit(it._d, a)))); }
 function index() {
   // searchable text: English + Chinese always (Chinese search works in every language) + the chosen language
   for (const it of ALL) {
     const zh = it.special ? it.zh : (names.zh && names.zh[it.pid]) || '';
     const own = lang !== 'zh' && lang !== 'en' ? localName(it) : '';
-    it._s = norm(`${it.title} ${zh} ${own} ${I18N.zh.depts[it.dept] || ''} ${deptName(it.dept)}`);
+    it._s = ` ${norm(`${it.title} ${zh} ${own}`)} `;
+    it._d = ` ${norm(`${I18N.zh.depts[it.dept] || ''} ${deptName(it.dept)} ${I18N.en.depts[it.dept] || ''}`)} `;
   }
 }
 
