@@ -6,7 +6,8 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, ROOT)
 sys.path.insert(0, os.path.join(ROOT, 'scripts'))
 from scrapers.chemist_all import parse_products, name_from_slug  # noqa: E402
-from build_chemist import department, product_id  # noqa: E402
+from build_chemist import department, product_id, ended  # noqa: E402
+import datetime  # noqa: E402
 
 xml = '''<urlset>
 <url><loc>https://www.chemistwarehouse.com.au/buy/91329/cerave-moisturising-cream-454g</loc></url>
@@ -44,4 +45,8 @@ cases = {
 for title, want in cases.items():
     assert department(title) == want, (title, department(title), want)
 assert department('Something New', fallback='vitamins') == 'vitamins'
+r = 'Thu 12 Nov 2026 - Wed 25 Nov 2026'
+assert not ended(r, datetime.date(2026, 11, 25))      # the last day still counts
+assert ended(r, datetime.date(2026, 11, 26))
+assert not ended('', datetime.date(2026, 11, 26))      # no dates: never dropped by this rule
 print('chemist site: ok')

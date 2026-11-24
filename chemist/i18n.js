@@ -2,6 +2,7 @@
 'use strict';
 const I18N = {
   zh: {
+    noCat: '下一期型錄還沒公布', noCatSub: '本期型錄已經結束，新型錄公布後會自動更新。現在先看全部商品，價格請點官網。', noCatLive: '型錄空檔',
     title: '小黃屋特價查詢', sub: 'Chemist Warehouse 門市型錄特價・全店商品搜尋', hub: '澳洲打工度假資訊平台', allSites: '所有網站',
     discT: '免責聲明', disc: '特價只收門市實體型錄，網路限定優惠不收；實際價格與庫存以門市為準。', discMore: '閱讀完整說明',
     live: '本期型錄', heroSub: '小黃屋型錄約兩週一檔，週四換檔・價格以澳幣（AUD）標示',
@@ -22,6 +23,7 @@ const I18N = {
     depts: { vitamins: '維他命保健', medicine: '藥品', health: '健康用品', baby: '孕期母嬰', skin: '護膚防曬', makeup: '彩妝美甲', hair: '頭髮護理', fragrance: '香水', oral: '口腔', sports: '運動營養', appliance: '電器', pet: '寵物', other: '其他' },
   },
   en: {
+    noCat: 'Next catalogue not out yet', noCatSub: 'The last catalogue has ended. The new one shows here as soon as it is out. Meanwhile, browse all products and check prices on the shop’s site.', noCatLive: 'Between catalogues',
     title: 'Chemist Warehouse Specials', sub: 'In-store catalogue specials · search every product', hub: 'Australia Working Holiday Hub', allSites: 'All sites',
     discT: 'Disclaimer', disc: 'Only in-store catalogue specials are listed, never online-only deals. Prices and stock in store are what count.', discMore: 'Read more',
     live: 'Current catalogue', heroSub: 'A new catalogue about every two weeks, starting on Thursdays · prices in AUD',
@@ -42,6 +44,7 @@ const I18N = {
     depts: { vitamins: 'Vitamins', medicine: 'Medicine', health: 'Health care', baby: 'Baby & pregnancy', skin: 'Skin & sun', makeup: 'Make-up & nails', hair: 'Hair care', fragrance: 'Fragrance', oral: 'Oral care', sports: 'Sports nutrition', appliance: 'Appliances', pet: 'Pets', other: 'Other' },
   },
   ja: {
+    noCat: '次回カタログはまだ未発表', noCatSub: '前回のカタログは終了しました。新しいカタログが出たら自動で更新します。今は全商品をご覧ください（価格は公式サイトで）。', noCatLive: 'カタログ切り替え中',
     title: 'ケミスト特売検索', sub: 'Chemist Warehouse 店頭カタログ特売・全商品検索', hub: 'オーストラリア ワーホリ情報', allSites: 'すべてのサイト',
     discT: '免責事項', disc: '店頭カタログの特売のみ掲載し、オンライン限定は含みません。価格・在庫は店頭が優先です。', discMore: '詳しく見る',
     live: '今回のカタログ', heroSub: 'カタログは約2週間ごと、木曜日に切り替え・価格は豪ドル（AUD）',
@@ -62,6 +65,7 @@ const I18N = {
     depts: { vitamins: 'ビタミン・サプリ', medicine: '医薬品', health: '衛生・ケア用品', baby: 'マタニティ・ベビー', skin: 'スキンケア・日焼け止め', makeup: 'メイク・ネイル', hair: 'ヘアケア', fragrance: '香水', oral: 'オーラルケア', sports: 'スポーツ栄養', appliance: '家電', pet: 'ペット', other: 'その他' },
   },
   ko: {
+    noCat: '다음 카탈로그 미발표', noCatSub: '지난 카탈로그가 끝났습니다. 새 카탈로그가 나오면 자동으로 업데이트됩니다. 지금은 전체 상품을 보세요 (가격은 공식 사이트에서).', noCatLive: '카탈로그 교체 중',
     title: '케미스트 특가 검색', sub: 'Chemist Warehouse 매장 카탈로그 특가・전 상품 검색', hub: '호주 워홀 정보 플랫폼', allSites: '모든 사이트',
     discT: '면책 조항', disc: '매장 카탈로그 특가만 싣고 온라인 전용 할인은 넣지 않습니다. 가격과 재고는 매장 기준입니다.', discMore: '자세히 보기',
     live: '이번 카탈로그', heroSub: '카탈로그는 약 2주마다, 목요일에 바뀝니다・가격은 호주 달러(AUD)',
