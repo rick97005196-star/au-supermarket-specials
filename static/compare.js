@@ -221,7 +221,7 @@ function _cmpFlags(full) {
 }
 // The kind of product ("eggs|R|"), or null when it is not compared; its price per kg / litre / item goes in item._cmpUp
 function cmpTypeOf(item) {
-    if (!item) return null;
+    if (!item || item.store === 'Chemist Warehouse') return null;      // a pharmacy: not compared with the supermarkets
     // keyed by the price fields too: a state's own price (regionize copies the object) must never reuse another state's figure
     const sig = `${item.title}|${item.price}|${item.price_display}|${item.unit_price}`;
     if (item._cmpType !== undefined && item._cmpTypeSig === sig) return item._cmpType;

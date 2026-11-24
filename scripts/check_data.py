@@ -23,7 +23,7 @@ import urllib.request
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA = os.path.join(ROOT, 'static', 'data')
 LIVE = 'https://au-supermarket-specials.pages.dev'
-STORES = ('Woolworths', 'Coles', 'ALDI')
+STORES = ('Woolworths', 'Coles', 'ALDI', 'Chemist Warehouse')
 
 
 def out(key, value):

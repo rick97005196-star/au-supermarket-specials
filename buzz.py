@@ -31,7 +31,8 @@ WINDOW_DAYS = 8
 MAX_MATCHES = 12
 MIN_COVERAGE = 0.75
 HOUSE_BRANDS = {'coles', 'woolworths', 'macro', 'essentials'}
-STORE_WORDS = {'Coles': {'coles'}, 'Woolworths': {'woolworths', 'woolies'}, 'ALDI': {'aldi'}}
+STORE_WORDS = {'Coles': {'coles'}, 'Woolworths': {'woolworths', 'woolies'}, 'ALDI': {'aldi'},
+               'Chemist Warehouse': {'chemist', 'warehouse'}}
 NOT_IN_STORE = re.compile(r'online only|online exclusive|marketplace|everyday market|first order|'
                           r'\bdelivered\b|app only|via everyday', re.I)
 STOP = {'pack', 'pk', 'x', 'each', 'ea', 'varieties', 'variety', 'selected', 'range', 'the', 'and', 'with',

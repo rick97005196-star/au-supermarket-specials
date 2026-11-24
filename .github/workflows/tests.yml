@@ -64,6 +64,8 @@ jobs:
         run: |
           pip install -q requests beautifulsoup4   # the Woolworths reader imports them
           python tests/test_woolies_groups.py
+      - name: Chemist Warehouse (小黃屋) catalogue test
+        run: python tests/test_chemist.py
       - name: ALDI everyday range test
         run: python tests/test_aldi_range.py   # needs the packages installed in the step above
       - name: Woolworths regular price test

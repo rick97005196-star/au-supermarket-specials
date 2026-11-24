@@ -111,7 +111,7 @@ def products_in_database():
     try:
         cols = {r[1] for r in conn.execute("PRAGMA table_info(specials)").fetchall()}
         aisle_col = 'store_category' if 'store_category' in cols else "''"
-        for title, aisle, url in conn.execute(f"SELECT title, {aisle_col}, product_url FROM specials"):
+        for title, aisle, url in conn.execute(f"SELECT title, {aisle_col}, product_url FROM specials WHERE store != 'Chemist Warehouse'"):
             if title:
                 out[title] = (aisle or '').strip() or aisle_from_url(url or '')
     finally:

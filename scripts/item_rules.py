@@ -10,14 +10,15 @@ store at once = the scraper is broken -> the whole update is held back and the o
 """
 import re
 
-STORES = ('Woolworths', 'Coles', 'ALDI')
+STORES = ('Woolworths', 'Coles', 'ALDI', 'Chemist Warehouse')
 DOMAINS = {
     'Woolworths': ('woolworths.com.au', 'salefinder.com.au'),
     'Coles': ('coles.com.au', 'salefinder.com.au'),
     'ALDI': ('aldi.com.au',),
+    'Chemist Warehouse': ('chemistwarehouse.com.au',),
 }
 # highest believable price for one special (ALDI Special Buys include TVs, e-bikes, furniture)
-MAX_PRICE = {'Woolworths': 1000.0, 'Coles': 1000.0, 'ALDI': 3000.0}
+MAX_PRICE = {'Woolworths': 1000.0, 'Coles': 1000.0, 'ALDI': 3000.0, 'Chemist Warehouse': 1000.0}
 TOL = 0.011                      # cents rounding
 ONLINE_WORDS = re.compile(r'online\s*only|online\s*exclusive|web\s*only|everyday\s*market|marketplace', re.I)
 SAVE_RE = re.compile(r'\bSave\s+\$\s*(\d+(?:\.\d{1,2})?)', re.I)
