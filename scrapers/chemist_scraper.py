@@ -7,14 +7,14 @@ public JSON files; we read the same ones (2 requests per catalogue):
   2. node.nexuspublications.com.au/catalogue/<id>/page/1/regions/json -> every product on every page
      (name, catalogue price, "$X OFF RRP" / "$X OFF EDLP", picture, link to the product on chemistwarehouse.com.au)
 
-Strict rules (in-store specials only, exact numbers only):
-  * only products with a saving printed in the catalogue as an exact amount: "$X OFF RRP", "$X OFF EDLP"
-    (Chemist Warehouse's own everyday low price) or "1/2 PRICE OFF RRP" (RRP = twice the price)
-  * "UP TO ...", "N% OFF" without an amount, cashback and products with no printed saving are left out
-    (no exact "was" price to show)
+Rules (in-store catalogue only, exact numbers only):
+  * every product in the catalogue is listed at its printed price
+  * a "was" price and saving are shown only when the catalogue prints the exact saving for that one product:
+    "$X OFF RRP", "$X OFF EDLP" (Chemist Warehouse's own everyday low price) or "1/2 PRICE OFF RRP"
+  * everything else is listed as "特價" with no was price: no saving printed, "UP TO ...", "N% OFF" without an
+    amount, cashback, a whole range ("Assorted Range"), "From $X" (the cheapest of several) and
+    "2 for $X" (shown as "2 for $X", never turned into a price for one)
   * anything that says online only / web only is left out
-  * a whole range at one price ("Assorted Range", "Selected ...") is left out; two named products at one
-    printed price and saving ("A or B 100ml EDT") are kept
 """
 import json
 import os
@@ -22,8 +22,10 @@ import re
 import sys
 import datetime as _dt
 from typing import Any, Dict, List, Optional, Tuple
+from urllib.parse import quote_plus
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from scrapers.regions import SPECIAL_DESC  # noqa: E402
 
 STORE = 'Chemist Warehouse'
 CLIENT_ID = '3476'
@@ -149,16 +151,25 @@ def items_from_regions(regions) -> Tuple[List[Dict[str, Any]], Dict[str, int]]:
             skip('no name or price'); continue
         if _ONLINE.search(title) or _ONLINE.search(desc):
             skip('online only'); continue
+        sym = ' '.join(str(r.get('field_currency_symbol') or '$').split()).lower()
+        multi = re.match(r'^(\d+)\s*for\b', sym)            # "2 for $36.99": the price is for 2 items
+        from_price = sym.startswith('from')                     # "From $9.99": the cheapest item of several
+        whole_range = re.search(r'\b(?:assorted|selected|range)\b', title, re.I)
         save, label = saving_of(price, desc)
-        if save <= 0:
-            skip('no exact saving printed'); continue
+        if save <= 0 or multi or from_price or whole_range:
+            # in the catalogue, but no exact saving for this one product: listed at its printed price as
+            # "特價" (SPECIAL_DESC), with no was price -- nothing is worked out or guessed
+            save, label = 0.0, SPECIAL_DESC
+            skip('listed with no saving (none printed, or not exact)')
+        if multi:
+            price_display = f"{multi.group(1)} for ${price:.2f}"
+        elif from_price:
+            price_display = f"From ${price:.2f}"
+        else:
+            price_display = f"${price:.2f}"
         url = _first_uri(r.get('field_product_buynow'))
-        if re.search(r'\b(?:assorted|selected|range)\b', title, re.I):
-            skip('a whole range, not one product'); continue    # one price for many products: not exact
-        # "A or B" (e.g. "Calvin Klein Eternity or Obsession 100ml EDP"): two named products, the same printed
-        # price and the same printed saving -> exact. The catalogue links these to a search, not one product page.
         if not re.match(r'^https://(?:www\.)?chemistwarehouse\.com\.au/(?:buy/\d+/|search\?|shop-online/)', url):
-            skip('no link to Chemist Warehouse'); continue
+            url = 'https://www.chemistwarehouse.com.au/search?query=' + quote_plus(title)
         img = _first_uri(r.get('field_product_image')) or _first_uri(r.get('field_product_image_url'))
         if not img.startswith('https://'):
             img = ''
@@ -169,8 +180,8 @@ def items_from_regions(regions) -> Tuple[List[Dict[str, Any]], Dict[str, int]]:
         out.append({
             'title': title,
             'price': price,
-            'price_display': f"${price:.2f}",
-            'was_price': round(price + save, 2),
+            'price_display': price_display,
+            'was_price': round(price + save, 2) if save > 0 else 0.0,
             'save_amount': save,
             'discount_desc': label,
             'unit_price': '',
@@ -190,7 +201,7 @@ def read_catalogue(cat: dict) -> Tuple[List[Dict[str, Any]], str]:
     items, skipped = items_from_regions(regions)
     rng = date_range_text(s, e)
     why = '、'.join(f"{k} {v}" for k, v in skipped.items()) or 'none'
-    print(f" Chemist Warehouse '{cat.get('title')}' ({rng}): {len(items)} specials kept; left out: {why}")
+    print(f" Chemist Warehouse '{cat.get('title')}' ({rng}): {len(items)} products listed; notes: {why}")
     return items, rng
 
 

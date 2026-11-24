@@ -2380,6 +2380,8 @@ function parseSupermarketPrice(priceDisplay, price) {
         const multi = text.match(/^(\d+)\s*for\s*\$/);          // multi-buy "2 for $12.00": the price is the deal
         if (multi) {
             unit = t('multi_unit', { n: multi[1] });
+        } else if (/^from\s*\$/.test(text)) {                     // "From $9.99": the cheapest of several (小黃屋 catalogue)
+            unit = t('from_unit');
         } else if (text.includes('/kg') || text.includes('per kg') || text.includes(' kg')) {
             unit = '/kg';
         } else if (text.includes('pk') || text.includes('pack')) {
