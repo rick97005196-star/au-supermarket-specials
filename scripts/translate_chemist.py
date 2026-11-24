@@ -49,6 +49,9 @@ def main():
             break
         titles = [p['title'] for p in chunk]
         got = at.translate_batch_with_gemini(titles, key)
+        if not got and b >= 1 and added == 0:
+            print('translate_chemist: the AI is busy or out of quota today - trying again tomorrow')
+            break
         for p in chunk:
             t = got.get(p['title'])
             if t and t.get('zh'):

@@ -83,9 +83,14 @@ jobs:
         run: |
           API="https://api.cloudflare.com/client/v4/accounts/$ACCOUNT/rum/site_info"
           list=$(curl -s -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" "$API/list?per_page=100")
-          if echo "$list" | grep -q "\"host\":\"$HOST\""; then echo "Web Analytics already on for $HOST"; exit 0; fi
-          echo "$list" | grep -q '"success":true' || { echo "::warning::Web Analytics: this key cannot read the site list - turn it on in the Cloudflare dashboard"; echo "$list" | head -c 300; exit 0; }
+          if [ "$(echo "$list" | jq -r '.success')" != "true" ]; then
+            echo "::warning::Web Analytics: this key cannot read the site list - turn it on in the Cloudflare dashboard"
+            echo "$list" | jq -c '.errors' ; exit 0
+          fi
+          if echo "$list" | jq -e --arg h "$HOST" '.result[] | select(.host == $h)' >/dev/null; then
+            echo "Web Analytics already on for $HOST"; exit 0
+          fi
           res=$(curl -s -X POST -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" -H "Content-Type: application/json" \
                 -d "{\"host\":\"$HOST\",\"auto_install\":true}" "$API")
-          echo "$res" | grep -q '"success":true' && echo "Web Analytics turned on for $HOST" \
-            || { echo "::warning::Web Analytics not turned on - do it in the Cloudflare dashboard"; echo "$res" | head -c 300; }
+          if [ "$(echo "$res" | jq -r '.success')" = "true" ]; then echo "Web Analytics turned on for $HOST"
+          else echo "::warning::Web Analytics not turned on - do it in the Cloudflare dashboard"; echo "$res" | jq -c '.errors'; fi
