@@ -103,7 +103,8 @@ function applyLanguage(lang) {
     // Update placeholders
     const searchInput = document.getElementById('searchInput');
     if (searchInput) {
-        searchInput.placeholder = t('search_placeholder');
+        // 手機窄畫面用短版提示字，不會被切成「…(e.g. milk, eggs」
+        searchInput.placeholder = t(window.innerWidth < 520 ? 'search_placeholder_short' : 'search_placeholder');
     }
     const emailInput = document.getElementById('shoppingEmailInput');
     if (emailInput) {
