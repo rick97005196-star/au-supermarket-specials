@@ -1815,9 +1815,9 @@ function buzzFirst(items, orderRest) {
 }
 
 // 食物在前 (default order): what working-holiday makers come for, cooking first —
-// 0 = fresh food & cooking (meat, seafood, fruit & veg, dairy & eggs, bread, rice, pantry, quick meals),
-// 1 = snacks, sweets and drinks, 2 = household, health & beauty, pet; each part keeps its own order
-const _FOOD_TIER = { g_fresh: 0, g_cook: 0, g_quick: 0, g_sweets: 1, g_drinks: 1 };
+// 0 = food to cook and snacks (meat, seafood, fruit & veg, dairy & eggs, bread, rice, pantry, quick meals,
+// sweets & snacks), 1 = drinks, 2 = household, health & beauty, pet; each part keeps its own order
+const _FOOD_TIER = { g_fresh: 0, g_cook: 0, g_quick: 0, g_sweets: 0, g_drinks: 1 };
 function foodTier(it) { const g = TAG_GROUP_OF[tagOf(it)]; return g in _FOOD_TIER ? _FOOD_TIER[g] : 2; }
 function foodFirst(items) {
     const parts = [[], [], []];
@@ -2214,7 +2214,7 @@ async function loadSpecials() {
             // departments, then everything else grouped by product line
             filtered = buzzFirst(filtered, popularFirst);
         }
-        // 食物在前: cooking food first, then snacks & drinks, then everything else (foodFirst)
+        // 食物在前: food and snacks first, then drinks, then everything else (foodFirst)
         if (sortBy === 'relevance' && !currentSearch) filtered = foodFirst(filtered);
         if (discountOnly) filtered = [...filtered.filter(isItemHalfPrice), ...filtered.filter(it => !isItemHalfPrice(it))];
         if ((priceType === 'regular' || (priceType === 'all' && currentSearch)) && !favOnly && !cmpOnly && !discountOnly && currentPeriod === 'current') {
