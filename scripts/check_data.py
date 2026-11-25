@@ -148,6 +148,19 @@ def item_check():
         if len(keep) != len(items):
             with open(path, 'w', encoding='utf-8') as f:
                 json.dump(keep, f, ensure_ascii=False, separators=(',', ':'))
+    if removed:
+        # 上方統計（stats.json）是下架前算的：重算一次，數字才和清單一致
+        sys.path.insert(0, ROOT)
+        from region_stats import apply_region_stats
+        left = []
+        for name in ('specials.json', 'specials-next.json'):
+            if os.path.exists(os.path.join(DATA, name)):
+                left += load(os.path.join(DATA, name))
+        stats_path = os.path.join(DATA, 'stats.json')
+        if os.path.exists(stats_path):
+            stats = apply_region_stats(load(stats_path), left)
+            with open(stats_path, 'w', encoding='utf-8') as f:
+                json.dump(stats, f, ensure_ascii=False, indent=2)
     with open(os.path.join(ROOT, 'data', 'item_check.json'), 'w', encoding='utf-8') as f:
         json.dump({'checked': sum(totals.values()), 'removed': removed}, f, ensure_ascii=False, indent=1)
     print(f"::notice::逐筆檢查：{sum(totals.values())} 件中 {len(removed)} 件不符規則，已下架"
