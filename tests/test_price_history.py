@@ -55,7 +55,10 @@ check(items[0].get('ph') == [60, 3.0, '2026-10-13', 1, 1], f'was $3 each (2 for 
 # --- this week is the lowest ---
 items = [coles(2.5)]
 ph.apply_history(items, hist=h, day=today, save_file=False)
-check(items[0].get('ph') == [60, 2.5, '', 0], f'this week is the lowest: {items[0].get("ph")}')
+check(items[0].get('ph') == [60, 3.0, '2026-10-13', 3, 1], f'a new low, $0.50 under the earlier $3: {items[0].get("ph")}')
+items = [coles(3.0)]
+ph.apply_history(items, hist=h, day=today, save_file=False)
+check(items[0].get('ph') == [60, 3.0, '', 0, 0], f'equals the lowest: {items[0].get("ph")}')
 
 # --- the same price every day: an everyday price ---
 h2 = {'v': 1, 'items': {}}
@@ -64,7 +67,7 @@ for d in days(D(2026, 9, 26), D(2026, 11, 24)):
         ph.record(h2, [coles(5.0)], d)
 items = [coles(5.0)]
 ph.apply_history(items, hist=h2, day=today, save_file=False)
-check(items[0].get('ph') == [60, 5.0, '', 2], f'same price all along: {items[0].get("ph")}')
+check(items[0].get('ph') == [60, 5.0, '', 2, 0], f'same price all along: {items[0].get("ph")}')
 
 # --- never seen before this week: nothing ---
 items = [coles(5.0, pid='9999')]
@@ -78,8 +81,19 @@ hw = {'v': 1, 'items': {}}
 for d in days(D(2026, 11, 1), D(2026, 11, 24)):
     ph.record(hw, [dict(w, price=1.0, price_display='$1.00')], d)
 items = [dict(w)]
+ph.apply_history(items, hist=hw, day=D(2026, 11, 23), save_file=False)
+check('ph' not in items[0], 'Woolworths complete only since 22 Nov: too short on 23 Nov')
+items = [dict(w)]
 ph.apply_history(items, hist=hw, day=today, save_file=False)
-check('ph' not in items[0], 'Woolworths complete only since 22 Nov: too short on 25 Nov')
+check(items[0].get('ph') == [4, 1.0, '2026-11-24', 1, 0], f'近 4 天 on 25 Nov: {items[0].get("ph")}')
+hw2 = {'v': 1, 'items': {}}
+for d in days(D(2026, 11, 1), D(2026, 11, 10)):
+    ph.record(hw2, [dict(w, price=0.5, price_display='$0.50')], d)
+for d in days(D(2026, 11, 20), D(2026, 11, 24)):
+    ph.record(hw2, [dict(w, price=1.0, price_display='$1.00')], d)
+items = [dict(w)]
+ph.apply_history(items, hist=hw2, day=today, save_file=False)
+check(items[0].get('ph') == [4, 1.0, '2026-11-24', 1, 0, 0.5, '2026-11-10'], f'earlier lower price before the list was complete: {items[0].get("ph")}')
 items = [dict(w)]
 ph.apply_history(items, hist=hw, day=D(2026, 12, 10), save_file=False)
 check(items[0].get('ph', [0])[0] == 19, f'近 19 天 on 10 Dec: {items[0].get("ph")}')

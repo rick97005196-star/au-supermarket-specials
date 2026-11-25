@@ -1665,3 +1665,25 @@ html:root .p-unit-strong { background: var(--fill, var(--surface-2)); font-weigh
 .p-pack.is-best { color: var(--accent-text); font-weight: 600; }
 .p-pack i { font-size: 9px; margin-right: 3px; vertical-align: 1px; }
 @media (max-width: 640px) { .p-pack { font-size: 11.5px; } }
+
+/* 2026-11-25 比價小抄: same-item price, cheapest pack and 60-day low together under the price, never cut off */
+html:root .p-notes { display: flex; flex-direction: column; gap: 3px; margin-top: 7px; padding-top: 7px; border-top: 1px dashed var(--line); }
+html:root .p-notes .p-note, html:root .p-notes .p-pack, html:root .p-notes .p-hist {
+    display: block; margin: 0; padding: 0; background: none !important; border-radius: 0;
+    font-size: 11.5px; line-height: 1.38; font-weight: 500; color: var(--ink-3);
+    white-space: normal; overflow: visible; -webkit-line-clamp: unset; overflow-wrap: anywhere;
+}
+html:root .p-notes b { font-weight: 600; }
+html:root .p-notes i { font-size: 9px; width: 11px; margin-right: 3px; vertical-align: 1px; text-align: center; }
+html:root .p-notes .p-compare .cmp-kind { color: inherit; margin-right: 2px; }
+html:root .p-notes .p-compare.is-cheaper, html:root .p-notes .p-pack.is-best, html:root .p-notes .p-hist.is-low { color: var(--accent-text); font-weight: 600; }
+html:root .p-notes .p-compare .cmp-others { display: none; }
+html:root .p-notes .p-pack b, html:root .p-notes .p-hist b { color: var(--ink-2); }
+html:root .p-notes .is-cheaper b, html:root .p-notes .is-best b, html:root .p-notes .is-low b { color: inherit; }
+@media (max-width: 640px) {
+    /* product names: up to three lines on phones, so the Chinese name after a long brand is not cut off */
+    html:root .p-title { -webkit-line-clamp: 3; }
+}
+html:root .p-notes .p-hist.is-up { color: var(--ink-2); }
+html:root .p-notes .p-hist.is-up b:first-of-type { color: #c2410c; }
+html.dark .p-notes .p-hist.is-up b:first-of-type { color: #fb923c; }

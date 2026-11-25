@@ -2883,6 +2883,13 @@ function createProductCardElement(item) {
     const secondaryTitle = translated ? item.title : '';
     const escAttr = (v) => String(v || '').replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
 
+    // 比價小抄: the three comparison notes together under the price, each wrapping onto a second line rather than
+    // being cut off (two cards side by side on phones are narrow): other stores, other pack sizes, the last 60 days
+    const compareHtml = crossStoreBadgeText ? `<div class="p-note p-compare ${compareIsGood ? 'is-cheaper' : ''}">`
+        + `<i class="fa-solid ${isCheapest ? 'fa-crown' : 'fa-store'}"></i><b class="cmp-kind ${exactText ? 'is-same' : ''}">${t(exactText ? 'cmp_same_item' : 'cmp_same_kind')}${isCheapest ? (['en', 'ko'].includes(currentLang) ? ' · ' : '') + t('cheapest_badge') : ''}</b> `
+        + `${crossStoreBadgeText}${othersText ? `<span class="cmp-others">${othersText}</span>` : ''}</div>` : '';
+    const notesHtml = (compareHtml || packHtml || histLine) ? `<div class="p-notes">${compareHtml}${packHtml}${histLine}</div>` : '';
+
     card.innerHTML = `
         <div class="p-media">
             ${halfPriceBadgeSrc ? `
@@ -2917,18 +2924,12 @@ function createProductCardElement(item) {
             <h3 class="p-title" title="${escAttr(primaryTitle)}">${primaryTitle}</h3>
             <p class="p-subtitle" title="${escAttr(secondaryTitle)}">${secondaryTitle}</p>
 
-            ${crossStoreBadgeText ? `
-                <span class="p-compare ${compareIsGood ? 'is-cheaper' : ''}" title="${escAttr(crossStoreBadgeText)}">
-                    <b class="cmp-kind ${exactText ? 'is-same' : ''}">${t(exactText ? 'cmp_same_item' : 'cmp_same_kind')}</b>${isCheapest ? `<b>${t('cheapest_badge')}</b>` : ''}${crossStoreBadgeText}${othersText ? `<span class="cmp-others">${othersText}</span>` : ''}
-                </span>
-            ` : ''}
-
             <div class="p-price-row">
                 <div class="min-w-0">
                     <div class="p-price num">
                         <span class="cur">$</span><span class="dol">${p.dollars}</span><span class="cts">${p.cents}</span><span class="unit">${p.unit}</span>
                     </div>
-                    ${showNormUnit ? `<div class="p-unit-strong num" title="${escAttr(unitPriceClean || fmtSensibleUnit(up))}">${strongUnit}</div>${per100Line ? `<div class="p-unit num mt-0.5">${per100Line}</div>` : ''}${packHtml}` : ''}
+                    ${showNormUnit ? `<div class="p-unit-strong num" title="${escAttr(unitPriceClean || fmtSensibleUnit(up))}">${strongUnit}</div>${per100Line ? `<div class="p-unit num mt-0.5">${per100Line}</div>` : ''}` : ''}
                     ${aldiInfo ? `<div class="p-aldi ${aldiInfo.upcoming ? 'is-upcoming' : ''} ${aldiInfo.kind === 'saver' ? 'is-saver' : ''}"><i class="fa-regular ${aldiInfo.upcoming ? 'fa-calendar' : (aldiInfo.kind === 'saver' ? 'fa-clock' : 'fa-box-open')}"></i>${aldiInfo.text}</div>` : `
                     <div class="p-was num mt-1.5">
                         ${effectiveWas > 0 ? `<s>${wasLabel(item)} $${effectiveWas.toFixed(2)}</s>` : ''}
@@ -2938,10 +2939,10 @@ function createProductCardElement(item) {
                         ${isRegularPrice(item) ? `<span class="p-regular">${regularLabel(item)}</span>` : ''}
                     </div>`}
                     ${plainUnit ? `<div class="p-unit num mt-0.5 truncate" title="${escAttr(unitPriceClean || plainUnit)}">${plainUnit}</div>` : ''}
-                    ${histLine}
                 </div>
                 <div class="p-qty"></div>
             </div>
+            ${notesHtml}
         </div>
     `;
 
@@ -3034,17 +3035,24 @@ function priceHistoryLine(item) {
     const ph = item && item.ph;
     if (!Array.isArray(ph) || ph.length < 4 || (item.period && item.period !== 'current')) return '';
     if (item.rp && item.rp[currentRegion]) return '';
-    const [n, lo, day, state, multi] = ph;
+    const [n, lo, day, state, multi, elo, eday] = ph;
     const tip = ` title="${t('ph_tip', { n })}"`;
-    if (state === 0) return `<div class="p-hist is-low"${tip}><i class="fa-solid fa-arrow-down"></i>${t('ph_low', { n })}</div>`;
-    if (state === 2) return `<div class="p-hist"${tip}>${t('ph_flat', { n })}</div>`;
-    // cans / bottles: per can or bottle, the way the card compares them (a 4-pack at $8.75 = $2.19 a can)
+    // the same unit as the card: per can / bottle for drinks (a 4-pack at $8.75 = $2.19 a can), else per item
     const su = sensibleUnitOf(item), cnt = packCountOf(item);
-    if (su && ['can', 'btl'].includes(su.basis) && cnt >= 1) {
-        return `<div class="p-hist"${tip}>${t('ph_up', { n, price: `<b class="num">$${(Number(lo) / cnt).toFixed(2)}/${_cmpUnit(su.basis)}</b>`, date: fmtPhDate(day) })}</div>`;
-    }
-    const each = (multi || /\d+\s*for\s*\$/i.test(item.price_display || '')) ? `/${t('unit_each')}` : '';
-    return `<div class="p-hist"${tip}>${t('ph_up', { n, price: `<b class="num">$${Number(lo).toFixed(2)}${each}</b>`, date: fmtPhDate(day) })}</div>`;
+    const perCan = !!(su && ['can', 'btl'].includes(su.basis) && cnt >= 1);
+    const div = perCan ? cnt : 1;
+    const unit = perCan ? `/${_cmpUnit(su.basis)}` : ((multi || /\d+\s*for\s*\$/i.test(item.price_display || '')) ? `/${t('unit_each')}` : '');
+    const money = v => `<b class="num">$${(Number(v) / div).toFixed(2)}${unit}</b>`;
+    const now = _perItemPrice(item);
+    const diff = v => `<b class="num">$${(Math.abs(now - Number(v)) / div).toFixed(2)}</b>`;
+    let main;
+    if (state === 3) main = `<div class="p-hist is-low"${tip}><i class="fa-solid fa-arrow-down"></i>${t('ph_new', { n, diff: diff(lo) })}</div>`;
+    else if (state === 0) main = `<div class="p-hist is-low"${tip}><i class="fa-solid fa-check"></i>${t('ph_low', { n })}</div>`;
+    else if (state === 2) main = `<div class="p-hist"${tip}><i class="fa-solid fa-equals"></i>${t('ph_flat', { n })}</div>`;
+    else main = `<div class="p-hist is-up"${tip}><i class="fa-solid fa-arrow-up"></i>${t('ph_up', { n, diff: diff(lo), price: money(lo), date: fmtPhDate(day) })}</div>`;
+    // a lower price from before the store's list was complete: a true reference, not called "the lowest"
+    const early = (elo > 0 && eday) ? `<div class="p-hist"${tip}><i class="fa-regular fa-clock"></i>${t('ph_early', { price: money(elo), date: fmtPhDate(eday) })}</div>` : '';
+    return main + early;
 }
 
 // Product Details Modal
