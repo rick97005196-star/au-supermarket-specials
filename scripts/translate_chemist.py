@@ -12,6 +12,7 @@ import json
 import os
 import sys
 import time
+from datetime import datetime, timezone
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, ROOT)
@@ -25,7 +26,18 @@ MAX_BATCHES = int(os.environ.get('CW_TRANSLATE_BATCHES', '70'))
 MAX_SECONDS = 25 * 60
 
 
+def in_week_switch(now=None):
+    """Tuesday 12:00 to Wednesday 03:00 UTC (Tuesday 10 PM to Wednesday 1 PM Brisbane): the supermarkets
+    change to the new week's specials and the specials update needs the shared AI allowance for the new names.
+    2026-11-24 the allowance ran out in exactly this window, so 小黃屋's bulk names wait until it is over."""
+    now = now or datetime.now(timezone.utc)
+    return (now.weekday() == 1 and now.hour >= 12) or (now.weekday() == 2 and now.hour < 3)
+
+
 def main():
+    if in_week_switch() and not os.environ.get('CW_TRANSLATE_FORCE'):
+        print('translate_chemist: the supermarkets are changing week - the AI allowance is kept for them; next run continues')
+        return 0
     key = at.get_gemini_api_key()
     if not key:
         print('translate_chemist: no AI key - names stay in English this time')

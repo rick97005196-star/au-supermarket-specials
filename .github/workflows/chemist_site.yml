@@ -10,6 +10,8 @@ on:
   schedule:
     - cron: '37 17 * * *'     # 3:37 AM Brisbane time every day: the product list itself is read once a week
                               # (scrapers/chemist_all.py skips it for 6 days); the daily run translates more names
+    - cron: '37 9 * * *'      # 7:37 PM Brisbane: the AI allowance starts again each day at 6 PM Brisbane, so a second
+                              # run translates more names (both skip the Tuesday-night week change, scripts/translate_chemist.py)
   push:
     branches: [main]
     paths:
