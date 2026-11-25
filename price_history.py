@@ -3,9 +3,11 @@
 Every update records the price of each product on the site this week (in-store specials, everyday and regular
 prices - exactly what specials.json shows) in data/price_history.json, then gives each product a compact field
 
-    ph = [days, lowest, "YYYY-MM-DD", state, multi]
-    state 0 = this week is the lowest, 1 = it was cheaper before (lowest + the last day at that price),
-          2 = the same price all along (an everyday price, not a deal)
+    ph = [days, lowest, "YYYY-MM-DD", state, multi(, earlier_lower_price, "YYYY-MM-DD")]
+    state 0 = this week equals the lowest, 1 = it was cheaper before (lowest + the last day at that price),
+          2 = the same price all along (an everyday price, not a deal),
+          3 = a new low: cheaper than every earlier price (lowest = the earlier lowest, to say by how much)
+    earlier_lower_price: a lower price seen within 60 days but before the store's list was complete
 
 so the card can say 「近 60 天最低價」 or 「60 天最低 $3.50（11/4）」.
 
@@ -30,7 +32,7 @@ import re
 HISTORY_PATH = os.path.join('data', 'price_history.json')     # relative, like export_static_data.py's other files
 WINDOW_DAYS = 60
 KEEP_DAYS = 70
-MIN_DAYS = 14          # below this the comparison is too short to mean anything: show nothing
+MIN_DAYS = 3           # the site says how many days it compares (「近 4 天」); fewer than this says nothing
 # the first day each store's list on this site was complete (see CHANGELOG / git history):
 #   ALDI: everyday range aisles read from 19 Oct; Coles: the website's full specials list from 21 Oct;
 #   Woolworths: the department price cuts (Save $X) only from 22 Nov (before that they were missing).
@@ -163,15 +165,34 @@ def summary(runs, store, price, unit, day):
     before = [r for r in obs if r[0] < wk]
     if not before:
         return None                                   # never seen before this week: no comparison
-    lo = min(r[2] for r in obs)
-    lo = min(lo, price)
+    prev_lo = min(r[2] for r in before)
+    lo = min(min(r[2] for r in obs), price)
+    early = _earlier(runs, store, unit, day, start, min(lo, price))
+    if price < prev_lo - 0.005:
+        # 新低: cheaper than every earlier price in the window; lo = the earlier lowest, to say by how much
+        at = max(r[1] for r in before if abs(r[2] - prev_lo) < 0.005)
+        multi = any(r[3].endswith('m') for r in before if abs(r[2] - prev_lo) < 0.005)
+        return [days, round(prev_lo, 2), at, 3, 1 if multi else 0] + early
     if price <= lo + 0.005:
         if _unchanged(obs, price, start, day):
-            return [days, round(price, 2), '', 2]          # the same price every day of the window
-        return [days, round(price, 2), '', 0]
+            return [days, round(price, 2), '', 2, 0] + early          # the same price every day of the window
+        return [days, round(price, 2), '', 0, 0] + early
     at = max(r[1] for r in obs if abs(r[2] - lo) < 0.005)
     multi = any(r[3].endswith('m') for r in obs if abs(r[2] - lo) < 0.005)
-    return [days, round(lo, 2), at, 1, 1 if multi else 0]
+    return [days, round(lo, 2), at, 1, 1 if multi else 0] + early
+
+
+def _earlier(runs, store, unit, day, start, below):
+    """A lower price seen in the 60 days but before the store's list was complete (so it cannot be called "the
+    lowest"): still a true fact, shown as 「更早 11/9 曾賣 $2.19」. [] when there is none."""
+    first = _minus(day, WINDOW_DAYS - 1)
+    old = [r for r in runs if r[0] < start and r[1] >= first and r[3].replace('m', '') == unit
+           and r[2] < below - 0.005]
+    if not old:
+        return []
+    elo = min(r[2] for r in old)
+    eat = max(min(r[1], _minus(start, 1)) for r in old if abs(r[2] - elo) < 0.005)
+    return [round(elo, 2), eat]
 
 
 def _unchanged(obs, price, start, day, gap=3):
