@@ -46,7 +46,7 @@ const I18N = {
         buzz_badge: '本週熱議',
         pgh_up: '這週同款最低 {now}，比近 {n} 天最低貴 {diff}（{lo}・{where}）', pgh_same: '這週同款最低 {now}＝近 {n} 天最低', pgh_new: '這週同款最低 {now}，近 {n} 天新低（之前 {lo}，便宜 {diff}）',
         pgh_tip: '同一款（同口味、同容量）不分包裝、不分超市，本網站近 {n} 天記錄到的每罐／每瓶門市價格',
-        pack_best: '同款每{u}最便宜', pack_other: '同款每{u}最低 {price}・{where}', pack_n: '{n}入', pack_single: '單{u}',
+        pack_best: '這張是同款每{u}最便宜的買法', pack_other: '同款買 {where} 更便宜：每{u} {price}（這張每{u}貴 {diff}）', pack_n: '{n}入', pack_single: '單{u}',
         ph_low: '和近 {n} 天最低一樣', ph_new: '近 {n} 天新低，比之前最低便宜 {diff}', ph_up: '比近 {n} 天最低貴 {diff}（最低 {price}・{date}）', ph_flat: '近 {n} 天都是這個價', ph_early: '更早 {date} 曾賣 {price}',
         ph_tip: '同一件商品在本網站近 {n} 天記錄到的門市價格（每件計）',
         buzz_modal: '本週 OzBargain 網友 {v} 讚、{c} 則留言',
@@ -299,7 +299,7 @@ const I18N = {
         buzz_badge: 'Hot this week',
         pgh_up: 'Best this week {now}, {diff} above the {n}-day low ({lo} · {where})', pgh_same: 'Best this week {now} = {n}-day low', pgh_new: 'Best this week {now}: new {n}-day low, {diff} under the last low {lo}',
         pgh_tip: 'In-store prices per can / bottle of this same drink (any pack, any store) recorded on this site over the last {n} days',
-        pack_best: 'Cheapest per {u} of this item', pack_other: 'Same item: {price}/{u} at {where}', pack_n: '({n}-pack)', pack_single: '(single)',
+        pack_best: 'Cheapest way to buy this item per {u}', pack_other: 'Cheaper as {where}: {price}/{u} (this one is {diff}/{u} more)', pack_n: '({n}-pack)', pack_single: '(single)',
         ph_low: 'Equals the {n}-day low', ph_new: 'New {n}-day low, {diff} below the last low', ph_up: '{diff} above the {n}-day low ({price} · {date})', ph_flat: 'Same price for {n} days', ph_early: 'Earlier: {price} on {date}',
         ph_tip: 'In-store prices of this same product recorded on this site over the last {n} days (per item)',
         buzz_modal: 'This week on OzBargain: {v} votes, {c} comments',
@@ -552,7 +552,7 @@ const I18N = {
         buzz_badge: '今週の話題',
         pgh_up: '同じ商品の今週最安 {now}、{n}日間の最安より{diff}高い（最安 {lo}・{where}）', pgh_same: '同じ商品の今週最安 {now}＝{n}日間の最安', pgh_new: '同じ商品の今週最安 {now}、{n}日間の最安値を更新（前回 {lo} より{diff}安い）',
         pgh_tip: '同じ商品（味・容量が同じ、パック・店は問わず）の1本あたり店頭価格、本サイトの直近{n}日間の記録',
-        pack_best: '同じ商品で1{u}あたり最安', pack_other: '同じ商品 1{u} {price}・{where}', pack_n: '{n}本入り', pack_single: '1{u}',
+        pack_best: '同じ商品で1{u}あたり最安', pack_other: '{where}の方が安い：1{u} {price}（これは1{u}あたり{diff}高い）', pack_n: '{n}本入り', pack_single: '1{u}',
         ph_low: '{n}日間の最安値と同じ', ph_new: '{n}日間の最安値を更新（前回より{diff}安い）', ph_up: '{n}日間の最安より{diff}高い（最安 {price}・{date}）', ph_flat: '{n}日間 同じ価格', ph_early: 'それ以前 {date} は {price}',
         ph_tip: '同じ商品について本サイトが記録した直近{n}日間の店頭価格（1個あたり）',
         buzz_modal: '今週 OzBargain で {v} 票・コメント {c} 件',
@@ -805,7 +805,7 @@ const I18N = {
         buzz_badge: '이번 주 화제',
         pgh_up: '같은 상품 이번 주 최저 {now}, {n}일 최저보다 {diff} 비쌈 (최저 {lo} · {where})', pgh_same: '같은 상품 이번 주 최저 {now} = {n}일 최저', pgh_new: '같은 상품 이번 주 최저 {now}, {n}일 최저가 경신 (이전 {lo}보다 {diff} 저렴)',
         pgh_tip: '같은 상품(같은 맛·용량, 포장·매장 무관)의 캔/병당 매장 가격, 최근 {n}일 기록',
-        pack_best: '같은 상품 {u}당 최저가', pack_other: '같은 상품 {u}당 {price} · {where}', pack_n: '{n}개입', pack_single: '낱개',
+        pack_best: '같은 상품 {u}당 최저가', pack_other: '{where}이(가) 더 쌈: {u}당 {price} (이 상품은 {u}당 {diff} 비쌈)', pack_n: '{n}개입', pack_single: '낱개',
         ph_low: '{n}일 최저가와 같음', ph_new: '{n}일 최저가 경신 (이전보다 {diff} 저렴)', ph_up: '{n}일 최저보다 {diff} 비쌈 (최저 {price} · {date})', ph_flat: '{n}일간 같은 가격', ph_early: '그 이전 {date}: {price}',
         ph_tip: '이 사이트가 최근 {n}일간 기록한 같은 상품의 매장 가격(개당)',
         buzz_modal: '이번 주 OzBargain 추천 {v}개, 댓글 {c}개',
@@ -1038,7 +1038,7 @@ function t(key, params = {}) {
     const dict = I18N[currentLang] || I18N['zh'];
     let str = dict[key] || I18N['zh'][key] || key;
     for (const [k, v] of Object.entries(params)) {
-        str = str.replace(`{${k}}`, v);
+        str = str.split(`{${k}}`).join(v);
     }
     return str;
 }

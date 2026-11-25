@@ -2858,7 +2858,11 @@ function createProductCardElement(item) {
     const per100Line = per100 || (showNormUnit && up.basis !== 'L' ? drinkPer100 : '');
     const plainUnit = !showNormUnit ? (drinkPer100 || unitPriceClean) : '';
     // 近 60 天最低價: this product's own prices on this site (price_history.py)
-    const histLine = groupHistLine(item) || priceHistoryLine(item);
+    // 同款歷史 only on the card that IS this week's cheapest way to buy the drink (or the only one): on the other
+    // cards a green 「這週同款最低 $2.19」 read as if this card cost that; they keep their own history instead
+    const _pg = packGroupOf(item);
+    // a dearer pack of the same drink shows only the 「同款買 X 更便宜」 line: one clear message, no extra history
+    const histLine = (_pg && !_pg.isBest) ? '' : (groupHistLine(item) || priceHistoryLine(item));
     // 同款不同包裝: the cheapest way to buy this drink per can / bottle this week (single, pack, any store)
     const packHtml = packLine(item);
     const packCheaperElsewhere = !!packHtml && !(packGroupOf(item) || {}).isBest;
@@ -3020,7 +3024,8 @@ function packLine(item) {
     if (pg.isBest) return `<div class="p-pack is-best"><i class="fa-solid fa-check"></i>${t('pack_best', { u })}</div>`;
     const n = packCountOf(pg.best);
     const how = n > 1 ? t('pack_n', { n }) : t('pack_single', { u });
-    return `<div class="p-pack">${t('pack_other', { u, price: `<b class="num">$${pg.value.toFixed(2)}</b>`, where: `<span class="nw">${storeLabel(pg.best.store)} ${how}</span>` })}</div>`;
+    const more = sensibleUnitOf(item).value - pg.value;
+    return `<div class="p-pack is-dearer"><i class="fa-solid fa-circle-info"></i>${t('pack_other', { u, price: `<b class="num">$${pg.value.toFixed(2)}</b>`, where: `<span class="nw">${storeLabel(pg.best.store)} ${how}</span>`, diff: `<b class="num d">$${more.toFixed(2)}</b>` })}</div>`;
 }
 
 // 同款歷史 (price_history.py group_summaries): this week's cheapest way to buy this drink (per can / bottle, any
