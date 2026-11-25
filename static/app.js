@@ -2838,6 +2838,14 @@ function createProductCardElement(item) {
     if (isGroupBest) card.classList.add('is-best'); else if (isVariantBest) card.classList.add('is-flavour-best');
     // cans / bottles: also per 100 mL, so a 250 mL and a 500 mL can compare fairly
     const per100 = up && up.ml && sortVal !== 'unit_asc' ? `$${(up.value / up.ml * 100).toFixed(2)}/100mL` : '';
+    // other drinks (big bottles, casks, multipacks, juice boxes): also how much per 100 mL, so every drink compares
+    const drinkPer100 = !per100 && sortVal !== 'unit_asc' ? drinkPer100Of(item) : '';
+    const strongUnit = !showNormUnit ? '' : sortVal === 'unit_asc' ? fmtUnitPrice(up)
+        : (up.basis === 'L' && drinkPer100) ? drinkPer100 : fmtSensibleUnit(up);
+    const per100Line = per100 || (showNormUnit && up.basis !== 'L' ? drinkPer100 : '');
+    const plainUnit = !showNormUnit ? (drinkPer100 || unitPriceClean) : '';
+    // 近 60 天最低價: this product's own prices on this site (price_history.py)
+    const histLine = priceHistoryLine(item);
     const cartPayload = {
         id: item.id,
         store: item.store,
@@ -2903,7 +2911,7 @@ function createProductCardElement(item) {
                     <div class="p-price num">
                         <span class="cur">$</span><span class="dol">${p.dollars}</span><span class="cts">${p.cents}</span><span class="unit">${p.unit}</span>
                     </div>
-                    ${showNormUnit ? `<div class="p-unit-strong num" title="${escAttr(unitPriceClean || fmtSensibleUnit(up))}">${sortVal === 'unit_asc' ? fmtUnitPrice(up) : fmtSensibleUnit(up)}</div>${per100 ? `<div class="p-unit num mt-0.5">${per100}</div>` : ''}` : ''}
+                    ${showNormUnit ? `<div class="p-unit-strong num" title="${escAttr(unitPriceClean || fmtSensibleUnit(up))}">${strongUnit}</div>${per100Line ? `<div class="p-unit num mt-0.5">${per100Line}</div>` : ''}` : ''}
                     ${aldiInfo ? `<div class="p-aldi ${aldiInfo.upcoming ? 'is-upcoming' : ''} ${aldiInfo.kind === 'saver' ? 'is-saver' : ''}"><i class="fa-regular ${aldiInfo.upcoming ? 'fa-calendar' : (aldiInfo.kind === 'saver' ? 'fa-clock' : 'fa-box-open')}"></i>${aldiInfo.text}</div>` : `
                     <div class="p-was num mt-1.5">
                         ${effectiveWas > 0 ? `<s>${wasLabel(item)} $${effectiveWas.toFixed(2)}</s>` : ''}
@@ -2912,7 +2920,8 @@ function createProductCardElement(item) {
                         ${isPlainSpecial(item) ? `<span class="p-save">${t('special_badge')}</span>` : ''}
                         ${isRegularPrice(item) ? `<span class="p-regular">${regularLabel(item)}</span>` : ''}
                     </div>`}
-                    ${unitPriceClean && !showNormUnit ? `<div class="p-unit num mt-0.5 truncate" title="${escAttr(unitPriceClean)}">${unitPriceClean}</div>` : ''}
+                    ${plainUnit ? `<div class="p-unit num mt-0.5 truncate" title="${escAttr(unitPriceClean || plainUnit)}">${plainUnit}</div>` : ''}
+                    ${histLine}
                 </div>
                 <div class="p-qty"></div>
             </div>
@@ -2929,6 +2938,36 @@ function createProductCardElement(item) {
         favBtn.onclick = (e) => { e.stopPropagation(); toggleFavoriteProduct(item, favBtn); };
     }
     return card;
+}
+
+// Drinks: the price per 100 mL (from the supermarket's unit price, or the size in the name; multi-buys per item)
+const _NOT_LIQUID = /\b(vinegar|sauce|oil|marinade|dressing|stock|broth|syrup|powder|concentrate|capsules|pods|beans|ground|instant|sachets?|tea bags?|tablets?|jelly)\b/i;
+function drinkPer100Of(item) {
+    if (!item || !_DRINK_CATS.has(item.category) || _NOT_LIQUID.test(item.title || '')) return '';
+    const u = unitPriceOf(item);
+    if (!u || u.basis !== 'L' || !(u.value > 0)) return '';
+    return `$${(u.value / 10).toFixed(2)}/100mL`;
+}
+
+// 近 60 天最低價 (price_history.py): ph = [days, lowest, last day at the lowest, state, lowest was a multi-buy]
+// state 0 = this week is the lowest, 1 = it was cheaper before, 2 = the same price every day (an everyday price).
+// Only for this week's list, and not when the visitor's state has its own price (the history is the base price).
+function fmtPhDate(iso) {
+    const m = String(iso || '').match(/^\d{4}-(\d{2})-(\d{2})$/);
+    if (!m) return '';
+    const mo = parseInt(m[1], 10), d = parseInt(m[2], 10);
+    return currentLang === 'en' ? `${d} ${['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][mo - 1]}` : `${mo}/${d}`;
+}
+function priceHistoryLine(item) {
+    const ph = item && item.ph;
+    if (!Array.isArray(ph) || ph.length < 4 || (item.period && item.period !== 'current')) return '';
+    if (item.rp && item.rp[currentRegion]) return '';
+    const [n, lo, day, state, multi] = ph;
+    const tip = ` title="${t('ph_tip', { n })}"`;
+    if (state === 0) return `<div class="p-hist is-low"${tip}><i class="fa-solid fa-arrow-down"></i>${t('ph_low', { n })}</div>`;
+    if (state === 2) return `<div class="p-hist"${tip}>${t('ph_flat', { n })}</div>`;
+    const each = (multi || /\d+\s*for\s*\$/i.test(item.price_display || '')) ? `/${t('unit_each')}` : '';
+    return `<div class="p-hist"${tip}>${t('ph_up', { n, price: `<b class="num">$${Number(lo).toFixed(2)}${each}</b>`, date: fmtPhDate(day) })}</div>`;
 }
 
 // Product Details Modal

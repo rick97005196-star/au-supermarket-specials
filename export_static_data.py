@@ -191,6 +191,11 @@ for (period, cat), members in groups.items():
             break
 print(f"Popular badge: {sum(1 for x in items if x['is_popular'])} of {len(items)} items")
 
+# 60 天最低價: record this update's prices and give each product its lowest price of the last 60 days (price_history.py)
+from price_history import apply_history
+_rec, _ph = apply_history(items)
+print(f"Price history: {_rec} prices recorded, {_ph} products with a 60-day comparison")
+
 # Two files: every visitor downloads this week's (mostly on mobile data); next week's only when it is
 # looked at or starts. Compact JSON. specials-next.json is always written, also empty, so an old one never stays.
 _next = [it for it in items if it.get('period') == 'next']
