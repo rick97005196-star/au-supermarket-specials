@@ -32,6 +32,7 @@ const PAGE = 60;
 const LANGS = { zh: 'zh-Hant-TW', en: 'en', ja: 'ja', ko: 'ko' };
 const $ = (id) => document.getElementById(id);
 let ALL = [], SPECIALS = [], LISTED = [], DATA = null;
+let GAP = false;          // between two catalogues: the catalogue tab shows the last (ended) catalogue
 let lang = (Object.keys(LANGS).find((k) => LANGS[k] === document.documentElement.lang)) || 'zh';
 const names = {};          // lang -> {product number: name}
 const state = { scope: 'special', dept: '', q: '', sort: 'pop', shown: PAGE };
@@ -129,8 +130,8 @@ function render() {
     .concat(DEPT_KEYS.filter((k) => byDept[k] || state.dept === k)
       .map((k) => `<button type="button" class="chip" data-dept="${k}" aria-pressed="${state.dept === k}">${esc(deptName(k))}<small>${(byDept[k] || 0).toLocaleString()}</small></button>`)).join('');
 
-  const nSp = list.filter((x) => x.special).length;
-  $('count').textContent = list.length ? (state.scope === 'all' ? t.countAll(list.length.toLocaleString(), nSp) : t.countSp(list.length)) : '';
+  const nSp = list.filter((x) => x.special && !x.ended).length;
+  $('count').textContent = list.length ? (state.scope === 'all' ? t.countAll(list.length.toLocaleString(), nSp) : (GAP ? t.countLast(list.length) : t.countSp(list.length))) : '';
   $('grid').innerHTML = list.slice(0, state.shown).map(card).join('');
   $('more').hidden = list.length <= state.shown;
   $('more').textContent = t.more((list.length - state.shown).toLocaleString());
@@ -168,6 +169,11 @@ function card(it) {
   }
   const img = safeUrl(it.image_url, true);
   const pic = `<div class="pic">${img ? `<img src="${esc(img)}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer">` : ''}</div>`;
+  if (it.ended) {
+    // last catalogue, already ended: its price only as a reference, never as a saving on now
+    const old = `<span class="badge ended">${esc(t.lastBadge)}</span>`;
+    return `${open('ended')}${pic}${old}${dept}${title}<div class="price"><div class="now">${priceHTML(it.price_display, it.price)}</div><span class="special-note">${esc(t.lastNote)}</span></div>${close}`;
+  }
   const half = /1\/2 price/i.test(it.discount_desc);
   const badge = half ? `<span class="badge half">${esc(t.half)}</span>` : (it.period === 'next' ? `<span class="badge">${esc(t.next)}</span>` : '');
   let extra = `<span class="special-note">${esc(t.sp)}</span>`;
@@ -207,10 +213,14 @@ function texts() {
     hot.appendChild(b);
   });
   if (DATA) {
-    const gap = !SPECIALS.length;     // between two catalogues
+    const gap = GAP || !SPECIALS.length;     // between two catalogues
     document.body.classList.toggle('no-catalogue', gap);
+    document.body.classList.toggle('no-last', !SPECIALS.length);
     $('heroDate').innerHTML = '<span class="hl">' + esc(gap ? t.noCat : [...new Set(SPECIALS.map((x) => x.date_range))].map(heroDate).join(', ')) + '</span>';
-    document.querySelector('.hero-sub').textContent = gap ? t.noCatSub : t.heroSub;
+    const lastRange = [...new Set(SPECIALS.map((x) => x.date_range))].map(heroDate).join(', ');
+    document.querySelector('.hero-sub').textContent = GAP ? t.lastSub(lastRange) : (gap ? t.noCatSub : t.heroSub);
+    document.querySelector('.seg-btn[data-scope=special] [data-i18n]').textContent = GAP ? t.lastTab : t.scopeSp;
+    document.querySelector('[data-i18n=stSp]').textContent = GAP ? t.lastSt : t.stSp;
     document.querySelector('.live-dot').textContent = gap ? t.noCatLive : t.live;
     const d = DATA.updated ? new Date(DATA.updated) : null;
     if (d && !isNaN(d)) {
@@ -239,6 +249,11 @@ async function main() {
   }
   // a catalogue whose last day has passed (Sydney) is never shown, even if the update has not run yet
   SPECIALS = (DATA.specials || []).filter((x) => !ended(x.date_range)).map((x) => Object.assign(x, { special: true }));
+  if (!SPECIALS.length && (DATA.last || []).length) {
+    // between two catalogues: the last catalogue's items stay on the page, each marked "ended"
+    GAP = true;
+    SPECIALS = DATA.last.map((x) => Object.assign(x, { special: true, ended: true }));
+  }
   // other products come compact: [product number, link text, department]
   const depts = DATA.depts || [];
   LISTED = (DATA.products || []).map((r, i) => ({
@@ -252,7 +267,7 @@ async function main() {
   $('statAll').textContent = ALL.length.toLocaleString();
   $('nSpecial').textContent = SPECIALS.length;
   $('nAll').textContent = ALL.length.toLocaleString();
-  if (!SPECIALS.length) setScope('all');   // nothing on special right now: show every product
+  if (!SPECIALS.length) setScope('all');   // nothing from any catalogue (not even a saved one): show every product
   texts();
   index();
   render();

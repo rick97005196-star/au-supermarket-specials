@@ -65,7 +65,9 @@ jobs:
           echo "::warning::product list not saved this time"
       - name: Use the newest catalogue
         # the specials update may have saved a newer catalogue while this ran
-        run: git fetch origin main && git checkout FETCH_HEAD -- static/data/specials.json
+        run: |
+          git fetch origin main && git checkout FETCH_HEAD -- static/data/specials.json
+          git checkout FETCH_HEAD -- data/chemist_last.json 2>/dev/null || true
       - name: Build
         run: python scripts/build_chemist.py
       - name: Deploy to Cloudflare Pages

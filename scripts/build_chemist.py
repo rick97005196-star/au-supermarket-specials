@@ -21,6 +21,7 @@ OUT_DIR = os.path.join(ROOT, 'chemist', 'data')
 OUT = os.path.join(OUT_DIR, 'products.json')
 ALL = os.path.join(ROOT, 'data', 'chemist_all.json')   # scrapers/chemist_all.py
 NAMES = os.path.join(ROOT, 'data', 'chemist_translations.json')   # scripts/translate_chemist.py
+LAST = os.path.join(ROOT, 'data', 'chemist_last.json')   # the newest catalogue seen, kept for the gap between two
 STORE = 'Chemist Warehouse'
 
 # Departments, checked in this order (the first that matches wins). Words are matched in the English name.
@@ -140,14 +141,56 @@ def _special(it):
     }
 
 
+def _current(items):
+    return [_special(it) for it in items if it.get('store') == STORE and not ended(it.get('date_range'))]
+
+
+def save_last():
+    """Keep a copy of the catalogue on now (data/chemist_last.json, committed by the specials update).
+    Between two catalogues the site shows it, clearly marked as ended, until the new one is out."""
+    with open(SRC, encoding='utf-8') as f:
+        cur = [sp for sp in _current(json.load(f)) if sp['period'] == 'current']
+    if not cur:
+        print('build_chemist: no catalogue on now - the saved last catalogue stays as it is')
+        return 0
+    try:
+        with open(LAST, encoding='utf-8') as f:
+            if json.load(f).get('items') == cur:
+                return 0
+    except (OSError, ValueError):
+        pass
+    with open(LAST, 'w', encoding='utf-8') as f:
+        json.dump({'saved': _dt.datetime.now(_dt.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ'), 'items': cur},
+                  f, ensure_ascii=False, separators=(',', ':'))
+    print(f'build_chemist: saved {len(cur)} catalogue items as the last catalogue -> {LAST}')
+    return 0
+
+
+def last_catalogue():
+    """The newest catalogue seen, only once it has ended (used between two catalogues)."""
+    try:
+        with open(LAST, encoding='utf-8') as f:
+            items = json.load(f).get('items') or []
+    except (OSError, ValueError):
+        return []
+    out = [it for it in items if ended(it.get('date_range'))]
+    for it in out:
+        it['period'] = 'ended'
+        it['dept'] = department(it['title'], fallback='vitamins')
+    return out
+
+
 def build():
     with open(SRC, encoding='utf-8') as f:
         items = json.load(f)
-    specials = [_special(it) for it in items if it.get('store') == STORE and not ended(it.get('date_range'))]
+    specials = _current(items)
+    last = []
     if not specials:
-        # between two catalogues (the old one ended, the new one is not out yet): the site still shows every
-        # product and says the next catalogue is not out yet - an ended catalogue must never stay on show
-        print('build_chemist: no catalogue on now - the site shows all products and "next catalogue not out yet"')
+        # between two catalogues (the old one ended, the new one is not out yet): the site shows the last
+        # catalogue's items, marked "ended - for reference only", and every product; never as a special on now
+        last = last_catalogue()
+        print(f'build_chemist: no catalogue on now - showing {len(last)} items of the last (ended) catalogue, '
+              f'marked as ended, until the next catalogue is out')
     for sp in specials:
         # a catalogue item that is not in the vitamins rules is still a health item in a pharmacy catalogue
         sp['dept'] = department(sp['title'], fallback='vitamins')
@@ -159,11 +202,11 @@ def build():
             all_data = json.load(f)
     except (OSError, ValueError):
         all_data = {'products': [], 'read': ''}
-    on_special = {sp['pid'] for sp in specials if sp['pid']}
+    on_special = {sp['pid'] for sp in specials + last if sp['pid']}
     skipped_online = 0
     for p in all_data.get('products', []):
         if p.get('pid') in on_special:
-            continue                    # shown once, as its catalogue special
+            continue                    # shown once, as its catalogue item
         slug = (p.get('url') or '').rstrip('/').rsplit('/', 1)[-1]
         if not slug:
             continue
@@ -179,6 +222,8 @@ def build():
         'list_read': all_data.get('read', ''),
         'date_ranges': sorted({sp['date_range'] for sp in specials if sp['date_range']}),
         'specials': specials,
+        'last': last,                   # the ended catalogue, only between two catalogues
+        'last_ranges': sorted({it['date_range'] for it in last if it['date_range']}),
         'depts': DEPT_KEYS,
         'products': listed,             # [product number, link text, index in depts]
     }
@@ -196,7 +241,7 @@ def build():
         with open(os.path.join(OUT_DIR, f'names-{lang}.json'), 'w', encoding='utf-8') as f:
             json.dump(part, f, ensure_ascii=False, separators=(',', ':'))
     counts = {}
-    for d in [x['dept'] for x in specials] + [DEPT_KEYS[r[2]] for r in listed]:
+    for d in [x['dept'] for x in specials + last] + [DEPT_KEYS[r[2]] for r in listed]:
         counts[d] = counts.get(d, 0) + 1
     print(f'build_chemist: {len(specials)} specials + {len(listed)} other products '
           f'({skipped_online} online-only left out) -> {OUT}  {counts}')
@@ -204,4 +249,4 @@ def build():
 
 
 if __name__ == '__main__':
-    sys.exit(build())
+    sys.exit(save_last() if '--save-last' in sys.argv else build())
