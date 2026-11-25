@@ -1687,3 +1687,5 @@ html:root .p-notes .is-cheaper b, html:root .p-notes .is-best b, html:root .p-no
 html:root .p-notes .p-hist.is-up { color: var(--ink-2); }
 html:root .p-notes .p-hist.is-up b.d { color: #c2410c; }
 html.dark .p-notes .p-hist.is-up b.d { color: #fb923c; }
+html:root .p-notes .p-pack.is-dearer b.d { color: #c2410c; }
+html.dark .p-notes .p-pack.is-dearer b.d { color: #fb923c; }
