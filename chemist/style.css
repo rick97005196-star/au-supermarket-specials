@@ -165,3 +165,6 @@ html.dark .pic,html.dark .thumb{background:#f3f2ed}
 html[data-theme="dark"]{--oz-mark:rgba(255,212,92,.38)}
 .hero h1 .hl{font-style:normal;color:inherit;border-bottom:0;background:linear-gradient(transparent 62%,var(--oz-mark) 62%);padding:0 .04em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
 .hero h1{font-weight:800;letter-spacing:-.02em}
+
+/* 電腦或較寬的畫面：分類、熱門搜尋自動換行全部顯示（滑鼠無法左右滑，藏在右邊的會點不到） */
+@media (min-width:641px),(hover:hover) and (pointer:fine){.chips{flex-wrap:wrap;overflow:visible}.hot{flex-wrap:wrap;overflow:visible;row-gap:6px}}

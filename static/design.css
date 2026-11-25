@@ -1333,6 +1333,10 @@ html:root .chip-icon, html:root .chip-icon.chip-svg, html:root .chip.is-active .
 @media (max-width: 767px) {
     .cat-group { height: 36px; font-size: 15px; padding: 0 11px; }
 }
+/* 電腦或較寬的畫面：分類大項自動換行全部顯示（滑鼠無法左右滑，藏在右邊的會點不到）；手機照舊左右滑 */
+@media (min-width: 641px), (hover: hover) and (pointer: fine) {
+    .cat-groups { flex-wrap: wrap; overflow-x: visible; }
+}
 
 
 /* ==========================================================================
