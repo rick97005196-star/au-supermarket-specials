@@ -1814,6 +1814,10 @@ function buzzFirst(items, orderRest) {
     return [...hot, ...(orderRest ? orderRest(rest) : rest)];
 }
 
+const NON_FOOD_CATS = new Set(['household', 'health_vitamins', 'pet']);
+function isFoodItem(it) { return !!(it && it.category) && !NON_FOOD_CATS.has(it.category) && it.category !== 'other'; }
+function foodFirst(items) { return [...items.filter(isFoodItem), ...items.filter(it => !isFoodItem(it))]; }
+
 // Sort items by comparator while clustering identical product lines together
 function strictSort(items, comparator) {
     return [...items].sort((a, b) => comparator(a, b) || (a.title || '').localeCompare(b.title || ''));
@@ -2203,6 +2207,9 @@ async function loadSpecials() {
             // departments, then everything else grouped by product line
             filtered = buzzFirst(filtered, popularFirst);
         }
+        // 食物在前: in the default order, food and drinks come first, then household, health & beauty and pet
+        // items (each part keeps its own order above)
+        if (sortBy === 'relevance' && !currentSearch) filtered = foodFirst(filtered);
         if (discountOnly) filtered = [...filtered.filter(isItemHalfPrice), ...filtered.filter(it => !isItemHalfPrice(it))];
         if ((priceType === 'regular' || (priceType === 'all' && currentSearch)) && !favOnly && !cmpOnly && !discountOnly && currentPeriod === 'current') {
             // the full Woolworths / Coles regular price lists (only here: ~30,000 products would bury the specials)
