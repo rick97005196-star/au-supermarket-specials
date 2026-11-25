@@ -12,7 +12,7 @@
 (function () { var t, l; try { t = localStorage.getItem('ozwh-theme'); l = localStorage.getItem('cw-lang'); } catch (e) {}
   if (t !== 'dark' && t !== 'light') t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
   var r = document.documentElement; r.classList.toggle('dark', t === 'dark'); if (t === 'dark') r.setAttribute('data-theme', 'dark');
-  if (!/^(zh|en|ja|ko)$/.test(l || '')) { var n = (navigator.language || '').slice(0, 2); l = /^(en|ja|ko)$/.test(n) ? n : 'zh'; }
+  if (!/^(zh|en|ja|ko)$/.test(l || '')) l = 'zh';   // 跟超市網站一樣：沒選過語言就用繁體中文
   r.lang = { zh: 'zh-Hant-TW', en: 'en', ja: 'ja', ko: 'ko' }[l]; })();
 </script>
 <link rel="icon" href="logo.svg" type="image/svg+xml">
