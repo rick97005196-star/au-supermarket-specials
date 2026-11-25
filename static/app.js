@@ -2858,7 +2858,7 @@ function createProductCardElement(item) {
     const per100Line = per100 || (showNormUnit && up.basis !== 'L' ? drinkPer100 : '');
     const plainUnit = !showNormUnit ? (drinkPer100 || unitPriceClean) : '';
     // 近 60 天最低價: this product's own prices on this site (price_history.py)
-    const histLine = priceHistoryLine(item);
+    const histLine = groupHistLine(item) || priceHistoryLine(item);
     // 同款不同包裝: the cheapest way to buy this drink per can / bottle this week (single, pack, any store)
     const packHtml = packLine(item);
     const packCheaperElsewhere = !!packHtml && !(packGroupOf(item) || {}).isBest;
@@ -2974,10 +2974,11 @@ function _packNums(title) {
     return String(title || '').toLowerCase()
         .replace(/\d+(?:\.\d+)?\s*(?:ml|l|litres?|liters?)\b/g, ' ')
         .replace(/\d+\s*[x×]|[x×]\s*\d+/g, ' ')
-        .replace(/\b\d+\s*(?:pk|packs?|cans?|bottles?|each|ea)\b|\b(?:pk|pack of|case of)\s*\d+\b/g, ' ')
+        .replace(/\b\d+\s*(?:pk|packs?|cans|bottles|each|ea)\b|\b(?:pk|pack of|case of)\s*\d+\b/g, ' ')
         .match(/\d+(?:\.\d+)?/g) || [];
 }
 function packGroupKey(it) {
+    if (it && typeof it.pg === 'string') return it.pg;      // from the export (pack_group.py, the same rules)
     const u = sensibleUnitOf(it);
     if (!u || !u.ml || !['can', 'btl'].includes(u.basis)) return '';
     if (/\bor\b|,|\bassorted\b|\bvarieties\b|\bselected\b|\bmixed\b|\brange\b/i.test(it.title || '')) return '';
@@ -3022,6 +3023,26 @@ function packLine(item) {
     return `<div class="p-pack">${t('pack_other', { u, price: `<b class="num">$${pg.value.toFixed(2)}</b>`, where: `<span class="nw">${storeLabel(pg.best.store)} ${how}</span>` })}</div>`;
 }
 
+// 同款歷史 (price_history.py group_summaries): this week's cheapest way to buy this drink (per can / bottle, any
+// pack, any store) against the cheapest seen before this week, in any pack at any store:
+// pgh = [days, best now, earlier lowest, its store, its cans per pack, its last day, state 0 same / 1 dearer / 3 new low]
+function groupHistLine(item) {
+    const g = item && item.pgh;
+    if (!Array.isArray(g) || g.length < 7 || (item.period && item.period !== 'current')) return '';
+    if (item.rp && item.rp[currentRegion]) return '';
+    const [n, now, lo, store, cans, day, state] = g;
+    const su = sensibleUnitOf(item);
+    const u = _cmpUnit(su && su.basis === 'btl' ? 'btl' : 'can');
+    const how = cans > 1 ? t('pack_n', { n: cans }) : t('pack_single', { u });
+    const money = v => `<b class="num">$${Number(v).toFixed(2)}/${u}</b>`;
+    const diff = `<b class="num d">$${Math.abs(now - lo).toFixed(2)}</b>`;
+    const where = `<span class="nw">${escHTML(storeLabel(store))} ${how}・${fmtPhDate(day)}</span>`;
+    const tip = ` title="${t('pgh_tip', { n })}"`;
+    if (state === 3) return `<div class="p-hist is-low"${tip}><i class="fa-solid fa-arrow-down"></i>${t('pgh_new', { n, now: money(now), lo: money(lo), diff })}</div>`;
+    if (state === 0) return `<div class="p-hist is-low"${tip}><i class="fa-solid fa-check"></i>${t('pgh_same', { n, now: money(now), where })}</div>`;
+    return `<div class="p-hist is-up"${tip}><i class="fa-solid fa-arrow-up"></i>${t('pgh_up', { n, now: money(now), diff, lo: money(lo), where })}</div>`;
+}
+
 // 近 60 天最低價 (price_history.py): ph = [days, lowest, last day at the lowest, state, lowest was a multi-buy]
 // state 0 = this week is the lowest, 1 = it was cheaper before, 2 = the same price every day (an everyday price).
 // Only for this week's list, and not when the visitor's state has its own price (the history is the base price).
@@ -3044,7 +3065,7 @@ function priceHistoryLine(item) {
     const unit = perCan ? `/${_cmpUnit(su.basis)}` : ((multi || /\d+\s*for\s*\$/i.test(item.price_display || '')) ? `/${t('unit_each')}` : '');
     const money = v => `<b class="num">$${(Number(v) / div).toFixed(2)}${unit}</b>`;
     const now = _perItemPrice(item);
-    const diff = v => `<b class="num">$${(Math.abs(now - Number(v)) / div).toFixed(2)}</b>`;
+    const diff = v => `<b class="num d">$${(Math.abs(now - Number(v)) / div).toFixed(2)}</b>`;
     let main;
     if (state === 3) main = `<div class="p-hist is-low"${tip}><i class="fa-solid fa-arrow-down"></i>${t('ph_new', { n, diff: diff(lo) })}</div>`;
     else if (state === 0) main = `<div class="p-hist is-low"${tip}><i class="fa-solid fa-check"></i>${t('ph_low', { n })}</div>`;

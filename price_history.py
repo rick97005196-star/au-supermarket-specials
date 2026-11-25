@@ -29,6 +29,8 @@ import json
 import os
 import re
 
+from pack_group import drink_unit, group_key
+
 HISTORY_PATH = os.path.join('data', 'price_history.json')     # relative, like export_static_data.py's other files
 WINDOW_DAYS = 60
 KEEP_DAYS = 70
@@ -115,6 +117,10 @@ def record(hist, items, day):
         prev = seen.get(key)
         if prev is None or price < prev[0]:
             seen[key] = (price, unit, multi)
+        g = group_key(it)
+        if g:
+            du = drink_unit(it)
+            hist.setdefault('groups', {})[key] = [g, du[3]]       # its drink group and cans in the pack
     runs_all = hist.setdefault('items', {})
     for key, (price, unit, multi) in seen.items():
         runs = runs_all.setdefault(key, [])
@@ -136,6 +142,9 @@ def record(hist, items, day):
             runs_all[key] = runs
         else:
             del runs_all[key]
+    groups = hist.get('groups') or {}
+    for key in [k for k in groups if k not in runs_all]:
+        del groups[key]
     hist['updated'] = day
     return len(seen)
 
@@ -207,15 +216,68 @@ def _unchanged(obs, price, start, day, gap=3):
     return all((d(b[0]) - d(a[1])).days <= gap for a, b in zip(obs, obs[1:]))
 
 
+GROUP_SINCE = '2026-10-19'     # 同款歷史: from when all three stores' lists were (nearly) complete
+
+
+def group_summaries(hist, items, day):
+    """同款不同包裝的歷史: for each drink group on the site this week (same flavour and can / bottle size, any pack,
+    any store), this week's cheapest price per can against the cheapest per can seen before this week.
+    {group: [days, best_now, hist_lo, hist_store, hist_cans, hist_day, state]} - state 0 = the same,
+    1 = dearer than before, 3 = a new low. Groups never seen before this week are left out."""
+    day = day.isoformat() if hasattr(day, 'isoformat') else str(day)
+    start = max(_minus(day, WINDOW_DAYS - 1), GROUP_SINCE)
+    days = (datetime.date.fromisoformat(day) - datetime.date.fromisoformat(start)).days + 1
+    wk = week_start(day).isoformat()
+    best = {}
+    for it in items:
+        if it.get('period', 'current') != 'current' or it.get('store') not in STORE_SINCE:
+            continue
+        g = group_key(it)
+        if g:
+            v = drink_unit(it)[1]
+            if g not in best or v < best[g]:
+                best[g] = v
+    members = {}
+    for key, (g, cans) in (hist.get('groups') or {}).items():
+        if g in best and cans:
+            members.setdefault(g, []).append((key, cans))
+    out = {}
+    for g, now in best.items():
+        lo = None
+        for key, cans in members.get(g, []):
+            store = key.split('|', 1)[0]
+            for r in hist['items'].get(key, []):
+                if r[3].replace('m', '') or r[1] < start or r[0] >= wk:
+                    continue                                  # not per item, outside the window, or this week
+                v = r[2] / cans
+                at = min(r[1], _minus(wk, 1))
+                if lo is None or v < lo[0] - 0.005 or (abs(v - lo[0]) < 0.005 and at > lo[3]):
+                    lo = (v, store, cans, at)
+        if lo is None:
+            continue
+        state = 3 if now < lo[0] - 0.005 else 0 if now <= lo[0] + 0.005 else 1
+        out[g] = [days, round(now, 2), round(lo[0], 2), lo[1], lo[2], lo[3], state]
+    return out
+
+
 def apply_history(items, hist=None, day=None, path=HISTORY_PATH, save_file=True):
     """Record today's prices, then give every current product its ph. Returns (recorded, with_ph)."""
     day = day or brisbane_today()
     hist = hist if hist is not None else load(path)
     n = record(hist, items, day)
     runs_all = hist['items']
+    gs = group_summaries(hist, items, day)
     shown = 0
     for it in items:
         it.pop('ph', None)
+        it.pop('pg', None)
+        it.pop('pgh', None)
+        if it.get('period', 'current') == 'current':
+            g = group_key(it)
+            if g:
+                it['pg'] = g                       # the website groups the same drink by this key (app.js)
+                if g in gs:
+                    it['pgh'] = gs[g]
         if it.get('period', 'current') != 'current':
             continue
         key = product_key(it)
