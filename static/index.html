@@ -49,7 +49,7 @@
 
     <!-- Pre-built styles (no in-browser compiling = faster on phones) -->
     <link rel="stylesheet" href="./tw.css?v=6.1">
-    <link rel="stylesheet" href="./design.css?v=17.2">
+    <link rel="stylesheet" href="./design.css?v=17.3">
 
     <!-- Non-blocking fonts & icons: text shows immediately with the phone's own fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -351,7 +351,7 @@
 
         <!-- Empty -->
         <div id="emptyState" class="hidden py-16 px-4 text-center toolbar space-y-3">
-            <div class="w-12 h-12 mx-auto rounded-full bg-surface-2 flex items-center justify-center t-ink-3">
+            <div class="w-12 h-12 mx-auto rounded-xl bg-surface-2 flex items-center justify-center t-ink-3">
                 <i class="fa-solid fa-basket-shopping"></i>
             </div>
             <h3 id="emptyStateTitle" class="text-[16px] font-semibold t-ink">沒有符合條件的特價商品</h3>
@@ -640,7 +640,7 @@
     </button>
 
     <!-- Toast -->
-    <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 hidden items-center gap-2.5 px-5 py-3 rounded-full text-[13px] font-medium" style="background:var(--ink);color:var(--bg);box-shadow:var(--shadow-lg)">
+    <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 hidden items-center gap-2.5 px-5 py-3 rounded-xl text-[13px] font-medium" style="background:var(--ink);color:var(--bg);box-shadow:var(--shadow-lg)">
         <i id="toastIcon" class="fa-solid fa-circle-check"></i>
         <span id="toastMessage">Action completed</span>
     </div>
@@ -651,7 +651,7 @@
     <script src="./category-icons.js?v=2.0" defer></script>
     <script src="./category-rules.js?v=2.0" defer></script>
     <script src="./compare.js?v=1.9" defer></script>
-    <script src="./app.js?v=15.7" defer></script>
+    <script src="./app.js?v=15.8" defer></script>
     <script>
         // Light / dark switch: the choice is kept in this site's browser storage only (each site has its own address)
         (function () {
