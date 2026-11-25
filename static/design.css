@@ -185,11 +185,11 @@ html.dark .ozwh-hubnav a:focus-visible{outline-color:#ECEAE4}
 .cart-count {
     min-width: 20px; height: 20px; padding: 0 6px; border-radius: 10px;
     display: inline-flex; align-items: center; justify-content: center;
-    background: var(--bg); color: var(--ink); font-size: 11px; font-weight: 700;
+    background: var(--bg); color: var(--ink); font-size: 12px; font-weight: 700;
 }
 
 /* ---------- Hero ---------- */
-.eyebrow { font-size: 11px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3); }
+.eyebrow { font-size: 12px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3); }
 .hero-title { font-size: clamp(28px, 6vw, 44px); line-height: 1.1; font-weight: 700; letter-spacing: -0.03em; color: var(--ink); }
 .hero-sub { font-size: 14px; color: var(--ink-2); }
 .status-dot { width: 7px; height: 7px; border-radius: 10px; background: var(--accent); box-shadow: 0 0 0 4px var(--accent-soft); display: inline-block; }
@@ -203,7 +203,7 @@ html.dark .ozwh-hubnav a:focus-visible{outline-color:#ECEAE4}
 .stat-divider { width: 1px; align-self: stretch; background: var(--line); }
 @media (max-width: 640px) {
     .stat-value { font-size: 19px; }
-    .stat-label { font-size: 11px; }
+    .stat-label { font-size: 12px; }
     .stat-divider { display: none; }
 }
 .store-dot { width: 8px; height: 8px; border-radius: 10px; display: inline-block; flex-shrink: 0; }
@@ -222,9 +222,9 @@ html.dark .ozwh-hubnav a:focus-visible{outline-color:#ECEAE4}
 }
 .seg-btn:hover { color: var(--ink); }
 .seg-btn.is-active { background: var(--surface); color: var(--ink); font-weight: 600; box-shadow: var(--shadow-md); }
-.seg-btn .seg-meta { font-size: 11px; font-weight: 500; color: var(--ink-3); }
+.seg-btn .seg-meta { font-size: 12px; font-weight: 500; color: var(--ink-3); }
 .seg-btn .seg-tag {
-    font-size: 11px; font-weight: 600; padding: 2px 7px; border-radius: 10px;
+    font-size: 12px; font-weight: 600; padding: 2px 7px; border-radius: 10px;
     background: var(--next-soft); color: var(--next);
 }
 .seg-lg .seg-btn { padding: 10px 20px; font-size: 14px; }
@@ -240,7 +240,7 @@ html.dark .ozwh-hubnav a:focus-visible{outline-color:#ECEAE4}
     display: inline-flex; align-items: center; justify-content: center;
     background: var(--next-soft); color: var(--next); font-size: 13px;
 }
-.notice-badge { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 10px; background: var(--next-soft); color: var(--next); white-space: nowrap; }
+.notice-badge { font-size: 12px; font-weight: 600; padding: 2px 8px; border-radius: 10px; background: var(--next-soft); color: var(--next); white-space: nowrap; }
 .notice-chevron { transition: transform .2s ease; color: var(--ink-3); }
 .notice.is-open .notice-chevron { transform: rotate(180deg); }
 .notice-body { display: none; padding: 0 16px 16px 60px; }
@@ -332,12 +332,12 @@ html.dark .p-media { background: #f4f3ef; border-bottom-color: transparent; }
 .p-flag {
     position: absolute; z-index: 2; top: 10px; right: 10px;
     display: inline-flex; align-items: center; gap: 4px;
-    font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 10px;
+    font-size: 12px; font-weight: 600; padding: 3px 8px; border-radius: 10px;
     background: rgba(255,255,255,.92); color: #8a5a00; box-shadow: 0 0 0 1px rgba(0,0,0,.06);
 }
 .p-flag.half { right: auto; left: 10px; background: var(--sale); color: #fff; box-shadow: none; }
 .p-body { display: flex; flex-direction: column; gap: 6px; padding: 12px 14px 14px; flex: 1; }
-.p-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 2px 6px; font-size: 11px; color: var(--ink-3); min-width: 0; }
+.p-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 2px 6px; font-size: 12px; color: var(--ink-3); min-width: 0; }
 .p-meta .p-store { display: inline-flex; align-items: center; gap: 5px; font-weight: 600; color: var(--ink-2); flex-shrink: 0; }
 .p-meta .sep { opacity: .5; }
 .p-meta .p-cat { white-space: normal; overflow-wrap: anywhere; }
@@ -351,7 +351,7 @@ html.dark .p-media { background: #f4f3ef; border-bottom-color: transparent; }
 }
 .p-compare {
     align-self: flex-start; display: inline-flex; align-items: center; gap: 5px;
-    font-size: 11px; font-weight: 500; padding: 2px 8px; border-radius: 10px;
+    font-size: 12px; font-weight: 500; padding: 2px 8px; border-radius: 10px;
     background: var(--surface-2); color: var(--ink-2);
 }
 .p-compare.is-cheaper { background: var(--accent-soft); color: var(--accent-text); }
@@ -360,13 +360,13 @@ html.dark .p-media { background: #f4f3ef; border-bottom-color: transparent; }
 .p-price .cur { font-size: 14px; font-weight: 600; align-self: flex-start; margin-top: 3px; }
 .p-price .dol { font-size: 28px; font-weight: 700; letter-spacing: -0.04em; }
 .p-price .cts { font-size: 14px; font-weight: 600; align-self: flex-start; margin-top: 3px; }
-.p-price .unit { font-size: 11px; font-weight: 500; color: var(--ink-3); margin-left: 4px; }
+.p-price .unit { font-size: 12px; font-weight: 500; color: var(--ink-3); margin-left: 4px; }
 .p-price.is-sale { color: var(--sale); }
-.p-was { font-size: 11px; color: var(--ink-3); display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; }
+.p-was { font-size: 12px; color: var(--ink-3); display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; }
 .p-was s { text-decoration-thickness: 1px; }
 .p-save { font-weight: 600; color: var(--sale); }
 .p-everyday { font-weight: 600; color: var(--accent-text); }
-.p-unit { font-size: 11px; color: var(--ink-3); }
+.p-unit { font-size: 12px; color: var(--ink-3); }
 .p-add {
     width: 38px; height: 38px; border-radius: 10px; flex-shrink: 0;
     display: inline-flex; align-items: center; justify-content: center;
@@ -405,7 +405,7 @@ html.dark .p-media { background: #f4f3ef; border-bottom-color: transparent; }
 .list-section { background: var(--surface-2); border-radius: 14px; padding: 12px; }
 .list-item { background: var(--surface); border-radius: 12px; padding: 10px; display: flex; align-items: center; gap: 10px; }
 .store-label { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; color: var(--ink); }
-.tag { font-size: 11px; font-weight: 600; padding: 2px 7px; border-radius: 10px; background: var(--surface-2); color: var(--ink-2); white-space: nowrap; }
+.tag { font-size: 12px; font-weight: 600; padding: 2px 7px; border-radius: 10px; background: var(--surface-2); color: var(--ink-2); white-space: nowrap; }
 .tag.is-next { background: var(--next-soft); color: var(--next); }
 .tag.is-sale { background: var(--sale-soft); color: var(--sale); }
 .tag.is-sale.is-everyday { background: var(--accent-soft); color: var(--accent-text); }
@@ -443,10 +443,10 @@ button, a, select, input, .chip, .p-card { touch-action: manipulation; }
     body { font-size: 15px; }
     .hero-title { font-size: 30px; }
     .hero-sub { font-size: 13px; line-height: 1.6; }
-    .p-meta { font-size: 11.5px; }
+    .p-meta { font-size: 12px; }
     .p-title { font-size: 14.5px; line-height: 1.42; }
     .p-subtitle { font-size: 12px; }
-    .p-was, .p-unit { font-size: 11.5px; }
+    .p-was, .p-unit { font-size: 12px; }
 
     /* Bigger touch targets (>= 40px) */
     .chip { height: 40px; font-size: 14px; padding: 0 15px 0 12px; }
@@ -588,7 +588,7 @@ input[type="search"]::-webkit-search-cancel-button { -webkit-appearance: none; }
 @media (max-width: 370px) {
     .brand-link [data-i18n="app_title"] { display: none; }   /* logo only on very narrow phones */
     .stats-row .stat-value { font-size: 17px; }
-    .stats-row .stat-label { font-size: 11px; gap: 4px; }
+    .stats-row .stat-label { font-size: 12px; gap: 4px; }
 }
 .region-select option { color: #1a1a1a; background: #fff; }
 @media (max-width: 640px) { .region-chip { height: 34px; font-size: 13px; } }
@@ -855,7 +855,7 @@ html.dark .site-header, html.dark .cat-nav { box-shadow: 0 0.5px 0 rgba(255,255,
 .lang-pill { height: 34px; padding: 0 10px; font-size: 13px; font-weight: 500; background: transparent; }
 .lang-pill > .fa-globe { color: var(--ink-2); font-size: 13px; }
 .cart-btn { height: 34px; padding: 0 12px 0 11px; gap: 7px; font-size: 13px; font-weight: 500; }
-.cart-count { min-width: 18px; height: 18px; font-size: 11px; font-weight: 600; }
+.cart-count { min-width: 18px; height: 18px; font-size: 12px; font-weight: 600; }
 @media (max-width: 767px) {
     body { padding-top: calc(56px + env(safe-area-inset-top)); }
     .cat-nav { top: calc(56px + env(safe-area-inset-top)) !important; }
@@ -879,7 +879,7 @@ html.dark .site-header, html.dark .cat-nav { box-shadow: 0 0.5px 0 rgba(255,255,
     box-shadow: var(--shadow-sm);
 }
 .stat-value { font-size: 20px; font-weight: 600; }
-.stat-label { font-size: 11.5px; color: var(--ink-3); }
+.stat-label { font-size: 12px; color: var(--ink-3); }
 .store-dot { width: 6px; height: 6px; }
 /* store bars: dark part = specials, light part = everyday low prices */
 .stat-bar { display: block; height: 4px; margin-top: 5px; border-radius: 2px; overflow: hidden;
@@ -929,20 +929,20 @@ html.dark .cat-grid .chip, html.dark .chip { background: var(--surface); box-sha
 @media (min-width: 640px) { #productsGrid { gap: 20px; } }
 .p-media { padding: 16%; }
 .p-half { top: 10px; left: 10px; width: 26%; max-width: 46px; min-width: 32px; }
-.p-flag { top: 10px; right: 10px; font-size: 11px; font-weight: 600; padding: 3px 7px; background: rgba(255,255,255,.85); color: var(--next); }
+.p-flag { top: 10px; right: 10px; font-size: 12px; font-weight: 600; padding: 3px 7px; background: rgba(255,255,255,.85); color: var(--next); }
 .p-flag i { display: none; }
 .p-fav { width: 30px; height: 30px; right: 10px; bottom: 10px; font-size: 13px;
     background: rgba(255,255,255,.8); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
     box-shadow: 0 0.5px 2px rgba(0,0,0,.12); color: #86868b; }
 .p-body { padding: 12px 14px 14px; gap: 4px; }
-.p-meta { font-size: 11px; letter-spacing: 0; }
+.p-meta { font-size: 12px; letter-spacing: 0; }
 .p-meta .p-store { font-weight: 500; color: var(--ink-3); }
 .p-title { font-size: 14.5px; font-weight: 600; line-height: 1.35; letter-spacing: -0.02em; }
 .p-subtitle { font-size: 12px; line-height: 1.35; }
 .p-price .cur, .p-price .cts { font-size: 13px; font-weight: 600; margin-top: 2px; }
 .p-price .dol { font-size: 24px; font-weight: 600; letter-spacing: -0.035em; }
-.p-price .unit { font-size: 11px; }
-.p-was { font-size: 11.5px; }
+.p-price .unit { font-size: 12px; }
+.p-was { font-size: 12px; }
 .p-save { font-weight: 600; }
 .p-add { width: 30px; height: 30px; font-size: 12px; background: var(--accent); color: #fff; }
 .p-add i { font-size: 12px !important; }
@@ -1013,7 +1013,7 @@ html.dark {
 }
 .qty-btn {
     width: 30px; height: 30px; display: inline-flex; align-items: center; justify-content: center;
-    font-size: 11px; color: inherit; background: transparent; border: 0; cursor: pointer;
+    font-size: 12px; color: inherit; background: transparent; border: 0; cursor: pointer;
     transition: background .12s ease;
 }
 .qty-btn:active { background: rgba(255,255,255,.18); }
@@ -1029,11 +1029,11 @@ html.dark .qty-btn:active { background: rgba(0,0,0,.1); }
 }
 
 /* ---------- ALDI: the deal's own date instead of "was / save" ---------- */
-.p-aldi { margin-top: 6px; display: flex; align-items: flex-start; gap: 5px; font-size: 11.5px; font-weight: 600; color: var(--aldi); line-height: 1.3; }
+.p-aldi { margin-top: 6px; display: flex; align-items: flex-start; gap: 5px; font-size: 12px; font-weight: 600; color: var(--aldi); line-height: 1.3; }
 .p-aldi i { font-size: 11px; margin-top: 2px; flex-shrink: 0; }
 .p-aldi.is-upcoming { color: var(--next); }
 .p-aldi-tag {
-    position: absolute; z-index: 2; top: 10px; left: 10px; font-size: 11px; font-weight: 700; letter-spacing: .01em;
+    position: absolute; z-index: 2; top: 10px; left: 10px; font-size: 12px; font-weight: 700; letter-spacing: .01em;
     padding: 3px 8px; border-radius: 10px; background: #00205b; color: #fff;
 }
 .p-aldi-tag.is-saver { background: #f5a800; color: #1d1d1f; }
@@ -1105,10 +1105,10 @@ html:root .p-card.is-cmp-anchor { box-shadow: 0 0 0 2px color-mix(in srgb, var(-
 .cmp3-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 4px; }
 .aldi-cmp-row:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 .aldi-cmp-row.is-this { border-color: var(--aldi); }
-.aldi-cmp-store { font-size: 11px; font-weight: 700; }
+.aldi-cmp-store { font-size: 12px; font-weight: 700; }
 .aldi-cmp-name { font-size: 12px; color: var(--ink-2); line-height: 1.35; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 .aldi-cmp-up { font-size: 14px; font-weight: 700; color: var(--ink); }
-.aldi-cmp-price { font-size: 11px; color: var(--ink-3); }
+.aldi-cmp-price { font-size: 12px; color: var(--ink-3); }
 
 /* ---------- Disclaimer strip at the top of the page ---------- */
 .top-disclaimer { background: var(--next-soft); color: var(--ink-2); border-bottom: 1px solid var(--line); }
@@ -1403,12 +1403,12 @@ html:not(.dark) .cat-group.is-active::after { background: #f2a900; }
     html:root #statsRow > .stat:nth-child(-n+2) { grid-column: span 3; }
     html:root #statsRow > .stat:nth-child(n+4) { grid-column: span 2; }
     html:root #statsRow .stat-value { font-size: 18px; }
-    html:root #statsRow .stat-label { font-size: 11.5px; gap: 5px; }
+    html:root #statsRow .stat-label { font-size: 12px; gap: 5px; }
     /* the week's dates on one line */
     html:root .hero-title { font-size: min(34px, 8.6vw); }
 }
 /* Small text: nothing below 11px */
-html:root .p-flag, html:root .notice-badge { font-size: 11px; }
+html:root .p-flag, html:root .notice-badge { font-size: 12px; }
 /* Touch targets: about 40px wherever a finger has to hit */
 @media (max-width: 640px) {
     html:root .region-chip { height: 40px; }
@@ -1505,7 +1505,7 @@ html:root .p-regular, html:root .tag.is-sale.is-regular { color: var(--ink-3); b
 .cmp-row { display: contents; }
 .toggle-pill.filter-toggle, .cmp-hint { display: none; }
 .filter-count { display: inline-flex; align-items: center; justify-content: center; min-width: 18px; height: 18px;
-    padding: 0 5px; border-radius: var(--r-box-xs); background: var(--accent); color: var(--accent-ink); font-size: 11.5px; font-weight: 700; }
+    padding: 0 5px; border-radius: var(--r-box-xs); background: var(--accent); color: var(--accent-ink); font-size: 12px; font-weight: 700; }
 .filter-count[hidden] { display: none; }
 .filter-caret { font-size: 11px; transition: transform .15s ease; }
 .filter-toggle[aria-expanded="true"] .filter-caret { transform: rotate(180deg); }
@@ -1587,7 +1587,7 @@ html:root .toolbar > .suggest-row { padding: 5px 0; margin-top: 8px; margin-bott
    ========================================================================== */
 /* comparison note: plain one-line text instead of a coloured box; the other stores' prices are in the product window */
 html:root .p-compare {
-    background: none !important; padding: 0; border-radius: 0; gap: 4px; font-size: 11.5px; color: var(--ink-3);
+    background: none !important; padding: 0; border-radius: 0; gap: 4px; font-size: 12px; color: var(--ink-3);
     display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; max-width: 100%;
 }
 html:root .p-compare.is-cheaper { color: var(--accent-text); }
@@ -1611,8 +1611,8 @@ html:root .p-unit-strong { background: var(--fill, var(--surface-2)); font-weigh
     html:root .p-price-row { padding-top: 6px; }
     /* top of the page: slimmer strips */
     .ozwh-hubnav-in { min-height: 44px; padding-top: 4px; padding-bottom: 4px; }
-    .top-disclaimer > div { padding-top: 5px; padding-bottom: 5px; font-size: 11.5px; line-height: 1.45; }
-    #mobileToolbarSlot #statsNote { margin: 5px 4px 0; font-size: 11px; }
+    .top-disclaimer > div { padding-top: 5px; padding-bottom: 5px; font-size: 12px; line-height: 1.45; }
+    #mobileToolbarSlot #statsNote { margin: 5px 4px 0; font-size: 12px; }
     html:root #mobileToolbarSlot #statsRow { padding: 9px 12px; gap: 6px 10px; box-shadow: none; border: 1px solid var(--line); }
     #mobileToolbarSlot .toolbar { box-shadow: none; }
 }
@@ -1658,26 +1658,26 @@ html:root .p-unit-strong { background: var(--fill, var(--surface-2)); font-weigh
 .cw-link a { color: var(--ink-2, inherit); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--cw); }
 
 /* 2026-11-25 近 60 天最低價: one quiet line under the price (green only when this week is the lowest) */
-.p-hist { display: block; margin-top: 4px; font-size: 11px; line-height: 1.35; color: var(--ink-3); }
+.p-hist { display: block; margin-top: 4px; font-size: 12px; line-height: 1.35; color: var(--ink-3); }
 .p-hist b { font-weight: 600; color: var(--ink-2); }
 .p-hist.is-low { color: var(--accent-text); font-weight: 600; }
 .p-hist i { font-size: 9px; margin-right: 3px; vertical-align: 1px; }
 .p-hist b { white-space: nowrap; }
-@media (max-width: 640px) { .p-hist { font-size: 11.5px; } }
+@media (max-width: 640px) { .p-hist { font-size: 12px; } }
 
 /* 2026-11-25 同款不同包裝: the cheapest way to buy this drink per can / bottle */
-.p-pack { margin-top: 4px; font-size: 11px; line-height: 1.35; color: var(--ink-3); }
+.p-pack { margin-top: 4px; font-size: 12px; line-height: 1.35; color: var(--ink-3); }
 .p-pack b { font-weight: 600; color: var(--ink-2); white-space: nowrap; }
 .p-pack .nw { white-space: nowrap; }
 .p-pack.is-best { color: var(--accent-text); font-weight: 600; }
 .p-pack i { font-size: 9px; margin-right: 3px; vertical-align: 1px; }
-@media (max-width: 640px) { .p-pack { font-size: 11.5px; } }
+@media (max-width: 640px) { .p-pack { font-size: 12px; } }
 
 /* 2026-11-25 比價小抄: same-item price, cheapest pack and 60-day low together under the price, never cut off */
 html:root .p-notes { display: flex; flex-direction: column; gap: 3px; margin-top: 7px; padding-top: 7px; border-top: 1px dashed var(--line); }
 html:root .p-notes .p-note, html:root .p-notes .p-pack, html:root .p-notes .p-hist {
     display: block; margin: 0; padding: 0; background: none !important; border-radius: 0;
-    font-size: 11.5px; line-height: 1.38; font-weight: 500; color: var(--ink-3);
+    font-size: 12px; line-height: 1.38; font-weight: 500; color: var(--ink-3);
     white-space: normal; overflow: visible; -webkit-line-clamp: unset; overflow-wrap: anywhere;
 }
 html:root .p-notes b { font-weight: 600; }
@@ -1710,3 +1710,15 @@ html[data-theme="dark"]{--oz-mark:rgba(255,212,92,.38)}
     html:root .fb-fab i { font-size: 18px; }
     html:root .fb-fab span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 }
+
+/* ===== 2026-11-26 四語排版檢查 ===== */
+/* 深色模式：「熱門暢銷／本週熱議」小標原本淺字配白底（對比 1.7 看不清楚）→ 改深底 */
+html:root.dark .p-flag { background: rgba(32,33,37,.92); color: #E9E5DC; }
+/* 手機頂端站名：英日韓比較長，原本被切成「AU Supermarke…」→ 放不下就折成兩行 */
+@media (max-width: 640px) {
+    .brand-link [data-i18n="app_title"] { white-space: normal; overflow: visible; text-overflow: clip; line-height: 1.2; }
+}
+/* 電腦較窄（768–1100）時副標也不切字：放不下就折行 */
+.brand-link [data-i18n="app_subtitle"] { white-space: normal; overflow: visible; text-overflow: clip; }
+/* 商品名稱折行時兩行差不多長，不會只剩「80克」一兩個字掉到下一行 */
+.p-title { text-wrap: balance; }
