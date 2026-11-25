@@ -1814,9 +1814,16 @@ function buzzFirst(items, orderRest) {
     return [...hot, ...(orderRest ? orderRest(rest) : rest)];
 }
 
-const NON_FOOD_CATS = new Set(['household', 'health_vitamins', 'pet']);
-function isFoodItem(it) { return !!(it && it.category) && !NON_FOOD_CATS.has(it.category) && it.category !== 'other'; }
-function foodFirst(items) { return [...items.filter(isFoodItem), ...items.filter(it => !isFoodItem(it))]; }
+// 食物在前 (default order): what working-holiday makers come for, cooking first —
+// 0 = fresh food & cooking (meat, seafood, fruit & veg, dairy & eggs, bread, rice, pantry, quick meals),
+// 1 = snacks, sweets and drinks, 2 = household, health & beauty, pet; each part keeps its own order
+const _FOOD_TIER = { g_fresh: 0, g_cook: 0, g_quick: 0, g_sweets: 1, g_drinks: 1 };
+function foodTier(it) { const g = TAG_GROUP_OF[tagOf(it)]; return g in _FOOD_TIER ? _FOOD_TIER[g] : 2; }
+function foodFirst(items) {
+    const parts = [[], [], []];
+    for (const it of items) parts[foodTier(it)].push(it);
+    return parts.flat();
+}
 
 // Sort items by comparator while clustering identical product lines together
 function strictSort(items, comparator) {
@@ -2207,8 +2214,7 @@ async function loadSpecials() {
             // departments, then everything else grouped by product line
             filtered = buzzFirst(filtered, popularFirst);
         }
-        // 食物在前: in the default order, food and drinks come first, then household, health & beauty and pet
-        // items (each part keeps its own order above)
+        // 食物在前: cooking food first, then snacks & drinks, then everything else (foodFirst)
         if (sortBy === 'relevance' && !currentSearch) filtered = foodFirst(filtered);
         if (discountOnly) filtered = [...filtered.filter(isItemHalfPrice), ...filtered.filter(it => !isItemHalfPrice(it))];
         if ((priceType === 'regular' || (priceType === 'all' && currentSearch)) && !favOnly && !cmpOnly && !discountOnly && currentPeriod === 'current') {
