@@ -1649,3 +1649,11 @@ html:root .p-unit-strong { background: var(--fill, var(--surface-2)); font-weigh
 /* link to the stand-alone 小黃屋 site (2026-11-24) */
 .cw-link { margin: 10px 0 0; font-size: 13px; }
 .cw-link a { color: var(--ink-2, inherit); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--cw); }
+
+/* 2026-11-25 近 60 天最低價: one quiet line under the price (green only when this week is the lowest) */
+.p-hist { display: block; margin-top: 4px; font-size: 11px; line-height: 1.35; color: var(--ink-3); }
+.p-hist b { font-weight: 600; color: var(--ink-2); }
+.p-hist.is-low { color: var(--accent-text); font-weight: 600; }
+.p-hist i { font-size: 9px; margin-right: 3px; vertical-align: 1px; }
+.p-hist b { white-space: nowrap; }
+@media (max-width: 640px) { .p-hist { font-size: 11.5px; } }
