@@ -2185,7 +2185,15 @@ async function loadSpecials() {
 
         // 同款合併 (the plain list only): the exact same product at several stores is one card, the cheapest store's,
         // naming the other stores' prices; a store tab, 三家比價 and the favourites still show every card
-        if (currentStore === 'All' && !cmpOnly && !favOnly) filtered = mergeSameProducts(filtered);
+        // 數量照合併前算：上方統計是每家超市各算一次，合併後的卡片數會比上方少約 200，看起來對不上（2026-11-25）
+        const merged = { all: 0, ev: 0, rg: 0 };
+        if (currentStore === 'All' && !cmpOnly && !favOnly) {
+            const before = filtered;
+            filtered = mergeSameProducts(filtered);
+            merged.all = before.length - filtered.length;
+            merged.ev = before.filter(isEverydayPrice).length - filtered.filter(isEverydayPrice).length;
+            merged.rg = before.filter(isRegularPrice).length - filtered.filter(isRegularPrice).length;
+        }
 
         // Sorting & Series Clustering
         if (sortBy === 'popular') {
@@ -2268,9 +2276,9 @@ async function loadSpecials() {
 
         loading.classList.add('hidden');
         currentLoadedItems = filtered;
-        lastResultCount = filtered.length;
-        lastEverydayCount = filtered.filter(isEverydayPrice).length;
-        lastRegularCount = filtered.filter(isRegularPrice).length;
+        lastResultCount = filtered.length + merged.all;
+        lastEverydayCount = filtered.filter(isEverydayPrice).length + merged.ev;
+        lastRegularCount = filtered.filter(isRegularPrice).length + merged.rg;
         resultsCountText.textContent = resultsCountLabel();
         renderFavPanel();
         if (!rawHasNext && loadFavorites().length) loadNextInBackground();   // next week's favourites count
