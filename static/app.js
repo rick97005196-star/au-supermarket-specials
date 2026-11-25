@@ -3485,12 +3485,14 @@ function toggleShoppingDrawer() {
 
     if (isOpen) {
         drawer.classList.add('translate-x-full');
+        drawer.inert = true; // 關著時鍵盤 Tab 不會跑進看不到的清單
         backdrop.classList.add('hidden');
         unlockPage();
         // opened with a history step -> remove it, so the Back button isn't needed twice
         if (!_closingFromBack && history.state && history.state.overlay === 'drawer') history.back();
     } else {
         drawer.classList.remove('translate-x-full');
+        drawer.inert = false;
         backdrop.classList.remove('hidden');
         lockPage();
         try { history.pushState({ overlay: 'drawer' }, ''); } catch (e) {}
