@@ -1703,3 +1703,10 @@ html[data-theme="dark"]{--oz-mark:rgba(255,212,92,.38)}
 .hero-title .num{font-style:normal;color:inherit;border-bottom:0;background:linear-gradient(transparent 62%,var(--oz-mark) 62%);padding:0 .04em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
 .hero-title{font-weight:800;letter-spacing:-0.02em}
 .hero-title .num{letter-spacing:-0.02em}
+
+/* 手機：意見回饋按鈕只留圖示（44×44），第一屏不蓋住篩選鈕；文字留給讀屏軟體（2026-11-25 使用者決定，全站一致） */
+@media (max-width: 767px) {
+    html:root .fb-fab { width: 44px; height: 44px; padding: 0; gap: 0; justify-content: center; }
+    html:root .fb-fab i { font-size: 18px; }
+    html:root .fb-fab span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+}
