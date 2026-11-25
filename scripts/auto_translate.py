@@ -257,6 +257,23 @@ Rules for ALL THREE languages (learned from a full human review of 6,000 transla
 Titles:
 """
 
+def _quota_info(raw):
+    """From a Gemini 429 answer: which limit was hit (e.g. GenerateRequestsPerMinutePerProjectPerModel-FreeTier)
+    and how many seconds Google says to wait."""
+    try:
+        details = json.loads(raw).get('error', {}).get('details', [])
+    except (ValueError, AttributeError):
+        return '', 0
+    limit, retry_s = '', 0
+    for d in details:
+        for v in d.get('violations', []) or []:
+            limit = limit or v.get('quotaId') or v.get('quotaMetric') or ''
+        m = re.match(r'([\d.]+)s', str(d.get('retryDelay', '')))
+        if m:
+            retry_s = int(float(m.group(1))) + 1
+    return limit, retry_s
+
+
 def translate_batch_with_gemini(titles, api_key, notes=None):
     """
     Translates a batch of titles with the Gemini API.
@@ -279,7 +296,8 @@ def translate_batch_with_gemini(titles, api_key, notes=None):
         "generationConfig": {"temperature": 0.2, "responseMimeType": "application/json"}
     }
 
-    for attempt in range(8):
+    minute_waits = 0
+    for attempt in range(14):
         try:
             resp_data = _gemini_request(url, api_key, body)
             candidates = resp_data.get('candidates', [])
@@ -309,21 +327,35 @@ def translate_batch_with_gemini(titles, api_key, notes=None):
                     }
             return results
         except urllib.error.HTTPError as e:
-            detail = ''
+            raw = ''
             try:
-                detail = e.read().decode('utf-8')[:300]
+                raw = e.read().decode('utf-8')
             except Exception:
                 pass
+            detail = raw[:300]
+            limit, retry_s = _quota_info(raw) if e.code == 429 else ('', 0)
+            if limit:
+                detail = f"limit={limit} retry={retry_s}s " + detail
+            # A per-minute limit clears in under a minute: wait and use the same model again, instead of
+            # writing the model off (2026-11-24: whole runs gave up on "out of quota" that was only per minute)
+            if e.code == 429 and 'PerMinute' in limit and minute_waits < 3:
+                minute_waits += 1
+                wait = min(max(retry_s, 20), 70)
+                print(f"  Gemini per-minute limit on {model}, waiting {wait}s...")
+                time.sleep(wait)
+                continue
+            # A busy model (500/503) is usually fine a few seconds later: retry it before moving on
+            # (2026-11-25: one burst of 503s used up the whole model list and stopped the run)
+            if e.code in (500, 503) and attempt < 2:
+                wait = 10 * (attempt + 1)
+                print(f"  Gemini HTTP {e.code} on {model}, retrying in {wait}s...")
+                time.sleep(wait)
+                continue
             if e.code in (404, 429, 500, 503) and len(cands) > 1:
                 gh_warning(f"Gemini model {model} unavailable (HTTP {e.code}), switching to {cands[1]}")
                 cands.pop(0)
                 model = cands[0]
                 url = f"{GEMINI_API_BASE}/models/{model}:generateContent"
-                continue
-            if e.code in (500, 503) and attempt < 2:
-                wait = 15 * (attempt + 1)
-                print(f"  Gemini HTTP {e.code}, retrying in {wait}s...")
-                time.sleep(wait)
                 continue
             gh_warning(f"Gemini translation failed: HTTP {e.code} (model {model}) {detail}")
             if e.code in (400, 401, 403, 404, 429):
