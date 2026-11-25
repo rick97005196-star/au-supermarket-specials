@@ -209,7 +209,7 @@ function texts() {
   if (DATA) {
     const gap = !SPECIALS.length;     // between two catalogues
     document.body.classList.toggle('no-catalogue', gap);
-    $('heroDate').textContent = gap ? t.noCat : [...new Set(SPECIALS.map((x) => x.date_range))].map(heroDate).join(', ');
+    $('heroDate').innerHTML = '<span class="hl">' + esc(gap ? t.noCat : [...new Set(SPECIALS.map((x) => x.date_range))].map(heroDate).join(', ')) + '</span>';
     document.querySelector('.hero-sub').textContent = gap ? t.noCatSub : t.heroSub;
     document.querySelector('.live-dot').textContent = gap ? t.noCatLive : t.live;
     const d = DATA.updated ? new Date(DATA.updated) : null;

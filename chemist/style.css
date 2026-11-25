@@ -159,3 +159,9 @@ html.dark .pic,html.dark .thumb{background:#f3f2ed}
   .tools{flex-wrap:wrap;row-gap:8px}.tools .count{flex:1 1 100%}
   #sort{font-size:13px;width:100%;max-width:none}
 }
+
+/* ==== 全站統一標題規格（2026-11-25，與主網站同一套）==== */
+:root{--oz-mark:#FFD45C}
+html[data-theme="dark"]{--oz-mark:rgba(255,212,92,.38)}
+.hero h1 .hl{font-style:normal;color:inherit;border-bottom:0;background:linear-gradient(transparent 62%,var(--oz-mark) 62%);padding:0 .04em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.hero h1{font-weight:800;letter-spacing:-.02em}

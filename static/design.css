@@ -1692,3 +1692,10 @@ html:root .p-notes .p-hist.is-up b.d { color: #c2410c; }
 html.dark .p-notes .p-hist.is-up b.d { color: #fb923c; }
 html:root .p-notes .p-pack.is-dearer b.d { color: #c2410c; }
 html.dark .p-notes .p-pack.is-dearer b.d { color: #fb923c; }
+
+/* ==== 全站統一標題規格（2026-11-25，與主網站同一套）==== */
+:root{--oz-mark:#FFD45C}
+html[data-theme="dark"]{--oz-mark:rgba(255,212,92,.38)}
+.hero-title .num{font-style:normal;color:inherit;border-bottom:0;background:linear-gradient(transparent 62%,var(--oz-mark) 62%);padding:0 .04em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.hero-title{font-weight:800;letter-spacing:-0.02em}
+.hero-title .num{letter-spacing:-0.02em}
