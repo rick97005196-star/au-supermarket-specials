@@ -219,34 +219,8 @@ print(f"Products no rule recognised: {len(_report['ai'])} placed by the AI, {len
 # Also generate stats.json
 import database
 stats = database.get_stats()
-# Numbers for every state (the website shows the visitor's own state)
-from scrapers.regions import ALL_REGIONS, BASE_REGION
-def _region_stats(region):
-    out = {}
-    for period in ('current', 'next'):
-        total, by_store, half, everyday, everyday_by_store, regular, regular_by_store = 0, {}, 0, 0, {}, 0, {}
-        for it in items:
-            if it.get('period') != period or ('rg' in it and region not in it['rg']):
-                continue
-            if it.get('store') == 'Chemist Warehouse':
-                continue               # 小黃屋 has its own site (chemist/): not in the supermarket numbers
-            p = dict(it, **(it.get('rp', {}).get(region) or {}))
-            if is_everyday(p):
-                everyday += 1          # listed on the site, but not a special: not in the specials numbers
-                everyday_by_store[p['store']] = everyday_by_store.get(p['store'], 0) + 1
-                continue
-            if is_regular(p):
-                regular += 1           # listed on the site, but not a special
-                regular_by_store[p['store']] = regular_by_store.get(p['store'], 0) + 1
-                continue
-            total += 1
-            by_store[p['store']] = by_store.get(p['store'], 0) + 1
-            if (p['store'] == 'ALDI' or (p.get('save_amount') or 0) > 0) and database.is_half_price(
-                    p.get('price'), p.get('was_price'), p.get('save_amount'), p.get('discount_desc')):
-                half += 1
-        out[period] = {'total': total, 'by_store': by_store, 'half_price_count': half, 'everyday_count': everyday,
-                       'everyday_by_store': everyday_by_store, 'regular_count': regular, 'regular_by_store': regular_by_store}
-    return out
+# Numbers for every state (the website shows the visitor's own state): region_stats.py
+from region_stats import apply_region_stats
 # "Next week" must never show this week's dates (happens when only ALDI has published next week)
 def _shift_week(rng, days=7):
     import re as _r
@@ -263,10 +237,7 @@ def _shift_week(rng, days=7):
     return f"{f(s0)} - {f(e0)}"
 if stats['next'].get('total') and stats['next'].get('date_range') == stats['current'].get('date_range'):
     stats['next']['date_range'] = _shift_week(stats['current']['date_range']) or stats['next']['date_range']
-stats['base_region'] = BASE_REGION
-stats['regions'] = {r: _region_stats(r) for r in ALL_REGIONS}
-for period in ('current', 'next'):   # the default numbers are Queensland's
-    stats[period].update(stats['regions'][BASE_REGION][period])
+apply_region_stats(stats, items)
 # The weeks in specials-next.json: the site knows when next week starts without downloading it
 stats['next_ranges'] = sorted({it['date_range'] for it in _next if it.get('date_range')})
 # When the specials were last refreshed (UTC, ISO format) - shown on the site as "updated x hours ago"
