@@ -1657,3 +1657,11 @@ html:root .p-unit-strong { background: var(--fill, var(--surface-2)); font-weigh
 .p-hist i { font-size: 9px; margin-right: 3px; vertical-align: 1px; }
 .p-hist b { white-space: nowrap; }
 @media (max-width: 640px) { .p-hist { font-size: 11.5px; } }
+
+/* 2026-11-25 同款不同包裝: the cheapest way to buy this drink per can / bottle */
+.p-pack { margin-top: 4px; font-size: 11px; line-height: 1.35; color: var(--ink-3); }
+.p-pack b { font-weight: 600; color: var(--ink-2); white-space: nowrap; }
+.p-pack .nw { white-space: nowrap; }
+.p-pack.is-best { color: var(--accent-text); font-weight: 600; }
+.p-pack i { font-size: 9px; margin-right: 3px; vertical-align: 1px; }
+@media (max-width: 640px) { .p-pack { font-size: 11.5px; } }

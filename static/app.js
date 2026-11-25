@@ -2833,10 +2833,10 @@ function createProductCardElement(item) {
         : t('cross_store_badge_tie', { store: twins[0].store });
     const othersText = twins.map(m => t('cross_store_badge_other', { store: m.store, price: m.price.toFixed(2) })).join(' · ');
     const crossStoreBadgeText = exactText || valueCompareBadgeText(valueCmp);
-    const compareIsGood = twins.length ? cheaperBy > 0.005 : exactText ? !!item.cross_store_cheaper : !!(valueCmp && valueCmp.verdict === 'cheaper');
+    let compareIsGood = twins.length ? cheaperBy > 0.005 : exactText ? !!item.cross_store_cheaper : !!(valueCmp && valueCmp.verdict === 'cheaper');
     // 「最便宜」: nothing the same (or of the same kind) is cheaper this week at any of the three supermarkets
     // (the same product says it in its own text: 「三家中最便宜」 or 「較 Woolworths 低 $2.50」)
-    const isCheapest = twins.length ? cheaperBy > 0.005 : (!exactText && !!(valueCmp && valueCmp.verdict === 'cheaper' && valueCmp.lowest));
+    let isCheapest = twins.length ? cheaperBy > 0.005 : (!exactText && !!(valueCmp && valueCmp.verdict === 'cheaper' && valueCmp.lowest));
     // unit price: ALDI always as $/kg or $/L (that's how ALDI shows value); others when sorting by unit price
     const sortVal = (document.getElementById('sortSelect') || {}).value;
     // 比價: the unit it is compared in (per kg / litre / item / 100 sheets), the same for the whole group
@@ -2859,6 +2859,10 @@ function createProductCardElement(item) {
     const plainUnit = !showNormUnit ? (drinkPer100 || unitPriceClean) : '';
     // 近 60 天最低價: this product's own prices on this site (price_history.py)
     const histLine = priceHistoryLine(item);
+    // 同款不同包裝: the cheapest way to buy this drink per can / bottle this week (single, pack, any store)
+    const packHtml = packLine(item);
+    const packCheaperElsewhere = !!packHtml && !(packGroupOf(item) || {}).isBest;
+    if (packCheaperElsewhere) { isCheapest = false; compareIsGood = false; }     // a pack elsewhere is cheaper per can
     const cartPayload = {
         id: item.id,
         store: item.store,
@@ -2924,7 +2928,7 @@ function createProductCardElement(item) {
                     <div class="p-price num">
                         <span class="cur">$</span><span class="dol">${p.dollars}</span><span class="cts">${p.cents}</span><span class="unit">${p.unit}</span>
                     </div>
-                    ${showNormUnit ? `<div class="p-unit-strong num" title="${escAttr(unitPriceClean || fmtSensibleUnit(up))}">${strongUnit}</div>${per100Line ? `<div class="p-unit num mt-0.5">${per100Line}</div>` : ''}` : ''}
+                    ${showNormUnit ? `<div class="p-unit-strong num" title="${escAttr(unitPriceClean || fmtSensibleUnit(up))}">${strongUnit}</div>${per100Line ? `<div class="p-unit num mt-0.5">${per100Line}</div>` : ''}${packHtml}` : ''}
                     ${aldiInfo ? `<div class="p-aldi ${aldiInfo.upcoming ? 'is-upcoming' : ''} ${aldiInfo.kind === 'saver' ? 'is-saver' : ''}"><i class="fa-regular ${aldiInfo.upcoming ? 'fa-calendar' : (aldiInfo.kind === 'saver' ? 'fa-clock' : 'fa-box-open')}"></i>${aldiInfo.text}</div>` : `
                     <div class="p-was num mt-1.5">
                         ${effectiveWas > 0 ? `<s>${wasLabel(item)} $${effectiveWas.toFixed(2)}</s>` : ''}
@@ -2962,6 +2966,61 @@ function drinkPer100Of(item) {
     return `$${(u.value / 10).toFixed(2)}/100mL`;
 }
 
+// 同款不同包裝: the same drink (brand + flavour words + can / bottle size + any other number in the name, so
+// "Wild Turkey & Cola" never meets "… Cola 101") sold as a single, a 4-pack, a slab or at another store this week.
+// Compared per can / bottle (multi-buys per item). Names listing several products ("A or B", "assorted") are left out.
+function _packNums(title) {
+    return String(title || '').toLowerCase()
+        .replace(/\d+(?:\.\d+)?\s*(?:ml|l|litres?|liters?)\b/g, ' ')
+        .replace(/\d+\s*[x×]|[x×]\s*\d+/g, ' ')
+        .replace(/\b\d+\s*(?:pk|packs?|cans?|bottles?|each|ea)\b|\b(?:pk|pack of|case of)\s*\d+\b/g, ' ')
+        .match(/\d+(?:\.\d+)?/g) || [];
+}
+function packGroupKey(it) {
+    const u = sensibleUnitOf(it);
+    if (!u || !u.ml || !['can', 'btl'].includes(u.basis)) return '';
+    if (/\bor\b|,|\bassorted\b|\bvarieties\b|\bselected\b|\bmixed\b|\brange\b/i.test(it.title || '')) return '';
+    return [brandKeyOf(it, it.category).split('|')[0], variantKeyOf(it), Math.round(u.ml), u.basis,
+        _packNums(it.title).sort().join(',')].join('|');
+}
+let _packIdx = null;
+function packGroupOf(it) {
+    const list = (typeof staticSpecials !== 'undefined') ? staticSpecials : null;
+    if (!list || !list.length || !it || it.period !== 'current') return null;
+    if (!_packIdx || _packIdx.list !== list || _packIdx.n !== list.length) {
+        const groups = new Map();
+        for (const x of list) {
+            if (x.period !== 'current') continue;
+            const k = packGroupKey(x);
+            if (!k) continue;
+            if (!groups.has(k)) groups.set(k, []);
+            groups.get(k).push(x);
+        }
+        _packIdx = { list, n: list.length, groups };
+    }
+    const k = packGroupKey(it);
+    const g = k && _packIdx.groups.get(k);
+    if (!g || new Set(g.map(x => `${x.store}|${(x.title || '').toLowerCase()}`)).size < 2) return null;
+    const val = x => sensibleUnitOf(x).value;
+    const best = g.reduce((a, b) => (val(b) < val(a) - 0.005 ? b : a));
+    const worst = Math.max(...g.map(val));
+    if (worst - val(best) < 0.01) return null;                   // every way costs the same: nothing to say
+    return { best, isBest: val(it) <= val(best) + 0.005, value: val(best), basis: sensibleUnitOf(it).basis };
+}
+function packCountOf(it) {
+    const u = sensibleUnitOf(it);
+    return u && u.value > 0 ? Math.round(_perItemPrice(it) / u.value) : 0;
+}
+function packLine(item) {
+    const pg = packGroupOf(item);
+    if (!pg) return '';
+    const u = _cmpUnit(pg.basis);
+    if (pg.isBest) return `<div class="p-pack is-best"><i class="fa-solid fa-check"></i>${t('pack_best', { u })}</div>`;
+    const n = packCountOf(pg.best);
+    const how = n > 1 ? t('pack_n', { n }) : t('pack_single', { u });
+    return `<div class="p-pack">${t('pack_other', { u, price: `<b class="num">$${pg.value.toFixed(2)}</b>`, where: `<span class="nw">${storeLabel(pg.best.store)} ${how}</span>` })}</div>`;
+}
+
 // 近 60 天最低價 (price_history.py): ph = [days, lowest, last day at the lowest, state, lowest was a multi-buy]
 // state 0 = this week is the lowest, 1 = it was cheaper before, 2 = the same price every day (an everyday price).
 // Only for this week's list, and not when the visitor's state has its own price (the history is the base price).
@@ -2979,6 +3038,11 @@ function priceHistoryLine(item) {
     const tip = ` title="${t('ph_tip', { n })}"`;
     if (state === 0) return `<div class="p-hist is-low"${tip}><i class="fa-solid fa-arrow-down"></i>${t('ph_low', { n })}</div>`;
     if (state === 2) return `<div class="p-hist"${tip}>${t('ph_flat', { n })}</div>`;
+    // cans / bottles: per can or bottle, the way the card compares them (a 4-pack at $8.75 = $2.19 a can)
+    const su = sensibleUnitOf(item), cnt = packCountOf(item);
+    if (su && ['can', 'btl'].includes(su.basis) && cnt >= 1) {
+        return `<div class="p-hist"${tip}>${t('ph_up', { n, price: `<b class="num">$${(Number(lo) / cnt).toFixed(2)}/${_cmpUnit(su.basis)}</b>`, date: fmtPhDate(day) })}</div>`;
+    }
     const each = (multi || /\d+\s*for\s*\$/i.test(item.price_display || '')) ? `/${t('unit_each')}` : '';
     return `<div class="p-hist"${tip}>${t('ph_up', { n, price: `<b class="num">$${Number(lo).toFixed(2)}${each}</b>`, date: fmtPhDate(day) })}</div>`;
 }
