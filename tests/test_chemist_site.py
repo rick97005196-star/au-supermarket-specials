@@ -50,3 +50,29 @@ assert not ended(r, datetime.date(2026, 11, 25))      # the last day still count
 assert ended(r, datetime.date(2026, 11, 26))
 assert not ended('', datetime.date(2026, 11, 26))      # no dates: never dropped by this rule
 print('chemist site: ok')
+
+# between two catalogues: the last catalogue is kept (save_last) and shown only once ended, marked 'ended'
+import json, tempfile  # noqa: E401,E402
+import build_chemist as bc  # noqa: E402
+_tmp = tempfile.mkdtemp()
+_src, _last = bc.SRC, bc.LAST
+bc.SRC, bc.LAST = os.path.join(_tmp, 'specials.json'), os.path.join(_tmp, 'last.json')
+_it = {'store': 'Chemist Warehouse', 'period': 'current', 'title': 'Blackmores Fish Oil 400 Capsules', 'price': 20,
+       'product_url': 'https://www.chemistwarehouse.com.au/buy/1/x', 'date_range': 'Thu 12 Nov 2026 - Wed 25 Nov 2026'}
+_far = {**_it, 'title': 'Swisse Ultiboost 60 Tablets', 'date_range': 'Thu 12 Nov 2099 - Wed 25 Nov 2099'}
+with open(bc.SRC, 'w') as f:
+    json.dump([_far, {**_far, 'store': 'Coles'}], f)
+bc.save_last()
+saved = json.load(open(bc.LAST))['items']
+assert [x['title'] for x in saved] == ['Swisse Ultiboost 60 Tablets'], saved     # only 小黃屋, the catalogue on now
+assert bc.last_catalogue() == [], 'a catalogue still on is never shown as the ended one'
+with open(bc.SRC, 'w') as f:
+    json.dump([], f)
+bc.save_last()                                                                   # nothing on: the saved copy stays
+assert json.load(open(bc.LAST))['items'] == saved
+with open(bc.LAST, 'w') as f:
+    json.dump({'items': [bc._special(_it)]}, f)
+old = bc.last_catalogue()
+assert len(old) == 1 and old[0]['period'] == 'ended' and old[0]['dept'] == 'vitamins', old
+bc.SRC, bc.LAST = _src, _last
+print('last catalogue between two catalogues: OK')

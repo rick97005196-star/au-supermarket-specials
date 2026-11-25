@@ -136,7 +136,9 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action Bot"
-          for f in data/specials.db data/catalogues.json data/coles_web.json data/woolies_web.json data/catalogue_items.json.gz data/ai_categories.json data/interest.json data/buzz.json data/price_history.json static/data/specials.json static/data/specials-next.json static/data/stats.json static/data/translations.json data/coles_was_prices.json static/data/regular-coles-recent.json; do [ ! -f "$f" ] || git add "$f"; done
+          # 小黃屋: keep a copy of the catalogue on now, shown (marked "ended") until the next one is out
+          python scripts/build_chemist.py --save-last || echo "::warning::小黃屋 last catalogue not saved this time"
+          for f in data/chemist_last.json data/specials.db data/catalogues.json data/coles_web.json data/woolies_web.json data/catalogue_items.json.gz data/ai_categories.json data/interest.json data/buzz.json data/price_history.json static/data/specials.json static/data/specials-next.json static/data/stats.json static/data/translations.json data/coles_was_prices.json static/data/regular-coles-recent.json; do [ ! -f "$f" ] || git add "$f"; done
           git diff --staged --quiet && exit 0
           git commit -m "Auto-update weekly specials & translations [skip ci]"
           for i in 1 2 3; do
