@@ -1,5 +1,7 @@
 // State
-var currentLang = (typeof window !== 'undefined' && window.currentLang) || safeStore.getItem('lang') || 'zh';
+// 網址加 ?lang=en|ja|ko|zh 可直接指定語言（主網站預覽圖依語言拍攝用，不會記住）
+function urlLang() { try { const l = new URLSearchParams(location.search).get('lang'); return /^(zh|en|ja|ko)$/.test(l || '') ? l : ''; } catch (e) { return ''; } }
+var currentLang = urlLang() || (typeof window !== 'undefined' && window.currentLang) || safeStore.getItem('lang') || 'zh';
 let currentPeriod = 'current'; // 'current' or 'next'
 let currentStore = 'All';
 let currentCategory = 'all';
@@ -59,7 +61,7 @@ function scrollToTop() {
 
 // Language Management
 function initLanguage() {
-    currentLang = safeStore.getItem('lang') || 'zh';
+    currentLang = urlLang() || safeStore.getItem('lang') || 'zh';
     applyLanguage(currentLang);
 }
 

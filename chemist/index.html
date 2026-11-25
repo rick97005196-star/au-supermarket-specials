@@ -10,6 +10,7 @@
 <script>
 // Light / dark: the visitor's choice (ozwh-theme), otherwise the device setting; language: the visitor's choice; set before the page shows
 (function () { var t, l; try { t = localStorage.getItem('ozwh-theme'); l = localStorage.getItem('cw-lang'); } catch (e) {}
+  try { var q = new URLSearchParams(location.search).get('lang'); if (/^(zh|en|ja|ko)$/.test(q || '')) l = q; } catch (e) {}   // ?lang= 直接指定（主網站預覽圖用）
   if (t !== 'dark' && t !== 'light') t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
   var r = document.documentElement; r.classList.toggle('dark', t === 'dark'); if (t === 'dark') r.setAttribute('data-theme', 'dark');
   if (!/^(zh|en|ja|ko)$/.test(l || '')) l = 'zh';   // 跟超市網站一樣：沒選過語言就用繁體中文
