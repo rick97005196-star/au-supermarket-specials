@@ -74,6 +74,8 @@ jobs:
         run: python tests/test_chemist.py
       - name: 小黃屋 site (product list and departments) test
         run: python tests/test_chemist_site.py
+      - name: 小黃屋 new catalogue watch test
+        run: python tests/test_chemist_watch.py
       - name: ALDI everyday range test
         run: python tests/test_aldi_range.py   # needs the packages installed in the step above
       - name: Woolworths regular price test

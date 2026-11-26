@@ -1,0 +1,44 @@
+name: 小黃屋新型錄偵測（兩期之間每 2 小時）
+
+# Between two Chemist Warehouse catalogues, look every 2 hours whether the new one is out; when it is,
+# start the specials update right away (it reads the catalogue and puts the 小黃屋 site online).
+# While a catalogue is on, this reads nothing and ends in a few seconds (scripts/chemist_watch.py).
+on:
+  schedule:
+    - cron: '53 */2 * * *'
+  workflow_dispatch:
+
+concurrency:
+  group: chemist-watch
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+  actions: write     # to start the specials update (auto_update.yml)
+
+jobs:
+  watch:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: main
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+      - name: Is the new catalogue out?
+        id: check
+        run: |
+          pip install -q requests
+          python scripts/chemist_watch.py
+      - name: Start the specials update
+        if: steps.check.outputs.start == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          busy=$(gh run list -R "$GITHUB_REPOSITORY" -w auto_update.yml --json status \
+                 -q '[.[] | select(.status != "completed")] | length')
+          if [ "${busy:-0}" != "0" ]; then echo "::notice::an update is already running or waiting - it will read the new catalogue"; exit 0; fi
+          gh workflow run auto_update.yml -R "$GITHUB_REPOSITORY" --ref main -f source=chemist
+          echo "::notice::specials update started for the new 小黃屋 catalogue"
