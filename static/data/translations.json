@@ -231521,10 +231521,11 @@
     "src": "ai"
   },
   "Eat Lean Shredded Cheese 200g": {
-    "zh": "Eat Lean 乾酪絲 200克",
+    "zh": "Eat Lean 起司絲 200克",
     "ja": "Eat Lean シュレッドチーズ 200g",
     "ko": "Eat Lean 슈레드 치즈 200g",
-    "src": "ai"
+    "src": "ai",
+    "qa_tries": 1
   },
   "Nudie Nothing But Aloha 400mL": {
     "zh": "Nudie Nothing But Aloha 果汁 400毫升",
@@ -231785,10 +231786,11 @@
     "src": "ai"
   },
   "Kraft Mac & Cheese Macaroni Pasta Original Noodles 205g": {
-    "zh": "Kraft Mac & Cheese 經典通心粉 205克",
-    "ja": "Kraft Mac & Cheese マカロニパスタ オリジナル 205g",
-    "ko": "Kraft Mac & Cheese 마카로니 파스타 오리지널 205g",
-    "src": "ai"
+    "zh": "Kraft Mac & Cheese 通心粉起司經典款麵 205克",
+    "ja": "Kraft Mac & Cheese マカロニパスタ チーズ味 205g",
+    "ko": "Kraft Mac & Cheese 마카로니 파스타 치즈 오리지널 면 205g",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Dine Fillets Wet Cat Food Shredded Chicken 60g": {
     "zh": "Dine Fillets 濕貓糧雞肉絲 60克",
@@ -232505,10 +232507,11 @@
     "src": "ai"
   },
   "Kinder Surprise Chocolate Egg Orange 20g": {
-    "zh": "Kinder 出奇蛋 橘子口味 20克",
-    "ja": "Kinder サプライズエッグ オレンジ味 20g",
-    "ko": "Kinder 서프라이즈 에그 오렌지맛 20g",
-    "src": "ai"
+    "zh": "Kinder Surprise 巧克力蛋橘子口味 20克",
+    "ja": "Kinder Surprise チョコレートエッグ オレンジ味 20g",
+    "ko": "Kinder Surprise 초콜릿 에그 오렌지 맛 20g",
+    "src": "ai",
+    "qa_tries": 1
   },
   "Fancy Feast Petite Delights Shredded Mixed Variety 40g x 6 pack": {
     "zh": "Fancy Feast 貓罐頭 綜合口味 40克 x 6入",
@@ -233570,6 +233573,24 @@
     "zh": "Fountain 烤肉醬 2公升",
     "ja": "Fountain バーベキューソース 2L",
     "ko": "Fountain 바비큐 소스 2L",
+    "src": "ai"
+  },
+  "OCEAN ROYALE Raw Prawns 500g": {
+    "zh": "OCEAN ROYALE 生蝦 500克",
+    "ja": "OCEAN ROYALE 生エビ 500g",
+    "ko": "OCEAN ROYALE 생새우 500g",
+    "src": "ai"
+  },
+  "CURATED COLLECTION Triple Smoked Half Leg Ham Bone In": {
+    "zh": "CURATED COLLECTION 三重煙燻帶骨半腿火腿",
+    "ja": "CURATED COLLECTION 三重燻製骨付きハーフハム",
+    "ko": "CURATED COLLECTION 트리플 훈제 뼈 있는 반쪽 햄",
+    "src": "ai"
+  },
+  "CURATED COLLECTION Free Range Lightly Smoked Ham Portion": {
+    "zh": "CURATED COLLECTION 放牧輕煙燻火腿切塊",
+    "ja": "CURATED COLLECTION 放牧豚軽燻製ハムポーション",
+    "ko": "CURATED COLLECTION 방목 햄 가볍게 훈제한 부위",
     "src": "ai"
   }
 }
