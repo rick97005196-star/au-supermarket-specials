@@ -491,6 +491,31 @@ function getSearchHaystack(item) {
 
 const _isCJK = (t) => /[぀-ヿ㐀-鿿가-힯]/.test(t);
 
+// 同一個字的不同寫法也要找得到 (2026-11-28：「咖喱」找不到「咖哩」)：
+//  - 簡體字、港式／舊式寫法 -> 商品名稱用的繁體字 (鸡->雞, 面->麵, 喱->哩, 麪->麵)。"发發髮" = typing 发 finds 發 or 髮.
+//    Only the characters the product names use (made from the OpenCC tables), so it stays small.
+//  - Japanese: hiragana and katakana are the same word (はちみつ = ハチミツ).
+// Only the typed word is widened; product names are compared as they are, so 髮 never finds 發.
+const _CJK_ALT = new Map('万萬;与與;专專;业業;丛叢;东東;丝絲;丢丟;两兩;严嚴;个個;丰豐;临臨;为為;丽麗;举舉;义義;乌烏;乐樂;乔喬;习習;乡鄉;书書;买買;乱亂;于於;云雲;亚亞;产產;亲親;亿億;仅僅;从從;仑侖;仪儀;们們;价價;优優;会會;伞傘;伟偉;传傳;伤傷;伦倫;伪偽;体體;余餘;侠俠;侣侶;侧側;侨僑;倾傾;储儲;僞偽;僵殭;儿兒;克剋;兰蘭;关關;兴興;兹茲;养養;兽獸;内內;冈岡;册冊;写寫;军軍;农農;冲沖衝;况況;冻凍;净淨;准準;凉涼;减減;几幾;凤鳳;凯凱;击擊;刘劉;则則;刚剛;创創;删刪;别別;制製;剂劑;剑劍;剥剝;剧劇;办辦;务務;动動;励勵;劲勁;劳勞;势勢;匀勻;区區;医醫;千韆;华華;协協;单單;卖賣;卜蔔;卢盧;卧臥;卫衛;却卻;卷捲;厅廳;历曆歷;压壓;厕廁;厘釐;厢廂;厨廚;参參蔘;參蔘;双雙;发發髮;变變;叠疊;只隻;台檯;叶葉;号號;后後;吕呂;吗嗎;听聽;启啟;呕嘔;员員;周週;咙嚨;咸鹹;响響;哑啞;唇脣;唤喚;啓啟;喂餵;喱哩;喷噴;噜嚕;回迴;团團糰;园園;围圍;国國;图圖;圆圓;圣聖;场場;坏壞;块塊;坚堅;坞塢;垫墊;墙牆;声聲;壳殼;壶壺;处處;备備;复復複覆;头頭;夸誇;夹夾;奖獎;奥奧;妆妝;妇婦;妈媽;姜薑;娇嬌;娘孃;婴嬰;学學;宁寧;宝寶;实實;宠寵;宫宮;宽寬;宾賓;对對;寻尋;导導;寿壽;将將;尔爾;尘塵;尝嚐;尸屍;尽盡;层層;屉屜;属屬;屿嶼;岁歲;岗崗;岛島;岳嶽;峯峰;币幣;师師;帐帳;帘簾;带帶;帮幫;干乾幹;并並併;广廣;庄莊;庆慶;库庫;应應;庞龐;废廢;开開;异異;弃棄;张張;弯彎;弹彈;强強;归歸;当當;录錄;彻徹;径徑;御禦;忆憶;志誌;忧憂;怀懷;态態;总總;恋戀;恒恆;恶惡;悦悅;悬懸;惊驚;惧懼;愈癒;懒懶;戏戲;战戰;户戶;扎紮;扑撲;扩擴;扫掃;扬揚;折摺;抚撫;抛拋;抢搶;护護;报報;担擔;拟擬;拥擁;拧擰;拨撥;择擇;挂掛;挚摯;挛攣;挡擋;挤擠;挥揮;捞撈;损損;捡撿;换換;捣搗;据據;掷擲;搅攪;携攜;摄攝;摆擺;摇搖;摊攤;撑撐;擡抬;敌敵;数數;斗鬥;断斷;旋鏇;无無;旧舊;时時;旷曠;显顯;晒曬;晕暈;暂暫;术術;机機;杀殺;杂雜;权權;杆桿;杠槓;条條;来來;杨楊;杯盃;杰傑;松鬆;板闆;极極;构構;枣棗;枪槍;枫楓;枱檯;柜櫃;柠檸;栀梔;栅柵;标標;栉櫛;栏欄;树樹;样樣;档檔;桥橋;桦樺;桨槳;梦夢;检檢;椭橢;楼樓;榄欖;榈櫚;榉櫸;槟檳;樱櫻;橱櫥;欢歡;欧歐;欲慾;残殘;毡氈;气氣;氢氫;汇匯彙;汉漢;汙污;汤湯;沟溝;没沒;沥瀝;注註;泪淚;泻瀉;泼潑;泽澤;洁潔;洒灑;浅淺;浆漿;浇澆;浊濁;测測;济濟;浏瀏;浑渾;浓濃;涂塗;涡渦;涤滌;润潤;淀澱;渊淵;渍漬;渐漸;渔漁;渗滲;温溫;游遊;湾灣;湿濕;溃潰;溼濕;滚滾;滞滯;满滿;滤濾;滩灘;潜潛;灭滅;灯燈;灵靈;灿燦;炉爐;炖燉;点點;炼煉鍊;烁爍;烛燭;烟煙菸;烧燒;烩燴;烫燙;烬燼;热熱;焕煥;煙菸;熏燻;爱愛;爲為;牀床;牵牽;状狀;犹猶;独獨;狮獅;猎獵;猪豬;猫貓;猬蝟;玛瑪;环環;现現;珐琺;琼瓊;电電;画畫;畅暢;疖癤;疗療;疡瘍;疮瘡;疯瘋;疱皰;痉痙;痒癢;痫癇;痹痺;癣癬;癫癲;皁皂;皱皺;盏盞;盐鹽;监監;盖蓋;盗盜;盘盤;着著;睑瞼;睾睪;矫矯;矶磯;矿礦;码碼;砖磚;砾礫;础礎;确確;碱鹼;礼禮;祕秘;禄祿;禅禪;离離;秋鞦;种種;秘祕;积積;稳穩;窑窯;窝窩;窦竇;竞競;笋筍;笔筆;笼籠;筑築;筛篩;签簽籤;简簡;篮籃;篱籬;类類;粧妝;粪糞;粮糧;系係繫;紧緊;纔才;纠糾;红紅;纤纖;约約;级級;纪紀;纫紉;纯純;纱紗;纳納;纵縱;纷紛;纸紙;纹紋;纺紡;纽紐;纾紓;线線;练練;组組;绅紳;细細;织織;终終;经經;绑綁;绒絨;结結;绕繞;绗絎;绘繪;给給;绚絢;络絡;绝絕;绞絞;统統;绣繡;绪緒;续續;绮綺;绯緋;绳繩;维維;绵綿;绷繃;绸綢;综綜;绿綠;缆纜;缇緹;缎緞;缐線;缓緩;缕縷;编編;缘緣;缝縫;缠纏;缤繽;缩縮;缬纈;罂罌;网網;罗羅;羟羥;羣群;翘翹;职職;联聯;聪聰;肠腸;肤膚;肴餚;肾腎;肿腫;胀脹;胆膽;胜勝;胡鬍;胧朧;胶膠;脉脈;脏臟髒;脐臍;脑腦;脚腳;脣唇;脱脫;脸臉;腊臘;腌醃;腾騰;致緻;臺台;舰艦;艳艷豔;艺藝;节節;芦蘆;苋莧;苍蒼;苎苧;苏甦蘇;苹蘋;茎莖;茧繭;荐薦;荚莢;荞蕎;荟薈;荠薺;荨蕁;荫蔭;药藥;莱萊;莲蓮;莳蒔;莴萵;莹瑩;菸煙;萝蘿;萤螢;营營;萨薩;葱蔥;蓝藍;蓟薊;蔘參;蕴蘊;藴蘊;虑慮;虫蟲;虱蝨;虾蝦;蚁蟻;蚂螞;蚕蠶;蚝蠔;蛎蠣;蛲蟯;蜗蝸;蜡蠟;蝇蠅;蝎蠍;螨蟎;衞衛;补補;表錶;衬襯;衹只;袜襪;装裝;裏裡;裤褲;覈核;见見;观觀;规規;视視;览覽;觉覺;触觸;説說;计計;订訂;认認;讨討;训訓;议議;讯訊;记記;许許;论論;设設;访訪;证證;诉訴;诊診;试試;诗詩;诘詰;话話;诞誕;询詢;该該;详詳;语語;误誤;诱誘;说說;请請;诺諾;读讀;调調;谊誼;谋謀;谐諧;谜謎;谢謝;谬謬;谱譜;谷穀;贝貝;负負;责責;败敗;货貨;质質;贩販;购購;贴貼;贵貴;贸貿;费費;贺賀;贻貽;贾賈;资資;赋賦;赘贅;赛賽;赞讚;赠贈;跖蹠;踪蹤;车車;轧軋;轨軌;转轉;轮輪;软軟;轴軸;轻輕;载載;较較;辅輔;辉輝;输輸;辫辮;边邊;达達;过過;运運;还還;这這;进進;远遠;违違;连連;迹跡蹟;适適;选選;逊遜;遥遙;邮郵;邻鄰;郁鬱;酦醱;酱醬;酸痠;酿釀;采採;释釋;里裡;鈎鉤;鋭銳;鍼針;针針;钉釘;钒釩;钙鈣;钛鈦;钝鈍;钟鐘;钠鈉;钢鋼;钥鑰;钩鉤;钮鈕;钳鉗;钴鈷;钻鑽;钾鉀;铁鐵;铃鈴;铅鉛;铛鐺;铜銅;铝鋁;铬鉻;铰鉸;铲鏟;铵銨;银銀;铸鑄;铺鋪;链鍊鏈;销銷;锁鎖;锂鋰;锅鍋;锈鏽;锉銼;锋鋒;锌鋅;锐銳;错錯;锡錫;锥錐;锦錦;锭錠;键鍵;锯鋸;锰錳;镀鍍;镁鎂;镇鎮;镊鑷;镖鏢;镜鏡;镟鏇;镰鐮;镶鑲;长長;閱閲;閲閱;门門;闪閃;闭閉;问問;闲閒;间間;闷悶;阀閥;阁閣;阅閱閲;队隊;阳陽;阴陰;阶階;际際;陆陸;陈陳;险險;随隨;隐隱;雏雛;雳靂;雾霧;霉黴;静靜;面麵;韧韌;韩韓;页頁;顶頂;项項;顺順;须須鬚;顽頑;顾顧;顿頓;颂頌;预預;领領;颈頸;颊頰;频頻;颗顆;题題;颜顏;额額;颤顫;风風;飙飆;飞飛;飨饗;饨飩;饪飪;饭飯;饮飲;饰飾;饱飽;饲飼;饵餌;饺餃;饼餅;馀餘;馄餛;馅餡;馆館;馈饋;馏餾;馒饅;馕饢;马馬;驯馴;驱驅;驻駐;骄驕;验驗;骑騎;骤驟;髅髏;髋髖;髌髕;鬓鬢;鱼魚;鱿魷;鲁魯;鲈鱸;鲍鮑;鲑鮭;鲔鮪;鲜鮮;鲣鰹;鲨鯊;鲬鯒;鲭鯖;鲱鯡;鲷鯛;鳀鯷;鳄鱷;鳍鰭;鳕鱈;鳟鱒;鸟鳥;鸡雞;鸢鳶;鸣鳴;鸥鷗;鸦鴉;鸭鴨;鸸鴯;鸽鴿;鹅鵝;鹉鵡;鹋鶓;鹌鵪;鹑鶉;鹦鸚;鹰鷹;麦麥;麪麵;麸麩;麺麵;黄黃;齐齊;齿齒;龄齡;龈齦;龙龍;龟龜;𢧐戰;𧹒買;𫊻蟳;𫔀鍊;𫔭開;𫔮閒;𫗭餵;𬞟蘋;𬶮鱚'.split(';').map(e => [e[0], e.slice(1)]));
+const _cjkReCache = new Map();
+function _cjkSource(term) {
+    let src = '';
+    for (const ch of term) {
+        const c = ch.codePointAt(0);
+        let alts = _CJK_ALT.get(ch) || '';
+        if (c >= 0x3041 && c <= 0x3096) alts += String.fromCodePoint(c + 0x60);          // hiragana -> katakana
+        else if (c >= 0x30a1 && c <= 0x30f6) alts += String.fromCodePoint(c - 0x60);     // katakana -> hiragana
+        const esc = ch.replace(/[.*+?^${}()|[\]\\\/]/g, '\\$&');
+        src += alts ? '[' + esc + alts + ']' : esc;       // only letters have other writings, so the [ ] never holds a symbol
+    }
+    return src;
+}
+function _cjkRe(term) {
+    let re = _cjkReCache.get(term);
+    if (!re) { try { re = new RegExp(_cjkSource(term), 'u'); } catch (e) { re = /(?!)/; } if (_cjkReCache.size > 500) _cjkReCache.clear(); _cjkReCache.set(term, re); }
+    return re;
+}
+
 function _enWordMatch(title, word) {
     // whole word (plural ok): "rice" matches "Rice"/"Rices" but not "Price"; "strawberr*" = prefix
     const prefix = word.endsWith('*');
@@ -502,10 +527,70 @@ function _enWordMatch(title, word) {
 // CJK text: plain "contains"; latin text: must start at a word boundary ("egg" ≠ "Leggo's", "rice" ≠ "Liquorice")
 function _hayHas(hay, t) {
     if (!t) return false;
-    if (_isCJK(t)) return hay.includes(t);
+    if (_isCJK(t)) return hay.includes(t) || _cjkRe(t).test(hay);
     const esc = t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     return new RegExp('(^|[^a-z0-9])' + esc, 'i').test(hay);
 }
+
+// Korean is written with spaces, so a word found only in the middle of another word is usually a different
+// word: 커리 (curry) is inside 베이커리 (bakery). Those still show, but after the real matches.
+const _isHangul = (t) => /^[가-힣]+$/.test(t);
+function _midWordOnly(hay, t) {
+    return _isHangul(t) && !new RegExp('(^|[^가-힣])' + t).test(hay);
+}
+
+// ---- Products with no Chinese / Japanese / Korean name yet (most of the regular-price lists) ----
+// Their names are English only, so 「咖哩」 could not find them while "curry" did. The website learns the English
+// word from the products that DO have translated names: of the products whose name has 咖哩, most say "curry",
+// and nearly every "curry" product is a 咖哩 one -> an English-only product with "curry" is shown for 咖哩 too.
+// Works for any word in Chinese, Japanese or Korean without a hand-made dictionary.
+function _enTokens(title) {
+    const words = String(title || '').toLowerCase().split(/[^a-z'&]+/)
+        .map(w => w.replace(/^'+|'+$/g, '').replace(/'s$/, ''))
+        .filter(w => w.length >= 3)
+        .map(w => w.length > 3 ? w.replace(/ies$/, 'y').replace(/([^s])s$/, '$1') : w);
+    const out = new Set(words);
+    for (let i = 0; i + 1 < words.length; i++) out.add(words[i] + ' ' + words[i + 1]);
+    return out;
+}
+const _itemTokens = (item) => item._toks || (item._toks = _enTokens(item.title));
+let _learnBase = null;          // { src: the specials list it was built from, items, df: token -> how many products }
+const _learned = new Map();     // typed word -> English tokens
+function learnedEnglish(term) {
+    const src = (typeof staticSpecials !== 'undefined' && staticSpecials) || [];
+    if (!_learnBase || _learnBase.src !== src || _learnBase.n !== src.length) {
+        const items = [], df = new Map(), seen = new Set();
+        for (const it of src) {
+            getSearchHaystack(it);
+            if (!it._zh || seen.has(it.title)) continue;      // each product name once (it is in several shops' lists)
+            seen.add(it.title);
+            items.push(it);
+            for (const tk of _itemTokens(it)) df.set(tk, (df.get(tk) || 0) + 1);
+        }
+        _learnBase = { src, n: src.length, items, df };
+        _learned.clear();
+    }
+    if (_learned.has(term)) return _learned.get(term).words;
+    const hits = _learnBase.items.filter(it => _hayHas(it._hay, term) && !_midWordOnly(it._hay, term));
+    const count = new Map();
+    for (const it of hits) for (const tk of _itemTokens(it)) count.set(tk, (count.get(tk) || 0) + 1);
+    const picked = [];
+    for (const [tk, c] of count) {
+        if (c < 3) continue;
+        const cover = c / hits.length, sure = c / _learnBase.df.get(tk);
+        // "sure": of the products with this English word, how many have the typed word in their name
+        if (sure >= 0.4 && cover >= 0.25) picked.push([tk, sure * cover]);
+    }
+    // the clear winners only: 洋蔥 -> "onion", not "sour cream" (from sour cream & onion chips)
+    picked.sort((a, b) => b[1] - a[1]);
+    let words = picked.filter(p => p[1] >= picked[0][1] * 0.5).slice(0, 4).map(p => p[0]);
+    // 無糖 -> "sugar free", not also "sugar" on its own
+    words = words.filter((w, i) => w.includes(' ') || !words.slice(0, i).some(b => b.split(' ').includes(w)));
+    _learned.set(term, { words, hits: hits.length });
+    return words;
+}
+// how many translated product names have this word
+function nameHits(term) { learnedEnglish(term); return _learned.get(term).hits; }
 
 function _strip(text, words) {
     if (!words || !text) return text;
@@ -547,11 +632,27 @@ function renderSearchSuggestions() {
 
 function _findGroup(term) {
     if (_termIndex.has(term)) return _termIndex.get(term);
+    if (_isCJK(term)) {
+        // the same dictionary word in another writing: 蓝莓 = 藍莓, みるく = ミルク
+        let re = null;
+        try { re = new RegExp('^' + _cjkSource(term) + '$', 'u'); } catch (e) {}
+        if (re) for (const [k, g] of _termIndex) if (re.test(k)) return g;
+    }
     let best = null;
     for (const [k, g] of _termIndex) {
         if (k.length >= 2 && term.includes(k) && (!best || k.length > best.len)) best = { g, len: k.length };
     }
+    // A longer word that only CONTAINS a dictionary word is its own word when products are really called that:
+    // 鮮奶油 (cream) is not 鮮奶 (milk), 酸奶油 (sour cream) is not 酸奶 (yoghurt).
+    if (best && _isCJK(term) && nameHits(term) >= 3) return null;
     return best ? best.g : null;
+}
+const _groupCache = new Map();
+function _groupOf(term) {
+    const n = (typeof staticSpecials !== 'undefined' && staticSpecials && staticSpecials.length) || 0;
+    if (_groupCache.n !== n) { _groupCache.clear(); _groupCache.n = n; }
+    if (!_groupCache.has(term)) _groupCache.set(term, _findGroup(term));
+    return _groupCache.get(term);
 }
 
 // Relevance score for one product (0 = not a match). Every term must match.
@@ -564,7 +665,7 @@ function scoreSearchMatch(item, query) {
     getSearchHaystack(item);
     let score = 0;
     for (const term of terms) {
-        const group = _findGroup(term);
+        const group = _groupOf(term);
         // e.g. "牛奶" means milk to drink: not shampoo with coconut milk or milk chocolate
         if (group && group.onlyCat && !group.cat.includes(item.category)) return 0;
         const nameHay = group ? _strip(item._hay, group.not) : item._hay;
@@ -572,7 +673,7 @@ function scoreSearchMatch(item, query) {
         let best = 0;
         // 1) direct hit in the product name (any language). A single CJK character on its own
         //    (米 / 水 / 油…) is too ambiguous, so for dictionary words we rely on the dictionary instead.
-        if (!(group && term.length === 1 && _isCJK(term)) && _hayHas(nameHay, term)) best = 10;
+        if (!(group && term.length === 1 && _isCJK(term)) && _hayHas(nameHay, term)) best = _midWordOnly(nameHay, term) ? 4 : 10;
         // 2) dictionary: same thing in other languages
         if (group) {
             if (group.en.some(w => _enWordMatch(titleClean, w))) best = Math.max(best, 9);
@@ -588,7 +689,12 @@ function scoreSearchMatch(item, query) {
             if (relHit) best = 3;
         }
         // 3) the user typed a category name (e.g. "零食", "寵物", "snacks"): items IN that category come first
-        if (!group && term.length >= 2 && _hayHas(item._cat, term)) best = Math.max(best, 11);
+        if (!group && term.length >= 2 && _hayHas(item._cat, term) && !_midWordOnly(item._cat, term)) best = Math.max(best, 11);
+        // 4) no translated name (regular-price lists): the English word learned from the translated products
+        if (!best && !group && !item._zh && _isCJK(term)) {
+            const toks = _itemTokens(item);
+            if (learnedEnglish(term).some(w => toks.has(w))) best = 6;
+        }
         if (!best) return 0;
         score += best;
     }
@@ -1189,7 +1295,7 @@ function _matchFavoritesNow(items, favs) {
 function favKeywordMatch(item, q) {
     if (scoreSearchMatch(item, q) <= 0) return false;
     const terms = parseSearchTerms(q);
-    const group = terms.length === 1 ? _findGroup(terms[0]) : null;
+    const group = terms.length === 1 ? _groupOf(terms[0]) : null;
     if (group && group.cat && group.cat.length) return group.cat.includes(item.category);
     return true;
 }
