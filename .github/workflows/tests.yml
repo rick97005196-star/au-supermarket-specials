@@ -10,6 +10,7 @@ on:
       - 'categories.py'
       - 'static/category-rules.js'
       - 'static/compare.js'
+      - 'static/app.js'
       - 'tests/**'
       - 'scripts/check_timer.py'
       - 'scripts/ai_categorize.py'
@@ -58,6 +59,8 @@ jobs:
         run: python tests/test_buzz.py
       - name: 60-day lowest price test
         run: python tests/test_price_history.py
+      - name: Search words in Chinese / Japanese / Korean (咖哩 = curry)
+        run: node tests/test_search_words.cjs
       - name: Same drink in any pack (同款不同包裝) test
         run: python tests/test_pack_group.py
       - name: Everyday low price test
